@@ -1,0 +1,32 @@
+v0.4
+
+-temporarily removed misty keystones from the random pool to prevent a softlock
+-fixed various pathing issues (keystone locks should no longer occur)
+-removed sorrow bash as a possible path
+-Alt+T will now replay the previous message (in case of blocked messages or having UI off)
+-lowered the Alt+R teleport slightly to reduce warp displacements onto the ceiling
+-added spoiler logs
+
+v0.3
+
+-Removed bugged experience orb left of spirit tree from the general pool (it is always a 100 now, if it shows)
+-Temporarily removed starting the wind escape as an item source (forlorn now just has the keystones, exp orbs, and health cell)
+-Updated seed generator to give more variety in early movement options
+-Fixed some path bugs (the sunstone shouldn't spawn in horu anymore)
+-Grenade no longer costs energy
+
+v0.2
+
+-Added some missing pickups. If you get nothing from a pickup, the hint text will now display Ori's current position instead.
+-Events are now sources in the drop pool.
+
+v0.1
+
+-Fixed event logic
+-Added a hint message to indicate what you're picking up
+-Fixed clean water preventing access to ginso
+-Added several missing pickups to the pool
+-Fixed duplicate pickup bug, probably
+-Removed skill requirements on the ability tree
+
+v0
