@@ -155,6 +155,7 @@
           <Requirement>EC+EC+EC+EC+WallJump</Requirement>
           <Requirement>EC+EC+EC+EC+Climb</Requirement>
           <Requirement>EC+EC+EC+EC+Bash</Requirement>
+          <!-- Bash path uses fronkey walk -->
         </Requirements>
       </Connection>
       <Connection>
@@ -172,6 +173,7 @@
         <Requirements>
           <Requirement>ChargeJump</Requirement>
           <Requirement>Bash+Grenade</Requirement>
+          <!-- can be done with only bash and a long fronkey lure -->
         </Requirements>
       </Connection>
       <Connection>
@@ -1971,7 +1973,7 @@
           <Requirement>DoubleJump</Requirement>
           <Requirement>ChargeJump+WallJump</Requirement>
           <Requirement>ChargeJump+Climb</Requirement>
-          <Requirement>Glide</Requirement>
+          <!--- this can be reached with cjump only + 3 damage -->
         </Requirements>
       </Connection>
       <Connection>
