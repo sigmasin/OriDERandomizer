@@ -1,0 +1,2499 @@
+<?xml version="1.0"?>
+<Areas>
+  <Area name="sunkenGladesRunaway">
+    <Locations>
+      <Location>
+        <X>88</X>
+        <Y>-228</Y>
+        <Item>EX15</Item>
+      </Location>
+      <Location>
+        <X>-156</X>
+        <Y>-276</Y>
+        <Item>EX15</Item>
+      </Location>
+      <Location>
+        <X>80</X>
+        <Y>-224</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>-12</X>
+        <Y>-208</Y>
+        <Item>KS</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="sunkenGladesRunaway"/>
+        <Target name="sunkenGladesNadePool"/>
+        <Requirements>
+          <Requirement>Water+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="sunkenGladesRunaway"/>
+        <Target name="sunkenGladesNadeTree"/>
+        <Requirements>
+          <Requirement>Grenade+WallJump+DoubleJump</Requirement>
+          <Requirement>Grenade+ChargeJump</Requirement>
+          <Requirement>Grenade+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="sunkenGladesRunaway"/>
+        <Target name="sunkenGladesMainPool"/>
+        <Requirements>
+          <Requirement>Water</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="sunkenGladesRunaway"/>
+        <Target name="WallJump"/>
+        <Requirements>
+          <Requirement>KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="sunkenGladesRunaway"/>
+        <Target name="DashArea"/>
+        <Requirements>
+          <Requirement>WallJump</Requirement>
+          <Requirement>Climb</Requirement>
+          <Requirement>ChargeJump</Requirement>
+          <Requirement>Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="sunkenGladesRunaway"/>
+        <Target name="fronkeyWalkRoof"/>
+        <Requirements>
+          <Requirement>ChargeJump</Requirement>
+          <Requirement>Bash</Requirement>
+          <Requirement>Glide+Wind</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="sunkenGladesNadePool">
+    <Locations>
+      <Location>
+        <X>56</X>
+        <Y>-284</Y>
+        <Item>EX200</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="sunkenGladesNadeTree">
+    <Locations>
+      <Location>
+        <X>80</X>
+        <Y>-200</Y>
+        <Item>AC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="sunkenGladesMainPool">
+    <Locations>
+      <Location>
+        <X>4</X>
+        <Y>-244</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>-44</X>
+        <Y>-244</Y>
+        <Item>EC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="fronkeyWalkRoof">
+    <Locations>
+      <Location>
+        <X>256</X>
+        <Y>-204</Y>
+        <Item>EX200</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="WallJump">
+    <Locations>
+      <Location>
+        <X>-80</X>
+        <Y>-192</Y>
+        <Item>HC</Item>
+      </Location>
+      <Location>
+        <X>-64</X>
+        <Y>-244</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>-316</X>
+        <Y>-308</Y>
+        <Item>SKWallJump</Item>
+      </Location>
+      <Location>
+        <X>-284</X>
+        <Y>-240</Y>
+        <Item>EX15</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="WallJump"/>
+        <Target name="moonGrotto"/>
+        <Requirements>
+          <Requirement>EC+EC+EC+EC+WallJump</Requirement>
+          <Requirement>EC+EC+EC+EC+Climb</Requirement>
+          <Requirement>EC+EC+EC+EC+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="WallJump"/>
+        <Target name="WallJumpAbove"/>
+        <Requirements>
+          <Requirement>Bash</Requirement>
+          <Requirement>WallJump+DoubleJump</Requirement>
+          <Requirement>ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="WallJump"/>
+        <Target name="rightWallJump"/>
+        <Requirements>
+          <Requirement>ChargeJump</Requirement>
+          <Requirement>Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="WallJump"/>
+        <Target name="leftWallJump"/>
+        <Requirements>
+          <Requirement>WallJump</Requirement>
+          <Requirement>Climb</Requirement>
+          <Requirement>ChargeJump</Requirement>
+          <Requirement>Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="WallJump"/>
+        <Target name="sunkenGladesSpiritCavernB"/>
+        <Requirements>
+          <Requirement>KS+KS+Climb</Requirement>
+          <Requirement>KS+KS+WallJump</Requirement>
+          <Requirement>KS+KS+ChargeJump</Requirement>
+          <Requirement>KS+KS+Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="WallJump"/>
+        <Target name="upperGladesBelowSpiritTree"/>
+        <Requirements>
+          <Requirement>ChargeJump+Climb</Requirement>
+          <Requirement>ChargeJump+WallJump+DoubleJump</Requirement>
+          <Requirement>Bash+DoubleJump+Glide</Requirement>
+          <Requirement>Bash+Grenade+Climb</Requirement>
+          <Requirement>Bash+Grenade+WallJump</Requirement>
+          <!-- the grenade requirement could be removed from the last two -->
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="WallJump"/>
+        <Target name="ChargeFlame"/>
+        <Requirements>
+          <Requirement>WallJump+Grenade</Requirement>
+          <Requirement>WallJump+ChargeFlame</Requirement>
+          <Requirement>Climb+Grenade</Requirement>
+          <Requirement>Climb+ChargeFlame</Requirement>
+          <Requirement>ChargeJump+Grenade</Requirement>
+          <Requirement>ChargeJump+ChargeFlame</Requirement>
+          <Requirement>Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="WallJumpAbove">
+    <Locations>
+      <Location>
+        <X>-52</X>
+        <Y>-168</Y>
+        <Item>AC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="rightWallJump">
+    <Locations>
+      <Location>
+        <X>-248</X>
+        <Y>-280</Y>
+        <Item>EX200</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="leftWallJump">
+    <Locations>
+      <Location>
+        <X>-336</X>
+        <Y>-292</Y>
+        <Item>EC</Item>
+      </Location>
+      <Location>
+        <X>-248</X>
+        <Y>-208</Y>
+        <Item>EX15</Item>
+      </Location>
+      <Location>
+        <X>-240</X>
+        <Y>-216</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>-188</X>
+        <Y>-232</Y>
+        <Item>MS</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="sunkenGladesSpiritCavernB">
+    <Locations>
+      <Location>
+        <X>-184</X>
+        <Y>-196</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>-220</X>
+        <Y>-188</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>-180</X>
+        <Y>-156</Y>
+        <Item>KS</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="sunkenGladesSpiritCavernB"/>
+        <Target name="sunkenGladesSpiritCavernTopLeft"/>
+        <Requirements>
+          <Requirement>WallJump</Requirement>
+          <Requirement>DoubleJump</Requirement>
+          <Requirement>ChargeJump</Requirement>
+          <Requirement>Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="sunkenGladesSpiritCavernB"/>
+        <Target name="upperGladesBelowSpiritTree"/>
+        <Requirements>
+          <Requirement>EC+EC+EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="sunkenGladesSpiritCavernB"/>
+        <Target name="sunkenGladesSpiritCavernRoof"/>
+        <Requirements>
+          <Requirement>WallJump+DoubleJump</Requirement>
+          <Requirement>ChargeJump</Requirement>
+          <Requirement>Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="sunkenGladesSpiritCavernB"/>
+        <Target name="spiritTreeRefined"/>
+        <Requirements>
+          <Requirement>KS+KS+KS+KS+ChargeFlame</Requirement>
+          <Requirement>KS+KS+KS+KS+Grenade</Requirement>
+          <Requirement>KS+KS+KS+KS+Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="sunkenGladesSpiritCavernTopLeft">
+    <Locations>
+      <Location>
+        <X>-220</X>
+        <Y>-148</Y>
+        <Item>KS</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="sunkenGladesSpiritCavernRoof">
+    <Locations>
+      <Location>
+        <X>-220</X>
+        <Y>-180</Y>
+        <Item>AC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="upperGladesBelowSpiritTree">
+    <Locations>
+      <Location>
+        <X>-156</X>
+        <Y>-188</Y>
+        <Item>EC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="upperGladesBelowSpiritTree"/>
+        <Target name="WallJump"/>
+        <Requirements>
+          <Requirement>Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="upperGladesBelowSpiritTree"/>
+        <Target name="sunkenGladesSpiritCavernB"/>
+        <Requirements>
+          <Requirement>EC+EC+EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="upperGladesBelowSpiritTree"/>
+        <Target name="sunkenGladesRunning"/>
+        <Requirements>
+          <Requirement>Grenade+Bash+WallJump</Requirement>
+          <Requirement>Grenade+ChargeJump+Water</Requirement>
+          <Requirement>Grenade+Bash+Climb</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="sunkenGladesRunning">
+    <Locations>
+      <Location>
+        <X>-168</X>
+        <Y>-144</Y>
+        <Item>AC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="ChargeFlame">
+    <Locations>
+      <Location>
+        <X>-56</X>
+        <Y>-160</Y>
+        <Item>SKChargeFlame</Item>
+      </Location>
+      <Location>
+        <X>4</X>
+        <Y>-196</Y>
+        <Item>EX100</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="ChargeFlame"/>
+        <Target name="spiritTreeRefined"/>
+        <Requirements>
+          <Requirement>ChargeJump+ChargeFlame</Requirement>
+          <Requirement>ChargeJump+Grenade</Requirement>
+          <Requirement>ChargeJump+Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="spiritTreeRefined">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="spiritTreeRefined"/>
+        <Target name="ChargeFlame"/>
+        <Requirements>
+          <Requirement>Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="spiritTreeRefined"/>
+        <Target name="valleyEntry"/>
+        <Requirements>
+          <Requirement>ChargeFlame</Requirement>
+          <Requirement>Grenade</Requirement>
+          <Requirement>Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="spiritTreeRefined"/>
+        <Target name="ChargeFlameTree"/>
+        <Requirements>
+          <Requirement>DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="spiritTreeRefined"/>
+        <Target name="upperGladesSpiderCavernPuzzle"/>
+        <Requirements>
+          <Requirement>ChargeFlame</Requirement>
+          <Requirement>Grenade</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="ChargeFlameTree">
+    <Locations>
+      <Location>
+        <X>-16</X>
+        <Y>-100</Y>
+        <Item>EX100</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="upperGladesSpiderCavernPuzzle">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="upperGladesSpiderCavernPuzzle"/>
+        <Target name="upperGladesSpiderHealth"/>
+        <Requirements>
+          <Requirement>ChargeFlame</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="upperGladesSpiderCavernPuzzle"/>
+        <Target name="upperGladesGrenade"/>
+        <Requirements>
+          <Requirement>Grenade+Bash</Requirement>
+          <Requirement>Grenade+DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="upperGladesSpiderCavernPuzzle"/>
+        <Target name="upperGladesEnergyDoor"/>
+        <Requirements>
+          <Requirement>EC+EC+EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="upperGladesSpiderCavernPuzzle"/>
+        <Target name="moonGrotto"/>
+        <Requirements>
+          <Requirement>ChargeFlame</Requirement>
+          <Requirement>DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="upperGladesSpiderCavernPuzzle"/>
+        <Target name="sunkenGladesLaserStomp"/>
+        <Requirements>
+          <Requirement>Stomp+Water</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="upperGladesEnergyDoor">
+    <Locations>
+      <Location>
+        <X>64</X>
+        <Y>-112</Y>
+        <Item>AC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="upperGladesSpiderHealth">
+    <Locations>
+      <Location>
+        <X>148</X>
+        <Y>-120</Y>
+        <Item>HC</Item>
+      </Location>
+      <Location>
+        <X>60</X>
+        <Y>-160</Y>
+        <Item>EC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="upperGladesGrenade">
+    <Locations>
+      <Location>
+        <X>92</X>
+        <Y>-96</Y>
+        <Item>AC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="DashArea">
+    <Locations>
+      <Location>
+        <X>152</X>
+        <Y>-292</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>180</X>
+        <Y>-292</Y>
+        <Item>AC</Item>
+      </Location>
+      <Location>
+        <X>196</X>
+        <Y>-232</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>292</X>
+        <Y>-256</Y>
+        <Item>SKDash</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="DashArea"/>
+        <Target name="moonGrotto"/>
+        <Requirements>
+          <Requirement>EC+EC+EC+EC+WallJump</Requirement>
+          <Requirement>EC+EC+EC+EC+Climb</Requirement>
+          <Requirement>EC+EC+EC+EC+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DashArea"/>
+        <Target name="LowerBlackRoot"/>
+        <Requirements>
+          <Requirement>Stomp+ChargeJump</Requirement>
+          <Requirement>Stomp+Grenade+Bash</Requirement>
+          <Requirement>Stomp+Dash+DoubleJump</Requirement>
+          <Requirement>Stomp+Dash+Grenade+Bash</Requirement>
+          <Requirement>Stomp+Dash</Requirement>
+          <Requirement>Stomp+ChargeJump+DoubleJump</Requirement>
+          <Requirement>Stomp+Grenade</Requirement>
+          <Requirement>Stomp+Grenade+Water</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DashArea"/>
+        <Target name="RazielNo"/>
+        <Requirements>
+          <Requirement>Dash+DoubleJump</Requirement>
+          <Requirement>Dash+ChargeJump</Requirement>
+          <Requirement>Dash+Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="RazielNo">
+    <Locations>
+      <Location>
+        <X>344</X>
+        <Y>-256</Y>
+        <Item>MS</Item>
+      </Location>
+      <Location>
+        <X>304</X>
+        <Y>-304</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>392</X>
+        <Y>-312</Y>
+        <Item>HC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="RazielNo"/>
+        <Target name="BoulderExp"/>
+        <Requirements>
+          <Requirement>Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="RazielNo"/>
+        <Target name="sideFallCell"/>
+        <Requirements>
+          <Requirement>Stomp+DoubleJump</Requirement>
+          <Requirement>Stomp+ChargeJump</Requirement>
+          <Requirement>Stomp+Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="BoulderExp">
+    <Locations>
+      <Location>
+        <X>432</X>
+        <Y>-328</Y>
+        <Item>EX100</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="LowerBlackRoot">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="LowerBlackRoot"/>
+        <Target name="LowerBlackRootCell"/>
+        <Requirements>
+          <Requirement>ChargeJump</Requirement>
+          <Requirement>Grenade+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerBlackRoot"/>
+        <Target name="FarRightBlackRoot"/>
+        <Requirements>
+          <Requirement>Dash+DoubleJump</Requirement>
+          <Requirement>Dash+Grenade+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerBlackRoot"/>
+        <Target name="RightBlackRoot"/>
+        <Requirements>
+          <Requirement>Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerBlackRoot"/>
+        <Target name="LeftBlackRoot"/>
+        <Requirements>
+          <Requirement>ChargeJump+DoubleJump</Requirement>
+          <Requirement>Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerBlackRoot"/>
+        <Target name="BottomBlackRoot"/>
+        <Requirements>
+          <Requirement>Grenade+Bash</Requirement>
+          <Requirement>Grenade+Water</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerBlackRoot"/>
+        <Target name="GrenadeArea"/>
+        <Requirements>
+          <Requirement>Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="GrenadeArea">
+    <Locations>
+      <Location>
+        <X>72</X>
+        <Y>-380</Y>
+        <Item>SKGrenade</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="GrenadeArea"/>
+        <Target name="RightGrenadeArea"/>
+        <Requirements>
+          <Requirement>Bash</Requirement>
+          <Requirement>ChargeJump</Requirement>
+          <Requirement>DoubleJump</Requirement>
+          <Requirement>Glide</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GrenadeArea"/>
+        <Target name="UpperGrenadeArea"/>
+        <Requirements>
+          <Requirement>Grenade+Bash</Requirement>
+          <Requirement>Grenade+ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="RightGrenadeArea">
+    <Locations>
+      <Location>
+        <X>224</X>
+        <Y>-360</Y>
+        <Item>EX100</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="UpperGrenadeArea">
+    <Locations>
+      <Location>
+        <X>248</X>
+        <Y>-336</Y>
+        <Item>AC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="LowerBlackRootCell">
+    <Locations>
+      <Location>
+        <X>280</X>
+        <Y>-376</Y>
+        <Item>AC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="FarRightBlackRoot">
+    <Locations>
+      <Location>
+        <X>388</X>
+        <Y>-428</Y>
+        <Item>AC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="RightBlackRoot">
+    <Locations>
+      <Location>
+        <X>336</X>
+        <Y>-420</Y>
+        <Item>EX100</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="LeftBlackRoot">
+    <Locations>
+      <Location>
+        <X>208</X>
+        <Y>-436</Y>
+        <Item>AC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="BottomBlackRoot">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="BottomBlackRoot"/>
+        <Target name="FinalBlackRoot"/>
+        <Requirements>
+          <Requirement>Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="BottomBlackRoot"/>
+        <Target name="BlackRootWater"/>
+        <Requirements>
+          <Requirement>Water</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="FinalBlackRoot">
+    <Locations>
+      <Location>
+        <X>456</X>
+        <Y>-508</Y>
+        <Item>AC</Item>
+      </Location>
+      <Location>
+        <X>460</X>
+        <Y>-492</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>304</X>
+        <Y>-528</Y>
+        <Item>EX100</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="BlackRootWater">
+    <Locations>
+      <Location>
+        <X>524</X>
+        <Y>-548</Y>
+        <Item>AC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="moonGrotto">
+    <Locations>
+      <Location>
+        <X>300</X>
+        <Y>-192</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>420</X>
+        <Y>-172</Y>
+        <Item>EC</Item>
+      </Location>
+      <Location>
+        <X>296</X>
+        <Y>-96</Y>
+        <Item>MS</Item>
+      </Location>
+      <Location>
+        <X>700</X>
+        <Y>-84</Y>
+        <Item>AC</Item>
+      </Location>
+      <Location>
+        <X>616</X>
+        <Y>-100</Y>
+        <Item>EX100</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="upperGladesSpiderCavernPuzzle"/>
+        <Requirements>
+          <Requirement>Bash</Requirement>
+          <Requirement>DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="groveWater"/>
+        <Requirements>
+          <Requirement>Water</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="upperGroveSpiderArea"/>
+        <Requirements>
+          <Requirement>Bash+WallJump</Requirement>
+          <Requirement>ChargeJump+WallJump+DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="deathWater"/>
+        <Requirements>
+          <Requirement>Water+EC+EC+EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="sunkenGladesLaserStomp"/>
+        <Requirements>
+          <Requirement>ChargeJump</Requirement>
+          <Requirement>Stomp+Water</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="deathStomp"/>
+        <Requirements>
+          <Requirement>Stomp+Water</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="upperGrottoOrbs"/>
+        <Requirements>
+          <Requirement>WallJump+DoubleJump</Requirement>
+          <Requirement>ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="upperGrotto200"/>
+        <Requirements>
+          <Requirement>WallJump+DoubleJump</Requirement>
+          <Requirement>Climb+DoubleJump+ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="mortarCell"/>
+        <Requirements>
+          <Requirement>ChargeJump</Requirement>
+          <Requirement>Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="swampGrottoWater"/>
+        <Requirements>
+          <Requirement>Water</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="swamp"/>
+        <Requirements>
+          <Requirement>Stomp+ChargeJump</Requirement>
+          <Requirement>ChargeJump+ChargeFlame</Requirement>
+          <Requirement>ChargeJump+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="drainlessCell"/>
+        <Requirements>
+          <Requirement>Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="rightGrottoHealth"/>
+        <Requirements>
+          <Requirement>DoubleJump+Bash</Requirement>
+          <Requirement>DoubleJump+ChargeJump</Requirement>
+          <Requirement>Glide+ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="moonGrottoEnergyWater"/>
+        <Requirements>
+          <Requirement>EC+EC+Water</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="moonGrottoEnergyTop"/>
+        <Requirements>
+          <Requirement>EC+EC+ChargeJump</Requirement>
+          <Requirement>EC+EC+WallJump+DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="GumoHideout"/>
+        <Requirements>
+          <Requirement>Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="moonGrottoAirCell"/>
+        <Requirements>
+          <Requirement>ChargeJump+DoubleJump</Requirement>
+          <Requirement>Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="moonGrottoWaterStomp"/>
+        <Requirements>
+          <Requirement>Water+Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="leftGinsoCell"/>
+        <Requirements>
+          <Requirement>ChargeJump+DoubleJump+Glide</Requirement>
+          <Requirement>Wind+Glide</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="rightGinsoOrb"/>
+        <Requirements>
+          <Requirement>Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="lowerGinsoTree"/>
+        <Requirements>
+          <Requirement>GinsoKey+WallJump+DoubleJump</Requirement>
+          <Requirement>GinsoKey+ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="HoruFields"/>
+        <Requirements>
+          <Requirement>Bash+DoubleJump</Requirement>
+          <Requirement>Bash+Glide</Requirement>
+          <Requirement>Stomp+ChargeJump+Glide+WallJump</Requirement>
+          <Requirement>Stomp+ChargeJump+Glide+Climb</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="HoruFieldsStomp"/>
+        <Requirements>
+          <Requirement>Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="moonGrottoWaterStomp">
+    <Locations>
+      <Location>
+        <X>352</X>
+        <Y>-180</Y>
+        <Item>AC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="rightGinsoOrb">
+    <Locations>
+      <Location>
+        <X>664</X>
+        <Y>-52</Y>
+        <Item>EX200</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="leftGinsoCell">
+    <Locations>
+      <Location>
+        <X>408</X>
+        <Y>-36</Y>
+        <Item>AC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="upperGroveSpiderArea">
+    <Locations>
+      <Location>
+        <X>172</X>
+        <Y>-108</Y>
+        <Item>EX200</Item>
+      </Location>
+      <Location>
+        <X>260</X>
+        <Y>-120</Y>
+        <Item>HC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="upperGroveSpiderArea"/>
+        <Target name="upperGroveSpiderEnergy"/>
+        <Requirements>
+          <Requirement>Grenade</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="upperGroveSpiderEnergy">
+    <Locations>
+      <Location>
+        <X>272</X>
+        <Y>-100</Y>
+        <Item>EC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="groveWater">
+    <Locations>
+      <Location>
+        <X>184</X>
+        <Y>-168</Y>
+        <Item>EX100</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="deathWater">
+    <Locations>
+      <Location>
+        <X>336</X>
+        <Y>-220</Y>
+        <Item>AC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="deathStomp">
+    <Locations>
+      <Location>
+        <X>356</X>
+        <Y>-208</Y>
+        <Item>EX200</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="upperGrottoOrbs">
+    <Locations>
+      <Location>
+        <X>476</X>
+        <Y>-144</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>428</X>
+        <Y>-112</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>364</X>
+        <Y>-112</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>332</X>
+        <Y>-64</Y>
+        <Item>AC</Item>
+      </Location>
+      <Location>
+        <X>580</X>
+        <Y>-68</Y>
+        <Item>HC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="upperGrotto200">
+    <Locations>
+      <Location>
+        <X>448</X>
+        <Y>-168</Y>
+        <Item>EX200</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="mortarCell">
+    <Locations>
+      <Location>
+        <X>500</X>
+        <Y>-112</Y>
+        <Item>AC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="swampGrottoWater">
+    <Locations>
+      <Location>
+        <X>592</X>
+        <Y>-140</Y>
+        <Item>EX200</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="rightGrottoHealth">
+    <Locations>
+      <Location>
+        <X>544</X>
+        <Y>-192</Y>
+        <Item>HC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="moonGrottoEnergyWater">
+    <Locations>
+      <Location>
+        <X>424</X>
+        <Y>-276</Y>
+        <Item>EX100</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="moonGrottoEnergyTop">
+    <Locations>
+      <Location>
+        <X>424</X>
+        <Y>-224</Y>
+        <Item>HC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="moonGrottoAirCell">
+    <Locations>
+      <Location>
+        <X>548</X>
+        <Y>-144</Y>
+        <Item>EX100</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="sideFallCell">
+    <Locations>
+      <Location>
+        <X>448</X>
+        <Y>-300</Y>
+        <Item>AC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="sideFallCell"/>
+        <Target name="GumoHideout"/>
+        <Requirements>
+          <Requirement>Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="GumoHideout">
+    <Locations>
+      <Location>
+        <X>512</X>
+        <Y>-416</Y>
+        <Item>MS</Item>
+      </Location>
+      <Location>
+        <X>620</X>
+        <Y>-408</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>568</X>
+        <Y>-380</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>588</X>
+        <Y>-388</Y>
+        <Item>KS</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="DoubleJumpArea"/>
+        <Requirements>
+          <Requirement>KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="MobileGumoHideout"/>
+        <Requirements>
+          <Requirement>WallJump+DoubleJump</Requirement>
+          <Requirement>Climb+ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="DoubleJumpArea">
+    <Locations>
+      <Location>
+        <X>784</X>
+        <Y>-412</Y>
+        <Item>SKDoubleJump</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="DoubleJumpArea"/>
+        <Target name="MobileDoubleJumpArea"/>
+        <Requirements>
+          <Requirement>WallJump+DoubleJump</Requirement>
+          <Requirement>ChargeJump</Requirement>
+          <Requirement>Bash</Requirement>
+          <Requirement>Climb+DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="MobileDoubleJumpArea">
+    <Locations>
+      <Location>
+        <X>756</X>
+        <Y>-400</Y>
+        <Item>EX100</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="MobileGumoHideout">
+    <Locations>
+      <Location>
+        <X>492</X>
+        <Y>-372</Y>
+        <Item>EX15</Item>
+      </Location>
+      <Location>
+        <X>464</X>
+        <Y>-372</Y>
+        <Item>EX15</Item>
+      </Location>
+      <Location>
+        <X>544</X>
+        <Y>-360</Y>
+        <Item>EC</Item>
+      </Location>
+      <Location>
+        <X>564</X>
+        <Y>-248</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>0</X>
+        <Y>0</Y>
+        <Item>EVGinsoKey</Item>
+      </Location>
+      <Location>
+        <X>404</X>
+        <Y>-388</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>392</X>
+        <Y>-380</Y>
+        <Item>HC</Item>
+      </Location>
+      <Location>
+        <X>448</X>
+        <Y>-432</Y>
+        <Item>AC</Item>
+      </Location>
+      <Location>
+        <X>328</X>
+        <Y>-356</Y>
+        <Item>EX100</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="MobileGumoHideout"/>
+        <Target name="sideFallCell"/>
+        <Requirements>
+          <Requirement>Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MobileGumoHideout"/>
+        <Target name="moonGrotto"/>
+        <Requirements>
+          <Requirement>Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MobileGumoHideout"/>
+        <Target name="GumoHideoutWater"/>
+        <Requirements>
+          <Requirement>Water</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MobileGumoHideout"/>
+        <Target name="HideoutRedirect"/>
+        <Requirements>
+          <Requirement>EC+EC+EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="GumoHideoutWater">
+    <Locations>
+      <Location>
+        <X>396</X>
+        <Y>-412</Y>
+        <Item>EX100</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="HideoutRedirect">
+    <Locations>
+      <Location>
+        <X>512</X>
+        <Y>-444</Y>
+        <Item>EC</Item>
+      </Location>
+      <Location>
+        <X>504</X>
+        <Y>-444</Y>
+        <Item>EX200</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="drainlessCell">
+    <Locations>
+      <Location>
+        <X>640</X>
+        <Y>-132</Y>
+        <Item>AC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="sunkenGladesLaserStomp">
+    <Locations>
+      <Location>
+        <X>320</X>
+        <Y>-180</Y>
+        <Item>HC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="sunkenGladesLaserStomp"/>
+        <Target name="moonGrotto"/>
+        <Requirements>
+          <Requirement>Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="lowerGinsoTree">
+    <Locations>
+      <Location>
+        <X>520</X>
+        <Y>140</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>528</X>
+        <Y>272</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>540</X>
+        <Y>272</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>508</X>
+        <Y>304</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>528</X>
+        <Y>296</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>532</X>
+        <Y>328</Y>
+        <Item>SKBash</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="lowerGinsoTree"/>
+        <Target name="upperGinsoTree"/>
+        <Requirements>
+          <Requirement>KS+KS+KS+KS+Bash</Requirement>
+          <Requirement>KS+KS+KS+KS+ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="upperGinsoTree">
+    <Locations>
+      <Location>
+        <X>516</X>
+        <Y>336</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>504</X>
+        <Y>476</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>532</X>
+        <Y>488</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>528</X>
+        <Y>500</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>508</X>
+        <Y>496</Y>
+        <Item>KS</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="upperGinsoTree"/>
+        <Target name="topGinsoTree"/>
+        <Requirements>
+          <Requirement>KS+KS+KS+KS+Bash+WallJump</Requirement>
+          <Requirement>KS+KS+KS+KS+Bash+Climb</Requirement>
+          <Requirement>KS+KS+KS+KS+Bash+ChargeJump</Requirement>
+          <Requirement>KS+KS+KS+KS+ChargeJump+WallJump</Requirement>
+          <Requirement>KS+KS+KS+KS+ChargeJump+Climb</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="upperGinsoTree"/>
+        <Target name="upperGinsoFloors"/>
+        <Requirements>
+          <Requirement>Bash</Requirement>
+          <Requirement>Stomp</Requirement>
+          <Requirement>ChargeFlame</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="upperGinsoFloors">
+    <Locations>
+      <Location>
+        <X>516</X>
+        <Y>380</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>528</X>
+        <Y>404</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>536</X>
+        <Y>432</Y>
+        <Item>EC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="topGinsoTree">
+    <Locations>
+      <Location>
+        <X>456</X>
+        <Y>564</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>468</X>
+        <Y>612</Y>
+        <Item>EX100</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="topGinsoTree"/>
+        <Target name="GinsoEscape"/>
+        <Requirements>
+          <Requirement>Bash</Requirement>
+          <Requirement>Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="GinsoEscape">
+    <Locations>
+      <Location>
+        <X>532</X>
+        <Y>660</Y>
+        <Item>EX200</Item>
+      </Location>
+      <Location>
+        <X>536</X>
+        <Y>732</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>532</X>
+        <Y>824</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>516</X>
+        <Y>864</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>0</X>
+        <Y>4</Y>
+        <Item>EVWater</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="swamp">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="swamp"/>
+        <Target name="drainlessCell"/>
+        <Requirements>
+          <Requirement>Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="swamp"/>
+        <Target name="swampWater"/>
+        <Requirements>
+          <Requirement>Water</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="swamp"/>
+        <Target name="swampStomp"/>
+        <Requirements>
+          <Requirement>Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="swamp"/>
+        <Target name="swampEnergy"/>
+        <Requirements>
+          <Requirement>Wind+Glide</Requirement>
+          <Requirement>ChargeJump+Climb+Glide</Requirement>
+          <Requirement>ChargeJump+Climb+DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="swamp"/>
+        <Target name="rightSwamp"/>
+        <Requirements>
+          <Requirement>KS+KS+WallJump</Requirement>
+          <Requirement>KS+KS+Climb</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="swampWater">
+    <Locations>
+      <Location>
+        <X>636</X>
+        <Y>-164</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>760</X>
+        <Y>-176</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>684</X>
+        <Y>-208</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>764</X>
+        <Y>-188</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>796</X>
+        <Y>-212</Y>
+        <Item>MS</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="swampStomp">
+    <Locations>
+      <Location>
+        <X>768</X>
+        <Y>-148</Y>
+        <Item>EX100</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="swampEnergy">
+    <Locations>
+      <Location>
+        <X>720</X>
+        <Y>-96</Y>
+        <Item>EC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="rightSwamp">
+    <Locations>
+      <Location>
+        <X>860</X>
+        <Y>-96</Y>
+        <Item>SKStomp</Item>
+      </Location>
+      <Location>
+        <X>912</X>
+        <Y>-72</Y>
+        <Item>EX200</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="rightSwamp"/>
+        <Target name="rightSwampStomp"/>
+        <Requirements>
+          <Requirement>Stomp</Requirement>
+          <Requirement>Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="rightSwamp"/>
+        <Target name="rightSwampGrenade"/>
+        <Requirements>
+          <Requirement>Grenade+Water</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="rightSwampStomp">
+    <Locations>
+      <Location>
+        <X>884</X>
+        <Y>-100</Y>
+        <Item>EX100</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="rightSwampGrenade">
+    <Locations>
+      <Location>
+        <X>872</X>
+        <Y>-144</Y>
+        <Item>EX200</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="HoruFields">
+    <Locations>
+      <Location>
+        <X>96</X>
+        <Y>-40</Y>
+        <Item>EX200</Item>
+      </Location>
+      <Location>
+        <X>176</X>
+        <Y>-40</Y>
+        <Item>AC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="HoruFields"/>
+        <Target name="HoruFieldsEnergy"/>
+        <Requirements>
+          <Requirement>Bash</Requirement>
+          <Requirement>DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HoruFields"/>
+        <Target name="Horu"/>
+        <Requirements>
+          <Requirement>HoruKey+Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement>HoruKey+Bash+DoubleJump+Glide+Climb</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HoruFieldsEnergy">
+    <Locations>
+      <Location>
+        <X>172</X>
+        <Y>-4</Y>
+        <Item>EC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="HoruFieldsStomp">
+    <Locations>
+      <Location>
+        <X>160</X>
+        <Y>-80</Y>
+        <Item>HC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="Horu">
+    <Locations>
+      <Location>
+        <X>192</X>
+        <Y>384</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>148</X>
+        <Y>360</Y>
+        <Item>MS</Item>
+      </Location>
+      <Location>
+        <X>248</X>
+        <Y>400</Y>
+        <Item>EC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="HoruStomp"/>
+        <Requirements>
+          <Requirement>Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HoruStomp">
+    <Locations>
+      <Location>
+        <X>188</X>
+        <Y>164</Y>
+        <Item>EX200</Item>
+      </Location>
+      <Location>
+        <X>252</X>
+        <Y>192</Y>
+        <Item>EX200</Item>
+      </Location>
+      <Location>
+        <X>164</X>
+        <Y>132</Y>
+        <Item>EX200</Item>
+      </Location>
+      <Location>
+        <X>-192</X>
+        <Y>192</Y>
+        <Item>EX200</Item>
+      </Location>
+      <Location>
+        <X>-32</X>
+        <Y>148</Y>
+        <Item>EX200</Item>
+      </Location>
+      <Location>
+        <X>12</X>
+        <Y>160</Y>
+        <Item>EX200</Item>
+      </Location>
+      <Location>
+        <X>128</X>
+        <Y>164</Y>
+        <Item>EX200</Item>
+      </Location>
+      <Location>
+        <X>96</X>
+        <Y>128</Y>
+        <Item>EX200</Item>
+      </Location>
+      <Location>
+        <X>104</X>
+        <Y>108</Y>
+        <Item>EX200</Item>
+      </Location>
+      <Location>
+        <X>0</X>
+        <Y>20</Y>
+        <Item>EVWarmth</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="valleyEntry">
+    <Locations>
+      <Location>
+        <X>-208</X>
+        <Y>-116</Y>
+        <Item>AC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="valleyEntry"/>
+        <Target name="valleyEntryTree"/>
+        <Requirements>
+          <Requirement>Bash+WallJump</Requirement>
+          <Requirement>Bash+Climb</Requirement>
+          <Requirement>DoubleJump</Requirement>
+          <Requirement>ChargeJump+WallJump</Requirement>
+          <Requirement>ChargeJump+Climb</Requirement>
+          <Requirement>Glide</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="valleyEntry"/>
+        <Target name="valleyMain"/>
+        <Requirements>
+          <Requirement>Stomp+Bash+WallJump+DoubleJump</Requirement>
+          <Requirement>Stomp+Bash+WallJump+Glide</Requirement>
+          <Requirement>Stomp+Bash+Climb+ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="valleyEntryTree">
+    <Locations>
+      <Location>
+        <X>-224</X>
+        <Y>-88</Y>
+        <Item>EX100</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="valleyEntryTree"/>
+        <Target name="valleyEntryWater"/>
+        <Requirements>
+          <Requirement>Water+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="valleyEntryWater">
+    <Locations>
+      <Location>
+        <X>-324</X>
+        <Y>-164</Y>
+        <Item>EC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="valleyMain">
+    <Locations>
+      <Location>
+        <X>-292</X>
+        <Y>20</Y>
+        <Item>AC</Item>
+      </Location>
+      <Location>
+        <X>-356</X>
+        <Y>64</Y>
+        <Item>AC</Item>
+      </Location>
+      <Location>
+        <X>-420</X>
+        <Y>64</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>-460</X>
+        <Y>-20</Y>
+        <Item>SKGlide</Item>
+      </Location>
+      <Location>
+        <X>-548</X>
+        <Y>52</Y>
+        <Item>EX200</Item>
+      </Location>
+      <Location>
+        <X>-564</X>
+        <Y>-92</Y>
+        <Item>MS</Item>
+      </Location>
+      <Location>
+        <X>-540</X>
+        <Y>-108</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>-352</X>
+        <Y>-100</Y>
+        <Item>AC</Item>
+      </Location>
+      <Location>
+        <X>-448</X>
+        <Y>-156</Y>
+        <Item>MS</Item>
+      </Location>
+      <Location>
+        <X>-540</X>
+        <Y>-236</Y>
+        <Item>EX200</Item>
+      </Location>
+      <Location>
+        <X>-464</X>
+        <Y>-260</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>-680</X>
+        <Y>-32</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>-824</X>
+        <Y>-12</Y>
+        <Item>EX100</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="valleyMain"/>
+        <Target name="valleyMainWater"/>
+        <Requirements>
+          <Requirement>Water</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="valleyMain"/>
+        <Target name="preSorrowOrb"/>
+        <Requirements>
+          <Requirement>ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="valleyMain"/>
+        <Target name="sorrow"/>
+        <Requirements>
+          <Requirement>Wind+Glide</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="valleyMain"/>
+        <Target name="misty"/>
+        <Requirements>
+          <Requirement>Glide</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="valleyMain"/>
+        <Target name="forlorn"/>
+        <Requirements>
+          <Requirement>ForlornKey</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="valleyMain"/>
+        <Target name="valleyMainGrenade"/>
+        <Requirements>
+          <Requirement>Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="valleyMain"/>
+        <Target name="valleyMainFACS"/>
+        <Requirements>
+          <Requirement>Climb+ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="preSorrowOrb">
+    <Locations>
+      <Location>
+        <X>-576</X>
+        <Y>156</Y>
+        <Item>EX200</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="valleyMainWater">
+    <Locations>
+      <Location>
+        <X>-360</X>
+        <Y>-92</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>-516</X>
+        <Y>-280</Y>
+        <Item>EX100</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="valleyMainFACS">
+    <Locations>
+      <Location>
+        <X>-416</X>
+        <Y>-84</Y>
+        <Item>AC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="valleyMainGrenade">
+    <Locations>
+      <Location>
+        <X>-464</X>
+        <Y>-192</Y>
+        <Item>AC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="forlorn">
+    <Locations>
+      <Location>
+        <X>-708</X>
+        <Y>-392</Y>
+        <Item>EX200</Item>
+      </Location>
+      <Location>
+        <X>-844</X>
+        <Y>-356</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>-860</X>
+        <Y>-356</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>-896</X>
+        <Y>-332</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>-888</X>
+        <Y>-252</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>-872</X>
+        <Y>-256</Y>
+        <Item>KS</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="forlorn"/>
+        <Target name="rightForlorn"/>
+        <Requirements>
+          <Requirement>KS+KS+KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="rightForlorn">
+    <Locations>
+      <Location>
+        <X>-628</X>
+        <Y>-316</Y>
+        <Item>HC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="sorrow">
+    <Locations>
+      <Location>
+        <X>-512</X>
+        <Y>200</Y>
+        <Item>AC</Item>
+      </Location>
+      <Location>
+        <X>-436</X>
+        <Y>320</Y>
+        <Item>MS</Item>
+      </Location>
+      <Location>
+        <X>-484</X>
+        <Y>320</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>-504</X>
+        <Y>272</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>-516</X>
+        <Y>300</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>-596</X>
+        <Y>228</Y>
+        <Item>KS</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="sorrow"/>
+        <Target name="leftSorrow"/>
+        <Requirements>
+          <Requirement>KS+KS+KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="sorrow"/>
+        <Target name="sorrowHealth"/>
+        <Requirements>
+          <Requirement>ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="sorrowHealth">
+    <Locations>
+      <Location>
+        <X>-612</X>
+        <Y>296</Y>
+        <Item>HC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="leftSorrow">
+    <Locations>
+      <Location>
+        <X>-672</X>
+        <Y>288</Y>
+        <Item>AC</Item>
+      </Location>
+      <Location>
+        <X>-612</X>
+        <Y>328</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>-616</X>
+        <Y>344</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>-608</X>
+        <Y>360</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>-616</X>
+        <Y>372</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>-628</X>
+        <Y>392</Y>
+        <Item>EC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="leftSorrow"/>
+        <Target name="leftSorrowGrenade"/>
+        <Requirements>
+          <Requirement>Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="leftSorrow"/>
+        <Target name="upperSorrow"/>
+        <Requirements>
+          <Requirement>KS+KS+KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="leftSorrowGrenade">
+    <Locations>
+      <Location>
+        <X>-680</X>
+        <Y>268</Y>
+        <Item>EX200</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="upperSorrow">
+    <Locations>
+      <Location>
+        <X>-460</X>
+        <Y>416</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>-416</X>
+        <Y>428</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>-516</X>
+        <Y>424</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>-548</X>
+        <Y>408</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>-596</X>
+        <Y>444</Y>
+        <Item>KS</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="upperSorrow"/>
+        <Target name="chargeJump"/>
+        <Requirements>
+          <Requirement>KS+KS+KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="chargeJump">
+    <Locations>
+      <Location>
+        <X>-696</X>
+        <Y>408</Y>
+        <Item>SKChargeJump</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="chargeJump"/>
+        <Target name="sunstone"/>
+        <Requirements>
+          <Requirement>ChargeJump+Climb</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="sunstone">
+    <Locations>
+      <Location>
+        <X>-648</X>
+        <Y>472</Y>
+        <Item>AC</Item>
+      </Location>
+      <Location>
+        <X>0</X>
+        <Y>16</Y>
+        <Item>EVHoruKey</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="misty">
+    <Locations>
+      <Location>
+        <X>-980</X>
+        <Y>20</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>-1076</X>
+        <Y>-4</Y>
+        <Item>AC</Item>
+      </Location>
+      <Location>
+        <X>-1084</X>
+        <Y>4</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>-1012</X>
+        <Y>-40</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>-1188</X>
+        <Y>-100</Y>
+        <Item>SKClimb</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="misty"/>
+        <Target name="mistyEnd"/>
+        <Requirements>
+          <Requirement>Climb+DoubleJump</Requirement>
+          <Requirement>ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="mistyEnd">
+    <Locations>
+      <Location>
+        <X>-840</X>
+        <Y>-128</Y>
+        <Item>EX100</Item>
+      </Location>
+      <Location>
+        <X>-800</X>
+        <Y>-148</Y>
+        <Item>EX200</Item>
+      </Location>
+      <Location>
+        <X>-672</X>
+        <Y>-44</Y>
+        <Item>EX200</Item>
+      </Location>
+      <Location>
+        <X>0</X>
+        <Y>8</Y>
+        <Item>EVForlornKey</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+</Areas>
