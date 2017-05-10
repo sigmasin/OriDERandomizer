@@ -1,3 +1,21 @@
+v0.5
+
+-the forlorn escape is no longer blocked if you have already released wind. Activating the forlorn escape will now give a pickup
+-added health as a resource for the seed generator
+-added modes for the seed generator configuration:
+    -normal: all the standard ways to do things
+    -speed: uses some trick that is common in the all skills run
+    -lure: involves luring an enemy away from their home
+    -dboost: involves extended damage boosting
+    -hard: some kind of unintended strategy requiring knowledge particular to the area
+    -dbash: involves repeated double bashing
+    -dboost-hard: ridiculous dboost strats
+    -lure-hard: ridiculous enemy luring strats
+    -timed-level: requires a timed levelup to pull off
+    -glitched: heaven help you
+-rebalanced ability weight to give more variety in the early game    
+-added a new command: ctrl+alt+L - reloads randomizer.dat (use to start a new run without restarting the game)
+
 v0.4
 
 -temporarily removed misty keystones from the random pool to prevent a softlock

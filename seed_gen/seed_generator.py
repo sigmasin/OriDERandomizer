@@ -58,8 +58,19 @@ class Connection:
         minReq = []
         for req in self.requirements:
             score = 0
-            for abil in req:   
-                score += costs[abil.strip()]
+            energy = 0
+            health = 0
+            for abil in req:
+                if abil == "EC":
+                    energy += 1
+                    if inventory["EC"] < energy:
+                        score += costs[abil.strip()]
+                elif abil == "HC":
+                    health += 1
+                    if inventory["HC"] < health:
+                        score += costs[abil.strip()]
+                else:
+                    score += costs[abil.strip()]
             if score < minReqScore:
                 minReqScore = score
                 minReq = req
@@ -121,11 +132,24 @@ def prepare_path(free_space):
             for req_set in connection.get_requirements():
                 requirements = []
                 cost = 0
+                energy = 0
+                health = 0
                 for req in req_set:
                     if costs[req] > 0:
-                        requirements.append(req);
-                        cost += costs[req];
-                cost *= len(requirements) #decrease the rate of multi-ability paths
+                        if req == "EC":
+                            energy += 1
+                            if energy > inventory["EC"]:
+                                requirements.append(req);
+                                cost += costs[req];
+                        elif req == "HC":
+                            health += 1
+                            if health > inventory["HC"]:
+                                requirements.append(req);
+                                cost += costs[req];
+                        else:
+                            requirements.append(req);
+                            cost += costs[req];
+                #cost *= len(requirements) #decrease the rate of multi-ability paths
                 if len(requirements) <= free_space:
                     for req in requirements:
                         if req not in abilities_to_open:
@@ -143,7 +167,7 @@ def prepare_path(free_space):
             for req in abilities_to_open[path][1]:
                 if itemPool[req] > 0:
                     assignQueue.append(req)
-            return
+            return abilities_to_open[path][1]
         
 
         
@@ -157,7 +181,7 @@ def assign_random():
 
 def assign(item):
     itemPool[item] -= 1
-    if item == "EC" or item == "KS":
+    if item == "EC" or item == "KS" or item == "HC":
         costs[item] -= 1
     elif item in costs.keys():
         costs[item] = 0
@@ -173,6 +197,8 @@ for seed in range(0,1000):
     areasReached = {"sunkenGladesRunaway": True}
     connectionQueue = []
     assignQueue = []
+    
+    modes = ["normal", "speed", "lure", "dboost"]
     
     skillsOutput = {
     "WallJump": "SK3",
@@ -196,12 +222,12 @@ for seed in range(0,1000):
     "Warmth": "EV5"
     }
 
-    itemCount = 207.0
+    itemCount = 208.0
     keystoneCount = 0
 
     itemPool = {
     "EX15":6,
-    "EX100":52,
+    "EX100":53,
     "EX200":29,
     "KS":36,
     "MS":9,
@@ -229,17 +255,18 @@ for seed in range(0,1000):
     costs = {
     "Free":0,
     "KS":2,
-    "EC":4,
+    "EC":6,
+    "HC":12,
     "WallJump":8,
-    "ChargeFlame":12,
-    "Dash":14,
-    "Stomp":15,
+    "ChargeFlame":22,
     "DoubleJump":16,
-    "Glide":18,
     "Bash":20,
+    "Stomp":25,
+    "Glide":18,    
     "Climb":22,
-    "Grenade":24,
     "ChargeJump":50,
+    "Dash":12,
+    "Grenade":14,
     "GinsoKey":9,
     "ForlornKey":9,
     "HoruKey":9,
@@ -285,8 +312,10 @@ for seed in range(0,1000):
         for conn in child.find("Connections"):
             connection = Connection(conn.find("Home").attrib["name"], conn.find("Target").attrib["name"])
             for req in conn.find("Requirements"):
-                connection.add_requirements(req.text.split('+'))
-            area.add_connection(connection)
+                if req.attrib["mode"] in modes:
+                    connection.add_requirements(req.text.split('+'))
+            if connection.get_requirements():
+                area.add_connection(connection)
         areas[area.name] = area
         
     output = open("seeds/randomizer" + str(seed) + ".dat", 'w')
@@ -310,6 +339,7 @@ for seed in range(0,1000):
         
         assignQueue = []
         doorQueue = {}
+        spoilerPath = ""
 
         #open all paths that we can already access
         opening = True
@@ -327,12 +357,11 @@ for seed in range(0,1000):
         #have to give keys out right away (this opens up the potential of
         #using keys in the wrong place, will need to be careful)
         if not doorQueue:
-            prepare_path(len(locationsToAssign))
+            spoilerPath = prepare_path(len(locationsToAssign))
             if not assignQueue:
                 locationsToAssign.append(reservedLocations.pop(0))
                 locationsToAssign.append(reservedLocations.pop(0))
-                prepare_path(len(locationsToAssign))
-        
+                spoilerPath = prepare_path(len(locationsToAssign))
         #pick what we're going to put in our accessible space
         itemsToAssign = []
         for i in range(0,len(locationsToAssign)):
@@ -363,7 +392,9 @@ for seed in range(0,1000):
                 output.write(itemsToAssign[i][:2] + "|1\n")
             if itemsToAssign[i] in costs.keys():
                 spoiler.write(itemsToAssign[i] + " from " + locationsToAssign[i].area + " " + locationsToAssign[i].orig + " (" + str(locationsToAssign[i].x) + ", " + str(locationsToAssign[i].y) + ")\n")
-                
+        
+        if spoilerPath:
+            spoiler.write("Forced pickups: " + str(spoilerPath) + "\n")
         locationsToAssign = []
     
     spoiler.close()

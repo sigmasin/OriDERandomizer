@@ -436,14 +436,21 @@ public class GameController : SaveSerialize, ISuspendable
 			if (MoonInput.GetKeyDown(KeyCode.U))
 			{
 				SeinUI.DebugHideUI = !SeinUI.DebugHideUI;
-			}
-			if (MoonInput.GetKeyDown(KeyCode.R))
-			{
-				Randomizer.returnToStart();
+				return;
 			}
 			if (MoonInput.GetKeyDown(KeyCode.T))
 			{
 				Randomizer.playLastMessage();
+				return;
+			}
+			if (MoonInput.GetKeyDown(KeyCode.R))
+			{
+				Randomizer.returnToStart();
+				return;
+			}
+			if ((MoonInput.GetKeyDown(KeyCode.LeftControl) || MoonInput.GetKeyDown(KeyCode.RightControl)) && MoonInput.GetKeyDown(KeyCode.L))
+			{
+				Randomizer.initialize();
 			}
 		}
 	}
@@ -453,7 +460,7 @@ public class GameController : SaveSerialize, ISuspendable
 	{
 	}
 
-	// Token: 0x06003418 RID: 13336 RVA: 0x000D5CB4 File Offset: 0x000D3EB4
+	// Token: 0x06003418 RID: 13336 RVA: 0x000D5CA8 File Offset: 0x000D3EA8
 	public void FixedUpdate()
 	{
 		if (Scenes.Manager)
@@ -501,7 +508,7 @@ public class GameController : SaveSerialize, ISuspendable
 		return this.Objectives.IndexOf(objective);
 	}
 
-	// Token: 0x0600341B RID: 13339 RVA: 0x000D5DA8 File Offset: 0x000D3FA8
+	// Token: 0x0600341B RID: 13339 RVA: 0x000D5D9C File Offset: 0x000D3F9C
 	public void SuspendGameplay()
 	{
 		if (!this.GameplaySuspended)
@@ -544,7 +551,7 @@ public class GameController : SaveSerialize, ISuspendable
 		}
 	}
 
-	// Token: 0x0600341F RID: 13343 RVA: 0x000D5DF4 File Offset: 0x000D3FF4
+	// Token: 0x0600341F RID: 13343 RVA: 0x000D5DE8 File Offset: 0x000D3FE8
 	public void CreateCheckpoint()
 	{
 		SaveGameData saveGameData = Game.Checkpoint.SaveGameData;
@@ -588,7 +595,7 @@ public class GameController : SaveSerialize, ISuspendable
 		}
 	}
 
-	// Token: 0x06003423 RID: 13347 RVA: 0x000D5ECC File Offset: 0x000D40CC
+	// Token: 0x06003423 RID: 13347 RVA: 0x000D5EC0 File Offset: 0x000D40C0
 	private void HandleTrialData()
 	{
 		if (this.IsTrial)

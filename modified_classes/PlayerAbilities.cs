@@ -158,7 +158,7 @@ public class PlayerAbilities : SaveSerialize, ISeinReceiver
 		}
 	}
 
-	// Token: 0x06000F85 RID: 3973 RVA: 0x0005DED0 File Offset: 0x0005C0D0
+	// Token: 0x06000F85 RID: 3973
 	public void SetAbility(AbilityType ability, bool value)
 	{
 		switch (ability)
@@ -170,7 +170,7 @@ public class PlayerAbilities : SaveSerialize, ISeinReceiver
 			}
 			else
 			{
-				Randomizer.getPickup();
+				Randomizer.getSkill();
 			}
 			break;
 		case AbilityType.ChargeFlame:
@@ -180,7 +180,7 @@ public class PlayerAbilities : SaveSerialize, ISeinReceiver
 			}
 			else
 			{
-				Randomizer.getPickup();
+				Randomizer.getSkill();
 			}
 			break;
 		case AbilityType.WallJump:
@@ -190,7 +190,7 @@ public class PlayerAbilities : SaveSerialize, ISeinReceiver
 			}
 			else
 			{
-				Randomizer.getPickup();
+				Randomizer.getSkill();
 			}
 			break;
 		case AbilityType.Stomp:
@@ -200,7 +200,7 @@ public class PlayerAbilities : SaveSerialize, ISeinReceiver
 			}
 			else
 			{
-				Randomizer.getPickup();
+				Randomizer.getSkill();
 			}
 			break;
 		case AbilityType.DoubleJump:
@@ -210,7 +210,7 @@ public class PlayerAbilities : SaveSerialize, ISeinReceiver
 			}
 			else
 			{
-				Randomizer.getPickup();
+				Randomizer.getSkill();
 			}
 			break;
 		case AbilityType.ChargeJump:
@@ -220,7 +220,7 @@ public class PlayerAbilities : SaveSerialize, ISeinReceiver
 			}
 			else
 			{
-				Randomizer.getPickup();
+				Randomizer.getSkill();
 			}
 			break;
 		case AbilityType.Magnet:
@@ -236,7 +236,7 @@ public class PlayerAbilities : SaveSerialize, ISeinReceiver
 			}
 			else
 			{
-				Randomizer.getPickup();
+				Randomizer.getSkill();
 			}
 			break;
 		case AbilityType.Glide:
@@ -246,7 +246,7 @@ public class PlayerAbilities : SaveSerialize, ISeinReceiver
 			}
 			else
 			{
-				Randomizer.getPickup();
+				Randomizer.getSkill();
 			}
 			break;
 		case AbilityType.SpiritFlame:
@@ -338,7 +338,7 @@ public class PlayerAbilities : SaveSerialize, ISeinReceiver
 			}
 			else
 			{
-				Randomizer.getPickup();
+				Randomizer.getSkill();
 			}
 			break;
 		case AbilityType.Grenade:
@@ -348,7 +348,7 @@ public class PlayerAbilities : SaveSerialize, ISeinReceiver
 			}
 			else
 			{
-				Randomizer.getPickup();
+				Randomizer.getSkill();
 			}
 			break;
 		case AbilityType.GrenadeUpgrade:

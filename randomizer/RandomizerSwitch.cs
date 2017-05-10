@@ -105,7 +105,7 @@ public static class RandomizerSwitch
                 break;
             case 1:
                 Randomizer.MessageProvider.SetMessage("Clean Water");
-                Sein.World.Events.WarmthReturned = true;
+                Sein.World.Events.RandomizerWater = true;
                 break;
             case 2:
                 Randomizer.MessageProvider.SetMessage("Gumon Seal");
@@ -113,7 +113,7 @@ public static class RandomizerSwitch
                 break;
             case 3:
                 Randomizer.MessageProvider.SetMessage("Wind Restored");
-                Sein.World.Events.WindRestored = true;
+                Sein.World.Events.RandomizerWind = true;
                 break;
             case 4:
                 Randomizer.MessageProvider.SetMessage("Sunstone");

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.IO;
 using Game;
+using Sein.World;
 using UnityEngine;
 
 // Token: 0x020009EE RID: 2542
@@ -38,26 +39,26 @@ public static class Randomizer
 		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[Randomizer.resolvePosition()]);
 	}
 
-	// Token: 0x06003739 RID: 14137
+	// Token: 0x06003738 RID: 14136
 	public static void returnToStart()
 	{
 		Characters.Sein.Position = new Vector3(189f, -189f);
 	}
 
-	// Token: 0x0600373B RID: 14139
+	// Token: 0x06003739 RID: 14137
 	public static void getEvent(int ID)
 	{
 		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[ID * 4]);
 	}
 
-	// Token: 0x0600373C RID: 14140
+	// Token: 0x0600373A RID: 14138
 	public static void showHint(string message)
 	{
 		Randomizer.MessageProvider.SetMessage(message);
 		UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
 	}
 
-	// Token: 0x0600379E RID: 14238
+	// Token: 0x0600373B RID: 14139
 	public static int resolvePosition()
 	{
 		int num = (int)(Math.Floor((double)Characters.Sein.Position.x / Randomizer.GridFactor) * Randomizer.GridFactor * 10000.0 + Math.Floor((double)Characters.Sein.Position.y / Randomizer.GridFactor) * Randomizer.GridFactor);
@@ -81,18 +82,30 @@ public static class Randomizer
 		return num;
 	}
 
-	// Token: 0x060037A0 RID: 14240
+	// Token: 0x0600373C RID: 14140
 	public static void playLastMessage()
 	{
 		UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
 	}
 
-	// Token: 0x060037A1 RID: 14241
+	// Token: 0x0600373D RID: 14141
 	public static void log(string message)
 	{
 		StreamWriter expr_0A = File.AppendText("randomizer.log");
 		expr_0A.WriteLine(message);
 		expr_0A.Flush();
+	}
+
+	// Token: 0x0600374B RID: 14155
+	public static bool WindRestored()
+	{
+		return Sein.World.Events.WindRestored && (Characters.Sein.Position.x >= -700f || Characters.Sein.Position.y >= -230f);
+	}
+
+	// Token: 0x0600396F RID: 14703
+	public static void getSkill()
+	{
+		Randomizer.getPickup();
 	}
 
 	// Token: 0x04003223 RID: 12835

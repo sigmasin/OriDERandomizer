@@ -4,7 +4,7 @@ using Sein.World;
 // Token: 0x0200098A RID: 2442
 public class SetSeinWorldStateAction : ActionMethod
 {
-	// Token: 0x06003575 RID: 13685 RVA: 0x000DA54C File Offset: 0x000D874C
+	// Token: 0x06003575 RID: 13685 RVA: 0x000DA540 File Offset: 0x000D8740
 	public override void Perform(IContext context)
 	{
 		switch (this.State)
