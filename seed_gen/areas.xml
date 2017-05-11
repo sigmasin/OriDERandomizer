@@ -633,8 +633,9 @@
           <Requirement mode="normal">Stomp+ChargeJump+DoubleJump</Requirement>
           <Requirement mode="normal">Stomp+Grenade</Requirement>
           <Requirement mode="normal">Stomp+Grenade+Water</Requirement>
-          <Requirement mode="timed-level">Free</Requirement>
-          <Requirement mode="hard">Free</Requirement>
+          <Requirement mode="timed-level">Stomp</Requirement>
+          <Requirement mode="hard">Stomp</Requirement>
+          <Requirement mode="glitched">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
