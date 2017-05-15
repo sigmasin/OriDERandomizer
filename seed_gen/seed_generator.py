@@ -182,7 +182,8 @@ def assign_random():
 def assign(item):
     itemPool[item] -= 1
     if item == "EC" or item == "KS" or item == "HC":
-        costs[item] -= 1
+        if costs[item] > 0:
+            costs[item] -= 1
     elif item in costs.keys():
         costs[item] = 0
     inventory[item] += 1
@@ -318,9 +319,9 @@ for seed in range(0,1000):
                 area.add_connection(connection)
         areas[area.name] = area
         
-    output = open("seeds/randomizer" + str(seed) + ".dat", 'w')
+    output = open("seeds/normal/randomizer_normal" + str(seed) + ".dat", 'w')
     
-    spoiler = open("spoilers/spoiler" + str(seed) + ".txt", 'w')
+    spoiler = open("spoilers/normal/spoiler_normal" + str(seed) + ".txt", 'w')
     
     output.write("-240256|EC|1\n") #first energy cell
     output.write("-1720104|EX|100\n") #glitchy 100 orb at spirit tree

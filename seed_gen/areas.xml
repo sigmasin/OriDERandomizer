@@ -482,8 +482,19 @@
         <Home name="spiritTreeRefined"/>
         <Target name="upperGladesSpiderCavernPuzzle"/>
         <Requirements>
-          <Requirement mode="normal">ChargeFlame</Requirement>
-          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="normal">ChargeFlame+WallJump</Requirement>
+          <Requirement mode="normal">ChargeFlame+ChargeJump</Requirement>
+          <Requirement mode="normal">ChargeFlame+DoubleJump</Requirement>
+          <Requirement mode="normal">ChargeFlame+Glide</Requirement>
+          <Requirement mode="normal">ChargeFlame+Dash</Requirement>
+          <Requirement mode="normal">Grenade+WallJump</Requirement>
+          <Requirement mode="normal">Grenade+ChargeJump</Requirement>
+          <Requirement mode="normal">Grenade+DoubleJump</Requirement>
+          <Requirement mode="normal">Grenade+Glide</Requirement>
+          <Requirement mode="normal">Grenade+Dash</Requirement>
+          <Requirement mode="normal">Grenade+Bash</Requirement>
+          <Requirement mode="hard">ChargeFlame</Requirement>
+          <Requirement mode="hard">Grenade</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -2225,7 +2236,8 @@
         <Requirements>
           <Requirement mode="normal">Wind+Glide</Requirement>
           <Requirement mode="speed">Glide+DoubleJump+Bash+Dash</Requirement>
-          <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="dbash">Bash+Glide</Requirement>
+          <Requirement mode="hard">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
