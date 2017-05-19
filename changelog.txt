@@ -1,3 +1,25 @@
+v0.6
+
+-Several path bugs have been fixed
+-Petrified plants are now item sources, activated by blowing them up with charge flame, grenade, or charge dash. The petrified plant in the forlorn escape will not hold an important item
+-Map stones are now item sources, activated by returning a map stone fragment
+-Fixed the UI bug and room lockout after the ginso escape
+-Water will now appear clean after finishing the ginso tree, though it will still damage you until clean water is found (indicated by warmth on the pause screen)
+-Added extra effects to the item pool which stack with your existing abilities:
+    -Mega Health/Mega Energy -- full refill and temporary +5 over max
+    -Spirit Flame Damage Upgrade -- +2/+4/+6 spirit flame damage
+    -Split Flame Upgrade -- +1/+2/+4 spirit flame targets
+    -Grenade Power Upgrade -- +5/+10/+15 grenade radius & damage
+    -Health Efficiency -- double health from pickups
+    -Energy Efficiency -- double energy from pickups
+    -Spirit Light Efficiency -- double exp
+    -Charge Flame Efficiency -- -0.5 charge flame cost
+    -Extra Air Dash
+    -Charge Dash Efficiency -- -0.5 charge dash cost
+    -Extra Double Jump
+    -Health Regeneration -- 1hp per 16.6/8.3/5.5s
+    -Energy Regeneration -- 1 energy per 16.6/8.3/5.5s
+
 v0.5
 
 -the forlorn escape is no longer blocked if you have already released wind. Activating the forlorn escape will now give a pickup

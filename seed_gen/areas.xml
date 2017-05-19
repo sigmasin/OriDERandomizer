@@ -3,23 +3,23 @@
   <Area name="sunkenGladesRunaway">
     <Locations>
       <Location>
-        <X>88</X>
-        <Y>-228</Y>
+        <X>92</X>
+        <Y>-227</Y>
         <Item>EX15</Item>
       </Location>
       <Location>
-        <X>-156</X>
-        <Y>-276</Y>
+        <X>-154</X>
+        <Y>-271</Y>
         <Item>EX15</Item>
       </Location>
       <Location>
-        <X>80</X>
-        <Y>-224</Y>
+        <X>83</X>
+        <Y>-222</Y>
         <Item>KS</Item>
       </Location>
       <Location>
-        <X>-12</X>
-        <Y>-208</Y>
+        <X>-11</X>
+        <Y>-206</Y>
         <Item>KS</Item>
       </Location>
     </Locations>
@@ -91,8 +91,8 @@
   <Area name="sunkenGladesNadePool">
     <Locations>
       <Location>
-        <X>56</X>
-        <Y>-284</Y>
+        <X>59</X>
+        <Y>-280</Y>
         <Item>EX200</Item>
       </Location>
     </Locations>
@@ -102,8 +102,8 @@
   <Area name="sunkenGladesNadeTree">
     <Locations>
       <Location>
-        <X>80</X>
-        <Y>-200</Y>
+        <X>82</X>
+        <Y>-196</Y>
         <Item>AC</Item>
       </Location>
     </Locations>
@@ -113,8 +113,8 @@
   <Area name="sunkenGladesMainPool">
     <Locations>
       <Location>
-        <X>4</X>
-        <Y>-244</Y>
+        <X>5</X>
+        <Y>-241</Y>
         <Item>EX100</Item>
       </Location>
     </Locations>
@@ -124,8 +124,8 @@
   <Area name="sunkenGladesMainPoolDeep">
     <Locations>
       <Location>
-        <X>-44</X>
-        <Y>-244</Y>
+        <X>-40</X>
+        <Y>-239</Y>
         <Item>EC</Item>
       </Location>
     </Locations>
@@ -135,8 +135,8 @@
   <Area name="fronkeyWalkRoof">
     <Locations>
       <Location>
-        <X>256</X>
-        <Y>-204</Y>
+        <X>257</X>
+        <Y>-199</Y>
         <Item>EX200</Item>
       </Location>
     </Locations>
@@ -147,11 +147,11 @@
     <Locations>
       <Location>
         <X>-80</X>
-        <Y>-192</Y>
+        <Y>-189</Y>
         <Item>HC</Item>
       </Location>
       <Location>
-        <X>-64</X>
+        <X>-59</X>
         <Y>-244</Y>
         <Item>KS</Item>
       </Location>
@@ -161,8 +161,8 @@
         <Item>SKWallJump</Item>
       </Location>
       <Location>
-        <X>-284</X>
-        <Y>-240</Y>
+        <X>-283</X>
+        <Y>-236</Y>
         <Item>EX15</Item>
       </Location>
     </Locations>
@@ -251,13 +251,31 @@
           <Requirement mode="glitched">Dash+ChargeJump</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="WallJump"/>
+        <Target name="WallJumpMapStone"/>
+        <Requirements>
+          <Requirement mode="normal">MS</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
+  <Area name="WallJumpMapStone">
+    <Locations>
+      <Location>
+        <X>-81</X>
+        <Y>-248</Y>
+        <Item>MapStone</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>  
   <Area name="WallJumpAbove">
     <Locations>
       <Location>
-        <X>-52</X>
-        <Y>-168</Y>
+        <X>-48</X>
+        <Y>-166</Y>
         <Item>AC</Item>
       </Location>
     </Locations>
@@ -267,8 +285,8 @@
   <Area name="rightWallJump">
     <Locations>
       <Location>
-        <X>-248</X>
-        <Y>-280</Y>
+        <X>-245</X>
+        <Y>-277</Y>
         <Item>EX200</Item>
       </Location>
     </Locations>
@@ -279,22 +297,22 @@
     <Locations>
       <Location>
         <X>-336</X>
-        <Y>-292</Y>
+        <Y>-288</Y>
         <Item>EC</Item>
       </Location>
       <Location>
-        <X>-248</X>
-        <Y>-208</Y>
+        <X>-247</X>
+        <Y>-207</Y>
         <Item>EX15</Item>
       </Location>
       <Location>
-        <X>-240</X>
-        <Y>-216</Y>
+        <X>-238</X>
+        <Y>-212</Y>
         <Item>KS</Item>
       </Location>
       <Location>
-        <X>-188</X>
-        <Y>-232</Y>
+        <X>-184</X>
+        <Y>-227</Y>
         <Item>MS</Item>
       </Location>
     </Locations>
@@ -304,18 +322,18 @@
   <Area name="sunkenGladesSpiritCavernB">
     <Locations>
       <Location>
-        <X>-184</X>
-        <Y>-196</Y>
+        <X>-182</X>
+        <Y>-193</Y>
         <Item>KS</Item>
       </Location>
       <Location>
-        <X>-220</X>
-        <Y>-188</Y>
+        <X>-217</X>
+        <Y>-183</Y>
         <Item>KS</Item>
       </Location>
       <Location>
-        <X>-180</X>
-        <Y>-156</Y>
+        <X>-177</X>
+        <Y>-154</Y>
         <Item>KS</Item>
       </Location>
     </Locations>
@@ -334,7 +352,9 @@
         <Home name="sunkenGladesSpiritCavernB"/>
         <Target name="upperGladesBelowSpiritTree"/>
         <Requirements>
-          <Requirement mode="normal">EC+EC+EC+EC</Requirement>
+          <Requirement mode="normal">EC+EC+EC+EC+DoubleJump</Requirement>
+          <Requirement mode="normal">EC+EC+EC+EC+Bash</Requirement>
+          <Requirement mode="normal">EC+EC+EC+EC+ChargeJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -360,8 +380,8 @@
   <Area name="sunkenGladesSpiritCavernTopLeft">
     <Locations>
       <Location>
-        <X>-220</X>
-        <Y>-148</Y>
+        <X>-217</X>
+        <Y>-146</Y>
         <Item>KS</Item>
       </Location>
     </Locations>
@@ -371,8 +391,8 @@
   <Area name="sunkenGladesSpiritCavernRoof">
     <Locations>
       <Location>
-        <X>-220</X>
-        <Y>-180</Y>
+        <X>-216</X>
+        <Y>-176</Y>
         <Item>AC</Item>
       </Location>
     </Locations>
@@ -382,8 +402,8 @@
   <Area name="upperGladesBelowSpiritTree">
     <Locations>
       <Location>
-        <X>-156</X>
-        <Y>-188</Y>
+        <X>-155</X>
+        <Y>-186</Y>
         <Item>EC</Item>
       </Location>
     </Locations>
@@ -418,8 +438,8 @@
   <Area name="sunkenGladesRunning">
     <Locations>
       <Location>
-        <X>-168</X>
-        <Y>-144</Y>
+        <X>-165</X>
+        <Y>-140</Y>
         <Item>AC</Item>
       </Location>
     </Locations>
@@ -449,6 +469,26 @@
           <Requirement mode="speed">ChargeJump+Stomp</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="ChargeFlame"/>
+        <Target name="ChargeFlamePlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="hard">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="ChargeFlamePlant">
+    <Locations>
+      <Location>
+        <X>43</X>
+        <Y>-156</Y>
+        <Item>Plant</Item>
+      </Location>
+    </Locations>
+    <Connections>
     </Connections>
   </Area>
   <Area name="spiritTreeRefined">
@@ -502,8 +542,8 @@
   <Area name="ChargeFlameTree">
     <Locations>
       <Location>
-        <X>-16</X>
-        <Y>-100</Y>
+        <X>-14</X>
+        <Y>-95</Y>
         <Item>EX100</Item>
       </Location>
     </Locations>
@@ -560,7 +600,7 @@
     <Locations>
       <Location>
         <X>64</X>
-        <Y>-112</Y>
+        <Y>-109</Y>
         <Item>AC</Item>
       </Location>
     </Locations>
@@ -570,13 +610,13 @@
   <Area name="upperGladesSpiderHealth">
     <Locations>
       <Location>
-        <X>148</X>
-        <Y>-120</Y>
+        <X>151</X>
+        <Y>-117</Y>
         <Item>HC</Item>
       </Location>
       <Location>
         <X>60</X>
-        <Y>-160</Y>
+        <Y>-155</Y>
         <Item>EC</Item>
       </Location>
     </Locations>
@@ -586,8 +626,8 @@
   <Area name="upperGladesGrenade">
     <Locations>
       <Location>
-        <X>92</X>
-        <Y>-96</Y>
+        <X>93</X>
+        <Y>-92</Y>
         <Item>AC</Item>
       </Location>
     </Locations>
@@ -597,18 +637,18 @@
   <Area name="DashArea">
     <Locations>
       <Location>
-        <X>152</X>
-        <Y>-292</Y>
+        <X>154</X>
+        <Y>-291</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>180</X>
-        <Y>-292</Y>
+        <X>183</X>
+        <Y>-291</Y>
         <Item>AC</Item>
       </Location>
       <Location>
-        <X>196</X>
-        <Y>-232</Y>
+        <X>197</X>
+        <Y>-229</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
@@ -665,13 +705,40 @@
           <Requirement mode="hard">Free</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="DashArea"/>
+        <Target name="DashAreaPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump+Climb+ChargeFlame</Requirement>
+          <Requirement mode="normal">ChargeJump+WallJump+ChargeFlame</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">Glide+WallJump+Grenade</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="hard">ChargeJump+Climb+Dash</Requirement>
+          <Requirement mode="hard">ChargeJump+WallJump+Dash</Requirement>
+          <Requirement mode="hard">DoubleJump+Grenade</Requirement>
+          <Requirement mode="hard">DoubleJump+ChargeFlame</Requirement>
+          <Requirement mode="hard">DoubleJump+Dash</Requirement>
+        </Requirements>
+      </Connection>      
+    </Connections>
+  </Area>
+  <Area name="DashAreaPlant">
+    <Locations>
+      <Location>
+        <X>313</X>
+        <Y>-232</Y>
+        <Item>Plant</Item>
+      </Location>
+    </Locations>
+    <Connections>
     </Connections>
   </Area>
   <Area name="RazielNo">
     <Locations>
       <Location>
         <X>304</X>
-        <Y>-304</Y>
+        <Y>-303</Y>
         <Item>EX100</Item>
       </Location>
     </Locations>
@@ -691,6 +758,8 @@
           <Requirement mode="normal">Dash+DoubleJump</Requirement>
           <Requirement mode="normal">Dash+ChargeJump</Requirement>
           <Requirement mode="normal">Dash+Bash+Grenade</Requirement>
+          <Requirement mode="hard">WallJump</Requirement>
+          <Requirement mode="hard">Dash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -705,8 +774,8 @@
   <Area name="blackrootMap">
     <Locations>
       <Location>
-        <X>344</X>
-        <Y>-256</Y>
+        <X>346</X>
+        <Y>-255</Y>
         <Item>MS</Item>
       </Location>
     </Locations>
@@ -716,8 +785,8 @@
   <Area name="blackrootGrottoConnection">
     <Locations>
       <Location>
-        <X>392</X>
-        <Y>-312</Y>
+        <X>394</X>
+        <Y>-309</Y>
         <Item>HC</Item>
       </Location>
     </Locations>
@@ -729,13 +798,31 @@
           <Requirement mode="normal">Stomp</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="blackrootGrottoConnection"/>
+        <Target name="blackrootMapStone"/>
+        <Requirements>
+          <Requirement mode="normal">MS</Requirement>
+        </Requirements>
+      </Connection>      
     </Connections>
   </Area>
+  <Area name="blackrootMapStone">
+    <Locations>
+      <Location>
+        <X>418</X>
+        <Y>-291</Y>
+        <Item>MapStone</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>   
   <Area name="BoulderExp">
     <Locations>
       <Location>
         <X>432</X>
-        <Y>-328</Y>
+        <Y>-324</Y>
         <Item>EX100</Item>
       </Location>
     </Locations>
@@ -833,7 +920,7 @@
     <Locations>
       <Location>
         <X>224</X>
-        <Y>-360</Y>
+        <Y>-359</Y>
         <Item>EX100</Item>
       </Location>
     </Locations>
@@ -843,8 +930,8 @@
   <Area name="UpperGrenadeArea">
     <Locations>
       <Location>
-        <X>248</X>
-        <Y>-336</Y>
+        <X>252</X>
+        <Y>-331</Y>
         <Item>AC</Item>
       </Location>
     </Locations>
@@ -854,8 +941,8 @@
   <Area name="LowerBlackRootCell">
     <Locations>
       <Location>
-        <X>280</X>
-        <Y>-376</Y>
+        <X>279</X>
+        <Y>-375</Y>
         <Item>AC</Item>
       </Location>
     </Locations>
@@ -865,8 +952,8 @@
   <Area name="FarRightBlackRoot">
     <Locations>
       <Location>
-        <X>388</X>
-        <Y>-428</Y>
+        <X>391</X>
+        <Y>-423</Y>
         <Item>AC</Item>
       </Location>
     </Locations>
@@ -876,8 +963,8 @@
   <Area name="RightBlackRoot">
     <Locations>
       <Location>
-        <X>336</X>
-        <Y>-420</Y>
+        <X>339</X>
+        <Y>-418</Y>
         <Item>EX100</Item>
       </Location>
     </Locations>
@@ -888,7 +975,7 @@
     <Locations>
       <Location>
         <X>208</X>
-        <Y>-436</Y>
+        <Y>-431</Y>
         <Item>AC</Item>
       </Location>
     </Locations>
@@ -919,18 +1006,18 @@
   <Area name="FinalBlackRoot">
     <Locations>
       <Location>
-        <X>456</X>
-        <Y>-508</Y>
+        <X>459</X>
+        <Y>-506</Y>
         <Item>AC</Item>
       </Location>
       <Location>
-        <X>460</X>
-        <Y>-492</Y>
+        <X>462</X>
+        <Y>-489</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>304</X>
-        <Y>-528</Y>
+        <X>307</X>
+        <Y>-525</Y>
         <Item>EX100</Item>
       </Location>
     </Locations>
@@ -940,8 +1027,8 @@
   <Area name="BlackRootWater">
     <Locations>
       <Location>
-        <X>524</X>
-        <Y>-548</Y>
+        <X>527</X>
+        <Y>-544</Y>
         <Item>AC</Item>
       </Location>
     </Locations>
@@ -951,28 +1038,28 @@
   <Area name="moonGrotto">
     <Locations>
       <Location>
-        <X>300</X>
-        <Y>-192</Y>
+        <X>303</X>
+        <Y>-190</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>420</X>
-        <Y>-172</Y>
+        <X>423</X>
+        <Y>-169</Y>
         <Item>EC</Item>
       </Location>
       <Location>
-        <X>296</X>
-        <Y>-96</Y>
+        <X>300</X>
+        <Y>-94</Y>
         <Item>MS</Item>
       </Location>
       <Location>
-        <X>700</X>
-        <Y>-84</Y>
+        <X>703</X>
+        <Y>-82</Y>
         <Item>AC</Item>
       </Location>
       <Location>
-        <X>616</X>
-        <Y>-100</Y>
+        <X>618</X>
+        <Y>-98</Y>
         <Item>EX100</Item>
       </Location>
     </Locations>
@@ -1178,13 +1265,109 @@
           <Requirement mode="lure">Free</Requirement>
         </Requirements>
       </Connection>
+      <Connection>      
+        <Home name="moonGrotto"/>
+        <Target name="moonGrottoPlants"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="hard">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>      
+        <Home name="moonGrotto"/>
+        <Target name="moonGrottoStompPlant"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp+ChargeFlame</Requirement>
+          <Requirement mode="normal">Stomp+Grenade</Requirement>
+          <Requirement mode="hard">Stomp+Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>      
+        <Home name="moonGrotto"/>
+        <Target name="moonGrottoMortarPlant"/>
+        <Requirements>
+          <Requirement mode="normal">DoubleJump+ChargeFlame</Requirement>
+          <Requirement mode="normal">DoubleJump+Grenade</Requirement>
+          <Requirement mode="normal">ChargeJump+ChargeFlame</Requirement>
+          <Requirement mode="normal">ChargeJump+Grenade</Requirement>
+          <Requirement mode="normal">Bash+ChargeFlame</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">Glide+ChargeFlame</Requirement>
+          <Requirement mode="normal">Glide+Grenade</Requirement>          
+          <Requirement mode="speed">Dash+ChargeFlame</Requirement>
+          <Requirement mode="speed">Dash+Grenade</Requirement>
+          <Requirement mode="hard">Dash</Requirement>
+        </Requirements>
+      </Connection>   
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="moonGrottoMapStone"/>
+        <Requirements>
+          <Requirement mode="normal">MS</Requirement>
+        </Requirements>
+      </Connection>      
     </Connections>
   </Area>
+  <Area name="moonGrottoMapStone">
+    <Locations>
+      <Location>
+        <X>351</X>
+        <Y>-119</Y>
+        <Item>MapStone</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>    
+  <Area name="moonGrottoPlants">
+    <Locations>
+      <Location>
+        <X>365</X>
+        <Y>-119</Y>
+        <Item>Plant</Item>
+      </Location>
+      <Location>
+        <X>628</X>
+        <Y>-120</Y>
+        <Item>Plant</Item>
+      </Location>     
+      <Location>
+        <X>330</X>
+        <Y>-78</Y>
+        <Item>Plant</Item>
+      </Location>        
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="moonGrottoStompPlant">
+    <Locations>
+      <Location>
+        <X>435</X>
+        <Y>-140</Y>
+        <Item>Plant</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>  
+  <Area name="moonGrottoMortarPlant">
+    <Locations>
+      <Location>
+        <X>515</X>
+        <Y>-100</Y>
+        <Item>Plant</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area> 
   <Area name="moonGrottoWaterStomp">
     <Locations>
       <Location>
-        <X>352</X>
-        <Y>-180</Y>
+        <X>354</X>
+        <Y>-178</Y>
         <Item>AC</Item>
       </Location>
     </Locations>
@@ -1194,8 +1377,8 @@
   <Area name="rightGinsoOrb">
     <Locations>
       <Location>
-        <X>664</X>
-        <Y>-52</Y>
+        <X>666</X>
+        <Y>-48</Y>
         <Item>EX200</Item>
       </Location>
     </Locations>
@@ -1205,8 +1388,8 @@
   <Area name="leftGinsoCell">
     <Locations>
       <Location>
-        <X>408</X>
-        <Y>-36</Y>
+        <X>409</X>
+        <Y>-34</Y>
         <Item>AC</Item>
       </Location>
     </Locations>
@@ -1216,13 +1399,13 @@
   <Area name="upperGroveSpiderArea">
     <Locations>
       <Location>
-        <X>172</X>
-        <Y>-108</Y>
+        <X>174</X>
+        <Y>-105</Y>
         <Item>EX200</Item>
       </Location>
       <Location>
-        <X>260</X>
-        <Y>-120</Y>
+        <X>261</X>
+        <Y>-117</Y>
         <Item>HC</Item>
       </Location>
     </Locations>
@@ -1240,7 +1423,7 @@
     <Locations>
       <Location>
         <X>272</X>
-        <Y>-100</Y>
+        <Y>-97</Y>
         <Item>EC</Item>
       </Location>
     </Locations>
@@ -1250,8 +1433,8 @@
   <Area name="groveWater">
     <Locations>
       <Location>
-        <X>184</X>
-        <Y>-168</Y>
+        <X>187</X>
+        <Y>-163</Y>
         <Item>EX100</Item>
       </Location>
     </Locations>
@@ -1261,8 +1444,8 @@
   <Area name="deathWater">
     <Locations>
       <Location>
-        <X>336</X>
-        <Y>-220</Y>
+        <X>339</X>
+        <Y>-216</Y>
         <Item>AC</Item>
       </Location>
     </Locations>
@@ -1273,7 +1456,7 @@
     <Locations>
       <Location>
         <X>356</X>
-        <Y>-208</Y>
+        <Y>-207</Y>
         <Item>EX200</Item>
       </Location>
     </Locations>
@@ -1283,29 +1466,49 @@
   <Area name="upperGrottoOrbs">
     <Locations>
       <Location>
-        <X>476</X>
-        <Y>-144</Y>
+        <X>477</X>
+        <Y>-140</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>428</X>
-        <Y>-112</Y>
+        <X>432</X>
+        <Y>-108</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>364</X>
-        <Y>-112</Y>
+        <X>365</X>
+        <Y>-109</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>332</X>
-        <Y>-64</Y>
+        <X>333</X>
+        <Y>-61</Y>
         <Item>AC</Item>
       </Location>
       <Location>
-        <X>580</X>
-        <Y>-68</Y>
+        <X>581</X>
+        <Y>-67</Y>
         <Item>HC</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="upperGrottoOrbs"/>
+        <Target name="upperGrottoOrbsPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="hard">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="upperGrottoOrbsPlant">
+    <Locations>
+      <Location>
+        <X>540</X>
+        <Y>-220</Y>
+        <Item>Plant</Item>
       </Location>
     </Locations>
     <Connections>
@@ -1314,8 +1517,8 @@
   <Area name="upperGrotto200">
     <Locations>
       <Location>
-        <X>448</X>
-        <Y>-168</Y>
+        <X>449</X>
+        <Y>-166</Y>
         <Item>EX200</Item>
       </Location>
     </Locations>
@@ -1325,8 +1528,8 @@
   <Area name="mortarCell">
     <Locations>
       <Location>
-        <X>500</X>
-        <Y>-112</Y>
+        <X>502</X>
+        <Y>-108</Y>
         <Item>AC</Item>
       </Location>
     </Locations>
@@ -1336,8 +1539,8 @@
   <Area name="swampGrottoWater">
     <Locations>
       <Location>
-        <X>592</X>
-        <Y>-140</Y>
+        <X>595</X>
+        <Y>-136</Y>
         <Item>EX200</Item>
       </Location>
     </Locations>
@@ -1347,8 +1550,8 @@
   <Area name="rightGrottoHealth">
     <Locations>
       <Location>
-        <X>544</X>
-        <Y>-192</Y>
+        <X>543</X>
+        <Y>-189</Y>
         <Item>HC</Item>
       </Location>
     </Locations>
@@ -1358,8 +1561,8 @@
   <Area name="moonGrottoEnergyWater">
     <Locations>
       <Location>
-        <X>424</X>
-        <Y>-276</Y>
+        <X>423</X>
+        <Y>-274</Y>
         <Item>EX100</Item>
       </Location>
     </Locations>
@@ -1370,7 +1573,7 @@
     <Locations>
       <Location>
         <X>424</X>
-        <Y>-224</Y>
+        <Y>-220</Y>
         <Item>HC</Item>
       </Location>
     </Locations>
@@ -1380,19 +1583,40 @@
   <Area name="moonGrottoAirCell">
     <Locations>
       <Location>
-        <X>548</X>
-        <Y>-144</Y>
+        <X>552</X>
+        <Y>-141</Y>
         <Item>EX100</Item>
       </Location>
     </Locations>
     <Connections>
+      <Connection>
+        <Home name="moonGrottoAirCell"/>
+        <Target name="moonGrottoAirCellPlant"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp+ChargeFlame</Requirement>
+          <Requirement mode="normal">Stomp+Grenade</Requirement>
+          <Requirement mode="hard">Stomp+Dash</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
+  <Area name="moonGrottoAirCellPlant">
+    <Locations>
+      <Location>
+        <X>537</X>
+        <Y>-176</Y>
+        <Item>Plant</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>  
+  todo
   <Area name="sideFallCell">
     <Locations>
       <Location>
-        <X>448</X>
-        <Y>-300</Y>
+        <X>451</X>
+        <Y>-296</Y>
         <Item>AC</Item>
       </Location>
     </Locations>
@@ -1409,23 +1633,23 @@
   <Area name="GumoHideout">
     <Locations>
       <Location>
-        <X>512</X>
-        <Y>-416</Y>
+        <X>513</X>
+        <Y>-413</Y>
         <Item>MS</Item>
       </Location>
       <Location>
         <X>620</X>
-        <Y>-408</Y>
+        <Y>-404</Y>
         <Item>KS</Item>
       </Location>
       <Location>
-        <X>568</X>
-        <Y>-380</Y>
+        <X>572</X>
+        <Y>-378</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>588</X>
-        <Y>-388</Y>
+        <X>590</X>
+        <Y>-384</Y>
         <Item>KS</Item>
       </Location>
     </Locations>
@@ -1446,8 +1670,26 @@
           <Requirement mode="normal">WallJump+ChargeJump</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="GumoHideoutMapStone"/>
+        <Requirements>
+          <Requirement mode="normal">MS</Requirement>
+        </Requirements>
+      </Connection>      
     </Connections>
   </Area>
+  <Area name="GumoHideoutMapStone">
+    <Locations>
+      <Location>
+        <X>477</X>
+        <Y>-389</Y>
+        <Item>MapStone</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>    
   <Area name="DoubleJumpArea">
     <Locations>
       <Location>
@@ -1472,8 +1714,8 @@
   <Area name="MobileDoubleJumpArea">
     <Locations>
       <Location>
-        <X>756</X>
-        <Y>-400</Y>
+        <X>759</X>
+        <Y>-398</Y>
         <Item>EX100</Item>
       </Location>
     </Locations>
@@ -1483,23 +1725,23 @@
   <Area name="MobileGumoHideout">
     <Locations>
       <Location>
-        <X>492</X>
-        <Y>-372</Y>
+        <X>496</X>
+        <Y>-369</Y>
         <Item>EX15</Item>
       </Location>
       <Location>
-        <X>464</X>
-        <Y>-372</Y>
+        <X>467</X>
+        <Y>-369</Y>
         <Item>EX15</Item>
       </Location>
       <Location>
-        <X>544</X>
-        <Y>-360</Y>
+        <X>545</X>
+        <Y>-357</Y>
         <Item>EC</Item>
       </Location>
       <Location>
-        <X>564</X>
-        <Y>-248</Y>
+        <X>567</X>
+        <Y>-246</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
@@ -1508,23 +1750,23 @@
         <Item>EVGinsoKey</Item>
       </Location>
       <Location>
-        <X>404</X>
-        <Y>-388</Y>
+        <X>406</X>
+        <Y>-386</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>392</X>
-        <Y>-380</Y>
+        <X>393</X>
+        <Y>-375</Y>
         <Item>HC</Item>
       </Location>
       <Location>
-        <X>448</X>
-        <Y>-432</Y>
+        <X>449</X>
+        <Y>-430</Y>
         <Item>AC</Item>
       </Location>
       <Location>
         <X>328</X>
-        <Y>-356</Y>
+        <Y>-353</Y>
         <Item>EX100</Item>
       </Location>
     </Locations>
@@ -1558,13 +1800,43 @@
           <Requirement mode="normal">EC+EC+EC+EC</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="MobileGumoHideout"/>
+        <Target name="MobileGumoHideoutPlants"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="hard">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="MobileGumoHideoutPlants">
+    <Locations>
+      <Location>
+        <X>447</X>
+        <Y>-368</Y>
+        <Item>Plant</Item>
+      </Location>
+      <Location>
+        <X>439</X>
+        <Y>-344</Y>
+        <Item>Plant</Item>
+      </Location>
+      <Location>
+        <X>492</X>
+        <Y>-400</Y>
+        <Item>Plant</Item>
+      </Location>
+    </Locations>
+    <Connections>
     </Connections>
   </Area>
   <Area name="GumoHideoutWater">
     <Locations>
       <Location>
-        <X>396</X>
-        <Y>-412</Y>
+        <X>397</X>
+        <Y>-411</Y>
         <Item>EX100</Item>
       </Location>
     </Locations>
@@ -1574,13 +1846,13 @@
   <Area name="HideoutRedirect">
     <Locations>
       <Location>
-        <X>512</X>
-        <Y>-444</Y>
+        <X>515</X>
+        <Y>-441</Y>
         <Item>EC</Item>
       </Location>
       <Location>
-        <X>504</X>
-        <Y>-444</Y>
+        <X>505</X>
+        <Y>-439</Y>
         <Item>EX200</Item>
       </Location>
     </Locations>
@@ -1590,8 +1862,8 @@
   <Area name="drainlessCell">
     <Locations>
       <Location>
-        <X>640</X>
-        <Y>-132</Y>
+        <X>643</X>
+        <Y>-127</Y>
         <Item>AC</Item>
       </Location>
     </Locations>
@@ -1601,8 +1873,8 @@
   <Area name="sunkenGladesLaserStomp">
     <Locations>
       <Location>
-        <X>320</X>
-        <Y>-180</Y>
+        <X>321</X>
+        <Y>-179</Y>
         <Item>HC</Item>
       </Location>
     </Locations>
@@ -1614,23 +1886,43 @@
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="sunkenGladesLaserStomp"/>
+        <Target name="sunkenGladesLaserStompPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="hard">Dash</Requirement>
+        </Requirements>
+      </Connection>      
     </Connections>
   </Area>
+  <Area name="sunkenGladesLaserStompPlant">
+    <Locations>
+      <Location>
+        <X>342</X>
+        <Y>-179</Y>
+        <Item>Plant</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>  
   <Area name="lowerGinsoTree">
     <Locations>
       <Location>
-        <X>520</X>
-        <Y>140</Y>
+        <X>523</X>
+        <Y>142</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>528</X>
-        <Y>268</Y>
+        <X>531</X>
+        <Y>267</Y>
         <Item>KS</Item>
       </Location>
       <Location>
         <X>540</X>
-        <Y>272</Y>
+        <Y>277</Y>
         <Item>KS</Item>
       </Location>
       <Location>
@@ -1639,8 +1931,8 @@
         <Item>KS</Item>
       </Location>
       <Location>
-        <X>528</X>
-        <Y>296</Y>
+        <X>529</X>
+        <Y>297</Y>
         <Item>KS</Item>
       </Location>
       <Location>
@@ -1658,33 +1950,53 @@
           <Requirement mode="normal">KS+KS+KS+KS+ChargeJump</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="lowerGinsoTree"/>
+        <Target name="lowerGinsoTreePlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="hard">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="lowerGinsoTreePlant">
+    <Locations>
+      <Location>
+        <X>540</X>
+        <Y>101</Y>
+        <Item>Plant</Item>
+      </Location>
+    </Locations>
+    <Connections>
     </Connections>
   </Area>
   <Area name="upperGinsoTree">
     <Locations>
       <Location>
-        <X>516</X>
-        <Y>336</Y>
+        <X>518</X>
+        <Y>339</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>504</X>
+        <X>507</X>
         <Y>476</Y>
         <Item>KS</Item>
       </Location>
       <Location>
-        <X>532</X>
+        <X>535</X>
         <Y>488</Y>
         <Item>KS</Item>
       </Location>
       <Location>
-        <X>528</X>
-        <Y>500</Y>
+        <X>531</X>
+        <Y>502</Y>
         <Item>KS</Item>
       </Location>
       <Location>
         <X>508</X>
-        <Y>496</Y>
+        <Y>498</Y>
         <Item>KS</Item>
       </Location>
     </Locations>
@@ -1716,18 +2028,18 @@
   <Area name="upperGinsoFloors">
     <Locations>
       <Location>
-        <X>516</X>
-        <Y>380</Y>
+        <X>517</X>
+        <Y>384</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>528</X>
-        <Y>404</Y>
+        <X>530</X>
+        <Y>407</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
         <X>536</X>
-        <Y>432</Y>
+        <Y>434</Y>
         <Item>EC</Item>
       </Location>
     </Locations>
@@ -1738,12 +2050,12 @@
     <Locations>
       <Location>
         <X>456</X>
-        <Y>564</Y>
+        <Y>566</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>468</X>
-        <Y>612</Y>
+        <X>471</X>
+        <Y>614</Y>
         <Item>EX100</Item>
       </Location>
     </Locations>
@@ -1756,28 +2068,48 @@
           <Requirement mode="speed">Stomp</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="topGinsoTree"/>
+        <Target name="topGinsoTreePlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="hard">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="topGinsoTreePlant">
+    <Locations>
+      <Location>
+        <X>610</X>
+        <Y>611</Y>
+        <Item>Plant</Item>
+      </Location>
+    </Locations>
+    <Connections>
     </Connections>
   </Area>
   <Area name="GinsoEscape">
     <Locations>
       <Location>
-        <X>532</X>
-        <Y>660</Y>
+        <X>534</X>
+        <Y>661</Y>
         <Item>EX200</Item>
       </Location>
       <Location>
-        <X>536</X>
-        <Y>732</Y>
+        <X>537</X>
+        <Y>733</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>532</X>
-        <Y>824</Y>
+        <X>533</X>
+        <Y>827</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>516</X>
-        <Y>864</Y>
+        <X>519</X>
+        <Y>867</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
@@ -1833,33 +2165,51 @@
           <Requirement mode="normal">KS+KS+Climb</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="swamp"/>
+        <Target name="swampMapStone"/>
+        <Requirements>
+          <Requirement mode="normal">MS</Requirement>
+        </Requirements>
+      </Connection>      
     </Connections>
   </Area>
+  <Area name="swampMapStone">
+    <Locations>
+      <Location>
+        <X>677</X>
+        <Y>-129</Y>
+        <Item>MapStone</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>    
   <Area name="swampWater">
     <Locations>
       <Location>
         <X>636</X>
-        <Y>-164</Y>
+        <Y>-162</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>760</X>
-        <Y>-176</Y>
+        <X>761</X>
+        <Y>-173</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
         <X>684</X>
-        <Y>-208</Y>
+        <Y>-205</Y>
         <Item>KS</Item>
       </Location>
       <Location>
-        <X>764</X>
-        <Y>-188</Y>
+        <X>766</X>
+        <Y>-183</Y>
         <Item>KS</Item>
       </Location>
       <Location>
         <X>796</X>
-        <Y>-212</Y>
+        <Y>-210</Y>
         <Item>MS</Item>
       </Location>
     </Locations>
@@ -1869,7 +2219,7 @@
   <Area name="swampStomp">
     <Locations>
       <Location>
-        <X>768</X>
+        <X>770</X>
         <Y>-148</Y>
         <Item>EX100</Item>
       </Location>
@@ -1880,8 +2230,8 @@
   <Area name="swampEnergy">
     <Locations>
       <Location>
-        <X>720</X>
-        <Y>-96</Y>
+        <X>722</X>
+        <Y>-95</Y>
         <Item>EC</Item>
       </Location>
     </Locations>
@@ -1895,11 +2245,6 @@
         <Y>-96</Y>
         <Item>SKStomp</Item>
       </Location>
-      <Location>
-        <X>912</X>
-        <Y>-72</Y>
-        <Item>EX200</Item>
-      </Location>
     </Locations>
     <Connections>
       <Connection>
@@ -1912,6 +2257,13 @@
       </Connection>
       <Connection>
         <Home name="rightSwamp"/>
+        <Target name="rightSwampCJump"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump</Requirement>
+        </Requirements>
+      </Connection>      
+      <Connection>
+        <Home name="rightSwamp"/>
         <Target name="rightSwampGrenade"/>
         <Requirements>
           <Requirement mode="normal">Grenade+Water</Requirement>
@@ -1920,11 +2272,22 @@
       </Connection>
     </Connections>
   </Area>
+  <Area name="rightSwampCJump">
+    <Locations>
+      <Location>
+        <X>914</X>
+        <Y>-71</Y>
+        <Item>EX200</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
   <Area name="rightSwampStomp">
     <Locations>
       <Location>
         <X>884</X>
-        <Y>-100</Y>
+        <Y>-98</Y>
         <Item>EX100</Item>
       </Location>
     </Locations>
@@ -1934,8 +2297,8 @@
   <Area name="rightSwampGrenade">
     <Locations>
       <Location>
-        <X>872</X>
-        <Y>-144</Y>
+        <X>874</X>
+        <Y>-143</Y>
         <Item>EX200</Item>
       </Location>
     </Locations>
@@ -1945,13 +2308,13 @@
   <Area name="HoruFields">
     <Locations>
       <Location>
-        <X>96</X>
-        <Y>-40</Y>
+        <X>97</X>
+        <Y>-37</Y>
         <Item>EX200</Item>
       </Location>
       <Location>
         <X>176</X>
-        <Y>-40</Y>
+        <Y>-34</Y>
         <Item>AC</Item>
       </Location>
     </Locations>
@@ -1978,19 +2341,39 @@
   <Area name="HoruFieldsEnergy">
     <Locations>
       <Location>
-        <X>172</X>
-        <Y>-4</Y>
+        <X>175</X>
+        <Y>1</Y>
         <Item>EC</Item>
       </Location>
     </Locations>
     <Connections>
+    <Connection>
+        <Home name="HoruFieldsEnergy"/>
+        <Target name="HoruFieldsEnergyPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="hard">Dash</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
+  <Area name="HoruFieldsEnergyPlant">
+    <Locations>
+      <Location>
+        <X>124</X>
+        <Y>21</Y>
+        <Item>Plant</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>  
   <Area name="HoruFieldsStomp">
     <Locations>
       <Location>
         <X>160</X>
-        <Y>-80</Y>
+        <Y>-78</Y>
         <Item>HC</Item>
       </Location>
     </Locations>
@@ -2000,18 +2383,18 @@
   <Area name="Horu">
     <Locations>
       <Location>
-        <X>192</X>
+        <X>193</X>
         <Y>384</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
         <X>148</X>
-        <Y>360</Y>
+        <Y>363</Y>
         <Item>MS</Item>
       </Location>
       <Location>
-        <X>248</X>
-        <Y>400</Y>
+        <X>249</X>
+        <Y>403</Y>
         <Item>EC</Item>
       </Location>
     </Locations>
@@ -2023,53 +2406,71 @@
           <Requirement mode="normal">Stomp</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="HoruMapStone"/>
+        <Requirements>
+          <Requirement mode="normal">MS</Requirement>
+        </Requirements>
+      </Connection>      
     </Connections>
   </Area>
+  <Area name="HoruMapStone">
+    <Locations>
+      <Location>
+        <X>56</X>
+        <Y>343</Y>
+        <Item>MapStone</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>    
   <Area name="HoruStomp">
     <Locations>
       <Location>
-        <X>188</X>
-        <Y>164</Y>
+        <X>191</X>
+        <Y>165</Y>
         <Item>EX200</Item>
       </Location>
       <Location>
-        <X>252</X>
-        <Y>192</Y>
+        <X>253</X>
+        <Y>194</Y>
         <Item>EX200</Item>
       </Location>
       <Location>
-        <X>164</X>
-        <Y>132</Y>
+        <X>163</X>
+        <Y>136</Y>
         <Item>EX200</Item>
       </Location>
       <Location>
-        <X>-192</X>
-        <Y>192</Y>
+        <X>-191</X>
+        <Y>194</Y>
         <Item>EX200</Item>
       </Location>
       <Location>
-        <X>-32</X>
+        <X>-29</X>
         <Y>148</Y>
         <Item>EX200</Item>
       </Location>
       <Location>
-        <X>12</X>
-        <Y>160</Y>
-        <Item>EX200</Item>
-      </Location>
-      <Location>
-        <X>128</X>
+        <X>13</X>
         <Y>164</Y>
         <Item>EX200</Item>
       </Location>
       <Location>
-        <X>96</X>
-        <Y>128</Y>
+        <X>129</X>
+        <Y>165</Y>
         <Item>EX200</Item>
       </Location>
       <Location>
-        <X>104</X>
-        <Y>108</Y>
+        <X>98</X>
+        <Y>130</Y>
+        <Item>EX200</Item>
+      </Location>
+      <Location>
+        <X>106</X>
+        <Y>112</Y>
         <Item>EX200</Item>
       </Location>
       <Location>
@@ -2079,13 +2480,33 @@
       </Location>
     </Locations>
     <Connections>
+    <Connection>
+        <Home name="HoruStomp"/>
+        <Target name="HoruStompPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="hard">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HoruStompPlant">
+    <Locations>
+      <Location>
+        <X>318</X>
+        <Y>245</Y>
+        <Item>Plant</Item>
+      </Location>
+    </Locations>
+    <Connections>
     </Connections>
   </Area>
   <Area name="valleyEntry">
     <Locations>
       <Location>
-        <X>-208</X>
-        <Y>-116</Y>
+        <X>-205</X>
+        <Y>-113</Y>
         <Item>AC</Item>
       </Location>
     </Locations>
@@ -2117,8 +2538,8 @@
   <Area name="valleyEntryTree">
     <Locations>
       <Location>
-        <X>-224</X>
-        <Y>-88</Y>
+        <X>-221</X>
+        <Y>-84</Y>
         <Item>EX100</Item>
       </Location>
     </Locations>
@@ -2132,13 +2553,39 @@
           <Requirement mode="dboost-hard">Grenade+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+Bash</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="valleyEntryTree"/>
+        <Target name="valleyEntryTreePlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump+Climb+ChargeFlame</Requirement>
+          <Requirement mode="normal">ChargeJump+Climb+Grenade</Requirement>
+          <Requirement mode="normal">ChargeJump+DoubleJump+ChargeFlame</Requirement>
+          <Requirement mode="normal">ChargeJump+DoubleJump+Grenade</Requirement>
+          <Requirement mode="normal">Bash+ChargeFlame</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">Glide+ChargeFlame</Requirement>
+          <Requirement mode="normal">Glide+Grenade</Requirement>
+          <Requirement mode="hard">Dash</Requirement>
+        </Requirements>
+      </Connection>   
+    </Connections>
+  </Area>
+  <Area name="valleyEntryTreePlant">
+    <Locations>
+      <Location>
+        <X>-179</X>
+        <Y>-88</Y>
+        <Item>Plant</Item>
+      </Location>
+    </Locations>
+    <Connections>
     </Connections>
   </Area>
   <Area name="valleyEntryWater">
     <Locations>
       <Location>
-        <X>-324</X>
-        <Y>-164</Y>
+        <X>-320</X>
+        <Y>-162</Y>
         <Item>EC</Item>
       </Location>
     </Locations>
@@ -2153,13 +2600,13 @@
         <Item>AC</Item>
       </Location>
       <Location>
-        <X>-356</X>
-        <Y>64</Y>
+        <X>-355</X>
+        <Y>65</Y>
         <Item>AC</Item>
       </Location>
       <Location>
-        <X>-420</X>
-        <Y>64</Y>
+        <X>-418</X>
+        <Y>67</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
@@ -2168,48 +2615,48 @@
         <Item>SKGlide</Item>
       </Location>
       <Location>
-        <X>-548</X>
-        <Y>52</Y>
+        <X>-546</X>
+        <Y>54</Y>
         <Item>EX200</Item>
       </Location>
       <Location>
-        <X>-564</X>
-        <Y>-92</Y>
+        <X>-561</X>
+        <Y>-89</Y>
         <Item>MS</Item>
       </Location>
       <Location>
-        <X>-540</X>
-        <Y>-108</Y>
+        <X>-538</X>
+        <Y>-104</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>-352</X>
-        <Y>-100</Y>
+        <X>-350</X>
+        <Y>-98</Y>
         <Item>AC</Item>
       </Location>
       <Location>
-        <X>-448</X>
-        <Y>-156</Y>
+        <X>-443</X>
+        <Y>-152</Y>
         <Item>MS</Item>
       </Location>
       <Location>
-        <X>-540</X>
-        <Y>-236</Y>
+        <X>-538</X>
+        <Y>-234</Y>
         <Item>EX200</Item>
       </Location>
       <Location>
-        <X>-464</X>
-        <Y>-260</Y>
+        <X>-460</X>
+        <Y>-255</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>-680</X>
-        <Y>-32</Y>
+        <X>-678</X>
+        <Y>-29</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>-824</X>
-        <Y>-12</Y>
+        <X>-822</X>
+        <Y>-9</Y>
         <Item>EX100</Item>
       </Location>
     </Locations>
@@ -2270,13 +2717,51 @@
           <Requirement mode="hard">Bash+Glide</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="valleyMain"/>
+        <Target name="valleyMainPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="hard">Dash</Requirement>
+        </Requirements>
+      </Connection>    
+      <Connection>
+        <Home name="valleyMain"/>
+        <Target name="valleyMapStone"/>
+        <Requirements>
+          <Requirement mode="normal">MS</Requirement>
+        </Requirements>
+      </Connection>      
     </Connections>
   </Area>
+  <Area name="valleyMapStone">
+    <Locations>
+      <Location>
+        <X>-408</X>
+        <Y>-170</Y>
+        <Item>MapStone</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>  
+  <Area name="valleyMainPlant">
+    <Locations>
+      <Location>
+        <X>-468</X>
+        <Y>-67</Y>
+        <Item>Plant</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>  
   <Area name="preSorrowOrb">
     <Locations>
       <Location>
-        <X>-576</X>
-        <Y>156</Y>
+        <X>-572</X>
+        <Y>157</Y>
         <Item>EX200</Item>
       </Location>
     </Locations>
@@ -2286,13 +2771,13 @@
   <Area name="valleyMainWater">
     <Locations>
       <Location>
-        <X>-360</X>
-        <Y>-92</Y>
+        <X>-359</X>
+        <Y>-87</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>-516</X>
-        <Y>-280</Y>
+        <X>-514</X>
+        <Y>-277</Y>
         <Item>EX100</Item>
       </Location>
     </Locations>
@@ -2302,8 +2787,8 @@
   <Area name="valleyMainFACS">
     <Locations>
       <Location>
-        <X>-416</X>
-        <Y>-84</Y>
+        <X>-415</X>
+        <Y>-80</Y>
         <Item>AC</Item>
       </Location>
     </Locations>
@@ -2313,8 +2798,8 @@
   <Area name="valleyMainGrenade">
     <Locations>
       <Location>
-        <X>-464</X>
-        <Y>-192</Y>
+        <X>-460</X>
+        <Y>-187</Y>
         <Item>AC</Item>
       </Location>
     </Locations>
@@ -2324,33 +2809,33 @@
   <Area name="forlorn">
     <Locations>
       <Location>
-        <X>-708</X>
-        <Y>-392</Y>
+        <X>-703</X>
+        <Y>-390</Y>
         <Item>EX200</Item>
       </Location>
       <Location>
-        <X>-844</X>
-        <Y>-356</Y>
+        <X>-841</X>
+        <Y>-350</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>-860</X>
-        <Y>-356</Y>
+        <X>-858</X>
+        <Y>-353</Y>
         <Item>KS</Item>
       </Location>
       <Location>
-        <X>-896</X>
-        <Y>-332</Y>
+        <X>-892</X>
+        <Y>-328</Y>
         <Item>KS</Item>
       </Location>
       <Location>
         <X>-888</X>
-        <Y>-252</Y>
+        <Y>-251</Y>
         <Item>KS</Item>
       </Location>
       <Location>
-        <X>-872</X>
-        <Y>-256</Y>
+        <X>-869</X>
+        <Y>-255</Y>
         <Item>KS</Item>
       </Location>
     </Locations>
@@ -2362,13 +2847,51 @@
           <Requirement mode="normal">KS+KS+KS+KS+Glide</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="forlorn"/>
+        <Target name="forlornPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="hard">Dash</Requirement>
+        </Requirements>
+      </Connection>   
+      <Connection>
+        <Home name="forlorn"/>
+        <Target name="forlornMapStone"/>
+        <Requirements>
+          <Requirement mode="normal">MS</Requirement>
+        </Requirements>
+      </Connection>      
     </Connections>
   </Area>
+  <Area name="forlornMapStone">
+    <Locations>
+      <Location>
+        <X>-843</X>
+        <Y>-308</Y>
+        <Item>MapStone</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>    
+  <Area name="forlornPlant">
+    <Locations>
+      <Location>
+        <X>-815</X>
+        <Y>-266</Y>
+        <Item>Plant</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>  
   <Area name="rightForlorn">
     <Locations>
       <Location>
-        <X>-628</X>
-        <Y>-316</Y>
+        <X>-625</X>
+        <Y>-315</Y>
         <Item>HC</Item>
       </Location>
       <Location>
@@ -2378,38 +2901,58 @@
       </Location>
     </Locations>
     <Connections>
+    <Connection>
+        <Home name="rightForlorn"/>
+        <Target name="rightForlornPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="hard">Dash</Requirement>
+        </Requirements>
+      </Connection>  
     </Connections>
   </Area>
+  <Area name="rightForlornPlant">
+    <Locations>
+      <Location>
+        <X>-607</X>
+        <Y>-314</Y>
+        <Item>Plant</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>  
   <Area name="sorrow">
     <Locations>
       <Location>
-        <X>-512</X>
-        <Y>200</Y>
+        <X>-510</X>
+        <Y>204</Y>
         <Item>AC</Item>
       </Location>
       <Location>
-        <X>-436</X>
-        <Y>320</Y>
+        <X>-435</X>
+        <Y>322</Y>
         <Item>MS</Item>
       </Location>
       <Location>
-        <X>-484</X>
-        <Y>320</Y>
+        <X>-485</X>
+        <Y>323</Y>
         <Item>KS</Item>
       </Location>
       <Location>
-        <X>-504</X>
-        <Y>272</Y>
+        <X>-503</X>
+        <Y>274</Y>
         <Item>KS</Item>
       </Location>
       <Location>
-        <X>-516</X>
-        <Y>300</Y>
+        <X>-514</X>
+        <Y>303</Y>
         <Item>KS</Item>
       </Location>
       <Location>
         <X>-596</X>
-        <Y>228</Y>
+        <Y>229</Y>
         <Item>KS</Item>
       </Location>
     </Locations>
@@ -2428,13 +2971,31 @@
           <Requirement mode="normal">ChargeJump</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="sorrow"/>
+        <Target name="sorrowMapStone"/>
+        <Requirements>
+          <Requirement mode="normal">MS</Requirement>
+        </Requirements>
+      </Connection>      
     </Connections>
   </Area>
+  <Area name="sorrowMapStone">
+    <Locations>
+      <Location>
+        <X>-451</X>
+        <Y>284</Y>
+        <Item>MapStone</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>    
   <Area name="sorrowHealth">
     <Locations>
       <Location>
-        <X>-612</X>
-        <Y>296</Y>
+        <X>-609</X>
+        <Y>299</Y>
         <Item>HC</Item>
       </Location>
     </Locations>
@@ -2444,33 +3005,33 @@
   <Area name="leftSorrow">
     <Locations>
       <Location>
-        <X>-672</X>
-        <Y>288</Y>
+        <X>-671</X>
+        <Y>289</Y>
         <Item>AC</Item>
       </Location>
       <Location>
-        <X>-612</X>
-        <Y>328</Y>
-        <Item>KS</Item>
-      </Location>
-      <Location>
-        <X>-616</X>
-        <Y>344</Y>
-        <Item>KS</Item>
-      </Location>
-      <Location>
         <X>-608</X>
-        <Y>360</Y>
+        <Y>329</Y>
         <Item>KS</Item>
       </Location>
       <Location>
-        <X>-616</X>
-        <Y>372</Y>
+        <X>-612</X>
+        <Y>347</Y>
         <Item>KS</Item>
       </Location>
       <Location>
-        <X>-628</X>
-        <Y>392</Y>
+        <X>-604</X>
+        <Y>361</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>-613</X>
+        <Y>371</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>-627</X>
+        <Y>393</Y>
         <Item>EC</Item>
       </Location>
     </Locations>
@@ -2489,13 +3050,33 @@
           <Requirement mode="normal">KS+KS+KS+KS</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="leftSorrow"/>
+        <Target name="leftSorrowPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="hard">Dash</Requirement>
+        </Requirements>
+      </Connection>      
     </Connections>
   </Area>
+  <Area name="leftSorrowPlant">
+    <Locations>
+      <Location>
+        <X>-630</X>
+        <Y>249</Y>
+        <Item>Plant</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>  
   <Area name="leftSorrowGrenade">
     <Locations>
       <Location>
-        <X>-680</X>
-        <Y>268</Y>
+        <X>-677</X>
+        <Y>269</Y>
         <Item>EX200</Item>
       </Location>
     </Locations>
@@ -2505,28 +3086,28 @@
   <Area name="upperSorrow">
     <Locations>
       <Location>
-        <X>-460</X>
-        <Y>416</Y>
+        <X>-456</X>
+        <Y>419</Y>
         <Item>KS</Item>
       </Location>
       <Location>
-        <X>-416</X>
-        <Y>428</Y>
+        <X>-414</X>
+        <Y>429</Y>
         <Item>KS</Item>
       </Location>
       <Location>
-        <X>-516</X>
-        <Y>424</Y>
+        <X>-514</X>
+        <Y>427</Y>
         <Item>KS</Item>
       </Location>
       <Location>
-        <X>-548</X>
-        <Y>408</Y>
+        <X>-545</X>
+        <Y>409</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>-596</X>
-        <Y>444</Y>
+        <X>-592</X>
+        <Y>445</Y>
         <Item>KS</Item>
       </Location>
     </Locations>
@@ -2561,8 +3142,8 @@
   <Area name="sunstone">
     <Locations>
       <Location>
-        <X>-648</X>
-        <Y>472</Y>
+        <X>-646</X>
+        <Y>473</Y>
         <Item>AC</Item>
       </Location>
       <Location>
@@ -2572,28 +3153,48 @@
       </Location>
     </Locations>
     <Connections>
+      <Connection>
+        <Home name="sunstone"/>
+        <Target name="sunstonePlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="hard">Dash</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
+  <Area name="sunstonePlant">
+    <Locations>
+      <Location>
+        <X>-478</X>
+        <Y>586</Y>
+        <Item>Plant</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>  
   <Area name="misty">
     <Locations>
       <Location>
-        <X>-980</X>
-        <Y>20</Y>
+        <X>-979</X>
+        <Y>23</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>-1076</X>
-        <Y>-4</Y>
+        <X>-1075</X>
+        <Y>-2</Y>
         <Item>AC</Item>
       </Location>
       <Location>
-        <X>-1084</X>
-        <Y>4</Y>
+        <X>-1082</X>
+        <Y>8</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>-1012</X>
-        <Y>-40</Y>
+        <X>-1009</X>
+        <Y>-35</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
@@ -2611,23 +3212,38 @@
           <Requirement mode="normal">ChargeJump</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="misty"/>
+        <Target name="mistyPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="hard">Dash</Requirement>
+        </Requirements>
+      </Connection>      
     </Connections>
   </Area>
+  <Area name="mistyPlant">
+    <Locations>
+      <Location>
+        <X>-1102</X>
+        <Y>-67</Y>
+        <Item>Plant</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>  
   <Area name="mistyEnd">
     <Locations>
       <Location>
-        <X>-840</X>
-        <Y>-128</Y>
+        <X>-837</X>
+        <Y>-123</Y>
         <Item>EX100</Item>
       </Location>
       <Location>
-        <X>-800</X>
-        <Y>-148</Y>
-        <Item>EX200</Item>
-      </Location>
-      <Location>
-        <X>-672</X>
-        <Y>-44</Y>
+        <X>-796</X>
+        <Y>-144</Y>
         <Item>EX200</Item>
       </Location>
       <Location>
@@ -2637,6 +3253,24 @@
       </Location>
     </Locations>
     <Connections>
+      <Connection>
+        <Home name="misty"/>
+        <Target name="mistyEndGrenade"/>
+        <Requirements>
+          <Requirement mode="normal">Grenade</Requirement>
+        </Requirements>
+      </Connection>  
     </Connections>
   </Area>
+  <Area name="mistyEndGrenade">
+    <Locations>
+      <Location>
+        <X>-671</X>
+        <Y>-39</Y>
+        <Item>EX200</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>    
 </Areas>

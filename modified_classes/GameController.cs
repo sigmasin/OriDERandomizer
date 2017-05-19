@@ -13,8 +13,8 @@ using UnityEngine;
 public class GameController : SaveSerialize, ISuspendable
 {
 	// Token: 0x17000810 RID: 2064
-	// (get) Token: 0x060033EE RID: 13294 RVA: 0x00028F43 File Offset: 0x00027143
-	// (set) Token: 0x060033EF RID: 13295 RVA: 0x00028F4B File Offset: 0x0002714B
+	// (get) Token: 0x060033EE RID: 13294 RVA: 0x00028F15 File Offset: 0x00027115
+	// (set) Token: 0x060033EF RID: 13295 RVA: 0x00028F1D File Offset: 0x0002711D
 	public bool MainMenuCanBeOpened
 	{
 		get;
@@ -22,7 +22,7 @@ public class GameController : SaveSerialize, ISuspendable
 	}
 
 	// Token: 0x17000811 RID: 2065
-	// (get) Token: 0x060033F0 RID: 13296 RVA: 0x00028F54 File Offset: 0x00027154
+	// (get) Token: 0x060033F0 RID: 13296 RVA: 0x00028F26 File Offset: 0x00027126
 	public int GameTimeInSeconds
 	{
 		get
@@ -31,7 +31,7 @@ public class GameController : SaveSerialize, ISuspendable
 		}
 	}
 
-	// Token: 0x060033F1 RID: 13297 RVA: 0x00028F66 File Offset: 0x00027166
+	// Token: 0x060033F1 RID: 13297 RVA: 0x00028F38 File Offset: 0x00027138
 	public void PerformSaveGameSequence()
 	{
 		if (this.GameSaveSequence)
@@ -41,7 +41,7 @@ public class GameController : SaveSerialize, ISuspendable
 	}
 
 	// Token: 0x17000812 RID: 2066
-	// (get) Token: 0x060033F2 RID: 13298 RVA: 0x00028F84 File Offset: 0x00027184
+	// (get) Token: 0x060033F2 RID: 13298 RVA: 0x00028F56 File Offset: 0x00027156
 	public bool IsPackageFullyInstalled
 	{
 		get
@@ -51,7 +51,7 @@ public class GameController : SaveSerialize, ISuspendable
 	}
 
 	// Token: 0x17000813 RID: 2067
-	// (get) Token: 0x060033F3 RID: 13299 RVA: 0x00028F93 File Offset: 0x00027193
+	// (get) Token: 0x060033F3 RID: 13299 RVA: 0x00028F65 File Offset: 0x00027165
 	public bool IsTrial
 	{
 		get
@@ -61,7 +61,7 @@ public class GameController : SaveSerialize, ISuspendable
 	}
 
 	// Token: 0x17000814 RID: 2068
-	// (get) Token: 0x060033F4 RID: 13300 RVA: 0x000D562C File Offset: 0x000D382C
+	// (get) Token: 0x060033F4 RID: 13300 RVA: 0x000D55E4 File Offset: 0x000D37E4
 	public bool IsDemo
 	{
 		get
@@ -71,7 +71,7 @@ public class GameController : SaveSerialize, ISuspendable
 		}
 	}
 
-	// Token: 0x060033F5 RID: 13301 RVA: 0x00028F9B File Offset: 0x0002719B
+	// Token: 0x060033F5 RID: 13301 RVA: 0x00028F6D File Offset: 0x0002716D
 	public void ExitGame()
 	{
 		if (this.IsTrial)
@@ -96,7 +96,7 @@ public class GameController : SaveSerialize, ISuspendable
 		Application.Quit();
 	}
 
-	// Token: 0x060033F8 RID: 13304 RVA: 0x000D5660 File Offset: 0x000D3860
+	// Token: 0x060033F8 RID: 13304 RVA: 0x000D5618 File Offset: 0x000D3818
 	public void GoToEndTrialScreen()
 	{
 		this.MainMenuCanBeOpened = false;
@@ -105,13 +105,13 @@ public class GameController : SaveSerialize, ISuspendable
 		GoToSceneController.Instance.GoToScene(sceneInformation, new Action(this.OnFinishedLoadingTrialEndScene), false);
 	}
 
-	// Token: 0x060033F9 RID: 13305 RVA: 0x00028FC1 File Offset: 0x000271C1
+	// Token: 0x060033F9 RID: 13305 RVA: 0x00028F93 File Offset: 0x00027193
 	public void OnFinishedLoadingTrialEndScene()
 	{
 		this.RemoveGameplayObjects();
 	}
 
-	// Token: 0x060033FA RID: 13306 RVA: 0x00028FC9 File Offset: 0x000271C9
+	// Token: 0x060033FA RID: 13306 RVA: 0x00028F9B File Offset: 0x0002719B
 	public void OnGameReset()
 	{
 		SaveSlotsManager.BackupIndex = -1;
@@ -121,7 +121,7 @@ public class GameController : SaveSerialize, ISuspendable
 		SoundPlayer.DestroyAll();
 	}
 
-	// Token: 0x060033FB RID: 13307 RVA: 0x000D56A8 File Offset: 0x000D38A8
+	// Token: 0x060033FB RID: 13307 RVA: 0x000D5660 File Offset: 0x000D3860
 	public void RemoveGameplayObjects()
 	{
 		CharacterFactory.Instance.DestroyCharacter();
@@ -155,14 +155,14 @@ public class GameController : SaveSerialize, ISuspendable
 		WorldMapUI.CancelLoading();
 	}
 
-	// Token: 0x060033FC RID: 13308 RVA: 0x00028FEB File Offset: 0x000271EB
+	// Token: 0x060033FC RID: 13308 RVA: 0x00028FBD File Offset: 0x000271BD
 	public void ResetStateForDebugMenuGoToScene()
 	{
 		this.RemoveGameplayObjects();
 		this.RequireInitialValues = true;
 	}
 
-	// Token: 0x060033FD RID: 13309 RVA: 0x000D5790 File Offset: 0x000D3990
+	// Token: 0x060033FD RID: 13309 RVA: 0x000D5748 File Offset: 0x000D3948
 	public void RestartGame()
 	{
 		if (this.m_isRestartingGame)
@@ -182,13 +182,13 @@ public class GameController : SaveSerialize, ISuspendable
 		GoToSceneController.Instance.GoToScene(sceneInformation, new Action(this.OnFinishedRestarting), false);
 	}
 
-	// Token: 0x060033FE RID: 13310 RVA: 0x00028FFA File Offset: 0x000271FA
+	// Token: 0x060033FE RID: 13310 RVA: 0x00028FCC File Offset: 0x000271CC
 	private void OnFinishedRestarting()
 	{
 		base.StartCoroutine(this.RestartingCleanupNextFrame());
 	}
 
-	// Token: 0x060033FF RID: 13311 RVA: 0x000D5808 File Offset: 0x000D3A08
+	// Token: 0x060033FF RID: 13311 RVA: 0x000D57C0 File Offset: 0x000D39C0
 	[DebuggerHidden]
 	public IEnumerator RestartingCleanupNextFrame()
 	{
@@ -198,8 +198,8 @@ public class GameController : SaveSerialize, ISuspendable
 	}
 
 	// Token: 0x17000815 RID: 2069
-	// (get) Token: 0x06003400 RID: 13312 RVA: 0x00029009 File Offset: 0x00027209
-	// (set) Token: 0x06003401 RID: 13313 RVA: 0x00029011 File Offset: 0x00027211
+	// (get) Token: 0x06003400 RID: 13312 RVA: 0x00028FDB File Offset: 0x000271DB
+	// (set) Token: 0x06003401 RID: 13313 RVA: 0x00028FE3 File Offset: 0x000271E3
 	public bool GameplaySuspended
 	{
 		get;
@@ -207,8 +207,8 @@ public class GameController : SaveSerialize, ISuspendable
 	}
 
 	// Token: 0x17000816 RID: 2070
-	// (get) Token: 0x06003402 RID: 13314 RVA: 0x0002901A File Offset: 0x0002721A
-	// (set) Token: 0x06003403 RID: 13315 RVA: 0x00029022 File Offset: 0x00027222
+	// (get) Token: 0x06003402 RID: 13314 RVA: 0x00028FEC File Offset: 0x000271EC
+	// (set) Token: 0x06003403 RID: 13315 RVA: 0x00028FF4 File Offset: 0x000271F4
 	public bool GameplaySuspendedForUI
 	{
 		get;
@@ -216,7 +216,7 @@ public class GameController : SaveSerialize, ISuspendable
 	}
 
 	// Token: 0x17000817 RID: 2071
-	// (get) Token: 0x06003404 RID: 13316 RVA: 0x0002902B File Offset: 0x0002722B
+	// (get) Token: 0x06003404 RID: 13316 RVA: 0x00028FFD File Offset: 0x000271FD
 	public bool InputLocked
 	{
 		get
@@ -226,8 +226,8 @@ public class GameController : SaveSerialize, ISuspendable
 	}
 
 	// Token: 0x17000818 RID: 2072
-	// (get) Token: 0x06003405 RID: 13317 RVA: 0x00029041 File Offset: 0x00027241
-	// (set) Token: 0x06003406 RID: 13318 RVA: 0x00029049 File Offset: 0x00027249
+	// (get) Token: 0x06003405 RID: 13317 RVA: 0x00029013 File Offset: 0x00027213
+	// (set) Token: 0x06003406 RID: 13318 RVA: 0x0002901B File Offset: 0x0002721B
 	public bool LockInputByAction
 	{
 		get;
@@ -235,15 +235,15 @@ public class GameController : SaveSerialize, ISuspendable
 	}
 
 	// Token: 0x17000819 RID: 2073
-	// (get) Token: 0x06003407 RID: 13319 RVA: 0x00029052 File Offset: 0x00027252
-	// (set) Token: 0x06003408 RID: 13320 RVA: 0x0002905A File Offset: 0x0002725A
+	// (get) Token: 0x06003407 RID: 13319 RVA: 0x00029024 File Offset: 0x00027224
+	// (set) Token: 0x06003408 RID: 13320 RVA: 0x0002902C File Offset: 0x0002722C
 	public bool LockInput
 	{
 		get;
 		set;
 	}
 
-	// Token: 0x06003409 RID: 13321 RVA: 0x000D5824 File Offset: 0x000D3A24
+	// Token: 0x06003409 RID: 13321 RVA: 0x000D57DC File Offset: 0x000D39DC
 	[ContextMenu("Print out sizes of SaveSlot")]
 	public void PrintOutSizesOfSaveSlot()
 	{
@@ -258,7 +258,7 @@ public class GameController : SaveSerialize, ISuspendable
 		}
 	}
 
-	// Token: 0x0600340A RID: 13322 RVA: 0x000D58E0 File Offset: 0x000D3AE0
+	// Token: 0x0600340A RID: 13322 RVA: 0x000D5898 File Offset: 0x000D3A98
 	public override void Awake()
 	{
 		if (GameController.Instance != null)
@@ -303,7 +303,7 @@ public class GameController : SaveSerialize, ISuspendable
 		UberGCManager.CollectProactiveFull();
 	}
 
-	// Token: 0x0600340B RID: 13323 RVA: 0x000D5A78 File Offset: 0x000D3C78
+	// Token: 0x0600340B RID: 13323 RVA: 0x000D5A30 File Offset: 0x000D3C30
 	private void OnGameAwake()
 	{
 		this.m_restoreCheckpointController = new RestoreCheckpointController();
@@ -317,7 +317,7 @@ public class GameController : SaveSerialize, ISuspendable
 		SaveSceneManager.Master = base.GetComponent<SaveSceneManager>();
 	}
 
-	// Token: 0x0600340C RID: 13324 RVA: 0x000D5AC4 File Offset: 0x000D3CC4
+	// Token: 0x0600340C RID: 13324 RVA: 0x000D5A7C File Offset: 0x000D3C7C
 	[DebuggerHidden]
 	public IEnumerator Start()
 	{
@@ -326,7 +326,7 @@ public class GameController : SaveSerialize, ISuspendable
 		return <Start>c__Iterator;
 	}
 
-	// Token: 0x0600340D RID: 13325 RVA: 0x000D5AE0 File Offset: 0x000D3CE0
+	// Token: 0x0600340D RID: 13325 RVA: 0x000D5A98 File Offset: 0x000D3C98
 	private void OnApplicationFocus(bool focusStatus)
 	{
 		this.m_setRunInBackgroundToFalse = false;
@@ -334,7 +334,7 @@ public class GameController : SaveSerialize, ISuspendable
 		GameController.IsFocused = true;
 	}
 
-	// Token: 0x0600340E RID: 13326 RVA: 0x000D5B44 File Offset: 0x000D3D44
+	// Token: 0x0600340E RID: 13326 RVA: 0x000D5AFC File Offset: 0x000D3CFC
 	[DebuggerHidden]
 	private IEnumerator SetRunInBackgroundToTrue()
 	{
@@ -343,7 +343,7 @@ public class GameController : SaveSerialize, ISuspendable
 		return <SetRunInBackgroundToTrue>c__Iterator;
 	}
 
-	// Token: 0x0600340F RID: 13327 RVA: 0x000D5B60 File Offset: 0x000D3D60
+	// Token: 0x0600340F RID: 13327 RVA: 0x000D5B18 File Offset: 0x000D3D18
 	[DebuggerHidden]
 	private IEnumerator LoadAssets(List<string> assetsToLoad)
 	{
@@ -353,7 +353,7 @@ public class GameController : SaveSerialize, ISuspendable
 		return <LoadAssets>c__Iterator;
 	}
 
-	// Token: 0x06003410 RID: 13328 RVA: 0x00029063 File Offset: 0x00027263
+	// Token: 0x06003410 RID: 13328 RVA: 0x00029035 File Offset: 0x00027235
 	public override void OnDestroy()
 	{
 		InstantiateUtility.Destroy(this.m_systemsGameObject);
@@ -361,14 +361,14 @@ public class GameController : SaveSerialize, ISuspendable
 		base.OnDestroy();
 	}
 
-	// Token: 0x06003411 RID: 13329 RVA: 0x0002907C File Offset: 0x0002727C
+	// Token: 0x06003411 RID: 13329 RVA: 0x0002904E File Offset: 0x0002724E
 	public void ResetInputLocks()
 	{
 		this.LockInputByAction = false;
 		this.LockInput = false;
 	}
 
-	// Token: 0x06003412 RID: 13330 RVA: 0x000D5B84 File Offset: 0x000D3D84
+	// Token: 0x06003412 RID: 13330 RVA: 0x000D5B3C File Offset: 0x000D3D3C
 	public override void Serialize(Archive ar)
 	{
 		if (ar.Reading)
@@ -389,7 +389,7 @@ public class GameController : SaveSerialize, ISuspendable
 		Game.Objectives.Serialize(ar);
 	}
 
-	// Token: 0x06003413 RID: 13331 RVA: 0x000D5C00 File Offset: 0x000D3E00
+	// Token: 0x06003413 RID: 13331 RVA: 0x000D5BB8 File Offset: 0x000D3DB8
 	public void WarmUpResources()
 	{
 		Timer arg_32_0 = new Timer();
@@ -405,7 +405,7 @@ public class GameController : SaveSerialize, ISuspendable
 		this.Resources.Clear();
 	}
 
-	// Token: 0x06003414 RID: 13332 RVA: 0x0002908C File Offset: 0x0002728C
+	// Token: 0x06003414 RID: 13332 RVA: 0x0002905E File Offset: 0x0002725E
 	public void SetupGameplay(SceneRoot sceneRoot, WorldEventsOnAwake worldEventsOnAwake)
 	{
 		sceneRoot.MetaData.InitialValues.ApplyInitialValues();
@@ -417,7 +417,7 @@ public class GameController : SaveSerialize, ISuspendable
 		LateStartHook.AddLateStartMethod(new Action(this.CreateCheckpoint));
 	}
 
-	// Token: 0x06003415 RID: 13333 RVA: 0x000290C7 File Offset: 0x000272C7
+	// Token: 0x06003415 RID: 13333 RVA: 0x00029099 File Offset: 0x00027299
 	public void OnApplicationQuit()
 	{
 		GameController.IsClosing = true;
@@ -431,6 +431,7 @@ public class GameController : SaveSerialize, ISuspendable
 	// Token: 0x06003416 RID: 13334
 	public void Update()
 	{
+		Randomizer.Update();
 		if (MoonInput.GetKey(KeyCode.LeftAlt) || MoonInput.GetKey(KeyCode.RightAlt))
 		{
 			if (MoonInput.GetKeyDown(KeyCode.U))
@@ -450,6 +451,7 @@ public class GameController : SaveSerialize, ISuspendable
 			}
 			if ((MoonInput.GetKeyDown(KeyCode.LeftControl) || MoonInput.GetKeyDown(KeyCode.RightControl)) && MoonInput.GetKeyDown(KeyCode.L))
 			{
+				Randomizer.showHint("Reloading");
 				Randomizer.initialize();
 			}
 		}
@@ -460,7 +462,7 @@ public class GameController : SaveSerialize, ISuspendable
 	{
 	}
 
-	// Token: 0x06003418 RID: 13336 RVA: 0x000D5CA8 File Offset: 0x000D3EA8
+	// Token: 0x06003418 RID: 13336 RVA: 0x000D5C88 File Offset: 0x000D3E88
 	public void FixedUpdate()
 	{
 		if (Scenes.Manager)
@@ -492,7 +494,7 @@ public class GameController : SaveSerialize, ISuspendable
 		}
 	}
 
-	// Token: 0x06003419 RID: 13337 RVA: 0x000290F0 File Offset: 0x000272F0
+	// Token: 0x06003419 RID: 13337 RVA: 0x000290C2 File Offset: 0x000272C2
 	public Objective GetObjectiveFromIndex(int index)
 	{
 		if (this.Objectives.Count > index && index >= 0)
@@ -502,13 +504,13 @@ public class GameController : SaveSerialize, ISuspendable
 		return null;
 	}
 
-	// Token: 0x0600341A RID: 13338 RVA: 0x00029118 File Offset: 0x00027318
+	// Token: 0x0600341A RID: 13338 RVA: 0x000290EA File Offset: 0x000272EA
 	public int GetObjectiveIndex(Objective objective)
 	{
 		return this.Objectives.IndexOf(objective);
 	}
 
-	// Token: 0x0600341B RID: 13339 RVA: 0x000D5D9C File Offset: 0x000D3F9C
+	// Token: 0x0600341B RID: 13339 RVA: 0x000D5D7C File Offset: 0x000D3F7C
 	public void SuspendGameplay()
 	{
 		if (!this.GameplaySuspended)
@@ -520,7 +522,7 @@ public class GameController : SaveSerialize, ISuspendable
 		}
 	}
 
-	// Token: 0x0600341C RID: 13340 RVA: 0x00029126 File Offset: 0x00027326
+	// Token: 0x0600341C RID: 13340 RVA: 0x000290F8 File Offset: 0x000272F8
 	public void ResumeGameplay()
 	{
 		if (this.GameplaySuspended)
@@ -531,7 +533,7 @@ public class GameController : SaveSerialize, ISuspendable
 		}
 	}
 
-	// Token: 0x0600341D RID: 13341 RVA: 0x00029150 File Offset: 0x00027350
+	// Token: 0x0600341D RID: 13341 RVA: 0x00029122 File Offset: 0x00027322
 	public void SuspendGameplayForUI()
 	{
 		if (!this.GameplaySuspendedForUI)
@@ -541,7 +543,7 @@ public class GameController : SaveSerialize, ISuspendable
 		}
 	}
 
-	// Token: 0x0600341E RID: 13342 RVA: 0x00029169 File Offset: 0x00027369
+	// Token: 0x0600341E RID: 13342 RVA: 0x0002913B File Offset: 0x0002733B
 	public void ResumeGameplayForUI()
 	{
 		if (this.GameplaySuspendedForUI)
@@ -551,7 +553,7 @@ public class GameController : SaveSerialize, ISuspendable
 		}
 	}
 
-	// Token: 0x0600341F RID: 13343 RVA: 0x000D5DE8 File Offset: 0x000D3FE8
+	// Token: 0x0600341F RID: 13343 RVA: 0x000D5DC8 File Offset: 0x000D3FC8
 	public void CreateCheckpoint()
 	{
 		SaveGameData saveGameData = Game.Checkpoint.SaveGameData;
@@ -570,13 +572,13 @@ public class GameController : SaveSerialize, ISuspendable
 		Game.Checkpoint.Events.OnPostCreate.Call();
 	}
 
-	// Token: 0x06003420 RID: 13344 RVA: 0x00029182 File Offset: 0x00027382
+	// Token: 0x06003420 RID: 13344 RVA: 0x00029154 File Offset: 0x00027354
 	public void ClearCheckpointData()
 	{
 		Game.Checkpoint.SaveGameData.ClearAllData();
 	}
 
-	// Token: 0x06003421 RID: 13345 RVA: 0x0002918E File Offset: 0x0002738E
+	// Token: 0x06003421 RID: 13345 RVA: 0x00029160 File Offset: 0x00027360
 	public void RestoreCheckpoint(Action onFinished = null)
 	{
 		this.IsLoadingGame = true;
@@ -584,7 +586,7 @@ public class GameController : SaveSerialize, ISuspendable
 		LateStartHook.AddLateStartMethod(new Action(this.RestoreCheckpointImmediate));
 	}
 
-	// Token: 0x06003422 RID: 13346 RVA: 0x000291AF File Offset: 0x000273AF
+	// Token: 0x06003422 RID: 13346 RVA: 0x00029181 File Offset: 0x00027381
 	public void RestoreCheckpointImmediate()
 	{
 		this.m_restoreCheckpointController.RestoreCheckpoint();
@@ -595,7 +597,7 @@ public class GameController : SaveSerialize, ISuspendable
 		}
 	}
 
-	// Token: 0x06003423 RID: 13347 RVA: 0x000D5EC0 File Offset: 0x000D40C0
+	// Token: 0x06003423 RID: 13347 RVA: 0x000D5EA0 File Offset: 0x000D40A0
 	private void HandleTrialData()
 	{
 		if (this.IsTrial)
@@ -645,7 +647,7 @@ public class GameController : SaveSerialize, ISuspendable
 	}
 
 	// Token: 0x1700081A RID: 2074
-	// (get) Token: 0x06003427 RID: 13351 RVA: 0x000291D9 File Offset: 0x000273D9
+	// (get) Token: 0x06003427 RID: 13351 RVA: 0x000291AB File Offset: 0x000273AB
 	public bool GameInTitleScreen
 	{
 		get
@@ -655,8 +657,8 @@ public class GameController : SaveSerialize, ISuspendable
 	}
 
 	// Token: 0x1700081B RID: 2075
-	// (get) Token: 0x06003428 RID: 13352 RVA: 0x000291FB File Offset: 0x000273FB
-	// (set) Token: 0x06003429 RID: 13353 RVA: 0x00029203 File Offset: 0x00027403
+	// (get) Token: 0x06003428 RID: 13352 RVA: 0x000291CD File Offset: 0x000273CD
+	// (set) Token: 0x06003429 RID: 13353 RVA: 0x000291D5 File Offset: 0x000273D5
 	public bool IsSuspended
 	{
 		get;
@@ -664,8 +666,8 @@ public class GameController : SaveSerialize, ISuspendable
 	}
 
 	// Token: 0x1700081C RID: 2076
-	// (get) Token: 0x0600342A RID: 13354 RVA: 0x0002920C File Offset: 0x0002740C
-	// (set) Token: 0x0600342B RID: 13355 RVA: 0x00029214 File Offset: 0x00027414
+	// (get) Token: 0x0600342A RID: 13354 RVA: 0x000291DE File Offset: 0x000273DE
+	// (set) Token: 0x0600342B RID: 13355 RVA: 0x000291E6 File Offset: 0x000273E6
 	public bool PreventFocusPause
 	{
 		get;

@@ -37,6 +37,7 @@ class Connection:
         self.home = home
         self.target = target
         self.keys = 0
+        self.mapstone = False
         self.requirements = []
         
     def add_requirements(self, req):
@@ -48,7 +49,11 @@ class Connection:
         match = re.match(".*KS.*KS.*",str(req))
         if match:
             self.keys = 2
-            return       
+            return
+        match = re.match(".*MS.*",str(req))
+        if match:
+            self.mapstone = True
+            return
         
     def get_requirements(self):
         return self.requirements
@@ -93,6 +98,7 @@ def open_free_connections():
     
     found = False
     keystoneCount = 0
+    mapstoneCount = 0
     for area in areasReached.keys():
         for connection in areas[area].get_connections():
             if connection.cost()[0] <= 0:
@@ -100,11 +106,15 @@ def open_free_connections():
                     if area not in doorQueue.keys():
                         doorQueue[area] = connection
                         keystoneCount += connection.keys
+                elif connection.mapstone:
+                    if area not in mapQueue.keys():
+                        mapQueue[area] = connection
+                        mapstoneCount += 1
                 else:
                     areasReached[connection.target] = True
                     connectionQueue.append((area,connection))
                     found = True
-    return (found, keystoneCount)
+    return (found, keystoneCount, mapstoneCount)
     
 def get_all_accessible_locations():
 
@@ -189,217 +199,270 @@ def assign(item):
     inventory[item] += 1
     return item
 
-for seed in range(0,1000):
-    seed
-
-    random.seed(seed)
-
-    areas = {}
-    areasReached = {"sunkenGladesRunaway": True}
-    connectionQueue = []
-    assignQueue = []
     
-    modes = ["normal", "speed", "lure", "dboost"]
-    
-    skillsOutput = {
-    "WallJump": "SK3",
-    "ChargeFlame": "SK2",
-    "Dash": "SK50",
-    "Stomp": "SK4",
-    "DoubleJump": "SK5",
-    "Glide": "SK14",
-    "Bash": "SK0",
-    "Climb": "SK12",
-    "Grenade": "SK51",
-    "ChargeJump": "SK8"
-    }
+skillsOutput = {
+"WallJump": "SK3",
+"ChargeFlame": "SK2",
+"Dash": "SK50",
+"Stomp": "SK4",
+"DoubleJump": "SK5",
+"Glide": "SK14",
+"Bash": "SK0",
+"Climb": "SK12",
+"Grenade": "SK51",
+"ChargeJump": "SK8"
+}
 
-    eventsOutput = {
-    "GinsoKey": "EV0",
-    "Water": "EV1",
-    "ForlornKey": "EV2",
-    "Wind": "EV3",
-    "HoruKey": "EV4",
-    "Warmth": "EV5"
-    }
+eventsOutput = {
+"GinsoKey": "EV0",
+"Water": "EV1",
+"ForlornKey": "EV2",
+"Wind": "EV3",
+"HoruKey": "EV4",
+"Warmth": "EV5"
+}
 
-    itemCount = 208.0
-    keystoneCount = 0
+modeDict = {
+"casual": ["normal"],
+"normal": ["normal", "speed", "lure"],
+"dboost": ["normal", "speed", "lure", "dboost"],
+"hard": ["normal", "speed", "lure", "dboost", "dbash", "hard"]
+#"masochist": ["normal", "speed", "lure", "dboost", "dbash", "hard", "lure-hard", "dboost-hard", "timed-level"],
+#"glitched": ["normal", "speed", "lure", "dboost", "dbash", "hard", "lure-hard", "dboost-hard", "timed-level", "glitched"]
+}
 
-    itemPool = {
-    "EX15":6,
-    "EX100":53,
-    "EX200":29,
-    "KS":36,
-    "MS":9,
-    "AC":33,
-    "EC":14,
-    "HC":12,
-    "WallJump":1,
-    "ChargeFlame":1,
-    "Dash":1,
-    "Stomp":1,
-    "DoubleJump":1,
-    "Glide":1,
-    "Bash":1,
-    "Climb":1,
-    "Grenade":1,
-    "ChargeJump":1,
-    "GinsoKey":1,
-    "ForlornKey":1,
-    "HoruKey":1,
-    "Water":1,
-    "Wind":1,
-    "Warmth":1
-    }
+for mode in modeDict.keys():
+    modes = modeDict[mode]
+    for seed in range(0,10000):
+        seed
 
-    costs = {
-    "Free":0,
-    "KS":2,
-    "EC":6,
-    "HC":12,
-    "WallJump":8,
-    "ChargeFlame":22,
-    "DoubleJump":16,
-    "Bash":20,
-    "Stomp":25,
-    "Glide":18,    
-    "Climb":22,
-    "ChargeJump":50,
-    "Dash":12,
-    "Grenade":14,
-    "GinsoKey":9,
-    "ForlornKey":9,
-    "HoruKey":9,
-    "Water":99,
-    "Wind":99
-    }
+        random.seed(mode + str(seed))
 
-    inventory = {
-    "EX15":0,
-    "EX100":0,
-    "EX200":0,
-    "KS":0,
-    "MS":0,
-    "AC":0,
-    "EC":1,
-    "HC":3,
-    "WallJump":0,
-    "ChargeFlame":0,
-    "Dash":0,
-    "Stomp":0,
-    "DoubleJump":0,
-    "Glide":0,
-    "Bash":0,
-    "Climb":0,
-    "Grenade":0,
-    "ChargeJump":0,
-    "GinsoKey":0,
-    "ForlornKey":0,
-    "HoruKey":0,
-    "Water":0,
-    "Wind":0,
-    "Warmth":0
-    }
-
-    tree = XML.parse("areas.xml")
-    root = tree.getroot()
-    
-    for child in root:
-        area = Area(child.attrib["name"])
-
-        for location in child.find("Locations"):
-            area.add_location(Location(int(location.find("X").text), int(location.find("Y").text), area.name, location.find("Item").text))
-        for conn in child.find("Connections"):
-            connection = Connection(conn.find("Home").attrib["name"], conn.find("Target").attrib["name"])
-            for req in conn.find("Requirements"):
-                if req.attrib["mode"] in modes:
-                    connection.add_requirements(req.text.split('+'))
-            if connection.get_requirements():
-                area.add_connection(connection)
-        areas[area.name] = area
+        costs = {
+        "Free":0,
+        "MS":0,
+        "KS":2,
+        "EC":6,
+        "HC":12,
+        "WallJump":8,
+        "ChargeFlame":22,
+        "DoubleJump":16,
+        "Bash":20,
+        "Stomp":25,
+        "Glide":18,    
+        "Climb":22,
+        "ChargeJump":50,
+        "Dash":12,
+        "Grenade":14,
+        "GinsoKey":9,
+        "ForlornKey":9,
+        "HoruKey":9,
+        "Water":99,
+        "Wind":99
+        }
         
-    output = open("seeds/normal/randomizer_normal" + str(seed) + ".dat", 'w')
-    
-    spoiler = open("spoilers/normal/spoiler_normal" + str(seed) + ".txt", 'w')
-    
-    output.write("-240256|EC|1\n") #first energy cell
-    output.write("-1720104|EX|100\n") #glitchy 100 orb at spirit tree
-    #misty keystones
-    output.write("-10759972|KS|1\n")
-    output.write("-10480008|KS|1\n")
-    output.write("-9120036|KS|1\n")
-    output.write("-7680148|KS|1\n")
-    
-
-    locationsToAssign = []
-    connectionQueue = []
-    reservedLocations = []
-
-    while itemCount > 0:
-        
+        areas = {}
+        areasReached = {"sunkenGladesRunaway": True}
+        connectionQueue = []
         assignQueue = []
-        doorQueue = {}
-        spoilerPath = ""
-
-        #open all paths that we can already access
-        opening = True
-        while opening:
-            (opening, keys) = open_free_connections()
-            keystoneCount += keys
-            for connection in connectionQueue:
-                areas[connection[0]].remove_connection(connection[1])
-            connectionQueue = []
-            
-        locationsToAssign = get_all_accessible_locations()
-
-        #if there aren't any doors to open, it's time to get a new skill
-        #consider -- work on stronger anti-key-lock logic so that we don't
-        #have to give keys out right away (this opens up the potential of
-        #using keys in the wrong place, will need to be careful)
-        if not doorQueue:
-            spoilerPath = prepare_path(len(locationsToAssign))
-            if not assignQueue:
-                locationsToAssign.append(reservedLocations.pop(0))
-                locationsToAssign.append(reservedLocations.pop(0))
-                spoilerPath = prepare_path(len(locationsToAssign))
-        #pick what we're going to put in our accessible space
-        itemsToAssign = []
-        for i in range(0,len(locationsToAssign)):
-            if assignQueue:
-                itemsToAssign.append(assign(assignQueue.pop(0)))            
-            elif inventory["KS"] < keystoneCount:
-                itemsToAssign.append(assign("KS"))            
-            else:
-                itemsToAssign.append(assign_random())
-            itemCount -=1
-
-        #open all reachable doors (for the next iteration)
-        for area in doorQueue.keys():
-            areasReached[doorQueue[area].target] = True
-            areas[area].remove_connection(doorQueue[area])
         
-        #shuffle the items around and put them somewhere
-        random.shuffle(itemsToAssign)
-        for i in range(0,len(locationsToAssign)):
-            output.write(str(locationsToAssign[i].get_key()) + "|")
-            if itemsToAssign[i] in skillsOutput:
-                output.write(str(skillsOutput[itemsToAssign[i]][:2]) + "|" + skillsOutput[itemsToAssign[i]][2:] + "\n")
-            elif itemsToAssign[i] in eventsOutput:
-                output.write(str(eventsOutput[itemsToAssign[i]][:2]) + "|" + eventsOutput[itemsToAssign[i]][2:] + "\n")
-            elif itemsToAssign[i][2:]:
-                output.write(itemsToAssign[i][:2] + "|" + itemsToAssign[i][2:] +"\n")
-            else:
-                output.write(itemsToAssign[i][:2] + "|1\n")
-            if itemsToAssign[i] in costs.keys():
-                spoiler.write(itemsToAssign[i] + " from " + locationsToAssign[i].area + " " + locationsToAssign[i].orig + " (" + str(locationsToAssign[i].x) + ", " + str(locationsToAssign[i].y) + ")\n")
+        itemCount = 241.0
+        keystoneCount = 0
+        mapstoneCount = 0
         
-        if spoilerPath:
-            spoiler.write("Forced pickups: " + str(spoilerPath) + "\n")
+        itemPool = {
+        "EX1":1,
+        "EX10":2,
+        "EX15":6,
+        "EX100":51,
+        "EX200":29,
+        "KS":36,
+        "MS":9,
+        "AC":33,
+        "EC":14,
+        "HC":12,
+        "WallJump":1,
+        "ChargeFlame":1,
+        "Dash":1,
+        "Stomp":1,
+        "DoubleJump":1,
+        "Glide":1,
+        "Bash":1,
+        "Climb":1,
+        "Grenade":1,
+        "ChargeJump":1,
+        "GinsoKey":1,
+        "ForlornKey":1,
+        "HoruKey":1,
+        "Water":1,
+        "Wind":1,
+        "Warmth":1,
+        "RB0":5,
+        "RB1":5,
+        "RB6":3,
+        "RB8":3,
+        "RB10":3,
+        "RB12":1,
+        "RB13":1,
+        "RB14":1,
+        "RB15":0, #0 for now due to trouble recompiling SeinSoulFlame
+        "RB16":1,
+        "RB17":1,
+        "RB18":1,
+        "RB19":1,
+        "RB20":3,
+        "RB22":3
+        }
+
+        inventory = {
+        "EX1":0,
+        "EX10":0,
+        "EX15":0,
+        "EX100":0,
+        "EX200":0,
+        "KS":0,
+        "MS":0,
+        "AC":0,
+        "EC":1,
+        "HC":3,
+        "WallJump":0,
+        "ChargeFlame":0,
+        "Dash":0,
+        "Stomp":0,
+        "DoubleJump":0,
+        "Glide":0,
+        "Bash":0,
+        "Climb":0,
+        "Grenade":0,
+        "ChargeJump":0,
+        "GinsoKey":0,
+        "ForlornKey":0,
+        "HoruKey":0,
+        "Water":0,
+        "Wind":0,
+        "Warmth":0,
+        "RB0":0,
+        "RB1":0,
+        "RB6":0,
+        "RB8":0,
+        "RB10":0,
+        "RB12":0,
+        "RB13":0,
+        "RB14":0,
+        "RB15":0,
+        "RB16":0,
+        "RB17":0,
+        "RB18":0,
+        "RB19":0,
+        "RB20":0,
+        "RB22":0
+        }
+
+        tree = XML.parse("areas.xml")
+        root = tree.getroot()
+        
+        for child in root:
+            area = Area(child.attrib["name"])
+
+            for location in child.find("Locations"):
+                area.add_location(Location(int(location.find("X").text), int(location.find("Y").text), area.name, location.find("Item").text))
+            for conn in child.find("Connections"):
+                connection = Connection(conn.find("Home").attrib["name"], conn.find("Target").attrib["name"])
+                for req in conn.find("Requirements"):
+                    if req.attrib["mode"] in modes:
+                        connection.add_requirements(req.text.split('+'))
+                if connection.get_requirements():
+                    area.add_connection(connection)
+            areas[area.name] = area
+        output = open("seeds/" + mode + "/randomizer_" + mode + str(seed) + ".dat", 'w')
+        
+        spoiler = open("spoilers/" + mode + "/spoiler_" + mode +  str(seed) + ".txt", 'w')
+        
+        output.write("-280256|EC|1\n") #first energy cell
+        output.write("-1680104|EX|100\n") #glitchy 100 orb at spirit tree
+        output.write("-12320248|EX|100\n") #forlorn escape plant
+        #misty keystones
+        output.write("-10759968|KS|1\n")
+        output.write("-10440008|KS|1\n")
+        output.write("-9120036|KS|1\n")
+        output.write("-7680144|KS|1\n")
+        
+
         locationsToAssign = []
-    
-    spoiler.close()
-    output.close()
+        connectionQueue = []
+        reservedLocations = []
+
+        while itemCount > 0:
+            
+            assignQueue = []
+            doorQueue = {}
+            mapQueue = {}
+            spoilerPath = ""
+
+            #open all paths that we can already access
+            opening = True
+            while opening:
+                (opening, keys, mapstones) = open_free_connections()
+                keystoneCount += keys
+                mapstoneCount += mapstones
+                for connection in connectionQueue:
+                    areas[connection[0]].remove_connection(connection[1])
+                connectionQueue = []
+                
+            locationsToAssign = get_all_accessible_locations()
+            #if there aren't any doors to open, it's time to get a new skill
+            #consider -- work on stronger anti-key-lock logic so that we don't
+            #have to give keys out right away (this opens up the potential of
+            #using keys in the wrong place, will need to be careful)
+            if not doorQueue and not mapQueue:
+                spoilerPath = prepare_path(len(locationsToAssign))
+                if not assignQueue:
+                    locationsToAssign.append(reservedLocations.pop(0))
+                    locationsToAssign.append(reservedLocations.pop(0))
+                    spoilerPath = prepare_path(len(locationsToAssign))
+            #pick what we're going to put in our accessible space
+            itemsToAssign = []
+            for i in range(0,len(locationsToAssign)):
+                if assignQueue:
+                    itemsToAssign.append(assign(assignQueue.pop(0)))            
+                elif inventory["KS"] < keystoneCount:
+                    itemsToAssign.append(assign("KS"))
+                elif inventory["MS"] < mapstoneCount:
+                    itemsToAssign.append(assign("MS"))
+                else:
+                    itemsToAssign.append(assign_random())
+                itemCount -=1
+
+            #open all reachable doors (for the next iteration)
+            for area in doorQueue.keys():
+                areasReached[doorQueue[area].target] = True
+                areas[area].remove_connection(doorQueue[area])
+                
+            for area in mapQueue.keys():
+                areasReached[mapQueue[area].target] = True
+                areas[area].remove_connection(mapQueue[area])
+            
+            #shuffle the items around and put them somewhere
+            random.shuffle(itemsToAssign)
+            for i in range(0,len(locationsToAssign)):
+                output.write(str(locationsToAssign[i].get_key()) + "|")
+                if itemsToAssign[i] in skillsOutput:
+                    output.write(str(skillsOutput[itemsToAssign[i]][:2]) + "|" + skillsOutput[itemsToAssign[i]][2:] + "\n")
+                elif itemsToAssign[i] in eventsOutput:
+                    output.write(str(eventsOutput[itemsToAssign[i]][:2]) + "|" + eventsOutput[itemsToAssign[i]][2:] + "\n")
+                elif itemsToAssign[i][2:]:
+                    output.write(itemsToAssign[i][:2] + "|" + itemsToAssign[i][2:] +"\n")
+                else:
+                    output.write(itemsToAssign[i][:2] + "|1\n")
+                if itemsToAssign[i] in costs.keys():
+                    spoiler.write(itemsToAssign[i] + " from " + locationsToAssign[i].area + " " + locationsToAssign[i].orig + " (" + str(locationsToAssign[i].x) + ", " + str(locationsToAssign[i].y) + ")\n")
+            
+            if spoilerPath:
+                spoiler.write("Forced pickups: " + str(spoilerPath) + "\n")
+            locationsToAssign = []
+        
+        spoiler.close()
+        output.close()
         
         
     

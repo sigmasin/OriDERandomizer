@@ -7,7 +7,7 @@ using UnityEngine;
 // Token: 0x02000037 RID: 55
 public class SeinSwimming : CharacterState, ISeinReceiver
 {
-	// Token: 0x0600014D RID: 333 RVA: 0x00030050 File Offset: 0x0002E250
+	// Token: 0x0600014D RID: 333 RVA: 0x0003005C File Offset: 0x0002E25C
 	public void ChangeState(SeinSwimming.State state)
 	{
 		SeinSwimming.State currentState = this.CurrentState;
@@ -22,7 +22,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 	}
 
 	// Token: 0x1700003B RID: 59
-	// (get) Token: 0x0600014E RID: 334 RVA: 0x0003009C File Offset: 0x0002E29C
+	// (get) Token: 0x0600014E RID: 334 RVA: 0x000300A8 File Offset: 0x0002E2A8
 	public bool IsUpsideDown
 	{
 		get
@@ -101,7 +101,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 	}
 
 	// Token: 0x17000043 RID: 67
-	// (get) Token: 0x06000157 RID: 343 RVA: 0x000300F0 File Offset: 0x0002E2F0
+	// (get) Token: 0x06000157 RID: 343 RVA: 0x000300FC File Offset: 0x0002E2FC
 	public Rect WaterSurfaceBound
 	{
 		get
@@ -139,7 +139,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		}
 	}
 
-	// Token: 0x0600015C RID: 348 RVA: 0x0003015C File Offset: 0x0002E35C
+	// Token: 0x0600015C RID: 348 RVA: 0x00030168 File Offset: 0x0002E368
 	public void HideBreathingUI()
 	{
 		for (int i = 0; i < this.m_breathingUIAnimators.Length; i++)
@@ -149,7 +149,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		}
 	}
 
-	// Token: 0x0600015D RID: 349 RVA: 0x00030194 File Offset: 0x0002E394
+	// Token: 0x0600015D RID: 349 RVA: 0x000301A0 File Offset: 0x0002E3A0
 	public void ShowBreathingUI()
 	{
 		for (int i = 0; i < this.m_breathingUIAnimators.Length; i++)
@@ -173,15 +173,15 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		this.RemainingBreath = this.Breath;
 	}
 
-	// Token: 0x06000160 RID: 352 RVA: 0x000301CC File Offset: 0x0002E3CC
+	// Token: 0x06000160 RID: 352 RVA: 0x000301D8 File Offset: 0x0002E3D8
 	public void UpdateDrowning()
 	{
-		if (!Sein.World.Events.WaterPurified && !Sein.World.Events.WarmthReturned && this.CurrentState != SeinSwimming.State.OutOfWater)
+		if (!Sein.World.Events.WarmthReturned && this.CurrentState != SeinSwimming.State.OutOfWater)
 		{
 			this.RemainingBreath = 0f;
 			this.HideBreathingUI();
 		}
-		if (this.HasUnlimitedBreathingUnderwater && (Sein.World.Events.WaterPurified || Sein.World.Events.WarmthReturned))
+		if (this.HasUnlimitedBreathingUnderwater && Sein.World.Events.WarmthReturned)
 		{
 			return;
 		}
@@ -211,7 +211,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		this.Gravity.ModifyGravityPlatformMovementSettingsEvent += new Action<GravityPlatformMovementSettings>(this.ModifyGravityPlatformMovementSettings);
 	}
 
-	// Token: 0x06000162 RID: 354 RVA: 0x000302B8 File Offset: 0x0002E4B8
+	// Token: 0x06000162 RID: 354 RVA: 0x000302B4 File Offset: 0x0002E4B4
 	public override void OnDestroy()
 	{
 		base.OnDestroy();
@@ -220,7 +220,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		Game.Checkpoint.Events.OnPostRestore.Remove(new Action(this.OnRestoreCheckpoint));
 	}
 
-	// Token: 0x06000163 RID: 355 RVA: 0x00030310 File Offset: 0x0002E510
+	// Token: 0x06000163 RID: 355 RVA: 0x0003030C File Offset: 0x0002E50C
 	public override void Serialize(Archive ar)
 	{
 		this.CurrentState = (SeinSwimming.State)ar.Serialize((int)this.CurrentState);
@@ -238,7 +238,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		this.RestoreBreath();
 	}
 
-	// Token: 0x06000165 RID: 357 RVA: 0x00030380 File Offset: 0x0002E580
+	// Token: 0x06000165 RID: 357 RVA: 0x0003037C File Offset: 0x0002E57C
 	public void ModifyHorizontalPlatformMovementSettings(HorizontalPlatformMovementSettings settings)
 	{
 		switch (this.CurrentState)
@@ -259,7 +259,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		}
 	}
 
-	// Token: 0x06000166 RID: 358 RVA: 0x00030440 File Offset: 0x0002E640
+	// Token: 0x06000166 RID: 358 RVA: 0x0003043C File Offset: 0x0002E63C
 	public void ModifyGravityPlatformMovementSettings(GravityPlatformMovementSettings settings)
 	{
 		if (this.CurrentState == SeinSwimming.State.SwimmingOnSurface)
@@ -273,7 +273,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		}
 	}
 
-	// Token: 0x06000167 RID: 359 RVA: 0x00030494 File Offset: 0x0002E694
+	// Token: 0x06000167 RID: 359 RVA: 0x00030490 File Offset: 0x0002E690
 	public override void UpdateCharacterState()
 	{
 		if (this.m_drowningDelay >= 0f)
@@ -297,7 +297,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		}
 	}
 
-	// Token: 0x06000168 RID: 360 RVA: 0x00030514 File Offset: 0x0002E714
+	// Token: 0x06000168 RID: 360 RVA: 0x00030510 File Offset: 0x0002E710
 	public void GetOutOfWater()
 	{
 		Sound.Play(this.OutOfWaterSoundProvider.GetSound(null), this.m_sein.transform.position, null);
@@ -306,7 +306,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		this.RemainingBreath = this.Breath;
 	}
 
-	// Token: 0x06000169 RID: 361 RVA: 0x00030578 File Offset: 0x0002E778
+	// Token: 0x06000169 RID: 361 RVA: 0x00030574 File Offset: 0x0002E774
 	public void SwimUnderwater()
 	{
 		this.ChangeState(SeinSwimming.State.SwimMovingUnderwater);
@@ -342,7 +342,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		}
 	}
 
-	// Token: 0x0600016B RID: 363 RVA: 0x000306C8 File Offset: 0x0002E8C8
+	// Token: 0x0600016B RID: 363 RVA: 0x000306C4 File Offset: 0x0002E8C4
 	public void UpdateOutOfWaterState()
 	{
 		Vector3 headPosition = this.m_sein.PlatformBehaviour.PlatformMovement.HeadPosition;
@@ -372,7 +372,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		}
 	}
 
-	// Token: 0x0600016C RID: 364 RVA: 0x000307D4 File Offset: 0x0002E9D4
+	// Token: 0x0600016C RID: 364 RVA: 0x000307D0 File Offset: 0x0002E9D0
 	public void SwimOnSurface()
 	{
 		this.PlatformMovement.PositionY = this.WaterSurfacePositionY;
@@ -395,10 +395,10 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		this.RemoveUnderwaterSounds();
 	}
 
-	// Token: 0x0600016E RID: 366 RVA: 0x000308F0 File Offset: 0x0002EAF0
+	// Token: 0x0600016E RID: 366 RVA: 0x000308EC File Offset: 0x0002EAEC
 	public void UpdateSwimmingOnSurfaceState()
 	{
-		if (!Sein.World.Events.WaterPurified && !Sein.World.Events.WarmthReturned)
+		if (!Sein.World.Events.WarmthReturned)
 		{
 			this.UpdateDrowning();
 		}
@@ -437,7 +437,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		this.GetOutOfWater();
 	}
 
-	// Token: 0x0600016F RID: 367 RVA: 0x00030AA0 File Offset: 0x0002ECA0
+	// Token: 0x0600016F RID: 367 RVA: 0x00030A94 File Offset: 0x0002EC94
 	public void HorizontalFlip()
 	{
 		this.m_swimMovingTime = 0f;
@@ -447,7 +447,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		this.m_sein.PlatformBehaviour.Visuals.Animation.Play(this.Animations.SwimFlipHorizontalAnimation, 10, new Func<bool>(this.ShouldSwimUnderwaterAnimationPlay));
 	}
 
-	// Token: 0x06000170 RID: 368 RVA: 0x00030B2C File Offset: 0x0002ED2C
+	// Token: 0x06000170 RID: 368 RVA: 0x00030B20 File Offset: 0x0002ED20
 	public void VerticalFlip()
 	{
 		this.m_boostAnimationRemainingTime = 0f;
@@ -456,7 +456,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		this.m_sein.PlatformBehaviour.Visuals.Animation.Play(this.Animations.SwimFlipVerticalAnimation, 10, new Func<bool>(this.ShouldSwimUnderwaterAnimationPlay));
 	}
 
-	// Token: 0x06000171 RID: 369 RVA: 0x00030BA8 File Offset: 0x0002EDA8
+	// Token: 0x06000171 RID: 369 RVA: 0x00030B9C File Offset: 0x0002ED9C
 	public void HorizontalVerticalFlip()
 	{
 		this.m_swimMovingTime = 0f;
@@ -465,7 +465,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		this.m_sein.PlatformBehaviour.Visuals.Animation.Play(this.Animations.SwimFlipHorizontalVerticalAnimation, 10, new Func<bool>(this.ShouldSwimUnderwaterAnimationPlay));
 	}
 
-	// Token: 0x06000172 RID: 370 RVA: 0x00030C14 File Offset: 0x0002EE14
+	// Token: 0x06000172 RID: 370 RVA: 0x00030C08 File Offset: 0x0002EE08
 	public void OnBash(float angle)
 	{
 		if (this.IsUnderwater)
@@ -489,7 +489,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		}
 	}
 
-	// Token: 0x06000174 RID: 372 RVA: 0x00030C78 File Offset: 0x0002EE78
+	// Token: 0x06000174 RID: 372 RVA: 0x00030C6C File Offset: 0x0002EE6C
 	public void UpdateSwimMovingUnderwaterState()
 	{
 		this.UpdateDrowning();
@@ -607,7 +607,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		this.HandleLeavingWater();
 	}
 
-	// Token: 0x06000175 RID: 373 RVA: 0x0003127C File Offset: 0x0002F47C
+	// Token: 0x06000175 RID: 373 RVA: 0x00031270 File Offset: 0x0002F470
 	public void UpdateSwimIdleUnderwaterState()
 	{
 		this.UpdateDrowning();
@@ -633,7 +633,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		this.HandleLeavingWater();
 	}
 
-	// Token: 0x06000176 RID: 374 RVA: 0x000313DC File Offset: 0x0002F5DC
+	// Token: 0x06000176 RID: 374 RVA: 0x000313D0 File Offset: 0x0002F5D0
 	public void HandleLeavingWater()
 	{
 		Vector3 position = this.m_sein.PlatformBehaviour.PlatformMovement.Position;
@@ -682,7 +682,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		return this.CurrentState == SeinSwimming.State.SwimmingOnSurface || this.CurrentState == SeinSwimming.State.SwimMovingUnderwater;
 	}
 
-	// Token: 0x06000178 RID: 376 RVA: 0x0003154C File Offset: 0x0002F74C
+	// Token: 0x06000178 RID: 376 RVA: 0x00031540 File Offset: 0x0002F740
 	public void SurfaceSwimJump()
 	{
 		this.PlatformMovement.LocalSpeedY = this.JumpOutOfWaterSpeed;
@@ -716,13 +716,13 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 		return this.CurrentState == SeinSwimming.State.SwimmingOnSurface;
 	}
 
-	// Token: 0x0600017C RID: 380 RVA: 0x00031608 File Offset: 0x0002F808
+	// Token: 0x0600017C RID: 380 RVA: 0x000315FC File Offset: 0x0002F7FC
 	public bool ShouldJumpOutOfWaterAnimationIdleKeepPlaying()
 	{
 		return this.PlatformMovement.IsInAir && (!this.m_sein.Controller.CanMove || this.m_sein.Input.NormalizedHorizontal == 0) && (!this.IsSwimming || !this.PlatformMovement.Falling);
 	}
 
-	// Token: 0x0600017D RID: 381 RVA: 0x00031674 File Offset: 0x0002F874
+	// Token: 0x0600017D RID: 381 RVA: 0x00031668 File Offset: 0x0002F868
 	public bool ShouldJumpOutOfWaterAnimationMovingKeepPlaying()
 	{
 		return this.PlatformMovement.IsInAir && (!this.m_sein.Controller.CanMove || this.m_sein.Input.NormalizedHorizontal != 0) && (!this.IsSwimming || !this.PlatformMovement.Falling);

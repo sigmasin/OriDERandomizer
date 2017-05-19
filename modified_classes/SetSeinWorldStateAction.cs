@@ -4,12 +4,13 @@ using Sein.World;
 // Token: 0x0200098A RID: 2442
 public class SetSeinWorldStateAction : ActionMethod
 {
-	// Token: 0x06003575 RID: 13685 RVA: 0x000DA540 File Offset: 0x000D8740
+	// Token: 0x06003575 RID: 13685 RVA: 0x000DA50C File Offset: 0x000D870C
 	public override void Perform(IContext context)
 	{
 		switch (this.State)
 		{
 		case WorldState.WaterPurified:
+			Events.WaterPurified = this.IsTrue;
 			Randomizer.getEvent(1);
 			return;
 		case WorldState.GumoFree:
@@ -53,7 +54,7 @@ public class SetSeinWorldStateAction : ActionMethod
 		}
 	}
 
-	// Token: 0x06003576 RID: 13686 RVA: 0x0002A047 File Offset: 0x00028247
+	// Token: 0x06003576 RID: 13686 RVA: 0x0002A013 File Offset: 0x00028213
 	public override string GetNiceName()
 	{
 		return "Set " + ActionHelper.GetName(this.State.ToString()) + " to " + ActionHelper.GetName(this.IsTrue.ToString());

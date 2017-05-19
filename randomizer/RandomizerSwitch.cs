@@ -27,6 +27,10 @@ public static class RandomizerSwitch
     {
         Randomizer.MessageProvider.SetMessage(Value.ToString() + " experience");
         int num = Value * ((!Characters.Sein.PlayerAbilities.SoulEfficiency.HasAbility) ? 1 : 2);
+        if (RandomizerBonus.ExpEfficiency())
+		{
+			num *= 2;
+		}
 		Characters.Sein.Level.GainExperience(num);
     }
     
@@ -43,7 +47,7 @@ public static class RandomizerSwitch
     
     public static void MapStonePickup() 
     {
-        Randomizer.MessageProvider.SetMessage("MapStone");
+        Randomizer.MessageProvider.SetMessage("Map Stone");
         Characters.Sein.Inventory.MapStones++;
     }
     
@@ -105,7 +109,7 @@ public static class RandomizerSwitch
                 break;
             case 1:
                 Randomizer.MessageProvider.SetMessage("Clean Water");
-                Sein.World.Events.RandomizerWater = true;
+                Sein.World.Events.WarmthReturned = true;
                 break;
             case 2:
                 Randomizer.MessageProvider.SetMessage("Gumon Seal");
@@ -113,7 +117,7 @@ public static class RandomizerSwitch
                 break;
             case 3:
                 Randomizer.MessageProvider.SetMessage("Wind Restored");
-                Sein.World.Events.RandomizerWind = true;
+                Sein.World.Events.WindRestored = true;
                 break;
             case 4:
                 Randomizer.MessageProvider.SetMessage("Sunstone");
@@ -154,6 +158,9 @@ public static class RandomizerSwitch
                 break;
             case "EV":
                 EventPickup(Action.Value);
+                break;
+            case "RB":
+                RandomizerBonus.UpgradeID((int)Action.Value);
                 break;
         }
         Game.UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved);

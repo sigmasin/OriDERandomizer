@@ -15,7 +15,7 @@ public class PlayerAbilities : SaveSerialize, ISeinReceiver
 	}
 
 	// Token: 0x1700026E RID: 622
-	// (get) Token: 0x06000F7F RID: 3967 RVA: 0x0000D983 File Offset: 0x0000BB83
+	// (get) Token: 0x06000F7F RID: 3967
 	public int OriStrength
 	{
 		get
@@ -37,25 +37,25 @@ public class PlayerAbilities : SaveSerialize, ISeinReceiver
 	}
 
 	// Token: 0x1700026F RID: 623
-	// (get) Token: 0x06000F80 RID: 3968 RVA: 0x0000D9BC File Offset: 0x0000BBBC
+	// (get) Token: 0x06000F80 RID: 3968
 	public int SplitFlameTargets
 	{
 		get
 		{
 			if (this.UltraSplitFlame.HasAbility)
 			{
-				return 4;
+				return 4 + RandomizerBonus.SpiritFlameTargets();
 			}
 			if (this.SplitFlameUpgrade.HasAbility)
 			{
-				return 2;
+				return 2 + RandomizerBonus.SpiritFlameTargets();
 			}
-			return 1;
+			return 1 + RandomizerBonus.SpiritFlameTargets();
 		}
 	}
 
 	// Token: 0x17000270 RID: 624
-	// (get) Token: 0x06000F81 RID: 3969 RVA: 0x0005DC00 File Offset: 0x0005BE00
+	// (get) Token: 0x06000F81 RID: 3969 RVA: 0x0005DBF4 File Offset: 0x0005BDF4
 	public float AttractionDistance
 	{
 		get
@@ -72,7 +72,7 @@ public class PlayerAbilities : SaveSerialize, ISeinReceiver
 		}
 	}
 
-	// Token: 0x06000F82 RID: 3970 RVA: 0x0005DC50 File Offset: 0x0005BE50
+	// Token: 0x06000F82 RID: 3970 RVA: 0x0005DC44 File Offset: 0x0005BE44
 	public new void Awake()
 	{
 		base.Awake();
@@ -124,7 +124,7 @@ public class PlayerAbilities : SaveSerialize, ISeinReceiver
 		};
 	}
 
-	// Token: 0x06000F83 RID: 3971 RVA: 0x0005DE18 File Offset: 0x0005C018
+	// Token: 0x06000F83 RID: 3971 RVA: 0x0005DE0C File Offset: 0x0005C00C
 	public void SetAllAbilitys(bool abilityEnabled)
 	{
 		CharacterAbility[] abilities = this.Abilities;
@@ -136,7 +136,7 @@ public class PlayerAbilities : SaveSerialize, ISeinReceiver
 		this.m_sein.Prefabs.EnsureRightPrefabsAreThereForAbilities();
 	}
 
-	// Token: 0x06000F84 RID: 3972 RVA: 0x0005DE5C File Offset: 0x0005C05C
+	// Token: 0x06000F84 RID: 3972 RVA: 0x0005DE50 File Offset: 0x0005C050
 	public override void Serialize(Archive ar)
 	{
 		try
@@ -158,7 +158,7 @@ public class PlayerAbilities : SaveSerialize, ISeinReceiver
 		}
 	}
 
-	// Token: 0x06000F85 RID: 3973
+	// Token: 0x06000F85 RID: 3973 RVA: 0x0005DEC4 File Offset: 0x0005C0C4
 	public void SetAbility(AbilityType ability, bool value)
 	{
 		switch (ability)
@@ -367,7 +367,7 @@ public class PlayerAbilities : SaveSerialize, ISeinReceiver
 		this.m_sein.Prefabs.EnsureRightPrefabsAreThereForAbilities();
 	}
 
-	// Token: 0x06000F86 RID: 3974 RVA: 0x0005E348 File Offset: 0x0005C548
+	// Token: 0x06000F86 RID: 3974 RVA: 0x0005E33C File Offset: 0x0005C53C
 	public bool HasAbility(AbilityType ability)
 	{
 		switch (ability)
