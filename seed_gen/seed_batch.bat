@@ -1,9 +1,3 @@
-python seed_generator.py --logic 0xp --count 999 --hard --zeroxp --noplants
-move randomizer*.dat seeds/0xp/
-move spoiler* spoilers/0xp/
-
-exit
-
 python seed_generator.py --logic casual --count 999
 move randomizer*.dat seeds/casual/
 move spoiler* spoilers/casual/
@@ -23,3 +17,7 @@ move spoiler* spoilers/hard/
 python seed_generator.py --logic ohko --count 999 --ohko --hard
 move randomizer*.dat seeds/ohko/
 move spoiler* spoilers/ohko/
+
+python seed_generator.py --logic 0xp --count 999 --hard --zeroxp --noplants
+move randomizer*.dat seeds/0xp/
+move spoiler* spoilers/0xp/
