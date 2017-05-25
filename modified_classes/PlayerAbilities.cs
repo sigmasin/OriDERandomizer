@@ -60,10 +60,6 @@ public class PlayerAbilities : SaveSerialize, ISeinReceiver
 	{
 		get
 		{
-			if (Randomizer.ZeroXP)
-			{
-				return 0f;
-			}
 			if (Characters.Sein.PlayerAbilities.UltraMagnet.HasAbility)
 			{
 				return 200f;
