@@ -1,3 +1,20 @@
+v0.7
+
+-The logic mode previously known as "hard" is now referred to as "extended"
+-Introduced hard mode:
+    -Bonus powerups do not exist
+    -Max health is 3
+    -Max energy is 4
+    -Ability cells are removed
+    -Exp pickups are reduced
+-Introduced additional difficulty flags:
+    -OHKO: any damage will kill Ori
+    -NoBonus: bonus powerups give nothing
+    -0xp: Randomized exp orbs and ability cells do nothing. Exp drops from enemies or flowers kill Ori
+-The seed generator now supports command line arguments (use --help)
+-The strength of regeneration powerups has been reduced by 80%
+-Mega health and mega energy are no longer removed when energy/health are fully restored
+
 v0.6
 
 -Several path bugs have been fixed

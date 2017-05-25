@@ -9,6 +9,8 @@ If you get stuck, use Alt+R to send yourself back to glades. Wall jump, double j
 
 If you need to replay the last pickup message, press Alt+T.
 
+To reload randomizer.dat without restarting the game, press Alt+L.
+
 OOBs, timed level ups, and sorrow bash will not be required. Stomping cflame walls from the right may be required. Luring enemies to bash and break barriers may be required. The first energy cell and sein are not randomized.
 
 Hint messages will pop up at the top of the screen to show you what you are getting. The text boxes at skill trees don't represent what they're actually giving you. If you pick something up that doesn't show a hint, it was either blocked by another message or I missed that item.

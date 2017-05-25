@@ -8,6 +8,10 @@ public static class RandomizerSwitch
     public static void SkillPointPickup()
     {
         Randomizer.MessageProvider.SetMessage("Ability Cell");
+        if(Randomizer.ZeroXP)
+        {
+            return;
+        }
         Characters.Sein.Level.GainSkillPoint();
         Characters.Sein.Inventory.SkillPointsCollected++;
     }
@@ -26,6 +30,10 @@ public static class RandomizerSwitch
     public static void ExpOrbPickup(int Value)
     {
         Randomizer.MessageProvider.SetMessage(Value.ToString() + " experience");
+        if(Randomizer.ZeroXP)
+        {
+            return;
+        }
         int num = Value * ((!Characters.Sein.PlayerAbilities.SoulEfficiency.HasAbility) ? 1 : 2);
         if (RandomizerBonus.ExpEfficiency())
 		{
@@ -162,6 +170,9 @@ public static class RandomizerSwitch
             case "RB":
                 RandomizerBonus.UpgradeID((int)Action.Value);
                 break;
+            case "NO":
+                Randomizer.showHint("Nothing");
+                return;
         }
         Game.UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved);
              

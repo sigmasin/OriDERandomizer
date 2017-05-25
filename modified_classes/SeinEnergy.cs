@@ -6,7 +6,7 @@ using UnityEngine;
 // Token: 0x0200035A RID: 858
 public class SeinEnergy : SaveSerialize
 {
-	// Token: 0x06001300 RID: 4864 RVA: 0x00010C21 File Offset: 0x0000EE21
+	// Token: 0x06001301 RID: 4865 RVA: 0x00010B43 File Offset: 0x0000ED43
 	public void SetCurrent(float current)
 	{
 		this.Current = current;
@@ -14,21 +14,21 @@ public class SeinEnergy : SaveSerialize
 		this.MaxVisual = this.Current;
 	}
 
-	// Token: 0x06001301 RID: 4865 RVA: 0x00010C42 File Offset: 0x0000EE42
+	// Token: 0x06001302 RID: 4866 RVA: 0x00010B64 File Offset: 0x0000ED64
 	public void NotifyOutOfEnergy()
 	{
 		UI.SeinUI.ShakeEnergyOrbBar();
 		Sound.Play(this.OutOfEnergySound.GetSound(null), base.transform.position, null);
 	}
 
-	// Token: 0x06001302 RID: 4866 RVA: 0x00010C6C File Offset: 0x0000EE6C
+	// Token: 0x06001303 RID: 4867 RVA: 0x00010B8E File Offset: 0x0000ED8E
 	public bool CanAfford(float amount)
 	{
 		return this.Current >= amount;
 	}
 
 	// Token: 0x17000350 RID: 848
-	// (get) Token: 0x06001303 RID: 4867 RVA: 0x00010C7A File Offset: 0x0000EE7A
+	// (get) Token: 0x06001304 RID: 4868 RVA: 0x00010B9C File Offset: 0x0000ED9C
 	public float VisualMin
 	{
 		get
@@ -38,7 +38,7 @@ public class SeinEnergy : SaveSerialize
 	}
 
 	// Token: 0x17000351 RID: 849
-	// (get) Token: 0x06001304 RID: 4868 RVA: 0x00010C89 File Offset: 0x0000EE89
+	// (get) Token: 0x06001305 RID: 4869 RVA: 0x00010BAB File Offset: 0x0000EDAB
 	public float VisualMax
 	{
 		get
@@ -47,7 +47,7 @@ public class SeinEnergy : SaveSerialize
 		}
 	}
 
-	// Token: 0x06001305 RID: 4869
+	// Token: 0x06001306 RID: 4870 RVA: 0x0006B814 File Offset: 0x00069A14
 	public void Gain(float amount)
 	{
 		if (this.Current > this.Max)
@@ -62,7 +62,7 @@ public class SeinEnergy : SaveSerialize
 		this.MaxVisual = this.Current;
 	}
 
-	// Token: 0x06001306 RID: 4870 RVA: 0x00010CD1 File Offset: 0x0000EED1
+	// Token: 0x06001307 RID: 4871 RVA: 0x00010BBA File Offset: 0x0000EDBA
 	public void Spend(float amount)
 	{
 		this.Current -= amount;
@@ -73,7 +73,7 @@ public class SeinEnergy : SaveSerialize
 		this.MinVisual = this.Current;
 	}
 
-	// Token: 0x06001307 RID: 4871 RVA: 0x0006B608 File Offset: 0x00069808
+	// Token: 0x06001308 RID: 4872 RVA: 0x0006B864 File Offset: 0x00069A64
 	public override void Serialize(Archive ar)
 	{
 		ar.Serialize(ref this.Current);
@@ -85,7 +85,7 @@ public class SeinEnergy : SaveSerialize
 	}
 
 	// Token: 0x17000352 RID: 850
-	// (get) Token: 0x06001308 RID: 4872 RVA: 0x00010D08 File Offset: 0x0000EF08
+	// (get) Token: 0x06001309 RID: 4873 RVA: 0x00010BF1 File Offset: 0x0000EDF1
 	public bool EnergyActive
 	{
 		get
@@ -95,7 +95,7 @@ public class SeinEnergy : SaveSerialize
 	}
 
 	// Token: 0x17000353 RID: 851
-	// (get) Token: 0x06001309 RID: 4873 RVA: 0x00010C89 File Offset: 0x0000EE89
+	// (get) Token: 0x0600130A RID: 4874 RVA: 0x00010BAB File Offset: 0x0000EDAB
 	public float VisualMaxNormalized
 	{
 		get
@@ -105,7 +105,7 @@ public class SeinEnergy : SaveSerialize
 	}
 
 	// Token: 0x17000354 RID: 852
-	// (get) Token: 0x0600130A RID: 4874 RVA: 0x00010C7A File Offset: 0x0000EE7A
+	// (get) Token: 0x0600130B RID: 4875 RVA: 0x00010B9C File Offset: 0x0000ED9C
 	public float VisualMinNormalized
 	{
 		get
@@ -115,7 +115,7 @@ public class SeinEnergy : SaveSerialize
 	}
 
 	// Token: 0x17000355 RID: 853
-	// (get) Token: 0x0600130B RID: 4875 RVA: 0x00010D17 File Offset: 0x0000EF17
+	// (get) Token: 0x0600130C RID: 4876 RVA: 0x00010C00 File Offset: 0x0000EE00
 	public object EnergyUpgradesCollected
 	{
 		get
@@ -124,17 +124,20 @@ public class SeinEnergy : SaveSerialize
 		}
 	}
 
-	// Token: 0x0600130C RID: 4876 RVA: 0x00010D24 File Offset: 0x0000EF24
+	// Token: 0x0600130D RID: 4877 RVA: 0x00010C0D File Offset: 0x0000EE0D
 	public void Update()
 	{
 		this.MinVisual = Mathf.MoveTowards(this.MinVisual, this.Current, Time.deltaTime);
 		this.MaxVisual = Mathf.MoveTowards(this.MaxVisual, this.Current, Time.deltaTime);
 	}
 
-	// Token: 0x0600130D RID: 4877 RVA: 0x00010D5E File Offset: 0x0000EF5E
+	// Token: 0x0600130E RID: 4878
 	public void RestoreAllEnergy()
 	{
-		this.Current = this.Max;
+		if (this.Current < this.Max)
+		{
+			this.Current = this.Max;
+		}
 	}
 
 	// Token: 0x04001202 RID: 4610
