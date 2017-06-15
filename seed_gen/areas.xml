@@ -233,6 +233,7 @@
           <Requirement mode="normal">Bash+Grenade+WallJump</Requirement>
           <Requirement mode="lure">Bash+WallJump</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -356,6 +357,8 @@
           <Requirement mode="normal">EC+EC+EC+EC+DoubleJump</Requirement>
           <Requirement mode="normal">EC+EC+EC+EC+Bash</Requirement>
           <Requirement mode="normal">EC+EC+EC+EC+ChargeJump</Requirement>
+          <Requirement mode="cdash">EC+EC+EC+EC+Dash</Requirement>
+          <Requirement mode="extended">EC+EC+EC+EC+WallJump+Glide</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -688,6 +691,7 @@
           <Requirement mode="normal">Stomp+Grenade+Water</Requirement>
           <Requirement mode="timed-level">Stomp</Requirement>
           <Requirement mode="extended">Stomp</Requirement>
+          <Requirement mode="extended">ChargeJump+Climb</Requirement>
           <Requirement mode="glitched">Free</Requirement>
         </Requirements>
       </Connection>
@@ -885,6 +889,7 @@
         <Target name="GrenadeArea"/>
         <Requirements>
           <Requirement mode="normal">Dash</Requirement>
+          <Requirement mode="extended">ChargeJump+Climb+Grenade</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -1230,6 +1235,7 @@
         <Requirements>
           <Requirement mode="normal">ChargeJump+DoubleJump+Glide</Requirement>
           <Requirement mode="normal">Wind+Glide</Requirement>
+          <Requirement mode="extended">Grenade+Bash</Requirement>
           <Requirement mode="cdash">Dash</Requirement>
         </Requirements>
       </Connection>
@@ -2534,8 +2540,16 @@
           <Requirement mode="normal">Stomp+Bash+WallJump+DoubleJump</Requirement>
           <Requirement mode="normal">Stomp+Bash+WallJump+Glide</Requirement>
           <Requirement mode="normal">Stomp+Bash+Climb+ChargeJump</Requirement>
+          <Requirement mode="lure-hard">Bash</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="valleyEntry"/>
+        <Target name="valleyEntryTreePlant"/>
+        <Requirements>
+          <Requirement mode="extended">Grenade</Requirement>
+        </Requirements>
+      </Connection>         
     </Connections>
   </Area>
   <Area name="valleyEntryTree">
@@ -2847,7 +2861,7 @@
         <Home name="forlorn"/>
         <Target name="rightForlorn"/>
         <Requirements>
-          <Requirement mode="normal">KS+KS+KS+KS+Glide</Requirement>
+          <Requirement mode="normal">KS+KS+KS+KS+Glide+Stomp</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -2964,7 +2978,7 @@
         <Home name="sorrow"/>
         <Target name="leftSorrow"/>
         <Requirements>
-          <Requirement mode="normal">KS+KS+KS+KS</Requirement>
+          <Requirement mode="normal">KS+KS+KS+KS+Glide</Requirement>
         </Requirements>
       </Connection>
       <Connection>
