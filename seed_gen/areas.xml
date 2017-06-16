@@ -359,6 +359,11 @@
           <Requirement mode="normal">EC+EC+EC+EC+ChargeJump</Requirement>
           <Requirement mode="cdash">EC+EC+EC+EC+Dash</Requirement>
           <Requirement mode="extended">EC+EC+EC+EC+WallJump+Glide</Requirement>
+          <Requirement mode="glitched">EC+EC+EC+DoubleJump</Requirement>
+          <Requirement mode="glitched">EC+EC+EC+Bash</Requirement>
+          <Requirement mode="glitched">EC+EC+EC+ChargeJump</Requirement>
+          <Requirement mode="glitched">EC+EC+EC+Dash</Requirement>
+          <Requirement mode="glitched">EC+EC+EC+WallJump+Glide</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -424,6 +429,7 @@
         <Target name="sunkenGladesSpiritCavernB"/>
         <Requirements>
           <Requirement mode="normal">EC+EC+EC+EC</Requirement>
+          <Requirement mode="timed-level">EC+EC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -772,7 +778,7 @@
         <Home name="RazielNo"/>
         <Target name="GumoHideout"/>
         <Requirements>
-          <Requirement mode="glitched">Dash</Requirement>
+          <Requirement mode="glitched">Free</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -890,6 +896,7 @@
         <Requirements>
           <Requirement mode="normal">Dash</Requirement>
           <Requirement mode="extended">ChargeJump+Climb+Grenade</Requirement>
+          <Requirement mode="glitched">Free</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -1121,6 +1128,7 @@
         <Requirements>
           <Requirement mode="normal">Stomp+Water</Requirement>
           <Requirement mode="dboost">Stomp</Requirement>
+          <Requirement mode="extended">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1145,6 +1153,7 @@
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="normal">Bash</Requirement>
+          <Requirement mode="glitched">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1227,6 +1236,8 @@
         <Requirements>
           <Requirement mode="normal">Water+Stomp</Requirement>
           <Requirement mode="dboost">Stomp+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="lure-hard">Bash</Requirement>
+          <Requirement mode="glitched">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1685,7 +1696,14 @@
         <Requirements>
           <Requirement mode="normal">MS</Requirement>
         </Requirements>
-      </Connection>      
+      </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="LowerBlackroot"/>
+        <Requirements>
+          <Requirement mode="glitched">Dash</Requirement>
+        </Requirements>
+      </Connection>         
     </Connections>
   </Area>
   <Area name="GumoHideoutMapStone">
@@ -1968,6 +1986,13 @@
           <Requirement mode="cdash">Dash</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="lowerGinsoTree"/>
+        <Target name="Horu"/>
+        <Requirements>
+          <Requirement mode="glitched">Dash</Requirement>
+        </Requirements>
+      </Connection>         
     </Connections>
   </Area>
   <Area name="lowerGinsoTreePlant">
@@ -2421,7 +2446,14 @@
         <Requirements>
           <Requirement mode="normal">MS</Requirement>
         </Requirements>
-      </Connection>      
+      </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="lowerGinsoTree"/>
+        <Requirements>
+          <Requirement mode="glitched">Dash</Requirement>
+        </Requirements>
+      </Connection>          
     </Connections>
   </Area>
   <Area name="HoruMapStone">
@@ -2721,6 +2753,13 @@
       </Connection>
       <Connection>
         <Home name="valleyMain"/>
+        <Target name="rightForlorn"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="valleyMain"/>
         <Target name="valleyMainGrenade"/>
         <Requirements>
           <Requirement mode="normal">Grenade</Requirement>
@@ -2994,7 +3033,14 @@
         <Requirements>
           <Requirement mode="normal">MS</Requirement>
         </Requirements>
-      </Connection>      
+      </Connection>
+      <Connection>
+        <Home name="sorrow"/>
+        <Target name="Horu"/>
+        <Requirements>
+          <Requirement mode="glitched">Dash</Requirement>
+        </Requirements>
+      </Connection>         
     </Connections>
   </Area>
   <Area name="sorrowMapStone">
@@ -3237,7 +3283,21 @@
           <Requirement mode="normal">Grenade</Requirement>
           <Requirement mode="cdash">Dash</Requirement>
         </Requirements>
-      </Connection>      
+      </Connection>
+      <Connection>
+        <Home name="misty"/>
+        <Target name="forlorn"/>
+        <Requirements>
+          <Requirement mode="glitched">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="misty"/>
+        <Target name="rightForlorn"/>
+        <Requirements>
+          <Requirement mode="glitched">Free</Requirement>
+        </Requirements>
+      </Connection>        
     </Connections>
   </Area>
   <Area name="mistyPlant">
