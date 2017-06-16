@@ -182,12 +182,14 @@ def prepare_path(free_space):
         
 
         
-def assign_random():
+def assign_random(recurseCount = 0):
     value = random.random()
     position = 0.0
     for key in itemPool.keys():
         position += itemPool[key]/itemCount
         if value <= position:
+            if args.starved and key in costs.keys() and costs[key] > 0 and recurseCount < 3:
+                return assign_random(recurseCount = recurseCount + 1)
             return assign(key)
 
 def assign(item):
@@ -210,6 +212,7 @@ parser.add_argument("--ohko", help="Enable one-hit-ko mode", action="store_true"
 parser.add_argument("--zeroxp", help="Enable 0xp mode", action="store_true")
 parser.add_argument("--nobonus", help="Remove bonus powerups from the item pool", action="store_true")
 parser.add_argument("--noplants", help="Ignore petrified plants when assigning items", action="store_true")
+parser.add_argument("--starved", help="Reduces the rate at which progression items will appear when not required to advance", action="store_true")
 
 
 args = parser.parse_args()
