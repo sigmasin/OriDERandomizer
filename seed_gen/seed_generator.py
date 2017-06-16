@@ -103,7 +103,10 @@ def open_free_connections():
     found = False
     keystoneCount = 0
     mapstoneCount = 0
-    for area in areasReached.keys():
+
+    # python 3 wont allow concurrent changes
+    # list(areasReached.keys()) is a copy of the original list
+    for area in list(areasReached.keys()):
         for connection in areas[area].get_connections():
             if connection.cost()[0] <= 0:
                 if connection.keys > 0:
