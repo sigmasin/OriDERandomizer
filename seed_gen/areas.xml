@@ -358,7 +358,7 @@
           <Requirement mode="normal">EC+EC+EC+EC+Bash</Requirement>
           <Requirement mode="normal">EC+EC+EC+EC+ChargeJump</Requirement>
           <Requirement mode="cdash">EC+EC+EC+EC+Dash</Requirement>
-          <Requirement mode="extended">EC+EC+EC+EC+WallJump+Glide</Requirement>
+          <Requirement mode="extended-damage">EC+EC+EC+EC+WallJump+Glide</Requirement>
           <Requirement mode="glitched">EC+EC+EC+DoubleJump</Requirement>
           <Requirement mode="glitched">EC+EC+EC+Bash</Requirement>
           <Requirement mode="glitched">EC+EC+EC+ChargeJump</Requirement>
@@ -1128,7 +1128,7 @@
         <Requirements>
           <Requirement mode="normal">Stomp+Water</Requirement>
           <Requirement mode="dboost">Stomp</Requirement>
-          <Requirement mode="extended">Free</Requirement>
+          <Requirement mode="extended-damage">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -2755,7 +2755,7 @@
         <Home name="valleyMain"/>
         <Target name="rightForlorn"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
+          <Requirement mode="glitched">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
