@@ -3,6 +3,7 @@ import random
 import math
 import xml.etree.ElementTree as XML
 import argparse
+from collections import OrderedDict
 
 
 class Area:
@@ -139,7 +140,7 @@ def get_all_accessible_locations():
 
 
 def prepare_path(free_space):
-    abilities_to_open = {}
+    abilities_to_open = OrderedDict()
     totalCost = 0.0
     # find the sets of abilities we need to get somewhere
     for area in areasReached.keys():
@@ -298,8 +299,16 @@ for seedOffset in range(0, args.count):
         "Wind": 99
     }
 
-    areas = {}
-    areasReached = {"sunkenGladesRunaway": True}
+    # we use OrderedDicts here because the order of a dict depends on the size of the dict and the hash of the keys
+    # since python 3.3 the order of a given dict is also dependent on the random hash seed for the current Python invocation
+    #     which apparently ignores our random.seed()
+    # https://stackoverflow.com/questions/15479928/why-is-the-order-in-dictionaries-and-sets-arbitrary/15479974#15479974
+    # Note that as of Python 3.3, a random hash seed is used as well, making hash collisions unpredictable
+    # to prevent certain types of denial of service (where an attacker renders a Python server unresponsive
+    # by causing mass hash collisions). This means that the order of a given dictionary is then also
+    # dependent on the random hash seed for the current Python invocation.
+    areas = OrderedDict()
+    areasReached = OrderedDict([("sunkenGladesRunaway", True)])
     connectionQueue = []
     assignQueue = []
 
@@ -308,81 +317,81 @@ for seedOffset in range(0, args.count):
     mapstoneCount = 0
 
     if not hardMode:
-        itemPool = {
-            "EX1": 1,
-            "EX10": 2,
-            "EX15": 6,
-            "EX100": 52,
-            "EX200": 28,
-            "KS": 36,
-            "MS": 9,
-            "AC": 33,
-            "EC": 14,
-            "HC": 12,
-            "WallJump": 1,
-            "ChargeFlame": 1,
-            "Dash": 1,
-            "Stomp": 1,
-            "DoubleJump": 1,
-            "Glide": 1,
-            "Bash": 1,
-            "Climb": 1,
-            "Grenade": 1,
-            "ChargeJump": 1,
-            "GinsoKey": 1,
-            "ForlornKey": 1,
-            "HoruKey": 1,
-            "Water": 1,
-            "Wind": 1,
-            "Warmth": 1,
-            "RB0": 5,
-            "RB1": 5,
-            "RB6": 3,
-            "RB8": 3,
-            "RB10": 3,
-            "RB12": 1,
-            "RB13": 1,
-            "RB14": 1,
-            "RB15": 0,  # 0 for now due to trouble recompiling SeinSoulFlame
-            "RB16": 1,
-            "RB17": 1,
-            "RB18": 1,
-            "RB19": 1,
-            "RB20": 3,
-            "RB22": 3
-        }
+        itemPool = OrderedDict([
+            ("EX1", 1),
+            ("EX10", 2),
+            ("EX15", 6),
+            ("EX100", 52),
+            ("EX200", 28),
+            ("KS", 36),
+            ("MS", 9),
+            ("AC", 33),
+            ("EC", 14),
+            ("HC", 12),
+            ("WallJump", 1),
+            ("ChargeFlame", 1),
+            ("Dash", 1),
+            ("Stomp", 1),
+            ("DoubleJump", 1),
+            ("Glide", 1),
+            ("Bash", 1),
+            ("Climb", 1),
+            ("Grenade", 1),
+            ("ChargeJump", 1),
+            ("GinsoKey", 1),
+            ("ForlornKey", 1),
+            ("HoruKey", 1),
+            ("Water", 1),
+            ("Wind", 1),
+            ("Warmth", 1),
+            ("RB0", 5),
+            ("RB1", 5),
+            ("RB6", 3),
+            ("RB8", 3),
+            ("RB10", 3),
+            ("RB12", 1),
+            ("RB13", 1),
+            ("RB14", 1),
+            ("RB15", 0),  # 0 for now due to trouble recompiling SeinSoulFlame
+            ("RB16", 1),
+            ("RB17", 1),
+            ("RB18", 1),
+            ("RB19", 1),
+            ("RB20", 3),
+            ("RB22", 3)
+        ])
     else:
-        itemPool = {
-            "NO1": 62,
-            "EX1": 1,
-            "EX10": 10,
-            "EX15": 15,
-            "EX20": 30,
-            "EX30": 20,
-            "EX50": 25,
-            "EX100": 14,
-            "KS": 36,
-            "MS": 9,
-            "AC": 0,
-            "EC": 3,
-            "HC": 0,
-            "WallJump": 1,
-            "ChargeFlame": 1,
-            "Dash": 1,
-            "Stomp": 1,
-            "DoubleJump": 1,
-            "Glide": 1,
-            "Bash": 1,
-            "Climb": 1,
-            "Grenade": 1,
-            "ChargeJump": 1,
-            "GinsoKey": 1,
-            "ForlornKey": 1,
-            "HoruKey": 1,
-            "Water": 1,
-            "Wind": 1,
-            "Warmth": 1
-        }
+        itemPool = OrderedDict([
+            ("NO1", 62),
+            ("EX1", 1),
+            ("EX10", 10),
+            ("EX15", 15),
+            ("EX20", 30),
+            ("EX30", 20),
+            ("EX50", 25),
+            ("EX100", 14),
+            ("KS", 36),
+            ("MS", 9),
+            ("AC", 0),
+            ("EC", 3),
+            ("HC", 0),
+            ("WallJump", 1),
+            ("ChargeFlame", 1),
+            ("Dash", 1),
+            ("Stomp", 1),
+            ("DoubleJump", 1),
+            ("Glide", 1),
+            ("Bash", 1),
+            ("Climb", 1),
+            ("Grenade", 1),
+            ("ChargeJump", 1),
+            ("GinsoKey", 1),
+            ("ForlornKey", 1),
+            ("HoruKey", 1),
+            ("Water", 1),
+            ("Wind", 1),
+            ("Warmth", 1)
+        ])
 
     plants = []
     if not includePlants:
@@ -392,53 +401,53 @@ for seedOffset in range(0, args.count):
         else:
             itemPool["NO1"] -= 24
 
-    inventory = {
-        "NO1": 0,
-        "EX1": 0,
-        "EX10": 0,
-        "EX15": 0,
-        "EX20": 0,
-        "EX30": 0,
-        "EX50": 0,
-        "EX100": 0,
-        "EX200": 0,
-        "KS": 0,
-        "MS": 0,
-        "AC": 0,
-        "EC": 1,
-        "HC": 3,
-        "WallJump": 0,
-        "ChargeFlame": 0,
-        "Dash": 0,
-        "Stomp": 0,
-        "DoubleJump": 0,
-        "Glide": 0,
-        "Bash": 0,
-        "Climb": 0,
-        "Grenade": 0,
-        "ChargeJump": 0,
-        "GinsoKey": 0,
-        "ForlornKey": 0,
-        "HoruKey": 0,
-        "Water": 0,
-        "Wind": 0,
-        "Warmth": 0,
-        "RB0": 0,
-        "RB1": 0,
-        "RB6": 0,
-        "RB8": 0,
-        "RB10": 0,
-        "RB12": 0,
-        "RB13": 0,
-        "RB14": 0,
-        "RB15": 0,
-        "RB16": 0,
-        "RB17": 0,
-        "RB18": 0,
-        "RB19": 0,
-        "RB20": 0,
-        "RB22": 0
-    }
+    inventory = OrderedDict([
+        ("NO1", 0),
+        ("EX1", 0),
+        ("EX10", 0),
+        ("EX15", 0),
+        ("EX20", 0),
+        ("EX30", 0),
+        ("EX50", 0),
+        ("EX100", 0),
+        ("EX200", 0),
+        ("KS", 0),
+        ("MS", 0),
+        ("AC", 0),
+        ("EC", 1),
+        ("HC", 3),
+        ("WallJump", 0),
+        ("ChargeFlame", 0),
+        ("Dash", 0),
+        ("Stomp", 0),
+        ("DoubleJump", 0),
+        ("Glide", 0),
+        ("Bash", 0),
+        ("Climb", 0),
+        ("Grenade", 0),
+        ("ChargeJump", 0),
+        ("GinsoKey", 0),
+        ("ForlornKey", 0),
+        ("HoruKey", 0),
+        ("Water", 0),
+        ("Wind", 0),
+        ("Warmth", 0),
+        ("RB0", 0),
+        ("RB1", 0),
+        ("RB6", 0),
+        ("RB8", 0),
+        ("RB10", 0),
+        ("RB12", 0),
+        ("RB13", 0),
+        ("RB14", 0),
+        ("RB15", 0),
+        ("RB16", 0),
+        ("RB17", 0),
+        ("RB18", 0),
+        ("RB19", 0),
+        ("RB20", 0),
+        ("RB22", 0)
+    ])
 
     tree = XML.parse("areas.xml")
     root = tree.getroot()
@@ -490,8 +499,8 @@ for seedOffset in range(0, args.count):
 
     while itemCount > 0:
         assignQueue = []
-        doorQueue = {}
-        mapQueue = {}
+        doorQueue = OrderedDict()
+        mapQueue = OrderedDict()
         spoilerPath = ""
 
         # open all paths that we can already access
@@ -538,7 +547,9 @@ for seedOffset in range(0, args.count):
             areas[area].remove_connection(mapQueue[area])
 
         # shuffle the items around and put them somewhere
+        print(itemsToAssign)
         random.shuffle(itemsToAssign)
+        print(itemsToAssign)
         for i in range(0, len(locationsToAssign)):
             output.write(str(locationsToAssign[i].get_key()) + "|")
             if itemsToAssign[i] in skillsOutput:
