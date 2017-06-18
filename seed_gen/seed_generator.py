@@ -547,9 +547,7 @@ for seedOffset in range(0, args.count):
             areas[area].remove_connection(mapQueue[area])
 
         # shuffle the items around and put them somewhere
-        print(itemsToAssign)
         random.shuffle(itemsToAssign)
-        print(itemsToAssign)
         for i in range(0, len(locationsToAssign)):
             output.write(str(locationsToAssign[i].get_key()) + "|")
             if itemsToAssign[i] in skillsOutput:
