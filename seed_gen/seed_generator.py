@@ -469,7 +469,7 @@ for seedOffset in range(0, args.count):
             itemPool["NO1"] -= 6
             
     if args.limitkeys:
-        ginsoKeySpot = random.randint(2,14)
+        ginsoKeySpot = random.randint(1,13)
         horuKeySpot = random.randint(2,14)
         if ginsoKeySpot == horuKeySpot:
             ginsoKeySpot -= 1
@@ -576,7 +576,6 @@ for seedOffset in range(0, args.count):
     reservedLocations = []
     
     skillCount = 10
-
     while itemCount > 0:
         assignQueue = []
         doorQueue = OrderedDict()
@@ -611,10 +610,10 @@ for seedOffset in range(0, args.count):
         for i in range(0, len(locationsToAssign)):
             if args.limitkeys and (locationsToAssign[i].orig[:2] == "EV" or locationsToAssign[i].orig[:2] == "SK") and locationsToAssign[i].orig != "EVWarmth":
                 treesAndEventsReached += 1
-                if treesAndEventsReached == ginsoKeySpot:
+                if treesAndEventsReached >= ginsoKeySpot and inventory["GinsoKey"] == 0 and limitkeysGinsoIndex == -1:
                     limitkeysGinsoIndex = i
                     continue
-                if treesAndEventsReached == horuKeySpot:
+                if treesAndEventsReached >= horuKeySpot and inventory["HoruKey"] == 0 and limitkeysHoruIndex == -1:
                     limitkeysHoruIndex = i
                     continue
             if assignQueue:
@@ -672,4 +671,4 @@ for seedOffset in range(0, args.count):
     output.close()
 
 if args.analysis:
-    print skillAnalysis
+    print(skillAnalysis)

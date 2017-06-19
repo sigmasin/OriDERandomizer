@@ -1,3 +1,4 @@
+
 python seed_generator.py --logic casual --count 999
 move randomizer*.dat seeds/casual/
 move spoiler* spoilers/casual/
@@ -9,6 +10,30 @@ move spoiler* spoilers/normal/
 python seed_generator.py --logic extended --count 999
 move randomizer*.dat seeds/extended/
 move spoiler* spoilers/extended/
+
+python seed_generator.py --logic normal --count 999 --starved
+move randomizer*.dat seeds/normal-starved/
+move spoiler* spoilers/normal-starved/
+
+python seed_generator.py --logic extended --count 999 --starved
+move randomizer*.dat seeds/extended-starved/
+move spoiler* spoilers/extended-starved/
+
+python seed_generator.py --logic normal --count 999 --shards
+move randomizer*.dat seeds/normal-shards/
+move spoiler* spoilers/normal-shards/
+
+python seed_generator.py --logic extended --count 999 --shards
+move randomizer*.dat seeds/extended-shards/
+move spoiler* spoilers/extended-shards/
+
+python seed_generator.py --logic normal --count 999 --limitkeys
+move randomizer*.dat seeds/normal-limitkeys/
+move spoiler* spoilers/normal-limitkeys/
+
+python seed_generator.py --logic extended --count 999 --limitkeys
+move randomizer*.dat seeds/extended-limitkeys/
+move spoiler* spoilers/extended-limitkeys/
 
 python seed_generator.py --logic hard --count 999 --hard
 move randomizer*.dat seeds/hard/
