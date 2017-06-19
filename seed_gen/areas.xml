@@ -600,8 +600,8 @@
         <Target name="sunkenGladesLaserStomp"/>
         <Requirements>
           <Requirement mode="normal">Stomp+Water</Requirement>
-          <Requirement mode="dboost">Bash+HC+HC+HC+HC</Requirement>
-          <Requirement mode="dboost">HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost">Stomp+Bash+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost">Stomp+HC+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
