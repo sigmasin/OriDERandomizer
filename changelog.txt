@@ -1,3 +1,19 @@
+v1.0
+
+-Using mapstones from the far edges will no longer fail to give a pickup
+-Picking up an energy cell will no longer remove mega energy
+-More paths have been added to "extended" and "glitched" modes
+-Minor rebalancing of skill weights for path selection
+-All text boxes have been removed, except for those used for SA or TA
+-Added several additional flags to the seed generator:
+--starved: Reduces the rate at which skills appear when not required to progress
+--shards: Splits the Water Vein into 3 shards and the Sunstone into 5. Collecting 2 Water Vein shards or 3 Sunstone shards will award the item.
+--limitkeys: Causes the Water Vein and Sunstone to only appear at event sources or skill trees
+-Alt+P replays the last message (same as Alt+T -- if you don't want to accidentally hit Alt+R)
+-Alt+C toggles "Chaos Mode"
+-Alt+V toggles messages when in Chaos Mode
+-Alt+F forces a chaos effect to spawn
+
 v0.7
 
 -The logic mode previously known as "hard" is now referred to as "extended"
