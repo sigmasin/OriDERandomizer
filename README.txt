@@ -19,7 +19,7 @@ COMMANDS:
 Alt+T or Alt+P:     Replay last pickup message
 Alt+R:              Teleport Ori to the start of the game
                     Warning: using this in misty or locked rooms can potentially softlock
-Alr+L:              Reload the seed file (use to change seeds without restarting the game)
+Alt+L:              Reload the seed file (use to change seeds without restarting the game)
 Alt+C:              Toggle Chaos Mode
 Alt+V:              Within Chaos Mode, toggle messages
 Alt+F:              Within Chaos Mode, force an effect to spawn
