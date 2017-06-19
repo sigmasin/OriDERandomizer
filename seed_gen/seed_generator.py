@@ -159,6 +159,8 @@ def prepare_path(free_space):
         for connection in areas[area].get_connections():
             if connection.target in areasReached:
                 continue
+            if args.limitkeys and ("GinsoKey" in connection.get_requirements()[0] or "HoruKey" in connection.get_requirements()[0]):
+                continue
             for req_set in connection.get_requirements():
                 requirements = []
                 cost = 0
@@ -226,6 +228,15 @@ def assign(item):
         costs[item] = 0
     inventory[item] += 1
     return item
+
+#for use in limitkeys mode    
+def force_assign(item, location, output, spoiler):
+
+    inventory[item] += 1
+    costs[item] = 0
+    output.write(str(location.get_key()) + "|")
+    output.write(str(eventsOutput[item][:2]) + "|" + eventsOutput[item][2:] + "\n")
+    spoiler.write(item + " from " + location.area + " " + location.orig + " (" + str(location.x) + ", " + str(location.y) + ")\n")
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--logic", help="Choose a preset group of paths for the generator to use", choices=["casual", "normal", "dboost", "extended", "hard", "ohko", "0xp", "glitched"])
@@ -342,6 +353,7 @@ for seedOffset in range(0, args.count):
     itemCount = 241.0
     keystoneCount = 0
     mapstoneCount = 0
+    treesAndEventsReached = 0
 
     if not hardMode:
         itemPool = OrderedDict([
@@ -441,8 +453,16 @@ for seedOffset in range(0, args.count):
             itemPool["EX100"] -= 6
         else:
             itemPool["NO1"] -= 6
-    
-    
+            
+    if args.limitkeys:
+        ginsoKeySpot = random.randint(2,14)
+        horuKeySpot = random.randint(2,14)
+        if ginsoKeySpot == horuKeySpot:
+            ginsoKeySpot -= 1
+        itemPool["GinsoKey"] = 0
+        itemPool["HoruKey"] = 0
+        itemCount -= 2
+        
     inventory = OrderedDict([
         ("NO1", 0),
         ("EX1", 0),
@@ -570,7 +590,18 @@ for seedOffset in range(0, args.count):
                 spoilerPath = prepare_path(len(locationsToAssign))
         # pick what we're going to put in our accessible space
         itemsToAssign = []
+        limitkeysGinsoIndex = -1
+        limitkeysHoruIndex = -1
+        print len(locationsToAssign)
         for i in range(0, len(locationsToAssign)):
+            if args.limitkeys and (locationsToAssign[i].orig[:2] == "EV" or locationsToAssign[i].orig[:2] == "SK") and locationsToAssign[i].orig != "EVWarmth":
+                treesAndEventsReached += 1
+                if treesAndEventsReached == ginsoKeySpot:
+                    limitkeysGinsoIndex = i
+                    continue
+                if treesAndEventsReached == horuKeySpot:
+                    limitkeysHoruIndex = i
+                    continue
             if assignQueue:
                 itemsToAssign.append(assign(assignQueue.pop(0)))
             elif inventory["KS"] < keystoneCount:
@@ -580,7 +611,16 @@ for seedOffset in range(0, args.count):
             else:
                 itemsToAssign.append(assign_random())
             itemCount -= 1
-
+        
+        # if using --limitkeys, force the keys onto trees
+        if limitkeysGinsoIndex >= 0:
+            force_assign("GinsoKey", locationsToAssign.pop(limitkeysGinsoIndex), output, spoiler)
+            if limitkeysGinsoIndex < limitkeysHoruIndex:
+                limitkeysHoruIndex -= 1
+        
+        if limitkeysHoruIndex >= 0:
+            force_assign("HoruKey", locationsToAssign.pop(limitkeysHoruIndex), output, spoiler)
+        
         # open all reachable doors (for the next iteration)
         for area in doorQueue.keys():
             areasReached[doorQueue[area].target] = True
@@ -592,8 +632,11 @@ for seedOffset in range(0, args.count):
 
         # shuffle the items around and put them somewhere
         random.shuffle(itemsToAssign)
+        print len(itemsToAssign)
+        print len(locationsToAssign)
         for i in range(0, len(locationsToAssign)):
             output.write(str(locationsToAssign[i].get_key()) + "|")
+
             if itemsToAssign[i] in skillsOutput:
                 output.write(str(skillsOutput[itemsToAssign[i]][:2]) + "|" + skillsOutput[itemsToAssign[i]][2:] + "\n")
             elif itemsToAssign[i] in eventsOutput:
