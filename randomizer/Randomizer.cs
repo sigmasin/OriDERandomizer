@@ -8,7 +8,7 @@ using UnityEngine;
 // Token: 0x020009EE RID: 2542
 public static class Randomizer
 {
-	// Token: 0x06003737 RID: 14135
+	// Token: 0x06003738 RID: 14136
 	public static void initialize()
 	{
 		Randomizer.OHKO = false;
@@ -18,6 +18,7 @@ public static class Randomizer
 		Randomizer.Chaos = false;
 		Randomizer.ChaosVerbose = true;
 		RandomizerChaosManager.initialize();
+		Randomizer.DamageModifier = 1f;
 		Randomizer.Table = new Hashtable();
 		Randomizer.GridFactor = 4.0;
 		Randomizer.Message = "Good luck on your rando!";
@@ -59,25 +60,25 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x06003738 RID: 14136
+	// Token: 0x06003739 RID: 14137
 	public static void getPickup()
 	{
 		Randomizer.getPickup(Characters.Sein.Position);
 	}
 
-	// Token: 0x06003739 RID: 14137
+	// Token: 0x0600373A RID: 14138
 	public static void returnToStart()
 	{
 		Characters.Sein.Position = new Vector3(189f, -189f);
 	}
 
-	// Token: 0x0600373A RID: 14138
+	// Token: 0x0600373B RID: 14139
 	public static void getEvent(int ID)
 	{
 		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[ID * 4]);
 	}
 
-	// Token: 0x0600373B RID: 14139
+	// Token: 0x0600373C RID: 14140
 	public static void showHint(string message)
 	{
 		Randomizer.Message = message;
@@ -85,14 +86,14 @@ public static class Randomizer
 		UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
 	}
 
-	// Token: 0x0600373C RID: 14140
+	// Token: 0x0600373D RID: 14141
 	public static void playLastMessage()
 	{
 		Randomizer.MessageProvider.SetMessage(Randomizer.Message);
 		UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
 	}
 
-	// Token: 0x0600373D RID: 14141
+	// Token: 0x0600373E RID: 14142
 	public static void log(string message)
 	{
 		StreamWriter expr_0A = File.AppendText("randomizer.log");
@@ -100,19 +101,19 @@ public static class Randomizer
 		expr_0A.Flush();
 	}
 
-	// Token: 0x0600373E RID: 14142
+	// Token: 0x0600373F RID: 14143
 	public static bool WindRestored()
 	{
 		return Sein.World.Events.WindRestored && (Characters.Sein.Position.x >= -700f || Characters.Sein.Position.y >= -230f);
 	}
 
-	// Token: 0x0600373F RID: 14143
+	// Token: 0x06003740 RID: 14144
 	public static void getSkill()
 	{
 		Randomizer.getPickup();
 	}
 
-	// Token: 0x06003740 RID: 14144
+	// Token: 0x06003741 RID: 14145
 	public static void hintAndLog(float x, float y)
 	{
 		string expr_1E = ((int)x).ToString() + " " + ((int)y).ToString();
@@ -120,7 +121,7 @@ public static class Randomizer
 		Randomizer.log(expr_1E);
 	}
 
-	// Token: 0x06003741 RID: 14145
+	// Token: 0x06003742 RID: 14146
 	public static void getPickup(Vector3 position)
 	{
 		int num = (int)(Math.Floor((double)((int)position.x) / Randomizer.GridFactor) * Randomizer.GridFactor) * 10000 + (int)(Math.Floor((double)((int)position.y) / Randomizer.GridFactor) * Randomizer.GridFactor);
@@ -154,7 +155,7 @@ public static class Randomizer
 		Randomizer.showHint("Error finding pickup at " + ((int)position.x).ToString() + ", " + ((int)position.y).ToString());
 	}
 
-	// Token: 0x06003742 RID: 14146
+	// Token: 0x06003743 RID: 14147
 	public static void Update()
 	{
 		if (!Characters.Sein.IsSuspended)
@@ -209,7 +210,7 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x06003743 RID: 14147
+	// Token: 0x06003744 RID: 14148
 	public static void showChaosEffect(string message)
 	{
 		if (Randomizer.ChaosVerbose)
@@ -219,7 +220,7 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x060037D0 RID: 14288
+	// Token: 0x06003745 RID: 14149
 	public static void showChaosMessage(string message)
 	{
 		Randomizer.MessageProvider.SetMessage(message);
@@ -253,6 +254,9 @@ public static class Randomizer
 	// Token: 0x0400322B RID: 12843
 	public static bool Chaos;
 
-	// Token: 0x04003267 RID: 12903
+	// Token: 0x0400322C RID: 12844
 	public static bool ChaosVerbose;
+
+	// Token: 0x0400329B RID: 12955
+	public static float DamageModifier;
 }
