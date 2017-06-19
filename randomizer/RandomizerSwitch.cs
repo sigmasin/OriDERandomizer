@@ -24,7 +24,10 @@ public static class RandomizerSwitch
 			Characters.Sein.SoulFlame.FillSoulFlameBar();
 		}
 		Characters.Sein.Energy.Max += 1.0f;
-		Characters.Sein.Energy.Current = Characters.Sein.Energy.Max;
+		if (Characters.Sein.Energy.Current < Characters.Sein.Energy.Max)
+		{
+			Characters.Sein.Energy.Current = Characters.Sein.Energy.Max;
+		}
     }
     
     public static void ExpOrbPickup(int Value)
