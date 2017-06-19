@@ -251,6 +251,7 @@ parser.add_argument("--noplants", help="Ignore petrified plants when assigning i
 parser.add_argument("--starved", help="Reduces the rate at which skills will appear when not required to advance", action="store_true")
 parser.add_argument("--shards", help="The Water Vein and Sunstone will be awarded after enough shards are found (more shards than required are available)", action="store_true")
 parser.add_argument("--limitkeys", help="The Water Vein and Sunstone will only appear at skill trees or event sources", action="store_true")
+parser.add_argument("--analysis", help="Report stats on the skill order for all seeds generated", action="store_true")
 
 args = parser.parse_args()
 
@@ -307,6 +308,19 @@ if args.custom_logic:
     mode = "custom"
     modes = args.custom_logic.split(',')
 
+skillAnalysis = {
+    "WallJump": 0,
+    "ChargeFlame": 0,
+    "DoubleJump": 0,
+    "Bash": 0,
+    "Stomp": 0,
+    "Glide": 0,
+    "Climb": 0,
+    "ChargeJump": 0,
+    "Dash": 0,
+    "Grenade": 0
+}
+    
 for seedOffset in range(0, args.count):
 
     seed = args.seed + seedOffset
@@ -319,15 +333,15 @@ for seedOffset in range(0, args.count):
         "EC": 6,
         "HC": 12,
         "WallJump": 13,
-        "ChargeFlame": 22,
-        "DoubleJump": 16,
-        "Bash": 20,
-        "Stomp": 25,
-        "Glide": 18,
-        "Climb": 22,
-        "ChargeJump": 50,
+        "ChargeFlame": 13,
+        "DoubleJump": 13,
+        "Bash": 30,
+        "Stomp": 28,
+        "Glide": 17,
+        "Climb": 40,
+        "ChargeJump": 52,
         "Dash": 13,
-        "Grenade": 14,
+        "Grenade": 18,
         "GinsoKey": 12,
         "ForlornKey": 12,
         "HoruKey": 12,
@@ -560,6 +574,8 @@ for seedOffset in range(0, args.count):
     locationsToAssign = []
     connectionQueue = []
     reservedLocations = []
+    
+    skillCount = 10
 
     while itemCount > 0:
         assignQueue = []
@@ -592,7 +608,6 @@ for seedOffset in range(0, args.count):
         itemsToAssign = []
         limitkeysGinsoIndex = -1
         limitkeysHoruIndex = -1
-        print len(locationsToAssign)
         for i in range(0, len(locationsToAssign)):
             if args.limitkeys and (locationsToAssign[i].orig[:2] == "EV" or locationsToAssign[i].orig[:2] == "SK") and locationsToAssign[i].orig != "EVWarmth":
                 treesAndEventsReached += 1
@@ -632,13 +647,14 @@ for seedOffset in range(0, args.count):
 
         # shuffle the items around and put them somewhere
         random.shuffle(itemsToAssign)
-        print len(itemsToAssign)
-        print len(locationsToAssign)
         for i in range(0, len(locationsToAssign)):
             output.write(str(locationsToAssign[i].get_key()) + "|")
 
             if itemsToAssign[i] in skillsOutput:
                 output.write(str(skillsOutput[itemsToAssign[i]][:2]) + "|" + skillsOutput[itemsToAssign[i]][2:] + "\n")
+                if args.analysis:
+                    skillAnalysis[itemsToAssign[i]] += skillCount
+                    skillCount -= 1
             elif itemsToAssign[i] in eventsOutput:
                 output.write(str(eventsOutput[itemsToAssign[i]][:2]) + "|" + eventsOutput[itemsToAssign[i]][2:] + "\n")
             elif itemsToAssign[i][2:]:
@@ -654,3 +670,6 @@ for seedOffset in range(0, args.count):
 
     spoiler.close()
     output.close()
+
+if args.analysis:
+    print skillAnalysis
