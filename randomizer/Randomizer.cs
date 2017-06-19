@@ -206,6 +206,11 @@ public static class Randomizer
 					return;
 				}
 				Randomizer.showChaosMessage("Chaos messages disabled");
+				return;
+			}
+			else if (MoonInput.GetKeyDown(KeyCode.F) && Randomizer.Chaos)
+			{
+				RandomizerChaosManager.SpawnEffect();
 			}
 		}
 	}

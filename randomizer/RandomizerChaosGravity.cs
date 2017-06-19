@@ -68,6 +68,7 @@ public class RandomizerChaosGravity : RandomizerChaosEffect
 		}
 		if (this.WellActive)
 		{
+			Characters.Ori.Position = new Vector3(this.WellPosition.x, this.WellPosition.y);
 			Vector2 vector = new Vector2(this.WellPosition.x - Characters.Sein.Position.x, this.WellPosition.y - Characters.Sein.Position.y);
 			float num = this.WellStrength / Math.Max(1f, vector.sqrMagnitude);
 			float friction = 1f;

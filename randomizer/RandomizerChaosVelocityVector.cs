@@ -18,7 +18,7 @@ public class RandomizerChaosVelocityVector : RandomizerChaosEffect
 		this.Countdown = UnityEngine.Random.Range(1, 300);
 		this.Pushing = false;
 		int num = UnityEngine.Random.Range(0, 8);
-		if (num <= 6)
+		if (num <= 5)
 		{
 			Randomizer.showChaosEffect("Throw");
 			Characters.Sein.PlatformBehaviour.PlatformMovement.LocalSpeedX = UnityEngine.Random.Range(-100f, 100f);
