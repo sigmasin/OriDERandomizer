@@ -100,7 +100,7 @@ public class SeinDamageReciever : CharacterState, IDamageReciever, ISeinReceiver
 	// Token: 0x06001030 RID: 4144
 	public void OnRecieveDamage(Damage damage)
 	{
-		if (damage.Amount < 9000f)
+		if (damage.Amount < 9000f || damage.Type != DamageType.Water)
 		{
 			if (this.IsImmortal)
 			{
@@ -206,11 +206,11 @@ public class SeinDamageReciever : CharacterState, IDamageReciever, ISeinReceiver
 			base.StartCoroutine(this.FlashSprite());
 			if (this.HurtEffect)
 			{
-				GameObject expr_3AB = (GameObject)InstantiateUtility.Instantiate(this.HurtEffect);
-				expr_3AB.transform.position = base.transform.position;
+				GameObject expr_3B3 = (GameObject)InstantiateUtility.Instantiate(this.HurtEffect);
+				expr_3B3.transform.position = base.transform.position;
 				Vector3 vector = this.PlatformMovement.LocalSpeed.normalized + damage.Force.normalized;
 				float z = Mathf.Atan2(vector.y, vector.x) * 57.29578f;
-				expr_3AB.transform.rotation = Quaternion.Euler(0f, 0f, z);
+				expr_3B3.transform.rotation = Quaternion.Euler(0f, 0f, z);
 			}
 			base.Active = true;
 			if (this.Sein.Abilities.GrabWall)
