@@ -45,6 +45,18 @@ class Connection:
         self.requirements = []
 
     def add_requirements(self, req):
+        if args.shards:
+            match = re.match(".*GinsoKey.*", str(req))
+            if match:
+                req.remove("GinsoKey")
+                req.append("WaterVeinShard")
+                req.append("WaterVeinShard")
+            match = re.match(".*HoruKey.*", str(req))
+            if match:
+                req.remove("HoruKey")
+                req.append("SunstoneShard")
+                req.append("SunstoneShard")
+                req.append("SunstoneShard")
         self.requirements.append(req)
         match = re.match(".*KS.*KS.*KS.*KS.*", str(req))
         if match:
@@ -194,7 +206,7 @@ def assign_random(recurseCount = 0):
     for key in itemPool.keys():
         position += itemPool[key]/itemCount
         if value <= position:
-            if args.starved and key in costs.keys() and costs[key] > 0 and recurseCount < 3:
+            if args.starved and key in costs.keys() and costs[key] > 12 and recurseCount < 3:
                 return assign_random(recurseCount = recurseCount + 1)
             return assign(key)
 
@@ -204,6 +216,12 @@ def assign(item):
     if item == "EC" or item == "KS" or item == "HC":
         if costs[item] > 0:
             costs[item] -= 1
+    elif item == "WaterVeinShard":
+        if costs[item] > 0:
+            costs[item] -= 4
+    elif item == "SunstoneShard":
+        if costs[item] > 0:
+            costs[item] -= 2
     elif item in costs.keys():
         costs[item] = 0
     inventory[item] += 1
@@ -219,7 +237,9 @@ parser.add_argument("--ohko", help="Enable one-hit-ko mode", action="store_true"
 parser.add_argument("--zeroxp", help="Enable 0xp mode", action="store_true")
 parser.add_argument("--nobonus", help="Remove bonus powerups from the item pool", action="store_true")
 parser.add_argument("--noplants", help="Ignore petrified plants when assigning items", action="store_true")
-parser.add_argument("--starved", help="Reduces the rate at which progression items will appear when not required to advance", action="store_true")
+parser.add_argument("--starved", help="Reduces the rate at which skills will appear when not required to advance", action="store_true")
+parser.add_argument("--shards", help="The Water Vein and Sunstone will be awarded after enough shards are found (more shards than required are available)", action="store_true")
+parser.add_argument("--limitkeys", help="The Water Vein and Sunstone will only appear at skill trees or event sources", action="store_true")
 
 args = parser.parse_args()
 
@@ -242,7 +262,9 @@ eventsOutput = {
     "ForlornKey": "EV2",
     "Wind": "EV3",
     "HoruKey": "EV4",
-    "Warmth": "EV5"
+    "Warmth": "EV5",
+    "WaterVeinShard": "RB24",
+    "SunstoneShard": "RB26"
 }
 
 presets = {
@@ -285,7 +307,7 @@ for seedOffset in range(0, args.count):
         "KS": 2,
         "EC": 6,
         "HC": 12,
-        "WallJump": 8,
+        "WallJump": 13,
         "ChargeFlame": 22,
         "DoubleJump": 16,
         "Bash": 20,
@@ -293,13 +315,15 @@ for seedOffset in range(0, args.count):
         "Glide": 18,
         "Climb": 22,
         "ChargeJump": 50,
-        "Dash": 12,
+        "Dash": 13,
         "Grenade": 14,
-        "GinsoKey": 9,
-        "ForlornKey": 9,
-        "HoruKey": 9,
+        "GinsoKey": 12,
+        "ForlornKey": 12,
+        "HoruKey": 12,
         "Water": 99,
-        "Wind": 99
+        "Wind": 99,
+        "WaterVeinShard": 8,
+        "SunstoneShard": 6
     }
 
     # we use OrderedDicts here because the order of a dict depends on the size of the dict and the hash of the keys
@@ -361,7 +385,9 @@ for seedOffset in range(0, args.count):
             ("RB18", 1),
             ("RB19", 1),
             ("RB20", 3),
-            ("RB22", 3)
+            ("RB22", 3),
+            ("WaterVeinShard", 0),
+            ("SunstoneShard", 0)
         ])
     else:
         itemPool = OrderedDict([
@@ -393,7 +419,9 @@ for seedOffset in range(0, args.count):
             ("HoruKey", 1),
             ("Water", 1),
             ("Wind", 1),
-            ("Warmth", 1)
+            ("Warmth", 1),
+            ("WaterVeinShard", 0),
+            ("SunstoneShard", 0)
         ])
 
     plants = []
@@ -403,7 +431,18 @@ for seedOffset in range(0, args.count):
             itemPool["EX100"] -= 24
         else:
             itemPool["NO1"] -= 24
-
+            
+    if args.shards:
+        itemPool["WaterVeinShard"] = 3
+        itemPool["SunstoneShard"] = 5
+        itemPool["GinsoKey"] = 0
+        itemPool["HoruKey"] = 0
+        if not hardMode:
+            itemPool["EX100"] -= 6
+        else:
+            itemPool["NO1"] -= 6
+    
+    
     inventory = OrderedDict([
         ("NO1", 0),
         ("EX1", 0),
@@ -449,7 +488,9 @@ for seedOffset in range(0, args.count):
         ("RB18", 0),
         ("RB19", 0),
         ("RB20", 0),
-        ("RB22", 0)
+        ("RB22", 0),
+        ("WaterVeinShard", 0),
+        ("SunstoneShard", 0)
     ])
 
     tree = XML.parse("areas.xml")

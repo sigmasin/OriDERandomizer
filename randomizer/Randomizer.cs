@@ -16,7 +16,7 @@ public static class Randomizer
 		Randomizer.BonusActive = true;
 		Randomizer.GiveAbility = false;
 		Randomizer.Chaos = false;
-		Randomizer.ChaosVerbose = true;
+		Randomizer.ChaosVerbose = false;
 		RandomizerChaosManager.initialize();
 		Randomizer.DamageModifier = 1f;
 		Randomizer.Table = new Hashtable();

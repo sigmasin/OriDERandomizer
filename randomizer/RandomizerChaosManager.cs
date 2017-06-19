@@ -12,21 +12,21 @@ public static class RandomizerChaosManager
 		RandomizerChaosManager.Effects = new List<RandomizerChaosEffect>();
 		RandomizerChaosManager.Frequencies = new List<int>();
 		RandomizerChaosManager.Effects.Add(new RandomizerChaosMovementSpeed());
-		RandomizerChaosManager.Frequencies.Add(18);
+		RandomizerChaosManager.Frequencies.Add(17);
 		RandomizerChaosManager.Effects.Add(new RandomizerChaosGravity());
 		RandomizerChaosManager.Frequencies.Add(13);
 		RandomizerChaosManager.Effects.Add(new RandomizerChaosTeleport());
-		RandomizerChaosManager.Frequencies.Add(7);
+		RandomizerChaosManager.Frequencies.Add(8);
 		RandomizerChaosManager.Effects.Add(new RandomizerChaosZoom());
 		RandomizerChaosManager.Frequencies.Add(5);
 		RandomizerChaosManager.Effects.Add(new RandomizerChaosPoison());
 		RandomizerChaosManager.Frequencies.Add(1);
 		RandomizerChaosManager.Effects.Add(new RandomizerChaosColor());
-		RandomizerChaosManager.Frequencies.Add(6);
+		RandomizerChaosManager.Frequencies.Add(5);
 		RandomizerChaosManager.Effects.Add(new RandomizerChaosDamageModifier());
-		RandomizerChaosManager.Frequencies.Add(8);
+		RandomizerChaosManager.Frequencies.Add(5);
 		RandomizerChaosManager.Effects.Add(new RandomizerChaosVelocityVector());
-		RandomizerChaosManager.Frequencies.Add(6);
+		RandomizerChaosManager.Frequencies.Add(10);
 	}
 
 	// Token: 0x0600375A RID: 14170
@@ -36,7 +36,7 @@ public static class RandomizerChaosManager
 		if (RandomizerChaosManager.Countdown <= 0)
 		{
 			RandomizerChaosManager.SpawnEffect();
-			RandomizerChaosManager.Countdown = UnityEngine.Random.Range(300, 1800);
+			RandomizerChaosManager.Countdown = UnityEngine.Random.Range(300, 900);
 		}
 		for (int i = 0; i < RandomizerChaosManager.Effects.Count; i++)
 		{
