@@ -1171,6 +1171,7 @@
           <Requirement mode="normal">Stomp+ChargeJump</Requirement>
           <Requirement mode="normal">ChargeJump+ChargeFlame</Requirement>
           <Requirement mode="normal">ChargeJump+Grenade</Requirement>
+          <Requirement mode="extended">ChargeJump+Climb</Requirement>
           <Requirement mode="dboost-hard">ChargeFlame+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="glitched">Dash</Requirement>
         </Requirements>
@@ -1187,6 +1188,7 @@
         <Target name="drainlessCell"/>
         <Requirements>
           <Requirement mode="normal">Stomp</Requirement>
+          <Requirement mode="extended">ChargeJump+Climb</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1614,7 +1616,9 @@
         <Requirements>
           <Requirement mode="normal">Stomp+ChargeFlame</Requirement>
           <Requirement mode="normal">Stomp+Grenade</Requirement>
-          <Requirement mode="cdash">Stomp+Dash</Requirement>
+          <Requirement mode="extended">ChargeFlame</Requirement>
+          <Requirement mode="extended">Grenade</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -2164,6 +2168,7 @@
         <Target name="drainlessCell"/>
         <Requirements>
           <Requirement mode="normal">Stomp</Requirement>
+          <Requirement mode="extended">ChargeJump+Climb</Requirement>
         </Requirements>
       </Connection>
       <Connection>
