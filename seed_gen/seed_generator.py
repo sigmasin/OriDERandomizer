@@ -51,9 +51,12 @@ class Connection:
                 req.remove("GinsoKey")
                 req.append("WaterVeinShard")
                 req.append("WaterVeinShard")
+                req.append("WaterVeinShard")
             match = re.match(".*HoruKey.*", str(req))
             if match:
                 req.remove("HoruKey")
+                req.append("SunstoneShard")
+                req.append("SunstoneShard")
                 req.append("SunstoneShard")
                 req.append("SunstoneShard")
                 req.append("SunstoneShard")
@@ -140,7 +143,17 @@ def open_free_connections():
 def get_all_accessible_locations():
     locations = []
     for area in areasReached.keys():
-        locations.extend(areas[area].get_locations())
+        currentLocations = areas[area].get_locations()
+        if args.limitkeys:
+            loc = ""
+            for location in currentLocations:
+                if location.orig in keySpots.keys():
+                    loc = location
+                    break
+            if loc:
+                force_assign(keySpots[loc.orig], loc, output, spoiler)
+                currentLocations.remove(loc)                    
+        locations.extend(currentLocations)
         areas[area].clear_locations()
     if reservedLocations:
         locations.append(reservedLocations.pop(0))
@@ -220,16 +233,16 @@ def assign(item):
             costs[item] -= 1
     elif item == "WaterVeinShard":
         if costs[item] > 0:
-            costs[item] -= 4
+            costs[item] -= 3
     elif item == "SunstoneShard":
         if costs[item] > 0:
-            costs[item] -= 2
+            costs[item] -= 1
     elif item in costs.keys():
         costs[item] = 0
     inventory[item] += 1
     return item
 
-#for use in limitkeys mode    
+# for use in limitkeys mode    
 def force_assign(item, location, output, spoiler):
 
     inventory[item] += 1
@@ -278,6 +291,8 @@ eventsOutput = {
     "WaterVeinShard": "RB24",
     "SunstoneShard": "RB26"
 }
+
+limitKeysPool = ["SKWallJump", "SKChargeFlame", "SKDash", "SKStomp", "SKDoubleJump", "SKGlide", "SKBash", "SKClimb", "SKGrenade", "SKChargeJump", "EVGinsoKey", "EVForlornKey", "EVHoruKey", "EVWater", "EVWind"]
 
 presets = {
     "casual": ["normal", "dboost-light"],
@@ -348,7 +363,7 @@ for seedOffset in range(0, args.count):
         "Water": 99,
         "Wind": 99,
         "WaterVeinShard": 8,
-        "SunstoneShard": 6
+        "SunstoneShard": 5
     }
 
     # we use OrderedDicts here because the order of a dict depends on the size of the dict and the hash of the keys
@@ -364,7 +379,7 @@ for seedOffset in range(0, args.count):
     connectionQueue = []
     assignQueue = []
 
-    itemCount = 241.0
+    itemCount = 244.0
     keystoneCount = 0
     mapstoneCount = 0
     treesAndEventsReached = 0
@@ -374,9 +389,9 @@ for seedOffset in range(0, args.count):
             ("EX1", 1),
             ("EX10", 2),
             ("EX15", 6),
-            ("EX100", 52),
+            ("EX100", 51),
             ("EX200", 28),
-            ("KS", 36),
+            ("KS", 40),
             ("MS", 9),
             ("AC", 33),
             ("EC", 14),
@@ -417,7 +432,7 @@ for seedOffset in range(0, args.count):
         ])
     else:
         itemPool = OrderedDict([
-            ("NO1", 62),
+            ("NO1", 61),
             ("EX1", 1),
             ("EX10", 10),
             ("EX15", 15),
@@ -425,7 +440,7 @@ for seedOffset in range(0, args.count):
             ("EX30", 20),
             ("EX50", 25),
             ("EX100", 14),
-            ("KS", 36),
+            ("KS", 40),
             ("MS", 9),
             ("AC", 0),
             ("EC", 3),
@@ -467,15 +482,24 @@ for seedOffset in range(0, args.count):
             itemPool["EX100"] -= 6
         else:
             itemPool["NO1"] -= 6
-            
+    
+
+    
     if args.limitkeys:
-        ginsoKeySpot = random.randint(1,13)
-        horuKeySpot = random.randint(2,14)
-        if ginsoKeySpot == horuKeySpot:
-            ginsoKeySpot -= 1
+        satisfied = False
+        while not satisfied:
+            ginso = random.randint(0,13)
+            if ginso == 13:
+                ginso = 14
+            forlorn = random.randint(0,13)
+            horu = random.randint(0,14)
+            if ginso != forlorn and ginso != horu and forlorn != horu and ginso+forlorn < 27:
+                satisfied = True
+        keySpots = {limitKeysPool[ginso]:"GinsoKey", limitKeysPool[forlorn]:"ForlornKey", limitKeysPool[horu]:"HoruKey"}
         itemPool["GinsoKey"] = 0
+        itemPool["ForlornKey"] = 0
         itemPool["HoruKey"] = 0
-        itemCount -= 2
+        itemCount -= 3
         
     inventory = OrderedDict([
         ("NO1", 0),
@@ -561,11 +585,8 @@ for seedOffset in range(0, args.count):
     output.write("-280256|EC|1\n")  # first energy cell
     output.write("-1680104|EX|100\n")  # glitchy 100 orb at spirit tree
     output.write("-12320248|EX|100\n")  # forlorn escape plant
-    # misty keystones
-    output.write("-10759968|KS|1\n")
-    output.write("-10440008|KS|1\n")
-    output.write("-9120036|KS|1\n")
-    output.write("-7680144|KS|1\n")
+    # the 2nd keystone in misty can get blocked by alt+R, so make it unimportant
+    output.write("-10440008|EX|100\n")
 
     if not includePlants:
         for location in plants:
@@ -608,14 +629,6 @@ for seedOffset in range(0, args.count):
         limitkeysGinsoIndex = -1
         limitkeysHoruIndex = -1
         for i in range(0, len(locationsToAssign)):
-            if args.limitkeys and (locationsToAssign[i].orig[:2] == "EV" or locationsToAssign[i].orig[:2] == "SK") and locationsToAssign[i].orig != "EVWarmth":
-                treesAndEventsReached += 1
-                if treesAndEventsReached >= ginsoKeySpot and inventory["GinsoKey"] == 0 and limitkeysGinsoIndex == -1:
-                    limitkeysGinsoIndex = i
-                    continue
-                if treesAndEventsReached >= horuKeySpot and inventory["HoruKey"] == 0 and limitkeysHoruIndex == -1:
-                    limitkeysHoruIndex = i
-                    continue
             if assignQueue:
                 itemsToAssign.append(assign(assignQueue.pop(0)))
             elif inventory["KS"] < keystoneCount:
@@ -625,15 +638,6 @@ for seedOffset in range(0, args.count):
             else:
                 itemsToAssign.append(assign_random())
             itemCount -= 1
-        
-        # if using --limitkeys, force the keys onto trees
-        if limitkeysGinsoIndex >= 0:
-            force_assign("GinsoKey", locationsToAssign.pop(limitkeysGinsoIndex), output, spoiler)
-            if limitkeysGinsoIndex < limitkeysHoruIndex:
-                limitkeysHoruIndex -= 1
-        
-        if limitkeysHoruIndex >= 0:
-            force_assign("HoruKey", locationsToAssign.pop(limitkeysHoruIndex), output, spoiler)
         
         # open all reachable doors (for the next iteration)
         for area in doorQueue.keys():
