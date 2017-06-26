@@ -292,7 +292,7 @@ eventsOutput = {
     "SunstoneShard": "RB26"
 }
 
-limitKeysPool = ["SKWallJump", "SKChargeFlame", "SKDash", "SKStomp", "SKDoubleJump", "SKGlide", "SKBash", "SKClimb", "SKGrenade", "SKChargeJump", "EVGinsoKey", "EVForlornKey", "EVHoruKey", "EVWater", "EVWind"]
+limitKeysPool = ["SKWallJump", "SKChargeFlame", "SKDash", "SKStomp", "SKDoubleJump", "SKGlide", "SKClimb", "SKGrenade", "SKChargeJump", "EVGinsoKey", "EVForlornKey", "EVHoruKey", "SKBash", "EVWater", "EVWind"]
 
 presets = {
     "casual": ["normal", "dboost-light"],
@@ -482,18 +482,16 @@ for seedOffset in range(0, args.count):
             itemPool["EX100"] -= 6
         else:
             itemPool["NO1"] -= 6
-    
 
-    
     if args.limitkeys:
         satisfied = False
         while not satisfied:
-            ginso = random.randint(0,13)
-            if ginso == 13:
+            ginso = random.randint(0,12)
+            if ginso == 12:
                 ginso = 14
             forlorn = random.randint(0,13)
             horu = random.randint(0,14)
-            if ginso != forlorn and ginso != horu and forlorn != horu and ginso+forlorn < 27:
+            if ginso != forlorn and ginso != horu and forlorn != horu and ginso+forlorn < 26:
                 satisfied = True
         keySpots = {limitKeysPool[ginso]:"GinsoKey", limitKeysPool[forlorn]:"ForlornKey", limitKeysPool[horu]:"HoruKey"}
         itemPool["GinsoKey"] = 0
@@ -626,8 +624,9 @@ for seedOffset in range(0, args.count):
                 spoilerPath = prepare_path(len(locationsToAssign))
         # pick what we're going to put in our accessible space
         itemsToAssign = []
-        limitkeysGinsoIndex = -1
-        limitkeysHoruIndex = -1
+        if len(locationsToAssign) < len(assignQueue) + keystoneCount - inventory["KS"] + mapstoneCount - inventory["MS"]:
+            locationsToAssign.append(reservedLocations.pop(0))
+            locationsToAssign.append(reservedLocations.pop(0))
         for i in range(0, len(locationsToAssign)):
             if assignQueue:
                 itemsToAssign.append(assign(assignQueue.pop(0)))
