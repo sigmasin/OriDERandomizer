@@ -1703,7 +1703,7 @@
       </Connection>
       <Connection>
         <Home name="GumoHideout"/>
-        <Target name="LowerBlackroot"/>
+        <Target name="LowerBlackRoot"/>
         <Requirements>
           <Requirement mode="glitched">Dash</Requirement>
         </Requirements>
@@ -3266,6 +3266,11 @@
         <Item>EX100</Item>
       </Location>
       <Location>
+        <X>-1076</X>
+        <Y>32</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
         <X>-1188</X>
         <Y>-100</Y>
         <Item>SKClimb</Item>
@@ -3274,7 +3279,7 @@
     <Connections>
       <Connection>
         <Home name="misty"/>
-        <Target name="mistyEnd"/>
+        <Target name="mistyPostClimb"/>
         <Requirements>
           <Requirement mode="normal">Climb+DoubleJump</Requirement>
           <Requirement mode="normal">ChargeJump</Requirement>
@@ -3315,8 +3320,8 @@
     </Locations>
     <Connections>
     </Connections>
-  </Area>  
-  <Area name="mistyEnd">
+  </Area>
+  <Area name="mistyPostClimb">
     <Locations>
       <Location>
         <X>-837</X>
@@ -3329,19 +3334,42 @@
         <Item>EX200</Item>
       </Location>
       <Location>
+        <X>-912</X>
+        <Y>-36</Y>
+        <Item>KS</Item>
+      </Location>
+      <Location>
+        <X>-768</X>
+        <Y>-144</Y>
+        <Item>KS</Item>
+      </Location>      
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="mistyPostClimb"/>
+        <Target name="mistyEndGrenade"/>
+        <Requirements>
+          <Requirement mode="normal">Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="mistyPostClimb"/>
+        <Target name="mistyEnd"/>
+        <Requirements>
+          <Requirement mode="normal">KS+KS+KS+KS</Requirement>
+        </Requirements>
+      </Connection>      
+    </Connections>
+  </Area>  
+  <Area name="mistyEnd">
+    <Locations>
+      <Location>
         <X>0</X>
         <Y>8</Y>
         <Item>EVForlornKey</Item>
       </Location>
     </Locations>
     <Connections>
-      <Connection>
-        <Home name="misty"/>
-        <Target name="mistyEndGrenade"/>
-        <Requirements>
-          <Requirement mode="normal">Grenade</Requirement>
-        </Requirements>
-      </Connection>  
     </Connections>
   </Area>
   <Area name="mistyEndGrenade">
