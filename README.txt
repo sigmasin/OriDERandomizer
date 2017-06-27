@@ -3,6 +3,8 @@ Setup:
 Put Assembly-CSharp.dll in Steam/steamapps/common/Ori DE/oriDE_Data/Managed
 Rename one of the seeds to "randomizer.dat", put it in Steam/steamapps/common/Ori DE
 
+CovertMuffin has a great video guide on setting up the randomizer here: https://youtu.be/0O8_o4nxd_o
+
 Notes:
 
 If you get stuck, use Alt+R to send yourself back to glades. Wall jump, double jump, and post ginso escape are all possible sticking points (you will be able to get into swamp without doing the ginso escape, at some point). Don't use Alt+R while you're in a locked room (sein fronkey fight, ginso miniboss, etc.) or you will probably be softlocked.
