@@ -233,7 +233,7 @@
           <Requirement mode="normal">Bash+Grenade+WallJump</Requirement>
           <Requirement mode="lure">Bash+WallJump</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
-          <Requirement mode="cdash">Dash</Requirement>
+          <Requirement mode="cdash-farming">Dash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -357,7 +357,7 @@
           <Requirement mode="normal">EC+EC+EC+EC+DoubleJump</Requirement>
           <Requirement mode="normal">EC+EC+EC+EC+Bash</Requirement>
           <Requirement mode="normal">EC+EC+EC+EC+ChargeJump</Requirement>
-          <Requirement mode="cdash">EC+EC+EC+EC+Dash</Requirement>
+          <Requirement mode="cdash-farming">EC+EC+EC+EC+Dash</Requirement>
           <Requirement mode="extended-damage">EC+EC+EC+EC+WallJump+Glide</Requirement>
           <Requirement mode="glitched">EC+EC+EC+DoubleJump</Requirement>
           <Requirement mode="glitched">EC+EC+EC+Bash</Requirement>
@@ -485,7 +485,7 @@
         <Requirements>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
-          <Requirement mode="cdash">Dash</Requirement>
+          <Requirement mode="cdash-farming">Dash</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -568,6 +568,7 @@
         <Home name="upperGladesSpiderCavernPuzzle"/>
         <Target name="upperGladesSpiderHealth"/>
         <Requirements>
+          <Requirement mode="normal">Grenade</Requirement>
           <Requirement mode="normal">ChargeFlame</Requirement>
         </Requirements>
       </Connection>
@@ -591,6 +592,7 @@
         <Home name="upperGladesSpiderCavernPuzzle"/>
         <Target name="moonGrotto"/>
         <Requirements>
+          <Requirement mode="normal">Grenade</Requirement>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">DoubleJump</Requirement>
         </Requirements>
@@ -726,11 +728,11 @@
           <Requirement mode="normal">Bash+Grenade</Requirement>
           <Requirement mode="normal">Glide+WallJump+Grenade</Requirement>
           <Requirement mode="normal">Bash+Grenade</Requirement>
-          <Requirement mode="cdash">ChargeJump+Climb+Dash</Requirement>
-          <Requirement mode="cdash">ChargeJump+WallJump+Dash</Requirement>
+          <Requirement mode="cdash-farming">ChargeJump+Climb+Dash</Requirement>
+          <Requirement mode="cdash-farming">ChargeJump+WallJump+Dash</Requirement>
           <Requirement mode="extended">DoubleJump+Grenade</Requirement>
           <Requirement mode="extended">DoubleJump+ChargeFlame</Requirement>
-          <Requirement mode="cdash">DoubleJump+Dash</Requirement>
+          <Requirement mode="cdash-farming">DoubleJump+Dash</Requirement>
         </Requirements>
       </Connection>      
     </Connections>
