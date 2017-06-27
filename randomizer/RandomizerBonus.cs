@@ -76,7 +76,7 @@ public static class RandomizerBonus
             else 
             {
                 Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
-                Randomizer.showHint("Gumon Seal Shard (" + RandomizerBonus.SunstoneShards().ToString() + "/2)");
+                Randomizer.showHint("Gumon Seal Shard (" + RandomizerBonus.GumonSealShards().ToString() + "/2)");
             }
             break;
         case 28:

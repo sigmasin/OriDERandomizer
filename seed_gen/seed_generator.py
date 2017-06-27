@@ -182,6 +182,9 @@ def prepare_path(free_space):
                 cost = 0
                 energy = 0
                 health = 0
+                waterVeinShard = 0
+                gumonSealShard = 0
+                sunstoneShard = 0
                 for req in req_set:
                     if costs[req] > 0:
                         if req == "EC":
@@ -192,6 +195,21 @@ def prepare_path(free_space):
                         elif req == "HC":
                             health += 1
                             if health > inventory["HC"]:
+                                requirements.append(req)
+                                cost += costs[req]
+                        elif req == "WaterVeinShard":
+                            waterVeinShard += 1
+                            if waterVeinShard > inventory["WaterVeinShard"]:
+                                requirements.append(req)
+                                cost += costs[req]
+                        elif req == "GumonSealShard":
+                            gumonSealShard += 1
+                            if gumonSealShard > inventory["GumonSealShard"]:
+                                requirements.append(req)
+                                cost += costs[req]
+                        elif req == "SunstoneShard":
+                            sunstoneShard += 1
+                            if sunstoneShard > inventory["SunstoneShard"]:
                                 requirements.append(req)
                                 cost += costs[req]
                         else:
