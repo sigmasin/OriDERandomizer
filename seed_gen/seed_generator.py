@@ -52,11 +52,15 @@ class Connection:
                 req.append("WaterVeinShard")
                 req.append("WaterVeinShard")
                 req.append("WaterVeinShard")
+            match = re.match(".*ForlornKey.*", str(req))
+            if match:
+                req.remove("ForlornKey")
+                req.append("GumonSealShard")
+                req.append("GumonSealShard")
+                req.append("GumonSealShard")                
             match = re.match(".*HoruKey.*", str(req))
             if match:
                 req.remove("HoruKey")
-                req.append("SunstoneShard")
-                req.append("SunstoneShard")
                 req.append("SunstoneShard")
                 req.append("SunstoneShard")
                 req.append("SunstoneShard")
@@ -119,7 +123,6 @@ def open_free_connections():
     found = False
     keystoneCount = 0
     mapstoneCount = 0
-
     # python 3 wont allow concurrent changes
     # list(areasReached.keys()) is a copy of the original list
     for area in list(areasReached.keys()):
@@ -151,7 +154,7 @@ def get_all_accessible_locations():
                     loc = location
                     break
             if loc:
-                force_assign(keySpots[loc.orig], loc, output, spoiler)
+                force_assign(keySpots[loc.orig], loc)
                 currentLocations.remove(loc)                    
         locations.extend(currentLocations)
         areas[area].clear_locations()
@@ -172,7 +175,7 @@ def prepare_path(free_space):
         for connection in areas[area].get_connections():
             if connection.target in areasReached:
                 continue
-            if args.limitkeys and ("GinsoKey" in connection.get_requirements()[0] or "HoruKey" in connection.get_requirements()[0]):
+            if args.limitkeys and ("GinsoKey" in connection.get_requirements()[0] or "ForlornKey" in connection.get_requirements()[0] or "HoruKey" in connection.get_requirements()[0]):
                 continue
             for req_set in connection.get_requirements():
                 requirements = []
@@ -231,25 +234,25 @@ def assign(item):
     if item == "EC" or item == "KS" or item == "HC":
         if costs[item] > 0:
             costs[item] -= 1
-    elif item == "WaterVeinShard":
+    elif item == "WaterVeinShard" or item == "GumonSealShard" or item == "SunstoneShard":
         if costs[item] > 0:
-            costs[item] -= 3
-    elif item == "SunstoneShard":
-        if costs[item] > 0:
-            costs[item] -= 1
+            costs[item] -= 2
     elif item in costs.keys():
         costs[item] = 0
     inventory[item] += 1
     return item
 
 # for use in limitkeys mode    
-def force_assign(item, location, output, spoiler):
+def force_assign(item, location):
+
+    global outputStr
+    global spoilerStr
 
     inventory[item] += 1
     costs[item] = 0
-    output.write(str(location.get_key()) + "|")
-    output.write(str(eventsOutput[item][:2]) + "|" + eventsOutput[item][2:] + "\n")
-    spoiler.write(item + " from " + location.area + " " + location.orig + " (" + str(location.x) + ", " + str(location.y) + ")\n")
+    outputStr +=  (str(location.get_key()) + "|")
+    outputStr +=  (str(eventsOutput[item][:2]) + "|" + eventsOutput[item][2:] + "\n")
+    spoilerStr += (item + " from " + location.area + " " + location.orig + " (" + str(location.x) + ", " + str(location.y) + ")\n")
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--logic", help="Choose a preset group of paths for the generator to use", choices=["casual", "normal", "dboost", "extended", "hard", "ohko", "0xp", "glitched"])
@@ -262,8 +265,8 @@ parser.add_argument("--zeroxp", help="Enable 0xp mode", action="store_true")
 parser.add_argument("--nobonus", help="Remove bonus powerups from the item pool", action="store_true")
 parser.add_argument("--noplants", help="Ignore petrified plants when assigning items", action="store_true")
 parser.add_argument("--starved", help="Reduces the rate at which skills will appear when not required to advance", action="store_true")
-parser.add_argument("--shards", help="The Water Vein and Sunstone will be awarded after enough shards are found (more shards than required are available)", action="store_true")
-parser.add_argument("--limitkeys", help="The Water Vein and Sunstone will only appear at skill trees or event sources", action="store_true")
+parser.add_argument("--shards", help="The Water Vein, Gumon Seal, and Sunstone will be awarded after 2/3 shards are found", action="store_true")
+parser.add_argument("--limitkeys", help="The Water Vein, Gumon Seal, and Sunstone will only appear at skill trees or event sources", action="store_true")
 parser.add_argument("--analysis", help="Report stats on the skill order for all seeds generated", action="store_true")
 
 args = parser.parse_args()
@@ -289,7 +292,8 @@ eventsOutput = {
     "HoruKey": "EV4",
     "Warmth": "EV5",
     "WaterVeinShard": "RB24",
-    "SunstoneShard": "RB26"
+    "GumonSealShard": "RB26",
+    "SunstoneShard": "RB28"
 }
 
 limitKeysPool = ["SKWallJump", "SKChargeFlame", "SKDash", "SKStomp", "SKDoubleJump", "SKGlide", "SKClimb", "SKGrenade", "SKChargeJump", "EVGinsoKey", "EVForlornKey", "EVHoruKey", "SKBash", "EVWater", "EVWind"]
@@ -335,12 +339,25 @@ skillAnalysis = {
     "Dash": 0,
     "Grenade": 0
 }
+ 
+def placeItems():
+
+    global costs
+    global areas
+    global areasReached    
+    global itemCount
+    global itemPool
+    global assignQueue
+    global inventory
+    global doorQueue
+    global mapQueue
+    global connectionQueue
+    global outputStr
+    global spoilerStr
+
+    outputStr = ""
+    spoilerStr = ""
     
-for seedOffset in range(0, args.count):
-
-    seed = args.seed + seedOffset
-    random.seed(seed)
-
     costs = {
         "Free": 0,
         "MS": 0,
@@ -362,8 +379,9 @@ for seedOffset in range(0, args.count):
         "HoruKey": 12,
         "Water": 99,
         "Wind": 99,
-        "WaterVeinShard": 8,
-        "SunstoneShard": 5
+        "WaterVeinShard": 6,
+        "GumonSealShard": 6,
+        "SunstoneShard": 6
     }
 
     # we use OrderedDicts here because the order of a dict depends on the size of the dict and the hash of the keys
@@ -374,15 +392,16 @@ for seedOffset in range(0, args.count):
     # to prevent certain types of denial of service (where an attacker renders a Python server unresponsive
     # by causing mass hash collisions). This means that the order of a given dictionary is then also
     # dependent on the random hash seed for the current Python invocation.
+    
     areas = OrderedDict()
+    
     areasReached = OrderedDict([("sunkenGladesRunaway", True)])
     connectionQueue = []
     assignQueue = []
-
+    
     itemCount = 244.0
     keystoneCount = 0
     mapstoneCount = 0
-    treesAndEventsReached = 0
 
     if not hardMode:
         itemPool = OrderedDict([
@@ -428,6 +447,7 @@ for seedOffset in range(0, args.count):
             ("RB20", 3),
             ("RB22", 3),
             ("WaterVeinShard", 0),
+            ("GumonSealShard", 0),
             ("SunstoneShard", 0)
         ])
     else:
@@ -462,6 +482,7 @@ for seedOffset in range(0, args.count):
             ("Wind", 1),
             ("Warmth", 1),
             ("WaterVeinShard", 0),
+            ("GumonSealShard", 0),
             ("SunstoneShard", 0)
         ])
 
@@ -475,8 +496,10 @@ for seedOffset in range(0, args.count):
             
     if args.shards:
         itemPool["WaterVeinShard"] = 3
-        itemPool["SunstoneShard"] = 5
+        itemPool["GumonSealShard"] = 3
+        itemPool["SunstoneShard"] = 3
         itemPool["GinsoKey"] = 0
+        itemPool["ForlornKey"] = 0
         itemPool["HoruKey"] = 0
         if not hardMode:
             itemPool["EX100"] -= 6
@@ -493,6 +516,7 @@ for seedOffset in range(0, args.count):
             horu = random.randint(0,14)
             if ginso != forlorn and ginso != horu and forlorn != horu and ginso+forlorn < 26:
                 satisfied = True
+        global keySpots
         keySpots = {limitKeysPool[ginso]:"GinsoKey", limitKeysPool[forlorn]:"ForlornKey", limitKeysPool[horu]:"HoruKey"}
         itemPool["GinsoKey"] = 0
         itemPool["ForlornKey"] = 0
@@ -546,6 +570,7 @@ for seedOffset in range(0, args.count):
         ("RB20", 0),
         ("RB22", 0),
         ("WaterVeinShard", 0),
+        ("GumonSealShard", 0),
         ("SunstoneShard", 0)
     ])
 
@@ -574,24 +599,24 @@ for seedOffset in range(0, args.count):
                 area.add_connection(connection)
         areas[area.name] = area
 
-    output = open("randomizer_" + mode + str(seed) + ".dat", 'w')
-    spoiler = open("spoiler_" + mode + str(seed) + ".txt", 'w')
+
 
     # flags line
-    output.write(flags + "\n")
+    outputStr += (flags + "\n")
 
-    output.write("-280256|EC|1\n")  # first energy cell
-    output.write("-1680104|EX|100\n")  # glitchy 100 orb at spirit tree
-    output.write("-12320248|EX|100\n")  # forlorn escape plant
+    outputStr += ("-280256|EC|1\n")  # first energy cell
+    outputStr += ("-1680104|EX|100\n")  # glitchy 100 orb at spirit tree
+    outputStr += ("-12320248|EX|100\n")  # forlorn escape plant
     # the 2nd keystone in misty can get blocked by alt+R, so make it unimportant
-    output.write("-10440008|EX|100\n")
+    outputStr += ("-10440008|EX|100\n")
 
     if not includePlants:
         for location in plants:
-            output.write(str(location.get_key()) + "|NO|0\n")
+            outputStr += (str(location.get_key()) + "|NO|0\n")
 
     locationsToAssign = []
     connectionQueue = []
+    global reservedLocations
     reservedLocations = []
     
     skillCount = 10
@@ -619,12 +644,20 @@ for seedOffset in range(0, args.count):
         if not doorQueue and not mapQueue:
             spoilerPath = prepare_path(len(locationsToAssign))
             if not assignQueue:
+                # we've painted ourselves into a corner, try again
+                if not reservedLocations:
+                    placeItems()
+                    return
                 locationsToAssign.append(reservedLocations.pop(0))
                 locationsToAssign.append(reservedLocations.pop(0))
                 spoilerPath = prepare_path(len(locationsToAssign))
         # pick what we're going to put in our accessible space
         itemsToAssign = []
         if len(locationsToAssign) < len(assignQueue) + keystoneCount - inventory["KS"] + mapstoneCount - inventory["MS"]:
+            # we've painted ourselves into a corner, try again
+            if not reservedLocations:
+                placeItems()
+                return
             locationsToAssign.append(reservedLocations.pop(0))
             locationsToAssign.append(reservedLocations.pop(0))
         for i in range(0, len(locationsToAssign)):
@@ -650,28 +683,41 @@ for seedOffset in range(0, args.count):
         # shuffle the items around and put them somewhere
         random.shuffle(itemsToAssign)
         for i in range(0, len(locationsToAssign)):
-            output.write(str(locationsToAssign[i].get_key()) + "|")
+            outputStr +=  (str(locationsToAssign[i].get_key()) + "|")
 
             if itemsToAssign[i] in skillsOutput:
-                output.write(str(skillsOutput[itemsToAssign[i]][:2]) + "|" + skillsOutput[itemsToAssign[i]][2:] + "\n")
+                outputStr +=  (str(skillsOutput[itemsToAssign[i]][:2]) + "|" + skillsOutput[itemsToAssign[i]][2:] + "\n")
                 if args.analysis:
                     skillAnalysis[itemsToAssign[i]] += skillCount
                     skillCount -= 1
             elif itemsToAssign[i] in eventsOutput:
-                output.write(str(eventsOutput[itemsToAssign[i]][:2]) + "|" + eventsOutput[itemsToAssign[i]][2:] + "\n")
+                outputStr +=  (str(eventsOutput[itemsToAssign[i]][:2]) + "|" + eventsOutput[itemsToAssign[i]][2:] + "\n")
             elif itemsToAssign[i][2:]:
-                output.write(itemsToAssign[i][:2] + "|" + itemsToAssign[i][2:] + "\n")
+                outputStr +=  (itemsToAssign[i][:2] + "|" + itemsToAssign[i][2:] + "\n")
             else:
-                output.write(itemsToAssign[i][:2] + "|1\n")
+                outputStr +=  (itemsToAssign[i][:2] + "|1\n")
             if itemsToAssign[i] in costs.keys():
-                spoiler.write(itemsToAssign[i] + " from " + locationsToAssign[i].area + " " + locationsToAssign[i].orig + " (" + str(locationsToAssign[i].x) + ", " + str(locationsToAssign[i].y) + ")\n")
+                spoilerStr += (itemsToAssign[i] + " from " + locationsToAssign[i].area + " " + locationsToAssign[i].orig + " (" + str(locationsToAssign[i].x) + ", " + str(locationsToAssign[i].y) + ")\n")
 
         if spoilerPath:
-            spoiler.write("Forced pickups: " + str(spoilerPath) + "\n")
+            spoilerStr += ("Forced pickups: " + str(spoilerPath) + "\n")
         locationsToAssign = []
 
-    spoiler.close()
+    output = open("randomizer_" + mode + str(seed) + ".dat", 'w')
+    output.write(outputStr)
     output.close()
+    
+    spoiler = open("spoiler_" + mode + str(seed) + ".txt", 'w')
+    spoiler.write(spoilerStr)
+    spoiler.close()
+    
+ 
+for seedOffset in range(0, args.count):
+
+    seed = args.seed + seedOffset
+    random.seed(seed)
+    
+    placeItems()   
 
 if args.analysis:
     print(skillAnalysis)

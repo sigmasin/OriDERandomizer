@@ -1,3 +1,17 @@
+v1.1
+
+-Fixed some path bugs and key-lock situations
+-Charge dash is no longer expected in Glades or Blackroot after finding dash early in extended mode
+-Shards can no longer appear inside their own dungeons
+-The Sunstone now requires 2/3 shards instead of 3/5
+-The Gumon Seal is now included in shards mode
+-Limitkeys now includes the Gumon Seal in its restrictions
+-If Misty Woods is not in its initial state, Alt+R will change it into the first revisit state. As a result, the 1st, 3rd, and 4th keystones in Misty are now in the drop pool again. The 2nd keystone becomes inaccessible if you Alt+R out of Misty before collecting it, thus, it will always just be a 100 exp orb.
+
+v1.0.1
+
+-Fix "replay last message" not displaying properly
+
 v1.0
 
 -Using mapstones from the far edges will no longer fail to give a pickup

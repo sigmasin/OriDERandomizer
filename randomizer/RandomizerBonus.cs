@@ -68,15 +68,27 @@ public static class RandomizerBonus
             }
             break;
         case 26:
-            if (RandomizerBonus.SunstoneShards() >= 2)
+            if (RandomizerBonus.GumonSealShards() >= 1)
             {
-                Randomizer.showHint("Sunstone Shard (3/3)");
+                Randomizer.showHint("Gumon Seal Shard (2/2)");
+                Keys.ForlornRuins = true;
+            }
+            else 
+            {
+                Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
+                Randomizer.showHint("Gumon Seal Shard (" + RandomizerBonus.SunstoneShards().ToString() + "/2)");
+            }
+            break;
+        case 28:
+            if (RandomizerBonus.SunstoneShards() >= 1)
+            {
+                Randomizer.showHint("Sunstone Shard (2/2)");
                 Keys.MountHoru = true;
             }
             else 
             {
                 Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
-                Randomizer.showHint("Sunstone Shard (" + RandomizerBonus.SunstoneShards().ToString() + "/3)");
+                Randomizer.showHint("Sunstone Shard (" + RandomizerBonus.SunstoneShards().ToString() + "/2)");
             }
             break;
 		}
@@ -163,8 +175,15 @@ public static class RandomizerBonus
         return (Characters.Sein.Inventory.SkillPointsCollected & 0x03000000) >> 24;
     }
     
-    public static int SunstoneShards()
+    public static int GumonSealShards()
     {
         return (Characters.Sein.Inventory.SkillPointsCollected & 0x0c000000) >> 26;
+    } 
+    
+    public static int SunstoneShards()
+    {
+        return (Characters.Sein.Inventory.SkillPointsCollected & 0x30000000) >> 28;
     }
+    
+
 }
