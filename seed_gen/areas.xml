@@ -897,6 +897,7 @@
           <Requirement mode="normal">Dash+Grenade+Bash</Requirement>
           <Requirement mode="extended">DoubleJump</Requirement>
           <Requirement mode="extended">Grenade+Bash</Requirement>
+          <!-- for extended mode, this and the right blackroot connection can be done without dash, using a laser crouch -->
         </Requirements>
       </Connection>
       <Connection>
@@ -2024,6 +2025,7 @@
           <Requirement mode="dboost">KS+KS+KS+KS+ChargeJump+WallJump+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="dboost">KS+KS+KS+KS+ChargeJump+Climb+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="extended-damage">KS+KS+KS+KS+ChargeJump+HC+HC+HC+HC+HC</Requirement>
+          <!-- this can be reached with chargejump only due to a micro ledge-->
         </Requirements>
       </Connection>
       <Connection>
@@ -2163,6 +2165,7 @@
           <Requirement mode="normal">ChargeJump+Climb+Glide</Requirement>
           <Requirement mode="normal">ChargeJump+Climb+DoubleJump</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
+          <!-- dbash here requires dboosting, but only 2 if done right -->
         </Requirements>
       </Connection>
       <Connection>
