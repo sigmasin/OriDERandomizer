@@ -85,7 +85,8 @@
           <Requirement mode="lure">Bash</Requirement>
           <Requirement mode="normal">Glide+Wind</Requirement>
         </Requirements>
-      </Connection></Connections>
+      </Connection>
+    </Connections>
   </Area>
   <Area name="sunkenGladesNadePool">
     <Locations>
