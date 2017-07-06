@@ -176,6 +176,7 @@
           <Requirement mode="dboost-light">EC+EC+EC+EC+ChargeJump+Bash</Requirement>
           <Requirement mode="normal">EC+EC+EC+EC+Grenade+Bash</Requirement>
           <Requirement mode="normal">EC+EC+EC+EC+Climb+DoubleJump+Glide</Requirement>
+          <Requirement mode="normal">EC+EC+EC+EC+WallJump+DoubleJump+Glide</Requirement>
           <Requirement mode="timed-level">EC+EC+WallJump</Requirement>
           <Requirement mode="timed-level">EC+EC+Climb</Requirement>
           <Requirement mode="timed-level">EC+EC+ChargeJump+Bash</Requirement>
@@ -263,7 +264,6 @@
       </Connection>
     </Connections>
   </Area>
-  <!-- NEW AREA -->
   <Area name="deathGauntlet">
     <Locations>
       <Location>
@@ -274,7 +274,7 @@
     </Locations>
     <Connections>
       <Connection>
-        <Home name="moonGrotto"/>
+        <Home name="deathGauntlet"/>
         <Target name="deathStomp"/>
         <Requirements>
           <Requirement mode="normal">Stomp+Water</Requirement>
@@ -291,7 +291,7 @@
       </Connection>
     </Connections>
     <Connection>
-      <Home name="moonGrotto"/>
+      <Home name="deathGauntlet"/>
       <Target name="deathWater"/>
       <Requirements>
         <Requirement mode="normal">Water+EC+EC+EC+EC</Requirement>
@@ -314,7 +314,6 @@
       </Requirements>
     </Connection>
   </Area>
-  <!-- END NEW AREA -->
   <Area name="WallJumpMapStone">
     <Locations>
       <Location>
@@ -432,7 +431,7 @@
         <Home name="sunkenGladesSpiritCavernB"/>
         <Target name="spiritTreeRefined"/>
         <Requirements>
-          <!-- this frees up a couple pickups near cflame -->
+          <!-- will cause some painted-into-corner scenarios, revisit this if it's too much -->
           <Requirement mode="normal">KS+KS+KS+KS</Requirement>
         </Requirements>
       </Connection>
@@ -561,7 +560,6 @@
         <Home name="spiritTreeRefined"/>
         <Target name="ChargeFlame"/>
         <Requirements>
-          <!-- this area is now always accessible without cflame/grenade/stomp -->
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
@@ -735,6 +733,7 @@
           <Requirement mode="dboost-light">EC+EC+EC+EC+ChargeJump+Bash</Requirement>
           <Requirement mode="normal">EC+EC+EC+EC+Grenade+Bash</Requirement>
           <Requirement mode="normal">EC+EC+EC+EC+Climb+DoubleJump+Glide</Requirement>
+          <Requirement mode="normal">EC+EC+EC+EC+WallJump+DoubleJump+Glide</Requirement>
           <Requirement mode="timed-level">EC+EC+WallJump</Requirement>
           <Requirement mode="timed-level">EC+EC+Climb</Requirement>
           <Requirement mode="timed-level">EC+EC+ChargeJump+Bash</Requirement>
@@ -765,8 +764,7 @@
         <Target name="RazielNo"/>
         <Requirements>
           <Requirement mode="normal">Dash</Requirement>
-          <!-- I feel that this should be an extended strat, not a speed strat -->
-          <Requirement mode="extended">Free</Requirement>
+          <Requirement mode="speed">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -830,7 +828,9 @@
           <Requirement mode="normal">Dash+DoubleJump</Requirement>
           <Requirement mode="normal">Dash+ChargeJump</Requirement>
           <Requirement mode="normal">Dash+Bash+Grenade</Requirement>
-          <Requirement mode="extended">Free</Requirement>
+          <Requirement mode="extended">WallJump</Requirement>
+          <Requirement mode="extended">Dash</Requirement>
+          <Requirement mode="glitched">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1110,7 +1110,6 @@
   </Area>
   <Area name="moonGrotto">
     <Locations>
-      <!-- OLD XP ORB WAS HERE -->
       <Location>
         <X>423</X>
         <Y>-169</Y>
@@ -1140,7 +1139,16 @@
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
-      <!-- Other connections have been moved to the deathGauntlet Area -->
+      <Connection>		
+        <Home name="moonGrotto"/>		
+        <Target name="sunkenGladesLaserStomp"/>		
+        <Requirements>		
+          <Requirement mode="normal">ChargeJump</Requirement>		
+          <Requirement mode="normal">Stomp+Water</Requirement>		
+          <Requirement mode="dboost">Stomp+Bash+HC+HC+HC+HC</Requirement>		
+          <Requirement mode="dboost">Stomp+HC+HC+HC+HC+HC</Requirement>		
+        </Requirements>		
+      </Connection>
       <Connection>
         <Home name="moonGrotto"/>
         <Target name="upperGladesSpiderCavernPuzzle"/>
