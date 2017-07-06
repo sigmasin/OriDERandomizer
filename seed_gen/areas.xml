@@ -169,7 +169,7 @@
     <Connections>
       <Connection>
         <Home name="WallJump"/>
-        <Target name="moonGrotto"/>
+        <Target name="deathGauntlet"/>
         <Requirements>
           <Requirement mode="dboost-light">EC+EC+EC+EC+WallJump</Requirement>
           <Requirement mode="dboost-light">EC+EC+EC+EC+Climb</Requirement>
@@ -180,6 +180,7 @@
           <Requirement mode="timed-level">EC+EC+Climb</Requirement>
           <Requirement mode="timed-level">EC+EC+ChargeJump+Bash</Requirement>
           <Requirement mode="timed-level">EC+EC+Grenade+Bash</Requirement>
+          <Requirement mode="lure">EC+EC+EC+EC+Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -262,6 +263,58 @@
       </Connection>
     </Connections>
   </Area>
+  <!-- NEW AREA -->
+  <Area name="deathGauntlet">
+    <Locations>
+      <Location>
+        <X>303</X>
+        <Y>-190</Y>
+        <Item>EX100</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="deathStomp"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp+Water</Requirement>
+          <Requirement mode="dboost">Stomp</Requirement>
+          <Requirement mode="extended-damage">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="deathGauntlet"/>
+        <Target name="sunkenGladesLaserStomp"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+    <Connection>
+      <Home name="moonGrotto"/>
+      <Target name="deathWater"/>
+      <Requirements>
+        <Requirement mode="normal">Water+EC+EC+EC+EC</Requirement>
+        <Requirement mode="dboost">EC+EC+EC+EC</Requirement>
+      </Requirements>
+    </Connection>
+    <Connection>
+      <Home name="deathGauntlet"/>
+      <Target name="moonGrotto"/>
+      <Requirements>
+        <Requirement mode="dboost-light">WallJump</Requirement>
+        <Requirement mode="dboost-light">Climb</Requirement>
+        <Requirement mode="dboost-light">ChargeJump+Bash</Requirement>
+        <Requirement mode="normal">Grenade+Bash</Requirement>
+        <Requirement mode="normal">Climb+DoubleJump+Glide</Requirement>
+        <Requirement mode="normal">WallJump+DoubleJump+Glide</Requirement>
+        <Requirement mode="timed-level">WallJump</Requirement>
+        <Requirement mode="timed-level">Climb</Requirement>
+        <Requirement mode="timed-level">ChargeJump+Bash</Requirement>
+      </Requirements>
+    </Connection>
+  </Area>
+  <!-- END NEW AREA -->
   <Area name="WallJumpMapStone">
     <Locations>
       <Location>
@@ -272,7 +325,7 @@
     </Locations>
     <Connections>
     </Connections>
-  </Area>  
+  </Area>
   <Area name="WallJumpAbove">
     <Locations>
       <Location>
@@ -379,9 +432,8 @@
         <Home name="sunkenGladesSpiritCavernB"/>
         <Target name="spiritTreeRefined"/>
         <Requirements>
-          <Requirement mode="normal">KS+KS+KS+KS+ChargeFlame</Requirement>
-          <Requirement mode="normal">KS+KS+KS+KS+Grenade</Requirement>
-          <Requirement mode="speed">KS+KS+KS+KS+Stomp</Requirement>
+          <!-- this frees up a couple pickups near cflame -->
+          <Requirement mode="normal">KS+KS+KS+KS</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -509,6 +561,7 @@
         <Home name="spiritTreeRefined"/>
         <Target name="ChargeFlame"/>
         <Requirements>
+          <!-- this area is now always accessible without cflame/grenade/stomp -->
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
@@ -526,6 +579,7 @@
         <Target name="ChargeFlameTree"/>
         <Requirements>
           <Requirement mode="normal">DoubleJump</Requirement>
+          <Requirement mode="speed">Bash+Grenade</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -586,6 +640,8 @@
         <Target name="upperGladesEnergyDoor"/>
         <Requirements>
           <Requirement mode="normal">EC+EC+EC+EC</Requirement>
+          <!-- you can level up with the spider exp -->
+          <Requirement mode="timed-level">EC+EC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -672,7 +728,7 @@
     <Connections>
       <Connection>
         <Home name="DashArea"/>
-        <Target name="moonGrotto"/>
+        <Target name="deathGauntlet"/>
         <Requirements>
           <Requirement mode="dboost-light">EC+EC+EC+EC+WallJump</Requirement>
           <Requirement mode="dboost-light">EC+EC+EC+EC+Climb</Requirement>
@@ -683,6 +739,7 @@
           <Requirement mode="timed-level">EC+EC+Climb</Requirement>
           <Requirement mode="timed-level">EC+EC+ChargeJump+Bash</Requirement>
           <Requirement mode="timed-level">EC+EC+Grenade+Bash</Requirement>
+          <Requirement mode="lure">EC+EC+EC+EC+Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -708,7 +765,8 @@
         <Target name="RazielNo"/>
         <Requirements>
           <Requirement mode="normal">Dash</Requirement>
-          <Requirement mode="speed">Free</Requirement>
+          <!-- I feel that this should be an extended strat, not a speed strat -->
+          <Requirement mode="extended">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -734,7 +792,7 @@
           <Requirement mode="extended">DoubleJump+ChargeFlame</Requirement>
           <Requirement mode="cdash-farming">DoubleJump+Dash</Requirement>
         </Requirements>
-      </Connection>      
+      </Connection>
     </Connections>
   </Area>
   <Area name="DashAreaPlant">
@@ -772,8 +830,7 @@
           <Requirement mode="normal">Dash+DoubleJump</Requirement>
           <Requirement mode="normal">Dash+ChargeJump</Requirement>
           <Requirement mode="normal">Dash+Bash+Grenade</Requirement>
-          <Requirement mode="extended">WallJump</Requirement>
-          <Requirement mode="extended">Dash</Requirement>
+          <Requirement mode="extended">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -818,7 +875,7 @@
         <Requirements>
           <Requirement mode="normal">MS</Requirement>
         </Requirements>
-      </Connection>      
+      </Connection>
     </Connections>
   </Area>
   <Area name="blackrootMapStone">
@@ -831,7 +888,7 @@
     </Locations>
     <Connections>
     </Connections>
-  </Area>   
+  </Area>
   <Area name="BoulderExp">
     <Locations>
       <Location>
@@ -1053,11 +1110,7 @@
   </Area>
   <Area name="moonGrotto">
     <Locations>
-      <Location>
-        <X>303</X>
-        <Y>-190</Y>
-        <Item>EX100</Item>
-      </Location>
+      <!-- OLD XP ORB WAS HERE -->
       <Location>
         <X>423</X>
         <Y>-169</Y>
@@ -1082,6 +1135,14 @@
     <Connections>
       <Connection>
         <Home name="moonGrotto"/>
+        <Target name="deathGauntlet"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <!-- Other connections have been moved to the deathGauntlet Area -->
+      <Connection>
+        <Home name="moonGrotto"/>
         <Target name="upperGladesSpiderCavernPuzzle"/>
         <Requirements>
           <Requirement mode="normal">Bash</Requirement>
@@ -1104,33 +1165,6 @@
           <Requirement mode="normal">Bash+WallJump</Requirement>
           <Requirement mode="normal">ChargeJump+WallJump+DoubleJump</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="moonGrotto"/>
-        <Target name="deathWater"/>
-        <Requirements>
-          <Requirement mode="normal">Water+EC+EC+EC+EC</Requirement>
-          <Requirement mode="dboost">EC+EC+EC+EC</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="moonGrotto"/>
-        <Target name="sunkenGladesLaserStomp"/>
-        <Requirements>
-          <Requirement mode="normal">ChargeJump</Requirement>
-          <Requirement mode="normal">Stomp+Water</Requirement>
-          <Requirement mode="dboost">Stomp+Bash+HC+HC+HC+HC</Requirement>
-          <Requirement mode="dboost">Stomp+HC+HC+HC+HC+HC</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="moonGrotto"/>
-        <Target name="deathStomp"/>
-        <Requirements>
-          <Requirement mode="normal">Stomp+Water</Requirement>
-          <Requirement mode="dboost">Stomp</Requirement>
-          <Requirement mode="extended-damage">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1288,7 +1322,7 @@
           <Requirement mode="lure">Free</Requirement>
         </Requirements>
       </Connection>
-      <Connection>      
+      <Connection>
         <Home name="moonGrotto"/>
         <Target name="moonGrottoPlants"/>
         <Requirements>
@@ -1297,7 +1331,7 @@
           <Requirement mode="cdash">Dash</Requirement>
         </Requirements>
       </Connection>
-      <Connection>      
+      <Connection>
         <Home name="moonGrotto"/>
         <Target name="moonGrottoStompPlant"/>
         <Requirements>
@@ -1306,7 +1340,7 @@
           <Requirement mode="cdash">Stomp+Dash</Requirement>
         </Requirements>
       </Connection>
-      <Connection>      
+      <Connection>
         <Home name="moonGrotto"/>
         <Target name="moonGrottoMortarPlant"/>
         <Requirements>
@@ -1317,19 +1351,19 @@
           <Requirement mode="normal">Bash+ChargeFlame</Requirement>
           <Requirement mode="normal">Bash+Grenade</Requirement>
           <Requirement mode="normal">Glide+ChargeFlame</Requirement>
-          <Requirement mode="normal">Glide+Grenade</Requirement>          
+          <Requirement mode="normal">Glide+Grenade</Requirement>
           <Requirement mode="speed">Dash+ChargeFlame</Requirement>
           <Requirement mode="speed">Dash+Grenade</Requirement>
           <Requirement mode="cdash">Dash</Requirement>
         </Requirements>
-      </Connection>   
+      </Connection>
       <Connection>
         <Home name="moonGrotto"/>
         <Target name="moonGrottoMapStone"/>
         <Requirements>
           <Requirement mode="normal">MS</Requirement>
         </Requirements>
-      </Connection>      
+      </Connection>
     </Connections>
   </Area>
   <Area name="moonGrottoMapStone">
@@ -1342,7 +1376,7 @@
     </Locations>
     <Connections>
     </Connections>
-  </Area>    
+  </Area>
   <Area name="moonGrottoPlants">
     <Locations>
       <Location>
@@ -1354,12 +1388,12 @@
         <X>628</X>
         <Y>-120</Y>
         <Item>Plant</Item>
-      </Location>     
+      </Location>
       <Location>
         <X>330</X>
         <Y>-78</Y>
         <Item>Plant</Item>
-      </Location>        
+      </Location>
     </Locations>
     <Connections>
     </Connections>
@@ -1374,7 +1408,7 @@
     </Locations>
     <Connections>
     </Connections>
-  </Area>  
+  </Area>
   <Area name="moonGrottoMortarPlant">
     <Locations>
       <Location>
@@ -1385,7 +1419,7 @@
     </Locations>
     <Connections>
     </Connections>
-  </Area> 
+  </Area>
   <Area name="moonGrottoWaterStomp">
     <Locations>
       <Location>
@@ -1635,7 +1669,7 @@
     </Locations>
     <Connections>
     </Connections>
-  </Area>  
+  </Area>
   todo
   <Area name="sideFallCell">
     <Locations>
@@ -1709,7 +1743,7 @@
         <Requirements>
           <Requirement mode="glitched">Dash</Requirement>
         </Requirements>
-      </Connection>         
+      </Connection>
     </Connections>
   </Area>
   <Area name="GumoHideoutMapStone">
@@ -1722,7 +1756,7 @@
     </Locations>
     <Connections>
     </Connections>
-  </Area>    
+  </Area>
   <Area name="DoubleJumpArea">
     <Locations>
       <Location>
@@ -1914,7 +1948,7 @@
     <Connections>
       <Connection>
         <Home name="sunkenGladesLaserStomp"/>
-        <Target name="moonGrotto"/>
+        <Target name="deathGauntlet"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
@@ -1927,7 +1961,7 @@
           <Requirement mode="normal">Grenade</Requirement>
           <Requirement mode="cdash">Dash</Requirement>
         </Requirements>
-      </Connection>      
+      </Connection>
     </Connections>
   </Area>
   <Area name="sunkenGladesLaserStompPlant">
@@ -1940,7 +1974,7 @@
     </Locations>
     <Connections>
     </Connections>
-  </Area>  
+  </Area>
   <Area name="lowerGinsoTree">
     <Locations>
       <Location>
@@ -1998,7 +2032,7 @@
         <Requirements>
           <Requirement mode="glitched">Dash</Requirement>
         </Requirements>
-      </Connection>         
+      </Connection>
     </Connections>
   </Area>
   <Area name="lowerGinsoTreePlant">
@@ -2212,7 +2246,7 @@
         <Requirements>
           <Requirement mode="normal">MS</Requirement>
         </Requirements>
-      </Connection>      
+      </Connection>
     </Connections>
   </Area>
   <Area name="swampMapStone">
@@ -2225,7 +2259,7 @@
     </Locations>
     <Connections>
     </Connections>
-  </Area>    
+  </Area>
   <Area name="swampWater">
     <Locations>
       <Location>
@@ -2302,7 +2336,7 @@
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
         </Requirements>
-      </Connection>      
+      </Connection>
       <Connection>
         <Home name="rightSwamp"/>
         <Target name="rightSwampGrenade"/>
@@ -2388,7 +2422,7 @@
       </Location>
     </Locations>
     <Connections>
-    <Connection>
+      <Connection>
         <Home name="HoruFieldsEnergy"/>
         <Target name="HoruFieldsEnergyPlant"/>
         <Requirements>
@@ -2409,7 +2443,7 @@
     </Locations>
     <Connections>
     </Connections>
-  </Area>  
+  </Area>
   <Area name="HoruFieldsStomp">
     <Locations>
       <Location>
@@ -2460,7 +2494,7 @@
         <Requirements>
           <Requirement mode="glitched">Dash</Requirement>
         </Requirements>
-      </Connection>          
+      </Connection>
     </Connections>
   </Area>
   <Area name="HoruMapStone">
@@ -2473,7 +2507,7 @@
     </Locations>
     <Connections>
     </Connections>
-  </Area>    
+  </Area>
   <Area name="HoruStomp">
     <Locations>
       <Location>
@@ -2528,7 +2562,7 @@
       </Location>
     </Locations>
     <Connections>
-    <Connection>
+      <Connection>
         <Home name="HoruStomp"/>
         <Target name="HoruStompPlant"/>
         <Requirements>
@@ -2588,7 +2622,7 @@
         <Requirements>
           <Requirement mode="extended">Grenade</Requirement>
         </Requirements>
-      </Connection>         
+      </Connection>
     </Connections>
   </Area>
   <Area name="valleyEntryTree">
@@ -2623,7 +2657,7 @@
           <Requirement mode="normal">Glide+Grenade</Requirement>
           <Requirement mode="cdash">Dash</Requirement>
         </Requirements>
-      </Connection>   
+      </Connection>
     </Connections>
   </Area>
   <Area name="valleyEntryTreePlant">
@@ -2788,14 +2822,14 @@
           <Requirement mode="normal">Grenade</Requirement>
           <Requirement mode="cdash">Dash</Requirement>
         </Requirements>
-      </Connection>    
+      </Connection>
       <Connection>
         <Home name="valleyMain"/>
         <Target name="valleyMapStone"/>
         <Requirements>
           <Requirement mode="normal">MS</Requirement>
         </Requirements>
-      </Connection>      
+      </Connection>
     </Connections>
   </Area>
   <Area name="valleyMapStone">
@@ -2808,7 +2842,7 @@
     </Locations>
     <Connections>
     </Connections>
-  </Area>  
+  </Area>
   <Area name="valleyMainPlant">
     <Locations>
       <Location>
@@ -2819,7 +2853,7 @@
     </Locations>
     <Connections>
     </Connections>
-  </Area>  
+  </Area>
   <Area name="preSorrowOrb">
     <Locations>
       <Location>
@@ -2918,14 +2952,14 @@
           <Requirement mode="normal">Grenade</Requirement>
           <Requirement mode="cdash">Dash</Requirement>
         </Requirements>
-      </Connection>   
+      </Connection>
       <Connection>
         <Home name="forlorn"/>
         <Target name="forlornMapStone"/>
         <Requirements>
           <Requirement mode="normal">MS</Requirement>
         </Requirements>
-      </Connection>      
+      </Connection>
     </Connections>
   </Area>
   <Area name="forlornMapStone">
@@ -2938,7 +2972,7 @@
     </Locations>
     <Connections>
     </Connections>
-  </Area>    
+  </Area>
   <Area name="forlornPlant">
     <Locations>
       <Location>
@@ -2949,7 +2983,7 @@
     </Locations>
     <Connections>
     </Connections>
-  </Area>  
+  </Area>
   <Area name="rightForlorn">
     <Locations>
       <Location>
@@ -2964,7 +2998,7 @@
       </Location>
     </Locations>
     <Connections>
-    <Connection>
+      <Connection>
         <Home name="rightForlorn"/>
         <Target name="rightForlornPlant"/>
         <Requirements>
@@ -2972,7 +3006,7 @@
           <Requirement mode="normal">Grenade</Requirement>
           <Requirement mode="cdash">Dash</Requirement>
         </Requirements>
-      </Connection>  
+      </Connection>
     </Connections>
   </Area>
   <Area name="rightForlornPlant">
@@ -2985,7 +3019,7 @@
     </Locations>
     <Connections>
     </Connections>
-  </Area>  
+  </Area>
   <Area name="sorrow">
     <Locations>
       <Location>
@@ -3047,7 +3081,7 @@
         <Requirements>
           <Requirement mode="glitched">Dash</Requirement>
         </Requirements>
-      </Connection>         
+      </Connection>
     </Connections>
   </Area>
   <Area name="sorrowMapStone">
@@ -3060,7 +3094,7 @@
     </Locations>
     <Connections>
     </Connections>
-  </Area>    
+  </Area>
   <Area name="sorrowHealth">
     <Locations>
       <Location>
@@ -3128,7 +3162,7 @@
           <Requirement mode="normal">Grenade</Requirement>
           <Requirement mode="cdash">Dash</Requirement>
         </Requirements>
-      </Connection>      
+      </Connection>
     </Connections>
   </Area>
   <Area name="leftSorrowPlant">
@@ -3141,7 +3175,7 @@
     </Locations>
     <Connections>
     </Connections>
-  </Area>  
+  </Area>
   <Area name="leftSorrowGrenade">
     <Locations>
       <Location>
@@ -3244,7 +3278,7 @@
     </Locations>
     <Connections>
     </Connections>
-  </Area>  
+  </Area>
   <Area name="misty">
     <Locations>
       <Location>
@@ -3309,7 +3343,7 @@
         <Requirements>
           <Requirement mode="glitched">Free</Requirement>
         </Requirements>
-      </Connection>        
+      </Connection>
     </Connections>
   </Area>
   <Area name="mistyPlant">
@@ -3344,7 +3378,7 @@
         <X>-768</X>
         <Y>-144</Y>
         <Item>KS</Item>
-      </Location>      
+      </Location>
     </Locations>
     <Connections>
       <Connection>
@@ -3360,9 +3394,9 @@
         <Requirements>
           <Requirement mode="normal">KS+KS+KS+KS</Requirement>
         </Requirements>
-      </Connection>      
+      </Connection>
     </Connections>
-  </Area>  
+  </Area>
   <Area name="mistyEnd">
     <Locations>
       <Location>
@@ -3384,5 +3418,5 @@
     </Locations>
     <Connections>
     </Connections>
-  </Area>    
+  </Area>
 </Areas>
