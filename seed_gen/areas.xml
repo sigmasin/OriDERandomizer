@@ -85,8 +85,7 @@
           <Requirement mode="lure">Bash</Requirement>
           <Requirement mode="normal">Glide+Wind</Requirement>
         </Requirements>
-      </Connection>
-    </Connections>
+      </Connection></Connections>
   </Area>
   <Area name="sunkenGladesNadePool">
     <Locations>
@@ -96,7 +95,8 @@
         <Item>EX200</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="sunkenGladesNadeTree">
     <Locations>
@@ -106,7 +106,8 @@
         <Item>AC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="sunkenGladesMainPool">
     <Locations>
@@ -116,7 +117,8 @@
         <Item>EX100</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="sunkenGladesMainPoolDeep">
     <Locations>
@@ -126,7 +128,8 @@
         <Item>EC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="fronkeyWalkRoof">
     <Locations>
@@ -136,7 +139,8 @@
         <Item>EX200</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="WallJump">
     <Locations>
@@ -318,7 +322,8 @@
         <Item>MapStone</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="WallJumpAbove">
     <Locations>
@@ -328,7 +333,8 @@
         <Item>AC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="rightWallJump">
     <Locations>
@@ -338,7 +344,8 @@
         <Item>EX200</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="leftWallJump">
     <Locations>
@@ -363,7 +370,8 @@
         <Item>MS</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="sunkenGladesSpiritCavernB">
     <Locations>
@@ -437,7 +445,8 @@
         <Item>KS</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="sunkenGladesSpiritCavernRoof">
     <Locations>
@@ -447,7 +456,8 @@
         <Item>AC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="upperGladesBelowSpiritTree">
     <Locations>
@@ -494,7 +504,8 @@
         <Item>AC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="ChargeFlame">
     <Locations>
@@ -538,10 +549,12 @@
         <Item>Plant</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="spiritTreeRefined">
-    <Locations></Locations>
+    <Locations>
+    </Locations>
     <Connections>
       <Connection>
         <Home name="spiritTreeRefined"/>
@@ -597,10 +610,12 @@
         <Item>EX100</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="upperGladesSpiderCavernPuzzle">
-    <Locations></Locations>
+    <Locations>
+    </Locations>
     <Connections>
       <Connection>
         <Home name="upperGladesSpiderCavernPuzzle"/>
@@ -656,7 +671,8 @@
         <Item>AC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="upperGladesSpiderHealth">
     <Locations>
@@ -671,7 +687,8 @@
         <Item>EC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="upperGladesGrenade">
     <Locations>
@@ -681,7 +698,8 @@
         <Item>AC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="DashArea">
     <Locations>
@@ -784,7 +802,8 @@
         <Item>Plant</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="RazielNo">
     <Locations>
@@ -830,7 +849,8 @@
         <Item>MS</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="blackrootGrottoConnection">
     <Locations>
@@ -865,7 +885,8 @@
         <Item>MapStone</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="BoulderExp">
     <Locations>
@@ -875,10 +896,12 @@
         <Item>EX100</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="LowerBlackRoot">
-    <Locations></Locations>
+    <Locations>
+    </Locations>
     <Connections>
       <Connection>
         <Home name="LowerBlackRoot"/>
@@ -973,7 +996,8 @@
         <Item>EX100</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="UpperGrenadeArea">
     <Locations>
@@ -983,7 +1007,8 @@
         <Item>AC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="LowerBlackRootCell">
     <Locations>
@@ -993,7 +1018,8 @@
         <Item>AC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="FarRightBlackRoot">
     <Locations>
@@ -1003,7 +1029,8 @@
         <Item>AC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="RightBlackRoot">
     <Locations>
@@ -1013,7 +1040,8 @@
         <Item>EX100</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="LeftBlackRoot">
     <Locations>
@@ -1023,10 +1051,12 @@
         <Item>AC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="BottomBlackRoot">
-    <Locations></Locations>
+    <Locations>
+    </Locations>
     <Connections>
       <Connection>
         <Home name="BottomBlackRoot"/>
@@ -1063,7 +1093,8 @@
         <Item>EX100</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="BlackRootWater">
     <Locations>
@@ -1073,7 +1104,8 @@
         <Item>AC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="moonGrotto">
     <Locations>
@@ -1341,7 +1373,8 @@
         <Item>MapStone</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="moonGrottoPlants">
     <Locations>
@@ -1361,7 +1394,8 @@
         <Item>Plant</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="moonGrottoStompPlant">
     <Locations>
@@ -1371,7 +1405,8 @@
         <Item>Plant</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="moonGrottoMortarPlant">
     <Locations>
@@ -1381,7 +1416,8 @@
         <Item>Plant</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="moonGrottoWaterStomp">
     <Locations>
@@ -1391,7 +1427,8 @@
         <Item>AC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="rightGinsoOrb">
     <Locations>
@@ -1401,7 +1438,8 @@
         <Item>EX200</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="leftGinsoCell">
     <Locations>
@@ -1411,7 +1449,8 @@
         <Item>AC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="upperGroveSpiderArea">
     <Locations>
@@ -1444,7 +1483,8 @@
         <Item>EC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="groveWater">
     <Locations>
@@ -1454,7 +1494,8 @@
         <Item>EX100</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="deathWater">
     <Locations>
@@ -1464,7 +1505,8 @@
         <Item>AC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="deathStomp">
     <Locations>
@@ -1474,7 +1516,8 @@
         <Item>EX200</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="upperGrottoOrbs">
     <Locations>
@@ -1524,7 +1567,8 @@
         <Item>Plant</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="upperGrotto200">
     <Locations>
@@ -1534,7 +1578,8 @@
         <Item>EX200</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="mortarCell">
     <Locations>
@@ -1544,7 +1589,8 @@
         <Item>AC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="swampGrottoWater">
     <Locations>
@@ -1554,7 +1600,8 @@
         <Item>EX200</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="rightGrottoHealth">
     <Locations>
@@ -1564,7 +1611,8 @@
         <Item>HC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="moonGrottoEnergyWater">
     <Locations>
@@ -1574,7 +1622,8 @@
         <Item>EX100</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="moonGrottoEnergyTop">
     <Locations>
@@ -1584,7 +1633,8 @@
         <Item>HC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="moonGrottoAirCell">
     <Locations>
@@ -1616,7 +1666,8 @@
         <Item>Plant</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   todo
   <Area name="sideFallCell">
@@ -1702,7 +1753,8 @@
         <Item>MapStone</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="DoubleJumpArea">
     <Locations>
@@ -1733,7 +1785,8 @@
         <Item>EX100</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="MobileGumoHideout">
     <Locations>
@@ -1842,7 +1895,8 @@
         <Item>Plant</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="GumoHideoutWater">
     <Locations>
@@ -1852,7 +1906,8 @@
         <Item>EX100</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="HideoutRedirect">
     <Locations>
@@ -1867,7 +1922,8 @@
         <Item>EX200</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="drainlessCell">
     <Locations>
@@ -1877,7 +1933,8 @@
         <Item>AC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="sunkenGladesLaserStomp">
     <Locations>
@@ -1914,7 +1971,8 @@
         <Item>Plant</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="lowerGinsoTree">
     <Locations>
@@ -1984,7 +2042,8 @@
         <Item>Plant</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="upperGinsoTree">
     <Locations>
@@ -2057,7 +2116,8 @@
         <Item>EC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="topGinsoTree">
     <Locations>
@@ -2100,7 +2160,8 @@
         <Item>Plant</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="GinsoEscape">
     <Locations>
@@ -2130,10 +2191,12 @@
         <Item>EVWater</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="swamp">
-    <Locations></Locations>
+    <Locations>
+    </Locations>
     <Connections>
       <Connection>
         <Home name="swamp"/>
@@ -2193,7 +2256,8 @@
         <Item>MapStone</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="swampWater">
     <Locations>
@@ -2223,7 +2287,8 @@
         <Item>MS</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="swampStomp">
     <Locations>
@@ -2233,7 +2298,8 @@
         <Item>EX100</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="swampEnergy">
     <Locations>
@@ -2243,7 +2309,8 @@
         <Item>EC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="rightSwamp">
     <Locations>
@@ -2287,7 +2354,8 @@
         <Item>EX200</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="rightSwampStomp">
     <Locations>
@@ -2297,7 +2365,8 @@
         <Item>EX100</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="rightSwampGrenade">
     <Locations>
@@ -2307,7 +2376,8 @@
         <Item>EX200</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="HoruFields">
     <Locations>
@@ -2370,7 +2440,8 @@
         <Item>Plant</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="HoruFieldsStomp">
     <Locations>
@@ -2380,7 +2451,8 @@
         <Item>HC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="Horu">
     <Locations>
@@ -2432,7 +2504,8 @@
         <Item>MapStone</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="HoruStomp">
     <Locations>
@@ -2507,7 +2580,8 @@
         <Item>Plant</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="valleyEntry">
     <Locations>
@@ -2593,7 +2667,8 @@
         <Item>Plant</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="valleyEntryWater">
     <Locations>
@@ -2603,7 +2678,8 @@
         <Item>EC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="valleyMain">
     <Locations>
@@ -2763,7 +2839,8 @@
         <Item>MapStone</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="valleyMainPlant">
     <Locations>
@@ -2773,7 +2850,8 @@
         <Item>Plant</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="preSorrowOrb">
     <Locations>
@@ -2783,7 +2861,8 @@
         <Item>EX200</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="valleyMainWater">
     <Locations>
@@ -2798,7 +2877,8 @@
         <Item>EX100</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="valleyMainFACS">
     <Locations>
@@ -2808,7 +2888,8 @@
         <Item>AC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="valleyMainGrenade">
     <Locations>
@@ -2818,7 +2899,8 @@
         <Item>AC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="forlorn">
     <Locations>
@@ -2887,7 +2969,8 @@
         <Item>MapStone</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="forlornPlant">
     <Locations>
@@ -2897,7 +2980,8 @@
         <Item>Plant</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="rightForlorn">
     <Locations>
@@ -2932,7 +3016,8 @@
         <Item>Plant</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="sorrow">
     <Locations>
@@ -3006,7 +3091,8 @@
         <Item>MapStone</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="sorrowHealth">
     <Locations>
@@ -3016,7 +3102,8 @@
         <Item>HC</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="leftSorrow">
     <Locations>
@@ -3085,7 +3172,8 @@
         <Item>Plant</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="leftSorrowGrenade">
     <Locations>
@@ -3095,7 +3183,8 @@
         <Item>EX200</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="upperSorrow">
     <Locations>
@@ -3186,7 +3275,8 @@
         <Item>Plant</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="misty">
     <Locations>
@@ -3263,7 +3353,8 @@
         <Item>Plant</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="mistyPostClimb">
     <Locations>
@@ -3313,7 +3404,8 @@
         <Item>EVForlornKey</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="mistyEndGrenade">
     <Locations>
@@ -3323,6 +3415,7 @@
         <Item>EX200</Item>
       </Location>
     </Locations>
-    <Connections></Connections>
+    <Connections>
+    </Connections>
   </Area>
 </Areas>
