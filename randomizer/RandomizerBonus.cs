@@ -115,7 +115,7 @@ public static class RandomizerBonus
 
 	public static float GrenadePower()
 	{
-		return (float)((Characters.Sein.Inventory.SkillPointsCollected & 0x00000c00) >> 10) * 5f;
+		return (float)((Characters.Sein.Inventory.SkillPointsCollected & 0x00000c00) >> 10) * 2f;
 	}
 
 	public static bool HealthEfficiency()

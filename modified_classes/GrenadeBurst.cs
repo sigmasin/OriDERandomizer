@@ -75,12 +75,12 @@ public class GrenadeBurst : MonoBehaviour, IPooled, ISuspendable
 				{
 					this.m_damageAttackables.Add(attackable);
 					GameObject gameObject = ((Component)attackable).gameObject;
-					new Damage(this.DamageAmount + RandomizerBonus.GrenadePower(), vector.normalized * 3f, position, DamageType.Grenade, base.gameObject).DealToComponents(gameObject);
+					new Damage(this.DamageAmount + RandomizerBonus.GrenadePower() * 2f, vector.normalized * 3f, position, DamageType.Grenade, base.gameObject).DealToComponents(gameObject);
 					if (!attackable.IsDead())
 					{
-						GameObject expr_E8 = (GameObject)InstantiateUtility.Instantiate(this.BurstImpactEffectPrefab, position2, Quaternion.identity);
-						expr_E8.transform.eulerAngles = new Vector3(0f, 0f, MoonMath.Angle.AngleFromVector(vector.normalized));
-						expr_E8.GetComponent<FollowPositionRotation>().SetTarget(gameObject.transform);
+						GameObject expr_EE = (GameObject)InstantiateUtility.Instantiate(this.BurstImpactEffectPrefab, position2, Quaternion.identity);
+						expr_EE.transform.eulerAngles = new Vector3(0f, 0f, MoonMath.Angle.AngleFromVector(vector.normalized));
+						expr_EE.GetComponent<FollowPositionRotation>().SetTarget(gameObject.transform);
 					}
 				}
 			}
@@ -88,7 +88,7 @@ public class GrenadeBurst : MonoBehaviour, IPooled, ISuspendable
 		this.m_waitDelay = 0.1f;
 	}
 
-	// Token: 0x060000B4 RID: 180 RVA: 0x0002D820 File Offset: 0x0002BA20
+	// Token: 0x060000B4 RID: 180 RVA: 0x0002DA98 File Offset: 0x0002BC98
 	public void FixedUpdate()
 	{
 		if (this.m_suspended)
