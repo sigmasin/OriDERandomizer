@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x02000919 RID: 2329
 public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollector, ICheckpointZoneReciever
 {
-	// Token: 0x06003322 RID: 13090 RVA: 0x000D3320 File Offset: 0x000D1520
+	// Token: 0x06003322 RID: 13090 RVA: 0x000D3390 File Offset: 0x000D1590
 	public void OnCollectSkillPointPickup(SkillPointPickup skillPointPickup)
 	{
 		skillPointPickup.Collected();
@@ -16,7 +16,7 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		}
 	}
 
-	// Token: 0x06003323 RID: 13091 RVA: 0x000D3364 File Offset: 0x000D1564
+	// Token: 0x06003323 RID: 13091
 	public void OnCollectEnergyOrbPickup(EnergyOrbPickup energyOrbPickup)
 	{
 		float num = (float)energyOrbPickup.Amount;
@@ -24,15 +24,11 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		{
 			num *= 1.5f;
 		}
-		if (RandomizerBonus.EnergyEfficiency())
-		{
-			num *= 2f;
-		}
-		bool arg_67_0 = this.Sein.SoulFlame.CanAffordSoulFlame;
+		bool arg_58_0 = this.Sein.SoulFlame.CanAffordSoulFlame;
 		AchievementsLogic.Instance.OnCollectedEnergyShard();
 		this.Sein.Energy.Gain(num);
 		energyOrbPickup.Collected();
-		if (!arg_67_0 && this.Sein.SoulFlame.CanAffordSoulFlame)
+		if (!arg_58_0 && this.Sein.SoulFlame.CanAffordSoulFlame)
 		{
 			UI.SeinUI.ShakeSoulFlame();
 		}
@@ -43,7 +39,7 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		UI.SeinUI.ShakeEnergyOrbBar();
 	}
 
-	// Token: 0x06003324 RID: 13092 RVA: 0x000D3320 File Offset: 0x000D1520
+	// Token: 0x06003324 RID: 13092 RVA: 0x000D3390 File Offset: 0x000D1590
 	public void OnCollectMaxEnergyContainerPickup(MaxEnergyContainerPickup energyContainerPickup)
 	{
 		energyContainerPickup.Collected();
@@ -54,7 +50,7 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		}
 	}
 
-	// Token: 0x06003325 RID: 13093
+	// Token: 0x06003325 RID: 13093 RVA: 0x000D3494 File Offset: 0x000D1694
 	public void OnCollectExpOrbPickup(ExpOrbPickup expOrbPickup)
 	{
 		int num = expOrbPickup.Amount * ((!this.Sein.PlayerAbilities.SoulEfficiency.HasAbility) ? 1 : 2);
@@ -92,7 +88,7 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		}
 	}
 
-	// Token: 0x06003326 RID: 13094 RVA: 0x000D3320 File Offset: 0x000D1520
+	// Token: 0x06003326 RID: 13094 RVA: 0x000D3390 File Offset: 0x000D1590
 	public void OnCollectKeystonePickup(KeystonePickup keystonePickup)
 	{
 		keystonePickup.Collected();
@@ -103,7 +99,7 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		}
 	}
 
-	// Token: 0x06003327 RID: 13095 RVA: 0x000D3320 File Offset: 0x000D1520
+	// Token: 0x06003327 RID: 13095 RVA: 0x000D3390 File Offset: 0x000D1590
 	public void OnCollectMaxHealthContainerPickup(MaxHealthContainerPickup maxHealthContainerPickup)
 	{
 		maxHealthContainerPickup.Collected();
@@ -114,14 +110,10 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		}
 	}
 
-	// Token: 0x06003328 RID: 13096 RVA: 0x000D355C File Offset: 0x000D175C
+	// Token: 0x06003328 RID: 13096
 	public void OnCollectRestoreHealthPickup(RestoreHealthPickup restoreHealthPickup)
 	{
 		int num = restoreHealthPickup.Amount * ((!this.Sein.PlayerAbilities.HealthEfficiency.HasAbility) ? 1 : 2);
-		if (RandomizerBonus.HealthEfficiency())
-		{
-			num *= 2;
-		}
 		this.Sein.Mortality.Health.GainHealth(num);
 		restoreHealthPickup.Collected();
 		UI.SeinUI.ShakeHealthbar();
@@ -131,7 +123,7 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		}
 	}
 
-	// Token: 0x06003329 RID: 13097 RVA: 0x000D3320 File Offset: 0x000D1520
+	// Token: 0x06003329 RID: 13097 RVA: 0x000D3390 File Offset: 0x000D1590
 	public void OnCollectMapStonePickup(MapStonePickup mapStonePickup)
 	{
 		mapStonePickup.Collected();
@@ -142,13 +134,13 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		}
 	}
 
-	// Token: 0x0600332A RID: 13098 RVA: 0x00028612 File Offset: 0x00026812
+	// Token: 0x0600332A RID: 13098 RVA: 0x00028631 File Offset: 0x00026831
 	public void SetReferenceToSein(SeinCharacter sein)
 	{
 		this.Sein = sein;
 	}
 
-	// Token: 0x0600332B RID: 13099 RVA: 0x000D35E0 File Offset: 0x000D17E0
+	// Token: 0x0600332B RID: 13099 RVA: 0x000D3650 File Offset: 0x000D1850
 	public void OnEnterCheckpoint(InvisibleCheckpoint checkpoint)
 	{
 		if (this.Sein.IsSuspended)
@@ -165,7 +157,7 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		checkpoint.OnCheckpointCreated();
 	}
 
-	// Token: 0x0600332C RID: 13100 RVA: 0x000D3668 File Offset: 0x000D1868
+	// Token: 0x0600332C RID: 13100 RVA: 0x000D36D8 File Offset: 0x000D18D8
 	public override void Serialize(Archive ar)
 	{
 		ar.Serialize(ref this.ExpOrbInfo.HasBeenCollectedBefore);

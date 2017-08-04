@@ -289,30 +289,30 @@
           <Requirement mode="normal">ChargeJump</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="deathGauntlet"/>
+        <Target name="deathWater"/>
+        <Requirements>
+          <Requirement mode="normal">Water+EC+EC+EC+EC</Requirement>
+          <Requirement mode="dboost">EC+EC+EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="deathGauntlet"/>
+        <Target name="moonGrotto"/>
+        <Requirements>
+          <Requirement mode="dboost-light">WallJump</Requirement>
+          <Requirement mode="dboost-light">Climb</Requirement>
+          <Requirement mode="dboost-light">ChargeJump+Bash</Requirement>
+          <Requirement mode="normal">Grenade+Bash</Requirement>
+          <Requirement mode="normal">Climb+DoubleJump+Glide</Requirement>
+          <Requirement mode="normal">WallJump+DoubleJump+Glide</Requirement>
+          <Requirement mode="timed-level">WallJump</Requirement>
+          <Requirement mode="timed-level">Climb</Requirement>
+          <Requirement mode="timed-level">ChargeJump+Bash</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
-    <Connection>
-      <Home name="deathGauntlet"/>
-      <Target name="deathWater"/>
-      <Requirements>
-        <Requirement mode="normal">Water+EC+EC+EC+EC</Requirement>
-        <Requirement mode="dboost">EC+EC+EC+EC</Requirement>
-      </Requirements>
-    </Connection>
-    <Connection>
-      <Home name="deathGauntlet"/>
-      <Target name="moonGrotto"/>
-      <Requirements>
-        <Requirement mode="dboost-light">WallJump</Requirement>
-        <Requirement mode="dboost-light">Climb</Requirement>
-        <Requirement mode="dboost-light">ChargeJump+Bash</Requirement>
-        <Requirement mode="normal">Grenade+Bash</Requirement>
-        <Requirement mode="normal">Climb+DoubleJump+Glide</Requirement>
-        <Requirement mode="normal">WallJump+DoubleJump+Glide</Requirement>
-        <Requirement mode="timed-level">WallJump</Requirement>
-        <Requirement mode="timed-level">Climb</Requirement>
-        <Requirement mode="timed-level">ChargeJump+Bash</Requirement>
-      </Requirements>
-    </Connection>
   </Area>
   <Area name="WallJumpMapStone">
     <Locations>

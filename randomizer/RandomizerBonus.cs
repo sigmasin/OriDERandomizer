@@ -26,73 +26,64 @@ public static class RandomizerBonus
 			Randomizer.showHint("Grenade Power Upgrade");
 			break;
 		case 12:
-			Randomizer.showHint("Health Efficiency");
-			break;
-		case 13:
-			Randomizer.showHint("Energy Efficiency");
-			break;
-		case 14:
 			Randomizer.showHint("Spirit Light Efficiency");
 			break;
-		case 15:
-			Randomizer.showHint("Spirit Link Heal Upgrade");
-			break;
-		case 16:
+		case 13:
 			Randomizer.showHint("Charge Flame Efficiency");
 			break;
-		case 17:
+		case 14:
 			Randomizer.showHint("Extra Air Dash");
 			break;
-		case 18:
+		case 15:
 			Randomizer.showHint("Charge Dash Efficiency");
 			break;
-		case 19:
+		case 16:
 			Randomizer.showHint("Extra Double Jump");
 			break;
-		case 20:
+		case 17:
 			Randomizer.showHint("Health Regeneration");
 			break;
-		case 22:
+		case 19:
 			Randomizer.showHint("Energy Regeneration");
 			break;
-        case 24:
-            if (RandomizerBonus.WaterVeinShards() >= 1)
+        case 21:
+            if (RandomizerBonus.WaterVeinShards() >= 2)
             {
-                Randomizer.showHint("Water Vein Shard (2/2)");
+                Randomizer.showHint("Water Vein Shard (3/3)");
                 Keys.GinsoTree = true;
             }
             else 
             {
                 Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
-                Randomizer.showHint("Water Vein Shard (" + RandomizerBonus.WaterVeinShards().ToString() + "/2)");
+                Randomizer.showHint("Water Vein Shard (" + RandomizerBonus.WaterVeinShards().ToString() + "/3)");
             }
             break;
-        case 26:
-            if (RandomizerBonus.GumonSealShards() >= 1)
+        case 23:
+            if (RandomizerBonus.GumonSealShards() >= 2)
             {
-                Randomizer.showHint("Gumon Seal Shard (2/2)");
+                Randomizer.showHint("Gumon Seal Shard (3/3)");
                 Keys.ForlornRuins = true;
             }
             else 
             {
                 Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
-                Randomizer.showHint("Gumon Seal Shard (" + RandomizerBonus.GumonSealShards().ToString() + "/2)");
+                Randomizer.showHint("Gumon Seal Shard (" + RandomizerBonus.GumonSealShards().ToString() + "/3)");
             }
             break;
-        case 28:
-            if (RandomizerBonus.SunstoneShards() >= 1)
+        case 25:
+            if (RandomizerBonus.SunstoneShards() >= 2)
             {
-                Randomizer.showHint("Sunstone Shard (2/2)");
+                Randomizer.showHint("Sunstone Shard (3/3)");
                 Keys.MountHoru = true;
             }
             else 
             {
                 Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
-                Randomizer.showHint("Sunstone Shard (" + RandomizerBonus.SunstoneShards().ToString() + "/2)");
+                Randomizer.showHint("Sunstone Shard (" + RandomizerBonus.SunstoneShards().ToString() + "/3)");
             }
             break;
 		}
-		if (ID > 1 && ID < 24)
+		if (ID > 1 && ID < 21)
 		{
 			Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
 		}
@@ -118,71 +109,56 @@ public static class RandomizerBonus
 		return (float)((Characters.Sein.Inventory.SkillPointsCollected & 0x00000c00) >> 10) * 2f;
 	}
 
-	public static bool HealthEfficiency()
+	public static bool ExpEfficiency()
 	{
 		return (Characters.Sein.Inventory.SkillPointsCollected & 0x00001000) >> 12 == 1;
 	}
 
-	public static bool EnergyEfficiency()
+	public static bool ChargeFlameEfficiency()
 	{
 		return (Characters.Sein.Inventory.SkillPointsCollected & 0x00002000) >> 13 == 1;
 	}
 
-	public static bool ExpEfficiency()
-	{
-		return (Characters.Sein.Inventory.SkillPointsCollected & 0x00004000) >> 14 == 1;
-	}
-
-	public static bool SoulLinkHeal()
-	{
-		return (Characters.Sein.Inventory.SkillPointsCollected & 0x00008000) >> 15 == 1;
-	}
-
-	public static bool ChargeFlameEfficiency()
-	{
-		return (Characters.Sein.Inventory.SkillPointsCollected & 0x00010000) >> 16 == 1;
-	}
-
 	public static bool DoubleAirDash()
 	{
-		return (Characters.Sein.Inventory.SkillPointsCollected & 0x00020000) >> 17 == 1;
+		return (Characters.Sein.Inventory.SkillPointsCollected & 0x00004000) >> 14 == 1;
 	}
     
     public static bool DoubleAirDashUsed = false;
 
 	public static bool ChargeDashEfficiency()
 	{
-		return (Characters.Sein.Inventory.SkillPointsCollected & 0x00040000) >> 18 == 1;
+		return (Characters.Sein.Inventory.SkillPointsCollected & 0x00008000) >> 15 == 1;
 	}
 
 	public static bool DoubleJumpUpgrade()
 	{
-		return (Characters.Sein.Inventory.SkillPointsCollected & 0x00080000) >> 19 == 1;
+		return (Characters.Sein.Inventory.SkillPointsCollected & 0x00010000) >> 16 == 1;
 	}
 
 	public static int HealthRegeneration()
 	{
-		return (Characters.Sein.Inventory.SkillPointsCollected & 0x00300000) >> 20;
+		return (Characters.Sein.Inventory.SkillPointsCollected & 0x00060000) >> 17;
 	}
 
 	public static int EnergyRegeneration()
 	{
-		return (Characters.Sein.Inventory.SkillPointsCollected & 0x00c00000) >> 22;
+		return (Characters.Sein.Inventory.SkillPointsCollected & 0x00180000) >> 19;
 	}
     
     public static int WaterVeinShards()
     {
-        return (Characters.Sein.Inventory.SkillPointsCollected & 0x03000000) >> 24;
+        return (Characters.Sein.Inventory.SkillPointsCollected & 0x00600000) >> 21;
     }
     
     public static int GumonSealShards()
     {
-        return (Characters.Sein.Inventory.SkillPointsCollected & 0x0c000000) >> 26;
+        return (Characters.Sein.Inventory.SkillPointsCollected & 0x01800000) >> 23;
     } 
     
     public static int SunstoneShards()
     {
-        return (Characters.Sein.Inventory.SkillPointsCollected & 0x30000000) >> 28;
+        return (Characters.Sein.Inventory.SkillPointsCollected & 0x06000000) >> 25;
     }
     
 

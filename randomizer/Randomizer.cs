@@ -23,6 +23,7 @@ public static class Randomizer
 		Randomizer.GridFactor = 4.0;
 		Randomizer.Message = "Good luck on your rando!";
 		Randomizer.MessageProvider = new RandomizerMessageProvider();
+		Randomizer.ProgressiveMapStones = true;
 		if (File.Exists("randomizer.dat"))
 		{
 			string[] array = File.ReadAllLines("randomizer.dat");
@@ -43,6 +44,10 @@ public static class Randomizer
 				if (array2[i].ToLower() == "nobonus")
 				{
 					Randomizer.BonusActive = false;
+				}
+				if (array2[i].ToLower() == "nonprogressivemapstones")
+				{
+					Randomizer.ProgressiveMapStones = false;
 				}
 			}
 			for (int j = 1; j < array.Length; j++)
@@ -215,6 +220,7 @@ public static class Randomizer
 			else if (MoonInput.GetKeyDown(KeyCode.F) && Randomizer.Chaos)
 			{
 				RandomizerChaosManager.SpawnEffect();
+				return;
 			}
 		}
 	}
@@ -234,6 +240,18 @@ public static class Randomizer
 	{
 		Randomizer.MessageProvider.SetMessage(message);
 		UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
+	}
+
+	// Token: 0x06003796 RID: 14230
+	public static void getMapStone()
+	{
+		if (!Randomizer.ProgressiveMapStones)
+		{
+			Randomizer.getPickup();
+			return;
+		}
+		Characters.Sein.Inventory.SkillPointsCollected += 134217728;
+		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[20 + (Characters.Sein.Inventory.SkillPointsCollected >> 27) * 4]);
 	}
 
 	// Token: 0x04003223 RID: 12835
@@ -269,6 +287,9 @@ public static class Randomizer
 	// Token: 0x0400322D RID: 12845
 	public static float DamageModifier;
 
-	// Token: 0x0400328F RID: 12943
+	// Token: 0x0400322E RID: 12846
 	public static WorldEventsRuntime MistyRuntimePtr;
+
+	// Token: 0x04003260 RID: 12896
+	public static bool ProgressiveMapStones;
 }

@@ -52,18 +52,24 @@ class Connection:
                 req.append("WaterVeinShard")
                 req.append("WaterVeinShard")
                 req.append("WaterVeinShard")
+                req.append("WaterVeinShard")
+                req.append("WaterVeinShard")
             match = re.match(".*ForlornKey.*", str(req))
             if match:
                 req.remove("ForlornKey")
                 req.append("GumonSealShard")
                 req.append("GumonSealShard")
-                req.append("GumonSealShard")                
+                req.append("GumonSealShard")    
+                req.append("GumonSealShard")
+                req.append("GumonSealShard")                 
             match = re.match(".*HoruKey.*", str(req))
             if match:
                 req.remove("HoruKey")
                 req.append("SunstoneShard")
                 req.append("SunstoneShard")
                 req.append("SunstoneShard")
+                req.append("SunstoneShard")
+                req.append("SunstoneShard")                
         self.requirements.append(req)
         match = re.match(".*KS.*KS.*KS.*KS.*", str(req))
         if match:
@@ -103,8 +109,7 @@ class Connection:
                 minReqScore = score
                 minReq = req
         return (minReqScore, minReq)
-
-
+        
 class Location:
 
     factor = 4.0
@@ -254,10 +259,11 @@ def assign(item):
             costs[item] -= 1
     elif item == "WaterVeinShard" or item == "GumonSealShard" or item == "SunstoneShard":
         if costs[item] > 0:
-            costs[item] -= 2
+            costs[item] -= 1
     elif item in costs.keys():
         costs[item] = 0
-    inventory[item] += 1
+    if item != "EX" and item != "NO":
+        inventory[item] += 1
     return item
 
 # for use in limitkeys mode    
@@ -271,12 +277,20 @@ def force_assign(item, location):
     outputStr +=  (str(location.get_key()) + "|")
     outputStr +=  (str(eventsOutput[item][:2]) + "|" + eventsOutput[item][2:] + "\n")
     spoilerStr += (item + " from " + location.area + " " + location.orig + " (" + str(location.x) + ", " + str(location.y) + ")\n")
+    
+def get_random_exp_value(expRemaining, expSlots):
+
+    if expSlots <= 1:
+        return max(expRemaining,2)
+    
+    return max(expRemaining * random.uniform(0.1,2.0) / expSlots, 2)
+    
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--logic", help="Choose a preset group of paths for the generator to use", choices=["casual", "normal", "dboost", "extended", "hard", "ohko", "0xp", "glitched"])
 parser.add_argument("--custom-logic", help="Customize paths that the generator will use, comma-separated: normal,speed,dbash,extended,extended-damage,lure,lure-hard,dboost,dboost-light,dboost-hard,cdash,timed-level,glitched")
-parser.add_argument("--seed", help="seed number", type=int, default=1)
-parser.add_argument("--count", help="number of seeds to generate", type=int, default=1)
+parser.add_argument("--seed", help="Seed number (default 1)", type=int, default=1)
+parser.add_argument("--count", help="Number of seeds to generate (default 1)", type=int, default=1)
 parser.add_argument("--hard", help="Enable hard mode", action="store_true")
 parser.add_argument("--ohko", help="Enable one-hit-ko mode", action="store_true")
 parser.add_argument("--zeroxp", help="Enable 0xp mode", action="store_true")
@@ -285,6 +299,8 @@ parser.add_argument("--noplants", help="Ignore petrified plants when assigning i
 parser.add_argument("--starved", help="Reduces the rate at which skills will appear when not required to advance", action="store_true")
 parser.add_argument("--shards", help="The Water Vein, Gumon Seal, and Sunstone will be awarded after 2/3 shards are found", action="store_true")
 parser.add_argument("--limitkeys", help="The Water Vein, Gumon Seal, and Sunstone will only appear at skill trees or event sources", action="store_true")
+parser.add_argument("--non-progressive-mapstones", help="Map Stones will retain their behaviour from before v1.2, having their own unique drops", action="store_true")
+parser.add_argument("--exp-pool", help="Size of the experience pool (default 11000)", type=int, default=11000)
 parser.add_argument("--analysis", help="Report stats on the skill order for all seeds generated", action="store_true")
 
 args = parser.parse_args()
@@ -309,9 +325,9 @@ eventsOutput = {
     "Wind": "EV3",
     "HoruKey": "EV4",
     "Warmth": "EV5",
-    "WaterVeinShard": "RB24",
-    "GumonSealShard": "RB26",
-    "SunstoneShard": "RB28"
+    "WaterVeinShard": "RB21",
+    "GumonSealShard": "RB23",
+    "SunstoneShard": "RB25"
 }
 
 limitKeysPool = ["SKWallJump", "SKChargeFlame", "SKDash", "SKStomp", "SKDoubleJump", "SKGlide", "SKClimb", "SKGrenade", "SKChargeJump", "EVGinsoKey", "EVForlornKey", "EVHoruKey", "SKBash", "EVWater", "EVWind"]
@@ -336,6 +352,8 @@ if args.zeroxp:
     flags += "0XP,"
 if args.nobonus:
     flags += "NoBonus,"
+if args.non_progressive_mapstones:
+    flags += "NonProgressMapStones,"
 if flags:
     flags = flags[:-1]
 if args.logic:
@@ -397,9 +415,9 @@ def placeItems():
         "HoruKey": 12,
         "Water": 99,
         "Wind": 99,
-        "WaterVeinShard": 6,
-        "GumonSealShard": 6,
-        "SunstoneShard": 6
+        "WaterVeinShard": 5,
+        "GumonSealShard": 5,
+        "SunstoneShard": 5
     }
 
     # we use OrderedDicts here because the order of a dict depends on the size of the dict and the hash of the keys
@@ -418,16 +436,14 @@ def placeItems():
     assignQueue = []
     
     itemCount = 244.0
+    expRemaining = args.exp_pool
     keystoneCount = 0
     mapstoneCount = 0
 
     if not hardMode:
         itemPool = OrderedDict([
             ("EX1", 1),
-            ("EX10", 2),
-            ("EX15", 6),
-            ("EX100", 51),
-            ("EX200", 28),
+            ("EX*", 89),
             ("KS", 40),
             ("MS", 9),
             ("AC", 33),
@@ -457,27 +473,18 @@ def placeItems():
             ("RB12", 1),
             ("RB13", 1),
             ("RB14", 1),
-            ("RB15", 0),  # 0 for now due to trouble recompiling SeinSoulFlame
+            ("RB15", 1),
             ("RB16", 1),
-            ("RB17", 1),
-            ("RB18", 1),
-            ("RB19", 1),
-            ("RB20", 3),
-            ("RB22", 3),
+            ("RB17", 3),
+            ("RB19", 3),
             ("WaterVeinShard", 0),
             ("GumonSealShard", 0),
             ("SunstoneShard", 0)
         ])
     else:
         itemPool = OrderedDict([
-            ("NO1", 61),
             ("EX1", 1),
-            ("EX10", 10),
-            ("EX15", 15),
-            ("EX20", 30),
-            ("EX30", 20),
-            ("EX50", 25),
-            ("EX100", 14),
+            ("EX*", 175),
             ("KS", 40),
             ("MS", 9),
             ("AC", 0),
@@ -507,22 +514,16 @@ def placeItems():
     plants = []
     if not includePlants:
         itemCount -= 24
-        if not hardMode:
-            itemPool["EX100"] -= 24
-        else:
-            itemPool["NO1"] -= 24
+        itemPool["EX*"] -= 24
             
     if args.shards:
-        itemPool["WaterVeinShard"] = 3
-        itemPool["GumonSealShard"] = 3
-        itemPool["SunstoneShard"] = 3
+        itemPool["WaterVeinShard"] = 5
+        itemPool["GumonSealShard"] = 5
+        itemPool["SunstoneShard"] = 5
         itemPool["GinsoKey"] = 0
         itemPool["ForlornKey"] = 0
         itemPool["HoruKey"] = 0
-        if not hardMode:
-            itemPool["EX100"] -= 6
-        else:
-            itemPool["NO1"] -= 6
+        itemPool["EX*"] -= 15
 
     if args.limitkeys:
         satisfied = False
@@ -542,15 +543,6 @@ def placeItems():
         itemCount -= 3
         
     inventory = OrderedDict([
-        ("NO1", 0),
-        ("EX1", 0),
-        ("EX10", 0),
-        ("EX15", 0),
-        ("EX20", 0),
-        ("EX30", 0),
-        ("EX50", 0),
-        ("EX100", 0),
-        ("EX200", 0),
         ("KS", 0),
         ("MS", 0),
         ("AC", 0),
@@ -583,10 +575,7 @@ def placeItems():
         ("RB15", 0),
         ("RB16", 0),
         ("RB17", 0),
-        ("RB18", 0),
         ("RB19", 0),
-        ("RB20", 0),
-        ("RB22", 0),
         ("WaterVeinShard", 0),
         ("GumonSealShard", 0),
         ("SunstoneShard", 0)
@@ -594,7 +583,7 @@ def placeItems():
 
     tree = XML.parse("areas.xml")
     root = tree.getroot()
-
+    
     for child in root:
         area = Area(child.attrib["name"])
 
@@ -617,8 +606,6 @@ def placeItems():
                 area.add_connection(connection)
         areas[area.name] = area
 
-
-
     # flags line
     outputStr += (flags + "\n")
 
@@ -638,6 +625,8 @@ def placeItems():
     reservedLocations = []
     
     skillCount = 10
+    mapstonesAssigned = 0
+    expSlots = itemPool["EX*"]
     while itemCount > 0:
         assignQueue = []
         doorQueue = OrderedDict()
@@ -701,7 +690,13 @@ def placeItems():
         # shuffle the items around and put them somewhere
         random.shuffle(itemsToAssign)
         for i in range(0, len(locationsToAssign)):
-            outputStr +=  (str(locationsToAssign[i].get_key()) + "|")
+            
+            # if mapstones are progressive, set a special location
+            if not args.non_progressive_mapstones and locationsToAssign[i].orig == "MapStone":
+                mapstonesAssigned += 1
+                outputStr += (str(20 + mapstonesAssigned * 4) + "|")
+            else:
+                outputStr +=  (str(locationsToAssign[i].get_key()) + "|")
 
             if itemsToAssign[i] in skillsOutput:
                 outputStr +=  (str(skillsOutput[itemsToAssign[i]][:2]) + "|" + skillsOutput[itemsToAssign[i]][2:] + "\n")
@@ -710,6 +705,11 @@ def placeItems():
                     skillCount -= 1
             elif itemsToAssign[i] in eventsOutput:
                 outputStr +=  (str(eventsOutput[itemsToAssign[i]][:2]) + "|" + eventsOutput[itemsToAssign[i]][2:] + "\n")
+            elif itemsToAssign[i] == "EX*":
+                value = get_random_exp_value(expRemaining, expSlots)
+                expRemaining -= value
+                expSlots -= 1
+                outputStr += "EX" + str(value)
             elif itemsToAssign[i][2:]:
                 outputStr +=  (itemsToAssign[i][:2] + "|" + itemsToAssign[i][2:] + "\n")
             else:

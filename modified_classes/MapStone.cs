@@ -6,14 +6,14 @@ using UnityEngine;
 // Token: 0x02000897 RID: 2199
 public class MapStone : SaveSerialize
 {
-	// Token: 0x06002FF8 RID: 12280 RVA: 0x00026537 File Offset: 0x00024737
+	// Token: 0x06002FFA RID: 12282 RVA: 0x000264CC File Offset: 0x000246CC
 	public override void Awake()
 	{
 		base.Awake();
 		this.m_transform = base.transform;
 	}
 
-	// Token: 0x06002FF9 RID: 12281 RVA: 0x0002654B File Offset: 0x0002474B
+	// Token: 0x06002FFB RID: 12283 RVA: 0x000264E0 File Offset: 0x000246E0
 	public void FindWorldArea()
 	{
 		if (GameWorld.Instance)
@@ -25,7 +25,7 @@ public class MapStone : SaveSerialize
 		}
 	}
 
-	// Token: 0x06002FFA RID: 12282 RVA: 0x00026588 File Offset: 0x00024788
+	// Token: 0x06002FFC RID: 12284 RVA: 0x0002651D File Offset: 0x0002471D
 	public void Start()
 	{
 		if (this.WorldArea == null)
@@ -35,7 +35,7 @@ public class MapStone : SaveSerialize
 	}
 
 	// Token: 0x17000798 RID: 1944
-	// (get) Token: 0x06002FFB RID: 12283 RVA: 0x0004D5EC File Offset: 0x0004B7EC
+	// (get) Token: 0x06002FFD RID: 12285 RVA: 0x0004D894 File Offset: 0x0004BA94
 	public bool OriHasTargets
 	{
 		get
@@ -45,7 +45,7 @@ public class MapStone : SaveSerialize
 		}
 	}
 
-	// Token: 0x06002FFC RID: 12284 RVA: 0x000CA2A4 File Offset: 0x000C84A4
+	// Token: 0x06002FFE RID: 12286 RVA: 0x000CA688 File Offset: 0x000C8888
 	public void Highlight()
 	{
 		if (this.OriTarget)
@@ -69,7 +69,7 @@ public class MapStone : SaveSerialize
 		}
 	}
 
-	// Token: 0x06002FFD RID: 12285 RVA: 0x000CA37C File Offset: 0x000C857C
+	// Token: 0x06002FFF RID: 12287 RVA: 0x000CA760 File Offset: 0x000C8960
 	public void Unhighlight()
 	{
 		Characters.Ori.ChangeState(Ori.State.Hovering);
@@ -89,7 +89,7 @@ public class MapStone : SaveSerialize
 		}
 	}
 
-	// Token: 0x06002FFE RID: 12286 RVA: 0x000265A1 File Offset: 0x000247A1
+	// Token: 0x06003000 RID: 12288 RVA: 0x00026536 File Offset: 0x00024736
 	public void OnDisable()
 	{
 		if (this.CurrentState == MapStone.State.Highlighted)
@@ -100,7 +100,7 @@ public class MapStone : SaveSerialize
 	}
 
 	// Token: 0x17000799 RID: 1945
-	// (get) Token: 0x06002FFF RID: 12287 RVA: 0x000265BC File Offset: 0x000247BC
+	// (get) Token: 0x06003001 RID: 12289 RVA: 0x00026551 File Offset: 0x00024751
 	public bool Activated
 	{
 		get
@@ -109,14 +109,14 @@ public class MapStone : SaveSerialize
 		}
 	}
 
-	// Token: 0x06003000 RID: 12288 RVA: 0x000265C7 File Offset: 0x000247C7
+	// Token: 0x06003002 RID: 12290 RVA: 0x0002655C File Offset: 0x0002475C
 	public override void Serialize(Archive ar)
 	{
 		this.CurrentState = (MapStone.State)ar.Serialize((int)this.CurrentState);
 	}
 
 	// Token: 0x1700079A RID: 1946
-	// (get) Token: 0x06003001 RID: 12289 RVA: 0x000265DB File Offset: 0x000247DB
+	// (get) Token: 0x06003003 RID: 12291 RVA: 0x00026570 File Offset: 0x00024770
 	public float DistanceToSein
 	{
 		get
@@ -125,7 +125,7 @@ public class MapStone : SaveSerialize
 		}
 	}
 
-	// Token: 0x06003002 RID: 12290
+	// Token: 0x06003004 RID: 12292
 	public void FixedUpdate()
 	{
 		MapStone.State currentState = this.CurrentState;
@@ -149,7 +149,7 @@ public class MapStone : SaveSerialize
 						}
 						AchievementsLogic.Instance.OnMapStoneActivated();
 						this.CurrentState = MapStone.State.Activated;
-						Randomizer.getPickup();
+						Randomizer.getMapStone();
 						return;
 					}
 					UI.SeinUI.ShakeMapstones();
