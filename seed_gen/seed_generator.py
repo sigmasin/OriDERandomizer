@@ -251,7 +251,6 @@ def assign_random(recurseCount = 0):
                 return assign_random(recurseCount = recurseCount + 1)
             return assign(key)
 
-
 def assign(item):
     itemPool[item] -= 1
     if item == "EC" or item == "KS" or item == "HC":
@@ -262,8 +261,7 @@ def assign(item):
             costs[item] -= 1
     elif item in costs.keys():
         costs[item] = 0
-    if item != "EX" and item != "NO":
-        inventory[item] += 1
+    inventory[item] += 1
     return item
 
 # for use in limitkeys mode    
@@ -283,7 +281,7 @@ def get_random_exp_value(expRemaining, expSlots):
     if expSlots <= 1:
         return max(expRemaining,2)
     
-    return max(expRemaining * random.uniform(0.1,2.0) / expSlots, 2)
+    return int(max(expRemaining * random.uniform(0.1,2.0) / expSlots, 2))
     
 
 parser = argparse.ArgumentParser()
@@ -300,7 +298,7 @@ parser.add_argument("--starved", help="Reduces the rate at which skills will app
 parser.add_argument("--shards", help="The Water Vein, Gumon Seal, and Sunstone will be awarded after 2/3 shards are found", action="store_true")
 parser.add_argument("--limitkeys", help="The Water Vein, Gumon Seal, and Sunstone will only appear at skill trees or event sources", action="store_true")
 parser.add_argument("--non-progressive-mapstones", help="Map Stones will retain their behaviour from before v1.2, having their own unique drops", action="store_true")
-parser.add_argument("--exp-pool", help="Size of the experience pool (default 11000)", type=int, default=11000)
+parser.add_argument("--exp-pool", help="Size of the experience pool (default 10000)", type=int, default=10000)
 parser.add_argument("--analysis", help="Report stats on the skill order for all seeds generated", action="store_true")
 
 args = parser.parse_args()
@@ -523,7 +521,7 @@ def placeItems():
         itemPool["GinsoKey"] = 0
         itemPool["ForlornKey"] = 0
         itemPool["HoruKey"] = 0
-        itemPool["EX*"] -= 15
+        itemPool["EX*"] -= 12
 
     if args.limitkeys:
         satisfied = False
@@ -543,6 +541,8 @@ def placeItems():
         itemCount -= 3
         
     inventory = OrderedDict([
+        ("EX1", 0),
+        ("EX*", 0),
         ("KS", 0),
         ("MS", 0),
         ("AC", 0),
@@ -709,7 +709,7 @@ def placeItems():
                 value = get_random_exp_value(expRemaining, expSlots)
                 expRemaining -= value
                 expSlots -= 1
-                outputStr += "EX" + str(value)
+                outputStr += "EX|" + str(value) + "\n"
             elif itemsToAssign[i][2:]:
                 outputStr +=  (itemsToAssign[i][:2] + "|" + itemsToAssign[i][2:] + "\n")
             else:
