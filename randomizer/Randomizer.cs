@@ -169,8 +169,8 @@ public static class Randomizer
 	{
 		if (!Characters.Sein.IsSuspended)
 		{
-			Characters.Sein.Mortality.Health.GainHealth((float)RandomizerBonus.HealthRegeneration() * 0.0008f);
-			Characters.Sein.Energy.Gain((float)RandomizerBonus.EnergyRegeneration() * 0.0002f);
+			Characters.Sein.Mortality.Health.GainHealth((float)RandomizerBonus.HealthRegeneration() * (Characters.Sein.PlayerAbilities.HealthEfficiency.HasAbility ? 0.0008f : 0.0016f));
+			Characters.Sein.Energy.Gain((float)RandomizerBonus.EnergyRegeneration() * (Characters.Sein.PlayerAbilities.EnergyEfficiency.HasAbility ? 0.0002f : 0.0003f));
 			if (Randomizer.Chaos)
 			{
 				RandomizerChaosManager.Update();
