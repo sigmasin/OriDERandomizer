@@ -2010,19 +2010,13 @@
         <Y>297</Y>
         <Item>KS</Item>
       </Location>
-      <Location>
-        <X>532</X>
-        <Y>328</Y>
-        <Item>SKBash</Item>
-      </Location>
     </Locations>
     <Connections>
       <Connection>
         <Home name="lowerGinsoTree"/>
-        <Target name="upperGinsoTree"/>
+        <Target name="bashTree"/>
         <Requirements>
-          <Requirement mode="normal">KS+KS+KS+KS+Bash</Requirement>
-          <Requirement mode="normal">KS+KS+KS+KS+ChargeJump</Requirement>
+          <Requirement mode="normal">KS+KS+KS+KS</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -2052,6 +2046,25 @@
       </Location>
     </Locations>
     <Connections>
+    </Connections>
+  </Area>
+  <Area name="bashTree">
+    <Locations>
+      <Location>
+        <X>532</X>
+        <Y>328</Y>
+        <Item>SKBash</Item>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="bashTree"/>
+        <Target name="upperGinsoTree"/>
+        <Requirements>
+          <Requirement mode="normal">Bash</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="upperGinsoTree">
@@ -2498,6 +2511,13 @@
       </Connection>
       <Connection>
         <Home name="Horu"/>
+        <Target name="DoorWarp"/>
+        <Requirements>
+          <Requirement mode="extended">Free</Requirement>
+        </Requirements>
+      </Connection>      
+      <Connection>
+        <Home name="Horu"/>
         <Target name="lowerGinsoTree"/>
         <Requirements>
           <Requirement mode="glitched">Dash</Requirement>
@@ -2558,16 +2578,6 @@
         <Y>130</Y>
         <Item>EX200</Item>
       </Location>
-      <Location>
-        <X>106</X>
-        <Y>112</Y>
-        <Item>EX200</Item>
-      </Location>
-      <Location>
-        <X>0</X>
-        <Y>20</Y>
-        <Item>EVWarmth</Item>
-      </Location>
     </Locations>
     <Connections>
       <Connection>
@@ -2579,6 +2589,20 @@
           <Requirement mode="cdash">Dash</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="HoruStomp"/>
+        <Target name="End"/>
+        <Requirements>
+          <Requirement mode="normal">Dash+Stomp+Glide+Bash+ChargeJump+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HoruStomp"/>
+        <Target name="DoorWarp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="HoruStompPlant">
@@ -2587,6 +2611,28 @@
         <X>318</X>
         <Y>245</Y>
         <Item>Plant</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="DoorWarp">
+    <Locations>
+      <Location>
+        <X>106</X>
+        <Y>112</Y>
+        <Item>EX200</Item>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>  
+  <Area name="End">
+    <Locations>
+      <Location>
+        <X>0</X>
+        <Y>20</Y>
+        <Item>EVWarmth</Item>
       </Location>
     </Locations>
     <Connections>
