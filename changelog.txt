@@ -21,9 +21,6 @@ Miscellaneous:
 -The randomizer will now auto-generate a file, "RandomizerBindings.txt", which can be used to reassign randomizer functions
 -A command has been added to show current skill tree and shard progress - default Alt+P
 
---check doorwarp connection
-
-
 v1.1
 
 -Fixed some path bugs and key-lock situations
