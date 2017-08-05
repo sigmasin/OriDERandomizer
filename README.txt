@@ -16,16 +16,16 @@ Hint messages will pop up at the top of the screen to show you what you are gett
 In the menu, clean water is represented by warmth. The actual warmth event has no effect. After you have clean water, the poison water visuals will not change but you'll be able to swim in it.
 
 
-COMMANDS:
+COMMANDS (can be customized using RandomizerRebinding.txt):
 
-Alt+T or Alt+P:     Replay last pickup message
+Alt+T               Replay last pickup message
 Alt+R:              Teleport Ori to the start of the game
                     Warning: using this in misty or locked rooms can potentially softlock
 Alt+L:              Reload the seed file (use to change seeds without restarting the game)
 Alt+C:              Toggle Chaos Mode
 Alt+V:              Within Chaos Mode, toggle messages
 Alt+F:              Within Chaos Mode, force an effect to spawn
-
+Alt+P:              Display current skill tree and shard progress
 
 
 CHAOS MODE?

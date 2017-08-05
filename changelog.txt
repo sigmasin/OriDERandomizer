@@ -1,3 +1,27 @@
+v1.2
+
+Bonus powerups:
+
+-Grenade power upgrade radius reduced, now appears as 1 instance rather than 3
+-Spirit flame damage/targets upgrades are now combined
+-Charge flame efficiency has been replaced with charge flame upgrade, which now also increases damage
+-Health efficiency, energy efficiency, and spirit light efficiency have been removed
+
+Seed generation:
+
+-Shards mode has been changed to require 3/5 shards rather than 2/3.
+-By default, the pickups from map stones are now progressive, meaning that the item you get from a map stone is not tied to the location of the map stone, but rather the total number of fragments you have returned. This obsoletes the strategy of saving before placing a fragment and reloading if the item is not useful. The seed generator now has a flag "--non-progressive-mapstones" which will make map stones behave as they did in 1.1
+-Experience values are now randomized during seed generation, and tend to scale up as more areas become accessible. The seed generator now has a flag "--exp-pool" to set the total experience available
+-A new flag, "--force-trees" has been added. With this flag set, Ori will be unable to enter the final escape until all skill trees have been visited.
+
+Miscellaneous:
+
+-Door warping to get the experience orb at the bottom of Horu is now in extended logic
+-The health efficiency and energy efficiency abilities from the utility tree now affect regeneration
+-The randomizer will now auto-generate a file, "RandomizerBindings.txt", which can be used to reassign randomizer functions
+-A command has been added to show current skill tree and shard progress - default Alt+P
+
+
 v1.1
 
 -Fixed some path bugs and key-lock situations
