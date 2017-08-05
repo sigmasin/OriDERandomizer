@@ -300,7 +300,7 @@ parser.add_argument("--zeroxp", help="Enable 0xp mode", action="store_true")
 parser.add_argument("--nobonus", help="Remove bonus powerups from the item pool", action="store_true")
 parser.add_argument("--noplants", help="Ignore petrified plants when assigning items", action="store_true")
 parser.add_argument("--starved", help="Reduces the rate at which skills will appear when not required to advance", action="store_true")
-parser.add_argument("--shards", help="The Water Vein, Gumon Seal, and Sunstone will be awarded after 2/3 shards are found", action="store_true")
+parser.add_argument("--shards", help="The Water Vein, Gumon Seal, and Sunstone will be awarded after 3/5 shards are found", action="store_true")
 parser.add_argument("--limitkeys", help="The Water Vein, Gumon Seal, and Sunstone will only appear at skill trees or event sources", action="store_true")
 parser.add_argument("--non-progressive-mapstones", help="Map Stones will retain their behaviour from before v1.2, having their own unique drops", action="store_true")
 parser.add_argument("--force-trees", help="Prevent Ori from entering the final escape room until all skill trees have been visited", action="store_true");
