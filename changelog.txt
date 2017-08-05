@@ -2,10 +2,10 @@ v1.2
 
 Bonus powerups:
 
--Grenade power upgrade radius reduced, now appears as 1 instance rather than 3
+-Grenade power upgrade radius reduced
+-Charge flame efficiency and grenade power upgrade have been merged into "Explosion Power Upgrade". This also increases the damage of charge flame.
 -Spirit flame damage/targets upgrades are now combined
--Charge flame efficiency has been replaced with charge flame upgrade, which now also increases damage
--Health efficiency, energy efficiency, and spirit light efficiency have been removed
+-Health efficiency and energy efficiency have been removed
 
 Seed generation:
 
