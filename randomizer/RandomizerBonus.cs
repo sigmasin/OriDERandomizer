@@ -98,18 +98,6 @@ public static class RandomizerBonus
         return (Characters.Sein.Inventory.SkillPointsCollected & 0x00000200) >> 9 == 1;
     }
     
-    //remove
-    public static bool GrenadePower()
-    {
-        return (Characters.Sein.Inventory.SkillPointsCollected & 0x00000100) >> 8 == 1;
-    }
-
-    //remove
-    public static bool ChargeFlameUpgrade()
-	{
-		return (Characters.Sein.Inventory.SkillPointsCollected & 0x00000200) >> 9 == 1;
-	}
-    
 	public static bool DoubleAirDash()
 	{
 		return (Characters.Sein.Inventory.SkillPointsCollected & 0x00000400) >> 10 == 1;
