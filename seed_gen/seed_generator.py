@@ -122,6 +122,9 @@ class Location:
 
     def get_key(self):
         return self.x*10000 + self.y
+        
+    def to_string(self):
+        return self.area + " " + self.orig + " (" + str(self.x) + " " + str(self.y) + ")"
 
 
 def open_free_connections():
@@ -303,6 +306,7 @@ parser.add_argument("--non-progressive-mapstones", help="Map Stones will retain 
 parser.add_argument("--force-trees", help="Prevent Ori from entering the final escape room until all skill trees have been visited", action="store_true");
 parser.add_argument("--exp-pool", help="Size of the experience pool (default 10000)", type=int, default=10000)
 parser.add_argument("--analysis", help="Report stats on the skill order for all seeds generated", action="store_true")
+parser.add_argument("--loc-analysis", help="Report stats on where skills are placed over multiple seeds", action="store_true")
 
 args = parser.parse_args()
 
@@ -378,6 +382,10 @@ skillAnalysis = {
     "Dash": 0,
     "Grenade": 0
 }
+
+locationAnalysis = {}
+for i in range(1,10):
+    locationAnalysis["MapStone " + str(i)] = skillAnalysis.copy()
  
 def placeItems():
 
@@ -595,6 +603,11 @@ def placeItems():
                     plants.append(loc)
                     continue
             area.add_location(loc)
+            # location analysis setup
+            if args.loc_analysis:
+                key = loc.to_string()
+                if key not in locationAnalysis.keys():
+                    locationAnalysis[key] = skillAnalysis.copy()
         for conn in child.find("Connections"):
             connection = Connection(conn.find("Home").attrib["name"], conn.find("Target").attrib["name"])
             if not includePlants:
@@ -704,6 +717,11 @@ def placeItems():
                 if args.analysis:
                     skillAnalysis[itemsToAssign[i]] += skillCount
                     skillCount -= 1
+                if args.loc_analysis:
+                    key = locationsToAssign[i].to_string()
+                    if locationsToAssign[i].orig == "MapStone":
+                        key = "MapStone " + str(mapstonesAssigned)
+                    locationAnalysis[key][itemsToAssign[i]] += 1
             elif itemsToAssign[i] in eventsOutput:
                 outputStr +=  (str(eventsOutput[itemsToAssign[i]][:2]) + "|" + eventsOutput[itemsToAssign[i]][2:] + "\n")
             elif itemsToAssign[i] == "EX*":
@@ -716,7 +734,7 @@ def placeItems():
             else:
                 outputStr +=  (itemsToAssign[i][:2] + "|1\n")
             if itemsToAssign[i] in costs.keys():
-                spoilerStr += (itemsToAssign[i] + " from " + locationsToAssign[i].area + " " + locationsToAssign[i].orig + " (" + str(locationsToAssign[i].x) + ", " + str(locationsToAssign[i].y) + ")\n")
+                spoilerStr += (itemsToAssign[i] + " from " + locationsToAssign[i].to_string() + "\n")
 
         if spoilerPath:
             spoilerStr += ("Forced pickups: " + str(spoilerPath) + "\n")
@@ -740,3 +758,32 @@ for seedOffset in range(0, args.count):
 
 if args.analysis:
     print(skillAnalysis)
+
+skillAnalysis = {
+    "WallJump": 0,
+    "ChargeFlame": 0,
+    "DoubleJump": 0,
+    "Bash": 0,
+    "Stomp": 0,
+    "Glide": 0,
+    "Climb": 0,
+    "ChargeJump": 0,
+    "Dash": 0,
+    "Grenade": 0
+}
+    
+if args.loc_analysis:
+    print("location,WallJump,ChargeFlame,DoubleJump,Bash,Stomp,Glide,Climb,ChargeJump,Dash,Grenade")
+    for key in locationAnalysis.keys():
+        line = key + ","
+        line += str(locationAnalysis[key]["WallJump"]) + ","
+        line += str(locationAnalysis[key]["ChargeFlame"]) + ","
+        line += str(locationAnalysis[key]["DoubleJump"]) + ","
+        line += str(locationAnalysis[key]["Bash"]) + ","
+        line += str(locationAnalysis[key]["Stomp"]) + ","
+        line += str(locationAnalysis[key]["Glide"]) + ","
+        line += str(locationAnalysis[key]["Climb"]) + ","
+        line += str(locationAnalysis[key]["ChargeJump"]) + ","
+        line += str(locationAnalysis[key]["Dash"]) + ","
+        line += str(locationAnalysis[key]["Grenade"])
+        print(line)
