@@ -446,7 +446,7 @@ def placeItems():
     if not hardMode:
         itemPool = OrderedDict([
             ("EX1", 1),
-            ("EX*", 94),
+            ("EX*", 95),
             ("KS", 40),
             ("MS", 9),
             ("AC", 33),
@@ -476,9 +476,8 @@ def placeItems():
             ("RB10", 1),
             ("RB11", 1),
             ("RB12", 1),
-            ("RB13", 1),
+            ("RB13", 3),
             ("RB15", 3),
-            ("RB17", 3),
             ("WaterVeinShard", 0),
             ("GumonSealShard", 0),
             ("SunstoneShard", 0)
@@ -577,8 +576,7 @@ def placeItems():
         ("RB11", 0),
         ("RB12", 0),
         ("RB13", 0),
-        ("RB14", 0),
-        ("RB16", 0),
+        ("RB15", 0),
         ("WaterVeinShard", 0),
         ("GumonSealShard", 0),
         ("SunstoneShard", 0)

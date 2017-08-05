@@ -53,7 +53,7 @@ public static class RandomizerRebinding
 		{
 			':'
 		});
-		if (line.Length >= 2)
+		if (line[1].Trim() != "")
 		{
 			return (KeyCode)((int)Enum.Parse(typeof(KeyCode), line[1].Trim()));
 		}
