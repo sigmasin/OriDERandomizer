@@ -326,9 +326,9 @@ eventsOutput = {
     "Wind": "EV3",
     "HoruKey": "EV4",
     "Warmth": "EV5",
-    "WaterVeinShard": "RB18",
-    "GumonSealShard": "RB20",
-    "SunstoneShard": "RB22"
+    "WaterVeinShard": "RB17",
+    "GumonSealShard": "RB19",
+    "SunstoneShard": "RB21"
 }
 
 limitKeysPool = ["SKWallJump", "SKChargeFlame", "SKDash", "SKStomp", "SKDoubleJump", "SKGlide", "SKClimb", "SKGrenade", "SKChargeJump", "EVGinsoKey", "EVForlornKey", "EVHoruKey", "SKBash", "EVWater", "EVWind"]
@@ -477,8 +477,8 @@ def placeItems():
             ("RB11", 1),
             ("RB12", 1),
             ("RB13", 1),
-            ("RB14", 3),
-            ("RB16", 3),
+            ("RB15", 3),
+            ("RB17", 3),
             ("WaterVeinShard", 0),
             ("GumonSealShard", 0),
             ("SunstoneShard", 0)
