@@ -172,7 +172,7 @@ public static class Randomizer
 		Randomizer.showHint("Error finding pickup at " + ((int)position.x).ToString() + ", " + ((int)position.y).ToString());
 	}
 
-	// Token: 0x06003743 RID: 14147
+	// Token: 0x06003743 RID: 14147 RVA: 0x000E062C File Offset: 0x000DE82C
 	public static void Update()
 	{
 		if (!Characters.Sein.IsSuspended)
@@ -259,7 +259,7 @@ public static class Randomizer
 		UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
 	}
 
-	// Token: 0x06003746 RID: 14150 RVA: 0x000E0800 File Offset: 0x000DEA00
+	// Token: 0x06003746 RID: 14150
 	public static void getMapStone()
 	{
 		if (!Randomizer.ProgressiveMapStones)
@@ -267,7 +267,7 @@ public static class Randomizer
 			Randomizer.getPickup();
 			return;
 		}
-		Characters.Sein.Inventory.SkillPointsCollected += 16777216;
+		Characters.Sein.Inventory.SkillPointsCollected += 8388608;
 		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[20 + RandomizerBonus.MapStoneProgression() * 4]);
 	}
 
