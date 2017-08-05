@@ -9,7 +9,7 @@ using UnityEngine;
 // Token: 0x020009EE RID: 2542
 public static class Randomizer
 {
-	// Token: 0x06003738 RID: 14136
+	// Token: 0x06003738 RID: 14136 RVA: 0x000E02D4 File Offset: 0x000DE4D4
 	public static void initialize()
 	{
 		Randomizer.OHKO = false;
@@ -72,13 +72,13 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x06003739 RID: 14137
+	// Token: 0x06003739 RID: 14137 RVA: 0x0002B449 File Offset: 0x00029649
 	public static void getPickup()
 	{
 		Randomizer.getPickup(Characters.Sein.Position);
 	}
 
-	// Token: 0x0600373A RID: 14138
+	// Token: 0x0600373A RID: 14138 RVA: 0x0002B45A File Offset: 0x0002965A
 	public static void returnToStart()
 	{
 		Characters.Sein.Position = new Vector3(189f, -189f);
@@ -88,13 +88,13 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x0600373B RID: 14139
+	// Token: 0x0600373B RID: 14139 RVA: 0x0002B488 File Offset: 0x00029688
 	public static void getEvent(int ID)
 	{
 		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[ID * 4]);
 	}
 
-	// Token: 0x0600373C RID: 14140
+	// Token: 0x0600373C RID: 14140 RVA: 0x0002B4A6 File Offset: 0x000296A6
 	public static void showHint(string message)
 	{
 		Randomizer.Message = message;
@@ -102,14 +102,14 @@ public static class Randomizer
 		UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
 	}
 
-	// Token: 0x0600373D RID: 14141
+	// Token: 0x0600373D RID: 14141 RVA: 0x0002B4CA File Offset: 0x000296CA
 	public static void playLastMessage()
 	{
 		Randomizer.MessageProvider.SetMessage(Randomizer.Message);
 		UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
 	}
 
-	// Token: 0x0600373E RID: 14142
+	// Token: 0x0600373E RID: 14142 RVA: 0x0002B4EC File Offset: 0x000296EC
 	public static void log(string message)
 	{
 		StreamWriter expr_0A = File.AppendText("randomizer.log");
@@ -117,20 +117,20 @@ public static class Randomizer
 		expr_0A.Flush();
 	}
 
-	// Token: 0x0600373F RID: 14143
+	// Token: 0x0600373F RID: 14143 RVA: 0x0002B504 File Offset: 0x00029704
 	public static bool WindRestored()
 	{
 		return Sein.World.Events.WindRestored && Scenes.Manager.CurrentScene.Scene != "forlornRuinsResurrection" && Scenes.Manager.CurrentScene.Scene != "forlornRuinsRotatingLaserFlipped";
 	}
 
-	// Token: 0x06003740 RID: 14144
+	// Token: 0x06003740 RID: 14144 RVA: 0x0002B543 File Offset: 0x00029743
 	public static void getSkill()
 	{
 		Characters.Sein.Inventory.SkillPointsCollected += 134217728;
 		Randomizer.getPickup();
 	}
 
-	// Token: 0x06003741 RID: 14145
+	// Token: 0x06003741 RID: 14145 RVA: 0x000E0474 File Offset: 0x000DE674
 	public static void hintAndLog(float x, float y)
 	{
 		string expr_1E = ((int)x).ToString() + " " + ((int)y).ToString();
@@ -138,7 +138,7 @@ public static class Randomizer
 		Randomizer.log(expr_1E);
 	}
 
-	// Token: 0x06003742 RID: 14146
+	// Token: 0x06003742 RID: 14146 RVA: 0x000E04AC File Offset: 0x000DE6AC
 	public static void getPickup(Vector3 position)
 	{
 		int num = (int)(Math.Floor((double)((int)position.x) / Randomizer.GridFactor) * Randomizer.GridFactor) * 10000 + (int)(Math.Floor((double)((int)position.y) / Randomizer.GridFactor) * Randomizer.GridFactor);
@@ -177,8 +177,8 @@ public static class Randomizer
 	{
 		if (!Characters.Sein.IsSuspended)
 		{
-			Characters.Sein.Mortality.Health.GainHealth((float)RandomizerBonus.HealthRegeneration() * (Characters.Sein.PlayerAbilities.HealthEfficiency.HasAbility ? 0.0008f : 0.0016f));
-			Characters.Sein.Energy.Gain((float)RandomizerBonus.EnergyRegeneration() * (Characters.Sein.PlayerAbilities.EnergyEfficiency.HasAbility ? 0.0002f : 0.0003f));
+			Characters.Sein.Mortality.Health.GainHealth((float)RandomizerBonus.HealthRegeneration() * (Characters.Sein.PlayerAbilities.HealthEfficiency.HasAbility ? 0.0016f : 0.0008f));
+			Characters.Sein.Energy.Gain((float)RandomizerBonus.EnergyRegeneration() * (Characters.Sein.PlayerAbilities.EnergyEfficiency.HasAbility ? 0.0003f : 0.0002f));
 			if (Randomizer.ForceTrees && Scenes.Manager.CurrentScene.Scene == "catAndMouseResurrectionRoom" && RandomizerBonus.SkillTreeProgression() < 10)
 			{
 				Characters.Sein.Position = new Vector3(20f, 105f);
@@ -242,7 +242,7 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x06003744 RID: 14148
+	// Token: 0x06003744 RID: 14148 RVA: 0x0002B565 File Offset: 0x00029765
 	public static void showChaosEffect(string message)
 	{
 		if (Randomizer.ChaosVerbose)
@@ -252,14 +252,14 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x06003745 RID: 14149
+	// Token: 0x06003745 RID: 14149 RVA: 0x0002B58A File Offset: 0x0002978A
 	public static void showChaosMessage(string message)
 	{
 		Randomizer.MessageProvider.SetMessage(message);
 		UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
 	}
 
-	// Token: 0x06003746 RID: 14150
+	// Token: 0x06003746 RID: 14150 RVA: 0x000E0800 File Offset: 0x000DEA00
 	public static void getMapStone()
 	{
 		if (!Randomizer.ProgressiveMapStones)
@@ -271,39 +271,39 @@ public static class Randomizer
 		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[20 + RandomizerBonus.MapStoneProgression() * 4]);
 	}
 
-	// Token: 0x060039B9 RID: 14777
+	// Token: 0x06003747 RID: 14151 RVA: 0x000E0858 File Offset: 0x000DEA58
 	public static void showProgress()
 	{
-		string message = "Trees (" + RandomizerBonus.SkillTreeProgression().ToString() + "/10) ";
-		message += " Water Vein (";
+		string text = "Trees (" + RandomizerBonus.SkillTreeProgression().ToString() + "/10) ";
+		text += " Water Vein (";
 		if (Keys.GinsoTree)
 		{
-			message += "3";
+			text += "3";
 		}
 		else
 		{
-			message += RandomizerBonus.WaterVeinShards().ToString();
+			text += RandomizerBonus.WaterVeinShards().ToString();
 		}
-		message += "/3)\nGumon Seal (";
+		text += "/3)\nGumon Seal (";
 		if (Keys.ForlornRuins)
 		{
-			message += "3";
+			text += "3";
 		}
 		else
 		{
-			message += RandomizerBonus.GumonSealShards().ToString();
+			text += RandomizerBonus.GumonSealShards().ToString();
 		}
-		message += "/3)  Sunstone (";
+		text += "/3)  Sunstone (";
 		if (Keys.MountHoru)
 		{
-			message += "3";
+			text += "3";
 		}
 		else
 		{
-			message += RandomizerBonus.SunstoneShards().ToString();
+			text += RandomizerBonus.SunstoneShards().ToString();
 		}
-		message += "/3)";
-		Randomizer.MessageProvider.SetMessage(message);
+		text += "/3)";
+		Randomizer.MessageProvider.SetMessage(text);
 		UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
 	}
 
@@ -346,6 +346,6 @@ public static class Randomizer
 	// Token: 0x0400322F RID: 12847
 	public static bool ProgressiveMapStones;
 
-	// Token: 0x04003259 RID: 12889
+	// Token: 0x04003230 RID: 12848
 	public static bool ForceTrees;
 }

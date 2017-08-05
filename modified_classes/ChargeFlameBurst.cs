@@ -77,7 +77,7 @@ public class ChargeFlameBurst : MonoBehaviour, IPooled, ISuspendable
 				{
 					this.m_damageAttackables.Add(attackable);
 					GameObject gameObject = ((Component)attackable).gameObject;
-					new Damage(RandomizerBonus.ExplosionPower() ? this.DamageAmount : (this.DamageAmount * 2f), vector.normalized * 3f, position, DamageType.ChargeFlame, base.gameObject).DealToComponents(gameObject);
+					new Damage(RandomizerBonus.ExplosionPower() ? (this.DamageAmount * 2f) : this.DamageAmount, vector.normalized * 3f, position, DamageType.ChargeFlame, base.gameObject).DealToComponents(gameObject);
 					bool expr_D8 = attackable.IsDead();
 					if (!expr_D8)
 					{
@@ -99,7 +99,7 @@ public class ChargeFlameBurst : MonoBehaviour, IPooled, ISuspendable
 		this.m_waitDelay = 0.1f;
 	}
 
-	// Token: 0x060000C8 RID: 200 RVA: 0x0002DDF4 File Offset: 0x0002BFF4
+	// Token: 0x060000C8 RID: 200 RVA: 0x0002DE54 File Offset: 0x0002C054
 	public void FixedUpdate()
 	{
 		if (this.m_suspended)

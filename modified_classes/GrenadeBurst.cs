@@ -71,11 +71,11 @@ public class GrenadeBurst : MonoBehaviour, IPooled, ISuspendable
 			{
 				Vector3 position2 = attackable.Position;
 				Vector3 vector = position2 - position;
-				if (vector.magnitude <= (RandomizerBonus.ExplosionPower() ? this.BurstRadius : (this.BurstRadius + 2f)))
+				if (vector.magnitude <= (RandomizerBonus.ExplosionPower() ? (this.BurstRadius + 2f) : this.BurstRadius))
 				{
 					this.m_damageAttackables.Add(attackable);
 					GameObject gameObject = ((Component)attackable).gameObject;
-					new Damage(RandomizerBonus.ExplosionPower() ? this.DamageAmount : (this.DamageAmount * 2f), vector.normalized * 3f, position, DamageType.Grenade, base.gameObject).DealToComponents(gameObject);
+					new Damage(RandomizerBonus.ExplosionPower() ? (this.DamageAmount * 2f) : this.DamageAmount, vector.normalized * 3f, position, DamageType.Grenade, base.gameObject).DealToComponents(gameObject);
 					if (!attackable.IsDead())
 					{
 						GameObject expr_106 = (GameObject)InstantiateUtility.Instantiate(this.BurstImpactEffectPrefab, position2, Quaternion.identity);
@@ -88,7 +88,7 @@ public class GrenadeBurst : MonoBehaviour, IPooled, ISuspendable
 		this.m_waitDelay = 0.1f;
 	}
 
-	// Token: 0x060000B4 RID: 180 RVA: 0x0002DA44 File Offset: 0x0002BC44
+	// Token: 0x060000B4 RID: 180 RVA: 0x0002DAC0 File Offset: 0x0002BCC0
 	public void FixedUpdate()
 	{
 		if (this.m_suspended)
