@@ -14,12 +14,12 @@ public class Damage
 		this.m_sender = sender;
 		if (type == DamageType.SpiritFlame)
 		{
-			this.m_amount += (float)RandomizerBonus.SpiritFlameStrength();
+			this.m_amount += (float)(RandomizerBonus.SpiritFlameLevel() * 2);
 		}
 	}
 
 	// Token: 0x170001E4 RID: 484
-	// (get) Token: 0x06000CDA RID: 3290 RVA: 0x0000B8FB File Offset: 0x00009AFB
+	// (get) Token: 0x06000CDA RID: 3290 RVA: 0x0000B8CE File Offset: 0x00009ACE
 	public float Amount
 	{
 		get
@@ -29,7 +29,7 @@ public class Damage
 	}
 
 	// Token: 0x170001E5 RID: 485
-	// (get) Token: 0x06000CDB RID: 3291 RVA: 0x0000B903 File Offset: 0x00009B03
+	// (get) Token: 0x06000CDB RID: 3291 RVA: 0x0000B8D6 File Offset: 0x00009AD6
 	public Vector2 Force
 	{
 		get
@@ -39,7 +39,7 @@ public class Damage
 	}
 
 	// Token: 0x170001E6 RID: 486
-	// (get) Token: 0x06000CDC RID: 3292 RVA: 0x0000B90B File Offset: 0x00009B0B
+	// (get) Token: 0x06000CDC RID: 3292 RVA: 0x0000B8DE File Offset: 0x00009ADE
 	public Vector3 Position
 	{
 		get
@@ -49,7 +49,7 @@ public class Damage
 	}
 
 	// Token: 0x170001E7 RID: 487
-	// (get) Token: 0x06000CDD RID: 3293 RVA: 0x0000B913 File Offset: 0x00009B13
+	// (get) Token: 0x06000CDD RID: 3293 RVA: 0x0000B8E6 File Offset: 0x00009AE6
 	public DamageType Type
 	{
 		get
@@ -59,7 +59,7 @@ public class Damage
 	}
 
 	// Token: 0x170001E8 RID: 488
-	// (get) Token: 0x06000CDE RID: 3294 RVA: 0x0000B91B File Offset: 0x00009B1B
+	// (get) Token: 0x06000CDE RID: 3294 RVA: 0x0000B8EE File Offset: 0x00009AEE
 	public GameObject Sender
 	{
 		get
@@ -68,13 +68,13 @@ public class Damage
 		}
 	}
 
-	// Token: 0x06000CDF RID: 3295 RVA: 0x0000B923 File Offset: 0x00009B23
+	// Token: 0x06000CDF RID: 3295 RVA: 0x0000B8F6 File Offset: 0x00009AF6
 	public void SetAmount(float amount)
 	{
 		this.m_amount = amount;
 	}
 
-	// Token: 0x06000CE0 RID: 3296 RVA: 0x0000B92C File Offset: 0x00009B2C
+	// Token: 0x06000CE0 RID: 3296 RVA: 0x0000B8FF File Offset: 0x00009AFF
 	public void DealToComponents(GameObject target)
 	{
 		if (target != null)

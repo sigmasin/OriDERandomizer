@@ -278,10 +278,12 @@ def force_assign(item, location):
     
 def get_random_exp_value(expRemaining, expSlots):
 
+    min = random.randint(2,9)
+
     if expSlots <= 1:
-        return max(expRemaining,2)
+        return max(expRemaining,min)
     
-    return int(max(expRemaining * random.uniform(0.1,2.0) / expSlots, 2))
+    return int(max(expRemaining * (inventory["EX*"] + expSlots / 4) * random.uniform(0.0,2.0) / (expSlots * (expSlots + inventory["EX*"])), min))
     
 
 parser = argparse.ArgumentParser()
@@ -298,6 +300,7 @@ parser.add_argument("--starved", help="Reduces the rate at which skills will app
 parser.add_argument("--shards", help="The Water Vein, Gumon Seal, and Sunstone will be awarded after 2/3 shards are found", action="store_true")
 parser.add_argument("--limitkeys", help="The Water Vein, Gumon Seal, and Sunstone will only appear at skill trees or event sources", action="store_true")
 parser.add_argument("--non-progressive-mapstones", help="Map Stones will retain their behaviour from before v1.2, having their own unique drops", action="store_true")
+parser.add_argument("--force-trees", help="Prevent Ori from entering the final escape room until all skill trees have been visited", action="store_true");
 parser.add_argument("--exp-pool", help="Size of the experience pool (default 10000)", type=int, default=10000)
 parser.add_argument("--analysis", help="Report stats on the skill order for all seeds generated", action="store_true")
 
@@ -323,9 +326,9 @@ eventsOutput = {
     "Wind": "EV3",
     "HoruKey": "EV4",
     "Warmth": "EV5",
-    "WaterVeinShard": "RB21",
-    "GumonSealShard": "RB23",
-    "SunstoneShard": "RB25"
+    "WaterVeinShard": "RB18",
+    "GumonSealShard": "RB20",
+    "SunstoneShard": "RB22"
 }
 
 limitKeysPool = ["SKWallJump", "SKChargeFlame", "SKDash", "SKStomp", "SKDoubleJump", "SKGlide", "SKClimb", "SKGrenade", "SKChargeJump", "EVGinsoKey", "EVForlornKey", "EVHoruKey", "SKBash", "EVWater", "EVWind"]
@@ -350,6 +353,8 @@ if args.zeroxp:
     flags += "0XP,"
 if args.nobonus:
     flags += "NoBonus,"
+if args.force_trees:
+    flags += "ForceTrees,"
 if args.non_progressive_mapstones:
     flags += "NonProgressMapStones,"
 if flags:
@@ -441,7 +446,7 @@ def placeItems():
     if not hardMode:
         itemPool = OrderedDict([
             ("EX1", 1),
-            ("EX*", 89),
+            ("EX*", 94),
             ("KS", 40),
             ("MS", 9),
             ("AC", 33),
@@ -466,15 +471,14 @@ def placeItems():
             ("RB0", 5),
             ("RB1", 5),
             ("RB6", 3),
-            ("RB8", 3),
-            ("RB10", 3),
+            ("RB8", 1),
+            ("RB9", 1),
+            ("RB10", 1),
+            ("RB11", 1),
             ("RB12", 1),
             ("RB13", 1),
-            ("RB14", 1),
-            ("RB15", 1),
-            ("RB16", 1),
-            ("RB17", 3),
-            ("RB19", 3),
+            ("RB14", 3),
+            ("RB16", 3),
             ("WaterVeinShard", 0),
             ("GumonSealShard", 0),
             ("SunstoneShard", 0)
@@ -568,14 +572,13 @@ def placeItems():
         ("RB1", 0),
         ("RB6", 0),
         ("RB8", 0),
+        ("RB9", 0),
         ("RB10", 0),
+        ("RB11", 0),
         ("RB12", 0),
         ("RB13", 0),
         ("RB14", 0),
-        ("RB15", 0),
         ("RB16", 0),
-        ("RB17", 0),
-        ("RB19", 0),
         ("WaterVeinShard", 0),
         ("GumonSealShard", 0),
         ("SunstoneShard", 0)

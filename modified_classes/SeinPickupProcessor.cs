@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x02000919 RID: 2329
 public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollector, ICheckpointZoneReciever
 {
-	// Token: 0x06003322 RID: 13090 RVA: 0x000D3390 File Offset: 0x000D1590
+	// Token: 0x06003322 RID: 13090 RVA: 0x000D333C File Offset: 0x000D153C
 	public void OnCollectSkillPointPickup(SkillPointPickup skillPointPickup)
 	{
 		skillPointPickup.Collected();
@@ -16,7 +16,7 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		}
 	}
 
-	// Token: 0x06003323 RID: 13091
+	// Token: 0x06003323 RID: 13091 RVA: 0x000D3380 File Offset: 0x000D1580
 	public void OnCollectEnergyOrbPickup(EnergyOrbPickup energyOrbPickup)
 	{
 		float num = (float)energyOrbPickup.Amount;
@@ -39,7 +39,7 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		UI.SeinUI.ShakeEnergyOrbBar();
 	}
 
-	// Token: 0x06003324 RID: 13092 RVA: 0x000D3390 File Offset: 0x000D1590
+	// Token: 0x06003324 RID: 13092 RVA: 0x000D333C File Offset: 0x000D153C
 	public void OnCollectMaxEnergyContainerPickup(MaxEnergyContainerPickup energyContainerPickup)
 	{
 		energyContainerPickup.Collected();
@@ -50,7 +50,7 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		}
 	}
 
-	// Token: 0x06003325 RID: 13093 RVA: 0x000D3494 File Offset: 0x000D1694
+	// Token: 0x06003325 RID: 13093
 	public void OnCollectExpOrbPickup(ExpOrbPickup expOrbPickup)
 	{
 		int num = expOrbPickup.Amount * ((!this.Sein.PlayerAbilities.SoulEfficiency.HasAbility) ? 1 : 2);
@@ -88,7 +88,7 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		}
 	}
 
-	// Token: 0x06003326 RID: 13094 RVA: 0x000D3390 File Offset: 0x000D1590
+	// Token: 0x06003326 RID: 13094 RVA: 0x000D333C File Offset: 0x000D153C
 	public void OnCollectKeystonePickup(KeystonePickup keystonePickup)
 	{
 		keystonePickup.Collected();
@@ -99,7 +99,7 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		}
 	}
 
-	// Token: 0x06003327 RID: 13095 RVA: 0x000D3390 File Offset: 0x000D1590
+	// Token: 0x06003327 RID: 13095 RVA: 0x000D333C File Offset: 0x000D153C
 	public void OnCollectMaxHealthContainerPickup(MaxHealthContainerPickup maxHealthContainerPickup)
 	{
 		maxHealthContainerPickup.Collected();
@@ -110,11 +110,11 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		}
 	}
 
-	// Token: 0x06003328 RID: 13096
+	// Token: 0x06003328 RID: 13096 RVA: 0x000D3568 File Offset: 0x000D1768
 	public void OnCollectRestoreHealthPickup(RestoreHealthPickup restoreHealthPickup)
 	{
-		int num = restoreHealthPickup.Amount * ((!this.Sein.PlayerAbilities.HealthEfficiency.HasAbility) ? 1 : 2);
-		this.Sein.Mortality.Health.GainHealth(num);
+		int amount = restoreHealthPickup.Amount * ((!this.Sein.PlayerAbilities.HealthEfficiency.HasAbility) ? 1 : 2);
+		this.Sein.Mortality.Health.GainHealth(amount);
 		restoreHealthPickup.Collected();
 		UI.SeinUI.ShakeHealthbar();
 		if (!this.Sein.PlayerAbilities.WallJump.HasAbility)
@@ -123,7 +123,7 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		}
 	}
 
-	// Token: 0x06003329 RID: 13097 RVA: 0x000D3390 File Offset: 0x000D1590
+	// Token: 0x06003329 RID: 13097 RVA: 0x000D333C File Offset: 0x000D153C
 	public void OnCollectMapStonePickup(MapStonePickup mapStonePickup)
 	{
 		mapStonePickup.Collected();
@@ -140,7 +140,7 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		this.Sein = sein;
 	}
 
-	// Token: 0x0600332B RID: 13099 RVA: 0x000D3650 File Offset: 0x000D1850
+	// Token: 0x0600332B RID: 13099 RVA: 0x000D35E0 File Offset: 0x000D17E0
 	public void OnEnterCheckpoint(InvisibleCheckpoint checkpoint)
 	{
 		if (this.Sein.IsSuspended)
@@ -157,7 +157,7 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		checkpoint.OnCheckpointCreated();
 	}
 
-	// Token: 0x0600332C RID: 13100 RVA: 0x000D36D8 File Offset: 0x000D18D8
+	// Token: 0x0600332C RID: 13100 RVA: 0x000D3668 File Offset: 0x000D1868
 	public override void Serialize(Archive ar)
 	{
 		ar.Serialize(ref this.ExpOrbInfo.HasBeenCollectedBefore);

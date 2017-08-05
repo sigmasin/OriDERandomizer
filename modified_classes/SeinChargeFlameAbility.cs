@@ -24,26 +24,26 @@ public class SeinChargeFlameAbility : CharacterState, ISeinReceiver
 	{
 		get
 		{
-			float reduction = RandomizerBonus.ChargeFlameEfficiency() ? 0.5f : 0f;
-			return this.m_sein.Energy.CanAfford(this.EnergyCost * ((!this.m_sein.PlayerAbilities.ChargeFlameEfficiency.HasAbility) ? (1f - reduction) : (0.5f - reduction)));
+			float num = RandomizerBonus.ExplosionPower() ? 0.5f : 0f;
+			return this.m_sein.Energy.CanAfford(this.EnergyCost * ((!this.m_sein.PlayerAbilities.ChargeFlameEfficiency.HasAbility) ? (1f - num) : (0.5f - num)));
 		}
 	}
 
 	// Token: 0x060000D0 RID: 208
 	public void SpendEnergy()
 	{
-		float reduction = RandomizerBonus.ChargeFlameEfficiency() ? 0.5f : 0f;
-		this.m_sein.Energy.Spend(this.EnergyCost * ((!this.m_sein.PlayerAbilities.ChargeFlameEfficiency.HasAbility) ? (1f - reduction) : (0.5f - reduction)));
+		float num = RandomizerBonus.ExplosionPower() ? 0.5f : 0f;
+		this.m_sein.Energy.Spend(this.EnergyCost * ((!this.m_sein.PlayerAbilities.ChargeFlameEfficiency.HasAbility) ? (1f - num) : (0.5f - num)));
 	}
 
 	// Token: 0x060000D1 RID: 209
 	public void RestoreEnergy()
 	{
-		float reduction = RandomizerBonus.ChargeFlameEfficiency() ? 0.5f : 0f;
-		this.m_sein.Energy.Gain(this.EnergyCost * ((!this.m_sein.PlayerAbilities.ChargeFlameEfficiency.HasAbility) ? (1f - reduction) : (0.5f - reduction)));
+		float num = RandomizerBonus.ExplosionPower() ? 0.5f : 0f;
+		this.m_sein.Energy.Gain(this.EnergyCost * ((!this.m_sein.PlayerAbilities.ChargeFlameEfficiency.HasAbility) ? (1f - num) : (0.5f - num)));
 	}
 
-	// Token: 0x060000D2 RID: 210 RVA: 0x0002DD24 File Offset: 0x0002BF24
+	// Token: 0x060000D2 RID: 210 RVA: 0x0002DF78 File Offset: 0x0002C178
 	public override void Awake()
 	{
 		base.Awake();
@@ -75,7 +75,7 @@ public class SeinChargeFlameAbility : CharacterState, ISeinReceiver
 		Game.Checkpoint.Events.OnPostRestore.Add(new Action(this.OnRestoreCheckpoint));
 	}
 
-	// Token: 0x060000D3 RID: 211 RVA: 0x0002DE50 File Offset: 0x0002C050
+	// Token: 0x060000D3 RID: 211 RVA: 0x0002E0A4 File Offset: 0x0002C2A4
 	public void OnRestoreCheckpoint()
 	{
 		if (this.m_chargeFlameChargeEffect)
@@ -98,7 +98,7 @@ public class SeinChargeFlameAbility : CharacterState, ISeinReceiver
 		}
 	}
 
-	// Token: 0x060000D5 RID: 213 RVA: 0x0002DEB0 File Offset: 0x0002C0B0
+	// Token: 0x060000D5 RID: 213 RVA: 0x0002E104 File Offset: 0x0002C304
 	public void UpdateStartState()
 	{
 		if (this.m_chargeFlameChargeEffect)
@@ -115,7 +115,7 @@ public class SeinChargeFlameAbility : CharacterState, ISeinReceiver
 		}
 	}
 
-	// Token: 0x060000D6 RID: 214 RVA: 0x0002DF70 File Offset: 0x0002C170
+	// Token: 0x060000D6 RID: 214 RVA: 0x0002E1C4 File Offset: 0x0002C3C4
 	public void UpdatePrechargingState()
 	{
 		if (this.Logic.CurrentStateTime > 0.3f)
@@ -151,7 +151,7 @@ public class SeinChargeFlameAbility : CharacterState, ISeinReceiver
 		}
 	}
 
-	// Token: 0x060000D7 RID: 215 RVA: 0x0002E0F8 File Offset: 0x0002C2F8
+	// Token: 0x060000D7 RID: 215 RVA: 0x0002E34C File Offset: 0x0002C54C
 	public void UpdateChargingState()
 	{
 		if (this.ChargeFlameButton.Released || this.m_sein.Controller.InputLocked || this.m_sein.Abilities.SpiritFlame.LockShootingSpiritFlame)
@@ -186,7 +186,7 @@ public class SeinChargeFlameAbility : CharacterState, ISeinReceiver
 		}
 	}
 
-	// Token: 0x060000D8 RID: 216 RVA: 0x0002E22C File Offset: 0x0002C42C
+	// Token: 0x060000D8 RID: 216 RVA: 0x0002E480 File Offset: 0x0002C680
 	public void ReleaseChargeBurst()
 	{
 		if (this.CurrentChargingSound())
@@ -208,7 +208,7 @@ public class SeinChargeFlameAbility : CharacterState, ISeinReceiver
 		this.Logic.ChangeState(this.State.Start);
 	}
 
-	// Token: 0x060000D9 RID: 217 RVA: 0x0002E310 File Offset: 0x0002C510
+	// Token: 0x060000D9 RID: 217 RVA: 0x0002E564 File Offset: 0x0002C764
 	public void UpdateChargedState()
 	{
 		if (this.ChargeFlameButton.Released)
@@ -261,7 +261,7 @@ public class SeinChargeFlameAbility : CharacterState, ISeinReceiver
 		this.m_sein.Abilities.ChargeFlame = this;
 	}
 
-	// Token: 0x060000DE RID: 222 RVA: 0x0002E398 File Offset: 0x0002C598
+	// Token: 0x060000DE RID: 222 RVA: 0x0002E5EC File Offset: 0x0002C7EC
 	public override void OnExit()
 	{
 		if (this.Logic.CurrentState == this.State.Precharging)
@@ -283,7 +283,7 @@ public class SeinChargeFlameAbility : CharacterState, ISeinReceiver
 		base.OnExit();
 	}
 
-	// Token: 0x060000DF RID: 223 RVA: 0x0002E450 File Offset: 0x0002C650
+	// Token: 0x060000DF RID: 223 RVA: 0x0002E6A4 File Offset: 0x0002C8A4
 	private SoundSource CurrentChargingSound()
 	{
 		if (this.m_sein.PlayerAbilities.ChargeFlameBlast.HasAbility)
