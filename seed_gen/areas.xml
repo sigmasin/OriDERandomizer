@@ -54,6 +54,7 @@
           <Requirement mode="dboost">Bash</Requirement>
           <Requirement mode="dboost">Stomp</Requirement>
           <Requirement mode="dboost">HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -701,6 +702,7 @@
           <Requirement mode="normal">Stomp+Water</Requirement>
           <Requirement mode="dboost">Stomp+Bash+HC+HC+HC+HC</Requirement>
           <Requirement mode="dboost">Stomp+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Stomp</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -1010,6 +1012,8 @@
           <Requirement mode="normal">Grenade+Bash</Requirement>
           <Requirement mode="normal">Grenade+Water</Requirement>
           <Requirement mode="dboost-hard">Grenade+Bash+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Grenade+Bash+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Grenade+HC+HC+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1018,6 +1022,8 @@
         <Requirements>
           <Requirement mode="normal">Dash</Requirement>
           <Requirement mode="extended">ChargeJump+Climb+Grenade</Requirement>
+          <Requirement mode="extended">Bash+Grenade</Requirement>
+          <Requirement mode="extended">DoubleJump</Requirement>
           <Requirement mode="glitched">Free</Requirement>
         </Requirements>
       </Connection>
@@ -1141,7 +1147,8 @@
         <Target name="BlackRootWater"/>
         <Requirements>
           <Requirement mode="normal">Water</Requirement>
-          <Requirement mode="dboost-hard">Grenade+Bash+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost-hard">HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -1214,6 +1221,7 @@
           <Requirement mode="normal">Stomp+Water</Requirement>
           <Requirement mode="dboost">Stomp+Bash+HC+HC+HC+HC</Requirement>
           <Requirement mode="dboost">Stomp+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Stomp</Requirement>
           <Requirement mode="extreme">Bash</Requirement>
         </Requirements>
       </Connection>
@@ -1232,6 +1240,8 @@
           <Requirement mode="normal">Water</Requirement>
           <Requirement mode="dboost">HC+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="dboost">HC+HC+HC+HC+HC+Bash</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
+          <Requirement mode="extreme">HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1261,6 +1271,8 @@
           <Requirement mode="dboost">Stomp+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="lure-hard">Bash+Water</Requirement>
           <Requirement mode="lure-hard">Bash+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Stomp</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
           <Requirement mode="glitched">Bash</Requirement>
         </Requirements>
       </Connection>
@@ -1403,6 +1415,7 @@
           <Requirement mode="extended">ChargeJump+Climb</Requirement>
           <Requirement mode="lure-hard">Bash</Requirement>
           <Requirement mode="dboost-hard">ChargeFlame+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">ChargeFlame+HC+HC+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="glitched">Dash</Requirement>
         </Requirements>
       </Connection>
@@ -2315,7 +2328,8 @@
           <Requirement mode="dboost">KS+KS+KS+KS+ChargeJump+WallJump+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="dboost">KS+KS+KS+KS+ChargeJump+Climb+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="extended-damage">KS+KS+KS+KS+ChargeJump+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="extreme">WallJump+DoubleJump+HC+HC</Requirement>
+          <Requirement mode="extended-damage">KS+KS+KS+KS+ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="extreme">WallJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
           <!-- this can be reached with chargejump only due to a micro ledge-->
         </Requirements>
       </Connection>
@@ -2917,6 +2931,8 @@
           <Requirement mode="normal">Stomp+Bash+WallJump+Glide</Requirement>
           <Requirement mode="normal">Stomp+Bash+Climb+ChargeJump</Requirement>
           <Requirement mode="lure-hard">Bash</Requirement>
+          <Requirement mode="extreme">WallJump+DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="extreme">WallJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -2945,6 +2961,7 @@
           <Requirement mode="normal">Water+Grenade</Requirement>
           <Requirement mode="dboost-hard">Grenade+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="dboost-hard">Grenade+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+Bash</Requirement>
+          <Requirement mode="extreme">Grenade+HC+HC+HC+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3093,6 +3110,7 @@
           <Requirement mode="normal">Wind+Glide</Requirement>
           <Requirement mode="speed">Glide+DoubleJump+Bash+Dash</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="extreme">ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3101,6 +3119,7 @@
         <Requirements>
           <Requirement mode="normal">Glide</Requirement>
           <Requirement mode="dboost">DoubleJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">DoubleJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3401,6 +3420,9 @@
         <Target name="leftSorrow"/>
         <Requirements>
           <Requirement mode="normal">KS+KS+KS+KS+Glide</Requirement>
+          <Requirement mode="extreme">KS+KS+KS+KS+Bash</Requirement>
+          <Requirement mode="extreme">KS+KS+KS+KS+ChargeJump+Climb+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">KS+KS+KS+KS+ChargeJump+Dash+WallJump+DoubleJump+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3408,6 +3430,7 @@
         <Target name="sorrowHealth"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>

@@ -28,6 +28,16 @@ Alt+F:              Within Chaos Mode, force an effect to spawn
 Alt+P:              Display current skill tree and shard progress
 
 
+Difficulty Guide
+
+Not sure what to play? Here is a description of some common presets:
+
+Casual: For people who have not speedrun the game. The only glitch that may be required is breaking charge flame walls with stomp. Damage boosting may be required, but the maximum damage taken will be 2.
+Standard: For people who have run All Skills. It is assumed that all tricks used in the All Skills run are known. Damage boosting may be required, but the maximum damage taken will be 2. Double bashing is not required.
+Expert: For people who have played a fair amount of the randomizer. Tricks involving out-of-the-box uses of abilities may be required. Damage boosting may be required, but every spike patch can be crossed with only a single instance of damage. Double bashing may be required.
+Master: For people who want to struggle. Everything except going OOB or using TA is fair game. Paths requiring triple jump may be required. Extended damage boosting with ultra defense may be required. Only one of bash or stomp is guaranteed to be on the right side.
+
+
 CHAOS MODE?
 
 I recommend just trying it out once before reading this section. Alt+C toggles it on and off -- when toggling off, all effects will be removed immediately.

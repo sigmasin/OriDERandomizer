@@ -260,12 +260,12 @@ def assign_random(recurseCount = 0):
     for key in itemPool.keys():
         position += itemPool[key]/itemCount
         if value <= position:
-            if args.starved and (key in skillsOutput or key in eventsOutput) and recurseCount < 3:
+            if args.starved and key in skillsOutput and recurseCount < 3:
                 return assign_random(recurseCount = recurseCount + 1)
             return assign(key)
             
 def assign(item):
-    itemPool[item] = max(itemPool[item]-1,0)
+    itemPool[item] -= 1
     if item == "EC" or item == "KS" or item == "HC":
         if costs[item] > 0:
             costs[item] -= 1
@@ -280,7 +280,7 @@ def assign(item):
 # for use in limitkeys mode    
 def force_assign(item, location):
 
-    itemPool[item] = max(itemPool[item]-1,0)
+    itemPool[item] -= 1
     if item == "EC" or item == "KS" or item == "HC":
         if costs[item] > 0:
             costs[item] -= 1
@@ -306,8 +306,12 @@ def assign_to_location(item, location):
     if not args.non_progressive_mapstones and location.orig == "MapStone":
         mapstonesAssigned += 1
         outputStr += (str(20 + mapstonesAssigned * 4) + "|")
+        if item in costs.keys():
+            spoilerStr += (item + " from MapStone " + str(mapstonesAssigned) + "\n")
     else:
         outputStr +=  (str(location.get_key()) + "|")
+        if item in costs.keys():
+            spoilerStr += (item + " from " + location.to_string() + "\n")
 
     if item in skillsOutput:
         outputStr +=  (str(skillsOutput[item][:2]) + "|" + skillsOutput[item][2:] + "\n")
@@ -330,8 +334,7 @@ def assign_to_location(item, location):
         outputStr +=  (item[:2] + "|" + item[2:] + "\n")
     else:
         outputStr +=  (item[:2] + "|1\n")
-    if item in costs.keys():
-        spoilerStr += (item + " from " + location.to_string() + "\n")
+
     
 def get_random_exp_value(expRemaining, expSlots):
 
@@ -443,25 +446,36 @@ difficultyMap = {
 
 includePlants = not args.noplants
 hardMode = args.hard
-flags = ""
-if args.ohko:
-    flags += "OHKO,"
-if args.zeroxp:
-    flags += "0XP,"
-if args.nobonus:
-    flags += "NoBonus,"
-if args.force_trees:
-    flags += "ForceTrees,"
-if args.non_progressive_mapstones:
-    flags += "NonProgressMapStones,"
-if flags:
-    flags = flags[:-1]
+
 if args.preset:
     mode = args.preset
     modes = presets[args.preset]
 if args.custom_logic:
     mode = "custom"
     modes = args.custom_logic.split(',')
+
+flags = ""
+flags += mode + ","
+if args.limitkeys:
+    flags += "limitkeys,"
+if args.shards:
+    flags += "shards,"
+if args.prefer_path_difficulty:
+    flags += "prefer_path_difficulty=" + args.prefer_path_difficulty + ","
+if args.hard:
+    flags += "hard,"
+if args.ohko:
+    flags += "OHKO,"
+if args.zeroxp:
+    flags += "0XP,"
+if args.nobonus:
+    flags += "NoBonus,"
+if args.noplants:
+    flags += "NoPlants,"
+if args.force_trees:
+    flags += "ForceTrees,"
+if args.non_progressive_mapstones:
+    flags += "NonProgressMapStones,"
 
 skillAnalysis = {
     "WallJump": 0,
@@ -480,7 +494,7 @@ locationAnalysis = {}
 for i in range(1,10):
     locationAnalysis["MapStone " + str(i)] = skillAnalysis.copy()
  
-def placeItems():
+def placeItems(seed):
 
     global costs
     global areas
@@ -718,7 +732,7 @@ def placeItems():
         areas[area.name] = area
 
     # flags line
-    outputStr += (flags + "\n")
+    outputStr += (flags + str(seed) + "\n")
 
     outputStr += ("-280256|EC|1\n")  # first energy cell
     outputStr += ("-1680104|EX|100\n")  # glitchy 100 orb at spirit tree
@@ -764,7 +778,7 @@ def placeItems():
             if not assignQueue:
                 # we've painted ourselves into a corner, try again
                 if not reservedLocations:
-                    placeItems()
+                    placeItems(seed)
                     return
                 locationsToAssign.append(reservedLocations.pop(0))
                 locationsToAssign.append(reservedLocations.pop(0))
@@ -774,7 +788,7 @@ def placeItems():
         if len(locationsToAssign) < len(assignQueue) + keystoneCount - inventory["KS"] + mapstoneCount - inventory["MS"]:
             # we've painted ourselves into a corner, try again
             if not reservedLocations:
-                placeItems()
+                placeItems(seed)
                 return
             locationsToAssign.append(reservedLocations.pop(0))
             locationsToAssign.append(reservedLocations.pop(0))
@@ -828,7 +842,7 @@ for seedOffset in range(0, args.count):
     seed = args.seed + seedOffset
     random.seed(seed)
     
-    placeItems()   
+    placeItems(seed)
 
 if args.analysis:
     print(skillAnalysis)

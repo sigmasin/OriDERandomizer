@@ -1,3 +1,14 @@
+v1.3
+
+-Alt+R is now disabled when inputlocked or carrying an object
+-The mini-iceless jump used in any% to get through swamp has been removed from normal and added to extended
+-A logic path, "extreme", has been added. This includes multiple damage boosts across spikes, use of triple jump, and use of ultra defense to damage boost
+-The preset previously called "normal" (normal, speed, lure, dboost-light) has been renamed to "standard"
+-The preset previously called "extended" (normal, speed, lure, dboost, dboost-light, cdash, dbash, extended, extended-damage) has been renamed to "expert"
+-A preset has been added: "master" (normal, speed, lure, dboost, dboost-light, dboost-hard, cdash, dbash, extended, extended-damage, lure-hard, extreme)
+-An argument "--prefer-path-difficulty (easy,hard)" has been added. With this set, the generator will lean towards placing skills and keys at more convenient locations (on easy) or more inconvenient locations (on hard)
+-The first line of a seed file will now store more information about the arguments used to create it
+
 v1.2
 
 Bonus powerups:
