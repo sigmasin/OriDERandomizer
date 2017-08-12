@@ -78,9 +78,13 @@ public static class Randomizer
 		Randomizer.getPickup(Characters.Sein.Position);
 	}
 
-	// Token: 0x0600373A RID: 14138 RVA: 0x0002B45A File Offset: 0x0002965A
+	// Token: 0x0600373A RID: 14138
 	public static void returnToStart()
 	{
+		if (Characters.Sein.Abilities.Carry.IsCarrying || !Characters.Sein.Controller.CanMove || !Characters.Sein.Active)
+		{
+			return;
+		}
 		Characters.Sein.Position = new Vector3(189f, -189f);
 		if (Randomizer.MistyRuntimePtr != null)
 		{
@@ -259,7 +263,7 @@ public static class Randomizer
 		UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
 	}
 
-	// Token: 0x06003746 RID: 14150
+	// Token: 0x06003746 RID: 14150 RVA: 0x000E0800 File Offset: 0x000DEA00
 	public static void getMapStone()
 	{
 		if (!Randomizer.ProgressiveMapStones)
