@@ -65,6 +65,13 @@ python seed_generator.py --logic extended --count 999 --limitkeys --force-trees
 move randomizer*.dat seeds/extended-limitkeys/
 move spoiler* spoilers/extended-limitkeys/
 
+mkdir seeds\master-shards
+mkdir spoilers\master-shards
+
+python seed_generator.py --logic master --count 999 --force-trees --prefer-path-difficulty hard --starved
+move randomizer*.dat seeds/master-shards/
+move spoiler* spoilers/master-shards/
+
 mkdir seeds\hard
 mkdir spoilers\hard
 
