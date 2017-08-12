@@ -267,7 +267,7 @@ def assign_random(recurseCount = 0):
             return assign(key)
             
 def assign(item):
-    itemPool[item] -= 1
+    itemPool[item] = max(itemPool[item]-1,0)
     if item == "EC" or item == "KS" or item == "HC":
         if costs[item] > 0:
             costs[item] -= 1
@@ -281,18 +281,8 @@ def assign(item):
 
 # for use in limitkeys mode    
 def force_assign(item, location):
-
-    itemPool[item] -= 1
-    if item == "EC" or item == "KS" or item == "HC":
-        if costs[item] > 0:
-            costs[item] -= 1
-    elif item == "WaterVeinShard" or item == "GumonSealShard" or item == "SunstoneShard":
-        if costs[item] > 0:
-            costs[item] -= 1
-    elif item in costs.keys():
-        costs[item] = 0
-    inventory[item] += 1
     
+    assign(item)
     assign_to_location(item, location)
 
 def assign_to_location(item, location):

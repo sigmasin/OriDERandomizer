@@ -2,6 +2,7 @@ v1.3
 
 -Alt+R is now disabled when inputlocked or carrying an object
 -The mini-iceless jump used in any% to get through swamp has been removed from normal and added to extended
+-Entering the grenade tree room with only doublejump or grenade+bash has been added to extended
 -A logic path, "extreme", has been added. This includes multiple damage boosts across spikes, use of triple jump, and use of ultra defense to damage boost
 -The preset previously called "normal" (normal, speed, lure, dboost-light) has been renamed to "standard"
 -The preset previously called "extended" (normal, speed, lure, dboost, dboost-light, cdash, dbash, extended, extended-damage) has been renamed to "expert"
