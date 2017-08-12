@@ -154,6 +154,8 @@ def open_free_connections():
                         mapstoneCount += 1
                 else:
                     areasReached[connection.target] = True
+                    if connection.target in areasRemaining:
+                        areasRemaining.remove(connection.target)
                     connectionQueue.append((area, connection))
                     found = True
     return (found, keystoneCount, mapstoneCount)
@@ -512,6 +514,7 @@ def placeItems(seed):
     global skillCount
     global expRemaining
     global expSlots
+    global areasRemaining
 
     outputStr = ""
     spoilerStr = ""
@@ -554,6 +557,7 @@ def placeItems(seed):
     areas = OrderedDict()
     
     areasReached = OrderedDict([("sunkenGladesRunaway", True)])
+    areasRemaining = []
     connectionQueue = []
     assignQueue = []
     
@@ -706,6 +710,7 @@ def placeItems(seed):
     
     for child in root:
         area = Area(child.attrib["name"])
+        areasRemaining.append(child.attrib["name"])
 
         for location in child.find("Locations"):
             loc = Location(int(location.find("X").text), int(location.find("Y").text), area.name, location.find("Item").text, int(location.find("Difficulty").text))
@@ -806,10 +811,14 @@ def placeItems(seed):
         # open all reachable doors (for the next iteration)
         for area in doorQueue.keys():
             areasReached[doorQueue[area].target] = True
+            if doorQueue[area].target in areasRemaining:
+                areasRemaining.remove(doorQueue[area].target)
             areas[area].remove_connection(doorQueue[area])
 
         for area in mapQueue.keys():
             areasReached[mapQueue[area].target] = True
+            if mapQueue[area].target in areasRemaining:
+                areasRemaining.remove(mapQueue[area].target)
             areas[area].remove_connection(mapQueue[area])
 
         # force assign things if using --prefer-path-difficulty

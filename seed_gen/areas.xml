@@ -2862,6 +2862,13 @@
           <Requirement mode="normal">Dash+Stomp+Glide+Bash+ChargeJump+Grenade</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="HoruStomp"/>
+        <Target name="DoorWarp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="HoruStompPlant">
