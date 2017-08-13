@@ -2468,6 +2468,7 @@
         <Target name="swampWater"/>
         <Requirements>
           <Requirement mode="normal">Water</Requirement>
+          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -2938,8 +2939,8 @@
           <Requirement mode="normal">Stomp+Bash+WallJump+Glide</Requirement>
           <Requirement mode="normal">Stomp+Bash+Climb+ChargeJump</Requirement>
           <Requirement mode="lure-hard">Bash</Requirement>
-          <Requirement mode="extreme">WallJump+DoubleJump+ChargeJump</Requirement>
-          <Requirement mode="extreme">WallJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Stomp+WallJump+DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="extreme">Stomp+WallJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
