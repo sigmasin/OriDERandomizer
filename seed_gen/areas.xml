@@ -1968,6 +1968,16 @@
           <Requirement mode="glitched">Dash</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="sideFallCell"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">Glide+Wind</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="GumoHideoutMapStone">
@@ -2074,13 +2084,6 @@
       </Location>
     </Locations>
     <Connections>
-      <Connection>
-        <Home name="MobileGumoHideout"/>
-        <Target name="sideFallCell"/>
-        <Requirements>
-          <Requirement mode="normal">Free</Requirement>
-        </Requirements>
-      </Connection>
       <Connection>
         <Home name="MobileGumoHideout"/>
         <Target name="moonGrotto"/>
