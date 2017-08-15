@@ -68,7 +68,7 @@ move spoiler* spoilers/expert-limitkeys/
 mkdir seeds\master-shards
 mkdir spoilers\master-shards
 
-python seed_generator.py --preset master --count 999 --force-trees --prefer-path-difficulty hard --starved
+python seed_generator.py --preset master --count 999 --force-trees --prefer-path-difficulty hard --starved --shards
 move randomizer*.dat seeds/master-shards/
 move spoiler* spoilers/master-shards/
 

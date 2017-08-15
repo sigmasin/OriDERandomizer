@@ -1375,6 +1375,7 @@
         <Requirements>
           <Requirement mode="normal">WallJump+DoubleJump</Requirement>
           <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1385,6 +1386,7 @@
           <Requirement mode="normal">Climb+DoubleJump+ChargeJump</Requirement>
           <Requirement mode="extended">Grenade+Bash</Requirement>
           <Requirement mode="dboost">ChargeJump</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1412,11 +1414,35 @@
           <Requirement mode="normal">Stomp+ChargeJump</Requirement>
           <Requirement mode="normal">ChargeJump+ChargeFlame</Requirement>
           <Requirement mode="normal">ChargeJump+Grenade</Requirement>
+          <Requirement mode="speed">Bash+ChargeFlame+Water</Requirement>
+          <Requirement mode="speed">Bash+Grenade+Water</Requirement>
           <Requirement mode="extended">ChargeJump+Climb</Requirement>
+          <Requirement mode="extended">DoubleJump+ChargeFlame+Dash+Water</Requirement>
+          <Requirement mode="extended">DoubleJump+ChargeFlame+Glide+Water</Requirement>
+          <Requirement mode="extended-damage">DoubleJump+ChargeFlame+Water+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">Dash+Stomp+ChargeFlame+Water+HC+HC+HC+HC</Requirement>
           <Requirement mode="lure-hard">Bash</Requirement>
-          <Requirement mode="dboost-hard">ChargeFlame+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="extreme">ChargeFlame+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost-hard">DoubleJump+ChargeFlame+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost-hard">Stomp+ChargeFlame+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">DoubleJump+ChargeFlame+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Stomp+ChargeFlame+HC+HC+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="glitched">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="moonGrotto"/>
+        <Target name="drainExp"/>
+        <Requirements>
+          <Requirement mode="normal">Grenade+Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">Grenade+DoubleJump</Requirement>
+          <Requirement mode="normal">Grenade+Glide</Requirement>
+          <Requirement mode="normal">Grenade+Dash</Requirement>
+          <Requirement mode="normal">Grenade+Bash</Requirement>
+          <Requirement mode="dboost-light">ChargeFlame+Climb+ChargeJump</Requirement>
+          <Requirement mode="dboost-light">ChargeFlame+DoubleJump</Requirement>
+          <Requirement mode="dboost-light">ChargeFlame+Glide</Requirement>
+          <Requirement mode="dboost-light">ChargeFlame+Dash</Requirement>
+          <Requirement mode="dbash">ChargeFlame+Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1925,6 +1951,7 @@
           <Requirement mode="normal">WallJump+DoubleJump</Requirement>
           <Requirement mode="normal">Climb+ChargeJump</Requirement>
           <Requirement mode="normal">WallJump+ChargeJump</Requirement>
+          <Requirement mode="extreme">WallJump+Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -2473,6 +2500,23 @@
       </Connection>
       <Connection>
         <Home name="swamp"/>
+        <Target name="drainExp"/>
+        <Requirements>
+          <Requirement mode="normal">Water+Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">Water+DoubleJump</Requirement>
+          <Requirement mode="normal">Water+Glide</Requirement>
+          <Requirement mode="normal">Water+Dash</Requirement>
+          <Requirement mode="normal">Water+Bash+Grenade</Requirement>
+          <Requirement mode="dbash">Water+Bash</Requirement>
+          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+Climb+ChargeJump</Requirement>
+          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+DoubleJump</Requirement>
+          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+Glide</Requirement>
+          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+Dash</Requirement>
+          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="swamp"/>
         <Target name="swampStomp"/>
         <Requirements>
           <Requirement mode="normal">Stomp</Requirement>
@@ -2519,7 +2563,7 @@
     <Connections>
     </Connections>
   </Area>
-  <Area name="swampWater">
+  <Area name="drainExp">
     <Locations>
       <Location>
         <X>636</X>
@@ -2527,6 +2571,12 @@
         <Item>EX100</Item>
         <Difficulty>2</Difficulty>
       </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="swampWater">
+    <Locations>
       <Location>
         <X>761</X>
         <Y>-173</Y>
