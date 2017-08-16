@@ -815,6 +815,7 @@
           <Requirement mode="timed-level">Stomp</Requirement>
           <Requirement mode="extended">Stomp</Requirement>
           <Requirement mode="extended">ChargeJump+Climb</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
           <Requirement mode="glitched">Free</Requirement>
         </Requirements>
       </Connection>
@@ -1434,14 +1435,9 @@
         <Target name="drainExp"/>
         <Requirements>
           <Requirement mode="normal">Grenade+Climb+ChargeJump</Requirement>
-          <Requirement mode="normal">Grenade+DoubleJump</Requirement>
-          <Requirement mode="normal">Grenade+Glide</Requirement>
-          <Requirement mode="normal">Grenade+Dash</Requirement>
-          <Requirement mode="normal">Grenade+Bash</Requirement>
-          <Requirement mode="dboost-light">ChargeFlame+Climb+ChargeJump</Requirement>
-          <Requirement mode="dboost-light">ChargeFlame+DoubleJump</Requirement>
-          <Requirement mode="dboost-light">ChargeFlame+Glide</Requirement>
-          <Requirement mode="dboost-light">ChargeFlame+Dash</Requirement>
+          <Requirement mode="speed">Grenade+Bash</Requirement>
+          <Requirement mode="extended-damage">ChargeFlame+Climb+ChargeJump</Requirement>
+          <Requirement mode="extended-damage">ChargeFlame+DoubleJump</Requirement>
           <Requirement mode="dbash">ChargeFlame+Bash</Requirement>
         </Requirements>
       </Connection>
