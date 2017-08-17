@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using Core;
 using Game;
@@ -23,9 +24,10 @@ public static class Randomizer
 		Randomizer.Table = new Hashtable();
 		Randomizer.GridFactor = 4.0;
 		Randomizer.Message = "Good luck on your rando!";
-		Randomizer.MessageProvider = new RandomizerMessageProvider();
+		Randomizer.MessageProvider = (RandomizerMessageProvider)ScriptableObject.CreateInstance(typeof(RandomizerMessageProvider));
 		Randomizer.ProgressiveMapStones = true;
 		Randomizer.ForceTrees = false;
+		Randomizer.SeedMeta = new List<string>();
 		RandomizerRebinding.ParseRebinding();
 		if (File.Exists("randomizer.dat"))
 		{
@@ -36,6 +38,7 @@ public static class Randomizer
 			});
 			for (int i = 0; i < array2.Length; i++)
 			{
+				Randomizer.SeedMeta.Add(array2[i]);
 				if (array2[i].ToLower() == "ohko")
 				{
 					Randomizer.OHKO = true;
@@ -124,7 +127,7 @@ public static class Randomizer
 	// Token: 0x0600373F RID: 14143 RVA: 0x0002B504 File Offset: 0x00029704
 	public static bool WindRestored()
 	{
-		return Sein.World.Events.WindRestored && Scenes.Manager.CurrentScene.Scene != "forlornRuinsResurrection" && Scenes.Manager.CurrentScene.Scene != "forlornRuinsRotatingLaserFlipped";
+		return Sein.World.Events.WindRestored && Scenes.Manager.CurrentScene != null && Scenes.Manager.CurrentScene.Scene != "forlornRuinsResurrection" && Scenes.Manager.CurrentScene.Scene != "forlornRuinsRotatingLaserFlipped";
 	}
 
 	// Token: 0x06003740 RID: 14144 RVA: 0x0002B543 File Offset: 0x00029743
@@ -179,11 +182,11 @@ public static class Randomizer
 	// Token: 0x06003743 RID: 14147 RVA: 0x000E062C File Offset: 0x000DE82C
 	public static void Update()
 	{
-		if (!Characters.Sein.IsSuspended)
+		if (Characters.Sein && !Characters.Sein.IsSuspended)
 		{
 			Characters.Sein.Mortality.Health.GainHealth((float)RandomizerBonus.HealthRegeneration() * (Characters.Sein.PlayerAbilities.HealthEfficiency.HasAbility ? 0.0016f : 0.0008f));
 			Characters.Sein.Energy.Gain((float)RandomizerBonus.EnergyRegeneration() * (Characters.Sein.PlayerAbilities.EnergyEfficiency.HasAbility ? 0.0003f : 0.0002f));
-			if (Randomizer.ForceTrees && Scenes.Manager.CurrentScene.Scene == "catAndMouseResurrectionRoom" && RandomizerBonus.SkillTreeProgression() < 10)
+			if (Randomizer.ForceTrees && Scenes.Manager.CurrentScene != null && Scenes.Manager.CurrentScene.Scene == "catAndMouseResurrectionRoom" && RandomizerBonus.SkillTreeProgression() < 10)
 			{
 				Characters.Sein.Position = new Vector3(20f, 105f);
 			}
@@ -201,30 +204,40 @@ public static class Randomizer
 			}
 			if (MoonInput.GetKeyDown(RandomizerRebinding.ReturnToStart))
 			{
-				Randomizer.returnToStart();
+				if (Characters.Sein)
+				{
+					Randomizer.returnToStart();
+				}
 				return;
 			}
 			if (MoonInput.GetKeyDown(RandomizerRebinding.ReloadSeed))
 			{
 				Randomizer.initialize();
+				Randomizer.showSeedInfo();
 				return;
 			}
 			if (MoonInput.GetKeyDown(RandomizerRebinding.ShowProgress))
 			{
-				Randomizer.showProgress();
+				if (Characters.Sein)
+				{
+					Randomizer.showProgress();
+				}
 				return;
 			}
 			if (MoonInput.GetKeyDown(RandomizerRebinding.ToggleChaos))
 			{
-				if (Randomizer.Chaos)
+				if (Characters.Sein)
 				{
-					Randomizer.showChaosMessage("Chaos deactivated");
-					Randomizer.Chaos = false;
-					RandomizerChaosManager.ClearEffects();
-					return;
+					if (Randomizer.Chaos)
+					{
+						Randomizer.showChaosMessage("Chaos deactivated");
+						Randomizer.Chaos = false;
+						RandomizerChaosManager.ClearEffects();
+						return;
+					}
+					Randomizer.showChaosMessage("Chaos activated");
+					Randomizer.Chaos = true;
 				}
-				Randomizer.showChaosMessage("Chaos activated");
-				Randomizer.Chaos = true;
 				return;
 			}
 			else if (MoonInput.GetKeyDown(RandomizerRebinding.ChaosVerbosity) && Randomizer.Chaos)
@@ -240,7 +253,10 @@ public static class Randomizer
 			}
 			else if (MoonInput.GetKeyDown(RandomizerRebinding.ForceChaosEffect) && Randomizer.Chaos)
 			{
-				RandomizerChaosManager.SpawnEffect();
+				if (Characters.Sein)
+				{
+					RandomizerChaosManager.SpawnEffect();
+				}
 				return;
 			}
 		}
@@ -311,6 +327,14 @@ public static class Randomizer
 		UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
 	}
 
+	// Token: 0x060037B9 RID: 14265
+	public static void showSeedInfo()
+	{
+		string info = "Seed loaded: " + string.Join(" ", Randomizer.SeedMeta.ToArray());
+		Randomizer.MessageProvider.SetMessage(info);
+		UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
+	}
+
 	// Token: 0x04003223 RID: 12835
 	public static Hashtable Table;
 
@@ -352,4 +376,7 @@ public static class Randomizer
 
 	// Token: 0x04003230 RID: 12848
 	public static bool ForceTrees;
+
+	// Token: 0x040032C1 RID: 12993
+	public static List<string> SeedMeta;
 }
