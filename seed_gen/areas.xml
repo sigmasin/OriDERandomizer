@@ -2909,7 +2909,7 @@
         <Home name="HoruStomp"/>
         <Target name="End"/>
         <Requirements>
-          <Requirement mode="normal">Dash+Stomp+Glide+Bash+ChargeJump+Grenade</Requirement>
+          <Requirement mode="normal">Dash+Stomp+Glide+Bash+ChargeJump+Grenade+GinsoKey+ForlornKey+HoruKey</Requirement>
         </Requirements>
       </Connection>
       <Connection>

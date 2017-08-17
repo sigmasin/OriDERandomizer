@@ -20,3 +20,4 @@ seed_gen/seeds/*
 seed_gen/spoilers/*
 seed_gen/seeds.zip
 seed_gen/seed_gen.zip
+seed_gen/ignore/*
