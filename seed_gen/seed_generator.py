@@ -374,6 +374,7 @@ parser.add_argument("--non-progressive-mapstones", help="Map Stones will retain 
 parser.add_argument("--force-trees", help="Prevent Ori from entering the final escape room until all skill trees have been visited", action="store_true");
 parser.add_argument("--exp-pool", help="Size of the experience pool (default 10000)", type=int, default=10000)
 parser.add_argument("--prefer-path-difficulty", help="Increase the chances of putting items in more convenient (easy) or less convenient (hard) locations", choices=["easy", "hard"])
+parser.add_argument("--no-teleporters", help="Remove teleporter activation pickups from the pool", action="store_true")
 parser.add_argument("--analysis", help="Report stats on the skill order for all seeds generated", action="store_true")
 parser.add_argument("--loc-analysis", help="Report stats on where skills are placed over multiple seeds", action="store_true")
 
@@ -532,7 +533,8 @@ def placeItems(seed):
         "Wind": 99,
         "WaterVeinShard": 5,
         "GumonSealShard": 5,
-        "SunstoneShard": 5
+        "SunstoneShard": 5,
+        "TPforlorn": 70
     }
 
     # we use OrderedDicts here because the order of a dict depends on the size of the dict and the hash of the keys
@@ -559,7 +561,7 @@ def placeItems(seed):
     if not hardMode:
         itemPool = OrderedDict([
             ("EX1", 1),
-            ("EX*", 99),
+            ("EX*", 92),
             ("KS", 40),
             ("MS", 9),
             ("AC", 33),
@@ -593,12 +595,19 @@ def placeItems(seed):
             ("RB15", 3),
             ("WaterVeinShard", 0),
             ("GumonSealShard", 0),
-            ("SunstoneShard", 0)
+            ("SunstoneShard", 0),
+            ("TPforlorn", 1),
+            ("TPmangroveFalls", 1),
+            ("TPmoonGrotto", 1),
+            ("TPsorrowPass", 1),
+            ("TPspiritTree", 1),
+            ("TPswamp", 1),
+            ("TPvalleyOfTheWind", 1)
         ])
     else:
         itemPool = OrderedDict([
             ("EX1", 1),
-            ("EX*", 175),
+            ("EX*", 168),
             ("KS", 40),
             ("MS", 9),
             ("AC", 0),
@@ -622,7 +631,14 @@ def placeItems(seed):
             ("Warmth", 1),
             ("WaterVeinShard", 0),
             ("GumonSealShard", 0),
-            ("SunstoneShard", 0)
+            ("SunstoneShard", 0),
+            ("TPforlorn", 1),
+            ("TPmangroveFalls", 1),
+            ("TPmoonGrotto", 1),
+            ("TPsorrowPass", 1),
+            ("TPspiritTree", 1),
+            ("TPswamp", 1),
+            ("TPvalleyOfTheWind", 1)
         ])
 
     plants = []
@@ -655,7 +671,17 @@ def placeItems(seed):
         itemPool["ForlornKey"] = 0
         itemPool["HoruKey"] = 0
         itemCount -= 3
-        
+    
+    if args.no_teleporters:
+        itemPool["TPforlorn"] = 0
+        itemPool["TPmangoveFalls"] = 0
+        itemPool["TPmoonGrotto"] = 0
+        itemPool["TPsorrowPass"] = 0
+        itemPool["TPspiritTree"] = 0
+        itemPool["TPswamp"] = 0
+        itemPool["TPvalleyOfTheWind"] = 0
+        itemPool["EX*"] += 7
+    
     inventory = OrderedDict([
         ("EX1", 0),
         ("EX*", 0),
@@ -710,6 +736,7 @@ def placeItems(seed):
         areasRemaining.append(child.attrib["name"])
 
         for location in child.find("Locations"):
+            print area.name
             loc = Location(int(location.find("X").text), int(location.find("Y").text), area.name, location.find("Item").text, int(location.find("Difficulty").text))
             if not includePlants:
                 if re.match(".*Plant.*", area.name):

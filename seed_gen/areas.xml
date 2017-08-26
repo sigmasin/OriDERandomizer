@@ -99,6 +99,7 @@
           <Requirement mode="dboost-light">TPforlorn+DoubleJump+Bash</Requirement>
           <Requirement mode="dboost-light">TPforlorn+Glide+ChargeJump</Requirement>
           <Requirement mode="dboost-light">TPforlorn+Glide+Bash</Requirement>
+          <Requirement mode="dboost-light">TPforlorn+Grenade+Bash</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -3365,8 +3366,6 @@
   </Area>
   <Area name="lowerValleyPlantApproach">
     <Locations>
-      <Location>
-      </Location>
     </Locations>
     <Connections>
       <Connection>
@@ -3382,8 +3381,6 @@
   </Area>
   <Area name="outsideForlorn">
     <Locations>
-      <Location>
-      </Location>
     </Locations>
     <Connections>
       <Connection>
@@ -3452,6 +3449,7 @@
       </Location>
     </Locations>
     <Connections>
+      <Connection>
         <Home name="outsideForlornCliff"/>
         <Target name="outsideForlornGrenade"/>
         <Requirements>
