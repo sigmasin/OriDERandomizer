@@ -736,7 +736,6 @@ def placeItems(seed):
         areasRemaining.append(child.attrib["name"])
 
         for location in child.find("Locations"):
-            print area.name
             loc = Location(int(location.find("X").text), int(location.find("Y").text), area.name, location.find("Item").text, int(location.find("Difficulty").text))
             if not includePlants:
                 if re.match(".*Plant.*", area.name):

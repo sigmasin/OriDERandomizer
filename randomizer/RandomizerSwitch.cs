@@ -143,7 +143,7 @@ public static class RandomizerSwitch
     public static void TeleportPickup(string Value)
     {
         TeleporterController.Instance.Activate(Value);
-        Randomizer.showHint(Value + " teleporter activated");
+        Randomizer.showHint("Teleporter activated: " + Value);
     }
     
     
