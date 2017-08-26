@@ -14,7 +14,7 @@ public class Damage
 		this.m_sender = sender;
 		if (type == DamageType.SpiritFlame)
 		{
-			this.m_amount += (float)(RandomizerBonus.SpiritFlameLevel() * 2);
+			this.m_amount += (float)RandomizerBonus.SpiritFlameLevel();
 		}
 	}
 
