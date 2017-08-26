@@ -41,9 +41,9 @@ public static class RandomizerBonus
 			Randomizer.showHint("Energy Regeneration");
 			break;
         case 17:
-            if (RandomizerBonus.WaterVeinShards() >= 2)
+            if (RandomizerBonus.WaterVeinShards() >= 3)
             {
-                Randomizer.showHint("Water Vein Shard (3/3)");
+                Randomizer.showHint("Water Vein Shard (extra)");
                 Keys.GinsoTree = true;
             }
             else 
@@ -53,9 +53,9 @@ public static class RandomizerBonus
             }
             break;
         case 19:
-            if (RandomizerBonus.GumonSealShards() >= 2)
+            if (RandomizerBonus.GumonSealShards() >= 3)
             {
-                Randomizer.showHint("Gumon Seal Shard (3/3)");
+                Randomizer.showHint("Gumon Seal Shard (extra)");
                 Keys.ForlornRuins = true;
             }
             else 
@@ -65,9 +65,9 @@ public static class RandomizerBonus
             }
             break;
         case 21:
-            if (RandomizerBonus.SunstoneShards() >= 2)
+            if (RandomizerBonus.SunstoneShards() >= 3)
             {
-                Randomizer.showHint("Sunstone Shard (3/3)");
+                Randomizer.showHint("Sunstone Shard (extra)");
                 Keys.MountHoru = true;
             }
             else 

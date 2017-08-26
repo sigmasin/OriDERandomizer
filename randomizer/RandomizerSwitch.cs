@@ -110,7 +110,7 @@ public static class RandomizerSwitch
         Randomizer.GiveAbility = false;
 
     }
-    public static void EventPickup(Object Value) 
+    public static void EventPickup(int Value) 
     {
         switch (Value)
         {
@@ -140,7 +140,11 @@ public static class RandomizerSwitch
         }
     }
     
-    
+    public static void TeleportPickup(string Value)
+    {
+        TeleporterController.Instance.Activate(Value);
+        Randomizer.showHint(Value + " teleporter activated");
+    }
     
     
     public static void GivePickup(RandomizerAction Action)
@@ -168,10 +172,13 @@ public static class RandomizerSwitch
                 AbilityPickup((int)Action.Value);
                 break;
             case "EV":
-                EventPickup(Action.Value);
+                EventPickup((int)Action.Value);
                 break;
             case "RB":
                 RandomizerBonus.UpgradeID((int)Action.Value);
+                break;
+            case "TP":
+                TeleportPickup((string)Action.Value);
                 break;
             case "NO":
                 Randomizer.showHint("Nothing");

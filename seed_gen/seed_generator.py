@@ -559,7 +559,7 @@ def placeItems(seed):
     if not hardMode:
         itemPool = OrderedDict([
             ("EX1", 1),
-            ("EX*", 95),
+            ("EX*", 99),
             ("KS", 40),
             ("MS", 9),
             ("AC", 33),
@@ -581,8 +581,8 @@ def placeItems(seed):
             ("Water", 1),
             ("Wind", 1),
             ("Warmth", 1),
-            ("RB0", 5),
-            ("RB1", 5),
+            ("RB0", 3),
+            ("RB1", 3),
             ("RB6", 3),
             ("RB8", 1),
             ("RB9", 1),
@@ -692,7 +692,14 @@ def placeItems(seed):
         ("RB15", 0),
         ("WaterVeinShard", 0),
         ("GumonSealShard", 0),
-        ("SunstoneShard", 0)
+        ("SunstoneShard", 0),
+        ("TPforlorn", 0),
+        ("TPmangroveFalls", 0),
+        ("TPmoonGrotto", 0),
+        ("TPsorrowPass", 0),
+        ("TPspiritTree", 0),
+        ("TPswamp", 0),
+        ("TPvalleyOfTheWind", 0)
     ])
 
     tree = XML.parse("areas.xml")
