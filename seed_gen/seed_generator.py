@@ -411,12 +411,12 @@ presets = {
     "casual": ["normal", "dboost-light"],
     "standard": ["normal", "speed", "lure", "dboost-light"],
     "dboost": ["normal", "speed", "lure", "dboost", "dboost-light"],
-    "expert": ["normal", "speed", "lure", "dboost", "dboost-light", "cdash", "dbash", "extended", "extended-damage"],
+    "expert": ["normal", "speed", "lure", "dboost", "dboost-light", "cdash", "extended", "extended-damage"],
     "master": ["normal", "speed", "lure", "dboost", "dboost-light", "dboost-hard", "cdash", "dbash", "extended", "extended-damage", "lure-hard", "extreme"],
     "hard": ["normal", "speed", "lure",  "dboost-light", "cdash", "dbash", "extended"],
     "ohko": ["normal", "speed", "lure", "cdash", "dbash", "extended"],
     "0xp": ["normal", "speed", "lure", "dboost-light"],
-    "glitched": ["normal", "speed", "lure", "dboost", "dboost-light", "dboost-hard", "cdash", "dbash", "extended", "lure-hard", "timed-level", "glitched", "extended-damage"]
+    "glitched": ["normal", "speed", "lure", "dboost", "dboost-light", "dboost-hard", "cdash", "dbash", "extended", "lure-hard", "timed-level", "glitched", "extended-damage", "extreme"]
 }
 
 difficultyMap = {
@@ -539,7 +539,7 @@ def placeItems(seed):
         "TpsorrowPass": 999,
         "TPspiritTree": 60,
         "TPswamp": 60,
-        "TPvalleyOfTheWind", 90
+        "TPvalleyOfTheWind": 90
     }
 
     # we use OrderedDicts here because the order of a dict depends on the size of the dict and the hash of the keys

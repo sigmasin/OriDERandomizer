@@ -891,8 +891,15 @@
         <Home name="DashArea"/>
         <Target name="RazielNo"/>
         <Requirements>
-          <Requirement mode="normal">Dash</Requirement>
-          <Requirement mode="speed">Free</Requirement>
+          <Requirement mode="normal">Dash+WallJump</Requirement>
+          <Requirement mode="normal">Dash+ChargeJump</Requirement>
+          <Requirement mode="normal">Dash+Bash+Grenade</Requirement>
+          <Requirement mode="normal">Dash+Climb+DoubleJump</Requirement>
+          <Requirement mode="speed">WallJump</Requirement>
+          <Requirement mode="speed">ChargeJump</Requirement>
+          <Requirement mode="speed">Bash+Grenade</Requirement>
+          <Requirement mode="speed">Climb+DoubleJump</Requirement>
+          <Requirement mode="extended">Dash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1984,7 +1991,6 @@
     <Connections>
     </Connections>
   </Area>
-  todo
   <Area name="sideFallCell">
     <Locations>
       <Location>
@@ -2000,6 +2006,20 @@
         <Target name="GumoHideout"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="sideFallCell"/>
+        <Target name="GumoHideoutPartialMobile"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="sideFallCell"/>
+        <Target name="GumoHideoutRedirectAC"/>
+        <Requirements>
+          <Requirement mode="dboost-light">Free</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -2052,6 +2072,28 @@
       </Connection>
       <Connection>
         <Home name="GumoHideout"/>
+        <Target name="GumoHideoutPartialMobile"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">WallJump+ChargeJump</Requirement>
+          <Requirement mode="normal">Glide+Wind</Requirement>
+          <Requirement mode="extreme">WallJump+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="GumoHideoutRedirectAC"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">WallJump+ChargeJump</Requirement>
+          <Requirement mode="normal">Glide+Wind</Requirement>
+          <Requirement mode="extreme">WallJump+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
         <Target name="GumoHideoutMapStone"/>
         <Requirements>
           <Requirement mode="normal">MS</Requirement>
@@ -2074,6 +2116,45 @@
           <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>
+    </Connections>
+  </Area>
+  <Area name="GumoHideoutPartialMobile">
+    <Locations>
+      <Location>
+        <X>496</X>
+        <Y>-369</Y>
+        <Item>EX15</Item>
+        <Difficulty>1</Difficulty>
+      </Location>
+      <Location>
+        <X>467</X>
+        <Y>-369</Y>
+        <Item>EX15</Item>
+        <Difficulty>1</Difficulty>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="GumoHideoutPartialMobile"/>
+        <Target name="MobileGumoHideoutPlants"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="GumoHideoutRedirectAC">
+    <Locations>
+      <Location>
+        <X>449</X>
+        <Y>-430</Y>
+        <Item>AC</Item>
+        <Difficulty>1</Difficulty>
+      </Location>
+    </Locations>
+    <Connections>
     </Connections>
   </Area>
   <Area name="GumoHideoutMapStone">
@@ -2125,18 +2206,6 @@
   <Area name="MobileGumoHideout">
     <Locations>
       <Location>
-        <X>496</X>
-        <Y>-369</Y>
-        <Item>EX15</Item>
-        <Difficulty>1</Difficulty>
-      </Location>
-      <Location>
-        <X>467</X>
-        <Y>-369</Y>
-        <Item>EX15</Item>
-        <Difficulty>1</Difficulty>
-      </Location>
-      <Location>
         <X>545</X>
         <Y>-357</Y>
         <Item>EC</Item>
@@ -2164,12 +2233,6 @@
         <X>393</X>
         <Y>-375</Y>
         <Item>HC</Item>
-        <Difficulty>1</Difficulty>
-      </Location>
-      <Location>
-        <X>449</X>
-        <Y>-430</Y>
-        <Item>AC</Item>
         <Difficulty>1</Difficulty>
       </Location>
       <Location>
