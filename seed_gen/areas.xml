@@ -140,6 +140,16 @@
           <Requirement mode="normal">TPvalleyOfTheWind+Bash+WallJump</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="sunkenGladesRunaway"/>
+        <Target name="sunstone"/>
+        <Requirements>
+          <Requirement mode="normal">TPsorrowPass+Glide+Climb+ChargeJump</Requirement>
+          <Requirement mode="extended-damage">TPsorrowPass+Glide+Stomp+ChargeJump+Dash+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dbash">TPsorrowPass+Glide+Stomp+Bash</Requirement>
+          <Requirement mode="dbash">TPsorrowPass+Glide+ChargeJump+Bash</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="sunkenGladesNadePool">
@@ -3879,6 +3889,28 @@
           <Requirement mode="glitched">Dash</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="sorrow"/>
+        <Target name="valleyMain"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="sorrow"/>
+        <Target name="valleyMain"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="sorrow"/>
+        <Target name="preSorrowOrb"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="sorrowMapStone">
@@ -4035,6 +4067,13 @@
           <Requirement mode="normal">KS+KS+KS+KS</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="upperSorrow"/>
+        <Target name="sorrow"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="chargeJump">
@@ -4079,6 +4118,13 @@
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
           <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="sunstone"/>
+        <Target name="upperSorrow"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
     </Connections>

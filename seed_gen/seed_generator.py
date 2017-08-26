@@ -536,7 +536,7 @@ def placeItems(seed):
         "SunstoneShard": 5,
         "TPforlorn": 120,
         "TPmoonGrotto": 60,
-        "TpsorrowPass": 999,
+        "TpsorrowPass": 120,
         "TPspiritTree": 60,
         "TPswamp": 60,
         "TPvalleyOfTheWind": 90
