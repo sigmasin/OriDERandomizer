@@ -529,12 +529,17 @@ def placeItems(seed):
         "GinsoKey": 12,
         "ForlornKey": 12,
         "HoruKey": 12,
-        "Water": 99,
-        "Wind": 99,
+        "Water": 80,
+        "Wind": 80,
         "WaterVeinShard": 5,
         "GumonSealShard": 5,
         "SunstoneShard": 5,
-        "TPforlorn": 70
+        "TPforlorn": 120,
+        "TPmoonGrotto": 60,
+        "TpsorrowPass": 999,
+        "TPspiritTree": 60,
+        "TPswamp": 60,
+        "TPvalleyOfTheWind", 90
     }
 
     # we use OrderedDicts here because the order of a dict depends on the size of the dict and the hash of the keys
@@ -561,7 +566,7 @@ def placeItems(seed):
     if not hardMode:
         itemPool = OrderedDict([
             ("EX1", 1),
-            ("EX*", 92),
+            ("EX*", 93),
             ("KS", 40),
             ("MS", 9),
             ("AC", 33),
@@ -597,7 +602,6 @@ def placeItems(seed):
             ("GumonSealShard", 0),
             ("SunstoneShard", 0),
             ("TPforlorn", 1),
-            ("TPmangroveFalls", 1),
             ("TPmoonGrotto", 1),
             ("TPsorrowPass", 1),
             ("TPspiritTree", 1),
@@ -607,7 +611,7 @@ def placeItems(seed):
     else:
         itemPool = OrderedDict([
             ("EX1", 1),
-            ("EX*", 168),
+            ("EX*", 169),
             ("KS", 40),
             ("MS", 9),
             ("AC", 0),
@@ -633,7 +637,6 @@ def placeItems(seed):
             ("GumonSealShard", 0),
             ("SunstoneShard", 0),
             ("TPforlorn", 1),
-            ("TPmangroveFalls", 1),
             ("TPmoonGrotto", 1),
             ("TPsorrowPass", 1),
             ("TPspiritTree", 1),

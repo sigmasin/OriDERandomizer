@@ -102,6 +102,44 @@
           <Requirement mode="dboost-light">TPforlorn+Grenade+Bash</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="sunkenGladesRunaway"/>
+        <Target name="moonGrotto"/>
+        <Requirements>
+          <Requirement mode="normal">TPmoonGrotto+ChargeJump</Requirement>
+          <Requirement mode="normal">TPmoonGrotto+WallJump</Requirement>
+          <Requirement mode="normal">TPmoonGrotto+Climb</Requirement>
+          <Requirement mode="normal">TPmoonGrotto+Grenade+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="sunkenGladesRunaway"/>
+        <Target name="GumoHideoutMapStone"/>
+        <Requirements>
+          <Requirement mode="normal">TPmoonGrotto+MS</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="sunkenGladesRunaway"/>
+        <Target name="hollowGrove"/>
+        <Requirements>
+          <Requirement mode="normal">TPswamp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="sunkenGladesRunaway"/>
+        <Target name="spiritTreeRefined"/>
+        <Requirements>
+          <Requirement mode="normal">TPspiritTree</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="sunkenGladesRunaway"/>
+        <Target name="valleyRight"/>
+        <Requirements>
+          <Requirement mode="normal">TPvalleyOfTheWind+Bash+WallJump</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="sunkenGladesNadePool">
@@ -722,6 +760,7 @@
           <Requirement mode="normal">Grenade</Requirement>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">DoubleJump</Requirement>
+          <Requirement mode="normal">Glide</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1233,14 +1272,20 @@
         <Home name="hollowGrove"/>
         <Target name="moonGrotto"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="hollowGrove"/>
         <Target name="deathGauntlet"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1248,19 +1293,26 @@
         <Target name="sunkenGladesLaserStomp"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
-          <Requirement mode="normal">Stomp+Water</Requirement>
+          <Requirement mode="normal">WallJump+Stomp+Water</Requirement>
+          <Requirement mode="normal">Climb+Stomp+Water</Requirement>
+          <Requirement mode="normal">Bash+Stomp+Water</Requirement>
           <Requirement mode="dboost">Stomp+Bash+HC+HC+HC+HC</Requirement>
-          <Requirement mode="dboost">Stomp+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="extreme">Stomp</Requirement>
-          <Requirement mode="extreme">Bash</Requirement>
+          <Requirement mode="dboost">WallJump+Stomp+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost">Climb+Stomp+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">WallJump+Stomp</Requirement>
+          <Requirement mode="extreme">Climb+Stomp</Requirement>
+          <Requirement mode="extreme">WallJump+Bash</Requirement>
+          <Requirement mode="extreme">Climb+Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="hollowGrove"/>
         <Target name="upperGladesSpiderCavernPuzzle"/>
         <Requirements>
-          <Requirement mode="normal">Bash</Requirement>
-          <Requirement mode="normal">DoubleJump</Requirement>
+          <Requirement mode="normal">WallJump+Bash</Requirement>
+          <Requirement mode="normal">Climb+Bash</Requirement>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Climb+DoubleJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1310,7 +1362,10 @@
         <Home name="hollowGrove"/>
         <Target name="rightGinsoOrb"/>
         <Requirements>
-          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="normal">Grenade+WallJump</Requirement>
+          <Requirement mode="normal">Grenade+Climb</Requirement>
+          <Requirement mode="normal">Grenade+ChargeJump</Requirement>
+          <Requirement mode="normal">Grenade+Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1354,6 +1409,16 @@
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
           <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="hollowGrove"/>
+        <Target name="hollowGroveTree"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Wind+Glide</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -1586,6 +1651,18 @@
     <Connections>
     </Connections>
   </Area>
+  <Area name="hollowGroveTree">
+    <Locations>
+      <Location>
+        <X>333</X>
+        <Y>-61</Y>
+        <Item>AC</Item>
+        <Difficulty>1</Difficulty>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
   <Area name="hollowGrovePlants">
     <Locations>
       <Location>
@@ -1767,12 +1844,6 @@
         <X>365</X>
         <Y>-109</Y>
         <Item>EX100</Item>
-        <Difficulty>1</Difficulty>
-      </Location>
-      <Location>
-        <X>333</X>
-        <Y>-61</Y>
-        <Item>AC</Item>
         <Difficulty>1</Difficulty>
       </Location>
       <Location>
@@ -3011,13 +3082,15 @@
       </Connection>
       <Connection>
         <Home name="valleyEntry"/>
-        <Target name="valleyMain"/>
+        <Target name="valleyRight"/>
         <Requirements>
           <Requirement mode="normal">Stomp+Bash+WallJump+DoubleJump</Requirement>
           <Requirement mode="normal">Stomp+Bash+WallJump+Glide</Requirement>
           <Requirement mode="normal">Stomp+Bash+WallJump+ChargeJump</Requirement>
           <Requirement mode="normal">Stomp+Bash+Climb+ChargeJump</Requirement>
-          <Requirement mode="lure-hard">Bash</Requirement>
+          <Requirement mode="extended">Bash+DoubleJump</Requirement>
+          <Requirement mode="extended">Bash+Glide</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
           <Requirement mode="extreme">Stomp+WallJump+DoubleJump+ChargeJump</Requirement>
           <Requirement mode="extreme">Stomp+WallJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
         </Requirements>
@@ -3030,7 +3103,7 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="valleyMain"/>
+        <Home name="valleyEntry"/>
         <Target name="valleyWater"/>
         <Requirements>
           <Requirement mode="normal">Water+Stomp+WallJump+DoubleJump</Requirement>
@@ -3116,14 +3189,8 @@
     <Connections>
     </Connections>
   </Area>
-  <Area name="valleyMain">
+  <Area name="valleyRight">
     <Locations>
-      <Location>
-        <X>-292</X>
-        <Y>20</Y>
-        <Item>AC</Item>
-        <Difficulty>1</Difficulty>
-      </Location>
       <Location>
         <X>-355</X>
         <Y>65</Y>
@@ -3136,6 +3203,50 @@
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
       </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="valleyRight"/>
+        <Target name="valleyMain"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+Stomp</Requirement>
+          <Requirement mode="extended">Dash+Bash</Requirement>
+          <Requirement mode="extended">Dash+Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="valleyRight"/>
+        <Target name="birdStompCell"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump+Climb</Requirement>
+          <Requirement mode="speed">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="birdStompCell">
+    <Locations>
+      <Location>
+        <X>-292</X>
+        <Y>20</Y>
+        <Item>AC</Item>
+        <Difficulty>1</Difficulty>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="valleyRight"/>
+        <Target name="valleyMain"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+Stomp</Requirement>
+          <Requirement mode="extended">Dash+Bash</Requirement>
+          <Requirement mode="extended">Dash+Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="valleyMain">
+    <Locations>
       <Location>
         <X>-460</X>
         <Y>-20</Y>
