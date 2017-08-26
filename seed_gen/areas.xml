@@ -91,6 +91,16 @@
           <Requirement mode="normal">Glide+Wind</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="sunkenGladesRunaway"/>
+        <Target name="forlorn"/>
+        <Requirements>
+          <Requirement mode="dboost-light">TPforlorn+DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="dboost-light">TPforlorn+DoubleJump+Bash</Requirement>
+          <Requirement mode="dboost-light">TPforlorn+Glide+ChargeJump</Requirement>
+          <Requirement mode="dboost-light">TPforlorn+Glide+Bash</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="sunkenGladesNadePool">
@@ -206,6 +216,7 @@
           <Requirement mode="normal">Bash+Climb</Requirement>
           <Requirement mode="speed">WallJump+DoubleJump</Requirement>
           <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -325,6 +336,14 @@
           <Requirement mode="timed-level">WallJump</Requirement>
           <Requirement mode="timed-level">Climb</Requirement>
           <Requirement mode="timed-level">ChargeJump+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="deathGauntlet"/>
+        <Target name="sunkenGladesRunaway"/>
+        <Requirements>
+          <Requirement mode="normal">DoubleJump+EC+EC+EC+EC</Requirement>
+          <Requirement mode="normal">Glide+EC+EC+EC+EC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -569,6 +588,15 @@
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
           <Requirement mode="cdash-farming">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ChargeFlame"/>
+        <Target name="WallJump"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="normal">Stomp</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -2986,6 +3014,7 @@
         <Requirements>
           <Requirement mode="normal">Stomp+Bash+WallJump+DoubleJump</Requirement>
           <Requirement mode="normal">Stomp+Bash+WallJump+Glide</Requirement>
+          <Requirement mode="normal">Stomp+Bash+WallJump+ChargeJump</Requirement>
           <Requirement mode="normal">Stomp+Bash+Climb+ChargeJump</Requirement>
           <Requirement mode="lure-hard">Bash</Requirement>
           <Requirement mode="extreme">Stomp+WallJump+DoubleJump+ChargeJump</Requirement>
@@ -2997,6 +3026,30 @@
         <Target name="valleyEntryTreePlant"/>
         <Requirements>
           <Requirement mode="extended">Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="valleyMain"/>
+        <Target name="valleyWater"/>
+        <Requirements>
+          <Requirement mode="normal">Water+Stomp+WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Water+Stomp+WallJump+Bash</Requirement>
+          <Requirement mode="normal">Water+Stomp+WallJump+ChargeJump</Requirement>
+          <Requirement mode="normal">Water+Stomp+Climb+ChargeJump</Requirement>
+          <Requirement mode="dboost">Stomp+WallJump+DoubleJump</Requirement>
+          <Requirement mode="dboost">Stomp+WallJump+Bash</Requirement>
+          <Requirement mode="dboost">Stomp+WallJump+ChargeJump</Requirement>
+          <Requirement mode="dboost">Stomp+Climb+ChargeJump</Requirement>
+          <Requirement mode="lure-hard">Bash+Water</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="valleyEntry"/>
+        <Target name="spiritTreeRefined"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -3013,7 +3066,7 @@
     <Connections>
       <Connection>
         <Home name="valleyEntryTree"/>
-        <Target name="valleyEntryWater"/>
+        <Target name="valleyGrenadeWater"/>
         <Requirements>
           <Requirement mode="normal">Water+Grenade</Requirement>
           <Requirement mode="dboost-hard">Grenade+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
@@ -3050,7 +3103,7 @@
     <Connections>
     </Connections>
   </Area>
-  <Area name="valleyEntryWater">
+  <Area name="valleyGrenadeWater">
     <Locations>
       <Location>
         <X>-320</X>
@@ -3094,43 +3147,7 @@
         <Item>EX200</Item>
         <Difficulty>1</Difficulty>
       </Location>
-      <Location>
-        <X>-561</X>
-        <Y>-89</Y>
-        <Item>MS</Item>
-        <Difficulty>1</Difficulty>
-      </Location>
-      <Location>
-        <X>-538</X>
-        <Y>-104</Y>
-        <Item>EX100</Item>
-        <Difficulty>1</Difficulty>
-      </Location>
-      <Location>
-        <X>-350</X>
-        <Y>-98</Y>
-        <Item>AC</Item>
-        <Difficulty>2</Difficulty>
-      </Location>
-      <Location>
-        <X>-443</X>
-        <Y>-152</Y>
-        <Item>MS</Item>
-        <Difficulty>2</Difficulty>
-      </Location>
-      <Location>
-        <X>-538</X>
-        <Y>-234</Y>
-        <Item>EX200</Item>
-        <Difficulty>3</Difficulty>
-      </Location>
-      <Location>
-        <X>-460</X>
-        <Y>-255</Y>
-        <Item>EX100</Item>
-        <Difficulty>3</Difficulty>
-      </Location>
-      <Location>
+     <Location>
         <X>-678</X>
         <Y>-29</Y>
         <Item>EX100</Item>
@@ -3144,14 +3161,6 @@
       </Location>
     </Locations>
     <Connections>
-      <Connection>
-        <Home name="valleyMain"/>
-        <Target name="valleyMainWater"/>
-        <Requirements>
-          <Requirement mode="normal">Water</Requirement>
-          <Requirement mode="dboost">Free</Requirement>
-        </Requirements>
-      </Connection>
       <Connection>
         <Home name="valleyMain"/>
         <Target name="preSorrowOrb"/>
@@ -3195,7 +3204,7 @@
       </Connection>
       <Connection>
         <Home name="valleyMain"/>
-        <Target name="valleyMainGrenade"/>
+        <Target name="outsideForlornGrenade"/>
         <Requirements>
           <Requirement mode="normal">Grenade</Requirement>
         </Requirements>
@@ -3221,7 +3230,14 @@
         <Home name="valleyMain"/>
         <Target name="valleyMapStone"/>
         <Requirements>
-          <Requirement mode="normal">MS</Requirement>
+          <Requirement mode="normal">MS+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="valleyMain"/>
+        <Target name="lowerValley"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -3262,19 +3278,13 @@
     <Connections>
     </Connections>
   </Area>
-  <Area name="valleyMainWater">
+  <Area name="valleyWater">
     <Locations>
       <Location>
         <X>-359</X>
         <Y>-87</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
-      </Location>
-      <Location>
-        <X>-514</X>
-        <Y>-277</Y>
-        <Item>EX100</Item>
-        <Difficulty>3</Difficulty>
       </Location>
     </Locations>
     <Connections>
@@ -3292,13 +3302,196 @@
     <Connections>
     </Connections>
   </Area>
-  <Area name="valleyMainGrenade">
+  <Area name="outsideForlornGrenade">
     <Locations>
       <Location>
         <X>-460</X>
         <Y>-187</Y>
         <Item>AC</Item>
         <Difficulty>3</Difficulty>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="lowerValley">
+    <Locations>
+      <Location>
+        <X>-350</X>
+        <Y>-98</Y>
+        <Item>AC</Item>
+        <Difficulty>2</Difficulty>
+      </Location>
+      <Location>
+        <X>-561</X>
+        <Y>-89</Y>
+        <Item>MS</Item>
+        <Difficulty>1</Difficulty>
+      </Location>
+      <Location>
+        <X>-538</X>
+        <Y>-104</Y>
+        <Item>EX100</Item>
+        <Difficulty>1</Difficulty>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="lowerValley"/>
+        <Target name="valleyMainFACS"/>
+        <Requirements>
+          <Requirement mode="normal">Climb+ChargeJump</Requirement>
+          <Requirement mode="extended">Bash+Glide</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="lowerValley"/>
+        <Target name="lowerValleyPlantApproach"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+DoubleJump</Requirement>
+          <Requirement mode="normal">Bash+Glide</Requirement>
+          <Requirement mode="normal">ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="normal">ChargeJump+Glide</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="lowerValley"/>
+        <Target name="valleyEntry"/>
+        <Requirements>
+          <Requirement mode="normal">Bash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="lowerValleyPlantApproach">
+    <Locations>
+      <Location>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="lowerValleyPlantApproach"/>
+        <Target name="valleyMainPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>    
+    </Connections>
+  </Area>
+  <Area name="outsideForlorn">
+    <Locations>
+      <Location>
+      </Location>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="outsideForlorn"/>
+        <Target name="outsideForlornTree"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="outsideForlorn"/>
+        <Target name="outsideForlornWater"/>
+        <Requirements>
+          <Requirement mode="normal">Water</Requirement>
+          <Requirement mode="dboost">HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="outsideForlorn"/>
+        <Target name="outsideForlornCliff"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+ChargeJump</Requirement>
+          <Requirement mode="normal">Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Glide</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="outsideForlornTree">
+    <Locations>
+      <Location>
+        <X>-460</X>
+        <Y>-255</Y>
+        <Item>EX100</Item>
+        <Difficulty>3</Difficulty>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="outsideForlornWater">
+    <Locations>
+      <Location>
+        <X>-514</X>
+        <Y>-277</Y>
+        <Item>EX100</Item>
+        <Difficulty>3</Difficulty>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="outsideForlornCliff">
+    <Locations>
+      <Location>
+        <X>-538</X>
+        <Y>-234</Y>
+        <Item>EX200</Item>
+        <Difficulty>3</Difficulty>
+      </Location>
+    </Locations>
+    <Connections>
+        <Home name="outsideForlornCliff"/>
+        <Target name="outsideForlornGrenade"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+Stomp+Grenade</Requirement>
+          <Requirement mode="extreme">Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="outsideForlornCliff"/>
+        <Target name="valleyMapStone"/>
+        <Requirements>
+          <Requirement mode="normal">MS+Bash+Stomp</Requirement>
+          <Requirement mode="extreme">MS+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="outsideForlornCliff"/>
+        <Target name="outsideForlornMS"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+Stomp</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="outsideForlornCliff"/>
+        <Target name="lowerValley"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+ChargeJump</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="outsideForlornMS">
+    <Locations>
+      <Location>
+        <X>-443</X>
+        <Y>-152</Y>
+        <Item>MS</Item>
+        <Difficulty>2</Difficulty>
       </Location>
     </Locations>
     <Connections>
@@ -3348,7 +3541,8 @@
         <Home name="forlorn"/>
         <Target name="rightForlorn"/>
         <Requirements>
-          <Requirement mode="normal">KS+KS+KS+KS+Glide+Stomp</Requirement>
+          <Requirement mode="normal">KS+KS+KS+KS+Glide+Stomp+Bash+WallJump</Requirement>
+          <Requirement mode="normal">KS+KS+KS+KS+Glide+Stomp+Bash+Climb</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3365,6 +3559,15 @@
         <Target name="forlornMapStone"/>
         <Requirements>
           <Requirement mode="normal">MS</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="forlorn"/>
+        <Target name="outsideForlorn"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
         </Requirements>
       </Connection>
     </Connections>
