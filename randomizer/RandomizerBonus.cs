@@ -44,36 +44,45 @@ public static class RandomizerBonus
             if (RandomizerBonus.WaterVeinShards() >= 3)
             {
                 Randomizer.showHint("Water Vein Shard (extra)");
-                Keys.GinsoTree = true;
             }
             else 
             {
                 Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
                 Randomizer.showHint("Water Vein Shard (" + RandomizerBonus.WaterVeinShards().ToString() + "/3)");
+                if (RandomizerBonus.WaterVeinShards() == 3)
+                {
+                    Keys.GinsoTree = true;
+                }
             }
             break;
         case 19:
             if (RandomizerBonus.GumonSealShards() >= 3)
             {
                 Randomizer.showHint("Gumon Seal Shard (extra)");
-                Keys.ForlornRuins = true;
             }
             else 
             {
                 Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
                 Randomizer.showHint("Gumon Seal Shard (" + RandomizerBonus.GumonSealShards().ToString() + "/3)");
+                if (RandomizerBonus.GumonSealShards() == 3)
+                {
+                    Keys.ForlornRuins = true;
+                }
             }
             break;
         case 21:
             if (RandomizerBonus.SunstoneShards() >= 3)
             {
-                Randomizer.showHint("Sunstone Shard (extra)");
-                Keys.MountHoru = true;
+                Randomizer.showHint("Sunstone Shard (extra)");                
             }
             else 
             {
                 Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
                 Randomizer.showHint("Sunstone Shard (" + RandomizerBonus.SunstoneShards().ToString() + "/3)");
+                if (RandomizerBonus.SunstoneShards() == 3)
+                {
+                    Keys.MountHoru = true;
+                }
             }
             break;
 		}
