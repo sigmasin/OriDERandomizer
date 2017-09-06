@@ -1,6 +1,62 @@
 import re
-import random
 import math
+import time
+
+#A custom implementation of a Mersenne Twister
+#(since javascript hates everything)
+#https://en.wikipedia.org/wiki/Mersenne_Twister
+class Random:
+
+    def seed(self, seed):        
+        self.index = 624
+        self.mt = [0] * 624
+        self.mt[0] = seed
+        for i in range(1, 624):
+            self.mt[i] = int(0xFFFFFFFF & (1812433253 * (self.mt[i - 1] ^ self.mt[i - 1] >> 30) + i))
+
+    def generate_sequence(self):        
+        for i in range(624):
+            # Get the most significant bit and add it to the less significant
+            # bits of the next number
+            y = int(0xFFFFFFFF & (self.mt[i] & 0x80000000) + (self.mt[(i + 1) % 624] & 0x7fffffff))
+            self.mt[i] = self.mt[(i + 397) % 624] ^ y >> 1
+
+            if y % 2 != 0:
+                self.mt[i] = self.mt[i] ^ 0x9908b0df
+        self.index = 0
+        
+    def random(self):        
+        if self.index >= 624:
+            self.generate_sequence()
+
+        y = self.mt[self.index]
+
+        # Right shift by 11 bits
+        y = y ^ y >> 11
+        # Shift y left by 7 and take the bitwise and of 2636928640
+        y = y ^ y << 7 & 2636928640
+        # Shift y left by 15 and take the bitwise and of y and 4022730752
+        y = y ^ y << 15 & 4022730752
+        # Right shift by 18 bits
+        y = y ^ y >> 18
+
+        self.index = self.index + 1
+        
+        return int(0xFFFFFFFF & y) / float(0x100000000)
+        
+    def randrange(self, length):    
+        return int(self.random() * length)
+        
+    def randint(self, low, high):    
+        return int(low + self.random() * (high - low + 1))
+        
+    def uniform(self, low, high):    
+        return self.random() * (high - low) + low
+        
+    def shuffle(self, items):    
+        original = list(items)
+        for i in range(len(items)):
+            items[i] = original.pop(self.randrange(len(original)))
 
 class Area:
 
@@ -126,9 +182,8 @@ class Location:
         return self.x*10000 + self.y
         
     def to_string(self):
-        return self.area + " " + self.orig + " (" + str(self.x) + " " + str(self.y) + ")"
-
-
+        return self.area + " " + self.orig + " (" + str(self.x) + " " + str(self.y) + ")"    
+        
 def open_free_connections():
     found = False
     keystoneCount = 0
@@ -765,8 +820,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
             if not assignQueue:
                 # we've painted ourselves into a corner, try again
                 if not reservedLocations:
-                    placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode, noTeleporters, doLocationAnalysis, doSkillOrderAnalysis, modes, flags, starvedMode, preferPathDifficulty, setNonProgressiveMapstones)
-                    return
+                    return placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode, noTeleporters, doLocationAnalysis, doSkillOrderAnalysis, modes, flags, starvedMode, preferPathDifficulty, setNonProgressiveMapstones)
                 locationsToAssign.append(reservedLocations.pop(0))
                 locationsToAssign.append(reservedLocations.pop(0))
                 spoilerPath = prepare_path(len(locationsToAssign))
@@ -775,8 +829,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         if len(locationsToAssign) < len(assignQueue) + keystoneCount - inventory["KS"] + mapstoneCount - inventory["MS"]:
             # we've painted ourselves into a corner, try again
             if not reservedLocations:
-                placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode, noTeleporters, doLocationAnalysis, doSkillOrderAnalysis, modes, flags, starvedMode, preferPathDifficulty, setNonProgressiveMapstones)
-                return
+                return placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode, noTeleporters, doLocationAnalysis, doSkillOrderAnalysis, modes, flags, starvedMode, preferPathDifficulty, setNonProgressiveMapstones)
             locationsToAssign.append(reservedLocations.pop(0))
             locationsToAssign.append(reservedLocations.pop(0))
         for i in range(0, len(locationsToAssign)):
@@ -826,14 +879,25 @@ import pyjd # this is dummy in pyjs.
 from pyjamas.ui.RootPanel import RootPanel
 from pyjamas.ui.VerticalPanel import VerticalPanel
 from pyjamas.ui.HorizontalPanel import HorizontalPanel
+from pyjamas.ui.DisclosurePanel import DisclosurePanel 
+from pyjamas.ui import HasAlignment
 from pyjamas.ui.Button import Button
 from pyjamas.ui.RadioButton import RadioButton
 from pyjamas.ui.CheckBox import CheckBox
-from pyjamas import Window
+from pyjamas.ui.HTML import HTML
+from pyjamas.ui.ListBox import ListBox
+from pyjamas.ui.TextBox import TextBox
 from pyjamas import DOM
 
-import pygwt
+class LogicListener():
 
+    def __init__(self, element):
+        element.addChangeListener(self)
+        
+    def onChange(self, sender):
+        generate()
+        
+        
 
 def generate():
 
@@ -855,6 +919,8 @@ def generate():
     prefer_path_difficulty = None
     non_progressive_mapstones = False
 
+    random.seed(seed)
+    
     placement = placeItems(seed, exp_pool, hard, includePlants, shards, limitkeys, no_teleporters, loc_analysis, analysis, modes, flags, starved, prefer_path_difficulty, non_progressive_mapstones)
     
     element = DOM.createElement('a')
@@ -872,26 +938,183 @@ def generate():
     
 def main():
 
-
     pyjd.setup("public/web_seed_generator.html")
-    panel = VerticalPanel()
     
-    b = Button("Generate", generate, StyleName='teststyle')
+    global random
+    random = Random()
     
-    mode1 = RadioButton("modes", "Casual")
-    mode2 = RadioButton("modes", "Standard")
-    mode3 = RadioButton("modes", "Expert")
-    mode4 = RadioButton("modes", "Master")
+    #set up the page
+    panel = VerticalPanel(HorizontalAlignment=HasAlignment.ALIGN_CENTER, StyleName="main")    
+    row0 = HorizontalPanel(HorizontalAlignment=HasAlignment.ALIGN_LEFT)
+    row1 = HorizontalPanel(HorizontalAlignment=HasAlignment.ALIGN_LEFT, StyleName="row")
+    row2 = VerticalPanel(HorizontalAlignment=HasAlignment.ALIGN_LEFT, StyleName="row")
+    row3 = DisclosurePanel("Logic Paths", StyleName="row")
+    row4 = HorizontalPanel(HorizontalAlignment=HasAlignment.ALIGN_LEFT, StyleName="row")
+    panel.add(row0)
+    panel.add(row1)
+    panel.add(row2)
+    panel.add(row3)
+    panel.add(row4)
     
-    hp = HorizontalPanel()
-    panel.add(hp)
+    title = HTML("Ori DE Randomizer (v2.0)", StyleName="title")
     
-    hp.add(mode1)
-    hp.add(mode2)
-    hp.add(mode3)
-    hp.add(mode4)
+    row0.add(title)
+    
+    #row 1
+    row1_1 = HorizontalPanel(StyleName="inner_row")
+    row1_2 = HorizontalPanel(StyleName="inner_row")
+    row1_3 = HorizontalPanel(StyleName="inner_row")
+    
+    row1.add(row1_1)
+    row1.add(row1_2)
+    row1.add(row1_3)
+    
+    logicText = HTML("Logic", StyleName="label")
+    logicSelection = ListBox(VisibleItemCount=1, StyleName="dropdown")    
+    logicSelection.addItem("Casual")
+    logicSelection.addItem("Standard")
+    logicSelection.addItem("Expert")
+    logicSelection.addItem("Master")
+    logicSelection.addItem("Hard")
+    logicSelection.addItem("OHKO")
+    logicSelection.addItem("Glitched")
+    logicSelection.addItem("Custom")
+    logicSelection.setSelectedIndex(1)
+    
+    logicListener = LogicListener(logicSelection)
+    
+    row1_1.add(logicText)
+    row1_1.add(logicSelection)
+    
+    modeText = HTML("Mode", StyleName="label")
+    modeSelection = ListBox(VisibleItemCount=1, StyleName="dropdown")
+    modeSelection.addItem("Default")
+    modeSelection.addItem("Shards")
+    modeSelection.addItem("Limitkeys")
+    modeSelection.setSelectedIndex(1)
+    
+    row1_2.add(modeText)
+    row1_2.add(modeSelection)
 
-    hp.add(b)
+    diffText = HTML("Path Difficulty", StyleName="label")
+    diffSelection = ListBox(VisibleItemCount=1, StyleName="dropdown")
+    diffSelection.addItem("Easy")
+    diffSelection.addItem("Normal")
+    diffSelection.addItem("Hard")
+    diffSelection.setSelectedIndex(1)
+    
+    row1_3.add(diffText)
+    row1_3.add(diffSelection)
+
+    #row 2    
+    variationText = HTML("Variations", StyleName="section")
+    variationPanel = HorizontalPanel()
+    
+    row2.add(variationText)
+    row2.add(variationPanel)
+    
+    variations1 = VerticalPanel(StyleName="var_column")
+    variations2 = VerticalPanel(StyleName="var_column")
+    variations3 = VerticalPanel(StyleName="var_column")
+    
+    variationPanel.add(variations1)
+    variationPanel.add(variations2)
+    variationPanel.add(variations3)
+    
+    forceBox = CheckBox("Force Trees")
+    hardBox = CheckBox("Hard Mode")
+    noTeleBox = CheckBox("No Teleporters")
+    
+    starvedBox = CheckBox("Starved")
+    ohkoBox = CheckBox("OHKO")
+    noPlantsBox = CheckBox("No Plants")
+    
+    nonProgMapBox = CheckBox("Discrete Mapstones")
+    zeroBox = CheckBox("0 XP")
+    noBonusBox = CheckBox("No Bonuses")
+    
+    variations1.add(forceBox)
+    variations1.add(hardBox)
+    variations1.add(noTeleBox)
+    
+    variations2.add(starvedBox)
+    variations2.add(ohkoBox)
+    variations2.add(noPlantsBox)
+    
+    variations3.add(nonProgMapBox)
+    variations3.add(zeroBox)
+    variations3.add(noBonusBox)
+    
+    #row 3
+    pathsPanel = HorizontalPanel()
+    
+    row3.add(pathsPanel)
+    
+    paths1 = VerticalPanel(StyleName="logic_column")
+    paths2 = VerticalPanel(StyleName="logic_column")
+    paths3 = VerticalPanel(StyleName="logic_column")
+    paths4 = VerticalPanel(StyleName="logic_column")
+    paths5 = VerticalPanel(StyleName="logic_column")
+    
+    pathsPanel.add(paths1)
+    pathsPanel.add(paths2)
+    pathsPanel.add(paths3)
+    pathsPanel.add(paths4)
+    pathsPanel.add(paths5)
+    
+    pathNormal = CheckBox("Normal")
+    pathLure = CheckBox("Lure")
+    pathExtended = CheckBox("Extended")
+    
+    paths1.add(pathNormal)
+    paths1.add(pathLure)
+    paths1.add(pathExtended)
+    
+    pathSpeed = CheckBox("Speed")
+    pathLureHard = CheckBox("Lure-Hard")
+    pathExtendedDamage = CheckBox("Extended-Damage")
+    
+    paths2.add(pathSpeed)
+    paths2.add(pathLureHard)
+    paths2.add(pathExtendedDamage)
+    
+    pathDBoostLight = CheckBox("DBoost-Light")
+    pathDBash = CheckBox("DBash")
+    pathExtreme = CheckBox("Extreme")
+    
+    paths3.add(pathDBoostLight)
+    paths3.add(pathDBash)
+    paths3.add(pathExtreme)
+    
+    pathDBoost = CheckBox("DBoost")
+    pathCDash = CheckBox("CDash")
+    pathTimedLevel = CheckBox("Timed-Level")
+    
+    paths4.add(pathDBoost)
+    paths4.add(pathCDash)
+    paths4.add(pathTimedLevel)
+    
+    pathDBoostHard = CheckBox("DBoost-Hard")
+    pathCDashFarming = CheckBox("CDash-Farming")
+    pathGlitched = CheckBox("Glitched")
+    
+    paths5.add(pathDBoostHard)
+    paths5.add(pathCDashFarming)
+    paths5.add(pathGlitched)
+        
+    #row 4
+    
+    seedPanel = HorizontalPanel("inner_row")
+    
+    seedText = HTML("Seed", StyleName="label")
+    seedSelection = TextBox(StyleName="seed", MaxLength=10)
+    genButton = Button("Generate", generate, StyleName='button')
+    
+    seedPanel.add(seedText)
+    seedPanel.add(seedSelection)
+    
+    row4.add(seedPanel)
+    row4.add(genButton)
     
     RootPanel().add(panel)
     pyjd.run()

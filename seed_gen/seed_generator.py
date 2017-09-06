@@ -1,10 +1,64 @@
 import re
-import random
 import math
 import xml.etree.ElementTree as XML
 import argparse
 from collections import OrderedDict
 
+#A custom implementation of a Mersenne Twister
+#(since javascript hates everything)
+#https://en.wikipedia.org/wiki/Mersenne_Twister
+class Random:
+
+    def seed(self, seed):        
+        self.index = 624
+        self.mt = [0] * 624
+        self.mt[0] = seed
+        for i in range(1, 624):
+            self.mt[i] = int(0xFFFFFFFF & (1812433253 * (self.mt[i - 1] ^ self.mt[i - 1] >> 30) + i))
+
+    def generate_sequence(self):        
+        for i in range(624):
+            # Get the most significant bit and add it to the less significant
+            # bits of the next number
+            y = int(0xFFFFFFFF & (self.mt[i] & 0x80000000) + (self.mt[(i + 1) % 624] & 0x7fffffff))
+            self.mt[i] = self.mt[(i + 397) % 624] ^ y >> 1
+
+            if y % 2 != 0:
+                self.mt[i] = self.mt[i] ^ 0x9908b0df
+        self.index = 0
+        
+    def random(self):        
+        if self.index >= 624:
+            self.generate_sequence()
+
+        y = self.mt[self.index]
+
+        # Right shift by 11 bits
+        y = y ^ y >> 11
+        # Shift y left by 7 and take the bitwise and of 2636928640
+        y = y ^ y << 7 & 2636928640
+        # Shift y left by 15 and take the bitwise and of y and 4022730752
+        y = y ^ y << 15 & 4022730752
+        # Right shift by 18 bits
+        y = y ^ y >> 18
+
+        self.index = self.index + 1
+        
+        return int(0xFFFFFFFF & y) / float(0x100000000)
+        
+    def randrange(self, length):    
+        return int(self.random() * length)
+        
+    def randint(self, low, high):    
+        return int(low + self.random() * (high - low + 1))
+        
+    def uniform(self, low, high):    
+        return self.random() * (high - low) + low
+        
+    def shuffle(self, items):    
+        original = list(items)
+        for i in range(len(items)):
+            items[i] = original.pop(self.randrange(len(original)))
 
 class Area:
 
@@ -748,8 +802,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
                 # we've painted ourselves into a corner, try again
                 if not reservedLocations:
                     print areasRemaining
-                    placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode, noTeleporters, doLocationAnalysis, doSkillOrderAnalysis, modes, flags, starvedMode, preferPathDifficulty, setNonProgressiveMapstones)
-                    return
+                    return placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode, noTeleporters, doLocationAnalysis, doSkillOrderAnalysis, modes, flags, starvedMode, preferPathDifficulty, setNonProgressiveMapstones)
                 locationsToAssign.append(reservedLocations.pop(0))
                 locationsToAssign.append(reservedLocations.pop(0))
                 spoilerPath = prepare_path(len(locationsToAssign))
@@ -759,8 +812,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
             # we've painted ourselves into a corner, try again
             if not reservedLocations:
                 print areasRemaining
-                placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode, noTeleporters, doLocationAnalysis, doSkillOrderAnalysis, modes, flags, starvedMode, preferPathDifficulty, setNonProgressiveMapstones)
-                return
+                return placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode, noTeleporters, doLocationAnalysis, doSkillOrderAnalysis, modes, flags, starvedMode, preferPathDifficulty, setNonProgressiveMapstones)
             locationsToAssign.append(reservedLocations.pop(0))
             locationsToAssign.append(reservedLocations.pop(0))
         for i in range(0, len(locationsToAssign)):
@@ -806,6 +858,10 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
     return (outputStr, spoilerStr)
     
 def main():
+
+    global random
+    
+    random = Random()
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--preset", help="Choose a preset group of paths for the generator to use", choices=["casual", "standard", "expert", "master", "hard", "ohko", "0xp", "glitched"])

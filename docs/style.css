@@ -1,0 +1,112 @@
+
+body {
+    padding:0px 0 20px 0px;
+    margin: 0px;
+    font:14px/1.5 "OpenSansRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color:#f0e7d5;
+    font-weight: normal;
+    background: #404040;
+    background-attachment: fixed !important;
+    background: linear_gradient(#2a2a29, #1c1c1c);
+}
+
+div.container {
+    width:98%;
+    margin:1%;
+}
+
+td {
+    text-align:left;
+    padding:5px 0px;
+}
+
+.main {
+    margin-left:auto;
+    margin-right:auto;
+    border:1px solid #ffffff;
+    border-radius: 8px;
+    background: #202020;
+}
+
+.title {
+    font-size: 32px;
+    padding: 5px 20px;
+}
+
+.row {
+    padding: 5px 20px;
+    width: 100%;
+}
+
+.inner_row {
+    padding-right: 20px;
+    width: 100%;
+}
+
+.label {
+    background-color: #D3D3D3;
+    border: none;
+    border-radius: 1px;
+    color: black;
+    height: 20px;
+    padding: 8px 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    width: 128px;
+}
+
+.dropdown {
+    background-color: white;
+    border: none;
+    border-radius: 1px;
+    color: black;
+    height: 36px;
+    padding: 0px 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    width: 128px;
+}
+
+.section {
+    text-align: left;
+    font-size: 24px;
+}
+
+.var_column {
+    width: 300px;
+}
+
+.logic_column {
+    width: 180px;
+}
+
+.seed {
+    background-color: white;
+    border: none;
+    border-radius: 1px;
+    color: black;
+    height: 36px;
+    padding: 0px 8px;
+    text-align: left;
+    text-decoration: none;
+    font-size: 16px;
+    width: 192px;
+}
+
+.button {
+    background-color: #00AA66;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 8px 0px;
+    width: 512px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
