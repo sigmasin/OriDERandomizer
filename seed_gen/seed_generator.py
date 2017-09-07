@@ -254,7 +254,7 @@ def prepare_path(free_space):
         for connection in areas[area].get_connections():
             if connection.target in areasReached:
                 continue
-            if limitkeys and ("GinsoKey" in connection.get_requirements()[0] or "ForlornKey" in connection.get_requirements()[0] or "HoruKey" in connection.get_requirements()[0]):
+            if limitkeys and connection.get_requirements() and ("GinsoKey" in connection.get_requirements()[0] or "ForlornKey" in connection.get_requirements()[0] or "HoruKey" in connection.get_requirements()[0]):
                 continue
             for req_set in connection.get_requirements():
                 requirements = []

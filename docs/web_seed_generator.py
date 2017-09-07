@@ -251,7 +251,7 @@ def prepare_path(free_space):
         for connection in areas[area].get_connections():
             if connection.target in areasReached:
                 continue
-            if limitkeys and ("GinsoKey" in connection.get_requirements()[0] or "ForlornKey" in connection.get_requirements()[0] or "HoruKey" in connection.get_requirements()[0]):
+            if limitkeys and connection.get_requirements() and ("GinsoKey" in connection.get_requirements()[0] or "ForlornKey" in connection.get_requirements()[0] or "HoruKey" in connection.get_requirements()[0]):
                 continue
             for req_set in connection.get_requirements():
                 requirements = []
@@ -1097,14 +1097,17 @@ def generate():
     genButton.setText("Generate")
     
     element = DOM.createElement('a')
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(placement[0]));
-    element.setAttribute('download', 'randomizer.dat');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(placement[1]));
+    element.setAttribute('download', 'spoiler.txt');
 
     element.style.display = 'none';
     
     dl = DOM.getElementById("dl")
     DOM.appendChild(dl, element);
 
+    element.click();
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(placement[0]));
+    element.setAttribute('download', 'randomizer.dat');
     element.click();
 
     DOM.removeChild(dl, element);
