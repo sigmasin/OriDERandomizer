@@ -292,7 +292,7 @@ public static class Randomizer
 		string text = "";
 		if (RandomizerBonus.SkillTreeProgression() < 10)
 		{
-			text = += "Trees (" + RandomizerBonus.SkillTreeProgression().ToString() + "/10) ";
+			text += "Trees (" + RandomizerBonus.SkillTreeProgression().ToString() + "/10) ";
 		}
 		else
 		{
@@ -304,7 +304,7 @@ public static class Randomizer
 		}
 		else
 		{
-			text = text + " Water Vein (" + RandomizerBonus.WaterVeinShards().ToString() + "/3)\n";
+			text += " Water Vein (" + RandomizerBonus.WaterVeinShards().ToString() + "/3)\n";
 		}
 		if (Keys.ForlornRuins)
 		{
@@ -312,7 +312,7 @@ public static class Randomizer
 		}
 		else
 		{
-			text = text + "Gumon Seal (" + RandomizerBonus.GumonSealShards().ToString() + "/3) ";
+			text += "Gumon Seal (" + RandomizerBonus.GumonSealShards().ToString() + "/3) ";
 		}
 		if (Keys.MountHoru)
 		{
@@ -320,7 +320,7 @@ public static class Randomizer
 		}
 		else
 		{
-			text = text + " Sunstone (" + RandomizerBonus.SunstoneShards().ToString() + "/3)";
+			text += " Sunstone (" + RandomizerBonus.SunstoneShards().ToString() + "/3)";
 		}
 		Randomizer.MessageProvider.SetMessage(text);
 		UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
