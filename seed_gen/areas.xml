@@ -1083,7 +1083,6 @@
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="normal">Grenade+Bash</Requirement>
-          <Requirement mode="timed-level">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1111,6 +1110,7 @@
         <Requirements>
           <Requirement mode="speed">ChargeJump+DoubleJump</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
+           <Requirement mode="timed-level">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>

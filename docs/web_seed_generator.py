@@ -42,7 +42,8 @@ class Random:
 
         self.index = self.index + 1
         
-        return int(0xFFFFFFFF & y) / float(0x100000000)
+        # javascript drops the 32nd bit (grrr), so this must be modified
+        return int(0xFFFFFFFF & y) / float(0x80000000)
         
     def randrange(self, length):    
         return int(self.random() * length)

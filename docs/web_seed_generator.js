@@ -84,7 +84,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 			y = (y)^(((y)<<(15))&(4022730752));
 			y = (y)^((y)>>(18));
 			self.index = $p['__op_add']($add9=$p['getattr'](self, 'index'),$add10=1);
-			return (typeof ($div1=$p['float_int']((4294967295)&(y)))==typeof ($div2=$p['float'](4294967296)) && typeof $div1=='number' && $div2 !== 0?
+			return (typeof ($div1=$p['float_int']((4294967295)&(y)))==typeof ($div2=$p['float'](2147483648)) && typeof $div1=='number' && $div2 !== 0?
 				$div1/$div2:
 				$p['op_div']($div1,$div2));
 		}
