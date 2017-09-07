@@ -3,7 +3,7 @@ body {
     padding:0px 0 20px 0px;
     margin: 0px;
     font:14px/1.5 "OpenSansRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color:#f0e7d5;
+    color:black;
     font-weight: normal;
     background: #404040;
     background-attachment: fixed !important;
@@ -25,7 +25,7 @@ td {
     margin-right:auto;
     border:1px solid #ffffff;
     border-radius: 8px;
-    background: #202020;
+    background: #eeeeee;
 }
 
 .title {

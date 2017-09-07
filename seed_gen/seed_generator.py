@@ -399,14 +399,14 @@ def get_random_exp_value(expRemaining, expSlots):
 def preferred_difficulty_assign(item, locationsToAssign):
     total = 0.0
     for loc in locationsToAssign:
-        if args.prefer_path_difficulty == "easy":
+        if pathDifficulty == "easy":
             total += (15 - loc.difficulty) * (15 - loc.difficulty)
         else:
             total += (loc.difficulty * loc.difficulty)
     value = random.random()
     position = 0.0
     for i in range(0,len(locationsToAssign)):
-        if args.prefer_path_difficulty == "easy":
+        if pathDifficulty == "easy":
             position += (15 - locationsToAssign[i].difficulty) * (15 - locationsToAssign[i].difficulty)/total
         else:
             position += locationsToAssign[i].difficulty * locationsToAssign[i].difficulty/total
@@ -801,7 +801,6 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
             if not assignQueue:
                 # we've painted ourselves into a corner, try again
                 if not reservedLocations:
-                    print areasRemaining
                     return placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode, noTeleporters, doLocationAnalysis, doSkillOrderAnalysis, modes, flags, starvedMode, preferPathDifficulty, setNonProgressiveMapstones)
                 locationsToAssign.append(reservedLocations.pop(0))
                 locationsToAssign.append(reservedLocations.pop(0))
@@ -811,7 +810,6 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         if len(locationsToAssign) < len(assignQueue) + keystoneCount - inventory["KS"] + mapstoneCount - inventory["MS"]:
             # we've painted ourselves into a corner, try again
             if not reservedLocations:
-                print areasRemaining
                 return placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode, noTeleporters, doLocationAnalysis, doSkillOrderAnalysis, modes, flags, starvedMode, preferPathDifficulty, setNonProgressiveMapstones)
             locationsToAssign.append(reservedLocations.pop(0))
             locationsToAssign.append(reservedLocations.pop(0))

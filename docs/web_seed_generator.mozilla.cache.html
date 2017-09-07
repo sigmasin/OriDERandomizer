@@ -22149,7 +22149,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 		$iter21_nextval=$p['__iter_prepare']($iter21_iter,false);
 		while (typeof($p['__wrapped_next']($iter21_nextval).$nextval) != 'undefined') {
 			loc = $iter21_nextval.$nextval;
-			if ($p['bool']($p['op_eq']($p['getattr']((typeof args == "undefined"?$m.args:args), 'prefer_path_difficulty'), 'easy'))) {
+			if ($p['bool']($p['op_eq']((typeof pathDifficulty == "undefined"?$m.pathDifficulty:pathDifficulty), 'easy'))) {
 				total = $p['__op_add']($add153=total,$add154=(typeof ($mul27=$p['__op_sub']($sub21=15,$sub22=$p['getattr'](loc, 'difficulty')))==typeof ($mul28=$p['__op_sub']($sub23=15,$sub24=$p['getattr'](loc, 'difficulty'))) && typeof $mul27=='number'?
 					$mul27*$mul28:
 					$p['op_mul']($mul27,$mul28)));
@@ -22166,7 +22166,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 		$iter22_nextval=$p['__iter_prepare']($iter22_iter,false);
 		while (typeof($p['__wrapped_next']($iter22_nextval).$nextval) != 'undefined') {
 			i = $iter22_nextval.$nextval;
-			if ($p['bool']($p['op_eq']($p['getattr']((typeof args == "undefined"?$m.args:args), 'prefer_path_difficulty'), 'easy'))) {
+			if ($p['bool']($p['op_eq']((typeof pathDifficulty == "undefined"?$m.pathDifficulty:pathDifficulty), 'easy'))) {
 				position = $p['__op_add']($add157=position,$add158=(typeof ($div17=(typeof ($mul31=$p['__op_sub']($sub25=15,$sub26=$p['getattr'](locationsToAssign.__getitem__(i), 'difficulty')))==typeof ($mul32=$p['__op_sub']($sub27=15,$sub28=$p['getattr'](locationsToAssign.__getitem__(i), 'difficulty'))) && typeof $mul31=='number'?
 					$mul31*$mul32:
 					$p['op_mul']($mul31,$mul32)))==typeof ($div18=total) && typeof $div17=='number' && $div18 !== 0?
@@ -22474,6 +22474,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 	$m['ListBox'] = $p['___import___']('pyjamas.ui.ListBox.ListBox', null, null, false);
 	$m['TextBox'] = $p['___import___']('pyjamas.ui.TextBox.TextBox', null, null, false);
 	$m['DOM'] = $p['___import___']('pyjamas.DOM', null, null, false);
+	$m['pygwt'] = $p['___import___']('pygwt', null);
 	$m['LogicListener'] = (function(){
 		var $cls_definition = new Object();
 		var $method;
@@ -22498,8 +22499,103 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 				var self = arguments[0];
 				sender = arguments[1];
 			}
-
-			(typeof generate == "undefined"?$m.generate:generate)();
+			var index;
+			index = sender['getSelectedIndex']();
+			$m.pathNormal['setChecked'](true);
+			$m.pathSpeed['setChecked'](false);
+			$m.pathDBoostLight['setChecked'](false);
+			$m.pathDBoost['setChecked'](false);
+			$m.pathDBoostHard['setChecked'](false);
+			$m.pathLure['setChecked'](false);
+			$m.pathLureHard['setChecked'](false);
+			$m.pathDBash['setChecked'](false);
+			$m.pathCDash['setChecked'](false);
+			$m.pathCDashFarming['setChecked'](false);
+			$m.pathExtended['setChecked'](false);
+			$m.pathExtendedDamage['setChecked'](false);
+			$m.pathExtreme['setChecked'](false);
+			$m.pathTimedLevel['setChecked'](false);
+			$m.pathGlitched['setChecked'](false);
+			$m.diffSelection['setSelectedIndex'](1);
+			$m.hardBox['setChecked'](false);
+			$m.starvedBox['setChecked'](false);
+			$m.ohkoBox['setChecked'](false);
+			$m.zeroBox['setChecked'](false);
+			$m.noPlantsBox['setChecked'](false);
+			if ($p['bool']($p['op_eq'](index, 0))) {
+				$m.pathDBoostLight['setChecked'](true);
+			}
+			else if ($p['bool']($p['op_eq'](index, 1))) {
+				$m.pathSpeed['setChecked'](true);
+				$m.pathDBoostLight['setChecked'](true);
+				$m.pathLure['setChecked'](true);
+			}
+			else if ($p['bool']($p['op_eq'](index, 2))) {
+				$m.pathSpeed['setChecked'](true);
+				$m.pathDBoostLight['setChecked'](true);
+				$m.pathDBoost['setChecked'](true);
+				$m.pathLure['setChecked'](true);
+				$m.pathCDash['setChecked'](true);
+				$m.pathExtended['setChecked'](true);
+				$m.pathExtendedDamage['setChecked'](true);
+			}
+			else if ($p['bool']($p['op_eq'](index, 3))) {
+				$m.pathSpeed['setChecked'](true);
+				$m.pathDBoostLight['setChecked'](true);
+				$m.pathDBoost['setChecked'](true);
+				$m.pathDBoostHard['setChecked'](true);
+				$m.pathLure['setChecked'](true);
+				$m.pathLureHard['setChecked'](true);
+				$m.pathDBash['setChecked'](true);
+				$m.pathCDash['setChecked'](true);
+				$m.pathExtended['setChecked'](true);
+				$m.pathExtendedDamage['setChecked'](true);
+				$m.pathExtreme['setChecked'](true);
+				$m.starvedBox['setChecked'](true);
+				$m.diffSelection['setSelectedIndex'](2);
+			}
+			else if ($p['bool']($p['op_eq'](index, 4))) {
+				$m.pathSpeed['setChecked'](true);
+				$m.pathDBoostLight['setChecked'](true);
+				$m.pathLure['setChecked'](true);
+				$m.pathDBash['setChecked'](true);
+				$m.pathCDash['setChecked'](true);
+				$m.pathExtended['setChecked'](true);
+				$m.hardBox['setChecked'](true);
+			}
+			else if ($p['bool']($p['op_eq'](index, 5))) {
+				$m.pathSpeed['setChecked'](true);
+				$m.pathLure['setChecked'](true);
+				$m.pathDBash['setChecked'](true);
+				$m.pathCDash['setChecked'](true);
+				$m.pathExtended['setChecked'](true);
+				$m.hardBox['setChecked'](true);
+				$m.ohkoBox['setChecked'](true);
+			}
+			else if ($p['bool']($p['op_eq'](index, 6))) {
+				$m.pathSpeed['setChecked'](true);
+				$m.pathDBoostLight['setChecked'](true);
+				$m.pathLure['setChecked'](true);
+				$m.hardBox['setChecked'](true);
+				$m.zeroBox['setChecked'](true);
+			}
+			else if ($p['bool']($p['op_eq'](index, 7))) {
+				$m.pathSpeed['setChecked'](true);
+				$m.pathDBoostLight['setChecked'](true);
+				$m.pathDBoost['setChecked'](true);
+				$m.pathDBoostHard['setChecked'](true);
+				$m.pathLure['setChecked'](true);
+				$m.pathLureHard['setChecked'](true);
+				$m.pathDBash['setChecked'](true);
+				$m.pathCDash['setChecked'](true);
+				$m.pathCDashFarming['setChecked'](true);
+				$m.pathExtended['setChecked'](true);
+				$m.pathExtendedDamage['setChecked'](true);
+				$m.pathExtreme['setChecked'](true);
+				$m.pathTimedLevel['setChecked'](true);
+				$m.pathGlitched['setChecked'](true);
+				$m.diffSelection['setSelectedIndex'](2);
+			}
 			return null;
 		}
 	, 1, [null,null,['self'],['sender']]);
@@ -22509,33 +22605,163 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 		for (var $item in $cls_definition) { $data.__setitem__($item, $cls_definition[$item]); }
 		return $p['_create_class']('LogicListener', $p['tuple']($bases), $data);
 	})();
+	$m['CustomPathListener'] = (function(){
+		var $cls_definition = new Object();
+		var $method;
+		$cls_definition.__module__ = 'web_seed_generator';
+		$method = $pyjs__bind_method2('__init__', function() {
+			if (this.__is_instance__ === true) {
+				var self = this;
+			} else {
+				var self = arguments[0];
+			}
+
+ 			return null;
+		}
+	, 1, [null,null,['self']]);
+		$cls_definition['__init__'] = $method;
+		$method = $pyjs__bind_method2('onClick', function(sender) {
+			if (this.__is_instance__ === true) {
+				var self = this;
+			} else {
+				var self = arguments[0];
+				sender = arguments[1];
+			}
+			if (typeof sender == 'undefined') sender=arguments.callee.__args__[3][1];
+
+			$m.logicSelection['setSelectedIndex'](8);
+			return null;
+		}
+	, 1, [null,null,['self'],['sender', null]]);
+		$cls_definition['onClick'] = $method;
+		var $bases = new Array(pyjslib.object);
+		var $data = $p['dict']();
+		for (var $item in $cls_definition) { $data.__setitem__($item, $cls_definition[$item]); }
+		return $p['_create_class']('CustomPathListener', $p['tuple']($bases), $data);
+	})();
 	$m['generate'] = function() {
-		var limitkeys,prefer_path_difficulty,loc_analysis,placement,modes,non_progressive_mapstones,includePlants,hard,shards,analysis,element,$add232,exp_pool,seed,flags,no_teleporters,starved,test,$add231,mode;
-		seed = 1;
+		var prefer_path_difficulty,loc_analysis,non_progressive_mapstones,hard,$add260,$add261,$add262,exp_pool,seed,limitkeys,$add232,$add233,nobonus,$add231,$add237,$add236,$add235,$add234,$add242,$add239,$add238,$add243,$add259,$add258,dl,$add240,includePlants,$add251,$add250,$add253,$add252,$add255,$add254,$add257,$add256,no_teleporters,zeroxp,placement,modes,ohko,force_trees,shards,analysis,element,$add246,$add247,$add244,$add245,flags,mode,starved,$add241,$mul35,$mul36,$add248,$add249;
+		$m.genButton['setText']('Generating...');
+		seed = $m.seedSelection['getText']();
+		if ($p['bool']($p['op_eq'](seed, ''))) {
+			seed = $p['float_int']((typeof ($mul35=$m['time']['time']())==typeof ($mul36=1000) && typeof $mul35=='number'?
+				$mul35*$mul36:
+				$p['op_mul']($mul35,$mul36)));
+		}
+		hard = $m.hardBox['isChecked']();
 		exp_pool = 10000;
-		hard = true;
-		includePlants = true;
-		shards = true;
-		limitkeys = false;
-		no_teleporters = false;
+		if ($p['bool'](hard)) {
+			exp_pool = 5000;
+		}
+		includePlants = !$p['bool']($m.noPlantsBox['isChecked']());
+		shards = $p['op_eq']($m.modeSelection['getSelectedIndex'](), 1);
+		limitkeys = $p['op_eq']($m.modeSelection['getSelectedIndex'](), 2);
+		no_teleporters = $m.noTeleBox['isChecked']();
 		loc_analysis = false;
 		analysis = false;
-		mode = 'expert';
-		modes = $p['list'](['normal', 'speed', 'lure', 'dboost', 'dboost-light', 'cdash', 'extended', 'extended-damage']);
-		flags = 'asdf,';
-		starved = false;
-		prefer_path_difficulty = null;
-		non_progressive_mapstones = false;
+		mode = $m.logicSelection['getItemText']($m.logicSelection['getSelectedIndex']());
+		modes = $p['list']([]);
+		if ($p['bool']($m.pathNormal['isChecked']())) {
+			modes['append']('normal');
+		}
+		if ($p['bool']($m.pathSpeed['isChecked']())) {
+			modes['append']('speed');
+		}
+		if ($p['bool']($m.pathDBoostLight['isChecked']())) {
+			modes['append']('dboost-light');
+		}
+		if ($p['bool']($m.pathDBoost['isChecked']())) {
+			modes['append']('dboost');
+		}
+		if ($p['bool']($m.pathDBoostHard['isChecked']())) {
+			modes['append']('dboost-hard');
+		}
+		if ($p['bool']($m.pathLure['isChecked']())) {
+			modes['append']('lure');
+		}
+		if ($p['bool']($m.pathLureHard['isChecked']())) {
+			modes['append']('lure-hard');
+		}
+		if ($p['bool']($m.pathDBash['isChecked']())) {
+			modes['append']('dbash');
+		}
+		if ($p['bool']($m.pathCDash['isChecked']())) {
+			modes['append']('cdash');
+		}
+		if ($p['bool']($m.pathCDashFarming['isChecked']())) {
+			modes['append']('cdash-farming');
+		}
+		if ($p['bool']($m.pathExtended['isChecked']())) {
+			modes['append']('extended');
+		}
+		if ($p['bool']($m.pathExtendedDamage['isChecked']())) {
+			modes['append']('extended-damage');
+		}
+		if ($p['bool']($m.pathExtreme['isChecked']())) {
+			modes['append']('extreme');
+		}
+		if ($p['bool']($m.pathTimedLevel['isChecked']())) {
+			modes['append']('timed-level');
+		}
+		if ($p['bool']($m.pathGlitched['isChecked']())) {
+			modes['append']('glitched');
+		}
+		starved = $m.starvedBox['isChecked']();
+		prefer_path_difficulty = $m.diffSelection['getItemText']($m.diffSelection['getSelectedIndex']())['lower']();
+		if ($p['bool']($p['op_eq'](prefer_path_difficulty, 'normal'))) {
+			prefer_path_difficulty = null;
+		}
+		non_progressive_mapstones = $m.nonProgMapBox['isChecked']();
+		ohko = $m.ohkoBox['isChecked']();
+		zeroxp = $m.zeroBox['isChecked']();
+		nobonus = $m.noBonusBox['isChecked']();
+		force_trees = $m.forceBox['isChecked']();
+		flags = '';
+		flags = $p['__op_add']($add233=flags,$add234=$p['__op_add']($add231=mode,$add232=','));
+		if ($p['bool'](limitkeys)) {
+			flags = $p['__op_add']($add235=flags,$add236='limitkeys,');
+		}
+		if ($p['bool'](shards)) {
+			flags = $p['__op_add']($add237=flags,$add238='shards,');
+		}
+		if ($p['bool'](prefer_path_difficulty)) {
+			flags = $p['__op_add']($add243=flags,$add244=$p['__op_add']($add241=$p['__op_add']($add239='prefer_path_difficulty=',$add240=prefer_path_difficulty),$add242=','));
+		}
+		if ($p['bool'](hard)) {
+			flags = $p['__op_add']($add245=flags,$add246='hard,');
+		}
+		if ($p['bool'](ohko)) {
+			flags = $p['__op_add']($add247=flags,$add248='OHKO,');
+		}
+		if ($p['bool'](zeroxp)) {
+			flags = $p['__op_add']($add249=flags,$add250='0XP,');
+		}
+		if ($p['bool'](nobonus)) {
+			flags = $p['__op_add']($add251=flags,$add252='NoBonus,');
+		}
+		if ($p['bool'](!$p['bool'](includePlants))) {
+			flags = $p['__op_add']($add253=flags,$add254='NoPlants,');
+		}
+		if ($p['bool'](force_trees)) {
+			flags = $p['__op_add']($add255=flags,$add256='ForceTrees,');
+		}
+		if ($p['bool'](non_progressive_mapstones)) {
+			flags = $p['__op_add']($add257=flags,$add258='NonProgressMapStones,');
+		}
+		if ($p['bool'](no_teleporters)) {
+			flags = $p['__op_add']($add259=flags,$add260='NoTeleporters,');
+		}
 		$m.random['seed'](seed);
 		placement = $m['placeItems'](seed, exp_pool, hard, includePlants, shards, limitkeys, no_teleporters, loc_analysis, analysis, modes, flags, starved, prefer_path_difficulty, non_progressive_mapstones);
+		$m.genButton['setText']('Generate');
 		element = $m['DOM']['createElement']('a');
-		element['setAttribute']('href', $p['__op_add']($add231='data:text/plain;charset=utf-8,',$add232=(typeof encodeURIComponent == "undefined"?$m.encodeURIComponent:encodeURIComponent)(placement.__getitem__(0))));
+		element['setAttribute']('href', $p['__op_add']($add261='data:text/plain;charset=utf-8,',$add262=(typeof encodeURIComponent == "undefined"?$m.encodeURIComponent:encodeURIComponent)(placement.__getitem__(0))));
 		element['setAttribute']('download', 'randomizer.dat');
 		$p['getattr'](element, 'style').display = 'none';
-		test = $m['DOM']['getElementById']('test');
-		$m['DOM']['appendChild'](test, element);
+		dl = $m['DOM']['getElementById']('dl');
+		$m['DOM']['appendChild'](dl, element);
 		element['click']();
-		$m['DOM']['removeChild'](test, element);
+		$m['DOM']['removeChild'](dl, element);
 		return null;
 	};
 	$m['generate'].__name__ = 'generate';
@@ -22543,7 +22769,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 	$m['generate'].__bind_type__ = 0;
 	$m['generate'].__args__ = [null,null];
 	$m['main'] = function() {
-		var pathExtreme,modeText,variations1,variations3,variations2,noPlantsBox,logicText,pathTimedLevel,paths3,hardBox,pathGlitched,row1_2,row1_3,title,pathNormal,pathSpeed,pathCDash,pathDBoostLight,seedPanel,variationPanel,paths5,diffSelection,pathExtended,noBonusBox,diffText,seedSelection,logicSelection,modeSelection,logicListener,row1_1,paths2,pathsPanel,paths1,paths4,panel,row0,row1,row2,row3,row4,starvedBox,pathDBash,variationText,seedText,genButton,pathLureHard,pathDBoostHard,zeroBox,pathExtendedDamage,forceBox,ohkoBox,pathLure,noTeleBox,pathDBoost,pathCDashFarming,nonProgMapBox;
+		var modeText,variations1,variations3,variations2,logicText,paths3,row1_2,row1_3,title,seedPanel,variationPanel,paths5,diffText,logicListener,row1_1,paths2,pathsPanel,paths1,paths4,panel,row0,row1,row2,row3,row4,variationText,seedText,customPathListener;
 		$m['pyjd']['setup']('public/web_seed_generator.html');
 		$m['random'] = $m['Random']();
 		panel = $pyjs_kwargs_call(null, $m['VerticalPanel'], null, null, [{HorizontalAlignment:$p['getattr']($m['HasAlignment'], 'ALIGN_CENTER'), StyleName:'main'}]);
@@ -22566,35 +22792,36 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 		row1['add'](row1_2);
 		row1['add'](row1_3);
 		logicText = $pyjs_kwargs_call(null, $m['HTML'], null, null, [{StyleName:'label'}, 'Logic']);
-		logicSelection = $pyjs_kwargs_call(null, $m['ListBox'], null, null, [{VisibleItemCount:1, StyleName:'dropdown'}]);
-		logicSelection['addItem']('Casual');
-		logicSelection['addItem']('Standard');
-		logicSelection['addItem']('Expert');
-		logicSelection['addItem']('Master');
-		logicSelection['addItem']('Hard');
-		logicSelection['addItem']('OHKO');
-		logicSelection['addItem']('Glitched');
-		logicSelection['addItem']('Custom');
-		logicSelection['setSelectedIndex'](1);
-		logicListener = $m['LogicListener'](logicSelection);
+		$m['logicSelection'] = $pyjs_kwargs_call(null, $m['ListBox'], null, null, [{VisibleItemCount:1, StyleName:'dropdown'}]);
+		$m['logicSelection']['addItem']('Casual');
+		$m['logicSelection']['addItem']('Standard');
+		$m['logicSelection']['addItem']('Expert');
+		$m['logicSelection']['addItem']('Master');
+		$m['logicSelection']['addItem']('Hard');
+		$m['logicSelection']['addItem']('OHKO');
+		$m['logicSelection']['addItem']('0 XP');
+		$m['logicSelection']['addItem']('Glitched');
+		$m['logicSelection']['addItem']('Custom');
+		$m['logicSelection']['setSelectedIndex'](1);
+		logicListener = $m['LogicListener']($m['logicSelection']);
 		row1_1['add'](logicText);
-		row1_1['add'](logicSelection);
+		row1_1['add']($m['logicSelection']);
 		modeText = $pyjs_kwargs_call(null, $m['HTML'], null, null, [{StyleName:'label'}, 'Mode']);
-		modeSelection = $pyjs_kwargs_call(null, $m['ListBox'], null, null, [{VisibleItemCount:1, StyleName:'dropdown'}]);
-		modeSelection['addItem']('Default');
-		modeSelection['addItem']('Shards');
-		modeSelection['addItem']('Limitkeys');
-		modeSelection['setSelectedIndex'](1);
+		$m['modeSelection'] = $pyjs_kwargs_call(null, $m['ListBox'], null, null, [{VisibleItemCount:1, StyleName:'dropdown'}]);
+		$m['modeSelection']['addItem']('Default');
+		$m['modeSelection']['addItem']('Shards');
+		$m['modeSelection']['addItem']('Limitkeys');
+		$m['modeSelection']['setSelectedIndex'](1);
 		row1_2['add'](modeText);
-		row1_2['add'](modeSelection);
+		row1_2['add']($m['modeSelection']);
 		diffText = $pyjs_kwargs_call(null, $m['HTML'], null, null, [{StyleName:'label'}, 'Path Difficulty']);
-		diffSelection = $pyjs_kwargs_call(null, $m['ListBox'], null, null, [{VisibleItemCount:1, StyleName:'dropdown'}]);
-		diffSelection['addItem']('Easy');
-		diffSelection['addItem']('Normal');
-		diffSelection['addItem']('Hard');
-		diffSelection['setSelectedIndex'](1);
+		$m['diffSelection'] = $pyjs_kwargs_call(null, $m['ListBox'], null, null, [{VisibleItemCount:1, StyleName:'dropdown'}]);
+		$m['diffSelection']['addItem']('Easy');
+		$m['diffSelection']['addItem']('Normal');
+		$m['diffSelection']['addItem']('Hard');
+		$m['diffSelection']['setSelectedIndex'](1);
 		row1_3['add'](diffText);
-		row1_3['add'](diffSelection);
+		row1_3['add']($m['diffSelection']);
 		variationText = $pyjs_kwargs_call(null, $m['HTML'], null, null, [{StyleName:'section'}, 'Variations']);
 		variationPanel = $m['HorizontalPanel']();
 		row2['add'](variationText);
@@ -22605,24 +22832,25 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 		variationPanel['add'](variations1);
 		variationPanel['add'](variations2);
 		variationPanel['add'](variations3);
-		forceBox = $m['CheckBox']('Force Trees');
-		hardBox = $m['CheckBox']('Hard Mode');
-		noTeleBox = $m['CheckBox']('No Teleporters');
-		starvedBox = $m['CheckBox']('Starved');
-		ohkoBox = $m['CheckBox']('OHKO');
-		noPlantsBox = $m['CheckBox']('No Plants');
-		nonProgMapBox = $m['CheckBox']('Discrete Mapstones');
-		zeroBox = $m['CheckBox']('0 XP');
-		noBonusBox = $m['CheckBox']('No Bonuses');
-		variations1['add'](forceBox);
-		variations1['add'](hardBox);
-		variations1['add'](noTeleBox);
-		variations2['add'](starvedBox);
-		variations2['add'](ohkoBox);
-		variations2['add'](noPlantsBox);
-		variations3['add'](nonProgMapBox);
-		variations3['add'](zeroBox);
-		variations3['add'](noBonusBox);
+		$m['forceBox'] = $m['CheckBox']('Force Trees');
+		$m['hardBox'] = $m['CheckBox']('Hard Mode');
+		$m['noTeleBox'] = $m['CheckBox']('No Teleporters');
+		$m['forceBox']['setChecked'](true);
+		variations1['add']($m['forceBox']);
+		variations1['add']($m['hardBox']);
+		variations1['add']($m['noTeleBox']);
+		$m['starvedBox'] = $m['CheckBox']('Starved');
+		$m['ohkoBox'] = $m['CheckBox']('OHKO');
+		$m['noPlantsBox'] = $m['CheckBox']('No Plants');
+		variations2['add']($m['starvedBox']);
+		variations2['add']($m['ohkoBox']);
+		variations2['add']($m['noPlantsBox']);
+		$m['nonProgMapBox'] = $m['CheckBox']('Discrete Mapstones');
+		$m['zeroBox'] = $m['CheckBox']('0 XP');
+		$m['noBonusBox'] = $m['CheckBox']('No Bonuses');
+		variations3['add']($m['nonProgMapBox']);
+		variations3['add']($m['zeroBox']);
+		variations3['add']($m['noBonusBox']);
 		pathsPanel = $m['HorizontalPanel']();
 		row3['add'](pathsPanel);
 		paths1 = $pyjs_kwargs_call(null, $m['VerticalPanel'], null, null, [{StyleName:'logic_column'}]);
@@ -22635,44 +22863,64 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 		pathsPanel['add'](paths3);
 		pathsPanel['add'](paths4);
 		pathsPanel['add'](paths5);
-		pathNormal = $m['CheckBox']('Normal');
-		pathLure = $m['CheckBox']('Lure');
-		pathExtended = $m['CheckBox']('Extended');
-		paths1['add'](pathNormal);
-		paths1['add'](pathLure);
-		paths1['add'](pathExtended);
-		pathSpeed = $m['CheckBox']('Speed');
-		pathLureHard = $m['CheckBox']('Lure-Hard');
-		pathExtendedDamage = $m['CheckBox']('Extended-Damage');
-		paths2['add'](pathSpeed);
-		paths2['add'](pathLureHard);
-		paths2['add'](pathExtendedDamage);
-		pathDBoostLight = $m['CheckBox']('DBoost-Light');
-		pathDBash = $m['CheckBox']('DBash');
-		pathExtreme = $m['CheckBox']('Extreme');
-		paths3['add'](pathDBoostLight);
-		paths3['add'](pathDBash);
-		paths3['add'](pathExtreme);
-		pathDBoost = $m['CheckBox']('DBoost');
-		pathCDash = $m['CheckBox']('CDash');
-		pathTimedLevel = $m['CheckBox']('Timed-Level');
-		paths4['add'](pathDBoost);
-		paths4['add'](pathCDash);
-		paths4['add'](pathTimedLevel);
-		pathDBoostHard = $m['CheckBox']('DBoost-Hard');
-		pathCDashFarming = $m['CheckBox']('CDash-Farming');
-		pathGlitched = $m['CheckBox']('Glitched');
-		paths5['add'](pathDBoostHard);
-		paths5['add'](pathCDashFarming);
-		paths5['add'](pathGlitched);
+		customPathListener = $m['CustomPathListener']();
+		$m['pathNormal'] = $m['CheckBox']('Normal');
+		$m['pathLure'] = $m['CheckBox']('Lure');
+		$m['pathExtended'] = $m['CheckBox']('Extended');
+		$m['pathNormal']['setChecked'](true);
+		$m['pathLure']['setChecked'](true);
+		$m['pathNormal']['addClickListener'](customPathListener);
+		$m['pathLure']['addClickListener'](customPathListener);
+		$m['pathExtended']['addClickListener'](customPathListener);
+		paths1['add']($m['pathNormal']);
+		paths1['add']($m['pathLure']);
+		paths1['add']($m['pathExtended']);
+		$m['pathSpeed'] = $m['CheckBox']('Speed');
+		$m['pathLureHard'] = $m['CheckBox']('Lure-Hard');
+		$m['pathExtendedDamage'] = $m['CheckBox']('Extended-Damage');
+		$m['pathSpeed']['setChecked'](true);
+		$m['pathSpeed']['addClickListener'](customPathListener);
+		$m['pathLureHard']['addClickListener'](customPathListener);
+		$m['pathExtendedDamage']['addClickListener'](customPathListener);
+		paths2['add']($m['pathSpeed']);
+		paths2['add']($m['pathLureHard']);
+		paths2['add']($m['pathExtendedDamage']);
+		$m['pathDBoostLight'] = $m['CheckBox']('DBoost-Light');
+		$m['pathDBash'] = $m['CheckBox']('DBash');
+		$m['pathExtreme'] = $m['CheckBox']('Extreme');
+		$m['pathDBoostLight']['setChecked'](true);
+		$m['pathDBoostLight']['addClickListener'](customPathListener);
+		$m['pathDBash']['addClickListener'](customPathListener);
+		$m['pathExtreme']['addClickListener'](customPathListener);
+		paths3['add']($m['pathDBoostLight']);
+		paths3['add']($m['pathDBash']);
+		paths3['add']($m['pathExtreme']);
+		$m['pathDBoost'] = $m['CheckBox']('DBoost');
+		$m['pathCDash'] = $m['CheckBox']('CDash');
+		$m['pathTimedLevel'] = $m['CheckBox']('Timed-Level');
+		$m['pathDBoost']['addClickListener'](customPathListener);
+		$m['pathCDash']['addClickListener'](customPathListener);
+		$m['pathTimedLevel']['addClickListener'](customPathListener);
+		paths4['add']($m['pathDBoost']);
+		paths4['add']($m['pathCDash']);
+		paths4['add']($m['pathTimedLevel']);
+		$m['pathDBoostHard'] = $m['CheckBox']('DBoost-Hard');
+		$m['pathCDashFarming'] = $m['CheckBox']('CDash-Farming');
+		$m['pathGlitched'] = $m['CheckBox']('Glitched');
+		$m['pathDBoostHard']['addClickListener'](customPathListener);
+		$m['pathCDashFarming']['addClickListener'](customPathListener);
+		$m['pathGlitched']['addClickListener'](customPathListener);
+		paths5['add']($m['pathDBoostHard']);
+		paths5['add']($m['pathCDashFarming']);
+		paths5['add']($m['pathGlitched']);
 		seedPanel = $m['HorizontalPanel']('inner_row');
 		seedText = $pyjs_kwargs_call(null, $m['HTML'], null, null, [{StyleName:'label'}, 'Seed']);
-		seedSelection = $pyjs_kwargs_call(null, $m['TextBox'], null, null, [{StyleName:'seed', MaxLength:10}]);
-		genButton = $pyjs_kwargs_call(null, $m['Button'], null, null, [{StyleName:'button'}, 'Generate', $m['generate']]);
+		$m['seedSelection'] = $pyjs_kwargs_call(null, $m['TextBox'], null, null, [{StyleName:'seed', MaxLength:10}]);
+		$m['genButton'] = $pyjs_kwargs_call(null, $m['Button'], null, null, [{StyleName:'button'}, 'Generate', $m['generate']]);
 		seedPanel['add'](seedText);
-		seedPanel['add'](seedSelection);
+		seedPanel['add']($m['seedSelection']);
 		row4['add'](seedPanel);
-		row4['add'](genButton);
+		row4['add']($m['genButton']);
 		$m['RootPanel']()['add'](panel);
 		$m['pyjd']['run']();
 		return null;
@@ -22692,7 +22940,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 
 
 /*
-PYJS_DEPS: ['re', 'math', 'time', 'pyjd', 'pyjamas.ui.RootPanel.RootPanel', 'pyjamas', 'pyjamas.ui', 'pyjamas.ui.RootPanel', 'pyjamas.ui.VerticalPanel.VerticalPanel', 'pyjamas.ui.VerticalPanel', 'pyjamas.ui.HorizontalPanel.HorizontalPanel', 'pyjamas.ui.HorizontalPanel', 'pyjamas.ui.DisclosurePanel.DisclosurePanel', 'pyjamas.ui.DisclosurePanel', 'pyjamas.ui.HasAlignment', 'pyjamas.ui.Button.Button', 'pyjamas.ui.Button', 'pyjamas.ui.RadioButton.RadioButton', 'pyjamas.ui.RadioButton', 'pyjamas.ui.CheckBox.CheckBox', 'pyjamas.ui.CheckBox', 'pyjamas.ui.HTML.HTML', 'pyjamas.ui.HTML', 'pyjamas.ui.ListBox.ListBox', 'pyjamas.ui.ListBox', 'pyjamas.ui.TextBox.TextBox', 'pyjamas.ui.TextBox', 'pyjamas.DOM']
+PYJS_DEPS: ['re', 'math', 'time', 'pyjd', 'pyjamas.ui.RootPanel.RootPanel', 'pyjamas', 'pyjamas.ui', 'pyjamas.ui.RootPanel', 'pyjamas.ui.VerticalPanel.VerticalPanel', 'pyjamas.ui.VerticalPanel', 'pyjamas.ui.HorizontalPanel.HorizontalPanel', 'pyjamas.ui.HorizontalPanel', 'pyjamas.ui.DisclosurePanel.DisclosurePanel', 'pyjamas.ui.DisclosurePanel', 'pyjamas.ui.HasAlignment', 'pyjamas.ui.Button.Button', 'pyjamas.ui.Button', 'pyjamas.ui.RadioButton.RadioButton', 'pyjamas.ui.RadioButton', 'pyjamas.ui.CheckBox.CheckBox', 'pyjamas.ui.CheckBox', 'pyjamas.ui.HTML.HTML', 'pyjamas.ui.HTML', 'pyjamas.ui.ListBox.ListBox', 'pyjamas.ui.ListBox', 'pyjamas.ui.TextBox.TextBox', 'pyjamas.ui.TextBox', 'pyjamas.DOM', 'pygwt']
 */
 
 --></script>

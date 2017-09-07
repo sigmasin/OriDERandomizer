@@ -231,7 +231,7 @@ def get_all_accessible_locations():
                     break
             if loc:
                 force_assign(keySpots[loc.orig], loc)
-                currentLocations.remove(loc)                    
+                currentLocations.remove(loc)
         locations.extend(currentLocations)
         areas[area].clear_locations()
     if reservedLocations:
@@ -396,14 +396,14 @@ def get_random_exp_value(expRemaining, expSlots):
 def preferred_difficulty_assign(item, locationsToAssign):
     total = 0.0
     for loc in locationsToAssign:
-        if args.prefer_path_difficulty == "easy":
+        if pathDifficulty == "easy":
             total += (15 - loc.difficulty) * (15 - loc.difficulty)
         else:
             total += (loc.difficulty * loc.difficulty)
     value = random.random()
     position = 0.0
     for i in range(0,len(locationsToAssign)):
-        if args.prefer_path_difficulty == "easy":
+        if pathDifficulty == "easy":
             position += (15 - locationsToAssign[i].difficulty) * (15 - locationsToAssign[i].difficulty)/total
         else:
             position += locationsToAssign[i].difficulty * locationsToAssign[i].difficulty/total
@@ -658,7 +658,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         itemPool["ForlornKey"] = 0
         itemPool["HoruKey"] = 0
         itemCount -= 3
-    
+
     if noTeleporters:
         itemPool["TPforlorn"] = 0
         itemPool["TPmangoveFalls"] = 0
@@ -895,33 +895,206 @@ class LogicListener():
         element.addChangeListener(self)
         
     def onChange(self, sender):
-        generate()
+        index = sender.getSelectedIndex()
         
+        pathNormal.setChecked(True)
         
+        pathSpeed.setChecked(False)
+        pathDBoostLight.setChecked(False)
+        pathDBoost.setChecked(False)
+        pathDBoostHard.setChecked(False)
+        pathLure.setChecked(False)
+        pathLureHard.setChecked(False)
+        pathDBash.setChecked(False)
+        pathCDash.setChecked(False)
+        pathCDashFarming.setChecked(False)
+        pathExtended.setChecked(False)
+        pathExtendedDamage.setChecked(False)
+        pathExtreme.setChecked(False)
+        pathTimedLevel.setChecked(False)
+        pathGlitched.setChecked(False)
+        
+        diffSelection.setSelectedIndex(1)
+        hardBox.setChecked(False)
+        starvedBox.setChecked(False)
+        ohkoBox.setChecked(False)
+        zeroBox.setChecked(False)
+        noPlantsBox.setChecked(False)
+        
+        # casual
+        if index == 0:
+            pathDBoostLight.setChecked(True)
+        # standard
+        elif index == 1:
+            pathSpeed.setChecked(True)
+            pathDBoostLight.setChecked(True)
+            pathLure.setChecked(True)
+        # expert
+        elif index == 2:
+            pathSpeed.setChecked(True)
+            pathDBoostLight.setChecked(True)
+            pathDBoost.setChecked(True)
+            pathLure.setChecked(True)
+            pathCDash.setChecked(True)
+            pathExtended.setChecked(True)
+            pathExtendedDamage.setChecked(True)
+        # master
+        elif index == 3:
+            pathSpeed.setChecked(True)
+            pathDBoostLight.setChecked(True)
+            pathDBoost.setChecked(True)
+            pathDBoostHard.setChecked(True)
+            pathLure.setChecked(True)
+            pathLureHard.setChecked(True)
+            pathDBash.setChecked(True)
+            pathCDash.setChecked(True)
+            pathExtended.setChecked(True)
+            pathExtendedDamage.setChecked(True)
+            pathExtreme.setChecked(True)
+            starvedBox.setChecked(True)
+            diffSelection.setSelectedIndex(2)
+        # hard
+        elif index == 4:
+            pathSpeed.setChecked(True)
+            pathDBoostLight.setChecked(True)
+            pathLure.setChecked(True)
+            pathDBash.setChecked(True)
+            pathCDash.setChecked(True)
+            pathExtended.setChecked(True)
+            hardBox.setChecked(True)
+        # ohko
+        elif index == 5:
+            pathSpeed.setChecked(True)
+            pathLure.setChecked(True)
+            pathDBash.setChecked(True)
+            pathCDash.setChecked(True)
+            pathExtended.setChecked(True)
+            hardBox.setChecked(True)
+            ohkoBox.setChecked(True)
+        # 0xp
+        elif index == 6:
+            pathSpeed.setChecked(True)
+            pathDBoostLight.setChecked(True)
+            pathLure.setChecked(True)
+            hardBox.setChecked(True)
+            zeroBox.setChecked(True)
+        # glitched
+        elif index == 7:
+            pathSpeed.setChecked(True)
+            pathDBoostLight.setChecked(True)
+            pathDBoost.setChecked(True)
+            pathDBoostHard.setChecked(True)
+            pathLure.setChecked(True)
+            pathLureHard.setChecked(True)
+            pathDBash.setChecked(True)
+            pathCDash.setChecked(True)
+            pathCDashFarming.setChecked(True)
+            pathExtended.setChecked(True)
+            pathExtendedDamage.setChecked(True)
+            pathExtreme.setChecked(True)
+            pathTimedLevel.setChecked(True)
+            pathGlitched.setChecked(True)
+            diffSelection.setSelectedIndex(2)
 
+class CustomPathListener:
+
+    def __init__(self):
+        pass
+        
+    def onClick(self, sender=None):
+        logicSelection.setSelectedIndex(8)
+            
 def generate():
 
-    # Get arguments from web form
+    genButton.setText("Generating...")
 
-    seed = 1
+    # Get arguments 
+    seed = seedSelection.getText()
+    if seed == "":
+        seed = int(time.time() * 1000)
+    hard = hardBox.isChecked()
     exp_pool = 10000
-    hard = True
-    includePlants = True
-    shards = True
-    limitkeys = False
-    no_teleporters = False
+    if hard:
+        exp_pool = 5000    
+    includePlants = not noPlantsBox.isChecked()
+    shards = modeSelection.getSelectedIndex() == 1
+    limitkeys = modeSelection.getSelectedIndex() == 2
+    no_teleporters = noTeleBox.isChecked()
     loc_analysis = False
     analysis = False
-    mode = "expert"
-    modes = ["normal", "speed", "lure", "dboost", "dboost-light", "cdash", "extended", "extended-damage"]
-    flags = "asdf,"
-    starved = False
-    prefer_path_difficulty = None
-    non_progressive_mapstones = False
+    mode = logicSelection.getItemText(logicSelection.getSelectedIndex())
+    modes = []
+    if pathNormal.isChecked():
+        modes.append("normal")
+    if pathSpeed.isChecked():
+        modes.append("speed")
+    if pathDBoostLight.isChecked():
+        modes.append("dboost-light")
+    if pathDBoost.isChecked():
+        modes.append("dboost")
+    if pathDBoostHard.isChecked():
+        modes.append("dboost-hard")
+    if pathLure.isChecked():
+        modes.append("lure")
+    if pathLureHard.isChecked():
+        modes.append("lure-hard")
+    if pathDBash.isChecked():
+        modes.append("dbash")
+    if pathCDash.isChecked():
+        modes.append("cdash")
+    if pathCDashFarming.isChecked():
+        modes.append("cdash-farming")
+    if pathExtended.isChecked():
+        modes.append("extended")
+    if pathExtendedDamage.isChecked():
+        modes.append("extended-damage")
+    if pathExtreme.isChecked():
+        modes.append("extreme")
+    if pathTimedLevel.isChecked():
+        modes.append("timed-level")
+    if pathGlitched.isChecked():
+        modes.append("glitched")
+    starved = starvedBox.isChecked()
+    prefer_path_difficulty = diffSelection.getItemText(diffSelection.getSelectedIndex()).lower()
+    if prefer_path_difficulty == "normal":
+        prefer_path_difficulty = None
+    non_progressive_mapstones = nonProgMapBox.isChecked()
+    
+    ohko = ohkoBox.isChecked()
+    zeroxp = zeroBox.isChecked()
+    nobonus = noBonusBox.isChecked()
+    force_trees = forceBox.isChecked()
+    
+    flags = ""
+    flags += mode + ","
+    if limitkeys:
+        flags += "limitkeys,"
+    if shards:
+        flags += "shards,"
+    if prefer_path_difficulty:
+        flags += "prefer_path_difficulty=" + prefer_path_difficulty + ","
+    if hard:
+        flags += "hard,"
+    if ohko:
+        flags += "OHKO,"
+    if zeroxp:
+        flags += "0XP,"
+    if nobonus:
+        flags += "NoBonus,"
+    if not includePlants:
+        flags += "NoPlants,"
+    if force_trees:
+        flags += "ForceTrees,"
+    if non_progressive_mapstones:
+        flags += "NonProgressMapStones,"
+    if no_teleporters:
+        flags += "NoTeleporters,"
 
     random.seed(seed)
     
     placement = placeItems(seed, exp_pool, hard, includePlants, shards, limitkeys, no_teleporters, loc_analysis, analysis, modes, flags, starved, prefer_path_difficulty, non_progressive_mapstones)
+    
+    genButton.setText("Generate")
     
     element = DOM.createElement('a')
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(placement[0]));
@@ -929,12 +1102,12 @@ def generate():
 
     element.style.display = 'none';
     
-    test = DOM.getElementById("test")
-    DOM.appendChild(test, element);
+    dl = DOM.getElementById("dl")
+    DOM.appendChild(dl, element);
 
     element.click();
 
-    DOM.removeChild(test, element);
+    DOM.removeChild(dl, element);
     
 def main():
 
@@ -970,6 +1143,7 @@ def main():
     row1.add(row1_3)
     
     logicText = HTML("Logic", StyleName="label")
+    global logicSelection
     logicSelection = ListBox(VisibleItemCount=1, StyleName="dropdown")    
     logicSelection.addItem("Casual")
     logicSelection.addItem("Standard")
@@ -977,6 +1151,7 @@ def main():
     logicSelection.addItem("Master")
     logicSelection.addItem("Hard")
     logicSelection.addItem("OHKO")
+    logicSelection.addItem("0 XP")
     logicSelection.addItem("Glitched")
     logicSelection.addItem("Custom")
     logicSelection.setSelectedIndex(1)
@@ -987,6 +1162,7 @@ def main():
     row1_1.add(logicSelection)
     
     modeText = HTML("Mode", StyleName="label")
+    global modeSelection
     modeSelection = ListBox(VisibleItemCount=1, StyleName="dropdown")
     modeSelection.addItem("Default")
     modeSelection.addItem("Shards")
@@ -997,6 +1173,7 @@ def main():
     row1_2.add(modeSelection)
 
     diffText = HTML("Path Difficulty", StyleName="label")
+    global diffSelection
     diffSelection = ListBox(VisibleItemCount=1, StyleName="dropdown")
     diffSelection.addItem("Easy")
     diffSelection.addItem("Normal")
@@ -1021,25 +1198,39 @@ def main():
     variationPanel.add(variations2)
     variationPanel.add(variations3)
     
+    global forceBox
+    global hardBox
+    global noTeleBox
+    
     forceBox = CheckBox("Force Trees")
     hardBox = CheckBox("Hard Mode")
     noTeleBox = CheckBox("No Teleporters")
     
-    starvedBox = CheckBox("Starved")
-    ohkoBox = CheckBox("OHKO")
-    noPlantsBox = CheckBox("No Plants")
-    
-    nonProgMapBox = CheckBox("Discrete Mapstones")
-    zeroBox = CheckBox("0 XP")
-    noBonusBox = CheckBox("No Bonuses")
+    forceBox.setChecked(True)
     
     variations1.add(forceBox)
     variations1.add(hardBox)
     variations1.add(noTeleBox)
     
+    global starvedBox
+    global ohkoBox
+    global noPlantsBox
+    
+    starvedBox = CheckBox("Starved")
+    ohkoBox = CheckBox("OHKO")
+    noPlantsBox = CheckBox("No Plants")
+    
     variations2.add(starvedBox)
     variations2.add(ohkoBox)
     variations2.add(noPlantsBox)
+    
+    global nonProgMapBox
+    global zeroBox
+    global noBonusBox
+    
+    nonProgMapBox = CheckBox("Discrete Mapstones")
+    zeroBox = CheckBox("0 XP")
+    noBonusBox = CheckBox("No Bonuses")
     
     variations3.add(nonProgMapBox)
     variations3.add(zeroBox)
@@ -1062,41 +1253,90 @@ def main():
     pathsPanel.add(paths4)
     pathsPanel.add(paths5)
     
+    customPathListener = CustomPathListener()
+    
+    global pathNormal
+    global pathLure
+    global pathExtended
+    
     pathNormal = CheckBox("Normal")
     pathLure = CheckBox("Lure")
     pathExtended = CheckBox("Extended")
+    
+    pathNormal.setChecked(True)
+    pathLure.setChecked(True)
+    
+    pathNormal.addClickListener(customPathListener)
+    pathLure.addClickListener(customPathListener)
+    pathExtended.addClickListener(customPathListener)
     
     paths1.add(pathNormal)
     paths1.add(pathLure)
     paths1.add(pathExtended)
     
+    global pathSpeed
+    global pathLureHard
+    global pathExtendedDamage
+    
     pathSpeed = CheckBox("Speed")
     pathLureHard = CheckBox("Lure-Hard")
     pathExtendedDamage = CheckBox("Extended-Damage")
+    
+    pathSpeed.setChecked(True)
+    
+    pathSpeed.addClickListener(customPathListener)
+    pathLureHard.addClickListener(customPathListener)
+    pathExtendedDamage.addClickListener(customPathListener)
     
     paths2.add(pathSpeed)
     paths2.add(pathLureHard)
     paths2.add(pathExtendedDamage)
     
+    global pathDBoostLight
+    global pathDBash
+    global pathExtreme
+    
     pathDBoostLight = CheckBox("DBoost-Light")
     pathDBash = CheckBox("DBash")
     pathExtreme = CheckBox("Extreme")
+    
+    pathDBoostLight.setChecked(True)
+    
+    pathDBoostLight.addClickListener(customPathListener)
+    pathDBash.addClickListener(customPathListener)
+    pathExtreme.addClickListener(customPathListener)
     
     paths3.add(pathDBoostLight)
     paths3.add(pathDBash)
     paths3.add(pathExtreme)
     
+    global pathDBoost
+    global pathCDash
+    global pathTimedLevel
+    
     pathDBoost = CheckBox("DBoost")
     pathCDash = CheckBox("CDash")
     pathTimedLevel = CheckBox("Timed-Level")
+    
+    pathDBoost.addClickListener(customPathListener)
+    pathCDash.addClickListener(customPathListener)
+    pathTimedLevel.addClickListener(customPathListener)
     
     paths4.add(pathDBoost)
     paths4.add(pathCDash)
     paths4.add(pathTimedLevel)
     
+    global pathDBoostHard
+    global pathCDashFarming
+    global pathGlitched
+    
     pathDBoostHard = CheckBox("DBoost-Hard")
     pathCDashFarming = CheckBox("CDash-Farming")
     pathGlitched = CheckBox("Glitched")
+    
+    pathDBoostHard.addClickListener(customPathListener)
+    pathCDashFarming.addClickListener(customPathListener)
+    pathGlitched.addClickListener(customPathListener)
     
     paths5.add(pathDBoostHard)
     paths5.add(pathCDashFarming)
@@ -1107,7 +1347,9 @@ def main():
     seedPanel = HorizontalPanel("inner_row")
     
     seedText = HTML("Seed", StyleName="label")
+    global seedSelection
     seedSelection = TextBox(StyleName="seed", MaxLength=10)
+    global genButton
     genButton = Button("Generate", generate, StyleName='button')
     
     seedPanel.add(seedText)
