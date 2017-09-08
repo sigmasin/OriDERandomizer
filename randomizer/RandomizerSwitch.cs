@@ -18,7 +18,7 @@ public static class RandomizerSwitch
     
     public static void MaxEnergyContainerPickup() 
     {
-        Randomizer.showHint("Energy Cell");
+        Randomizer.showHint("*Energy Cell*");
         if (Characters.Sein.Energy.Max == 0f)
 		{
 			Characters.Sein.SoulFlame.FillSoulFlameBar();
@@ -52,7 +52,7 @@ public static class RandomizerSwitch
     
     public static void MaxHealthContainerPickup() 
     {
-        Randomizer.showHint("Health Cell");
+        Randomizer.showHint("$Health Cell$");
         Characters.Sein.Mortality.Health.GainMaxHeartContainer();
     }
     
@@ -67,43 +67,43 @@ public static class RandomizerSwitch
         switch (Ability)
 		{
 		case 0:
-            Randomizer.showHint("Bash");
+            Randomizer.showHint("@Bash@");
 			Characters.Sein.PlayerAbilities.SetAbility(AbilityType.Bash, true);
 			break;
 		case 2:
-            Randomizer.showHint("Charge Flame");
+            Randomizer.showHint("@Charge Flame@");
 			Characters.Sein.PlayerAbilities.SetAbility(AbilityType.ChargeFlame, true);
 			break;
 		case 3:
-            Randomizer.showHint("Wall Jump");
+            Randomizer.showHint("@Wall Jump@");
 			Characters.Sein.PlayerAbilities.SetAbility(AbilityType.WallJump, true);
 			break;
 		case 4:
-            Randomizer.showHint("Stomp");
+            Randomizer.showHint("@Stomp@");
 			Characters.Sein.PlayerAbilities.SetAbility(AbilityType.Stomp, true);
 			break;
 		case 5:
-            Randomizer.showHint("Double Jump");
+            Randomizer.showHint("@Double Jump@");
 			Characters.Sein.PlayerAbilities.SetAbility(AbilityType.DoubleJump, true);
 			break;
 		case 8:
-            Randomizer.showHint("Charge Jump");
+            Randomizer.showHint("@Charge Jump@");
 			Characters.Sein.PlayerAbilities.SetAbility(AbilityType.ChargeJump, true);
 			break;
 		case 12:
-            Randomizer.showHint("Climb");
+            Randomizer.showHint("@Climb@");
 			Characters.Sein.PlayerAbilities.SetAbility(AbilityType.Climb, true);
 			break;
 		case 14:
-            Randomizer.showHint("Glide");
+            Randomizer.showHint("@Glide@");
 			Characters.Sein.PlayerAbilities.SetAbility(AbilityType.Glide, true);
 			break;
 		case 50:
-            Randomizer.showHint("Dash");
+            Randomizer.showHint("@Dash@");
 			Characters.Sein.PlayerAbilities.SetAbility(AbilityType.Dash, true);
 			break;
 		case 51:
-            Randomizer.showHint("Grenade");
+            Randomizer.showHint("@Grenade@");
 			Characters.Sein.PlayerAbilities.SetAbility(AbilityType.Grenade, true);
 			break;
         }
@@ -115,27 +115,27 @@ public static class RandomizerSwitch
         switch (Value)
         {
             case 0:
-                Randomizer.showHint("Water Vein");
+                Randomizer.showHint("#Water Vein");
                 Keys.GinsoTree = true;
                 break;
             case 1:
-                Randomizer.showHint("Clean Water");
+                Randomizer.showHint("#Clean Water#");
                 Sein.World.Events.WarmthReturned = true;
                 break;
             case 2:
-                Randomizer.showHint("Gumon Seal");
+                Randomizer.showHint("#Gumon Seal#");
                 Keys.ForlornRuins = true;
                 break;
             case 3:
-                Randomizer.showHint("Wind Restored");
+                Randomizer.showHint("#Wind Restored#");
                 Sein.World.Events.WindRestored = true;
                 break;
             case 4:
-                Randomizer.showHint("Sunstone");
+                Randomizer.showHint("#Sunstone#");
                 Keys.MountHoru = true;
                 break;
             case 5:
-                Randomizer.showHint("Warmth Returned");
+                Randomizer.showHint("#Warmth Returned#");
                 break;
         }
     }

@@ -289,35 +289,39 @@ public static class Randomizer
 	// Token: 0x06003747 RID: 14151 RVA: 0x000E091C File Offset: 0x000DEB1C
 	public static void showProgress()
 	{
-		string text = "Trees (" + RandomizerBonus.SkillTreeProgression().ToString() + "/10) ";
-		text += " Water Vein (";
+		string text = "";
+		if (RandomizerBonus.SkillTreeProgression() < 10)
+		{
+			text += "Trees (" + RandomizerBonus.SkillTreeProgression().ToString() + "/10) ";
+		}
+		else
+		{
+			text += "#Trees (10/10)# ";
+		}
 		if (Keys.GinsoTree)
 		{
-			text += "3";
+			text += " #Water Vein (3/3)#\n";
 		}
 		else
 		{
-			text += RandomizerBonus.WaterVeinShards().ToString();
+			text += " Water Vein (" + RandomizerBonus.WaterVeinShards().ToString() + "/3)\n";
 		}
-		text += "/3)\nGumon Seal (";
 		if (Keys.ForlornRuins)
 		{
-			text += "3";
+			text += "#Gumon Seal (3/3)# ";
 		}
 		else
 		{
-			text += RandomizerBonus.GumonSealShards().ToString();
+			text += "Gumon Seal (" + RandomizerBonus.GumonSealShards().ToString() + "/3) ";
 		}
-		text += "/3)  Sunstone (";
 		if (Keys.MountHoru)
 		{
-			text += "3";
+			text += " #Sunstone (3/3)#";
 		}
 		else
 		{
-			text += RandomizerBonus.SunstoneShards().ToString();
+			text += " Sunstone (" + RandomizerBonus.SunstoneShards().ToString() + "/3)";
 		}
-		text += "/3)";
 		Randomizer.MessageProvider.SetMessage(text);
 		UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
 	}
