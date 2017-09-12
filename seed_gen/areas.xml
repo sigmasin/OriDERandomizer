@@ -259,7 +259,7 @@
       </Connection>
       <Connection>
         <Home name="WallJump"/>
-        <Target name="WallJumpAbove"/>
+        <Target name="AboveFourthHealth"/>
         <Requirements>
           <Requirement mode="normal">Bash+WallJump</Requirement>
           <Requirement mode="normal">Bash+Climb</Requirement>
@@ -291,7 +291,7 @@
       </Connection>
       <Connection>
         <Home name="WallJump"/>
-        <Target name="sunkenGladesSpiritCavernB"/>
+        <Target name="spiritCaverns"/>
         <Requirements>
           <Requirement mode="normal">KS+KS+Climb</Requirement>
           <Requirement mode="normal">KS+KS+WallJump</Requirement>
@@ -301,7 +301,7 @@
       </Connection>
       <Connection>
         <Home name="WallJump"/>
-        <Target name="upperGladesBelowSpiritTree"/>
+        <Target name="gladesLaser"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump+Climb</Requirement>
           <Requirement mode="normal">ChargeJump+WallJump+DoubleJump</Requirement>
@@ -362,7 +362,7 @@
       </Connection>
       <Connection>
         <Home name="deathGauntlet"/>
-        <Target name="sunkenGladesLaserStomp"/>
+        <Target name="deathGauntletRoof"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
         </Requirements>
@@ -412,7 +412,7 @@
     <Connections>
     </Connections>
   </Area>
-  <Area name="WallJumpAbove">
+  <Area name="AboveFourthHealth">
     <Locations>
       <Location>
         <X>-48</X>
@@ -466,7 +466,7 @@
     <Connections>
     </Connections>
   </Area>
-  <Area name="sunkenGladesSpiritCavernB">
+  <Area name="spiritCaverns">
     <Locations>
       <Location>
         <X>-182</X>
@@ -489,8 +489,8 @@
     </Locations>
     <Connections>
       <Connection>
-        <Home name="sunkenGladesSpiritCavernB"/>
-        <Target name="sunkenGladesSpiritCavernTopLeft"/>
+        <Home name="spiritCaverns"/>
+        <Target name="spiritCavernsTopLeft"/>
         <Requirements>
           <Requirement mode="normal">WallJump</Requirement>
           <Requirement mode="normal">DoubleJump</Requirement>
@@ -500,8 +500,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sunkenGladesSpiritCavernB"/>
-        <Target name="upperGladesBelowSpiritTree"/>
+        <Home name="spiritCaverns"/>
+        <Target name="gladesLaser"/>
         <Requirements>
           <Requirement mode="normal">EC+EC+EC+EC+DoubleJump</Requirement>
           <Requirement mode="normal">EC+EC+EC+EC+Bash</Requirement>
@@ -516,8 +516,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sunkenGladesSpiritCavernB"/>
-        <Target name="sunkenGladesSpiritCavernRoof"/>
+        <Home name="spiritCaverns"/>
+        <Target name="spiritCavernsAC"/>
         <Requirements>
           <Requirement mode="speed">WallJump+DoubleJump</Requirement>
           <Requirement mode="normal">ChargeJump</Requirement>
@@ -525,7 +525,7 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sunkenGladesSpiritCavernB"/>
+        <Home name="spiritCaverns"/>
         <Target name="spiritTreeRefined"/>
         <Requirements>
           <!-- will cause some painted-into-corner scenarios, revisit this if it's too much -->
@@ -534,7 +534,7 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="sunkenGladesSpiritCavernTopLeft">
+  <Area name="spiritCavernsTopLeft">
     <Locations>
       <Location>
         <X>-217</X>
@@ -546,7 +546,7 @@
     <Connections>
     </Connections>
   </Area>
-  <Area name="sunkenGladesSpiritCavernRoof">
+  <Area name="spiritCavernsAC">
     <Locations>
       <Location>
         <X>-216</X>
@@ -558,7 +558,7 @@
     <Connections>
     </Connections>
   </Area>
-  <Area name="upperGladesBelowSpiritTree">
+  <Area name="gladesLaser">
     <Locations>
       <Location>
         <X>-155</X>
@@ -569,23 +569,23 @@
     </Locations>
     <Connections>
       <Connection>
-        <Home name="upperGladesBelowSpiritTree"/>
+        <Home name="gladesLaser"/>
         <Target name="WallJump"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="upperGladesBelowSpiritTree"/>
-        <Target name="sunkenGladesSpiritCavernB"/>
+        <Home name="gladesLaser"/>
+        <Target name="spiritCaverns"/>
         <Requirements>
           <Requirement mode="normal">EC+EC+EC+EC</Requirement>
           <Requirement mode="timed-level">EC+EC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="upperGladesBelowSpiritTree"/>
-        <Target name="sunkenGladesRunning"/>
+        <Home name="gladesLaser"/>
+        <Target name="gladesLaserGrenade"/>
         <Requirements>
           <Requirement mode="normal">Grenade+Bash+WallJump</Requirement>
           <Requirement mode="normal">Grenade+Bash+Climb</Requirement>
@@ -596,7 +596,7 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="sunkenGladesRunning">
+  <Area name="gladesLaserGrenade">
     <Locations>
       <Location>
         <X>-165</X>
@@ -702,7 +702,7 @@
       </Connection>
       <Connection>
         <Home name="spiritTreeRefined"/>
-        <Target name="upperGladesSpiderCavernPuzzle"/>
+        <Target name="spiderSac"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame+WallJump</Requirement>
           <Requirement mode="normal">ChargeFlame+ChargeJump</Requirement>
@@ -733,21 +733,21 @@
     <Connections>
     </Connections>
   </Area>
-  <Area name="upperGladesSpiderCavernPuzzle">
+  <Area name="spiderSac">
     <Locations>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="upperGladesSpiderCavernPuzzle"/>
-        <Target name="upperGladesSpiderHealth"/>
+        <Home name="spiderSac"/>
+        <Target name="spiderSacHealth"/>
         <Requirements>
           <Requirement mode="normal">Grenade</Requirement>
           <Requirement mode="normal">ChargeFlame</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="upperGladesSpiderCavernPuzzle"/>
-        <Target name="upperGladesSpiderEnergy"/>
+        <Home name="spiderSac"/>
+        <Target name="spiderSacEnergy"/>
         <Requirements>
           <Requirement mode="normal">Grenade</Requirement>
           <Requirement mode="normal">ChargeFlame</Requirement>
@@ -756,8 +756,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="upperGladesSpiderCavernPuzzle"/>
-        <Target name="upperGladesGrenade"/>
+        <Home name="spiderSac"/>
+        <Target name="spiderSacGrenadeDoor"/>
         <Requirements>
           <Requirement mode="normal">Grenade+Bash</Requirement>
           <Requirement mode="normal">Grenade+DoubleJump+WallJump</Requirement>
@@ -765,8 +765,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="upperGladesSpiderCavernPuzzle"/>
-        <Target name="upperGladesEnergyDoor"/>
+        <Home name="spiderSac"/>
+        <Target name="spiderSacEnergyDoor"/>
         <Requirements>
           <Requirement mode="normal">EC+EC+EC+EC</Requirement>
           <!-- you can level up with the spider exp -->
@@ -774,7 +774,7 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="upperGladesSpiderCavernPuzzle"/>
+        <Home name="spiderSac"/>
         <Target name="hollowGrove"/>
         <Requirements>
           <Requirement mode="normal">Grenade</Requirement>
@@ -784,8 +784,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="upperGladesSpiderCavernPuzzle"/>
-        <Target name="sunkenGladesLaserStomp"/>
+        <Home name="spiderSac"/>
+        <Target name="deathGauntletRoof"/>
         <Requirements>
           <Requirement mode="normal">Stomp+Water</Requirement>
           <Requirement mode="dboost">Stomp+Bash+HC+HC+HC+HC</Requirement>
@@ -794,7 +794,7 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="upperGladesSpiderCavernPuzzle"/>
+        <Home name="spiderSac"/>
         <Target name="spiritTreeRefined"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame+WallJump</Requirement>
@@ -809,7 +809,7 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="upperGladesSpiderCavernPuzzle"/>
+        <Home name="spiderSac"/>
         <Target name="ChargeFlameTree"/>
         <Requirements>
           <Requirement mode="extended">ChargeFlame+Glide</Requirement>
@@ -819,7 +819,7 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="upperGladesEnergyDoor">
+  <Area name="spiderSacEnergyDoor">
     <Locations>
       <Location>
         <X>64</X>
@@ -831,7 +831,7 @@
     <Connections>
     </Connections>
   </Area>
-  <Area name="upperGladesSpiderHealth">
+  <Area name="spiderSacHealth">
     <Locations>
       <Location>
         <X>151</X>
@@ -843,7 +843,7 @@
     <Connections>
     </Connections>
   </Area>
-  <Area name="upperGladesSpiderEnergy">
+  <Area name="spiderSacEnergy">
     <Locations>
       <Location>
         <X>60</X>
@@ -855,7 +855,7 @@
     <Connections>
     </Connections>
   </Area>
-  <Area name="upperGladesGrenade">
+  <Area name="spiderSacGrenadeDoor">
     <Locations>
       <Location>
         <X>93</X>
@@ -1342,7 +1342,7 @@
       </Connection>
       <Connection>
         <Home name="hollowGrove"/>
-        <Target name="sunkenGladesLaserStomp"/>
+        <Target name="deathGauntletRoof"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="normal">WallJump+Stomp+Water</Requirement>
@@ -1359,7 +1359,7 @@
       </Connection>
       <Connection>
         <Home name="hollowGrove"/>
-        <Target name="upperGladesSpiderCavernPuzzle"/>
+        <Target name="spiderSac"/>
         <Requirements>
           <Requirement mode="normal">WallJump+Bash</Requirement>
           <Requirement mode="normal">Climb+Bash</Requirement>
@@ -1684,7 +1684,7 @@
       </Connection>
       <Connection>
         <Home name="moonGrotto"/>
-        <Target name="sunkenGladesLaserStompPlant"/>
+        <Target name="deathGauntletRoofPlant"/>
         <Requirements>
           <Requirement mode="extended">ChargeFlame+DoubleJump</Requirement>
           <Requirement mode="extended">ChargeFlame+Bash</Requirement>
@@ -2417,7 +2417,7 @@
     <Connections>
     </Connections>
   </Area>
-  <Area name="sunkenGladesLaserStomp">
+  <Area name="deathGauntletRoof">
     <Locations>
       <Location>
         <X>321</X>
@@ -2428,15 +2428,15 @@
     </Locations>
     <Connections>
       <Connection>
-        <Home name="sunkenGladesLaserStomp"/>
+        <Home name="deathGauntletRoof"/>
         <Target name="deathGauntlet"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sunkenGladesLaserStomp"/>
-        <Target name="sunkenGladesLaserStompPlant"/>
+        <Home name="deathGauntletRoof"/>
+        <Target name="deathGauntletRoofPlant"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
@@ -2445,7 +2445,7 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="sunkenGladesLaserStompPlant">
+  <Area name="deathGauntletRoofPlant">
     <Locations>
       <Location>
         <X>342</X>
@@ -2967,9 +2967,13 @@
         <Target name="Horu"/>
         <Requirements>
           <Requirement mode="normal">HoruKey+Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="normal">HoruKey+Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">HoruKey+Bash+Glide+ChargeJump+WallJump</Requirement>
           <Requirement mode="normal">HoruKey+Bash+DoubleJump+Glide+Climb</Requirement>
-          <Requirement mode="dbash">HoruKey+Bash</Requirement>
-          <!-- TODO - check other ability combos -->
+          <Requirement mode="normal">HoruKey+Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">HoruKey+Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="extended">HoruKey+Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="extended">HoruKey+Bash+Grenade+Climb</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3380,15 +3384,6 @@
       </Location>
     </Locations>
     <Connections>
-      <Connection>
-        <Home name="valleyRight"/>
-        <Target name="valleyMain"/>
-        <Requirements>
-          <Requirement mode="normal">Bash+Stomp</Requirement>
-          <Requirement mode="extended">Dash+Bash</Requirement>
-          <Requirement mode="extended">Dash+Stomp</Requirement>
-        </Requirements>
-      </Connection>
     </Connections>
   </Area>
   <Area name="valleyMain">
@@ -3434,6 +3429,9 @@
           <Requirement mode="normal">Wind+Glide</Requirement>
           <Requirement mode="speed">Glide+DoubleJump+Bash+Dash</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="extended-damage">ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">ChargeJump+Glide+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">ChargeJump+Dash+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="extreme">ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
@@ -3899,12 +3897,6 @@
         <Difficulty>1</Difficulty>
       </Location>
       <Location>
-        <X>-435</X>
-        <Y>322</Y>
-        <Item>MS</Item>
-        <Difficulty>3</Difficulty>
-      </Location>
-      <Location>
         <X>-485</X>
         <Y>323</Y>
         <Item>KS</Item>
@@ -3946,6 +3938,13 @@
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="sorrow"/>
+        <Target name="sorrowMapFragment"/>
+        <Requirements>
+          <Requirement mode="normal">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3993,6 +3992,18 @@
         <Y>284</Y>
         <Item>MapStone</Item>
         <Difficulty>4</Difficulty>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="sorrowMapFragment">
+    <Locations>
+      <Location>
+        <X>-435</X>
+        <Y>322</Y>
+        <Item>MS</Item>
+        <Difficulty>3</Difficulty>
       </Location>
     </Locations>
     <Connections>
