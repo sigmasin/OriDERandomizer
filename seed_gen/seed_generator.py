@@ -526,12 +526,12 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         "WaterVeinShard": 5,
         "GumonSealShard": 5,
         "SunstoneShard": 5,
-        "TPforlorn": 120,
-        "TPmoonGrotto": 60,
-        "TPsorrowPass": 120,
-        "TPspiritTree": 60,
-        "TPswamp": 60,
-        "TPvalleyOfTheWind": 90
+        "TPForlorn": 180,
+        "TPGrotto": 60,
+        "TPSorrow": 90,
+        "TPGrove": 60,
+        "TPSwamp": 60,
+        "TPValley": 90
     }
 
     # we use OrderedDicts here because the order of a dict depends on the size of the dict and the hash of the keys
@@ -593,12 +593,12 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
             ("WaterVeinShard", 0),
             ("GumonSealShard", 0),
             ("SunstoneShard", 0),
-            ("TPforlorn", 1),
-            ("TPmoonGrotto", 1),
-            ("TPsorrowPass", 1),
-            ("TPspiritTree", 1),
-            ("TPswamp", 1),
-            ("TPvalleyOfTheWind", 1)
+            ("TPForlorn", 1),
+            ("TPGrotto", 1),
+            ("TPSorrow", 1),
+            ("TPGrove", 1),
+            ("TPSwamp", 1),
+            ("TPValley", 1)
         ])
     else:
         itemPool = OrderedDict([
@@ -628,12 +628,12 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
             ("WaterVeinShard", 0),
             ("GumonSealShard", 0),
             ("SunstoneShard", 0),
-            ("TPforlorn", 1),
-            ("TPmoonGrotto", 1),
-            ("TPsorrowPass", 1),
-            ("TPspiritTree", 1),
-            ("TPswamp", 1),
-            ("TPvalleyOfTheWind", 1)
+            ("TPForlorn", 1),
+            ("TPGrotto", 1),
+            ("TPSorrow", 1),
+            ("TPGrove", 1),
+            ("TPSwamp", 1),
+            ("TPValley", 1)
         ])
 
     plants = []
@@ -668,14 +668,13 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         itemCount -= 3
     
     if noTeleporters:
-        itemPool["TPforlorn"] = 0
-        itemPool["TPmangoveFalls"] = 0
-        itemPool["TPmoonGrotto"] = 0
-        itemPool["TPsorrowPass"] = 0
-        itemPool["TPspiritTree"] = 0
-        itemPool["TPswamp"] = 0
-        itemPool["TPvalleyOfTheWind"] = 0
-        itemPool["EX*"] += 7
+        itemPool["TPForlorn"] = 0
+        itemPool["TPGrotto"] = 0
+        itemPool["TPSorrow"] = 0
+        itemPool["TPGrove"] = 0
+        itemPool["TPSwamp"] = 0
+        itemPool["TPValley"] = 0
+        itemPool["EX*"] += 6
     
     inventory = OrderedDict([
         ("EX1", 0),
@@ -714,13 +713,12 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         ("WaterVeinShard", 0),
         ("GumonSealShard", 0),
         ("SunstoneShard", 0),
-        ("TPforlorn", 0),
-        ("TPmangroveFalls", 0),
-        ("TPmoonGrotto", 0),
-        ("TPsorrowPass", 0),
-        ("TPspiritTree", 0),
-        ("TPswamp", 0),
-        ("TPvalleyOfTheWind", 0)
+        ("TPForlorn", 0),
+        ("TPGrotto", 0),
+        ("TPSorrow", 0),
+        ("TPGrove", 0),
+        ("TPSwamp", 0),
+        ("TPValley", 0)
     ])
 
     tree = XML.parse("areas.xml")

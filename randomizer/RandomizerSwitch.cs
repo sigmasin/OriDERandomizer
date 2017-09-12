@@ -115,7 +115,7 @@ public static class RandomizerSwitch
         switch (Value)
         {
             case 0:
-                Randomizer.showHint("#Water Vein");
+                Randomizer.showHint("#Water Vein#");
                 Keys.GinsoTree = true;
                 break;
             case 1:
@@ -140,11 +140,11 @@ public static class RandomizerSwitch
         }
     }
     
-    public static void TeleportPickup(string Value)
-    {
-        TeleporterController.Instance.Activate(Value);
-        Randomizer.showHint("Teleporter activated: " + Value);
-    }
+	public static void TeleportPickup(string Value)
+	{
+		TeleporterController.Activate(Randomizer.TeleportTable[Value].ToString());
+		Randomizer.showHint(Value + " teleporter activated");
+	}
     
     
     public static void GivePickup(RandomizerAction Action)

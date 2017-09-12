@@ -95,59 +95,59 @@
         <Home name="sunkenGladesRunaway"/>
         <Target name="forlorn"/>
         <Requirements>
-          <Requirement mode="dboost-light">TPforlorn+DoubleJump+ChargeJump</Requirement>
-          <Requirement mode="dboost-light">TPforlorn+DoubleJump+Bash</Requirement>
-          <Requirement mode="dboost-light">TPforlorn+Glide+ChargeJump</Requirement>
-          <Requirement mode="dboost-light">TPforlorn+Glide+Bash</Requirement>
-          <Requirement mode="dboost-light">TPforlorn+Grenade+Bash</Requirement>
+          <Requirement mode="dboost-light">TPForlorn+DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="dboost-light">TPForlorn+DoubleJump+Bash</Requirement>
+          <Requirement mode="dboost-light">TPForlorn+Glide+ChargeJump</Requirement>
+          <Requirement mode="dboost-light">TPForlorn+Glide+Bash</Requirement>
+          <Requirement mode="dboost-light">TPForlorn+Grenade+Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="sunkenGladesRunaway"/>
         <Target name="moonGrotto"/>
         <Requirements>
-          <Requirement mode="normal">TPmoonGrotto+ChargeJump</Requirement>
-          <Requirement mode="normal">TPmoonGrotto+WallJump</Requirement>
-          <Requirement mode="normal">TPmoonGrotto+Climb</Requirement>
-          <Requirement mode="normal">TPmoonGrotto+Grenade+Bash</Requirement>
+          <Requirement mode="normal">TPGrotto+ChargeJump</Requirement>
+          <Requirement mode="normal">TPGrotto+WallJump</Requirement>
+          <Requirement mode="normal">TPGrotto+Climb</Requirement>
+          <Requirement mode="normal">TPGrotto+Grenade+Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="sunkenGladesRunaway"/>
         <Target name="GumoHideoutMapStone"/>
         <Requirements>
-          <Requirement mode="normal">TPmoonGrotto+MS</Requirement>
+          <Requirement mode="normal">TPGrotto+MS</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="sunkenGladesRunaway"/>
         <Target name="hollowGrove"/>
         <Requirements>
-          <Requirement mode="normal">TPswamp</Requirement>
+          <Requirement mode="normal">TPSwamp</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="sunkenGladesRunaway"/>
         <Target name="spiritTreeRefined"/>
         <Requirements>
-          <Requirement mode="normal">TPspiritTree</Requirement>
+          <Requirement mode="normal">TPGrove</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="sunkenGladesRunaway"/>
         <Target name="valleyRight"/>
         <Requirements>
-          <Requirement mode="normal">TPvalleyOfTheWind+Bash+WallJump</Requirement>
+          <Requirement mode="normal">TPValley+Bash+WallJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="sunkenGladesRunaway"/>
         <Target name="sunstone"/>
         <Requirements>
-          <Requirement mode="normal">TPsorrowPass+Glide+Climb+ChargeJump</Requirement>
-          <Requirement mode="extended-damage">TPsorrowPass+Glide+Stomp+ChargeJump+Dash+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="dbash">TPsorrowPass+Glide+Stomp+Bash</Requirement>
-          <Requirement mode="dbash">TPsorrowPass+Glide+ChargeJump+Bash</Requirement>
+          <Requirement mode="normal">TPSorrow+Glide+Climb+ChargeJump</Requirement>
+          <Requirement mode="extended-damage">TPSorrow+Glide+Stomp+ChargeJump+Dash+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dbash">TPSorrow+Glide+Stomp+Bash</Requirement>
+          <Requirement mode="dbash">TPSorrow+Glide+ChargeJump+Bash</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -306,6 +306,8 @@
           <Requirement mode="normal">ChargeJump+Climb</Requirement>
           <Requirement mode="normal">ChargeJump+WallJump+DoubleJump</Requirement>
           <Requirement mode="normal">Bash+DoubleJump+Glide</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+Climb</Requirement>
           <Requirement mode="normal">Bash+Grenade+Climb</Requirement>
           <Requirement mode="normal">Bash+Grenade+WallJump</Requirement>
           <Requirement mode="lure">Bash+WallJump</Requirement>
@@ -586,10 +588,10 @@
         <Target name="sunkenGladesRunning"/>
         <Requirements>
           <Requirement mode="normal">Grenade+Bash+WallJump</Requirement>
-          <Requirement mode="speed">Grenade+ChargeJump+Water</Requirement>
           <Requirement mode="normal">Grenade+Bash+Climb</Requirement>
-          <Requirement mode="speed">Grenade+Bash+DoubleJump+Water</Requirement>
-          <Requirement mode="dboost">Grenade+Bash+DoubleJump</Requirement>
+          <Requirement mode="extended">Grenade+ChargeJump+Water</Requirement>
+          <Requirement mode="extended-damage">Grenade+ChargeJump</Requirement>
+          <Requirement mode="cdash">Grenade+Dash</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -694,7 +696,8 @@
         <Target name="ChargeFlameTree"/>
         <Requirements>
           <Requirement mode="normal">DoubleJump</Requirement>
-          <Requirement mode="speed">Bash+Grenade</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -803,6 +806,15 @@
           <Requirement mode="normal">Stomp+WallJump</Requirement>
           <Requirement mode="normal">Stomp+Climb</Requirement>
           <Requirement mode="normal">Stomp+ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="upperGladesSpiderCavernPuzzle"/>
+        <Target name="ChargeFlameTree"/>
+        <Requirements>
+          <Requirement mode="extended">ChargeFlame+Glide</Requirement>
+          <Requirement mode="extended">Grenade+Glide</Requirement>
+          <Requirement mode="extended">Stomp+Glide</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -998,6 +1010,8 @@
           <Requirement mode="normal">Dash+ChargeJump</Requirement>
           <Requirement mode="normal">Dash+Bash+Grenade</Requirement>
           <Requirement mode="extended">WallJump</Requirement>
+          <Requirement mode="extended">DoubleJump</Requirement>
+          <Requirement mode="extended">ChargeJump</Requirement>
           <Requirement mode="extended">Dash</Requirement>
           <Requirement mode="glitched">Free</Requirement>
         </Requirements>
@@ -1117,11 +1131,7 @@
         <Home name="LowerBlackRoot"/>
         <Target name="BottomBlackRoot"/>
         <Requirements>
-          <Requirement mode="normal">Grenade+Bash</Requirement>
-          <Requirement mode="normal">Grenade+Water</Requirement>
-          <Requirement mode="dboost-hard">Grenade+Bash+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="extreme">Grenade+Bash+HC+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="extreme">Grenade+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1247,7 +1257,10 @@
         <Home name="BottomBlackRoot"/>
         <Target name="FinalBlackRoot"/>
         <Requirements>
-          <Requirement mode="normal">Bash</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="extended-damage">Grenade+ChargeJump+Dash+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">Grenade+ChargeJump+Glide+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">Grenade+ChargeJump+DoubleJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -2956,6 +2969,7 @@
           <Requirement mode="normal">HoruKey+Bash+DoubleJump+Glide+WallJump</Requirement>
           <Requirement mode="normal">HoruKey+Bash+DoubleJump+Glide+Climb</Requirement>
           <Requirement mode="dbash">HoruKey+Bash</Requirement>
+          <!-- TODO - check other ability combos -->
         </Requirements>
       </Connection>
       <Connection>
@@ -3202,8 +3216,9 @@
           <Requirement mode="normal">DoubleJump</Requirement>
           <Requirement mode="normal">ChargeJump+WallJump</Requirement>
           <Requirement mode="normal">ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">WallJump+Glide</Requirement>
+          <Requirement mode="normal">WallJump+Dash</Requirement>
           <Requirement mode="dboost">ChargeJump+HC+HC+HC+HC</Requirement>
-          <!--- this can be reached with cjump only + 3 damage -->
         </Requirements>
       </Connection>
       <Connection>
@@ -3218,6 +3233,7 @@
           <Requirement mode="extended">Bash+Climb+ChargeJump</Requirement>
           <Requirement mode="extended">Bash+WallJump</Requirement>
           <Requirement mode="extended">Bash+Grenade</Requirement>
+          <Requirement mode="extended-damage">Stomp+ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
           <Requirement mode="extreme">Stomp+WallJump+DoubleJump+ChargeJump</Requirement>
           <Requirement mode="extreme">Stomp+WallJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
@@ -3238,12 +3254,14 @@
           <Requirement mode="normal">Water+Stomp+WallJump+Bash</Requirement>
           <Requirement mode="normal">Water+Stomp+WallJump+ChargeJump</Requirement>
           <Requirement mode="normal">Water+Stomp+Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">Water+Stomp+Climb+DoubleJump</Requirement>
           <Requirement mode="dboost">Stomp+WallJump+DoubleJump</Requirement>
           <Requirement mode="dboost">Stomp+WallJump+Bash</Requirement>
           <Requirement mode="dboost">Stomp+WallJump+ChargeJump</Requirement>
           <Requirement mode="dboost">Stomp+Climb+ChargeJump</Requirement>
+          <Requirement mode="dboost">Stomp+Climb+DoubleJump</Requirement>
           <Requirement mode="extended">Bash+Water</Requirement>
-          <Requirement mode="extreme">Bash</Requirement>
+          <Requirement mode="extended-damage">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
