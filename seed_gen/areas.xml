@@ -3237,7 +3237,7 @@
           <Requirement mode="extended">Bash+Climb+ChargeJump</Requirement>
           <Requirement mode="extended">Bash+WallJump</Requirement>
           <Requirement mode="extended">Bash+Grenade</Requirement>
-          <Requirement mode="extended-damage">Stomp+ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">Stomp+ChargeJump+DoubleJump+WallJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
           <Requirement mode="extreme">Stomp+WallJump+DoubleJump+ChargeJump</Requirement>
           <Requirement mode="extreme">Stomp+WallJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
