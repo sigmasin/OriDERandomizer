@@ -12,7 +12,7 @@ class Random:
     def seed(self, seed):        
         self.index = 624
         self.mt = [0] * 624
-        self.mt[0] = seed
+        self.mt[0] = hash(seed)
         for i in range(1, 624):
             self.mt[i] = int(0xFFFFFFFF & (1812433253 * (self.mt[i - 1] ^ self.mt[i - 1] >> 30) + i))
 

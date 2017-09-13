@@ -528,7 +528,7 @@
         <Home name="spiritCaverns"/>
         <Target name="spiritTreeRefined"/>
         <Requirements>
-          <!-- will cause some painted-into-corner scenarios, revisit this if it's too much -->
+          <!-- will cause some painted-into-corner scenarios, revisit this if it is too much -->
           <Requirement mode="normal">KS+KS+KS+KS</Requirement>
         </Requirements>
       </Connection>
@@ -3217,7 +3217,8 @@
         <Requirements>
           <Requirement mode="normal">Bash+WallJump</Requirement>
           <Requirement mode="normal">Bash+Climb</Requirement>
-          <Requirement mode="normal">DoubleJump</Requirement>
+          <Requirement mode="normal">DoubleJump+WallJump</Requirement>
+          <Requirement mode="normal">DoubleJump+Climb</Requirement>
           <Requirement mode="normal">ChargeJump+WallJump</Requirement>
           <Requirement mode="normal">ChargeJump+Climb</Requirement>
           <Requirement mode="normal">WallJump+Glide</Requirement>
