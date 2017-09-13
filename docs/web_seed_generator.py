@@ -10,7 +10,7 @@ class Random:
     def seed(self, seed):        
         self.index = 624
         self.mt = [0] * 624
-        self.mt[0] = hash(seed)
+        self.mt[0] = seed_hash(seed)
         for i in range(1, 624):
             self.mt[i] = int(0xFFFFFFFF & (1812433253 * (self.mt[i - 1] ^ self.mt[i - 1] >> 30) + i))
 
@@ -997,7 +997,13 @@ class CustomPathListener:
         
     def onClick(self, sender=None):
         logicSelection.setSelectedIndex(8)
-            
+
+def seed_hash(seed):
+    value = 0
+    for index in range(len(seed)):
+        value = (value << 5) - value + ord(seed[index])  
+    return 0xFFFFFFFF & value
+        
 def generate():
 
     genButton.setText("Generating...")

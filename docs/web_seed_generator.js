@@ -27,7 +27,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 			self.mt = (typeof ($mul1=$p['list']([0]))==typeof ($mul2=624) && typeof $mul1=='number'?
 				$mul1*$mul2:
 				$p['op_mul']($mul1,$mul2));
-			$p['getattr'](self, 'mt').__setitem__(0, $p['hash'](seed));
+			$p['getattr'](self, 'mt').__setitem__(0, (typeof seed_hash == "undefined"?$m.seed_hash:seed_hash)(seed));
 			$iter1_iter = $p['range'](1, 624);
 			$iter1_nextval=$p['__iter_prepare']($iter1_iter,false);
 			while (typeof($p['__wrapped_next']($iter1_nextval).$nextval) != 'undefined') {
@@ -1336,8 +1336,23 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 		for (var $item in $cls_definition) { $data.__setitem__($item, $cls_definition[$item]); }
 		return $p['_create_class']('CustomPathListener', $p['tuple']($bases), $data);
 	})();
+	$m['seed_hash'] = function(seed) {
+		var index,$iter30_type,$iter30_nextval,$iter30_iter,value,$add232,$add231,$iter30_array,$iter30_idx,$sub43,$sub44;
+		value = 0;
+		$iter30_iter = $p['range']($p['len'](seed));
+		$iter30_nextval=$p['__iter_prepare']($iter30_iter,false);
+		while (typeof($p['__wrapped_next']($iter30_nextval).$nextval) != 'undefined') {
+			index = $iter30_nextval.$nextval;
+			value = $p['__op_add']($add231=$p['__op_sub']($sub43=(value)<<(5),$sub44=value),$add232=$p['ord'](seed.__getitem__(index)));
+		}
+		return (4294967295)&(value);
+	};
+	$m['seed_hash'].__name__ = 'seed_hash';
+
+	$m['seed_hash'].__bind_type__ = 0;
+	$m['seed_hash'].__args__ = [null,null,['seed']];
 	$m['generate'] = function() {
-		var prefer_path_difficulty,loc_analysis,non_progressive_mapstones,$add264,hard,$add260,$add261,$add262,$add263,exp_pool,seed,limitkeys,$add232,$add233,nobonus,$add231,$add237,$add236,$add235,$add234,$add242,$add239,$add238,$add243,$add259,$add258,dl,$add240,includePlants,$add251,$add250,$add253,$add252,$add255,$add254,$add257,$add256,no_teleporters,zeroxp,placement,modes,ohko,force_trees,shards,analysis,element,$add246,$add247,$add244,$add245,flags,mode,starved,$add241,$mul35,$mul36,$add248,$add249;
+		var prefer_path_difficulty,loc_analysis,non_progressive_mapstones,$add264,$add265,$add266,hard,$add260,$add261,$add262,$add263,exp_pool,seed,limitkeys,$add233,nobonus,$add237,$add236,$add235,$add234,$add242,$add239,$add238,$add243,$add259,$add258,dl,$add240,includePlants,$add251,$add250,$add253,$add252,$add255,$add254,$add257,$add256,no_teleporters,zeroxp,placement,modes,ohko,force_trees,shards,analysis,element,$add246,$add247,$add244,$add245,flags,mode,starved,$add241,$mul35,$mul36,$add248,$add249;
 		$m.genButton['setText']('Generating...');
 		seed = $m.seedSelection['getText']();
 		if ($p['bool']($p['op_eq'](seed, ''))) {
@@ -1414,51 +1429,51 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 		nobonus = $m.noBonusBox['isChecked']();
 		force_trees = $m.forceBox['isChecked']();
 		flags = '';
-		flags = $p['__op_add']($add233=flags,$add234=$p['__op_add']($add231=mode,$add232=','));
+		flags = $p['__op_add']($add235=flags,$add236=$p['__op_add']($add233=mode,$add234=','));
 		if ($p['bool'](limitkeys)) {
-			flags = $p['__op_add']($add235=flags,$add236='limitkeys,');
+			flags = $p['__op_add']($add237=flags,$add238='limitkeys,');
 		}
 		if ($p['bool'](shards)) {
-			flags = $p['__op_add']($add237=flags,$add238='shards,');
+			flags = $p['__op_add']($add239=flags,$add240='shards,');
 		}
 		if ($p['bool'](prefer_path_difficulty)) {
-			flags = $p['__op_add']($add243=flags,$add244=$p['__op_add']($add241=$p['__op_add']($add239='prefer_path_difficulty=',$add240=prefer_path_difficulty),$add242=','));
+			flags = $p['__op_add']($add245=flags,$add246=$p['__op_add']($add243=$p['__op_add']($add241='prefer_path_difficulty=',$add242=prefer_path_difficulty),$add244=','));
 		}
 		if ($p['bool'](hard)) {
-			flags = $p['__op_add']($add245=flags,$add246='hard,');
+			flags = $p['__op_add']($add247=flags,$add248='hard,');
 		}
 		if ($p['bool'](ohko)) {
-			flags = $p['__op_add']($add247=flags,$add248='OHKO,');
+			flags = $p['__op_add']($add249=flags,$add250='OHKO,');
 		}
 		if ($p['bool'](zeroxp)) {
-			flags = $p['__op_add']($add249=flags,$add250='0XP,');
+			flags = $p['__op_add']($add251=flags,$add252='0XP,');
 		}
 		if ($p['bool'](nobonus)) {
-			flags = $p['__op_add']($add251=flags,$add252='NoBonus,');
+			flags = $p['__op_add']($add253=flags,$add254='NoBonus,');
 		}
 		if ($p['bool'](!$p['bool'](includePlants))) {
-			flags = $p['__op_add']($add253=flags,$add254='NoPlants,');
+			flags = $p['__op_add']($add255=flags,$add256='NoPlants,');
 		}
 		if ($p['bool'](force_trees)) {
-			flags = $p['__op_add']($add255=flags,$add256='ForceTrees,');
+			flags = $p['__op_add']($add257=flags,$add258='ForceTrees,');
 		}
 		if ($p['bool'](non_progressive_mapstones)) {
-			flags = $p['__op_add']($add257=flags,$add258='NonProgressMapStones,');
+			flags = $p['__op_add']($add259=flags,$add260='NonProgressMapStones,');
 		}
 		if ($p['bool'](no_teleporters)) {
-			flags = $p['__op_add']($add259=flags,$add260='NoTeleporters,');
+			flags = $p['__op_add']($add261=flags,$add262='NoTeleporters,');
 		}
 		$m.random['seed'](seed);
 		placement = $m['placeItems'](seed, exp_pool, hard, includePlants, shards, limitkeys, no_teleporters, loc_analysis, analysis, modes, flags, starved, prefer_path_difficulty, non_progressive_mapstones);
 		$m.genButton['setText']('Generate');
 		element = $m['DOM']['createElement']('a');
-		element['setAttribute']('href', $p['__op_add']($add261='data:text/plain;charset=utf-8,',$add262=(typeof encodeURIComponent == "undefined"?$m.encodeURIComponent:encodeURIComponent)(placement.__getitem__(1))));
+		element['setAttribute']('href', $p['__op_add']($add263='data:text/plain;charset=utf-8,',$add264=(typeof encodeURIComponent == "undefined"?$m.encodeURIComponent:encodeURIComponent)(placement.__getitem__(1))));
 		element['setAttribute']('download', 'spoiler.txt');
 		$p['getattr'](element, 'style').display = 'none';
 		dl = $m['DOM']['getElementById']('dl');
 		$m['DOM']['appendChild'](dl, element);
 		element['click']();
-		element['setAttribute']('href', $p['__op_add']($add263='data:text/plain;charset=utf-8,',$add264=(typeof encodeURIComponent == "undefined"?$m.encodeURIComponent:encodeURIComponent)(placement.__getitem__(0))));
+		element['setAttribute']('href', $p['__op_add']($add265='data:text/plain;charset=utf-8,',$add266=(typeof encodeURIComponent == "undefined"?$m.encodeURIComponent:encodeURIComponent)(placement.__getitem__(0))));
 		element['setAttribute']('download', 'randomizer.dat');
 		element['click']();
 		$m['DOM']['removeChild'](dl, element);
