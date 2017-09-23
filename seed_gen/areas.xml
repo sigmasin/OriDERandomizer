@@ -334,6 +334,14 @@
       </Connection>
       <Connection>
         <Home name="WallJump"/>
+        <Target name="ChargeFlameOrb"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="WallJump"/>
         <Target name="WallJumpMapStone"/>
         <Requirements>
           <Requirement mode="normal">MS</Requirement>
@@ -616,12 +624,6 @@
         <Item>SKChargeFlame</Item>
         <Difficulty>0</Difficulty>
       </Location>
-      <Location>
-        <X>4</X>
-        <Y>-196</Y>
-        <Item>EX100</Item>
-        <Difficulty>0</Difficulty>
-      </Location>
     </Locations>
     <Connections>
       <Connection>
@@ -654,6 +656,13 @@
           <Requirement mode="normal">Stomp+ChargeJump</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="ChargeFlame"/>
+        <Target name="ChargeFlameOrb"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="ChargeFlamePlant">
@@ -663,6 +672,18 @@
         <Y>-156</Y>
         <Item>Plant</Item>
         <Difficulty>1</Difficulty>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="ChargeFlameOrb">
+    <Locations>
+      <Location>
+        <X>4</X>
+        <Y>-196</Y>
+        <Item>EX100</Item>
+        <Difficulty>0</Difficulty>
       </Location>
     </Locations>
     <Connections>
@@ -695,9 +716,15 @@
         <Home name="spiritTreeRefined"/>
         <Target name="ChargeFlameTree"/>
         <Requirements>
-          <Requirement mode="normal">DoubleJump</Requirement>
-          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">DoubleJump+Climb</Requirement>
+          <Requirement mode="normal">DoubleJump+WallJump</Requirement>
+          <Requirement mode="normal">ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="normal">ChargeJump+Glide</Requirement>
           <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="speed">Dash+WallJump</Requirement>
+          <Requirement mode="speed">Dash+Climb</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -960,13 +987,15 @@
         <Requirements>
           <Requirement mode="normal">ChargeJump+Climb+ChargeFlame</Requirement>
           <Requirement mode="normal">ChargeJump+WallJump+ChargeFlame</Requirement>
+          <Requirement mode="normal">Glide+WallJump+ChargeFlame</Requirement>
+          <Requirement mode="normal">ChargeJump+Climb+Grenade</Requirement>
+          <Requirement mode="normal">ChargeJump+WallJump+Grenade</Requirement>
           <Requirement mode="normal">Bash+Grenade</Requirement>
           <Requirement mode="normal">Glide+WallJump+Grenade</Requirement>
-          <Requirement mode="normal">Bash+Grenade</Requirement>
-          <Requirement mode="cdash-farming">ChargeJump+Climb+Dash</Requirement>
-          <Requirement mode="cdash-farming">ChargeJump+WallJump+Dash</Requirement>
           <Requirement mode="extended">DoubleJump+Grenade</Requirement>
           <Requirement mode="extended">DoubleJump+ChargeFlame</Requirement>
+          <Requirement mode="cdash-farming">ChargeJump+Climb+Dash</Requirement>
+          <Requirement mode="cdash-farming">ChargeJump+WallJump+Dash</Requirement>
           <Requirement mode="cdash-farming">DoubleJump+Dash</Requirement>
         </Requirements>
       </Connection>
@@ -1460,7 +1489,7 @@
         <Requirements>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
-          <Requirement mode="cdash">Dash</Requirement>
+          <Requirement mode="cdash-farming">Dash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1471,6 +1500,8 @@
           <Requirement mode="normal">Wind+Glide</Requirement>
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="lure">Bash+WallJump</Requirement>
+          <Requirement mode="lure">Bash+Climb</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -1561,8 +1592,8 @@
           <Requirement mode="normal">Stomp+ChargeJump</Requirement>
           <Requirement mode="normal">ChargeJump+ChargeFlame</Requirement>
           <Requirement mode="normal">ChargeJump+Grenade</Requirement>
-          <Requirement mode="speed">Bash+ChargeFlame+Water</Requirement>
-          <Requirement mode="speed">Bash+Grenade+Water</Requirement>
+          <Requirement mode="lure">Bash+ChargeFlame+Water</Requirement>
+          <Requirement mode="lure">Bash+Grenade+Water</Requirement>
           <Requirement mode="extended">ChargeJump+Climb</Requirement>
           <Requirement mode="extended">DoubleJump+ChargeFlame+Dash+Water</Requirement>
           <Requirement mode="extended">DoubleJump+ChargeFlame+Glide+Water</Requirement>
@@ -3215,14 +3246,11 @@
         <Home name="valleyEntry"/>
         <Target name="valleyEntryTree"/>
         <Requirements>
-          <Requirement mode="normal">Bash+WallJump</Requirement>
+          <Requirement mode="normal">WallJump</Requirement>
           <Requirement mode="normal">Bash+Climb</Requirement>
-          <Requirement mode="normal">DoubleJump+WallJump</Requirement>
           <Requirement mode="normal">DoubleJump+Climb</Requirement>
-          <Requirement mode="normal">ChargeJump+WallJump</Requirement>
           <Requirement mode="normal">ChargeJump+Climb</Requirement>
-          <Requirement mode="normal">WallJump+Glide</Requirement>
-          <Requirement mode="normal">WallJump+Dash</Requirement>
+          <Requirement mode="lure">Bash</Requirement>
           <Requirement mode="dboost">ChargeJump+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
@@ -3311,7 +3339,7 @@
           <Requirement mode="normal">Bash+Grenade</Requirement>
           <Requirement mode="normal">Glide+ChargeFlame</Requirement>
           <Requirement mode="normal">Glide+Grenade</Requirement>
-          <Requirement mode="cdash">Dash</Requirement>
+          <Requirement mode="cdash-farming">Dash</Requirement>
         </Requirements>
       </Connection>
     </Connections>
