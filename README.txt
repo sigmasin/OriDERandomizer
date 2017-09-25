@@ -28,7 +28,7 @@ Standard: For people who have run All Skills. It is assumed that all tricks used
 
 Expert: For people who have played a fair amount of the randomizer. Tricks involving out-of-the-box uses of abilities may be required. Damage boosting may be required, but every spike patch can be crossed with only a single instance of damage. Double bashing is not required.
 
-Master: For people who want to struggle. Everything except going OOB or using TA is fair game. Paths requiring triple jump may be required. Extended damage boosting with ultra defense may be required. Only one of bash or stomp is guaranteed to be on the right side.
+Master: For people who want to struggle. Everything except going OOB or using TA is fair game. Paths requiring triple jump may be required. Extended damage boosting with ultra defense may be required.
 
 
 COMMANDS (can be customized using RandomizerRebinding.txt):

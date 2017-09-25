@@ -3132,13 +3132,6 @@
         <Difficulty>3</Difficulty>
         <Zone>Grove</Zone>
       </Location>
-      <Location>
-        <X>176</X>
-        <Y>-34</Y>
-        <Item>AC</Item>
-        <Difficulty>3</Difficulty>
-        <Zone>Grove</Zone>
-      </Location>
     </Locations>
     <Connections>
       <Connection>
@@ -3147,6 +3140,17 @@
         <Requirements>
           <Requirement mode="normal">Bash</Requirement>
           <Requirement mode="normal">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HoruFields"/>
+        <Target name="BelowHoruFields"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+DoubleJump+Bash</Requirement>
+          <Requirement mode="normal">Climb+ChargeJump</Requirement>
+          <Requirement mode="dboost">WallJump+Bash+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost">DoubleJump+Bash+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3201,6 +3205,19 @@
         <Y>21</Y>
         <Item>Plant</Item>
         <Difficulty>4</Difficulty>
+        <Zone>Grove</Zone>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="BelowHoruFields">
+    <Locations>
+      <Location>
+        <X>176</X>
+        <Y>-34</Y>
+        <Item>AC</Item>
+        <Difficulty>3</Difficulty>
         <Zone>Grove</Zone>
       </Location>
     </Locations>
@@ -3654,7 +3671,7 @@
         <Target name="Misty"/>
         <Requirements>
           <Requirement mode="normal">Glide+Bash</Requirement>
-          <Requirement mode="dboost">DoubleJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost">Bash+DoubleJump+HC+HC+HC+HC</Requirement>
           <Requirement mode="extreme">DoubleJump</Requirement>
         </Requirements>
       </Connection>

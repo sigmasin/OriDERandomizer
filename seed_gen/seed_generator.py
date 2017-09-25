@@ -800,7 +800,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
             locationAnalysisCopy[location] = {}
             for item in locationAnalysis[location]:
                 locationAnalysisCopy[location][item] = locationAnalysis[location][item]
-        
+
     # flags line
     outputStr += (flags + "|" + str(seed) + "\n")
 
@@ -886,43 +886,45 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         for i in range(0, len(locationsToAssign)):
             assign_to_location(itemsToAssign[i], locationsToAssign[i])
 
-        if currentAreas:
+        currentGroupSpoiler = ""
+
+        if spoilerPath:
+            currentGroupSpoiler += ("    Forced pickups: " + str(spoilerPath) + "\n")
+
+        for skill in skillsOutput:
+            if skill in spoilerGroup:
+                for instance in spoilerGroup[skill]:
+                    currentGroupSpoiler += "    " + instance
+                if skill in seedDifficultyMap:
+                    seedDifficulty += groupDepth * seedDifficultyMap[skill]
+
+        for event in eventsOutput:
+            if event in spoilerGroup:
+                for instance in spoilerGroup[event]:
+                    currentGroupSpoiler += "    " + instance
+
+        for key in spoilerGroup:
+            if key[:2] == "TP":
+                for instance in spoilerGroup[key]:
+                    currentGroupSpoiler += "    " + instance
+
+        for instance in spoilerGroup["MS"]:
+            currentGroupSpoiler += "    " + instance
+
+        for instance in spoilerGroup["KS"]:
+            currentGroupSpoiler += "    " + instance
+
+        for instance in spoilerGroup["HC"]:
+            currentGroupSpoiler += "    " + instance
+
+        for instance in spoilerGroup["EC"]:
+            currentGroupSpoiler += "    " + instance
+
+        if currentGroupSpoiler:
             groupDepth += 1
             currentAreas.sort()
 
-            spoilerStr += str(groupDepth) + ": " + str(currentAreas) + " {\n"
-
-            if spoilerPath:
-                spoilerStr += ("    Forced pickups: " + str(spoilerPath) + "\n")
-
-            for skill in skillsOutput:
-                if skill in spoilerGroup:
-                    for instance in spoilerGroup[skill]:
-                        spoilerStr += "    " + instance
-                    if skill in seedDifficultyMap:
-                        seedDifficulty += groupDepth * seedDifficultyMap[skill]
-
-            for event in eventsOutput:
-                if event in spoilerGroup:
-                    for instance in spoilerGroup[event]:
-                        spoilerStr += "    " + instance
-
-            for key in spoilerGroup:
-                if key[:2] == "TP":
-                    for instance in spoilerGroup[key]:
-                        spoilerStr += "    " + instance
-
-            for instance in spoilerGroup["MS"]:
-                spoilerStr += "    " + instance
-
-            for instance in spoilerGroup["KS"]:
-                spoilerStr += "    " + instance
-
-            for instance in spoilerGroup["HC"]:
-                spoilerStr += "    " + instance
-
-            for instance in spoilerGroup["EC"]:
-                spoilerStr += "    " + instance
+            spoilerStr += currentGroupSpoiler
 
             spoilerStr += "}\n"
 
