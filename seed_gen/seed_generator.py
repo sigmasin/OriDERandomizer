@@ -407,9 +407,9 @@ def assign_to_location(item, location):
         key = location.to_string()
         if location.orig == "MapStone":
             key = "MapStone " + str(mapstonesAssigned)
-        if item in locationAnalysis[key]:
-            locationAnalysis[key][item] += 1
-            locationAnalysis[location.zone][item] += 1
+        if item in locationAnalysisCopy[key]:
+            locationAnalysisCopy[key][item] += 1
+            locationAnalysisCopy[location.zone][item] += 1
 
 def get_random_exp_value(expRemaining, expSlots):
 
@@ -468,6 +468,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
     global nonProgressiveMapstones
     global analysis
     global locationAnalysis
+    global locationAnalysisCopy
     global doLocationAnalysis
 
     shards = shardsMode
@@ -797,6 +798,13 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
                 area.add_connection(connection)
         areas[area.name] = area
 
+    if doLocationAnalysis:
+        locationAnalysisCopy = {}
+        for location in locationAnalysis:
+            locationAnalysisCopy[location] = {}
+            for item in locationAnalysis[location]:
+                locationAnalysisCopy[location][item] = locationAnalysis[location][item]
+        
     # flags line
     outputStr += (flags + "|" + str(seed) + "\n")
 
@@ -953,6 +961,9 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
     random.shuffle(eventList)
     for event in eventList:
         outputStr += event
+
+    if doLocationAnalysis:
+        locationAnalysis = locationAnalysisCopy
 
     return (outputStr, spoilerStr)
 
