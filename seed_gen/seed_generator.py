@@ -360,7 +360,7 @@ def assign_to_location(item, location):
     global expSlots
 
     assignment = ""
-    
+
     # if mapstones are progressive, set a special location
     if not nonProgressiveMapstones and location.orig == "MapStone":
         mapstonesAssigned += 1
@@ -370,14 +370,14 @@ def assign_to_location(item, location):
                 spoilerGroup[item] = []
             spoilerGroup[item].append(item + " from MapStone " + str(mapstonesAssigned) + "\n")
     else:
-        assignment +=  (str(location.get_key()) + "|")
+        assignment += (str(location.get_key()) + "|")
         if item in costs.keys():
             if item not in spoilerGroup:
                 spoilerGroup[item] = []
             spoilerGroup[item].append(item + " from " + location.to_string() + "\n")
 
     if item in skillsOutput:
-        assignment +=  (str(skillsOutput[item][:2]) + "|" + skillsOutput[item][2:])
+        assignment += (str(skillsOutput[item][:2]) + "|" + skillsOutput[item][2:])
         if analysis:
             skillAnalysis[item] += skillCount
             skillCount -= 1
@@ -389,16 +389,16 @@ def assign_to_location(item, location):
         expSlots -= 1
         assignment += "EX|" + str(value)
     elif item[2:]:
-        assignment +=  (item[:2] + "|" + item[2:])
+        assignment += (item[:2] + "|" + item[2:])
     else:
-        assignment +=  (item[:2] + "|1")
+        assignment += (item[:2] + "|1")
     assignment += ("|" + location.zone + "\n")
-    
+
     if item in eventsOutput:
         eventList.append(assignment)
     else:
         outputStr += assignment
-    
+
     if doLocationAnalysis:
         key = location.to_string()
         if location.orig == "MapStone":
@@ -1027,11 +1027,11 @@ def main():
         flags += "NoTeleporters,"
 
     flags = flags[:-1]
-        
+
     global skillAnalysis
     global itemsToAnalyze
     global locationAnalysis
-        
+
     skillAnalysis = {
         "WallJump": 0,
         "ChargeFlame": 0,
@@ -1044,7 +1044,7 @@ def main():
         "Dash": 0,
         "Grenade": 0
     }
-    
+
     itemsToAnalyze = {
         "WallJump": 0,
         "ChargeFlame": 0,
