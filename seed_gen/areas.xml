@@ -99,11 +99,11 @@
         <Home name="SunkenGladesRunaway"/>
         <Target name="Forlorn"/>
         <Requirements>
-          <Requirement mode="dboost-light">TPForlorn+DoubleJump+ChargeJump</Requirement>
-          <Requirement mode="dboost-light">TPForlorn+DoubleJump+Bash</Requirement>
-          <Requirement mode="dboost-light">TPForlorn+Glide+ChargeJump</Requirement>
-          <Requirement mode="dboost-light">TPForlorn+Glide+Bash</Requirement>
-          <Requirement mode="dboost-light">TPForlorn+Grenade+Bash</Requirement>
+          <Requirement mode="dboost-light">ForlornKey+TPForlorn+DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="dboost-light">ForlornKey+TPForlorn+DoubleJump+Bash</Requirement>
+          <Requirement mode="dboost-light">ForlornKey+TPForlorn+Glide+ChargeJump</Requirement>
+          <Requirement mode="dboost-light">ForlornKey+TPForlorn+Glide+Bash</Requirement>
+          <Requirement mode="dboost-light">ForlornKey+TPForlorn+Grenade+Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
