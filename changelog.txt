@@ -29,7 +29,8 @@ Item changes:
 Miscellaneous:
 
 -A web-based version of the seed generator is now available at https://sigmasin.github.io/OriDERandomizer
--Spoiler files now have more clear formatting
+-Spoilers now have more clear formatting
+-Spoilers report the seed difficulty rating, based on paths required and how deep skills are located
 -Alt+R uses a lower position
 -Alt+R can no longer warp displace
 -Alt+R will now always reset misty
@@ -38,6 +39,7 @@ Miscellaneous:
     Blue: water vein, clean water
     Yellow: gumon seal, wind
     Red: sunstone, warmth
+-Pickup location statistics are available here: https://goo.gl/qvYhEU
 
 v1.3
 

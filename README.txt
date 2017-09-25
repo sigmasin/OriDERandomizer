@@ -16,15 +16,17 @@ The most commonly played modes are shards and limitkeys. These modes mitigate th
 
 A guide on randomizer terminology and routing is available here: https://docs.google.com/document/d/1g7mSMY5IzORo7mrkmfb0cxLmiw2FD8rfkplIJUDLy-4/edit#heading=h.kiiklir95dur
 
+Pickup location statistics for version 2.0 are available here: https://goo.gl/qvYhEU
+
 Difficulty Guide
 
 Not sure what to play? Here is a description of some common presets:
 
 Casual: For people who have not speedrun the game. The only glitch that may be required is breaking charge flame walls with stomp. Damage boosting may be required, but the maximum damage taken will be 2.
 
-Standard: For people who have run All Skills. It is assumed that all tricks used in the All Skills run are known. Damage boosting may be required, but the maximum damage taken will be 2. Double bashing is not required. Deep swimming without clean water is not required. Bash and stomp are guaranteed to be on the right side of the map.
+Standard: For people who have run All Skills. It is assumed that all tricks used in the All Skills run are known. Damage boosting may be required, but the maximum damage taken will be 2. Double bashing is not required. Deep swimming without clean water is not required.
 
-Expert: For people who have played a fair amount of the randomizer. Tricks involving out-of-the-box uses of abilities may be required. Damage boosting may be required, but every spike patch can be crossed with only a single instance of damage. Double bashing is not required. Only one of bash or stomp is guaranteed to be on the right side.
+Expert: For people who have played a fair amount of the randomizer. Tricks involving out-of-the-box uses of abilities may be required. Damage boosting may be required, but every spike patch can be crossed with only a single instance of damage. Double bashing is not required.
 
 Master: For people who want to struggle. Everything except going OOB or using TA is fair game. Paths requiring triple jump may be required. Extended damage boosting with ultra defense may be required. Only one of bash or stomp is guaranteed to be on the right side.
 
