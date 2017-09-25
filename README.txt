@@ -1,19 +1,32 @@
 Setup:
 
 Put Assembly-CSharp.dll in Steam/steamapps/common/Ori DE/oriDE_Data/Managed
-Rename one of the seeds to "randomizer.dat", put it in Steam/steamapps/common/Ori DE
+Use https://sigmasin.github.io/OriDERandomizer/ to generate seeds
+Place a seed named "randomizer.dat" in Steam/steamapps/common/Ori DE
 
-CovertMuffin has a great video guide on setting up the randomizer here: https://youtu.be/0O8_o4nxd_o
+CovertMuffin has a video guide on setting up the randomizer here: https://youtu.be/0O8_o4nxd_o
 
 Notes:
 
 If you get stuck, use Alt+R to send yourself back to glades. Wall jump, double jump, and post ginso escape are all possible sticking points (you will be able to get into swamp without doing the ginso escape, at some point). Don't use Alt+R while you're in a locked room (sein fronkey fight, ginso miniboss, etc.) or you will probably be softlocked.
 
-OOBs, timed level ups, and sorrow bash will not be required. Stomping cflame walls from the right may be required. Luring enemies to bash and break barriers may be required. The first energy cell and sein are not randomized.
-
-Hint messages will pop up at the top of the screen to show you what you are getting. The text boxes at skill trees don't represent what they're actually giving you. If you pick something up that doesn't show a hint, it was either blocked by another message or I missed that item.
-
 In the menu, clean water is represented by warmth. The actual warmth event has no effect. After you have clean water, the poison water visuals will not change but you'll be able to swim in it.
+
+The most commonly played modes are shards and limitkeys. These modes mitigate the hunt for the sunstone in their own ways. Limitkeys forces all dungeon keys to appear at skill trees or world events (getting any of the dungeon keys, finishing the ginso escape, or starting the forlorn escape). Shards places 5 fragments of each key around the world -- upon finding 3, you are able to enter the corresponding dungeon. Clues mode, added in 2.0, provides general locations for a new key for each 3 trees visited.
+
+A guide on randomizer terminology and routing is available here: https://docs.google.com/document/d/1g7mSMY5IzORo7mrkmfb0cxLmiw2FD8rfkplIJUDLy-4/edit#heading=h.kiiklir95dur
+
+Difficulty Guide
+
+Not sure what to play? Here is a description of some common presets:
+
+Casual: For people who have not speedrun the game. The only glitch that may be required is breaking charge flame walls with stomp. Damage boosting may be required, but the maximum damage taken will be 2.
+
+Standard: For people who have run All Skills. It is assumed that all tricks used in the All Skills run are known. Damage boosting may be required, but the maximum damage taken will be 2. Double bashing is not required. Deep swimming without clean water is not required. Bash and stomp are guaranteed to be on the right side of the map.
+
+Expert: For people who have played a fair amount of the randomizer. Tricks involving out-of-the-box uses of abilities may be required. Damage boosting may be required, but every spike patch can be crossed with only a single instance of damage. Double bashing is not required. Only one of bash or stomp is guaranteed to be on the right side.
+
+Master: For people who want to struggle. Everything except going OOB or using TA is fair game. Paths requiring triple jump may be required. Extended damage boosting with ultra defense may be required. Only one of bash or stomp is guaranteed to be on the right side.
 
 
 COMMANDS (can be customized using RandomizerRebinding.txt):
@@ -27,15 +40,6 @@ Alt+V:              Within Chaos Mode, toggle messages
 Alt+F:              Within Chaos Mode, force an effect to spawn
 Alt+P:              Display current skill tree and shard progress
 
-
-Difficulty Guide
-
-Not sure what to play? Here is a description of some common presets:
-
-Casual: For people who have not speedrun the game. The only glitch that may be required is breaking charge flame walls with stomp. Damage boosting may be required, but the maximum damage taken will be 2.
-Standard: For people who have run All Skills. It is assumed that all tricks used in the All Skills run are known. Damage boosting may be required, but the maximum damage taken will be 2. Double bashing is not required.
-Expert: For people who have played a fair amount of the randomizer. Tricks involving out-of-the-box uses of abilities may be required. Damage boosting may be required, but every spike patch can be crossed with only a single instance of damage. Double bashing may be required.
-Master: For people who want to struggle. Everything except going OOB or using TA is fair game. Paths requiring triple jump may be required. Extended damage boosting with ultra defense may be required. Only one of bash or stomp is guaranteed to be on the right side.
 
 
 CHAOS MODE?

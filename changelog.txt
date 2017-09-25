@@ -1,3 +1,44 @@
+v2.0
+
+Logic changes:
+
+-The 100 exp under the drain in swamp is now considered accessible without full swamp access
+-The 100 exp in the water at the valley entrance now has a chance of being Bash
+-The 100 exp on the valley entry tree is now accessible with only Wall Jump
+-Accessing "Raziel No" with only Climb has been removed from standard and added to expert
+-Entering swamp using Bash to manipulate the frog (as per the All Skills route) is now in standard
+-Some items on the left side of Gumo's Hideout are now considered accessible without vertical movement if you have access from the blackroot connection
+-Charge Jump can now substitute for one of Glide/Double Jump for accessing Horu
+-Navigating Horu with Bash+Grenade has been added to expert
+-Entering valley in expert now requires only one of Stomp or Bash
+-Entering sorrow by charge jumping along the spikes is now in expert
+-Expert mode no longer requires doublebashing
+
+Clues mode:
+
+-New alternative mode for easing the key hunt (as do shards and limitkeys)
+-For each 3 skill trees activated, a random (based on seed) key will have its location revealed by "show progress" (default Alt+P)
+-Locations displayed are based on the area the item counts towards for % completion - for example, the room of the death gauntlet next to glades is treated as grove, and the 2 orbs in the upper left part of valley are treated as sorrow.
+
+Item changes:
+
+-The damage of spirit flame upgrade has been reduced from +2 to +1
+-The frequency of mega health and mega energy has been reduced from 5 to 3
+-Added teleporter activation items for Forlorn, Grotto, Sorrow, Grove, Swamp, and Valley
+
+Miscellaneous:
+
+-A web-based version of the seed generator is now available at https://sigmasin.github.io/OriDERandomizer
+-Spoiler files now have more clear formatting
+-Alt+R uses a lower position
+-Alt+R can no longer warp displace
+-Alt+R will now always reset misty
+-Hint messages are now color-coded:
+    Green: skills
+    Blue: water vein, clean water
+    Yellow: gumon seal, wind
+    Red: sunstone, warmth
+
 v1.3
 
 -Alt+R is now disabled when inputlocked or carrying an object
