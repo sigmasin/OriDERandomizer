@@ -17,7 +17,7 @@ Logic changes:
 Clues mode:
 
 -New alternative mode for easing the key hunt (as do shards and limitkeys)
--For each 3 skill trees activated, a random (based on seed) key will have its location revealed by "show progress" (default Alt+P)
+-For each 3 skill trees activated, a random (based on seed) key will have its location revealed by Alt+P
 -Locations displayed are based on the area the item counts towards for % completion - for example, the room of the death gauntlet next to glades is treated as grove, and the 2 orbs in the upper left part of valley are treated as sorrow.
 
 Item changes:

@@ -148,7 +148,7 @@
         <Home name="SunkenGladesRunaway"/>
         <Target name="Sunstone"/>
         <Requirements>
-          <Requirement mode="normal">TPSorrow+Glide+Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">TPSorrow+Glide+Climb+ChargeJump+Stomp</Requirement>
           <Requirement mode="extended-damage">TPSorrow+Glide+Stomp+ChargeJump+Dash+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="dbash">TPSorrow+Glide+Stomp+Bash</Requirement>
           <Requirement mode="dbash">TPSorrow+Glide+ChargeJump+Bash</Requirement>
@@ -3653,7 +3653,7 @@
         <Home name="ValleyMain"/>
         <Target name="Misty"/>
         <Requirements>
-          <Requirement mode="normal">Glide</Requirement>
+          <Requirement mode="normal">Glide+Bash</Requirement>
           <Requirement mode="dboost">DoubleJump+HC+HC+HC+HC</Requirement>
           <Requirement mode="extreme">DoubleJump</Requirement>
         </Requirements>
@@ -4213,13 +4213,6 @@
       </Connection>
       <Connection>
         <Home name="Sorrow"/>
-        <Target name="ValleyMain"/>
-        <Requirements>
-          <Requirement mode="normal">Stomp</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="Sorrow"/>
         <Target name="PreSorrowOrb"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
@@ -4414,7 +4407,8 @@
         <Home name="UpperSorrow"/>
         <Target name="Sorrow"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
+          <Requirement mode="normal">Stomp</Requirement>
+          <Requirement mode="extended">Climb+ChargeJump</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -4485,7 +4479,8 @@
         <Home name="Sunstone"/>
         <Target name="UpperSorrow"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
+          <Requirement mode="normal">Stomp</Requirement>
+          <Requirement mode="extended">Climb+ChargeJump</Requirement>
         </Requirements>
       </Connection>
     </Connections>

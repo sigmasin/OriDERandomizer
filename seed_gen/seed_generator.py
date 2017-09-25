@@ -330,7 +330,7 @@ def assign_random(recurseCount = 0):
     for key in itemPool.keys():
         position += itemPool[key]/itemCount
         if value <= position:
-            if (starved and key in skillsOutput and recurseCount < 3) or (inForlorn and (key == "GumonSealShard" or key == "ForlornKey")):
+            if (starved and key in skillsOutput and recurseCount < 3) or (inForlorn and recurseCount < 5 and (key == "GumonSealShard" or key == "ForlornKey")):
                 return assign_random(recurseCount = recurseCount + 1)
             return assign(key)
 
