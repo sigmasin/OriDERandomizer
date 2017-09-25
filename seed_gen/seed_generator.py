@@ -226,11 +226,14 @@ def open_free_connections():
 
 
 def get_all_accessible_locations():
+    global inForlorn
     locations = []
     for area in areasReached.keys():
         currentLocations = areas[area].get_locations()
         for location in currentLocations:
             location.difficulty += areas[area].difficulty
+            if location.zone == "Forlorn":
+                inForlorn = True
         if limitkeys:
             loc = ""
             for location in currentLocations:
@@ -321,12 +324,13 @@ def prepare_path(free_space):
 
 
 def assign_random(recurseCount = 0):
+    global inForlorn
     value = random.random()
     position = 0.0
     for key in itemPool.keys():
         position += itemPool[key]/itemCount
         if value <= position:
-            if starved and key in skillsOutput and recurseCount < 3:
+            if (starved and key in skillsOutput and recurseCount < 3) or (inForlorn and (key == "GumonSealShard" or key == "ForlornKey")):
                 return assign_random(recurseCount = recurseCount + 1)
             return assign(key)
 
@@ -405,6 +409,7 @@ def assign_to_location(item, location):
             key = "MapStone " + str(mapstonesAssigned)
         if item in locationAnalysis[key]:
             locationAnalysis[key][item] += 1
+            locationAnalysis[location.zone][item] += 1
 
 def get_random_exp_value(expRemaining, expSlots):
 
@@ -547,13 +552,13 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         "WallJump": 13,
         "ChargeFlame": 13,
         "DoubleJump": 13,
-        "Bash": 30,
-        "Stomp": 28,
+        "Bash": 41,
+        "Stomp": 29,
         "Glide": 17,
-        "Climb": 40,
-        "ChargeJump": 52,
+        "Climb": 41,
+        "ChargeJump": 59,
         "Dash": 13,
-        "Grenade": 18,
+        "Grenade": 29,
         "GinsoKey": 12,
         "ForlornKey": 12,
         "HoruKey": 12,
@@ -777,6 +782,9 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
                 key = loc.to_string()
                 if key not in locationAnalysis.keys():
                     locationAnalysis[key] = itemsToAnalyze.copy()
+                zoneKey = loc.zone
+                if zoneKey not in locationAnalysis.keys():
+                    locationAnalysis[zoneKey] = itemsToAnalyze.copy()
         for conn in child.find("Connections"):
             connection = Connection(conn.find("Home").attrib["name"], conn.find("Target").attrib["name"])
             if not includePlants:
@@ -805,6 +813,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
     locationsToAssign = []
     connectionQueue = []
     global reservedLocations
+    global inForlorn
     reservedLocations = []
 
     skillCount = 10
@@ -815,6 +824,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         doorQueue = OrderedDict()
         mapQueue = OrderedDict()
         spoilerPath = ""
+        inForlorn = False
 
         global spoilerGroup
         spoilerGroup = {"MS": [], "KS": [], "EC": [], "HC": []}
@@ -1093,7 +1103,16 @@ def main():
             spoiler.close()
 
     if args.analysis:
-        print(skillAnalysis)
+        print(skillAnalysis["WallJump"])
+        print(skillAnalysis["ChargeFlame"])
+        print(skillAnalysis["DoubleJump"])
+        print(skillAnalysis["Bash"])
+        print(skillAnalysis["Stomp"])
+        print(skillAnalysis["Glide"])
+        print(skillAnalysis["Climb"])
+        print(skillAnalysis["ChargeJump"])
+        print(skillAnalysis["Dash"])
+        print(skillAnalysis["Grenade"])
 
     if args.loc_analysis:
         print("location,WallJump,ChargeFlame,DoubleJump,Bash,Stomp,Glide,Climb,ChargeJump,Dash,Grenade,GinsoKey,ForlornKey,HoruKey,Water,Wind,WaterVeinShard,GumonSealShard,SunstoneShard,TPForlorn,TPGrotto,TPSorrow,TPGrove,TPSwamp,TPValley")

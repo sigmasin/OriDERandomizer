@@ -221,12 +221,15 @@ def open_free_connections():
 
 
 def get_all_accessible_locations():
+    global inForlorn
     locations = []
     for area in areaList:
         if area in areasReached.keys():
             currentLocations = areas[area].get_locations()
             for location in currentLocations:
                 location.difficulty += areas[area].difficulty
+                if location.zone == "Forlorn":
+                    inForlorn = True
             if limitkeys:
                 loc = ""
                 for location in currentLocations:
@@ -319,12 +322,13 @@ def prepare_path(free_space):
 
 
 def assign_random(recurseCount = 0):
+    global inForlorn
     value = random.random()
     position = 0.0
     for key in itemList:
         position += itemPool[key]/itemCount
         if value <= position:
-            if starved and key in skillsOutput and recurseCount < 3:
+            if (starved and key in skillsOutput and recurseCount < 3) or (inForlorn and (key == "GumonSealShard" or key == "ForlornKey")):
                 return assign_random(recurseCount = recurseCount + 1)
             return assign(key)
 
@@ -534,13 +538,13 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         "WallJump": 13,
         "ChargeFlame": 13,
         "DoubleJump": 13,
-        "Bash": 30,
-        "Stomp": 28,
+        "Bash": 41,
+        "Stomp": 29,
         "Glide": 17,
-        "Climb": 40,
-        "ChargeJump": 52,
+        "Climb": 41,
+        "ChargeJump": 59,
         "Dash": 13,
-        "Grenade": 18,
+        "Grenade": 29,
         "GinsoKey": 12,
         "ForlornKey": 12,
         "HoruKey": 12,
@@ -809,6 +813,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
     locationsToAssign = []
     connectionQueue = []
     global reservedLocations
+    global inForlorn
     reservedLocations = []
 
     skillCount = 10
@@ -819,6 +824,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         doorQueue = {}
         mapQueue = {}
         spoilerPath = ""
+        inForlorn = False
 
         global spoilerGroup
         spoilerGroup = {"MS": [], "KS": [], "EC": [], "HC": []}

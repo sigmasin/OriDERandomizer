@@ -22837,6 +22837,9 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 				while (typeof($p['__wrapped_next']($iter10_nextval).$nextval) != 'undefined') {
 					location = $iter10_nextval.$nextval;
 					location.difficulty = $p['__op_add']($add49=$p['getattr'](location, 'difficulty'),$add50=$p['getattr']((typeof areas == "undefined"?$m.areas:areas).__getitem__(area), 'difficulty'));
+					if ($p['bool']($p['op_eq']($p['getattr'](location, 'zone'), 'Forlorn'))) {
+						$m['inForlorn'] = true;
+					}
 				}
 				if ($p['bool']((typeof limitkeys == "undefined"?$m.limitkeys:limitkeys))) {
 					loc = '';
@@ -23006,7 +23009,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 	$m['prepare_path'].__args__ = [null,null,['free_space']];
 	$m['assign_random'] = function(recurseCount) {
 		if (typeof recurseCount == 'undefined') recurseCount=arguments.callee.__args__[2][1];
-		var $and8,$iter20_iter,$iter20_nextval,$iter20_type,$add77,$add80,$and6,$div11,value,$and7,$iter20_idx,$div12,key,position,$add79,$add78,$iter20_array;
+		var $iter20_nextval,$and9,$add80,$add78,$iter20_array,$div11,$div12,$and8,$iter20_iter,$or7,$or6,$or9,$or8,$and6,$and7,$and10,key,$add77,$iter20_type,value,$add79,$iter20_idx,position;
 		value = $m.random['random']();
 		position = 0.0;
 		$iter20_iter = $m.itemList;
@@ -23017,7 +23020,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 				$div11/$div12:
 				$p['op_div']($div11,$div12)));
 			if ($p['bool'](($p['cmp'](value, position) < 1))) {
-				if ($p['bool'](($p['bool']($and6=(typeof starved == "undefined"?$m.starved:starved))?($p['bool']($and7=(typeof skillsOutput == "undefined"?$m.skillsOutput:skillsOutput).__contains__(key))?($p['cmp'](recurseCount, 3) == -1):$and7):$and6))) {
+				if ($p['bool'](($p['bool']($or6=($p['bool']($and6=(typeof starved == "undefined"?$m.starved:starved))?($p['bool']($and7=(typeof skillsOutput == "undefined"?$m.skillsOutput:skillsOutput).__contains__(key))?($p['cmp'](recurseCount, 3) == -1):$and7):$and6))?$or6:($p['bool']($and9=$m['inForlorn'])?($p['bool']($or8=$p['op_eq'](key, 'GumonSealShard'))?$or8:$p['op_eq'](key, 'ForlornKey')):$and9)))) {
 					return $pyjs_kwargs_call(null, $m['assign_random'], null, null, [{recurseCount:$p['__op_add']($add79=recurseCount,$add80=1)}]);
 				}
 				return (typeof assign == "undefined"?$m.assign:assign)(key);
@@ -23030,14 +23033,14 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 	$m['assign_random'].__bind_type__ = 0;
 	$m['assign_random'].__args__ = [null,null,['recurseCount', 0]];
 	$m['assign'] = function(item) {
-		var $or7,$or6,$sub13,$sub12,$sub11,$sub10,$or9,$or8,$sub14,$sub9,$or11,$or10,$add82,$add81;
+		var $or14,$sub13,$sub12,$sub11,$sub10,$sub14,$or15,$sub9,$or11,$or10,$or13,$or12,$add82,$add81;
 		(typeof itemPool == "undefined"?$m.itemPool:itemPool).__setitem__(item, $p['max']($p['__op_sub']($sub9=(typeof itemPool == "undefined"?$m.itemPool:itemPool).__getitem__(item),$sub10=1), 0));
-		if ($p['bool'](($p['bool']($or6=$p['op_eq'](item, 'EC'))?$or6:($p['bool']($or7=$p['op_eq'](item, 'KS'))?$or7:$p['op_eq'](item, 'HC'))))) {
+		if ($p['bool'](($p['bool']($or10=$p['op_eq'](item, 'EC'))?$or10:($p['bool']($or11=$p['op_eq'](item, 'KS'))?$or11:$p['op_eq'](item, 'HC'))))) {
 			if ($p['bool'](($p['cmp']((typeof costs == "undefined"?$m.costs:costs).__getitem__(item), 0) == 1))) {
 				(typeof costs == "undefined"?$m.costs:costs).__setitem__(item, $p['__op_sub']($sub11=(typeof costs == "undefined"?$m.costs:costs).__getitem__(item),$sub12=1));
 			}
 		}
-		else if ($p['bool'](($p['bool']($or9=$p['op_eq'](item, 'WaterVeinShard'))?$or9:($p['bool']($or10=$p['op_eq'](item, 'GumonSealShard'))?$or10:$p['op_eq'](item, 'SunstoneShard'))))) {
+		else if ($p['bool'](($p['bool']($or13=$p['op_eq'](item, 'WaterVeinShard'))?$or13:($p['bool']($or14=$p['op_eq'](item, 'GumonSealShard'))?$or14:$p['op_eq'](item, 'SunstoneShard'))))) {
 			if ($p['bool'](($p['cmp']((typeof costs == "undefined"?$m.costs:costs).__getitem__(item), 0) == 1))) {
 				(typeof costs == "undefined"?$m.costs:costs).__setitem__(item, $p['__op_sub']($sub13=(typeof costs == "undefined"?$m.costs:costs).__getitem__(item),$sub14=1));
 			}
@@ -23063,9 +23066,9 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 	$m['force_assign'].__bind_type__ = 0;
 	$m['force_assign'].__args__ = [null,null,['item'],['location']];
 	$m['assign_to_location'] = function(item, location) {
-		var $add134,$add127,$add89,$add88,$add129,$add131,$add116,$and9,$add83,$add117,$add114,$add115,$add87,$add86,$add85,$add84,$add133,$sub16,$add108,$sub18,$add121,$add128,$add105,$add123,$add113,$add104,$add100,$add118,$add132,$add119,$add124,$add136,$add94,$add120,$sub17,$add95,$add137,$add110,$mul22,$mul21,$add101,$add103,$add102,$add98,$add99,$add107,$add106,assignment,$add96,$add97,$add90,$add91,$add92,$add93,$and10,$add111,$add138,$add126,$add140,$add130,$add135,value,$sub15,$add109,$add122,$add125,$add139,$add112;
+		var $add134,$add127,$add89,$add88,$add129,$add131,$add116,$add100,$add83,$add117,$add114,$add115,$add87,$add86,$add85,$add84,$add133,$add108,$sub18,$add121,$add105,$add123,$add113,$add104,$add128,$add118,$add132,$add119,$add124,$add136,$add94,$add120,$sub17,$add95,$add137,$add110,$mul22,$mul21,$add101,$add103,$add102,$add98,$add99,$add107,$add106,assignment,$add96,$add97,$add90,$add91,$add92,$add93,$and12,$sub16,$and11,$add111,$add138,$add126,$add140,$add130,$add135,value,$sub15,$add109,$add122,$add125,$add139,$add112;
 		assignment = '';
-		if ($p['bool'](($p['bool']($and9=!$p['bool']((typeof nonProgressiveMapstones == "undefined"?$m.nonProgressiveMapstones:nonProgressiveMapstones)))?$p['op_eq']($p['getattr'](location, 'orig'), 'MapStone'):$and9))) {
+		if ($p['bool'](($p['bool']($and11=!$p['bool']((typeof nonProgressiveMapstones == "undefined"?$m.nonProgressiveMapstones:nonProgressiveMapstones)))?$p['op_eq']($p['getattr'](location, 'orig'), 'MapStone'):$and11))) {
 			$m['mapstonesAssigned'] = $p['__op_add']($add83=$m['mapstonesAssigned'],$add84=1);
 			assignment = $p['__op_add']($add89=assignment,$add90=$p['__op_add']($add87=$p['str']($p['__op_add']($add85=20,$add86=(typeof ($mul21=$m['mapstonesAssigned'])==typeof ($mul22=4) && typeof $mul21=='number'?
 				$mul21*$mul22:
@@ -23198,7 +23201,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 	$m['selectText'].__bind_type__ = 0;
 	$m['selectText'].__args__ = [null,null,['selectFrom'],['selectTo'],['line']];
 	$m['placeItems'] = function(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode, cluesMode, noTeleporters, modes, flags, starvedMode, preferPathDifficulty, setNonProgressiveMapstones) {
-		var $sub27,$iter33_nextval,$iter40_array,$sub28,$sub29,satisfied,$iter26_idx,$iter32_iter,seedDifficultyMap,$iter37_nextval,skill,$add285,$add258,$add269,$iter34_iter,$iter33_type,$iter30_nextval,$iter26_type,$iter27_idx,$add282,$iter31_idx,$iter29_array,$add189,$add188,currentConnection,mapstoneCount,keystoneCount,location,$add235,$add234,$add181,$add180,$add183,$add185,ginso,match,$add186,$sub31,$sub30,$sub33,$add168,$sub35,$sub34,$sub37,$add163,$add162,$add161,$add167,$add166,$add165,$add164,$iter35_idx,$iter33_array,instance,$add262,$iter28_iter,$add196,$add197,$add194,$add195,$add192,$add193,$add190,$add191,$iter34_idx,$iter27_type,$iter28_nextval,$iter28_array,$add198,$add199,$add220,item,$add222,$add223,$add224,mode,$add226,$add227,$add228,$add229,$mul37,$iter37_iter,$add178,$add179,$sub32,$iter35_type,$add286,$add287,$add284,$iter25_nextval,$add170,$add171,$add172,$add173,$add174,$add175,$add176,$add177,$mul41,horu,$iter26_array,$and20,event,$iter31_array,$iter39_type,$add221,$iter36_nextval,keys,$iter24_array,$add219,$add218,$add215,$add214,$add217,$add216,$add211,$add210,$add213,$add212,$add225,$iter30_type,$add279,opening,$iter35_nextval,$add276,$add275,$add274,$add273,$add272,$add271,$add270,difficulty,$iter29_nextval,$iter30_idx,key,$iter24_iter,$iter38_array,$iter33_idx,$iter39_idx,$iter38_type,$iter34_type,$iter23_nextval,$iter26_iter,$iter24_idx,$iter30_iter,$add233,$iter37_idx,$iter37_type,$iter29_type,connection,$add209,$add278,$add202,$add203,$add200,$add201,$add206,spoilerStr,$add204,$add205,$iter39_nextval,spoilerPath,$iter32_idx,$iter40_iter,$add268,$iter37_array,$iter33_iter,$add264,$add265,$add266,$add267,$iter31_nextval,$iter23_type,$add263,$add244,$add281,$iter36_iter,$iter36_type,$iter40_type,$iter40_nextval,loc,$iter28_type,locationsToAssign,area,$add231,$iter40_idx,$add230,$mul39,$iter32_array,mapstones,$iter27_iter,$add288,$add236,$add259,$add237,$add260,$iter32_nextval,$iter36_idx,$add251,$add250,$add253,$add252,$add255,$add254,$add257,$add256,$iter23_array,$add239,plants,$add182,$add240,$iter29_iter,$add184,$iter34_array,$add187,$or13,$or12,$iter30_array,$iter29_idx,$add283,groupDepth,$add232,$iter38_iter,$iter25_array,$add280,$add241,$iter26_nextval,$iter28_idx,$add169,$iter38_idx,$add238,$iter23_idx,$iter25_iter,$sub40,$iter39_iter,itemsToAssign,difficultyMap,$add247,$iter23_iter,$iter31_type,$sub36,$mul40,$add208,$mul42,$iter24_type,$iter32_type,$sub39,$add245,$sub38,$add242,$iter36_array,$iter24_nextval,$iter25_idx,$iter27_nextval,$iter38_nextval,$mul38,$add277,$iter39_array,$and12,$and13,$and11,$and16,$and17,$and14,$and15,$add261,$iter35_array,$and18,$and19,$iter25_type,$iter34_nextval,$iter35_iter,i,lines,limitKeysPool,$add207,$add246,$iter27_array,$add243,forlorn,$add249,$add248,$iter31_iter;
+		var $sub27,$iter33_nextval,$iter40_array,$sub28,$sub29,satisfied,$iter26_idx,$iter32_iter,seedDifficultyMap,$iter37_nextval,skill,$add285,$add258,$add269,$iter34_iter,$iter33_type,$iter30_nextval,$iter26_type,$iter27_idx,$add282,$iter31_idx,$iter29_array,$add189,$add188,currentConnection,mapstoneCount,keystoneCount,location,$add235,$add234,$add181,$add180,$add183,$add185,ginso,match,$add186,$sub31,$sub30,$sub33,$add168,$sub35,$sub34,$sub37,$add163,$add162,$add161,$add167,$add166,$add165,$add164,$iter35_idx,$iter33_array,instance,$add262,$iter28_iter,$add196,$add197,$add194,$add195,$add192,$add193,$add190,$add191,$iter34_idx,$iter28_nextval,$iter28_array,$add198,$add199,$add220,item,$add222,$add223,$add224,mode,$add226,$add227,$add228,$add229,$mul37,$iter37_iter,$add178,$add179,$sub32,$iter35_type,$add286,$add287,$add284,$iter25_nextval,$add170,$add171,$add172,$add173,$add174,$add175,$add176,$add177,$mul41,horu,$and22,$and21,$and20,event,$iter31_array,$iter39_type,$add221,$iter36_nextval,keys,$iter24_array,$add219,$add218,$add215,$add214,$add217,$add216,$add211,$add210,$add213,$add212,$add225,$iter30_type,$add279,opening,$iter35_nextval,$add276,$add275,$add274,$add273,$add272,$add271,$add270,difficulty,$iter29_nextval,$iter30_idx,key,$iter24_iter,$iter38_array,$iter33_idx,$iter39_idx,$iter38_type,$iter34_type,$iter23_nextval,$iter26_iter,$iter24_idx,$iter30_iter,$add233,$iter37_idx,$iter37_type,$iter29_type,connection,$add209,$add278,$add202,$add203,$add200,$add201,$add206,spoilerStr,$add204,$add205,$iter39_nextval,spoilerPath,$iter32_idx,$iter40_iter,$add268,$iter37_array,$iter33_iter,$add264,$add265,$add266,$add267,$iter31_nextval,$iter23_type,$add263,$add244,$add281,$iter36_iter,$iter36_type,$iter40_type,$iter40_nextval,loc,$iter28_type,locationsToAssign,area,$add231,$iter40_idx,$add230,$mul39,$iter32_array,mapstones,$iter27_iter,$add288,$add236,$add259,$add237,$add260,$iter32_nextval,$iter36_idx,$add251,$add250,$add253,$add252,$add255,$add254,$add257,$add256,$iter23_array,$or16,$add239,plants,$add182,$add240,$iter29_iter,$add184,$iter34_array,$or17,$add187,$iter27_type,$iter30_array,$iter29_idx,$add283,groupDepth,$add232,$iter38_iter,$iter25_array,$add280,$add241,$iter26_nextval,$iter28_idx,$add169,$iter38_idx,$add238,$iter23_idx,$iter25_iter,$iter26_array,$sub40,$iter39_iter,itemsToAssign,difficultyMap,$add247,$iter23_iter,$iter31_type,$sub36,$mul40,$add208,$mul42,$iter24_type,$iter32_type,$sub39,$add245,$sub38,$add242,$iter36_array,$iter24_nextval,$iter25_idx,$iter27_nextval,$iter38_nextval,$mul38,$add277,$iter39_array,$and13,$and16,$and17,$and14,$and15,$add261,$iter35_array,$and18,$and19,$iter25_type,$iter34_nextval,$iter35_iter,i,lines,limitKeysPool,$add207,$add246,$iter27_array,$add243,forlorn,$add249,$add248,$iter31_iter;
 		$m['shards'] = shardsMode;
 		$m['limitkeys'] = limitkeysMode;
 		$m['starved'] = starvedMode;
@@ -23214,7 +23217,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 		$m['eventList'] = $p['list']([]);
 		spoilerStr = '';
 		groupDepth = 0;
-		$m['costs'] = $p['dict']([['Free', 0], ['MS', 0], ['KS', 2], ['EC', 6], ['HC', 12], ['WallJump', 13], ['ChargeFlame', 13], ['DoubleJump', 13], ['Bash', 30], ['Stomp', 28], ['Glide', 17], ['Climb', 40], ['ChargeJump', 52], ['Dash', 13], ['Grenade', 18], ['GinsoKey', 12], ['ForlornKey', 12], ['HoruKey', 12], ['Water', 80], ['Wind', 80], ['WaterVeinShard', 5], ['GumonSealShard', 5], ['SunstoneShard', 5], ['TPForlorn', 180], ['TPGrotto', 60], ['TPSorrow', 90], ['TPGrove', 60], ['TPSwamp', 60], ['TPValley', 90]]);
+		$m['costs'] = $p['dict']([['Free', 0], ['MS', 0], ['KS', 2], ['EC', 6], ['HC', 12], ['WallJump', 13], ['ChargeFlame', 13], ['DoubleJump', 13], ['Bash', 41], ['Stomp', 29], ['Glide', 17], ['Climb', 41], ['ChargeJump', 59], ['Dash', 13], ['Grenade', 29], ['GinsoKey', 12], ['ForlornKey', 12], ['HoruKey', 12], ['Water', 80], ['Wind', 80], ['WaterVeinShard', 5], ['GumonSealShard', 5], ['SunstoneShard', 5], ['TPForlorn', 180], ['TPGrotto', 60], ['TPSorrow', 90], ['TPGrove', 60], ['TPSwamp', 60], ['TPValley', 90]]);
 		$m['areas'] = $p['dict']([]);
 		$m['areasReached'] = $p['dict']([['SunkenGladesRunaway', true]]);
 		$m['currentAreas'] = $p['list'](['SunkenGladesRunaway']);
@@ -23254,7 +23257,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 				}
 				forlorn = $m.random['randint'](0, 13);
 				horu = $m.random['randint'](0, 14);
-				if ($p['bool'](($p['bool']($and11=!$p['op_eq'](ginso, forlorn))?($p['bool']($and12=!$p['op_eq'](ginso, horu))?($p['bool']($and13=!$p['op_eq'](forlorn, horu))?($p['cmp']($p['__op_add']($add161=ginso,$add162=forlorn), 26) == -1):$and13):$and12):$and11))) {
+				if ($p['bool'](($p['bool']($and13=!$p['op_eq'](ginso, forlorn))?($p['bool']($and14=!$p['op_eq'](ginso, horu))?($p['bool']($and15=!$p['op_eq'](forlorn, horu))?($p['cmp']($p['__op_add']($add161=ginso,$add162=forlorn), 26) == -1):$and15):$and14):$and13))) {
 					satisfied = true;
 				}
 			}
@@ -23311,7 +23314,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 				continue;
 			}
 			match = $m['re']['match']('.*<Requirement mode=.*', lines.__getitem__(i));
-			if ($p['bool'](($p['bool']($and15=match)?currentConnection:$and15))) {
+			if ($p['bool'](($p['bool']($and17=match)?currentConnection:$and17))) {
 				mode = $m['selectText']('"', '"', lines.__getitem__(i));
 				if ($p['bool'](modes.__contains__(mode))) {
 					currentConnection['add_requirements']($m['selectText']('>', '</Requirement>', lines.__getitem__(i))['$$split']('+'), difficultyMap.__getitem__(mode));
@@ -23320,7 +23323,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 				continue;
 			}
 			match = $m['re']['match']('.*</Requirements>.*', lines.__getitem__(i));
-			if ($p['bool'](($p['bool']($and17=match)?currentConnection:$and17))) {
+			if ($p['bool'](($p['bool']($and19=match)?currentConnection:$and19))) {
 				area['add_connection'](currentConnection);
 				i = $p['__op_add']($add187=i,$add188=1);
 				continue;
@@ -23357,6 +23360,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 			$m['doorQueue'] = $p['dict']([]);
 			$m['mapQueue'] = $p['dict']([]);
 			spoilerPath = '';
+			$m['inForlorn'] = false;
 			$m['spoilerGroup'] = $p['dict']([['MS', $p['list']([])], ['KS', $p['list']([])], ['EC', $p['list']([])], ['HC', $p['list']([])]]);
 			opening = true;
 			while ($p['bool'](opening)) {
@@ -23375,7 +23379,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 				$m['connectionQueue'] = $p['list']([]);
 			}
 			locationsToAssign = $m['get_all_accessible_locations']();
-			if ($p['bool'](($p['bool']($and19=!$p['bool']($m['doorQueue']))?!$p['bool']($m['mapQueue']):$and19))) {
+			if ($p['bool'](($p['bool']($and21=!$p['bool']($m['doorQueue']))?!$p['bool']($m['mapQueue']):$and21))) {
 				spoilerPath = $m['prepare_path']($p['len'](locationsToAssign));
 				if ($p['bool'](!$p['bool']($m['assignQueue']))) {
 					if ($p['bool'](!$p['bool']($m['reservedLocations']))) {
@@ -23417,7 +23421,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 				$iter26_nextval=$p['__iter_prepare']($iter26_iter,false);
 				while (typeof($p['__wrapped_next']($iter26_nextval).$nextval) != 'undefined') {
 					item = $iter26_nextval.$nextval;
-					if ($p['bool'](($p['bool']($or12=$m['skillsOutput'].__contains__(item))?$or12:$m['eventsOutput'].__contains__(item)))) {
+					if ($p['bool'](($p['bool']($or16=$m['skillsOutput'].__contains__(item))?$or16:$m['eventsOutput'].__contains__(item)))) {
 						$m['preferred_difficulty_assign'](item, locationsToAssign);
 						itemsToAssign['remove'](item);
 					}
