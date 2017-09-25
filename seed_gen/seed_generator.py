@@ -9,14 +9,14 @@ from collections import OrderedDict
 #https://en.wikipedia.org/wiki/Mersenne_Twister
 class Random:
 
-    def seed(self, seed):        
+    def seed(self, seed):
         self.index = 624
         self.mt = [0] * 624
         self.mt[0] = hash(seed)
         for i in range(1, 624):
             self.mt[i] = int(0xFFFFFFFF & (1812433253 * (self.mt[i - 1] ^ self.mt[i - 1] >> 30) + i))
 
-    def generate_sequence(self):        
+    def generate_sequence(self):
         for i in range(624):
             # Get the most significant bit and add it to the less significant
             # bits of the next number
@@ -26,8 +26,8 @@ class Random:
             if y % 2 != 0:
                 self.mt[i] = self.mt[i] ^ 0x9908b0df
         self.index = 0
-        
-    def random(self):        
+
+    def random(self):
         if self.index >= 624:
             self.generate_sequence()
 
@@ -43,19 +43,19 @@ class Random:
         y = y ^ y >> 18
 
         self.index = self.index + 1
-        
+
         return int(0xFFFFFFFF & y) / float(0x100000000)
-        
-    def randrange(self, length):    
+
+    def randrange(self, length):
         return int(self.random() * length)
-        
-    def randint(self, low, high):    
+
+    def randint(self, low, high):
         return int(low + self.random() * (high - low + 1))
-        
-    def uniform(self, low, high):    
+
+    def uniform(self, low, high):
         return self.random() * (high - low) + low
-        
-    def shuffle(self, items):    
+
+    def shuffle(self, items):
         original = list(items)
         for i in range(len(items)):
             items[i] = original.pop(self.randrange(len(original)))
@@ -115,9 +115,9 @@ class Connection:
                 req.remove("ForlornKey")
                 req.append("GumonSealShard")
                 req.append("GumonSealShard")
-                req.append("GumonSealShard")    
                 req.append("GumonSealShard")
-                req.append("GumonSealShard")                 
+                req.append("GumonSealShard")
+                req.append("GumonSealShard")
             match = re.match(".*HoruKey.*", str(req))
             if match:
                 req.remove("HoruKey")
@@ -125,7 +125,7 @@ class Connection:
                 req.append("SunstoneShard")
                 req.append("SunstoneShard")
                 req.append("SunstoneShard")
-                req.append("SunstoneShard")                
+                req.append("SunstoneShard")
         self.requirements.append(req)
         self.difficulties.append(difficulty)
         match = re.match(".*KS.*KS.*KS.*KS.*", str(req))
@@ -168,26 +168,28 @@ class Connection:
                 minReq = self.requirements[i]
                 minDiff = self.difficulties[i]
         return (minReqScore, minReq, minDiff)
-        
+
 class Location:
 
     factor = 4.0
 
-    def __init__(self, x, y, area, orig, difficulty):
+    def __init__(self, x, y, area, orig, difficulty, zone):
         self.x = int(math.floor((x)/self.factor) * self.factor)
         self.y = int(math.floor((y)/self.factor) * self.factor)
         self.orig = orig
         self.area = area
         self.difficulty = difficulty
+        self.zone = zone
 
     def get_key(self):
         return self.x*10000 + self.y
-        
+
     def to_string(self):
         return self.area + " " + self.orig + " (" + str(self.x) + " " + str(self.y) + ")"
 
 
 def open_free_connections():
+    global seedDifficulty
     found = False
     keystoneCount = 0
     mapstoneCount = 0
@@ -212,6 +214,9 @@ def open_free_connections():
                             mapQueue[area] = connection
                             mapstoneCount += 1
                 else:
+                    if connection.target not in areasReached:
+                        currentAreas.append(connection.target)
+                        seedDifficulty += cost[2] * cost[2]
                     areasReached[connection.target] = True
                     if connection.target in areasRemaining:
                         areasRemaining.remove(connection.target)
@@ -234,7 +239,7 @@ def get_all_accessible_locations():
                     break
             if loc:
                 force_assign(keySpots[loc.orig], loc)
-                currentLocations.remove(loc)                    
+                currentLocations.remove(loc)
         locations.extend(currentLocations)
         areas[area].clear_locations()
     if reservedLocations:
@@ -324,7 +329,7 @@ def assign_random(recurseCount = 0):
             if starved and key in skillsOutput and recurseCount < 3:
                 return assign_random(recurseCount = recurseCount + 1)
             return assign(key)
-            
+
 def assign(item):
     itemPool[item] = max(itemPool[item]-1,0)
     if item == "EC" or item == "KS" or item == "HC":
@@ -338,64 +343,78 @@ def assign(item):
     inventory[item] += 1
     return item
 
-# for use in limitkeys mode    
+# for use in limitkeys mode
 def force_assign(item, location):
-    
+
     assign(item)
     assign_to_location(item, location)
 
 def assign_to_location(item, location):
 
     global outputStr
-    global spoilerStr
+    global eventList
+    global spoilerGroup
     global mapstonesAssigned
     global skillCount
     global expRemaining
     global expSlots
 
+    assignment = ""
+    
     # if mapstones are progressive, set a special location
     if not nonProgressiveMapstones and location.orig == "MapStone":
         mapstonesAssigned += 1
-        outputStr += (str(20 + mapstonesAssigned * 4) + "|")
+        assignment += (str(20 + mapstonesAssigned * 4) + "|")
         if item in costs.keys():
-            spoilerStr += (item + " from MapStone " + str(mapstonesAssigned) + "\n")
+            if item not in spoilerGroup:
+                spoilerGroup[item] = []
+            spoilerGroup[item].append(item + " from MapStone " + str(mapstonesAssigned) + "\n")
     else:
-        outputStr +=  (str(location.get_key()) + "|")
+        assignment +=  (str(location.get_key()) + "|")
         if item in costs.keys():
-            spoilerStr += (item + " from " + location.to_string() + "\n")
+            if item not in spoilerGroup:
+                spoilerGroup[item] = []
+            spoilerGroup[item].append(item + " from " + location.to_string() + "\n")
 
     if item in skillsOutput:
-        outputStr +=  (str(skillsOutput[item][:2]) + "|" + skillsOutput[item][2:] + "\n")
+        assignment +=  (str(skillsOutput[item][:2]) + "|" + skillsOutput[item][2:])
         if analysis:
             skillAnalysis[item] += skillCount
             skillCount -= 1
-        if locationAnalysis:
-            key = location.to_string()
-            if location.orig == "MapStone":
-                key = "MapStone " + str(mapstonesAssigned)
-            locationAnalysis[key][item] += 1
     elif item in eventsOutput:
-        outputStr +=  (str(eventsOutput[item][:2]) + "|" + eventsOutput[item][2:] + "\n")
+        assignment += (str(eventsOutput[item][:2]) + "|" + eventsOutput[item][2:])
     elif item == "EX*":
         value = get_random_exp_value(expRemaining, expSlots)
         expRemaining -= value
         expSlots -= 1
-        outputStr += "EX|" + str(value) + "\n"
+        assignment += "EX|" + str(value)
     elif item[2:]:
-        outputStr +=  (item[:2] + "|" + item[2:] + "\n")
+        assignment +=  (item[:2] + "|" + item[2:])
     else:
-        outputStr +=  (item[:2] + "|1\n")
-
+        assignment +=  (item[:2] + "|1")
+    assignment += ("|" + location.zone + "\n")
     
+    if item in eventsOutput:
+        eventList.append(assignment)
+    else:
+        outputStr += assignment
+    
+    if doLocationAnalysis:
+        key = location.to_string()
+        if location.orig == "MapStone":
+            key = "MapStone " + str(mapstonesAssigned)
+        if item in locationAnalysis[key]:
+            locationAnalysis[key][item] += 1
+
 def get_random_exp_value(expRemaining, expSlots):
 
     min = random.randint(2,9)
 
     if expSlots <= 1:
         return max(expRemaining,min)
-    
+
     return int(max(expRemaining * (inventory["EX*"] + expSlots / 4) * random.uniform(0.0,2.0) / (expSlots * (expSlots + inventory["EX*"])), min))
-    
+
 def preferred_difficulty_assign(item, locationsToAssign):
     total = 0.0
     for loc in locationsToAssign:
@@ -414,12 +433,13 @@ def preferred_difficulty_assign(item, locationsToAssign):
             assign_to_location(item, locationsToAssign[i])
             break
     del locationsToAssign[i]
-   
-def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode, noTeleporters, doLocationAnalysis, doSkillOrderAnalysis, modes, flags, starvedMode, preferPathDifficulty, setNonProgressiveMapstones):
+
+def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode, cluesMode, noTeleporters, doLocAnalysis, doSkillOrderAnalysis, modes, flags, starvedMode, preferPathDifficulty, setNonProgressiveMapstones):
 
     global costs
     global areas
-    global areasReached    
+    global areasReached
+    global currentAreas
     global itemCount
     global itemPool
     global assignQueue
@@ -428,29 +448,32 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
     global mapQueue
     global connectionQueue
     global outputStr
-    global spoilerStr
+    global eventList
     global mapstonesAssigned
     global skillCount
     global expRemaining
     global expSlots
     global areasRemaining
-        
+
     global shards
     global limitkeys
+    global clues
     global starved
     global pathDifficulty
     global nonProgressiveMapstones
     global analysis
     global locationAnalysis
-    
+    global doLocationAnalysis
+
     shards = shardsMode
     limitkeys = limitkeysMode
+    clues = cluesMode
     starved = starvedMode
     pathDifficulty = preferPathDifficulty
     nonProgressiveMapstones = setNonProgressiveMapstones
     analysis = doSkillOrderAnalysis
-    locationAnalysis = doLocationAnalysis
-    
+    doLocationAnalysis = doLocAnalysis
+
     global skillsOutput
     global eventsOutput
 
@@ -479,6 +502,17 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         "SunstoneShard": "RB21"
     }
 
+    global seedDifficulty
+
+    seedDifficultyMap = {
+        "Dash": 2,
+        "Bash": 2,
+        "Glide": 3,
+        "DoubleJump": 2,
+        "ChargeJump": 1
+    }
+    seedDifficulty = 0
+
     limitKeysPool = ["SKWallJump", "SKChargeFlame", "SKDash", "SKStomp", "SKDoubleJump", "SKGlide", "SKClimb", "SKGrenade", "SKChargeJump", "EVGinsoKey", "EVForlornKey", "EVHoruKey", "SKBash", "EVWater", "EVWind"]
 
     difficultyMap = {
@@ -498,10 +532,12 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         "glitched": 5,
         "timed-level": 5
     }
-    
+
     outputStr = ""
+    eventList = []
     spoilerStr = ""
-    
+    groupDepth = 0
+
     costs = {
         "Free": 0,
         "MS": 0,
@@ -542,14 +578,15 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
     # to prevent certain types of denial of service (where an attacker renders a Python server unresponsive
     # by causing mass hash collisions). This means that the order of a given dictionary is then also
     # dependent on the random hash seed for the current Python invocation.
-    
+
     areas = OrderedDict()
-    
-    areasReached = OrderedDict([("sunkenGladesRunaway", True)])
+
+    areasReached = OrderedDict([("SunkenGladesRunaway", True)])
+    currentAreas = ["SunkenGladesRunaway"]
     areasRemaining = []
     connectionQueue = []
     assignQueue = []
-    
+
     itemCount = 244.0
     expRemaining = expPool
     keystoneCount = 0
@@ -640,7 +677,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
     if not includePlants:
         itemCount -= 24
         itemPool["EX*"] -= 24
-            
+
     if shards:
         itemPool["WaterVeinShard"] = 5
         itemPool["GumonSealShard"] = 5
@@ -666,7 +703,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         itemPool["ForlornKey"] = 0
         itemPool["HoruKey"] = 0
         itemCount -= 3
-    
+
     if noTeleporters:
         itemPool["TPForlorn"] = 0
         itemPool["TPGrotto"] = 0
@@ -675,7 +712,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         itemPool["TPSwamp"] = 0
         itemPool["TPValley"] = 0
         itemPool["EX*"] += 6
-    
+
     inventory = OrderedDict([
         ("EX1", 0),
         ("EX*", 0),
@@ -723,23 +760,23 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
 
     tree = XML.parse("areas.xml")
     root = tree.getroot()
-    
+
     for child in root:
         area = Area(child.attrib["name"])
         areasRemaining.append(child.attrib["name"])
 
         for location in child.find("Locations"):
-            loc = Location(int(location.find("X").text), int(location.find("Y").text), area.name, location.find("Item").text, int(location.find("Difficulty").text))
+            loc = Location(int(location.find("X").text), int(location.find("Y").text), area.name, location.find("Item").text, int(location.find("Difficulty").text), location.find("Zone").text)
             if not includePlants:
                 if re.match(".*Plant.*", area.name):
                     plants.append(loc)
                     continue
             area.add_location(loc)
             # location analysis setup
-            if locationAnalysis:
+            if doLocationAnalysis:
                 key = loc.to_string()
                 if key not in locationAnalysis.keys():
-                    locationAnalysis[key] = skillAnalysis.copy()
+                    locationAnalysis[key] = itemsToAnalyze.copy()
         for conn in child.find("Connections"):
             connection = Connection(conn.find("Home").attrib["name"], conn.find("Target").attrib["name"])
             if not includePlants:
@@ -753,13 +790,13 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         areas[area.name] = area
 
     # flags line
-    outputStr += (flags + str(seed) + "\n")
+    outputStr += (flags + "|" + str(seed) + "\n")
 
-    outputStr += ("-280256|EC|1\n")  # first energy cell
-    outputStr += ("-1680104|EX|100\n")  # glitchy 100 orb at spirit tree
-    outputStr += ("-12320248|EX|100\n")  # forlorn escape plant
+    outputStr += ("-280256|EC|1|Glades\n")  # first energy cell
+    outputStr += ("-1680104|EX|100|Grove\n")  # glitchy 100 orb at spirit tree
+    outputStr += ("-12320248|EX|100|Forlorn\n")  # forlorn escape plant
     # the 2nd keystone in misty can get blocked by alt+R, so make it unimportant
-    outputStr += ("-10440008|EX|100\n")
+    outputStr += ("-10440008|EX|100|Misty\n")
 
     if not includePlants:
         for location in plants:
@@ -769,7 +806,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
     connectionQueue = []
     global reservedLocations
     reservedLocations = []
-    
+
     skillCount = 10
     mapstonesAssigned = 0
     expSlots = itemPool["EX*"]
@@ -778,6 +815,9 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         doorQueue = OrderedDict()
         mapQueue = OrderedDict()
         spoilerPath = ""
+
+        global spoilerGroup
+        spoilerGroup = {"MS": [], "KS": [], "EC": [], "HC": []}
 
         # open all paths that we can already access
         opening = True
@@ -799,7 +839,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
             if not assignQueue:
                 # we've painted ourselves into a corner, try again
                 if not reservedLocations:
-                    return placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode, noTeleporters, doLocationAnalysis, doSkillOrderAnalysis, modes, flags, starvedMode, preferPathDifficulty, setNonProgressiveMapstones)
+                    return placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode, cluesMode, noTeleporters, doLocationAnalysis, doSkillOrderAnalysis, modes, flags, starvedMode, preferPathDifficulty, setNonProgressiveMapstones)
                 locationsToAssign.append(reservedLocations.pop(0))
                 locationsToAssign.append(reservedLocations.pop(0))
                 spoilerPath = prepare_path(len(locationsToAssign))
@@ -808,7 +848,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         if len(locationsToAssign) < len(assignQueue) + keystoneCount - inventory["KS"] + mapstoneCount - inventory["MS"]:
             # we've painted ourselves into a corner, try again
             if not reservedLocations:
-                return placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode, noTeleporters, doLocationAnalysis, doSkillOrderAnalysis, modes, flags, starvedMode, preferPathDifficulty, setNonProgressiveMapstones)
+                return placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode, cluesMode, noTeleporters, doLocationAnalysis, doSkillOrderAnalysis, modes, flags, starvedMode, preferPathDifficulty, setNonProgressiveMapstones)
             locationsToAssign.append(reservedLocations.pop(0))
             locationsToAssign.append(reservedLocations.pop(0))
         for i in range(0, len(locationsToAssign)):
@@ -821,19 +861,6 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
             else:
                 itemsToAssign.append(assign_random())
             itemCount -= 1
-        
-        # open all reachable doors (for the next iteration)
-        for area in doorQueue.keys():
-            areasReached[doorQueue[area].target] = True
-            if doorQueue[area].target in areasRemaining:
-                areasRemaining.remove(doorQueue[area].target)
-            areas[area].remove_connection(doorQueue[area])
-
-        for area in mapQueue.keys():
-            areasReached[mapQueue[area].target] = True
-            if mapQueue[area].target in areasRemaining:
-                areasRemaining.remove(mapQueue[area].target)
-            areas[area].remove_connection(mapQueue[area])
 
         # force assign things if using --prefer-path-difficulty
         if pathDifficulty:
@@ -841,24 +868,90 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
                 if item in skillsOutput or item in eventsOutput:
                     preferred_difficulty_assign(item, locationsToAssign)
                     itemsToAssign.remove(item)
-        
+
         # shuffle the items around and put them somewhere
         random.shuffle(itemsToAssign)
-        for i in range(0, len(locationsToAssign)):            
+        for i in range(0, len(locationsToAssign)):
             assign_to_location(itemsToAssign[i], locationsToAssign[i])
 
-        if spoilerPath:
-            spoilerStr += ("Forced pickups: " + str(spoilerPath) + "\n")
+        if currentAreas:
+            groupDepth += 1
+            currentAreas.sort()
+
+            spoilerStr += str(groupDepth) + ": " + str(currentAreas) + " {\n"
+
+            if spoilerPath:
+                spoilerStr += ("    Forced pickups: " + str(spoilerPath) + "\n")
+
+            for skill in skillsOutput:
+                if skill in spoilerGroup:
+                    for instance in spoilerGroup[skill]:
+                        spoilerStr += "    " + instance
+                    if skill in seedDifficultyMap:
+                        seedDifficulty += groupDepth * seedDifficultyMap[skill]
+
+            for event in eventsOutput:
+                if event in spoilerGroup:
+                    for instance in spoilerGroup[event]:
+                        spoilerStr += "    " + instance
+
+            for key in spoilerGroup:
+                if key[:2] == "TP":
+                    for instance in spoilerGroup[key]:
+                        spoilerStr += "    " + instance
+
+            for instance in spoilerGroup["MS"]:
+                spoilerStr += "    " + instance
+
+            for instance in spoilerGroup["KS"]:
+                spoilerStr += "    " + instance
+
+            for instance in spoilerGroup["HC"]:
+                spoilerStr += "    " + instance
+
+            for instance in spoilerGroup["EC"]:
+                spoilerStr += "    " + instance
+
+            spoilerStr += "}\n"
+
+        currentAreas = []
+
+        # open all reachable doors (for the next iteration)
+        for area in doorQueue.keys():
+            if doorQueue[area].target not in areasReached:
+                currentAreas.append(doorQueue[area].target)
+                difficulty = doorQueue[area].cost()[2]
+                seedDifficulty += difficulty * difficulty
+            areasReached[doorQueue[area].target] = True
+            if doorQueue[area].target in areasRemaining:
+                areasRemaining.remove(doorQueue[area].target)
+            areas[area].remove_connection(doorQueue[area])
+
+        for area in mapQueue.keys():
+            if mapQueue[area].target not in areasReached:
+                currentAreas.append(mapQueue[area].target)
+                difficulty = mapQueue[area].cost()[2]
+                seedDifficulty += difficulty * difficulty
+            areasReached[mapQueue[area].target] = True
+            if mapQueue[area].target in areasRemaining:
+                areasRemaining.remove(mapQueue[area].target)
+            areas[area].remove_connection(mapQueue[area])
+
         locationsToAssign = []
 
+    spoilerStr = flags + "|" + str(seed) + "\n" + "Difficulty Rating: " + str(seedDifficulty) + "\n" + spoilerStr
+    random.shuffle(eventList)
+    for event in eventList:
+        outputStr += event
+
     return (outputStr, spoilerStr)
-    
+
 def main():
 
     global random
-    
+
     random = Random()
-    
+
     parser = argparse.ArgumentParser()
     parser.add_argument("--preset", help="Choose a preset group of paths for the generator to use", choices=["casual", "standard", "expert", "master", "hard", "ohko", "0xp", "glitched"])
     parser.add_argument("--custom-logic", help="Customize paths that the generator will use, comma-separated: normal,speed,dbash,extended,extended-damage,lure,lure-hard,dboost,dboost-light,dboost-hard,cdash,cdash-farming,extreme,timed-level,glitched")
@@ -872,6 +965,7 @@ def main():
     parser.add_argument("--starved", help="Reduces the rate at which skills will appear when not required to advance", action="store_true")
     parser.add_argument("--shards", help="The Water Vein, Gumon Seal, and Sunstone will be awarded after 3/5 shards are found", action="store_true")
     parser.add_argument("--limitkeys", help="The Water Vein, Gumon Seal, and Sunstone will only appear at skill trees or event sources", action="store_true")
+    parser.add_argument("--clues", help="For each 3 trees visited, the location of a random dungeon key will be revealed", action="store_true")
     parser.add_argument("--non-progressive-mapstones", help="Map Stones will retain their behaviour from before v1.2, having their own unique drops", action="store_true")
     parser.add_argument("--force-trees", help="Prevent Ori from entering the final escape room until all skill trees have been visited", action="store_true");
     parser.add_argument("--exp-pool", help="Size of the experience pool (default 10000)", type=int, default=10000)
@@ -881,7 +975,7 @@ def main():
     parser.add_argument("--loc-analysis", help="Report stats on where skills are placed over multiple seeds", action="store_true")
 
     args = parser.parse_args()
-    
+
     includePlants = not args.noplants
 
     presets = {
@@ -895,7 +989,7 @@ def main():
         "0xp": ["normal", "speed", "lure", "dboost-light"],
         "glitched": ["normal", "speed", "lure", "dboost", "dboost-light", "dboost-hard", "cdash", "dbash", "extended", "lure-hard", "timed-level", "glitched", "extended-damage", "extreme"]
     }
-    
+
     if args.preset:
         mode = args.preset
         modes = presets[args.preset]
@@ -909,6 +1003,10 @@ def main():
         flags += "limitkeys,"
     if args.shards:
         flags += "shards,"
+    if args.clues:
+        flags += "clues,"
+    if args.starved:
+        flags += "starved,"
     if args.prefer_path_difficulty:
         flags += "prefer_path_difficulty=" + args.prefer_path_difficulty + ","
     if args.hard:
@@ -928,6 +1026,12 @@ def main():
     if args.no_teleporters:
         flags += "NoTeleporters,"
 
+    flags = flags[:-1]
+        
+    global skillAnalysis
+    global itemsToAnalyze
+    global locationAnalysis
+        
     skillAnalysis = {
         "WallJump": 0,
         "ChargeFlame": 0,
@@ -940,31 +1044,59 @@ def main():
         "Dash": 0,
         "Grenade": 0
     }
+    
+    itemsToAnalyze = {
+        "WallJump": 0,
+        "ChargeFlame": 0,
+        "DoubleJump": 0,
+        "Bash": 0,
+        "Stomp": 0,
+        "Glide": 0,
+        "Climb": 0,
+        "ChargeJump": 0,
+        "Dash": 0,
+        "Grenade": 0,
+        "GinsoKey": 0,
+        "ForlornKey": 0,
+        "HoruKey": 0,
+        "Water": 0,
+        "Wind": 0,
+        "WaterVeinShard": 0,
+        "GumonSealShard": 0,
+        "SunstoneShard": 0,
+        "TPForlorn": 0,
+        "TPGrotto": 0,
+        "TPSorrow": 0,
+        "TPGrove": 0,
+        "TPSwamp": 0,
+        "TPValley": 0
+    }
 
     locationAnalysis = {}
     for i in range(1,10):
-        locationAnalysis["MapStone " + str(i)] = skillAnalysis.copy()
+        locationAnalysis["MapStone " + str(i)] = itemsToAnalyze.copy()
 
     for seedOffset in range(0, args.count):
 
         seed = args.seed + seedOffset
         random.seed(seed)
-        
-        placement = placeItems(seed, args.exp_pool, args.hard, includePlants, args.shards, args.limitkeys, args.no_teleporters, args.loc_analysis, args.analysis, modes, flags, args.starved, args.prefer_path_difficulty, args.non_progressive_mapstones)
-        
-        output = open("randomizer_" + mode + str(seed) + ".dat", 'w')
-        output.write(placement[0])
-        output.close()
-    
-        spoiler = open("spoiler_" + mode + str(seed) + ".txt", 'w')
-        spoiler.write(placement[1])
-        spoiler.close()
+
+        placement = placeItems(seed, args.exp_pool, args.hard, includePlants, args.shards, args.limitkeys, args.clues, args.no_teleporters, args.loc_analysis, args.analysis, modes, flags, args.starved, args.prefer_path_difficulty, args.non_progressive_mapstones)
+
+        if not args.analysis and not args.loc_analysis:
+            output = open("randomizer_" + mode + str(seed) + ".dat", 'w')
+            output.write(placement[0])
+            output.close()
+
+            spoiler = open("spoiler_" + mode + str(seed) + ".txt", 'w')
+            spoiler.write(placement[1])
+            spoiler.close()
 
     if args.analysis:
         print(skillAnalysis)
 
     if args.loc_analysis:
-        print("location,WallJump,ChargeFlame,DoubleJump,Bash,Stomp,Glide,Climb,ChargeJump,Dash,Grenade")
+        print("location,WallJump,ChargeFlame,DoubleJump,Bash,Stomp,Glide,Climb,ChargeJump,Dash,Grenade,GinsoKey,ForlornKey,HoruKey,Water,Wind,WaterVeinShard,GumonSealShard,SunstoneShard,TPForlorn,TPGrotto,TPSorrow,TPGrove,TPSwamp,TPValley")
         for key in locationAnalysis.keys():
             line = key + ","
             line += str(locationAnalysis[key]["WallJump"]) + ","
@@ -976,7 +1108,21 @@ def main():
             line += str(locationAnalysis[key]["Climb"]) + ","
             line += str(locationAnalysis[key]["ChargeJump"]) + ","
             line += str(locationAnalysis[key]["Dash"]) + ","
-            line += str(locationAnalysis[key]["Grenade"])
+            line += str(locationAnalysis[key]["Grenade"]) + ","
+            line += str(locationAnalysis[key]["GinsoKey"]) + ","
+            line += str(locationAnalysis[key]["ForlornKey"]) + ","
+            line += str(locationAnalysis[key]["HoruKey"]) + ","
+            line += str(locationAnalysis[key]["Water"]) + ","
+            line += str(locationAnalysis[key]["Wind"]) + ","
+            line += str(locationAnalysis[key]["WaterVeinShard"]) + ","
+            line += str(locationAnalysis[key]["GumonSealShard"]) + ","
+            line += str(locationAnalysis[key]["SunstoneShard"]) + ","
+            line += str(locationAnalysis[key]["TPForlorn"]) + ","
+            line += str(locationAnalysis[key]["TPGrotto"]) + ","
+            line += str(locationAnalysis[key]["TPSorrow"]) + ","
+            line += str(locationAnalysis[key]["TPGrove"]) + ","
+            line += str(locationAnalysis[key]["TPSwamp"]) + ","
+            line += str(locationAnalysis[key]["TPValley"])
             print(line)
 
 if __name__ == "__main__":

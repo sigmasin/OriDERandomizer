@@ -1,36 +1,40 @@
 <?xml version="1.0"?>
 <Areas>
-  <Area name="sunkenGladesRunaway">
+  <Area name="SunkenGladesRunaway">
     <Locations>
       <Location>
         <X>92</X>
         <Y>-227</Y>
         <Item>EX15</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
       <Location>
         <X>-154</X>
         <Y>-271</Y>
         <Item>EX15</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
       <Location>
         <X>83</X>
         <Y>-222</Y>
         <Item>KS</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
       <Location>
         <X>-11</X>
         <Y>-206</Y>
         <Item>KS</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="sunkenGladesRunaway"/>
-        <Target name="sunkenGladesNadePool"/>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="SunkenGladesNadePool"/>
         <Requirements>
           <Requirement mode="normal">Water+Grenade</Requirement>
           <Requirement mode="dboost">Grenade+HC+HC+HC+HC+HC+HC</Requirement>
@@ -38,8 +42,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sunkenGladesRunaway"/>
-        <Target name="sunkenGladesNadeTree"/>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="SunkenGladesNadeTree"/>
         <Requirements>
           <Requirement mode="speed">Grenade+WallJump+DoubleJump</Requirement>
           <Requirement mode="normal">Grenade+ChargeJump</Requirement>
@@ -47,8 +51,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sunkenGladesRunaway"/>
-        <Target name="sunkenGladesMainPool"/>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="SunkenGladesMainPool"/>
         <Requirements>
           <Requirement mode="normal">Water</Requirement>
           <Requirement mode="dboost">Bash</Requirement>
@@ -58,22 +62,22 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sunkenGladesRunaway"/>
-        <Target name="sunkenGladesMainPoolDeep"/>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="SunkenGladesMainPoolDeep"/>
         <Requirements>
           <Requirement mode="normal">Water</Requirement>
           <Requirement mode="dboost">HC+HC+HC+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sunkenGladesRunaway"/>
+        <Home name="SunkenGladesRunaway"/>
         <Target name="WallJump"/>
         <Requirements>
           <Requirement mode="normal">KS+KS</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sunkenGladesRunaway"/>
+        <Home name="SunkenGladesRunaway"/>
         <Target name="DashArea"/>
         <Requirements>
           <Requirement mode="normal">WallJump</Requirement>
@@ -83,8 +87,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sunkenGladesRunaway"/>
-        <Target name="fronkeyWalkRoof"/>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="FronkeyWalkRoof"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="lure">Bash</Requirement>
@@ -92,8 +96,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sunkenGladesRunaway"/>
-        <Target name="forlorn"/>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="Forlorn"/>
         <Requirements>
           <Requirement mode="dboost-light">TPForlorn+DoubleJump+ChargeJump</Requirement>
           <Requirement mode="dboost-light">TPForlorn+DoubleJump+Bash</Requirement>
@@ -103,8 +107,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sunkenGladesRunaway"/>
-        <Target name="moonGrotto"/>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="MoonGrotto"/>
         <Requirements>
           <Requirement mode="normal">TPGrotto+ChargeJump</Requirement>
           <Requirement mode="normal">TPGrotto+WallJump</Requirement>
@@ -113,36 +117,36 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sunkenGladesRunaway"/>
+        <Home name="SunkenGladesRunaway"/>
         <Target name="GumoHideoutMapStone"/>
         <Requirements>
           <Requirement mode="normal">TPGrotto+MS</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sunkenGladesRunaway"/>
-        <Target name="hollowGrove"/>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="HollowGrove"/>
         <Requirements>
           <Requirement mode="normal">TPSwamp</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sunkenGladesRunaway"/>
-        <Target name="spiritTreeRefined"/>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="SpiritTreeRefined"/>
         <Requirements>
           <Requirement mode="normal">TPGrove</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sunkenGladesRunaway"/>
-        <Target name="valleyRight"/>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="ValleyRight"/>
         <Requirements>
           <Requirement mode="normal">TPValley+Bash+WallJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sunkenGladesRunaway"/>
-        <Target name="sunstone"/>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="Sunstone"/>
         <Requirements>
           <Requirement mode="normal">TPSorrow+Glide+Climb+ChargeJump</Requirement>
           <Requirement mode="extended-damage">TPSorrow+Glide+Stomp+ChargeJump+Dash+HC+HC+HC+HC+HC</Requirement>
@@ -152,61 +156,66 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="sunkenGladesNadePool">
+  <Area name="SunkenGladesNadePool">
     <Locations>
       <Location>
         <X>59</X>
         <Y>-280</Y>
         <Item>EX200</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="sunkenGladesNadeTree">
+  <Area name="SunkenGladesNadeTree">
     <Locations>
       <Location>
         <X>82</X>
         <Y>-196</Y>
         <Item>AC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="sunkenGladesMainPool">
+  <Area name="SunkenGladesMainPool">
     <Locations>
       <Location>
         <X>5</X>
         <Y>-241</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="sunkenGladesMainPoolDeep">
+  <Area name="SunkenGladesMainPoolDeep">
     <Locations>
       <Location>
         <X>-40</X>
         <Y>-239</Y>
         <Item>EC</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="fronkeyWalkRoof">
+  <Area name="FronkeyWalkRoof">
     <Locations>
       <Location>
         <X>257</X>
         <Y>-199</Y>
         <Item>EX200</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -219,30 +228,34 @@
         <Y>-189</Y>
         <Item>HC</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
       <Location>
         <X>-59</X>
         <Y>-244</Y>
         <Item>KS</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
       <Location>
         <X>-316</X>
         <Y>-308</Y>
         <Item>SKWallJump</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
       <Location>
         <X>-283</X>
         <Y>-236</Y>
         <Item>EX15</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
         <Home name="WallJump"/>
-        <Target name="deathGauntlet"/>
+        <Target name="DeathGauntlet"/>
         <Requirements>
           <Requirement mode="dboost-light">EC+EC+EC+EC+WallJump</Requirement>
           <Requirement mode="dboost-light">EC+EC+EC+EC+Climb</Requirement>
@@ -271,7 +284,7 @@
       </Connection>
       <Connection>
         <Home name="WallJump"/>
-        <Target name="rightWallJump"/>
+        <Target name="RightWallJump"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="normal">Bash+Grenade</Requirement>
@@ -280,7 +293,7 @@
       </Connection>
       <Connection>
         <Home name="WallJump"/>
-        <Target name="leftWallJump"/>
+        <Target name="LeftWallJump"/>
         <Requirements>
           <Requirement mode="normal">WallJump</Requirement>
           <Requirement mode="normal">Climb</Requirement>
@@ -291,7 +304,7 @@
       </Connection>
       <Connection>
         <Home name="WallJump"/>
-        <Target name="spiritCaverns"/>
+        <Target name="SpiritCaverns"/>
         <Requirements>
           <Requirement mode="normal">KS+KS+Climb</Requirement>
           <Requirement mode="normal">KS+KS+WallJump</Requirement>
@@ -301,7 +314,7 @@
       </Connection>
       <Connection>
         <Home name="WallJump"/>
-        <Target name="gladesLaser"/>
+        <Target name="GladesLaser"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump+Climb</Requirement>
           <Requirement mode="normal">ChargeJump+WallJump+DoubleJump</Requirement>
@@ -349,19 +362,20 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="deathGauntlet">
+  <Area name="DeathGauntlet">
     <Locations>
       <Location>
         <X>303</X>
         <Y>-190</Y>
         <Item>EX100</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="deathGauntlet"/>
-        <Target name="deathStomp"/>
+        <Home name="DeathGauntlet"/>
+        <Target name="DeathStomp"/>
         <Requirements>
           <Requirement mode="normal">Stomp+Water</Requirement>
           <Requirement mode="dboost">Stomp</Requirement>
@@ -369,23 +383,23 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="deathGauntlet"/>
-        <Target name="deathGauntletRoof"/>
+        <Home name="DeathGauntlet"/>
+        <Target name="DeathGauntletRoof"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="deathGauntlet"/>
-        <Target name="deathWater"/>
+        <Home name="DeathGauntlet"/>
+        <Target name="DeathWater"/>
         <Requirements>
           <Requirement mode="normal">Water+EC+EC+EC+EC</Requirement>
           <Requirement mode="dboost">EC+EC+EC+EC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="deathGauntlet"/>
-        <Target name="moonGrotto"/>
+        <Home name="DeathGauntlet"/>
+        <Target name="MoonGrotto"/>
         <Requirements>
           <Requirement mode="dboost-light">WallJump</Requirement>
           <Requirement mode="dboost-light">Climb</Requirement>
@@ -399,8 +413,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="deathGauntlet"/>
-        <Target name="sunkenGladesRunaway"/>
+        <Home name="DeathGauntlet"/>
+        <Target name="SunkenGladesRunaway"/>
         <Requirements>
           <Requirement mode="normal">DoubleJump+EC+EC+EC+EC</Requirement>
           <Requirement mode="normal">Glide+EC+EC+EC+EC</Requirement>
@@ -415,6 +429,7 @@
         <Y>-248</Y>
         <Item>MapStone</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -427,78 +442,87 @@
         <Y>-166</Y>
         <Item>AC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="rightWallJump">
+  <Area name="RightWallJump">
     <Locations>
       <Location>
         <X>-245</X>
         <Y>-277</Y>
         <Item>EX200</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="leftWallJump">
+  <Area name="LeftWallJump">
     <Locations>
       <Location>
         <X>-336</X>
         <Y>-288</Y>
         <Item>EC</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
       <Location>
         <X>-247</X>
         <Y>-207</Y>
         <Item>EX15</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
       <Location>
         <X>-238</X>
         <Y>-212</Y>
         <Item>KS</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
       <Location>
         <X>-184</X>
         <Y>-227</Y>
         <Item>MS</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="spiritCaverns">
+  <Area name="SpiritCaverns">
     <Locations>
       <Location>
         <X>-182</X>
         <Y>-193</Y>
         <Item>KS</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
       <Location>
         <X>-217</X>
         <Y>-183</Y>
         <Item>KS</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
       <Location>
         <X>-177</X>
         <Y>-154</Y>
         <Item>KS</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="spiritCaverns"/>
-        <Target name="spiritCavernsTopLeft"/>
+        <Home name="SpiritCaverns"/>
+        <Target name="SpiritCavernsTopLeft"/>
         <Requirements>
           <Requirement mode="normal">WallJump</Requirement>
           <Requirement mode="normal">DoubleJump</Requirement>
@@ -508,8 +532,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="spiritCaverns"/>
-        <Target name="gladesLaser"/>
+        <Home name="SpiritCaverns"/>
+        <Target name="GladesLaser"/>
         <Requirements>
           <Requirement mode="normal">EC+EC+EC+EC+DoubleJump</Requirement>
           <Requirement mode="normal">EC+EC+EC+EC+Bash</Requirement>
@@ -524,8 +548,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="spiritCaverns"/>
-        <Target name="spiritCavernsAC"/>
+        <Home name="SpiritCaverns"/>
+        <Target name="SpiritCavernsAC"/>
         <Requirements>
           <Requirement mode="speed">WallJump+DoubleJump</Requirement>
           <Requirement mode="normal">ChargeJump</Requirement>
@@ -533,8 +557,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="spiritCaverns"/>
-        <Target name="spiritTreeRefined"/>
+        <Home name="SpiritCaverns"/>
+        <Target name="SpiritTreeRefined"/>
         <Requirements>
           <!-- will cause some painted-into-corner scenarios, revisit this if it is too much -->
           <Requirement mode="normal">KS+KS+KS+KS</Requirement>
@@ -542,58 +566,61 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="spiritCavernsTopLeft">
+  <Area name="SpiritCavernsTopLeft">
     <Locations>
       <Location>
         <X>-217</X>
         <Y>-146</Y>
         <Item>KS</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="spiritCavernsAC">
+  <Area name="SpiritCavernsAC">
     <Locations>
       <Location>
         <X>-216</X>
         <Y>-176</Y>
         <Item>AC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="gladesLaser">
+  <Area name="GladesLaser">
     <Locations>
       <Location>
         <X>-155</X>
         <Y>-186</Y>
         <Item>EC</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="gladesLaser"/>
+        <Home name="GladesLaser"/>
         <Target name="WallJump"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="gladesLaser"/>
-        <Target name="spiritCaverns"/>
+        <Home name="GladesLaser"/>
+        <Target name="SpiritCaverns"/>
         <Requirements>
           <Requirement mode="normal">EC+EC+EC+EC</Requirement>
           <Requirement mode="timed-level">EC+EC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="gladesLaser"/>
-        <Target name="gladesLaserGrenade"/>
+        <Home name="GladesLaser"/>
+        <Target name="GladesLaserGrenade"/>
         <Requirements>
           <Requirement mode="normal">Grenade+Bash+WallJump</Requirement>
           <Requirement mode="normal">Grenade+Bash+Climb</Requirement>
@@ -604,13 +631,14 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="gladesLaserGrenade">
+  <Area name="GladesLaserGrenade">
     <Locations>
       <Location>
         <X>-165</X>
         <Y>-140</Y>
         <Item>AC</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -623,12 +651,13 @@
         <Y>-160</Y>
         <Item>SKChargeFlame</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
         <Home name="ChargeFlame"/>
-        <Target name="spiritTreeRefined"/>
+        <Target name="SpiritTreeRefined"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump+ChargeFlame</Requirement>
           <Requirement mode="normal">ChargeJump+Grenade</Requirement>
@@ -672,6 +701,7 @@
         <Y>-156</Y>
         <Item>Plant</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -684,25 +714,26 @@
         <Y>-196</Y>
         <Item>EX100</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Glades</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="spiritTreeRefined">
+  <Area name="SpiritTreeRefined">
     <Locations>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="spiritTreeRefined"/>
+        <Home name="SpiritTreeRefined"/>
         <Target name="ChargeFlame"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="spiritTreeRefined"/>
-        <Target name="valleyEntry"/>
+        <Home name="SpiritTreeRefined"/>
+        <Target name="ValleyEntry"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
@@ -713,7 +744,7 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="spiritTreeRefined"/>
+        <Home name="SpiritTreeRefined"/>
         <Target name="ChargeFlameTree"/>
         <Requirements>
           <Requirement mode="normal">DoubleJump+Climb</Requirement>
@@ -728,8 +759,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="spiritTreeRefined"/>
-        <Target name="spiderSac"/>
+        <Home name="SpiritTreeRefined"/>
+        <Target name="SpiderSac"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame+WallJump</Requirement>
           <Requirement mode="normal">ChargeFlame+ChargeJump</Requirement>
@@ -755,26 +786,27 @@
         <Y>-95</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="spiderSac">
+  <Area name="SpiderSac">
     <Locations>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="spiderSac"/>
-        <Target name="spiderSacHealth"/>
+        <Home name="SpiderSac"/>
+        <Target name="SpiderSacHealth"/>
         <Requirements>
           <Requirement mode="normal">Grenade</Requirement>
           <Requirement mode="normal">ChargeFlame</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="spiderSac"/>
-        <Target name="spiderSacEnergy"/>
+        <Home name="SpiderSac"/>
+        <Target name="SpiderSacEnergy"/>
         <Requirements>
           <Requirement mode="normal">Grenade</Requirement>
           <Requirement mode="normal">ChargeFlame</Requirement>
@@ -783,8 +815,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="spiderSac"/>
-        <Target name="spiderSacGrenadeDoor"/>
+        <Home name="SpiderSac"/>
+        <Target name="SpiderSacGrenadeDoor"/>
         <Requirements>
           <Requirement mode="normal">Grenade+Bash</Requirement>
           <Requirement mode="normal">Grenade+DoubleJump+WallJump</Requirement>
@@ -792,8 +824,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="spiderSac"/>
-        <Target name="spiderSacEnergyDoor"/>
+        <Home name="SpiderSac"/>
+        <Target name="SpiderSacEnergyDoor"/>
         <Requirements>
           <Requirement mode="normal">EC+EC+EC+EC</Requirement>
           <!-- you can level up with the spider exp -->
@@ -801,8 +833,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="spiderSac"/>
-        <Target name="hollowGrove"/>
+        <Home name="SpiderSac"/>
+        <Target name="HollowGrove"/>
         <Requirements>
           <Requirement mode="normal">Grenade</Requirement>
           <Requirement mode="normal">ChargeFlame</Requirement>
@@ -811,8 +843,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="spiderSac"/>
-        <Target name="deathGauntletRoof"/>
+        <Home name="SpiderSac"/>
+        <Target name="DeathGauntletRoof"/>
         <Requirements>
           <Requirement mode="normal">Stomp+Water</Requirement>
           <Requirement mode="dboost">Stomp+Bash+HC+HC+HC+HC</Requirement>
@@ -821,8 +853,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="spiderSac"/>
-        <Target name="spiritTreeRefined"/>
+        <Home name="SpiderSac"/>
+        <Target name="SpiritTreeRefined"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame+WallJump</Requirement>
           <Requirement mode="normal">ChargeFlame+Climb</Requirement>
@@ -836,7 +868,7 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="spiderSac"/>
+        <Home name="SpiderSac"/>
         <Target name="ChargeFlameTree"/>
         <Requirements>
           <Requirement mode="extended">ChargeFlame+Glide</Requirement>
@@ -846,49 +878,53 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="spiderSacEnergyDoor">
+  <Area name="SpiderSacEnergyDoor">
     <Locations>
       <Location>
         <X>64</X>
         <Y>-109</Y>
         <Item>AC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="spiderSacHealth">
+  <Area name="SpiderSacHealth">
     <Locations>
       <Location>
         <X>151</X>
         <Y>-117</Y>
         <Item>HC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="spiderSacEnergy">
+  <Area name="SpiderSacEnergy">
     <Locations>
       <Location>
         <X>60</X>
         <Y>-155</Y>
         <Item>EC</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="spiderSacGrenadeDoor">
+  <Area name="SpiderSacGrenadeDoor">
     <Locations>
       <Location>
         <X>93</X>
         <Y>-92</Y>
         <Item>AC</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -901,30 +937,34 @@
         <Y>-291</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Blackroot</Zone>
       </Location>
       <Location>
         <X>183</X>
         <Y>-291</Y>
         <Item>AC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Blackroot</Zone>
       </Location>
       <Location>
         <X>197</X>
         <Y>-229</Y>
         <Item>EX100</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Blackroot</Zone>
       </Location>
       <Location>
         <X>292</X>
         <Y>-256</Y>
         <Item>SKDash</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Blackroot</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
         <Home name="DashArea"/>
-        <Target name="deathGauntlet"/>
+        <Target name="DeathGauntlet"/>
         <Requirements>
           <Requirement mode="dboost-light">EC+EC+EC+EC+WallJump</Requirement>
           <Requirement mode="dboost-light">EC+EC+EC+EC+Climb</Requirement>
@@ -975,7 +1015,7 @@
       </Connection>
       <Connection>
         <Home name="DashArea"/>
-        <Target name="blackrootMap"/>
+        <Target name="BlackrootMap"/>
         <Requirements>
           <Requirement mode="normal">Dash</Requirement>
           <Requirement mode="extended">Free</Requirement>
@@ -1008,6 +1048,7 @@
         <Y>-232</Y>
         <Item>Plant</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Blackroot</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -1020,6 +1061,7 @@
         <Y>-303</Y>
         <Item>EX100</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Blackroot</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -1033,7 +1075,7 @@
       </Connection>
       <Connection>
         <Home name="RazielNo"/>
-        <Target name="blackrootGrottoConnection"/>
+        <Target name="BlackrootGrottoConnection"/>
         <Requirements>
           <Requirement mode="normal">Dash+DoubleJump</Requirement>
           <Requirement mode="normal">Dash+ChargeJump</Requirement>
@@ -1054,51 +1096,54 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="blackrootMap">
+  <Area name="BlackrootMap">
     <Locations>
       <Location>
         <X>346</X>
         <Y>-255</Y>
         <Item>MS</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Blackroot</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="blackrootGrottoConnection">
+  <Area name="BlackrootGrottoConnection">
     <Locations>
       <Location>
         <X>394</X>
         <Y>-309</Y>
         <Item>HC</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Blackroot</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="blackrootGrottoConnection"/>
-        <Target name="sideFallCell"/>
+        <Home name="BlackrootGrottoConnection"/>
+        <Target name="SideFallCell"/>
         <Requirements>
           <Requirement mode="normal">Stomp</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="blackrootGrottoConnection"/>
-        <Target name="blackrootMapStone"/>
+        <Home name="BlackrootGrottoConnection"/>
+        <Target name="BlackrootMapStone"/>
         <Requirements>
           <Requirement mode="normal">MS</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
-  <Area name="blackrootMapStone">
+  <Area name="BlackrootMapStone">
     <Locations>
       <Location>
         <X>418</X>
         <Y>-291</Y>
         <Item>MapStone</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Blackroot</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -1111,6 +1156,7 @@
         <Y>-324</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Blackroot</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -1183,6 +1229,7 @@
         <Y>-380</Y>
         <Item>SKGrenade</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Blackroot</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -1213,6 +1260,7 @@
         <Y>-359</Y>
         <Item>EX100</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Blackroot</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -1225,6 +1273,7 @@
         <Y>-331</Y>
         <Item>AC</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Blackroot</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -1237,6 +1286,7 @@
         <Y>-375</Y>
         <Item>AC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Blackroot</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -1249,6 +1299,7 @@
         <Y>-423</Y>
         <Item>AC</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Blackroot</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -1261,6 +1312,7 @@
         <Y>-418</Y>
         <Item>EX100</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Blackroot</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -1273,6 +1325,7 @@
         <Y>-431</Y>
         <Item>AC</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Blackroot</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -1310,18 +1363,21 @@
         <Y>-506</Y>
         <Item>AC</Item>
         <Difficulty>4</Difficulty>
+        <Zone>Blackroot</Zone>
       </Location>
       <Location>
         <X>462</X>
         <Y>-489</Y>
         <Item>EX100</Item>
         <Difficulty>4</Difficulty>
+        <Zone>Blackroot</Zone>
       </Location>
       <Location>
         <X>307</X>
         <Y>-525</Y>
         <Item>EX100</Item>
         <Difficulty>4</Difficulty>
+        <Zone>Blackroot</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -1334,24 +1390,26 @@
         <Y>-544</Y>
         <Item>AC</Item>
         <Difficulty>4</Difficulty>
+        <Zone>Blackroot</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="hollowGrove">
+  <Area name="HollowGrove">
     <Locations>
       <Location>
         <X>300</X>
         <Y>-94</Y>
         <Item>MS</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="hollowGrove"/>
-        <Target name="moonGrotto"/>
+        <Home name="HollowGrove"/>
+        <Target name="MoonGrotto"/>
         <Requirements>
           <Requirement mode="normal">WallJump</Requirement>
           <Requirement mode="normal">Climb</Requirement>
@@ -1360,8 +1418,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="hollowGrove"/>
-        <Target name="deathGauntlet"/>
+        <Home name="HollowGrove"/>
+        <Target name="DeathGauntlet"/>
         <Requirements>
           <Requirement mode="normal">WallJump</Requirement>
           <Requirement mode="normal">Climb</Requirement>
@@ -1370,8 +1428,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="hollowGrove"/>
-        <Target name="deathGauntletRoof"/>
+        <Home name="HollowGrove"/>
+        <Target name="DeathGauntletRoof"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="normal">WallJump+Stomp+Water</Requirement>
@@ -1387,8 +1445,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="hollowGrove"/>
-        <Target name="spiderSac"/>
+        <Home name="HollowGrove"/>
+        <Target name="SpiderSac"/>
         <Requirements>
           <Requirement mode="normal">WallJump+Bash</Requirement>
           <Requirement mode="normal">Climb+Bash</Requirement>
@@ -1397,8 +1455,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="hollowGrove"/>
-        <Target name="groveWater"/>
+        <Home name="HollowGrove"/>
+        <Target name="GroveWater"/>
         <Requirements>
           <Requirement mode="normal">Water</Requirement>
           <Requirement mode="dboost">HC+HC+HC+HC+HC+HC</Requirement>
@@ -1408,8 +1466,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="hollowGrove"/>
-        <Target name="upperGroveSpiderArea"/>
+        <Home name="HollowGrove"/>
+        <Target name="UpperGroveSpiderArea"/>
         <Requirements>
           <Requirement mode="normal">Bash+WallJump</Requirement>
           <Requirement mode="normal">ChargeJump+WallJump+DoubleJump</Requirement>
@@ -1417,8 +1475,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="hollowGrove"/>
-        <Target name="leftGinsoCell"/>
+        <Home name="HollowGrove"/>
+        <Target name="LeftGinsoCell"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump+DoubleJump+Glide</Requirement>
           <Requirement mode="normal">Wind+Glide</Requirement>
@@ -1427,8 +1485,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="hollowGrove"/>
-        <Target name="groveWaterStomp"/>
+        <Home name="HollowGrove"/>
+        <Target name="GroveWaterStomp"/>
         <Requirements>
           <Requirement mode="normal">Water+Stomp</Requirement>
           <Requirement mode="dboost">Stomp+HC+HC+HC+HC+HC</Requirement>
@@ -1440,8 +1498,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="hollowGrove"/>
-        <Target name="rightGinsoOrb"/>
+        <Home name="HollowGrove"/>
+        <Target name="RightGinsoOrb"/>
         <Requirements>
           <Requirement mode="normal">Grenade+WallJump</Requirement>
           <Requirement mode="normal">Grenade+Climb</Requirement>
@@ -1450,15 +1508,15 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="hollowGrove"/>
-        <Target name="lowerGinsoTree"/>
+        <Home name="HollowGrove"/>
+        <Target name="LowerGinsoTree"/>
         <Requirements>
           <Requirement mode="normal">GinsoKey+WallJump+DoubleJump</Requirement>
           <Requirement mode="normal">GinsoKey+ChargeJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="hollowGrove"/>
+        <Home name="HollowGrove"/>
         <Target name="HoruFields"/>
         <Requirements>
           <Requirement mode="normal">Bash+DoubleJump</Requirement>
@@ -1469,7 +1527,7 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="hollowGrove"/>
+        <Home name="HollowGrove"/>
         <Target name="HoruFieldsStomp"/>
         <Requirements>
           <Requirement mode="normal">Stomp</Requirement>
@@ -1477,15 +1535,15 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="hollowGrove"/>
-        <Target name="hollowGroveMapStone"/>
+        <Home name="HollowGrove"/>
+        <Target name="HollowGroveMapStone"/>
         <Requirements>
           <Requirement mode="normal">MS</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="hollowGrove"/>
-        <Target name="hollowGrovePlants"/>
+        <Home name="HollowGrove"/>
+        <Target name="HollowGrovePlants"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
@@ -1493,8 +1551,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="hollowGrove"/>
-        <Target name="hollowGroveTree"/>
+        <Home name="HollowGrove"/>
+        <Target name="HollowGroveTree"/>
         <Requirements>
           <Requirement mode="normal">WallJump+DoubleJump</Requirement>
           <Requirement mode="normal">Wind+Glide</Requirement>
@@ -1506,31 +1564,34 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="moonGrotto">
+  <Area name="MoonGrotto">
     <Locations>
       <Location>
         <X>423</X>
         <Y>-169</Y>
         <Item>EC</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
       <Location>
         <X>703</X>
         <Y>-82</Y>
         <Item>AC</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
       <Location>
         <X>618</X>
         <Y>-98</Y>
         <Item>EX100</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="moonGrotto"/>
-        <Target name="hollowGrove"/>
+        <Home name="MoonGrotto"/>
+        <Target name="HollowGrove"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="normal">WallJump+DoubleJump</Requirement>
@@ -1541,15 +1602,15 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="moonGrotto"/>
-        <Target name="deathGauntlet"/>
+        <Home name="MoonGrotto"/>
+        <Target name="DeathGauntlet"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="moonGrotto"/>
-        <Target name="upperGrottoOrbs"/>
+        <Home name="MoonGrotto"/>
+        <Target name="UpperGrottoOrbs"/>
         <Requirements>
           <Requirement mode="normal">WallJump+DoubleJump</Requirement>
           <Requirement mode="normal">ChargeJump</Requirement>
@@ -1557,8 +1618,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="moonGrotto"/>
-        <Target name="upperGrotto200"/>
+        <Home name="MoonGrotto"/>
+        <Target name="UpperGrotto200"/>
         <Requirements>
           <Requirement mode="normal">WallJump+DoubleJump</Requirement>
           <Requirement mode="normal">Climb+DoubleJump+ChargeJump</Requirement>
@@ -1568,8 +1629,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="moonGrotto"/>
-        <Target name="mortarCell"/>
+        <Home name="MoonGrotto"/>
+        <Target name="MortarCell"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="normal">Bash</Requirement>
@@ -1578,16 +1639,16 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="moonGrotto"/>
-        <Target name="swampGrottoWater"/>
+        <Home name="MoonGrotto"/>
+        <Target name="SwampGrottoWater"/>
         <Requirements>
           <Requirement mode="normal">Water</Requirement>
           <Requirement mode="dboost">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="moonGrotto"/>
-        <Target name="swamp"/>
+        <Home name="MoonGrotto"/>
+        <Target name="Swamp"/>
         <Requirements>
           <Requirement mode="normal">Stomp+ChargeJump</Requirement>
           <Requirement mode="normal">ChargeJump+ChargeFlame</Requirement>
@@ -1608,8 +1669,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="moonGrotto"/>
-        <Target name="drainExp"/>
+        <Home name="MoonGrotto"/>
+        <Target name="DrainExp"/>
         <Requirements>
           <Requirement mode="normal">Grenade+Climb+ChargeJump</Requirement>
           <Requirement mode="speed">Grenade+Bash</Requirement>
@@ -1619,23 +1680,23 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="moonGrotto"/>
-        <Target name="swampEnergy"/>
+        <Home name="MoonGrotto"/>
+        <Target name="SwampEnergy"/>
         <Requirements>
           <Requirement mode="glitched">Dash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="moonGrotto"/>
-        <Target name="drainlessCell"/>
+        <Home name="MoonGrotto"/>
+        <Target name="DrainlessCell"/>
         <Requirements>
           <Requirement mode="normal">Stomp</Requirement>
           <Requirement mode="extended">ChargeJump+Climb</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="moonGrotto"/>
-        <Target name="rightGrottoHealth"/>
+        <Home name="MoonGrotto"/>
+        <Target name="RightGrottoHealth"/>
         <Requirements>
           <Requirement mode="normal">DoubleJump+Bash</Requirement>
           <Requirement mode="normal">DoubleJump+ChargeJump</Requirement>
@@ -1643,16 +1704,16 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="moonGrotto"/>
-        <Target name="moonGrottoEnergyWater"/>
+        <Home name="MoonGrotto"/>
+        <Target name="MoonGrottoEnergyWater"/>
         <Requirements>
           <Requirement mode="normal">EC+EC+Water</Requirement>
           <Requirement mode="dboost">EC+EC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="moonGrotto"/>
-        <Target name="moonGrottoEnergyTop"/>
+        <Home name="MoonGrotto"/>
+        <Target name="MoonGrottoEnergyTop"/>
         <Requirements>
           <Requirement mode="normal">EC+EC+ChargeJump</Requirement>
           <Requirement mode="normal">EC+EC+WallJump+DoubleJump</Requirement>
@@ -1660,23 +1721,23 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="moonGrotto"/>
+        <Home name="MoonGrotto"/>
         <Target name="GumoHideout"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="moonGrotto"/>
-        <Target name="moonGrottoAirCell"/>
+        <Home name="MoonGrotto"/>
+        <Target name="MoonGrottoAirOrb"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump+DoubleJump</Requirement>
           <Requirement mode="normal">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="moonGrotto"/>
-        <Target name="moonGrottoPlants"/>
+        <Home name="MoonGrotto"/>
+        <Target name="SwampPlant"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
@@ -1684,8 +1745,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="moonGrotto"/>
-        <Target name="moonGrottoStompPlant"/>
+        <Home name="MoonGrotto"/>
+        <Target name="MoonGrottoStompPlant"/>
         <Requirements>
           <Requirement mode="normal">Stomp+ChargeFlame</Requirement>
           <Requirement mode="normal">Stomp+Grenade</Requirement>
@@ -1696,8 +1757,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="moonGrotto"/>
-        <Target name="moonGrottoMortarPlant"/>
+        <Home name="MoonGrotto"/>
+        <Target name="SwampMortarPlant"/>
         <Requirements>
           <Requirement mode="normal">DoubleJump+ChargeFlame</Requirement>
           <Requirement mode="normal">DoubleJump+Grenade</Requirement>
@@ -1714,8 +1775,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="moonGrotto"/>
-        <Target name="deathGauntletRoofPlant"/>
+        <Home name="MoonGrotto"/>
+        <Target name="DeathGauntletRoofPlant"/>
         <Requirements>
           <Requirement mode="extended">ChargeFlame+DoubleJump</Requirement>
           <Requirement mode="extended">ChargeFlame+Bash</Requirement>
@@ -1723,224 +1784,244 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="hollowGroveMapStone">
+  <Area name="HollowGroveMapStone">
     <Locations>
       <Location>
         <X>351</X>
         <Y>-119</Y>
         <Item>MapStone</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="hollowGroveTree">
+  <Area name="HollowGroveTree">
     <Locations>
       <Location>
         <X>333</X>
         <Y>-61</Y>
         <Item>AC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="hollowGrovePlants">
+  <Area name="HollowGrovePlants">
     <Locations>
       <Location>
         <X>365</X>
         <Y>-119</Y>
         <Item>Plant</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
       <Location>
         <X>330</X>
         <Y>-78</Y>
         <Item>Plant</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="moonGrottoPlants">
+  <Area name="SwampPlant">
     <Locations>
       <Location>
         <X>628</X>
         <Y>-120</Y>
         <Item>Plant</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="moonGrottoStompPlant">
+  <Area name="MoonGrottoStompPlant">
     <Locations>
       <Location>
         <X>435</X>
         <Y>-140</Y>
         <Item>Plant</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="moonGrottoMortarPlant">
+  <Area name="SwampMortarPlant">
     <Locations>
       <Location>
         <X>515</X>
         <Y>-100</Y>
         <Item>Plant</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="groveWaterStomp">
+  <Area name="GroveWaterStomp">
     <Locations>
       <Location>
         <X>354</X>
         <Y>-178</Y>
         <Item>AC</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="rightGinsoOrb">
+  <Area name="RightGinsoOrb">
     <Locations>
       <Location>
         <X>666</X>
         <Y>-48</Y>
         <Item>EX200</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="leftGinsoCell">
+  <Area name="LeftGinsoCell">
     <Locations>
       <Location>
         <X>409</X>
         <Y>-34</Y>
         <Item>AC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="upperGroveSpiderArea">
+  <Area name="UpperGroveSpiderArea">
     <Locations>
       <Location>
         <X>174</X>
         <Y>-105</Y>
         <Item>EX200</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
       <Location>
         <X>261</X>
         <Y>-117</Y>
         <Item>HC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="upperGroveSpiderArea"/>
-        <Target name="upperGroveSpiderEnergy"/>
+        <Home name="UpperGroveSpiderArea"/>
+        <Target name="UpperGroveSpiderEnergy"/>
         <Requirements>
           <Requirement mode="normal">Grenade</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
-  <Area name="upperGroveSpiderEnergy">
+  <Area name="UpperGroveSpiderEnergy">
     <Locations>
       <Location>
         <X>272</X>
         <Y>-97</Y>
         <Item>EC</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="groveWater">
+  <Area name="GroveWater">
     <Locations>
       <Location>
         <X>187</X>
         <Y>-163</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="deathWater">
+  <Area name="DeathWater">
     <Locations>
       <Location>
         <X>339</X>
         <Y>-216</Y>
         <Item>AC</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="deathStomp">
+  <Area name="DeathStomp">
     <Locations>
       <Location>
         <X>356</X>
         <Y>-207</Y>
         <Item>EX200</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="upperGrottoOrbs">
+  <Area name="UpperGrottoOrbs">
     <Locations>
       <Location>
         <X>477</X>
         <Y>-140</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
       <Location>
         <X>432</X>
         <Y>-108</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
       <Location>
         <X>365</X>
         <Y>-109</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
       <Location>
         <X>581</X>
         <Y>-67</Y>
         <Item>HC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="upperGrottoOrbs"/>
-        <Target name="upperGrottoOrbsPlant"/>
+        <Home name="UpperGrottoOrbs"/>
+        <Target name="UpperGrottoOrbsPlant"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
@@ -1949,103 +2030,111 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="upperGrottoOrbsPlant">
+  <Area name="UpperGrottoOrbsPlant">
     <Locations>
       <Location>
         <X>540</X>
         <Y>-220</Y>
         <Item>Plant</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="upperGrotto200">
+  <Area name="UpperGrotto200">
     <Locations>
       <Location>
         <X>449</X>
         <Y>-166</Y>
         <Item>EX200</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="mortarCell">
+  <Area name="MortarCell">
     <Locations>
       <Location>
         <X>502</X>
         <Y>-108</Y>
         <Item>AC</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="swampGrottoWater">
+  <Area name="SwampGrottoWater">
     <Locations>
       <Location>
         <X>595</X>
         <Y>-136</Y>
         <Item>EX200</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="rightGrottoHealth">
+  <Area name="RightGrottoHealth">
     <Locations>
       <Location>
         <X>543</X>
         <Y>-189</Y>
         <Item>HC</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="moonGrottoEnergyWater">
+  <Area name="MoonGrottoEnergyWater">
     <Locations>
       <Location>
         <X>423</X>
         <Y>-274</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="moonGrottoEnergyTop">
+  <Area name="MoonGrottoEnergyTop">
     <Locations>
       <Location>
         <X>424</X>
         <Y>-220</Y>
         <Item>HC</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="moonGrottoAirCell">
+  <Area name="MoonGrottoAirOrb">
     <Locations>
       <Location>
         <X>552</X>
         <Y>-141</Y>
         <Item>EX100</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="moonGrottoAirCell"/>
-        <Target name="moonGrottoAirCellPlant"/>
+        <Home name="MoonGrottoAirOrb"/>
+        <Target name="MoonGrottoAirOrbPlant"/>
         <Requirements>
           <Requirement mode="normal">Stomp+ChargeFlame+WallJump+DoubleJump</Requirement>
           <Requirement mode="normal">Stomp+ChargeFlame+ChargeJump+Glide</Requirement>
@@ -2063,44 +2152,46 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="moonGrottoAirCellPlant">
+  <Area name="MoonGrottoAirOrbPlant">
     <Locations>
       <Location>
         <X>537</X>
         <Y>-176</Y>
         <Item>Plant</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="sideFallCell">
+  <Area name="SideFallCell">
     <Locations>
       <Location>
         <X>451</X>
         <Y>-296</Y>
         <Item>AC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="sideFallCell"/>
+        <Home name="SideFallCell"/>
         <Target name="GumoHideout"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sideFallCell"/>
+        <Home name="SideFallCell"/>
         <Target name="GumoHideoutPartialMobile"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sideFallCell"/>
+        <Home name="SideFallCell"/>
         <Target name="GumoHideoutRedirectAC"/>
         <Requirements>
           <Requirement mode="dboost-light">Free</Requirement>
@@ -2115,24 +2206,28 @@
         <Y>-413</Y>
         <Item>MS</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
       <Location>
         <X>620</X>
         <Y>-404</Y>
         <Item>KS</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
       <Location>
         <X>572</X>
         <Y>-378</Y>
         <Item>EX100</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
       <Location>
         <X>590</X>
         <Y>-384</Y>
         <Item>KS</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -2192,7 +2287,7 @@
       </Connection>
       <Connection>
         <Home name="GumoHideout"/>
-        <Target name="sideFallCell"/>
+        <Target name="SideFallCell"/>
         <Requirements>
           <Requirement mode="normal">Bash+Grenade</Requirement>
           <Requirement mode="normal">Glide+Wind</Requirement>
@@ -2209,12 +2304,14 @@
         <Y>-369</Y>
         <Item>EX15</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
       <Location>
         <X>467</X>
         <Y>-369</Y>
         <Item>EX15</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -2258,6 +2355,7 @@
         <Y>-430</Y>
         <Item>AC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -2270,6 +2368,7 @@
         <Y>-389</Y>
         <Item>MapStone</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -2282,6 +2381,7 @@
         <Y>-412</Y>
         <Item>SKDoubleJump</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -2304,6 +2404,7 @@
         <Y>-398</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -2316,42 +2417,48 @@
         <Y>-357</Y>
         <Item>EC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
       <Location>
         <X>567</X>
         <Y>-246</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
       <Location>
         <X>0</X>
         <Y>0</Y>
         <Item>EVGinsoKey</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
       <Location>
         <X>406</X>
         <Y>-386</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
       <Location>
         <X>393</X>
         <Y>-375</Y>
         <Item>HC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
       <Location>
         <X>328</X>
         <Y>-353</Y>
         <Item>EX100</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
         <Home name="MobileGumoHideout"/>
-        <Target name="moonGrotto"/>
+        <Target name="MoonGrotto"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
@@ -2389,18 +2496,21 @@
         <Y>-368</Y>
         <Item>Plant</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
       <Location>
         <X>439</X>
         <Y>-344</Y>
         <Item>Plant</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
       <Location>
         <X>492</X>
         <Y>-400</Y>
         <Item>Plant</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -2413,6 +2523,7 @@
         <Y>-411</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -2425,49 +2536,53 @@
         <Y>-441</Y>
         <Item>EC</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
       <Location>
         <X>505</X>
         <Y>-439</Y>
         <Item>EX200</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="drainlessCell">
+  <Area name="DrainlessCell">
     <Locations>
       <Location>
         <X>643</X>
         <Y>-127</Y>
         <Item>AC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="deathGauntletRoof">
+  <Area name="DeathGauntletRoof">
     <Locations>
       <Location>
         <X>321</X>
         <Y>-179</Y>
         <Item>HC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="deathGauntletRoof"/>
-        <Target name="deathGauntlet"/>
+        <Home name="DeathGauntletRoof"/>
+        <Target name="DeathGauntlet"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="deathGauntletRoof"/>
-        <Target name="deathGauntletRoofPlant"/>
+        <Home name="DeathGauntletRoof"/>
+        <Target name="DeathGauntletRoofPlant"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
@@ -2476,62 +2591,68 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="deathGauntletRoofPlant">
+  <Area name="DeathGauntletRoofPlant">
     <Locations>
       <Location>
         <X>342</X>
         <Y>-179</Y>
         <Item>Plant</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="lowerGinsoTree">
+  <Area name="LowerGinsoTree">
     <Locations>
       <Location>
         <X>523</X>
         <Y>142</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
       <Location>
         <X>531</X>
         <Y>267</Y>
         <Item>KS</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
       <Location>
         <X>540</X>
         <Y>277</Y>
         <Item>KS</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
       <Location>
         <X>508</X>
         <Y>304</Y>
         <Item>KS</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
       <Location>
         <X>529</X>
         <Y>297</Y>
         <Item>KS</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="lowerGinsoTree"/>
-        <Target name="bashTree"/>
+        <Home name="LowerGinsoTree"/>
+        <Target name="BashTree"/>
         <Requirements>
           <Requirement mode="normal">KS+KS+KS+KS</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="lowerGinsoTree"/>
-        <Target name="lowerGinsoTreePlant"/>
+        <Home name="LowerGinsoTree"/>
+        <Target name="LowerGinsoTreePlant"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
@@ -2539,7 +2660,7 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="lowerGinsoTree"/>
+        <Home name="LowerGinsoTree"/>
         <Target name="Horu"/>
         <Requirements>
           <Requirement mode="glitched">Dash</Requirement>
@@ -2547,31 +2668,33 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="lowerGinsoTreePlant">
+  <Area name="LowerGinsoTreePlant">
     <Locations>
       <Location>
         <X>540</X>
         <Y>101</Y>
         <Item>Plant</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="bashTree">
+  <Area name="BashTree">
     <Locations>
       <Location>
         <X>532</X>
         <Y>328</Y>
         <Item>SKBash</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="bashTree"/>
-        <Target name="upperGinsoTree"/>
+        <Home name="BashTree"/>
+        <Target name="UpperGinsoTree"/>
         <Requirements>
           <Requirement mode="normal">Bash</Requirement>
           <Requirement mode="normal">ChargeJump</Requirement>
@@ -2579,43 +2702,48 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="upperGinsoTree">
+  <Area name="UpperGinsoTree">
     <Locations>
       <Location>
         <X>518</X>
         <Y>339</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
       <Location>
         <X>507</X>
         <Y>476</Y>
         <Item>KS</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
       <Location>
         <X>535</X>
         <Y>488</Y>
         <Item>KS</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
       <Location>
         <X>531</X>
         <Y>502</Y>
         <Item>KS</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
       <Location>
         <X>508</X>
         <Y>498</Y>
         <Item>KS</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="upperGinsoTree"/>
-        <Target name="topGinsoTree"/>
+        <Home name="UpperGinsoTree"/>
+        <Target name="TopGinsoTree"/>
         <Requirements>
           <Requirement mode="normal">KS+KS+KS+KS+Bash+WallJump</Requirement>
           <Requirement mode="normal">KS+KS+KS+KS+Bash+Climb</Requirement>
@@ -2629,8 +2757,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="upperGinsoTree"/>
-        <Target name="upperGinsoFloors"/>
+        <Home name="UpperGinsoTree"/>
+        <Target name="UpperGinsoFloors"/>
         <Requirements>
           <Requirement mode="normal">Bash</Requirement>
           <Requirement mode="normal">Stomp</Requirement>
@@ -2639,48 +2767,53 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="upperGinsoFloors">
+  <Area name="UpperGinsoFloors">
     <Locations>
       <Location>
         <X>517</X>
         <Y>384</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
       <Location>
         <X>530</X>
         <Y>407</Y>
         <Item>EX100</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
       <Location>
         <X>536</X>
         <Y>434</Y>
         <Item>EC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="topGinsoTree">
+  <Area name="TopGinsoTree">
     <Locations>
       <Location>
         <X>456</X>
         <Y>566</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
       <Location>
         <X>471</X>
         <Y>614</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="topGinsoTree"/>
+        <Home name="TopGinsoTree"/>
         <Target name="GinsoEscape"/>
         <Requirements>
           <Requirement mode="normal">Bash</Requirement>
@@ -2688,8 +2821,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="topGinsoTree"/>
-        <Target name="topGinsoTreePlant"/>
+        <Home name="TopGinsoTree"/>
+        <Target name="TopGinsoTreePlant"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
@@ -2698,13 +2831,14 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="topGinsoTreePlant">
+  <Area name="TopGinsoTreePlant">
     <Locations>
       <Location>
         <X>610</X>
         <Y>611</Y>
         <Item>Plant</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -2717,58 +2851,63 @@
         <Y>661</Y>
         <Item>EX200</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
       <Location>
         <X>537</X>
         <Y>733</Y>
         <Item>EX100</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
       <Location>
         <X>533</X>
         <Y>827</Y>
         <Item>EX100</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
       <Location>
         <X>519</X>
         <Y>867</Y>
         <Item>EX100</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
       <Location>
         <X>0</X>
         <Y>4</Y>
         <Item>EVWater</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Ginso</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="swamp">
+  <Area name="Swamp">
     <Locations>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="swamp"/>
-        <Target name="drainlessCell"/>
+        <Home name="Swamp"/>
+        <Target name="DrainlessCell"/>
         <Requirements>
           <Requirement mode="normal">Stomp</Requirement>
           <Requirement mode="extended">ChargeJump+Climb</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="swamp"/>
-        <Target name="swampWater"/>
+        <Home name="Swamp"/>
+        <Target name="SwampWater"/>
         <Requirements>
           <Requirement mode="normal">Water</Requirement>
           <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="swamp"/>
-        <Target name="drainExp"/>
+        <Home name="Swamp"/>
+        <Target name="DrainExp"/>
         <Requirements>
           <Requirement mode="normal">Water+Climb+ChargeJump</Requirement>
           <Requirement mode="normal">Water+DoubleJump</Requirement>
@@ -2784,16 +2923,16 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="swamp"/>
-        <Target name="swampStomp"/>
+        <Home name="Swamp"/>
+        <Target name="SwampStomp"/>
         <Requirements>
           <Requirement mode="normal">Stomp</Requirement>
           <Requirement mode="extended">Climb+ChargeJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="swamp"/>
-        <Target name="swampEnergy"/>
+        <Home name="Swamp"/>
+        <Target name="SwampEnergy"/>
         <Requirements>
           <Requirement mode="normal">Wind+Glide</Requirement>
           <Requirement mode="normal">ChargeJump+Climb+Glide</Requirement>
@@ -2803,129 +2942,138 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="swamp"/>
-        <Target name="rightSwamp"/>
+        <Home name="Swamp"/>
+        <Target name="RightSwamp"/>
         <Requirements>
           <Requirement mode="normal">KS+KS+WallJump</Requirement>
           <Requirement mode="normal">KS+KS+Climb</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="swamp"/>
-        <Target name="swampMapStone"/>
+        <Home name="Swamp"/>
+        <Target name="SwampMapStone"/>
         <Requirements>
           <Requirement mode="normal">MS</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
-  <Area name="swampMapStone">
+  <Area name="SwampMapStone">
     <Locations>
       <Location>
         <X>677</X>
         <Y>-129</Y>
         <Item>MapStone</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="drainExp">
+  <Area name="DrainExp">
     <Locations>
       <Location>
         <X>636</X>
         <Y>-162</Y>
         <Item>EX100</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="swampWater">
+  <Area name="SwampWater">
     <Locations>
       <Location>
         <X>761</X>
         <Y>-173</Y>
         <Item>EX100</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
       <Location>
         <X>684</X>
         <Y>-205</Y>
         <Item>KS</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
       <Location>
         <X>766</X>
         <Y>-183</Y>
         <Item>KS</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
       <Location>
         <X>796</X>
         <Y>-210</Y>
         <Item>MS</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="swampStomp">
+  <Area name="SwampStomp">
     <Locations>
       <Location>
         <X>770</X>
         <Y>-148</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="swampEnergy">
+  <Area name="SwampEnergy">
     <Locations>
       <Location>
         <X>722</X>
         <Y>-95</Y>
         <Item>EC</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="rightSwamp">
+  <Area name="RightSwamp">
     <Locations>
       <Location>
         <X>860</X>
         <Y>-96</Y>
         <Item>SKStomp</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="rightSwamp"/>
-        <Target name="rightSwampStomp"/>
+        <Home name="RightSwamp"/>
+        <Target name="RightSwampStomp"/>
         <Requirements>
           <Requirement mode="normal">Stomp</Requirement>
           <Requirement mode="normal">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="rightSwamp"/>
-        <Target name="rightSwampCJump"/>
+        <Home name="RightSwamp"/>
+        <Target name="RightSwampCJump"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="rightSwamp"/>
-        <Target name="rightSwampGrenade"/>
+        <Home name="RightSwamp"/>
+        <Target name="RightSwampGrenade"/>
         <Requirements>
           <Requirement mode="normal">Grenade+Water</Requirement>
           <Requirement mode="dboost">Grenade</Requirement>
@@ -2933,37 +3081,40 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="rightSwampCJump">
+  <Area name="RightSwampCJump">
     <Locations>
       <Location>
         <X>914</X>
         <Y>-71</Y>
         <Item>EX200</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="rightSwampStomp">
+  <Area name="RightSwampStomp">
     <Locations>
       <Location>
         <X>884</X>
         <Y>-98</Y>
         <Item>EX100</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="rightSwampGrenade">
+  <Area name="RightSwampGrenade">
     <Locations>
       <Location>
         <X>874</X>
         <Y>-143</Y>
         <Item>EX200</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Swamp</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -2976,12 +3127,14 @@
         <Y>-37</Y>
         <Item>EX200</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
       <Location>
         <X>176</X>
         <Y>-34</Y>
         <Item>AC</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -3023,6 +3176,7 @@
         <Y>1</Y>
         <Item>EC</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -3044,6 +3198,7 @@
         <Y>21</Y>
         <Item>Plant</Item>
         <Difficulty>4</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -3056,6 +3211,7 @@
         <Y>-78</Y>
         <Item>HC</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Grove</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -3068,18 +3224,21 @@
         <Y>384</Y>
         <Item>EX100</Item>
         <Difficulty>5</Difficulty>
+        <Zone>Horu</Zone>
       </Location>
       <Location>
         <X>148</X>
         <Y>363</Y>
         <Item>MS</Item>
         <Difficulty>5</Difficulty>
+        <Zone>Horu</Zone>
       </Location>
       <Location>
         <X>249</X>
         <Y>403</Y>
         <Item>EC</Item>
         <Difficulty>5</Difficulty>
+        <Zone>Horu</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -3099,7 +3258,7 @@
       </Connection>
       <Connection>
         <Home name="Horu"/>
-        <Target name="lowerGinsoTree"/>
+        <Target name="LowerGinsoTree"/>
         <Requirements>
           <Requirement mode="glitched">Dash</Requirement>
         </Requirements>
@@ -3113,6 +3272,7 @@
         <Y>343</Y>
         <Item>MapStone</Item>
         <Difficulty>6</Difficulty>
+        <Zone>Horu</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -3125,48 +3285,56 @@
         <Y>165</Y>
         <Item>EX200</Item>
         <Difficulty>7</Difficulty>
+        <Zone>Horu</Zone>
       </Location>
       <Location>
         <X>253</X>
         <Y>194</Y>
         <Item>EX200</Item>
         <Difficulty>7</Difficulty>
+        <Zone>Horu</Zone>
       </Location>
       <Location>
         <X>163</X>
         <Y>136</Y>
         <Item>EX200</Item>
         <Difficulty>7</Difficulty>
+        <Zone>Horu</Zone>
       </Location>
       <Location>
         <X>-191</X>
         <Y>194</Y>
         <Item>EX200</Item>
         <Difficulty>7</Difficulty>
+        <Zone>Horu</Zone>
       </Location>
       <Location>
         <X>-29</X>
         <Y>148</Y>
         <Item>EX200</Item>
         <Difficulty>7</Difficulty>
+        <Zone>Horu</Zone>
       </Location>
       <Location>
         <X>13</X>
         <Y>164</Y>
         <Item>EX200</Item>
         <Difficulty>7</Difficulty>
+        <Zone>Horu</Zone>
       </Location>
       <Location>
         <X>129</X>
         <Y>165</Y>
         <Item>EX200</Item>
         <Difficulty>7</Difficulty>
+        <Zone>Horu</Zone>
       </Location>
       <Location>
         <X>98</X>
         <Y>130</Y>
         <Item>EX200</Item>
         <Difficulty>7</Difficulty>
+        <Zone>Horu</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -3203,6 +3371,7 @@
         <Y>245</Y>
         <Item>Plant</Item>
         <Difficulty>7</Difficulty>
+        <Zone>Horu</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -3215,6 +3384,7 @@
         <Y>112</Y>
         <Item>EX200</Item>
         <Difficulty>5</Difficulty>
+        <Zone>Horu</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -3227,24 +3397,26 @@
         <Y>20</Y>
         <Item>EVWarmth</Item>
         <Difficulty>0</Difficulty>
+        <Zone>Horu</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="valleyEntry">
+  <Area name="ValleyEntry">
     <Locations>
       <Location>
         <X>-205</X>
         <Y>-113</Y>
         <Item>AC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Valley</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="valleyEntry"/>
-        <Target name="valleyEntryTree"/>
+        <Home name="ValleyEntry"/>
+        <Target name="ValleyEntryTree"/>
         <Requirements>
           <Requirement mode="normal">WallJump</Requirement>
           <Requirement mode="normal">Bash+Climb</Requirement>
@@ -3255,8 +3427,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="valleyEntry"/>
-        <Target name="valleyRight"/>
+        <Home name="ValleyEntry"/>
+        <Target name="ValleyRight"/>
         <Requirements>
           <Requirement mode="normal">Stomp+Bash+WallJump</Requirement>
           <Requirement mode="normal">Stomp+Bash+DoubleJump</Requirement>
@@ -3273,15 +3445,15 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="valleyEntry"/>
-        <Target name="valleyEntryTreePlant"/>
+        <Home name="ValleyEntry"/>
+        <Target name="ValleyEntryTreePlant"/>
         <Requirements>
           <Requirement mode="extended">Grenade</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="valleyEntry"/>
-        <Target name="valleyWater"/>
+        <Home name="ValleyEntry"/>
+        <Target name="ValleyWater"/>
         <Requirements>
           <Requirement mode="normal">Water+Stomp+WallJump+DoubleJump</Requirement>
           <Requirement mode="normal">Water+Stomp+WallJump+Bash</Requirement>
@@ -3298,8 +3470,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="valleyEntry"/>
-        <Target name="spiritTreeRefined"/>
+        <Home name="ValleyEntry"/>
+        <Target name="SpiritTreeRefined"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
@@ -3307,19 +3479,20 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="valleyEntryTree">
+  <Area name="ValleyEntryTree">
     <Locations>
       <Location>
         <X>-221</X>
         <Y>-84</Y>
         <Item>EX100</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Valley</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="valleyEntryTree"/>
-        <Target name="valleyGrenadeWater"/>
+        <Home name="ValleyEntryTree"/>
+        <Target name="ValleyGrenadeWater"/>
         <Requirements>
           <Requirement mode="normal">Water+Grenade</Requirement>
           <Requirement mode="dboost-hard">Grenade+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
@@ -3328,8 +3501,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="valleyEntryTree"/>
-        <Target name="valleyEntryTreePlant"/>
+        <Home name="ValleyEntryTree"/>
+        <Target name="ValleyEntryTreePlant"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump+Climb+ChargeFlame</Requirement>
           <Requirement mode="normal">ChargeJump+Climb+Grenade</Requirement>
@@ -3344,49 +3517,53 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="valleyEntryTreePlant">
+  <Area name="ValleyEntryTreePlant">
     <Locations>
       <Location>
         <X>-179</X>
         <Y>-88</Y>
         <Item>Plant</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Valley</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="valleyGrenadeWater">
+  <Area name="ValleyGrenadeWater">
     <Locations>
       <Location>
         <X>-320</X>
         <Y>-162</Y>
         <Item>EC</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Valley</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="valleyRight">
+  <Area name="ValleyRight">
     <Locations>
       <Location>
         <X>-355</X>
         <Y>65</Y>
         <Item>AC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Valley</Zone>
       </Location>
       <Location>
         <X>-418</X>
         <Y>67</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Valley</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="valleyRight"/>
-        <Target name="valleyMain"/>
+        <Home name="ValleyRight"/>
+        <Target name="ValleyMain"/>
         <Requirements>
           <Requirement mode="normal">Bash+Stomp</Requirement>
           <Requirement mode="extended">Dash+Bash</Requirement>
@@ -3394,8 +3571,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="valleyRight"/>
-        <Target name="birdStompCell"/>
+        <Home name="ValleyRight"/>
+        <Target name="BirdStompCell"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump+Climb</Requirement>
           <Requirement mode="speed">Stomp</Requirement>
@@ -3403,57 +3580,62 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="birdStompCell">
+  <Area name="BirdStompCell">
     <Locations>
       <Location>
         <X>-292</X>
         <Y>20</Y>
         <Item>AC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Valley</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="valleyMain">
+  <Area name="ValleyMain">
     <Locations>
       <Location>
         <X>-460</X>
         <Y>-20</Y>
         <Item>SKGlide</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Valley</Zone>
       </Location>
       <Location>
         <X>-546</X>
         <Y>54</Y>
         <Item>EX200</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
      <Location>
         <X>-678</X>
         <Y>-29</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Misty</Zone>
       </Location>
       <Location>
         <X>-822</X>
         <Y>-9</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Misty</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="valleyMain"/>
-        <Target name="preSorrowOrb"/>
+        <Home name="ValleyMain"/>
+        <Target name="PreSorrowOrb"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="valleyMain"/>
-        <Target name="sorrow"/>
+        <Home name="ValleyMain"/>
+        <Target name="Sorrow"/>
         <Requirements>
           <Requirement mode="normal">Wind+Glide</Requirement>
           <Requirement mode="speed">Glide+DoubleJump+Bash+Dash</Requirement>
@@ -3465,8 +3647,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="valleyMain"/>
-        <Target name="misty"/>
+        <Home name="ValleyMain"/>
+        <Target name="Misty"/>
         <Requirements>
           <Requirement mode="normal">Glide</Requirement>
           <Requirement mode="dboost">DoubleJump+HC+HC+HC+HC</Requirement>
@@ -3474,37 +3656,37 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="valleyMain"/>
-        <Target name="forlorn"/>
+        <Home name="ValleyMain"/>
+        <Target name="Forlorn"/>
         <Requirements>
           <Requirement mode="normal">ForlornKey</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="valleyMain"/>
-        <Target name="rightForlorn"/>
+        <Home name="ValleyMain"/>
+        <Target name="RightForlorn"/>
         <Requirements>
           <Requirement mode="glitched">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="valleyMain"/>
-        <Target name="outsideForlornGrenade"/>
+        <Home name="ValleyMain"/>
+        <Target name="OutsideForlornGrenade"/>
         <Requirements>
           <Requirement mode="normal">Grenade</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="valleyMain"/>
-        <Target name="valleyMainFACS"/>
+        <Home name="ValleyMain"/>
+        <Target name="ValleyMainFACS"/>
         <Requirements>
           <Requirement mode="normal">Climb+ChargeJump</Requirement>
           <Requirement mode="extended">Bash+Glide</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="valleyMain"/>
-        <Target name="valleyMainPlant"/>
+        <Home name="ValleyMain"/>
+        <Target name="ValleyMainPlant"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
@@ -3512,126 +3694,135 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="valleyMain"/>
-        <Target name="valleyMapStone"/>
+        <Home name="ValleyMain"/>
+        <Target name="ValleyMapStone"/>
         <Requirements>
           <Requirement mode="normal">MS+Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="valleyMain"/>
-        <Target name="lowerValley"/>
+        <Home name="ValleyMain"/>
+        <Target name="LowerValley"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
-  <Area name="valleyMapStone">
+  <Area name="ValleyMapStone">
     <Locations>
       <Location>
         <X>-408</X>
         <Y>-170</Y>
         <Item>MapStone</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Valley</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="valleyMainPlant">
+  <Area name="ValleyMainPlant">
     <Locations>
       <Location>
         <X>-468</X>
         <Y>-67</Y>
         <Item>Plant</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Valley</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="preSorrowOrb">
+  <Area name="PreSorrowOrb">
     <Locations>
       <Location>
         <X>-572</X>
         <Y>157</Y>
         <Item>EX200</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="valleyWater">
+  <Area name="ValleyWater">
     <Locations>
       <Location>
         <X>-359</X>
         <Y>-87</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Valley</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="valleyMainFACS">
+  <Area name="ValleyMainFACS">
     <Locations>
       <Location>
         <X>-415</X>
         <Y>-80</Y>
         <Item>AC</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Valley</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="outsideForlornGrenade">
+  <Area name="OutsideForlornGrenade">
     <Locations>
       <Location>
         <X>-460</X>
         <Y>-187</Y>
         <Item>AC</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Valley</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="lowerValley">
+  <Area name="LowerValley">
     <Locations>
       <Location>
         <X>-350</X>
         <Y>-98</Y>
         <Item>AC</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Valley</Zone>
       </Location>
       <Location>
         <X>-561</X>
         <Y>-89</Y>
         <Item>MS</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Valley</Zone>
       </Location>
       <Location>
         <X>-538</X>
         <Y>-104</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Valley</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="lowerValley"/>
-        <Target name="valleyMainFACS"/>
+        <Home name="LowerValley"/>
+        <Target name="ValleyMainFACS"/>
         <Requirements>
           <Requirement mode="normal">Climb+ChargeJump</Requirement>
           <Requirement mode="extended">Bash+Glide</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="lowerValley"/>
-        <Target name="lowerValleyPlantApproach"/>
+        <Home name="LowerValley"/>
+        <Target name="LowerValleyPlantApproach"/>
         <Requirements>
           <Requirement mode="normal">Bash+DoubleJump</Requirement>
           <Requirement mode="normal">Bash+Glide</Requirement>
@@ -3640,21 +3831,21 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="lowerValley"/>
-        <Target name="valleyEntry"/>
+        <Home name="LowerValley"/>
+        <Target name="ValleyEntry"/>
         <Requirements>
           <Requirement mode="normal">Bash</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
-  <Area name="lowerValleyPlantApproach">
+  <Area name="LowerValleyPlantApproach">
     <Locations>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="lowerValleyPlantApproach"/>
-        <Target name="valleyMainPlant"/>
+        <Home name="LowerValleyPlantApproach"/>
+        <Target name="ValleyMainPlant"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
@@ -3663,13 +3854,13 @@
       </Connection>    
     </Connections>
   </Area>
-  <Area name="outsideForlorn">
+  <Area name="OutsideForlorn">
     <Locations>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="outsideForlorn"/>
-        <Target name="outsideForlornTree"/>
+        <Home name="OutsideForlorn"/>
+        <Target name="OutsideForlornTree"/>
         <Requirements>
           <Requirement mode="normal">WallJump</Requirement>
           <Requirement mode="normal">Climb</Requirement>
@@ -3678,8 +3869,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="outsideForlorn"/>
-        <Target name="outsideForlornWater"/>
+        <Home name="OutsideForlorn"/>
+        <Target name="OutsideForlornWater"/>
         <Requirements>
           <Requirement mode="normal">Water</Requirement>
           <Requirement mode="dboost">HC+HC+HC+HC</Requirement>
@@ -3687,8 +3878,8 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="outsideForlorn"/>
-        <Target name="outsideForlornCliff"/>
+        <Home name="OutsideForlorn"/>
+        <Target name="OutsideForlornCliff"/>
         <Requirements>
           <Requirement mode="normal">WallJump+ChargeJump</Requirement>
           <Requirement mode="normal">Climb+ChargeJump</Requirement>
@@ -3699,67 +3890,70 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="outsideForlornTree">
+  <Area name="OutsideForlornTree">
     <Locations>
       <Location>
         <X>-460</X>
         <Y>-255</Y>
         <Item>EX100</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Valley</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="outsideForlornWater">
+  <Area name="OutsideForlornWater">
     <Locations>
       <Location>
         <X>-514</X>
         <Y>-277</Y>
         <Item>EX100</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Valley</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="outsideForlornCliff">
+  <Area name="OutsideForlornCliff">
     <Locations>
       <Location>
         <X>-538</X>
         <Y>-234</Y>
         <Item>EX200</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Valley</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="outsideForlornCliff"/>
-        <Target name="outsideForlornGrenade"/>
+        <Home name="OutsideForlornCliff"/>
+        <Target name="OutsideForlornGrenade"/>
         <Requirements>
           <Requirement mode="normal">Bash+Stomp+Grenade</Requirement>
           <Requirement mode="extreme">Bash+Grenade</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="outsideForlornCliff"/>
-        <Target name="valleyMapStone"/>
+        <Home name="OutsideForlornCliff"/>
+        <Target name="ValleyMapStone"/>
         <Requirements>
           <Requirement mode="normal">MS+Bash+Stomp</Requirement>
           <Requirement mode="extreme">MS+Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="outsideForlornCliff"/>
-        <Target name="outsideForlornMS"/>
+        <Home name="OutsideForlornCliff"/>
+        <Target name="OutsideForlornMS"/>
         <Requirements>
           <Requirement mode="normal">Bash+Stomp</Requirement>
           <Requirement mode="extreme">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="outsideForlornCliff"/>
-        <Target name="lowerValley"/>
+        <Home name="OutsideForlornCliff"/>
+        <Target name="LowerValley"/>
         <Requirements>
           <Requirement mode="normal">Bash+ChargeJump</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
@@ -3767,69 +3961,76 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="outsideForlornMS">
+  <Area name="OutsideForlornMS">
     <Locations>
       <Location>
         <X>-443</X>
         <Y>-152</Y>
         <Item>MS</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Valley</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="forlorn">
+  <Area name="Forlorn">
     <Locations>
       <Location>
         <X>-703</X>
         <Y>-390</Y>
         <Item>EX200</Item>
         <Difficulty>4</Difficulty>
+        <Zone>Forlorn</Zone>
       </Location>
       <Location>
         <X>-841</X>
         <Y>-350</Y>
         <Item>EX100</Item>
         <Difficulty>4</Difficulty>
+        <Zone>Forlorn</Zone>
       </Location>
       <Location>
         <X>-858</X>
         <Y>-353</Y>
         <Item>KS</Item>
         <Difficulty>4</Difficulty>
+        <Zone>Forlorn</Zone>
       </Location>
       <Location>
         <X>-892</X>
         <Y>-328</Y>
         <Item>KS</Item>
         <Difficulty>4</Difficulty>
+        <Zone>Forlorn</Zone>
       </Location>
       <Location>
         <X>-888</X>
         <Y>-251</Y>
         <Item>KS</Item>
         <Difficulty>4</Difficulty>
+        <Zone>Forlorn</Zone>
       </Location>
       <Location>
         <X>-869</X>
         <Y>-255</Y>
         <Item>KS</Item>
         <Difficulty>4</Difficulty>
+        <Zone>Forlorn</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="forlorn"/>
-        <Target name="rightForlorn"/>
+        <Home name="Forlorn"/>
+        <Target name="RightForlorn"/>
         <Requirements>
           <Requirement mode="normal">KS+KS+KS+KS+Glide+Stomp+Bash+WallJump</Requirement>
           <Requirement mode="normal">KS+KS+KS+KS+Glide+Stomp+Bash+Climb</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="forlorn"/>
-        <Target name="forlornPlant"/>
+        <Home name="Forlorn"/>
+        <Target name="ForlornPlant"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
@@ -3837,15 +4038,15 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="forlorn"/>
-        <Target name="forlornMapStone"/>
+        <Home name="Forlorn"/>
+        <Target name="ForlornMapStone"/>
         <Requirements>
           <Requirement mode="normal">MS</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="forlorn"/>
-        <Target name="outsideForlorn"/>
+        <Home name="Forlorn"/>
+        <Target name="OutsideForlorn"/>
         <Requirements>
           <Requirement mode="normal">WallJump</Requirement>
           <Requirement mode="normal">Climb</Requirement>
@@ -3854,49 +4055,53 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="forlornMapStone">
+  <Area name="ForlornMapStone">
     <Locations>
       <Location>
         <X>-843</X>
         <Y>-308</Y>
         <Item>MapStone</Item>
         <Difficulty>5</Difficulty>
+        <Zone>Forlorn</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="forlornPlant">
+  <Area name="ForlornPlant">
     <Locations>
       <Location>
         <X>-815</X>
         <Y>-266</Y>
         <Item>Plant</Item>
         <Difficulty>5</Difficulty>
+        <Zone>Forlorn</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="rightForlorn">
+  <Area name="RightForlorn">
     <Locations>
       <Location>
         <X>-625</X>
         <Y>-315</Y>
         <Item>HC</Item>
         <Difficulty>5</Difficulty>
+        <Zone>Forlorn</Zone>
       </Location>
       <Location>
         <X>0</X>
         <Y>12</Y>
         <Item>EVWind</Item>
         <Difficulty>6</Difficulty>
+        <Zone>Forlorn</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="rightForlorn"/>
-        <Target name="rightForlornPlant"/>
+        <Home name="RightForlorn"/>
+        <Target name="RightForlornPlant"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
@@ -3905,55 +4110,61 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="rightForlornPlant">
+  <Area name="RightForlornPlant">
     <Locations>
       <Location>
         <X>-607</X>
         <Y>-314</Y>
         <Item>Plant</Item>
         <Difficulty>6</Difficulty>
+        <Zone>Forlorn</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="sorrow">
+  <Area name="Sorrow">
     <Locations>
       <Location>
         <X>-510</X>
         <Y>204</Y>
         <Item>AC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
       <Location>
         <X>-485</X>
         <Y>323</Y>
         <Item>KS</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
       <Location>
         <X>-503</X>
         <Y>274</Y>
         <Item>KS</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
       <Location>
         <X>-514</X>
         <Y>303</Y>
         <Item>KS</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
       <Location>
         <X>-596</X>
         <Y>229</Y>
         <Item>KS</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="sorrow"/>
-        <Target name="leftSorrow"/>
+        <Home name="Sorrow"/>
+        <Target name="LeftSorrow"/>
         <Requirements>
           <Requirement mode="normal">KS+KS+KS+KS+Glide</Requirement>
           <Requirement mode="extreme">KS+KS+KS+KS+Bash</Requirement>
@@ -3962,51 +4173,51 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sorrow"/>
-        <Target name="sorrowHealth"/>
+        <Home name="Sorrow"/>
+        <Target name="SorrowHealth"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sorrow"/>
-        <Target name="sorrowMapFragment"/>
+        <Home name="Sorrow"/>
+        <Target name="SorrowMapFragment"/>
         <Requirements>
           <Requirement mode="normal">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sorrow"/>
-        <Target name="sorrowMapStone"/>
+        <Home name="Sorrow"/>
+        <Target name="SorrowMapStone"/>
         <Requirements>
           <Requirement mode="normal">MS</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sorrow"/>
+        <Home name="Sorrow"/>
         <Target name="Horu"/>
         <Requirements>
           <Requirement mode="glitched">Dash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sorrow"/>
-        <Target name="valleyMain"/>
+        <Home name="Sorrow"/>
+        <Target name="ValleyMain"/>
         <Requirements>
           <Requirement mode="normal">Stomp</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sorrow"/>
-        <Target name="valleyMain"/>
+        <Home name="Sorrow"/>
+        <Target name="ValleyMain"/>
         <Requirements>
           <Requirement mode="normal">Stomp</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sorrow"/>
-        <Target name="preSorrowOrb"/>
+        <Home name="Sorrow"/>
+        <Target name="PreSorrowOrb"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
@@ -4014,99 +4225,108 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="sorrowMapStone">
+  <Area name="SorrowMapStone">
     <Locations>
       <Location>
         <X>-451</X>
         <Y>284</Y>
         <Item>MapStone</Item>
         <Difficulty>4</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="sorrowMapFragment">
+  <Area name="SorrowMapFragment">
     <Locations>
       <Location>
         <X>-435</X>
         <Y>322</Y>
         <Item>MS</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="sorrowHealth">
+  <Area name="SorrowHealth">
     <Locations>
       <Location>
         <X>-609</X>
         <Y>299</Y>
         <Item>HC</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="leftSorrow">
+  <Area name="LeftSorrow">
     <Locations>
       <Location>
         <X>-671</X>
         <Y>289</Y>
         <Item>AC</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
       <Location>
         <X>-608</X>
         <Y>329</Y>
         <Item>KS</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
       <Location>
         <X>-612</X>
         <Y>347</Y>
         <Item>KS</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
       <Location>
         <X>-604</X>
         <Y>361</Y>
         <Item>KS</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
       <Location>
         <X>-613</X>
         <Y>371</Y>
         <Item>KS</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
       <Location>
         <X>-627</X>
         <Y>393</Y>
         <Item>EC</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="leftSorrow"/>
-        <Target name="leftSorrowGrenade"/>
+        <Home name="LeftSorrow"/>
+        <Target name="LeftSorrowGrenade"/>
         <Requirements>
           <Requirement mode="normal">Grenade</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="leftSorrow"/>
-        <Target name="upperSorrow"/>
+        <Home name="LeftSorrow"/>
+        <Target name="UpperSorrow"/>
         <Requirements>
           <Requirement mode="normal">KS+KS+KS+KS</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="leftSorrow"/>
-        <Target name="leftSorrowPlant"/>
+        <Home name="LeftSorrow"/>
+        <Target name="LeftSorrowPlant"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
@@ -4115,93 +4335,101 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="leftSorrowPlant">
+  <Area name="LeftSorrowPlant">
     <Locations>
       <Location>
         <X>-630</X>
         <Y>249</Y>
         <Item>Plant</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="leftSorrowGrenade">
+  <Area name="LeftSorrowGrenade">
     <Locations>
       <Location>
         <X>-677</X>
         <Y>269</Y>
         <Item>EX200</Item>
         <Difficulty>4</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="upperSorrow">
+  <Area name="UpperSorrow">
     <Locations>
       <Location>
         <X>-456</X>
         <Y>419</Y>
         <Item>KS</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
       <Location>
         <X>-414</X>
         <Y>429</Y>
         <Item>KS</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
       <Location>
         <X>-514</X>
         <Y>427</Y>
         <Item>KS</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
       <Location>
         <X>-545</X>
         <Y>409</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
       <Location>
         <X>-592</X>
         <Y>445</Y>
         <Item>KS</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="upperSorrow"/>
-        <Target name="chargeJump"/>
+        <Home name="UpperSorrow"/>
+        <Target name="ChargeJump"/>
         <Requirements>
           <Requirement mode="normal">KS+KS+KS+KS</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="upperSorrow"/>
-        <Target name="sorrow"/>
+        <Home name="UpperSorrow"/>
+        <Target name="Sorrow"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
-  <Area name="chargeJump">
+  <Area name="ChargeJump">
     <Locations>
       <Location>
         <X>-696</X>
         <Y>408</Y>
         <Item>SKChargeJump</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="chargeJump"/>
-        <Target name="sunstone"/>
+        <Home name="ChargeJump"/>
+        <Target name="Sunstone"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump+Climb</Requirement>
           <Requirement mode="extended">Bash+Glide</Requirement>
@@ -4209,39 +4437,41 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="chargeJump"/>
-        <Target name="aboveChargeJump"/>
+        <Home name="ChargeJump"/>
+        <Target name="AboveChargeJump"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
-  <Area name="aboveChargeJump">
+  <Area name="AboveChargeJump">
     <Locations>
       <Location>
         <X>-646</X>
         <Y>473</Y>
         <Item>AC</Item>
         <Difficulty>5</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="sunstone">
+  <Area name="Sunstone">
     <Locations>
       <Location>
         <X>0</X>
         <Y>16</Y>
         <Item>EVHoruKey</Item>
         <Difficulty>4</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="sunstone"/>
-        <Target name="sunstonePlant"/>
+        <Home name="Sunstone"/>
+        <Target name="SunstonePlant"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
@@ -4249,77 +4479,84 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="sunstone"/>
-        <Target name="upperSorrow"/>
+        <Home name="Sunstone"/>
+        <Target name="UpperSorrow"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
-  <Area name="sunstonePlant">
+  <Area name="SunstonePlant">
     <Locations>
       <Location>
         <X>-478</X>
         <Y>586</Y>
         <Item>Plant</Item>
         <Difficulty>4</Difficulty>
+        <Zone>Sorrow</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="misty">
+  <Area name="Misty">
     <Locations>
       <Location>
         <X>-979</X>
         <Y>23</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Misty</Zone>
       </Location>
       <Location>
         <X>-1075</X>
         <Y>-2</Y>
         <Item>AC</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Misty</Zone>
       </Location>
       <Location>
         <X>-1082</X>
         <Y>8</Y>
         <Item>EX100</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Misty</Zone>
       </Location>
       <Location>
         <X>-1009</X>
         <Y>-35</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Misty</Zone>
       </Location>
       <Location>
         <X>-1076</X>
         <Y>32</Y>
         <Item>KS</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Misty</Zone>
       </Location>
       <Location>
         <X>-1188</X>
         <Y>-100</Y>
         <Item>SKClimb</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Misty</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="misty"/>
-        <Target name="mistyPostClimb"/>
+        <Home name="Misty"/>
+        <Target name="MistyPostClimb"/>
         <Requirements>
           <Requirement mode="normal">Climb+DoubleJump</Requirement>
           <Requirement mode="normal">ChargeJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="misty"/>
-        <Target name="mistyPlant"/>
+        <Home name="Misty"/>
+        <Target name="MistyPlant"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
@@ -4327,96 +4564,103 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="misty"/>
-        <Target name="forlorn"/>
+        <Home name="Misty"/>
+        <Target name="Forlorn"/>
         <Requirements>
           <Requirement mode="glitched">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="misty"/>
-        <Target name="rightForlorn"/>
+        <Home name="Misty"/>
+        <Target name="RightForlorn"/>
         <Requirements>
           <Requirement mode="glitched">Free</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
-  <Area name="mistyPlant">
+  <Area name="MistyPlant">
     <Locations>
       <Location>
         <X>-1102</X>
         <Y>-67</Y>
         <Item>Plant</Item>
         <Difficulty>2</Difficulty>
+        <Zone>Misty</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="mistyPostClimb">
+  <Area name="MistyPostClimb">
     <Locations>
       <Location>
         <X>-837</X>
         <Y>-123</Y>
         <Item>EX100</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Misty</Zone>
       </Location>
       <Location>
         <X>-796</X>
         <Y>-144</Y>
         <Item>EX200</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Misty</Zone>
       </Location>
       <Location>
         <X>-912</X>
         <Y>-36</Y>
         <Item>KS</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Misty</Zone>
       </Location>
       <Location>
         <X>-768</X>
         <Y>-144</Y>
         <Item>KS</Item>
         <Difficulty>1</Difficulty>
+        <Zone>Misty</Zone>
       </Location>
     </Locations>
     <Connections>
       <Connection>
-        <Home name="mistyPostClimb"/>
-        <Target name="mistyEndGrenade"/>
+        <Home name="MistyPostClimb"/>
+        <Target name="MistyEndGrenade"/>
         <Requirements>
           <Requirement mode="normal">Grenade</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="mistyPostClimb"/>
-        <Target name="mistyEnd"/>
+        <Home name="MistyPostClimb"/>
+        <Target name="MistyEnd"/>
         <Requirements>
           <Requirement mode="normal">KS+KS+KS+KS</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
-  <Area name="mistyEnd">
+  <Area name="MistyEnd">
     <Locations>
       <Location>
         <X>0</X>
         <Y>8</Y>
         <Item>EVForlornKey</Item>
         <Difficulty>3</Difficulty>
+        <Zone>Misty</Zone>
       </Location>
     </Locations>
     <Connections>
     </Connections>
   </Area>
-  <Area name="mistyEndGrenade">
+  <Area name="MistyEndGrenade">
     <Locations>
       <Location>
         <X>-671</X>
         <Y>-39</Y>
         <Item>EX200</Item>
         <Difficulty>5</Difficulty>
+        <Zone>Misty</Zone>
       </Location>
     </Locations>
     <Connections>
