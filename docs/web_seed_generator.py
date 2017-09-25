@@ -1223,7 +1223,7 @@ def main():
     panel.add(row3)
     panel.add(row4)
 
-    title = HTML("Ori DE Randomizer (v2.0)", StyleName="title")
+    title = HTML("Ori DE Randomizer (v2.0.1)", StyleName="title")
 
     row0.add(title)
 
