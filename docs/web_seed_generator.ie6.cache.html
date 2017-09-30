@@ -22432,13 +22432,15 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 	$m['force_assign'].__bind_type__ = 0;
 	$m['force_assign'].__args__ = [null,null,['item'],['location']];
 	$m['assign_to_location'] = function(item, location) {
-		var $add134,$add127,$add89,$add88,$add129,$add131,$add116,$and9,$add83,$add117,$add114,$add115,$add87,$add86,$add85,$add84,$add133,$sub16,$add108,$sub18,$add121,$add128,$add105,$add123,$add113,$add104,$add100,$add118,$add132,$add119,$add124,$add136,$add94,$add120,$sub17,$add95,$add137,$add110,$mul22,$mul21,$add101,$add103,$add102,$add98,$add99,$add107,$add106,assignment,$add96,$add97,$add90,$add91,$add92,$add93,$and10,$add111,$add138,$add126,$add140,$add130,$add135,value,$sub15,$add109,$add122,$add125,$add139,$add112;
+		var $add134,$add127,$add89,$add88,$add129,$add131,$add116,$and9,$add83,$add117,$add114,$add115,$add87,$add86,$add85,$add84,$add133,$sub16,$add108,$sub18,$add121,$add128,$add105,$add123,$add113,$add104,$add100,$add118,zone,$add119,$add124,$add136,$add94,$add120,$sub17,$add95,$add137,$add110,$mul22,$mul21,$add101,$add103,$add102,$add98,$add99,$add107,$add106,assignment,$add96,$add97,$add90,$add91,$add92,$add93,$and10,$add111,$add138,$add126,$add140,$add130,$add135,value,$sub15,$add109,$add122,$add125,$add139,$add132,$add112;
 		assignment = '';
+		zone = $p['getattr'](location, 'zone');
 		if ($p['bool'](($p['bool']($and9=!$p['bool']((typeof nonProgressiveMapstones == "undefined"?$m.nonProgressiveMapstones:nonProgressiveMapstones)))?$p['op_eq']($p['getattr'](location, 'orig'), 'MapStone'):$and9))) {
 			$m['mapstonesAssigned'] = $p['__op_add']($add83=$m['mapstonesAssigned'],$add84=1);
 			assignment = $p['__op_add']($add89=assignment,$add90=$p['__op_add']($add87=$p['str']($p['__op_add']($add85=20,$add86=(typeof ($mul21=$m['mapstonesAssigned'])==typeof ($mul22=4) && typeof $mul21=='number'?
 				$mul21*$mul22:
 				$p['op_mul']($mul21,$mul22)))),$add88='|'));
+			zone = 'Mapstone';
 			if ($p['bool']($m.costs['keys']().__contains__(item))) {
 				if ($p['bool'](!$m['spoilerGroup'].__contains__(item))) {
 					$m['spoilerGroup'].__setitem__(item, $p['list']([]));
@@ -22473,7 +22475,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 		else {
 			assignment = $p['__op_add']($add131=assignment,$add132=$p['__op_add']($add129=$p['__getslice'](item, 0, 2),$add130='|1'));
 		}
-		assignment = $p['__op_add']($add137=assignment,$add138=$p['__op_add']($add135=$p['__op_add']($add133='|',$add134=$p['getattr'](location, 'zone')),$add136='\r\n'));
+		assignment = $p['__op_add']($add137=assignment,$add138=$p['__op_add']($add135=$p['__op_add']($add133='|',$add134=zone),$add136='\r\n'));
 		if ($p['bool']((typeof eventsOutput == "undefined"?$m.eventsOutput:eventsOutput).__contains__(item))) {
 			$m['eventList']['append'](assignment);
 		}
@@ -23271,7 +23273,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 		panel['add'](row2);
 		panel['add'](row3);
 		panel['add'](row4);
-		title = $pyjs_kwargs_call(null, $m['HTML'], null, null, [{StyleName:'title'}, 'Ori DE Randomizer (v2.0.1)']);
+		title = $pyjs_kwargs_call(null, $m['HTML'], null, null, [{StyleName:'title'}, 'Ori DE Randomizer (v2.0.2)']);
 		row0['add'](title);
 		row1_1 = $pyjs_kwargs_call(null, $m['HorizontalPanel'], null, null, [{StyleName:'inner_row'}]);
 		row1_2 = $pyjs_kwargs_call(null, $m['HorizontalPanel'], null, null, [{StyleName:'inner_row'}]);

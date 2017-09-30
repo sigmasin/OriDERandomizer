@@ -358,11 +358,13 @@ def assign_to_location(item, location):
     global expSlots
 
     assignment = ""
+    zone = location.zone
 
     # if mapstones are progressive, set a special location
     if not nonProgressiveMapstones and location.orig == "MapStone":
         mapstonesAssigned += 1
         assignment += (str(20 + mapstonesAssigned * 4) + "|")
+        zone = "Mapstone"
         if item in costs.keys():
             if item not in spoilerGroup:
                 spoilerGroup[item] = []
@@ -387,7 +389,7 @@ def assign_to_location(item, location):
         assignment += (item[:2] + "|" + item[2:])
     else:
         assignment += (item[:2] + "|1")
-    assignment += ("|" + location.zone + "\r\n")
+    assignment += ("|" + zone + "\r\n")
 
     if item in eventsOutput:
         eventList.append(assignment)
@@ -1223,7 +1225,7 @@ def main():
     panel.add(row3)
     panel.add(row4)
 
-    title = HTML("Ori DE Randomizer (v2.0.1)", StyleName="title")
+    title = HTML("Ori DE Randomizer (v2.0.2)", StyleName="title")
 
     row0.add(title)
 
