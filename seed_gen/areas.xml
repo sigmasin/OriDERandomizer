@@ -1651,8 +1651,10 @@
         <Target name="Swamp"/>
         <Requirements>
           <Requirement mode="normal">Stomp+ChargeJump</Requirement>
-          <Requirement mode="normal">ChargeJump+ChargeFlame</Requirement>
-          <Requirement mode="normal">ChargeJump+Grenade</Requirement>
+          <Requirement mode="normal">ChargeJump+ChargeFlame+WallJump</Requirement>
+          <Requirement mode="normal">ChargeJump+ChargeFlame+Climb</Requirement>
+          <Requirement mode="normal">ChargeJump+Grenade+WallJump</Requirement>
+          <Requirement mode="normal">ChargeJump+Grenade+Climb</Requirement>
           <Requirement mode="lure">Bash+ChargeFlame+Water</Requirement>
           <Requirement mode="lure">Bash+Grenade+Water</Requirement>
           <Requirement mode="lure">Bash+Climb</Requirement>
@@ -1668,6 +1670,8 @@
           <Requirement mode="dboost-hard">Stomp+ChargeFlame+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="extreme">DoubleJump+ChargeFlame+HC+HC+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="extreme">Stomp+ChargeFlame+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">ChargeJump+ChargeFlame</Requirement>
+          <Requirement mode="extreme">ChargeJump+Grenade</Requirement>
           <Requirement mode="glitched">Dash</Requirement>
         </Requirements>
       </Connection>
@@ -4211,7 +4215,7 @@
         <Home name="Sorrow"/>
         <Target name="SorrowMapStone"/>
         <Requirements>
-          <Requirement mode="normal">MS</Requirement>
+          <Requirement mode="normal">Bash+MS</Requirement>
         </Requirements>
       </Connection>
       <Connection>

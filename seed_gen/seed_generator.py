@@ -361,7 +361,7 @@ def assign_to_location(item, location):
 
     assignment = ""
     zone = location.zone
-    
+
     # if mapstones are progressive, set a special location
     if not nonProgressiveMapstones and location.orig == "MapStone":
         mapstonesAssigned += 1
