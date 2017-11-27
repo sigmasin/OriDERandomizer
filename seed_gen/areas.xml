@@ -1070,6 +1070,7 @@
         <Target name="BoulderExp"/>
         <Requirements>
           <Requirement mode="normal">Dash+Stomp</Requirement>
+          <Requirement mode="extended">Stomp</Requirement>
           <Requirement mode="glitched">Free</Requirement>
         </Requirements>
       </Connection>
@@ -3653,7 +3654,10 @@
         <Home name="ValleyMain"/>
         <Target name="PreSorrowOrb"/>
         <Requirements>
-          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">WallJump+DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade+Climb</Requirement>
+          <Requirement mode="normal">Bash+Grenade+WallJump+DoubleJump</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>
@@ -4236,7 +4240,10 @@
         <Home name="Sorrow"/>
         <Target name="PreSorrowOrb"/>
         <Requirements>
-          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">WallJump+DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade+Climb</Requirement>
+          <Requirement mode="normal">Bash+Grenade+WallJump+DoubleJump</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>

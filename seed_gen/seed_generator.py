@@ -859,7 +859,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
                 spoilerPath = prepare_path(len(locationsToAssign))
         # pick what we're going to put in our accessible space
         itemsToAssign = []
-        if len(locationsToAssign) < len(assignQueue) + keystoneCount - inventory["KS"] + mapstoneCount - inventory["MS"]:
+        if len(locationsToAssign) < len(assignQueue) + max(keystoneCount - inventory["KS"], 0) + max(mapstoneCount - inventory["MS"], 0):
             # we've painted ourselves into a corner, try again
             if not reservedLocations:
                 return placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode, cluesMode, noTeleporters, doLocationAnalysis, doSkillOrderAnalysis, modes, flags, starvedMode, preferPathDifficulty, setNonProgressiveMapstones)
@@ -926,6 +926,8 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
             groupDepth += 1
             currentAreas.sort()
 
+            spoilerStr += str(groupDepth) + ": " + str(currentAreas) + " {\n"
+            
             spoilerStr += currentGroupSpoiler
 
             spoilerStr += "}\n"
