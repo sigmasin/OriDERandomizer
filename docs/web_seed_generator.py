@@ -642,6 +642,16 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
             "Water": 1,
             "Wind": 1,
             "Warmth": 1,
+            "RB0": 0,
+            "RB1": 0,
+            "RB6": 0,
+            "RB8": 0,
+            "RB9": 0,
+            "RB10": 0,
+            "RB11": 0,
+            "RB12": 0,
+            "RB13": 0,
+            "RB15": 0,
             "WaterVeinShard": 0,
             "GumonSealShard": 0,
             "SunstoneShard": 0,
@@ -1225,7 +1235,7 @@ def main():
     panel.add(row3)
     panel.add(row4)
 
-    title = HTML("Ori DE Randomizer (v2.0.4)", StyleName="title")
+    title = HTML("Ori DE Randomizer (v2.0.5)", StyleName="title")
 
     row0.add(title)
 
