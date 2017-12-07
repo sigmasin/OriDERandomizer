@@ -1594,7 +1594,8 @@
         <Home name="MoonGrotto"/>
         <Target name="HollowGrove"/>
         <Requirements>
-          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">ChargeJump+Climb</Requirement>
           <Requirement mode="normal">WallJump+DoubleJump</Requirement>
           <Requirement mode="normal">Climb+DoubleJump</Requirement>
           <Requirement mode="normal">Grenade+Bash</Requirement>
