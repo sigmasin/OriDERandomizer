@@ -120,7 +120,7 @@ public static class RandomizerSwitch
                 break;
             case 1:
                 Randomizer.showHint("*Clean Water*#");
-                Sein.World.Events.WarmthReturned = true;
+                Sein.World.Events.WaterPurified = true;
                 break;
             case 2:
                 Randomizer.showHint("#Gumon Seal#");

@@ -176,12 +176,12 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 	// Token: 0x06000160 RID: 352 RVA: 0x000301D8 File Offset: 0x0002E3D8
 	public void UpdateDrowning()
 	{
-		if (!Sein.World.Events.WarmthReturned && this.CurrentState != SeinSwimming.State.OutOfWater)
+		if (!Sein.World.Events.WaterPurified && this.CurrentState != SeinSwimming.State.OutOfWater)
 		{
 			this.RemainingBreath = 0f;
 			this.HideBreathingUI();
 		}
-		if (this.HasUnlimitedBreathingUnderwater && Sein.World.Events.WarmthReturned)
+		if (this.HasUnlimitedBreathingUnderwater && Sein.World.Events.WaterPurified)
 		{
 			return;
 		}
@@ -398,7 +398,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 	// Token: 0x0600016E RID: 366 RVA: 0x000308EC File Offset: 0x0002EAEC
 	public void UpdateSwimmingOnSurfaceState()
 	{
-		if (!Sein.World.Events.WarmthReturned)
+		if (!Sein.World.Events.WaterPurified)
 		{
 			this.UpdateDrowning();
 		}
