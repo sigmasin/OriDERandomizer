@@ -110,15 +110,6 @@ public class SeinWorldStateCondition : Condition
                 if (base.transform.childCount == 1 && base.transform.GetChild(0).name == "musicZoneWaterCleansed")
                 {
                     this.overrideEvent = SeinWorldStateCondition.OverrideEvents.FinishEscapeTrigger;
-                    for (int i = 0; i < base.transform.parent.childCount; i++)
-                    {
-                        Transform child = base.transform.parent.GetChild(i);
-                        if (child != base.transform && child.name == "activator")
-                        {
-                            this.musicZoneHeartWaterRising = child.GetChild(0).GetChild(0).gameObject;
-                            return;
-                        }
-                    }
                     return;
                 }
                 if (base.transform.parent && base.transform.parent.name == "restoringHeartWaterRising")
@@ -143,9 +134,7 @@ public class SeinWorldStateCondition : Condition
 
     // Token: 0x0400300C RID: 12300
     private GameObject blockingWall;
-
-    // Token: 0x0400300D RID: 12301
-    private GameObject musicZoneHeartWaterRising;
+    
 
     // Token: 0x0200098A RID: 2442
     private enum OverrideEvents
