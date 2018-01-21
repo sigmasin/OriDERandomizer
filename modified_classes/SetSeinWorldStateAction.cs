@@ -10,7 +10,7 @@ public class SetSeinWorldStateAction : ActionMethod
 		switch (this.State)
 		{
 		case WorldState.WaterPurified:
-			Events.WaterPurified = this.IsTrue;
+			Events.WarmthReturned = this.IsTrue;
 			Randomizer.getEvent(1);
 			return;
 		case WorldState.GumoFree:
