@@ -130,10 +130,6 @@ public static class RandomizerBonus
             }
             break;
 		}
-		if (ID > 1 && ID < 17)
-		{
-			
-		}
 	}
 
     public static int SpiritFlameLevel()

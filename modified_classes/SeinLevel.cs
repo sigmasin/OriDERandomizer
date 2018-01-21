@@ -7,7 +7,7 @@ using UnityEngine;
 public class SeinLevel : SaveSerialize, ISeinReceiver
 {
 	// Token: 0x170002FD RID: 765
-	// (get) Token: 0x060011C0 RID: 4544 RVA: 0x0000FA62 File Offset: 0x0000DC62
+	// (get) Token: 0x060011C0 RID: 4544 RVA: 0x0000FA68 File Offset: 0x0000DC68
 	public int TotalExperience
 	{
 		get
@@ -17,7 +17,7 @@ public class SeinLevel : SaveSerialize, ISeinReceiver
 	}
 
 	// Token: 0x170002FE RID: 766
-	// (get) Token: 0x060011C1 RID: 4545 RVA: 0x0000FA71 File Offset: 0x0000DC71
+	// (get) Token: 0x060011C1 RID: 4545 RVA: 0x0000FA77 File Offset: 0x0000DC77
 	public int TotalExperienceForNextLevel
 	{
 		get
@@ -27,7 +27,7 @@ public class SeinLevel : SaveSerialize, ISeinReceiver
 	}
 
 	// Token: 0x170002FF RID: 767
-	// (get) Token: 0x060011C2 RID: 4546 RVA: 0x0000FA80 File Offset: 0x0000DC80
+	// (get) Token: 0x060011C2 RID: 4546 RVA: 0x0000FA86 File Offset: 0x0000DC86
 	public int ExperienceNeedForNextLevel
 	{
 		get
@@ -37,7 +37,7 @@ public class SeinLevel : SaveSerialize, ISeinReceiver
 	}
 
 	// Token: 0x17000300 RID: 768
-	// (get) Token: 0x060011C3 RID: 4547 RVA: 0x0000FA8F File Offset: 0x0000DC8F
+	// (get) Token: 0x060011C3 RID: 4547 RVA: 0x0000FA95 File Offset: 0x0000DC95
 	public float ExperienceVisualMinNormalized
 	{
 		get
@@ -47,7 +47,7 @@ public class SeinLevel : SaveSerialize, ISeinReceiver
 	}
 
 	// Token: 0x17000301 RID: 769
-	// (get) Token: 0x060011C4 RID: 4548 RVA: 0x0000FA9F File Offset: 0x0000DC9F
+	// (get) Token: 0x060011C4 RID: 4548 RVA: 0x0000FAA5 File Offset: 0x0000DCA5
 	public float ExperienceVisualMaxNormalized
 	{
 		get
@@ -57,7 +57,7 @@ public class SeinLevel : SaveSerialize, ISeinReceiver
 	}
 
 	// Token: 0x17000302 RID: 770
-	// (get) Token: 0x060011C5 RID: 4549
+	// (get) Token: 0x060011C5 RID: 4549 RVA: 0x0000FAB5 File Offset: 0x0000DCB5
 	public int ExperienceForNextLevel
 	{
 		get
@@ -81,7 +81,7 @@ public class SeinLevel : SaveSerialize, ISeinReceiver
 		}
 	}
 
-	// Token: 0x060011C7 RID: 4551 RVA: 0x0000FAC8 File Offset: 0x0000DCC8
+	// Token: 0x060011C7 RID: 4551 RVA: 0x0000FAD4 File Offset: 0x0000DCD4
 	public void GainExperience(int amount)
 	{
 		this.Experience += amount;
@@ -93,7 +93,7 @@ public class SeinLevel : SaveSerialize, ISeinReceiver
 	{
 	}
 
-	// Token: 0x060011C9 RID: 4553 RVA: 0x00067AA8 File Offset: 0x00065CA8
+	// Token: 0x060011C9 RID: 4553 RVA: 0x00067AF0 File Offset: 0x00065CF0
 	public void FixedUpdate()
 	{
 		if (this.m_sein.IsSuspended)
@@ -109,7 +109,7 @@ public class SeinLevel : SaveSerialize, ISeinReceiver
 		}
 	}
 
-	// Token: 0x060011CA RID: 4554
+	// Token: 0x060011CA RID: 4554 RVA: 0x00067B70 File Offset: 0x00065D70
 	public void LevelUp()
 	{
 		this.Experience -= this.ExperienceForNextLevel;
@@ -126,7 +126,7 @@ public class SeinLevel : SaveSerialize, ISeinReceiver
 		}
 	}
 
-	// Token: 0x060011CB RID: 4555 RVA: 0x0000FAE5 File Offset: 0x0000DCE5
+	// Token: 0x060011CB RID: 4555 RVA: 0x0000FAF1 File Offset: 0x0000DCF1
 	public void LoseExperience(int amount)
 	{
 		this.Experience -= amount;
@@ -137,7 +137,7 @@ public class SeinLevel : SaveSerialize, ISeinReceiver
 		}
 	}
 
-	// Token: 0x060011CC RID: 4556 RVA: 0x00067BD0 File Offset: 0x00065DD0
+	// Token: 0x060011CC RID: 4556
 	public override void Serialize(Archive ar)
 	{
 		ar.Serialize(ref this.Current);
@@ -146,29 +146,29 @@ public class SeinLevel : SaveSerialize, ISeinReceiver
 		ar.Serialize(ref SeinLevel.HasSpentSkillPoint);
 		if (ar.Reading)
 		{
-			this.ExperienceVisualMax = (this.ExperienceVisualMin = (float)this.Current);
+			this.ExperienceVisualMax = (this.ExperienceVisualMin = (float)(this.Current % 128));
 		}
 	}
 
-	// Token: 0x060011CD RID: 4557 RVA: 0x0000FB15 File Offset: 0x0000DD15
+	// Token: 0x060011CD RID: 4557 RVA: 0x0000FB21 File Offset: 0x0000DD21
 	public float ApplyLevelingToDamage(float damage)
 	{
 		return damage + damage * (float)this.m_sein.PlayerAbilities.OriStrength * 0.5f;
 	}
 
-	// Token: 0x060011CE RID: 4558 RVA: 0x0000FB32 File Offset: 0x0000DD32
+	// Token: 0x060011CE RID: 4558 RVA: 0x0000FB3E File Offset: 0x0000DD3E
 	public float CalculateLevelBasedMaxHealth(int level, float health)
 	{
 		return (float)Mathf.RoundToInt(health * this.DamageMultiplierPerOriStrength.Evaluate((float)level));
 	}
 
-	// Token: 0x060011CF RID: 4559 RVA: 0x0000FB49 File Offset: 0x0000DD49
+	// Token: 0x060011CF RID: 4559 RVA: 0x0000FB55 File Offset: 0x0000DD55
 	public void SetReferenceToSein(SeinCharacter sein)
 	{
 		this.m_sein = sein;
 	}
 
-	// Token: 0x060011D0 RID: 4560 RVA: 0x0000FB52 File Offset: 0x0000DD52
+	// Token: 0x060011D0 RID: 4560 RVA: 0x0000FB5E File Offset: 0x0000DD5E
 	public void GainSkillPoint()
 	{
 		this.SkillPoints++;
