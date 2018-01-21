@@ -523,6 +523,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         "normal": 1,
         "speed": 2,
         "lure": 2,
+        "speed-lure": 3,
         "dboost": 2,
         "dboost-light": 1,
         "dboost-hard": 3,
@@ -599,9 +600,9 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
     if not hardMode:
         itemPool = OrderedDict([
             ("EX1", 1),
-            ("EX*", 93),
+            ("EX*", 91),
             ("KS", 40),
-            ("MS", 9),
+            ("MS", 11),
             ("AC", 33),
             ("EC", 14),
             ("HC", 12),
@@ -644,9 +645,9 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
     else:
         itemPool = OrderedDict([
             ("EX1", 1),
-            ("EX*", 169),
+            ("EX*", 167),
             ("KS", 40),
-            ("MS", 9),
+            ("MS", 11),
             ("AC", 0),
             ("EC", 3),
             ("HC", 0),
@@ -839,6 +840,10 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
             (opening, keys, mapstones) = open_free_connections()
             keystoneCount += keys
             mapstoneCount += mapstones
+            if mapstoneCount == 8:
+                mapstoneCount = 9
+            if mapstoneCount == 10:
+                mapstoneCount = 11
             for connection in connectionQueue:
                 areas[connection[0]].remove_connection(connection[1])
             connectionQueue = []
@@ -975,7 +980,7 @@ def main():
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--preset", help="Choose a preset group of paths for the generator to use", choices=["casual", "standard", "expert", "master", "hard", "ohko", "0xp", "glitched"])
-    parser.add_argument("--custom-logic", help="Customize paths that the generator will use, comma-separated: normal,speed,dbash,extended,extended-damage,lure,lure-hard,dboost,dboost-light,dboost-hard,cdash,cdash-farming,extreme,timed-level,glitched")
+    parser.add_argument("--custom-logic", help="Customize paths that the generator will use, comma-separated: normal,speed,dbash,extended,extended-damage,lure,speed-lure,lure-hard,dboost,dboost-light,dboost-hard,cdash,cdash-farming,extreme,timed-level,glitched")
     parser.add_argument("--seed", help="Seed number (default 1)", type=int, default=1)
     parser.add_argument("--count", help="Number of seeds to generate (default 1)", type=int, default=1)
     parser.add_argument("--hard", help="Enable hard mode", action="store_true")
@@ -1003,12 +1008,12 @@ def main():
         "casual": ["normal", "dboost-light"],
         "standard": ["normal", "speed", "lure", "dboost-light"],
         "dboost": ["normal", "speed", "lure", "dboost", "dboost-light"],
-        "expert": ["normal", "speed", "lure", "dboost", "dboost-light", "cdash", "extended", "extended-damage"],
-        "master": ["normal", "speed", "lure", "dboost", "dboost-light", "dboost-hard", "cdash", "dbash", "extended", "extended-damage", "lure-hard", "extreme"],
+        "expert": ["normal", "speed", "lure", "speed-lure", "dboost", "dboost-light", "cdash", "extended", "extended-damage"],
+        "master": ["normal", "speed", "lure", "speed-lure", "dboost", "dboost-light", "dboost-hard", "cdash", "dbash", "extended", "extended-damage", "lure-hard", "extreme"],
         "hard": ["normal", "speed", "lure",  "dboost-light", "cdash", "dbash", "extended"],
         "ohko": ["normal", "speed", "lure", "cdash", "dbash", "extended"],
         "0xp": ["normal", "speed", "lure", "dboost-light"],
-        "glitched": ["normal", "speed", "lure", "dboost", "dboost-light", "dboost-hard", "cdash", "dbash", "extended", "lure-hard", "timed-level", "glitched", "extended-damage", "extreme"]
+        "glitched": ["normal", "speed", "lure", "speed-lure", "dboost", "dboost-light", "dboost-hard", "cdash", "dbash", "extended", "lure-hard", "timed-level", "glitched", "extended-damage", "extreme"]
     }
 
     if args.preset:

@@ -1482,7 +1482,7 @@
           <Requirement mode="normal">ChargeJump+DoubleJump+Glide</Requirement>
           <Requirement mode="normal">Wind+Glide</Requirement>
           <Requirement mode="extended">Grenade+Bash</Requirement>
-          <Requirement mode="cdash">Dash</Requirement>
+          <Requirement mode="cdash-farming">Dash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1659,10 +1659,10 @@
           <Requirement mode="normal">ChargeJump+Grenade+Climb</Requirement>
           <Requirement mode="lure">Bash+ChargeFlame+Water</Requirement>
           <Requirement mode="lure">Bash+Grenade+Water</Requirement>
-          <Requirement mode="lure">Bash+Climb</Requirement>
-          <Requirement mode="lure">Bash+WallJump</Requirement>
-          <Requirement mode="lure">Bash+Grenade</Requirement>
-          <Requirement mode="lure">Bash+ChargeJump</Requirement>
+          <Requirement mode="speed-lure">Bash+Climb</Requirement>
+          <Requirement mode="speed-lure">Bash+WallJump</Requirement>
+          <Requirement mode="speed-lure">Bash+Grenade</Requirement>
+          <Requirement mode="speed-lure">Bash+ChargeJump</Requirement>
           <Requirement mode="extended">ChargeJump+Climb</Requirement>
           <Requirement mode="extended">DoubleJump+ChargeFlame+Dash+Water</Requirement>
           <Requirement mode="extended">DoubleJump+ChargeFlame+Glide+Water</Requirement>
@@ -2756,9 +2756,9 @@
         <Requirements>
           <Requirement mode="normal">KS+KS+KS+KS+Bash+WallJump</Requirement>
           <Requirement mode="normal">KS+KS+KS+KS+Bash+Climb</Requirement>
-          <Requirement mode="normal">KS+KS+KS+KS+Bash+ChargeJump</Requirement>
           <Requirement mode="dboost">KS+KS+KS+KS+ChargeJump+WallJump+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="dboost">KS+KS+KS+KS+ChargeJump+Climb+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended">KS+KS+KS+KS+Bash+ChargeJump</Requirement>
           <Requirement mode="extended-damage">KS+KS+KS+KS+ChargeJump+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="extended-damage">KS+KS+KS+KS+ChargeJump+DoubleJump</Requirement>
           <Requirement mode="extreme">WallJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
@@ -3667,7 +3667,7 @@
         <Target name="Sorrow"/>
         <Requirements>
           <Requirement mode="normal">Wind+Glide</Requirement>
-          <Requirement mode="speed">Glide+DoubleJump+Bash+Dash</Requirement>
+          <Requirement mode="speed-lure">Glide+DoubleJump+Bash+Dash</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
           <Requirement mode="extended-damage">ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="extended-damage">ChargeJump+Glide+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
