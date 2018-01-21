@@ -24,7 +24,7 @@ Not sure what to play? Here is a description of some common presets:
 
 Casual: For people who have not speedrun the game. The only glitch that may be required is breaking charge flame walls with stomp. Damage boosting may be required, but the maximum damage taken will be 2.
 
-Standard: For people who have run All Skills. It is assumed that all tricks used in the All Skills run are known. Damage boosting may be required, but the maximum damage taken will be 2. Double bashing is not required. Deep swimming without clean water is not required.
+Standard: For people who have run All Skills. It is assumed that all tricks used in the All Skills run are known, with the exception of sorrow bash and swamp entry. Damage boosting may be required, but the maximum damage taken will be 2. Double bashing is not required. Deep swimming without clean water is not required.
 
 Expert: For people who have played a fair amount of the randomizer. Tricks involving out-of-the-box uses of abilities may be required. Damage boosting may be required, but every spike patch can be crossed with only a single instance of damage. Double bashing is not required.
 
@@ -37,11 +37,11 @@ Alt+T               Replay last pickup message
 Alt+R:              Teleport Ori to the start of the game
                     Warning: using this in misty or locked rooms can potentially softlock
 Alt+L:              Reload the seed file (use to change seeds without restarting the game)
-Alt+C:              Toggle Chaos Mode
+Alt+K:              Toggle Chaos Mode
 Alt+V:              Within Chaos Mode, toggle messages
 Alt+F:              Within Chaos Mode, force an effect to spawn
 Alt+P:              Display current skill tree and shard progress
-
+Alt+C:              Toggle color shifting
 
 
 CHAOS MODE?

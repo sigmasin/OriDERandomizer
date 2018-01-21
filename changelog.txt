@@ -1,3 +1,26 @@
+v2.1
+
+Generator changes:
+
+-2 extra mapstones are now in the drop pool. Mapstone 8 is now considered to require 9 mapstones to access, and mapstone 9 is considered to require 11.
+-Rocket jumping to the cell left of ginso (the "stomp cell") has been moved from cdash to cdash-farming
+-A new path category, "speed-lure", has been added. This contains the more difficult enemy manipulations used in the speedrun -- sorrow bash and the frog break into swamp. The presets containing "speed-lure" are expert, master, and glitched.
+
+DLL changes:
+
+-Clean water visual effects are now activated by having clean water (thanks to Kirefel!)
+-Raised the Alt+R position slightly to reduce the chances of falling into blackroot on a slow load
+-Alt+R now returns the forlorn orb to the start of the dungeon
+-Alt+P now displays mapstone progress and total pickup progress
+-Reloading a seed now shows the version number
+-Removed a case where duplicating bonus pickups could cause an overflow
+-Reduced the chance for a teleportation effect to appear in chaos mode; as a result, the approximate chance of finishing the game while holding right has increased from 30% to 50%
+-Changed the default bind for chaos mode to Alt+K
+-Added a new command, "Color Shift" (default: Alt+C) when toggled on, this performs a random color change every time a pickup is acquired
+
+Note: due to the new command, the expected format of steamapps/common/Ori DE/RandomizerRebinding.txt has changed. To update, delete this file. Launching the randomizer will create a new default version, which you can edit binds in once again.
+
+
 v2.0
 
 Logic changes:
