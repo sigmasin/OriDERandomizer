@@ -18,27 +18,59 @@ public static class RandomizerBonus
 			break;
 		case 6:
 			Randomizer.showHint("Spirit Flame Upgrade");
+            if (RandomizerBonus.SpiritFlameLevel() < 3) 
+            {
+                Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
+            }
 			break;
 		case 8:
 			Randomizer.showHint("Explosion Power Upgrade");
+            if (!RandomizerBonus.ExplosionPower()) 
+            {
+                Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
+            }
 			break;
 		case 9:
 			Randomizer.showHint("Spirit Light Efficiency");
+            if (!RandomizerBonus.ExpEfficiency()) 
+            {
+                Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
+            }
 			break;
 		case 10:
 			Randomizer.showHint("Extra Air Dash");
+            if (!RandomizerBonus.DoubleAirDash()) 
+            {
+                Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
+            }
 			break;
 		case 11:
 			Randomizer.showHint("Charge Dash Efficiency");
+            if (!RandomizerBonus.ChargeDashEfficiency()) 
+            {
+                Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
+            }
 			break;
 		case 12:
 			Randomizer.showHint("Extra Double Jump");
+            if (!RandomizerBonus.DoubleJumpUpgrade()) 
+            {
+                Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
+            }
 			break;
 		case 13:
 			Randomizer.showHint("Health Regeneration");
+            if (RandomizerBonus.HealthRegeneration() < 3) 
+            {
+                Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
+            }
 			break;
 		case 15:
 			Randomizer.showHint("Energy Regeneration");
+            if (RandomizerBonus.EnergyRegeneration() < 3) 
+            {
+                Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
+            }
 			break;
         case 17:
             if (RandomizerBonus.WaterVeinShards() >= 3)
@@ -100,7 +132,7 @@ public static class RandomizerBonus
 		}
 		if (ID > 1 && ID < 17)
 		{
-			Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
+			
 		}
 	}
 
@@ -169,6 +201,14 @@ public static class RandomizerBonus
     public static int SkillTreeProgression()
     {
         return (int)(Characters.Sein.Inventory.SkillPointsCollected & 0x78000000) >> 27;
+    }
+    
+    public static void CollectPickup() {
+        Characters.Sein.Level.Current += 128;
+    }
+    
+    public static int GetPickupCount() {
+        return Characters.Sein.Level.Current >> 7;
     }
     
 

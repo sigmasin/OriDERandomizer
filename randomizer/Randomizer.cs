@@ -6,10 +6,10 @@ using Game;
 using Sein.World;
 using UnityEngine;
 
-// Token: 0x020009EE RID: 2542
+// Token: 0x020009EF RID: 2543
 public static class Randomizer
 {
-	// Token: 0x06003739 RID: 14137
+	// Token: 0x0600373A RID: 14138 RVA: 0x000E05E0 File Offset: 0x000DE7E0
 	public static void initialize()
 	{
 		Randomizer.OHKO = false;
@@ -38,6 +38,7 @@ public static class Randomizer
 		Randomizer.TeleportTable["Grove"] = "spiritTree";
 		Randomizer.TeleportTable["Swamp"] = "swamp";
 		Randomizer.TeleportTable["Valley"] = "sorrowPass";
+		Randomizer.ColorShift = false;
 		RandomizerRebinding.ParseRebinding();
 		if (File.Exists("randomizer.dat"))
 		{
@@ -104,21 +105,25 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x0600373A RID: 14138
+	// Token: 0x0600373B RID: 14139 RVA: 0x0002B43E File Offset: 0x0002963E
 	public static void getPickup()
 	{
 		Randomizer.getPickup(Characters.Sein.Position);
 	}
 
-	// Token: 0x0600373B RID: 14139
+	// Token: 0x0600373C RID: 14140
 	public static void returnToStart()
 	{
 		if (Characters.Sein.Abilities.Carry.IsCarrying || !Characters.Sein.Controller.CanMove || !Characters.Sein.Active)
 		{
 			return;
 		}
+		if (Items.NightBerry != null)
+		{
+			Items.NightBerry.transform.position = new Vector3(-755f, -400f);
+		}
 		Randomizer.Returning = true;
-		Characters.Sein.Position = new Vector3(189f, -215f);
+		Characters.Sein.Position = new Vector3(189f, -210f);
 		int value = World.Events.Find(Randomizer.MistySim).Value;
 		if (value != 1 && value != 8)
 		{
@@ -126,13 +131,18 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x0600373C RID: 14140
+	// Token: 0x0600373D RID: 14141
 	public static void getEvent(int ID)
 	{
+		RandomizerBonus.CollectPickup();
+		if (Randomizer.ColorShift)
+		{
+			Randomizer.changeColor();
+		}
 		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[ID * 4]);
 	}
 
-	// Token: 0x0600373D RID: 14141
+	// Token: 0x0600373E RID: 14142 RVA: 0x0002B479 File Offset: 0x00029679
 	public static void showHint(string message)
 	{
 		Randomizer.Message = message;
@@ -140,14 +150,14 @@ public static class Randomizer
 		UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
 	}
 
-	// Token: 0x0600373E RID: 14142
+	// Token: 0x0600373F RID: 14143 RVA: 0x0002B49D File Offset: 0x0002969D
 	public static void playLastMessage()
 	{
 		Randomizer.MessageProvider.SetMessage(Randomizer.Message);
 		UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
 	}
 
-	// Token: 0x0600373F RID: 14143
+	// Token: 0x06003740 RID: 14144 RVA: 0x0002B4BF File Offset: 0x000296BF
 	public static void log(string message)
 	{
 		StreamWriter expr_0A = File.AppendText("randomizer.log");
@@ -156,20 +166,20 @@ public static class Randomizer
 		expr_0A.Dispose();
 	}
 
-	// Token: 0x06003740 RID: 14144
+	// Token: 0x06003741 RID: 14145 RVA: 0x000E097C File Offset: 0x000DEB7C
 	public static bool WindRestored()
 	{
 		return Sein.World.Events.WindRestored && Scenes.Manager.CurrentScene != null && Scenes.Manager.CurrentScene.Scene != "forlornRuinsResurrection" && Scenes.Manager.CurrentScene.Scene != "forlornRuinsRotatingLaserFlipped";
 	}
 
-	// Token: 0x06003741 RID: 14145
+	// Token: 0x06003742 RID: 14146 RVA: 0x0002B4DD File Offset: 0x000296DD
 	public static void getSkill()
 	{
 		Characters.Sein.Inventory.SkillPointsCollected += 134217728;
 		Randomizer.getPickup();
 	}
 
-	// Token: 0x06003742 RID: 14146
+	// Token: 0x06003743 RID: 14147 RVA: 0x000E09D4 File Offset: 0x000DEBD4
 	public static void hintAndLog(float x, float y)
 	{
 		string expr_1E = ((int)x).ToString() + " " + ((int)y).ToString();
@@ -177,9 +187,14 @@ public static class Randomizer
 		Randomizer.log(expr_1E);
 	}
 
-	// Token: 0x06003743 RID: 14147
+	// Token: 0x06003744 RID: 14148
 	public static void getPickup(Vector3 position)
 	{
+		RandomizerBonus.CollectPickup();
+		if (Randomizer.ColorShift)
+		{
+			Randomizer.changeColor();
+		}
 		int num = (int)(Math.Floor((double)((int)position.x) / Randomizer.GridFactor) * Randomizer.GridFactor) * 10000 + (int)(Math.Floor((double)((int)position.y) / Randomizer.GridFactor) * Randomizer.GridFactor);
 		if (Randomizer.Table.ContainsKey(num))
 		{
@@ -211,7 +226,7 @@ public static class Randomizer
 		Randomizer.showHint("Error finding pickup at " + ((int)position.x).ToString() + ", " + ((int)position.y).ToString());
 	}
 
-	// Token: 0x06003744 RID: 14148
+	// Token: 0x06003745 RID: 14149 RVA: 0x000E0B98 File Offset: 0x000DED98
 	public static void Update()
 	{
 		if (Characters.Sein && !Characters.Sein.IsSuspended)
@@ -255,6 +270,17 @@ public static class Randomizer
 				Randomizer.showProgress();
 				return;
 			}
+			if (MoonInput.GetKeyDown(RandomizerRebinding.ColorShift))
+			{
+				string message = "Color shift enabled";
+				if (Randomizer.ColorShift)
+				{
+					message = "Color shift disabled";
+				}
+				Randomizer.ColorShift = !Randomizer.ColorShift;
+				Randomizer.MessageProvider.SetMessage(message);
+				UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
+			}
 			if (MoonInput.GetKeyDown(RandomizerRebinding.ToggleChaos) && Characters.Sein)
 			{
 				if (Randomizer.Chaos)
@@ -287,7 +313,7 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x06003745 RID: 14149
+	// Token: 0x06003746 RID: 14150 RVA: 0x0002B4FF File Offset: 0x000296FF
 	public static void showChaosEffect(string message)
 	{
 		if (Randomizer.ChaosVerbose)
@@ -297,14 +323,14 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x06003746 RID: 14150
+	// Token: 0x06003747 RID: 14151 RVA: 0x0002B524 File Offset: 0x00029724
 	public static void showChaosMessage(string message)
 	{
 		Randomizer.MessageProvider.SetMessage(message);
 		UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
 	}
 
-	// Token: 0x06003747 RID: 14151
+	// Token: 0x06003748 RID: 14152
 	public static void getMapStone()
 	{
 		if (!Randomizer.ProgressiveMapStones)
@@ -312,11 +338,16 @@ public static class Randomizer
 			Randomizer.getPickup();
 			return;
 		}
+		RandomizerBonus.CollectPickup();
+		if (Randomizer.ColorShift)
+		{
+			Randomizer.changeColor();
+		}
 		Characters.Sein.Inventory.SkillPointsCollected += 8388608;
 		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[20 + RandomizerBonus.MapStoneProgression() * 4]);
 	}
 
-	// Token: 0x06003748 RID: 14152
+	// Token: 0x06003749 RID: 14153
 	public static void showProgress()
 	{
 		string text = "";
@@ -326,8 +357,10 @@ public static class Randomizer
 		}
 		else
 		{
-			text += "$Trees (10/10)$  ";
+			text += "$Trees (10/10)$";
 		}
+		text = text + "Maps (" + RandomizerBonus.MapStoneProgression().ToString() + "/9)  ";
+		text = text + "Total (" + RandomizerBonus.GetPickupCount().ToString() + "/248)\n";
 		if (Randomizer.CluesMode)
 		{
 			text += RandomizerClues.GetClues();
@@ -336,92 +369,104 @@ public static class Randomizer
 		{
 			if (Keys.GinsoTree)
 			{
-				text += "*Water Vein (3/3)*\n";
+				text += "*WV (3/3)*  ";
 			}
 			else
 			{
-				text = text + " Water Vein (" + RandomizerBonus.WaterVeinShards().ToString() + "/3)\n";
+				text = text + " *WV* (" + RandomizerBonus.WaterVeinShards().ToString() + "/3)  ";
 			}
 			if (Keys.ForlornRuins)
 			{
-				text += "#Gumon Seal (3/3)#  ";
+				text += "#GS (3/3)#  ";
 			}
 			else
 			{
-				text = text + "Gumon Seal (" + RandomizerBonus.GumonSealShards().ToString() + "/3)  ";
+				text = text + "#GS# (" + RandomizerBonus.GumonSealShards().ToString() + "/3)  ";
 			}
 			if (Keys.MountHoru)
 			{
-				text += "@Sunstone (3/3)@";
+				text += "@SS (3/3)@";
 			}
 			else
 			{
-				text = text + " Sunstone (" + RandomizerBonus.SunstoneShards().ToString() + "/3)";
+				text = text + " @SS@ (" + RandomizerBonus.SunstoneShards().ToString() + "/3)";
 			}
 		}
 		Randomizer.MessageProvider.SetMessage(text);
 		UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
 	}
 
-	// Token: 0x06003749 RID: 14153
+	// Token: 0x0600374A RID: 14154
 	public static void showSeedInfo()
 	{
-		string message = "Seed loaded: " + Randomizer.SeedMeta;
+		string message = "v2.1 - seed loaded: " + Randomizer.SeedMeta;
 		Randomizer.MessageProvider.SetMessage(message);
 		UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
 	}
 
-	// Token: 0x04003223 RID: 12835
-	public static Hashtable Table;
-
-	// Token: 0x04003224 RID: 12836
-	public static bool GiveAbility;
-
-	// Token: 0x04003225 RID: 12837
-	public static double GridFactor;
-
-	// Token: 0x04003226 RID: 12838
-	public static RandomizerMessageProvider MessageProvider;
-
-	// Token: 0x04003227 RID: 12839
-	public static bool OHKO;
-
-	// Token: 0x04003228 RID: 12840
-	public static bool ZeroXP;
-
-	// Token: 0x04003229 RID: 12841
-	public static bool BonusActive;
-
-	// Token: 0x0400322A RID: 12842
-	public static string Message;
+	// Token: 0x0600374B RID: 14155 RVA: 0x000E0FE4 File Offset: 0x000DF1E4
+	public static void changeColor()
+	{
+		if (Characters.Sein)
+		{
+			Characters.Sein.PlatformBehaviour.Visuals.SpriteRenderer.material.color = new Color(FixedRandom.Values[0], FixedRandom.Values[1], FixedRandom.Values[2], 0.5f);
+		}
+	}
 
 	// Token: 0x0400322B RID: 12843
-	public static bool Chaos;
+	public static Hashtable Table;
 
 	// Token: 0x0400322C RID: 12844
-	public static bool ChaosVerbose;
+	public static bool GiveAbility;
 
 	// Token: 0x0400322D RID: 12845
-	public static float DamageModifier;
+	public static double GridFactor;
 
 	// Token: 0x0400322E RID: 12846
-	public static bool ProgressiveMapStones;
+	public static RandomizerMessageProvider MessageProvider;
 
 	// Token: 0x0400322F RID: 12847
-	public static bool ForceTrees;
+	public static bool OHKO;
 
 	// Token: 0x04003230 RID: 12848
-	public static string SeedMeta;
+	public static bool ZeroXP;
 
 	// Token: 0x04003231 RID: 12849
-	public static Hashtable TeleportTable;
+	public static bool BonusActive;
 
 	// Token: 0x04003232 RID: 12850
-	public static WorldEvents MistySim;
+	public static string Message;
 
 	// Token: 0x04003233 RID: 12851
+	public static bool Chaos;
+
+	// Token: 0x04003234 RID: 12852
+	public static bool ChaosVerbose;
+
+	// Token: 0x04003235 RID: 12853
+	public static float DamageModifier;
+
+	// Token: 0x04003236 RID: 12854
+	public static bool ProgressiveMapStones;
+
+	// Token: 0x04003237 RID: 12855
+	public static bool ForceTrees;
+
+	// Token: 0x04003238 RID: 12856
+	public static string SeedMeta;
+
+	// Token: 0x04003239 RID: 12857
+	public static Hashtable TeleportTable;
+
+	// Token: 0x0400323A RID: 12858
+	public static WorldEvents MistySim;
+
+	// Token: 0x0400323B RID: 12859
 	public static bool Returning;
 
-	// Token: 0x0400327B RID: 12923
+	// Token: 0x0400323C RID: 12860
 	public static bool CluesMode;
+
+	// Token: 0x0400323D RID: 12861
+	public static bool ColorShift;
 }
