@@ -40,6 +40,7 @@ public static class Randomizer
 		Randomizer.TeleportTable["Valley"] = "sorrowPass";
 		Randomizer.ColorShift = false;
 		Randomizer.MessageQueue = new Queue();
+		Randomizer.MessageQueueTime = 0;
 		RandomizerRebinding.ParseRebinding();
 		if (File.Exists("randomizer.dat"))
 		{
