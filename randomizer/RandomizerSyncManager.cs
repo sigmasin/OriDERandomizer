@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using Game;
-using Sein.World;
 
 // Token: 0x020009FF RID: 2559
 public static class RandomizerSyncManager
@@ -17,6 +16,9 @@ public static class RandomizerSyncManager
 		RandomizerSyncManager.PickupQueue = new Queue<RandomizerSyncManager.Pickup>();
 		RandomizerSyncManager.getClient.DownloadStringCompleted += RandomizerSyncManager.CheckPickups;
 		RandomizerSyncManager.LoseOnDeath = new HashSet<RandomizerSyncManager.Pickup>();
+		RandomizerSyncManager.SkillInfos = new List<RandomizerSyncManager.SkillInfoLine>();
+		RandomizerSyncManager.EventInfos = new List<RandomizerSyncManager.EventInfoLine>();
+		RandomizerSyncManager.UpgradeInfos = new List<RandomizerSyncManager.UpgradeInfoLine>();
 		foreach (int i in new int[]
 		{
 			6,
@@ -29,6 +31,62 @@ public static class RandomizerSyncManager
 		{
 			RandomizerSyncManager.LoseOnDeath.Add(new RandomizerSyncManager.Pickup("upgrade", i.ToString()));
 		}
+		RandomizerSyncManager.SkillInfos.Add(new RandomizerSyncManager.SkillInfoLine(0, 0, AbilityType.Bash));
+		RandomizerSyncManager.SkillInfos.Add(new RandomizerSyncManager.SkillInfoLine(2, 1, AbilityType.ChargeFlame));
+		RandomizerSyncManager.SkillInfos.Add(new RandomizerSyncManager.SkillInfoLine(3, 2, AbilityType.WallJump));
+		RandomizerSyncManager.SkillInfos.Add(new RandomizerSyncManager.SkillInfoLine(4, 3, AbilityType.Stomp));
+		RandomizerSyncManager.SkillInfos.Add(new RandomizerSyncManager.SkillInfoLine(5, 4, AbilityType.DoubleJump));
+		RandomizerSyncManager.SkillInfos.Add(new RandomizerSyncManager.SkillInfoLine(8, 5, AbilityType.ChargeJump));
+		RandomizerSyncManager.SkillInfos.Add(new RandomizerSyncManager.SkillInfoLine(12, 6, AbilityType.Climb));
+		RandomizerSyncManager.SkillInfos.Add(new RandomizerSyncManager.SkillInfoLine(14, 7, AbilityType.Glide));
+		RandomizerSyncManager.SkillInfos.Add(new RandomizerSyncManager.SkillInfoLine(50, 8, AbilityType.Dash));
+		RandomizerSyncManager.SkillInfos.Add(new RandomizerSyncManager.SkillInfoLine(51, 9, AbilityType.Grenade));
+		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(17, 0, true, () => RandomizerBonus.WaterVeinShards()));
+		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(19, 1, true, () => RandomizerBonus.GumonSealShards()));
+		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(21, 2, true, () => RandomizerBonus.SunstoneShards()));
+		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(6, 3, true, () => RandomizerBonus.SpiritFlameLevel()));
+		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(13, 4, true, () => RandomizerBonus.HealthRegeneration()));
+		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(15, 5, true, () => RandomizerBonus.EnergyRegeneration()));
+		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(8, 12, false, delegate
+		{
+			if (!RandomizerBonus.ExplosionPower())
+			{
+				return 0;
+			}
+			return 1;
+		}));
+		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(9, 13, false, delegate
+		{
+			if (!RandomizerBonus.ExpEfficiency())
+			{
+				return 0;
+			}
+			return 1;
+		}));
+		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(10, 14, false, delegate
+		{
+			if (!RandomizerBonus.DoubleAirDash())
+			{
+				return 0;
+			}
+			return 1;
+		}));
+		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(11, 15, false, delegate
+		{
+			if (!RandomizerBonus.ChargeDashEfficiency())
+			{
+				return 0;
+			}
+			return 1;
+		}));
+		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(12, 16, false, delegate
+		{
+			if (!RandomizerBonus.DoubleJumpUpgrade())
+			{
+				return 0;
+			}
+			return 1;
+		}));
 	}
 
 	// Token: 0x06003794 RID: 14228
@@ -82,141 +140,94 @@ public static class RandomizerSyncManager
 			{
 				','
 			});
-			int bf4 = int.Parse(array[0]);
-			if (RandomizerSyncManager.getBit(bf4, 0) && !Characters.Sein.PlayerAbilities.HasAbility(AbilityType.Bash))
+			int skill_bf = int.Parse(array[0]);
+			foreach (RandomizerSyncManager.SkillInfoLine sfl in RandomizerSyncManager.SkillInfos)
 			{
-				RandomizerSwitch.AbilityPickup(0);
+				bool bit = RandomizerSyncManager.getBit(skill_bf, sfl.bit);
+				if (bit != Characters.Sein.PlayerAbilities.HasAbility(sfl.skill))
+				{
+					if (bit)
+					{
+						RandomizerSwitch.AbilityPickup(sfl.id);
+					}
+					else
+					{
+						RandomizerSyncManager.PickupQueue.Enqueue(new RandomizerSyncManager.Pickup("skill", sfl.id.ToString()));
+					}
+				}
 			}
-			if (RandomizerSyncManager.getBit(bf4, 1) && !Characters.Sein.PlayerAbilities.HasAbility(AbilityType.ChargeFlame))
+			int event_bf = int.Parse(array[1]);
+			foreach (RandomizerSyncManager.EventInfoLine efl in RandomizerSyncManager.EventInfos)
 			{
-				RandomizerSwitch.AbilityPickup(2);
+				bool bit2 = RandomizerSyncManager.getBit(event_bf, efl.bit);
+				if (bit2 != efl.checker())
+				{
+					if (bit2)
+					{
+						RandomizerSwitch.EventPickup(efl.id);
+					}
+					else
+					{
+						RandomizerSyncManager.PickupQueue.Enqueue(new RandomizerSyncManager.Pickup("event", efl.id.ToString()));
+					}
+				}
 			}
-			if (RandomizerSyncManager.getBit(bf4, 2) && !Characters.Sein.PlayerAbilities.HasAbility(AbilityType.WallJump))
+			int upgrade_bf = int.Parse(array[2]);
+			foreach (RandomizerSyncManager.UpgradeInfoLine ufl in RandomizerSyncManager.UpgradeInfos)
 			{
-				RandomizerSwitch.AbilityPickup(3);
+				if (ufl.stacks)
+				{
+					int taste = RandomizerSyncManager.getTaste(upgrade_bf, ufl.bit);
+					if (taste != ufl.counter())
+					{
+						if (taste > ufl.counter())
+						{
+							RandomizerBonus.UpgradeID(ufl.id);
+						}
+						else if (!RandomizerSyncManager.UnsavedPickups.Contains(new RandomizerSyncManager.Pickup("upgrade", ufl.id.ToString())))
+						{
+							RandomizerSyncManager.UnsavedPickups.Add(new RandomizerSyncManager.Pickup("upgrade", ufl.id.ToString()));
+						}
+					}
+				}
+				else
+				{
+					bool bit3 = RandomizerSyncManager.getBit(upgrade_bf, ufl.bit);
+					if (bit3 != (1 == ufl.counter()))
+					{
+						if (bit3)
+						{
+							RandomizerBonus.UpgradeID(ufl.id);
+						}
+						else
+						{
+							RandomizerSyncManager.PickupQueue.Enqueue(new RandomizerSyncManager.Pickup("upgrade", ufl.id.ToString()));
+						}
+					}
+				}
 			}
-			if (RandomizerSyncManager.getBit(bf4, 3) && !Characters.Sein.PlayerAbilities.HasAbility(AbilityType.Stomp))
-			{
-				RandomizerSwitch.AbilityPickup(4);
-			}
-			if (RandomizerSyncManager.getBit(bf4, 4) && !Characters.Sein.PlayerAbilities.HasAbility(AbilityType.DoubleJump))
-			{
-				RandomizerSwitch.AbilityPickup(5);
-			}
-			if (RandomizerSyncManager.getBit(bf4, 5) && !Characters.Sein.PlayerAbilities.HasAbility(AbilityType.ChargeJump))
-			{
-				RandomizerSwitch.AbilityPickup(8);
-			}
-			if (RandomizerSyncManager.getBit(bf4, 6) && !Characters.Sein.PlayerAbilities.HasAbility(AbilityType.Climb))
-			{
-				RandomizerSwitch.AbilityPickup(12);
-			}
-			if (RandomizerSyncManager.getBit(bf4, 7) && !Characters.Sein.PlayerAbilities.HasAbility(AbilityType.Glide))
-			{
-				RandomizerSwitch.AbilityPickup(14);
-			}
-			if (RandomizerSyncManager.getBit(bf4, 8) && !Characters.Sein.PlayerAbilities.HasAbility(AbilityType.Dash))
-			{
-				RandomizerSwitch.AbilityPickup(50);
-			}
-			if (RandomizerSyncManager.getBit(bf4, 9) && !Characters.Sein.PlayerAbilities.HasAbility(AbilityType.Grenade))
-			{
-				RandomizerSwitch.AbilityPickup(51);
-			}
-			int bf5 = int.Parse(array[1]);
-			if (RandomizerSyncManager.getBit(bf5, 0) && !Keys.GinsoTree)
-			{
-				RandomizerSwitch.EventPickup(0);
-			}
-			if (RandomizerSyncManager.getBit(bf5, 1) && !Sein.World.Events.WaterPurified)
-			{
-				RandomizerSwitch.EventPickup(1);
-			}
-			if (RandomizerSyncManager.getBit(bf5, 2) && !Keys.ForlornRuins)
-			{
-				RandomizerSwitch.EventPickup(2);
-			}
-			if (RandomizerSyncManager.getBit(bf5, 3) && !Sein.World.Events.WindRestored)
-			{
-				RandomizerSwitch.EventPickup(3);
-			}
-			if (RandomizerSyncManager.getBit(bf5, 4) && !Keys.MountHoru)
-			{
-				RandomizerSwitch.EventPickup(4);
-			}
-			int bf3 = int.Parse(array[2]);
-			int i = RandomizerSyncManager.getTaste(bf3, 0);
-			while (i > RandomizerBonus.WaterVeinShards())
-			{
-				RandomizerBonus.UpgradeID(17);
-			}
-			i = RandomizerSyncManager.getTaste(bf3, 1);
-			while (i > RandomizerBonus.GumonSealShards())
-			{
-				RandomizerBonus.UpgradeID(19);
-			}
-			i = RandomizerSyncManager.getTaste(bf3, 2);
-			while (i > RandomizerBonus.SunstoneShards())
-			{
-				RandomizerBonus.UpgradeID(21);
-			}
-			i = RandomizerSyncManager.getTaste(bf3, 3);
-			while (i > RandomizerBonus.SpiritFlameLevel())
-			{
-				RandomizerBonus.UpgradeID(6);
-			}
-			i = RandomizerSyncManager.getTaste(bf3, 4);
-			while (i > RandomizerBonus.HealthRegeneration())
-			{
-				RandomizerBonus.UpgradeID(13);
-			}
-			i = RandomizerSyncManager.getTaste(bf3, 5);
-			while (i > RandomizerBonus.EnergyRegeneration())
-			{
-				RandomizerBonus.UpgradeID(15);
-			}
-			if (RandomizerSyncManager.getBit(bf3, 12) && !RandomizerBonus.ExplosionPower())
-			{
-				RandomizerBonus.UpgradeID(8);
-			}
-			if (RandomizerSyncManager.getBit(bf3, 13) && !RandomizerBonus.ExpEfficiency())
-			{
-				RandomizerBonus.UpgradeID(9);
-			}
-			if (RandomizerSyncManager.getBit(bf3, 14) && !RandomizerBonus.DoubleAirDash())
-			{
-				RandomizerBonus.UpgradeID(10);
-			}
-			if (RandomizerSyncManager.getBit(bf3, 15) && !RandomizerBonus.ChargeDashEfficiency())
-			{
-				RandomizerBonus.UpgradeID(11);
-			}
-			if (RandomizerSyncManager.getBit(bf3, 16) && !RandomizerBonus.DoubleJumpUpgrade())
-			{
-				RandomizerBonus.UpgradeID(12);
-			}
-			int bf6 = int.Parse(array[3]);
-			if (RandomizerSyncManager.getBit(bf6, 0))
+			int bf = int.Parse(array[3]);
+			if (RandomizerSyncManager.getBit(bf, 0))
 			{
 				TeleporterController.Activate(Randomizer.TeleportTable["Grove"].ToString());
 			}
-			if (RandomizerSyncManager.getBit(bf6, 1))
+			if (RandomizerSyncManager.getBit(bf, 1))
 			{
 				TeleporterController.Activate(Randomizer.TeleportTable["Swamp"].ToString());
 			}
-			if (RandomizerSyncManager.getBit(bf6, 2))
+			if (RandomizerSyncManager.getBit(bf, 2))
 			{
 				TeleporterController.Activate(Randomizer.TeleportTable["Grotto"].ToString());
 			}
-			if (RandomizerSyncManager.getBit(bf6, 3))
+			if (RandomizerSyncManager.getBit(bf, 3))
 			{
 				TeleporterController.Activate(Randomizer.TeleportTable["Valley"].ToString());
 			}
-			if (RandomizerSyncManager.getBit(bf6, 4))
+			if (RandomizerSyncManager.getBit(bf, 4))
 			{
 				TeleporterController.Activate(Randomizer.TeleportTable["Forlorn"].ToString());
 			}
-			if (RandomizerSyncManager.getBit(bf6, 5))
+			if (RandomizerSyncManager.getBit(bf, 5))
 			{
 				TeleporterController.Activate(Randomizer.TeleportTable["Sorrow"].ToString());
 			}
@@ -282,6 +293,15 @@ public static class RandomizerSyncManager
 	// Token: 0x04003308 RID: 13064
 	public static HashSet<RandomizerSyncManager.Pickup> LoseOnDeath;
 
+	// Token: 0x04003339 RID: 13113
+	public static List<RandomizerSyncManager.SkillInfoLine> SkillInfos;
+
+	// Token: 0x0400333A RID: 13114
+	public static List<RandomizerSyncManager.EventInfoLine> EventInfos;
+
+	// Token: 0x0400333B RID: 13115
+	public static List<RandomizerSyncManager.UpgradeInfoLine> UpgradeInfos;
+
 	// Token: 0x02000A02 RID: 2562
 	public class Pickup
 	{
@@ -314,5 +334,131 @@ public static class RandomizerSyncManager
 
 		// Token: 0x04003296 RID: 12950
 		public string type;
+	}
+
+	// Token: 0x02000A0A RID: 2570
+	public class SkillInfoLine
+	{
+		// Token: 0x06003881 RID: 14465
+		public SkillInfoLine(int _id, int _bit, AbilityType _skill)
+		{
+			this.bit = _bit;
+			this.id = _id;
+			this.skill = _skill;
+		}
+
+		// Token: 0x06003882 RID: 14466
+		public override bool Equals(object obj)
+		{
+			if (obj == null || base.GetType() != obj.GetType())
+			{
+				return false;
+			}
+			RandomizerSyncManager.SkillInfoLine p = (RandomizerSyncManager.SkillInfoLine)obj;
+			return this.bit == p.bit && this.id == p.id && this.skill == p.skill;
+		}
+
+		// Token: 0x06003883 RID: 14467
+		public override int GetHashCode()
+		{
+			return this.skill.GetHashCode() ^ this.id.GetHashCode() ^ this.bit.GetHashCode();
+		}
+
+		// Token: 0x04003319 RID: 13081
+		public int id;
+
+		// Token: 0x0400331A RID: 13082
+		public int bit;
+
+		// Token: 0x0400331B RID: 13083
+		public AbilityType skill;
+	}
+
+	// Token: 0x02000A0B RID: 2571
+	// (Invoke) Token: 0x06003885 RID: 14469
+	public delegate int UpgradeCounter();
+
+	// Token: 0x02000A0C RID: 2572
+	public class UpgradeInfoLine
+	{
+		// Token: 0x06003888 RID: 14472
+		public UpgradeInfoLine(int _id, int _bit, bool _stacks, RandomizerSyncManager.UpgradeCounter _counter)
+		{
+			this.bit = _bit;
+			this.id = _id;
+			this.stacks = _stacks;
+			this.counter = _counter;
+		}
+
+		// Token: 0x06003889 RID: 14473
+		public override bool Equals(object obj)
+		{
+			if (obj == null || base.GetType() != obj.GetType())
+			{
+				return false;
+			}
+			RandomizerSyncManager.UpgradeInfoLine p = (RandomizerSyncManager.UpgradeInfoLine)obj;
+			return this.bit == p.bit && this.id == p.id;
+		}
+
+		// Token: 0x0600388A RID: 14474
+		public override int GetHashCode()
+		{
+			return this.bit.GetHashCode() ^ this.id.GetHashCode();
+		}
+
+		// Token: 0x0400331C RID: 13084
+		public int id;
+
+		// Token: 0x0400331D RID: 13085
+		public int bit;
+
+		// Token: 0x0400331E RID: 13086
+		public bool stacks;
+
+		// Token: 0x0400331F RID: 13087
+		public RandomizerSyncManager.UpgradeCounter counter;
+	}
+
+	// Token: 0x02000A0D RID: 2573
+	// (Invoke) Token: 0x0600388C RID: 14476
+	public delegate bool EventChecker();
+
+	// Token: 0x02000A0E RID: 2574
+	public class EventInfoLine
+	{
+		// Token: 0x0600388F RID: 14479
+		public EventInfoLine(int _id, int _bit, RandomizerSyncManager.EventChecker _checker)
+		{
+			this.bit = _bit;
+			this.id = _id;
+			this.checker = _checker;
+		}
+
+		// Token: 0x06003890 RID: 14480
+		public override bool Equals(object obj)
+		{
+			if (obj == null || base.GetType() != obj.GetType())
+			{
+				return false;
+			}
+			RandomizerSyncManager.EventInfoLine p = (RandomizerSyncManager.EventInfoLine)obj;
+			return this.bit == p.bit && this.id == p.id;
+		}
+
+		// Token: 0x06003891 RID: 14481
+		public override int GetHashCode()
+		{
+			return this.bit.GetHashCode() ^ this.id.GetHashCode();
+		}
+
+		// Token: 0x04003320 RID: 13088
+		public int id;
+
+		// Token: 0x04003321 RID: 13089
+		public RandomizerSyncManager.EventChecker checker;
+
+		// Token: 0x04003322 RID: 13090
+		public int bit;
 	}
 }
