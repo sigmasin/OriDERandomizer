@@ -14,12 +14,14 @@ public static class Randomizer
 	{
 		Randomizer.OHKO = false;
 		Randomizer.ZeroXP = false;
+		Randomizer.Sync = false;
 		Randomizer.BonusActive = true;
 		Randomizer.GiveAbility = false;
 		Randomizer.Chaos = false;
 		Randomizer.ChaosVerbose = false;
 		Randomizer.Returning = false;
 		RandomizerChaosManager.initialize();
+		RandomizerSyncManager.Initialize();
 		Randomizer.DamageModifier = 1f;
 		Randomizer.Table = new Hashtable();
 		Randomizer.GridFactor = 4.0;
@@ -53,29 +55,34 @@ public static class Randomizer
 				','
 			});
 			Randomizer.SeedMeta = array[0];
-			for (int i = 0; i < array2.Length; i++)
+			foreach (string meta in array2)
 			{
-				if (array2[i].ToLower() == "ohko")
+				if (meta.ToLower() == "ohko")
 				{
 					Randomizer.OHKO = true;
 				}
-				if (array2[i].ToLower() == "0xp")
+				if (meta.StartsWith("sync"))
+				{
+					Randomizer.Sync = true;
+					int.TryParse(meta.Substring(4), out Randomizer.SyncId);
+				}
+				if (meta.ToLower() == "0xp")
 				{
 					Randomizer.ZeroXP = true;
 				}
-				if (array2[i].ToLower() == "nobonus")
+				if (meta.ToLower() == "nobonus")
 				{
 					Randomizer.BonusActive = false;
 				}
-				if (array2[i].ToLower() == "nonprogressivemapstones")
+				if (meta.ToLower() == "nonprogressivemapstones")
 				{
 					Randomizer.ProgressiveMapStones = false;
 				}
-				if (array2[i].ToLower() == "forcetrees")
+				if (meta.ToLower() == "forcetrees")
 				{
 					Randomizer.ForceTrees = true;
 				}
-				if (array2[i].ToLower() == "clues")
+				if (meta.ToLower() == "clues")
 				{
 					Randomizer.CluesMode = true;
 					RandomizerClues.initialize();
@@ -160,10 +167,10 @@ public static class Randomizer
 	// Token: 0x06003740 RID: 14144
 	public static void log(string message)
 	{
-		StreamWriter expr_0A = File.AppendText("randomizer.log");
-		expr_0A.WriteLine(message);
-		expr_0A.Flush();
-		expr_0A.Dispose();
+		StreamWriter streamWriter = File.AppendText("randomizer.log");
+		streamWriter.WriteLine(message);
+		streamWriter.Flush();
+		streamWriter.Dispose();
 	}
 
 	// Token: 0x06003741 RID: 14145
@@ -182,9 +189,9 @@ public static class Randomizer
 	// Token: 0x06003743 RID: 14147
 	public static void hintAndLog(float x, float y)
 	{
-		string expr_1E = ((int)x).ToString() + " " + ((int)y).ToString();
-		Randomizer.showHint(expr_1E);
-		Randomizer.log(expr_1E);
+		string message = ((int)x).ToString() + " " + ((int)y).ToString();
+		Randomizer.showHint(message);
+		Randomizer.log(message);
 	}
 
 	// Token: 0x06003744 RID: 14148
@@ -241,6 +248,10 @@ public static class Randomizer
 			if (Randomizer.Chaos)
 			{
 				RandomizerChaosManager.Update();
+			}
+			if (Randomizer.Sync)
+			{
+				RandomizerSyncManager.Update();
 			}
 			if (Randomizer.Returning)
 			{
@@ -409,7 +420,7 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x060037C8 RID: 14280
+	// Token: 0x0600374C RID: 14156
 	public static void UpdateMessages()
 	{
 		if (Randomizer.MessageQueueTime == 0)
@@ -482,9 +493,15 @@ public static class Randomizer
 	// Token: 0x0400323D RID: 12861
 	public static bool ColorShift;
 
-	// Token: 0x0400328A RID: 12938
+	// Token: 0x0400323E RID: 12862
 	public static Queue MessageQueue;
 
-	// Token: 0x0400329F RID: 12959
+	// Token: 0x0400323F RID: 12863
 	public static int MessageQueueTime;
+
+	// Token: 0x04003273 RID: 12915
+	public static bool Sync;
+
+	// Token: 0x04003274 RID: 12916
+	public static int SyncId;
 }
