@@ -63,7 +63,7 @@ public static class RandomizerSwitch
     }
     
     public static void AbilityPickup(int Ability) {
-        RandomizerSyncManager.FoundPickups("skill", Ability);
+        RandomizerSyncManager.FoundPickup("skill", Ability.ToString());
         Randomizer.GiveAbility = true;
         switch (Ability)
 		{
@@ -113,7 +113,7 @@ public static class RandomizerSwitch
     }
     public static void EventPickup(int Value) 
     {
-        RandomizerSyncManager.FoundPickups("event", Value);
+        RandomizerSyncManager.FoundPickup("event", Value.ToString());
         switch (Value)
         {
             case 0:
@@ -144,7 +144,7 @@ public static class RandomizerSwitch
     
 	public static void TeleportPickup(string Value)
 	{
-        RandomizerSyncManager.FoundPickups(Value);
+        RandomizerSyncManager.FoundPickup("teleporter", Value);
 		TeleporterController.Activate(Randomizer.TeleportTable[Value].ToString());
 		Randomizer.showHint(Value + " teleporter activated");
 	}
@@ -178,7 +178,7 @@ public static class RandomizerSwitch
                 EventPickup((int)Action.Value);
                 break;
             case "RB":
-                RandomizerSyncManager.FoundPickups("upgrade", (int)Action.Value);
+                RandomizerSyncManager.FoundPickup("upgrade", ((int)Action.Value).ToString());
                 RandomizerBonus.UpgradeID((int)Action.Value);
                 break;
             case "TP":

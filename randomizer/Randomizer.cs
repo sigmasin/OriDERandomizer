@@ -61,7 +61,7 @@ public static class Randomizer
 				{
 					Randomizer.OHKO = true;
 				}
-				if (meta.StartsWith("sync"))
+				if (meta.ToLower().StartsWith("sync"))
 				{
 					Randomizer.Sync = true;
 					int.TryParse(meta.Substring(4), out Randomizer.SyncId);

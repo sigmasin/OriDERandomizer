@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Net;
 using Game;
 using Sein.World;
@@ -12,12 +13,41 @@ public static class RandomizerSyncManager
 		RandomizerSyncManager.Countdown = 60 * RandomizerSyncManager.PERIOD;
 		RandomizerSyncManager.webClient = new WebClient();
 		RandomizerSyncManager.getClient = new WebClient();
+		RandomizerSyncManager.UnsavedPickups = new List<RandomizerSyncManager.Pickup>();
+		RandomizerSyncManager.PickupQueue = new Queue<RandomizerSyncManager.Pickup>();
 		RandomizerSyncManager.getClient.DownloadStringCompleted += RandomizerSyncManager.CheckPickups;
+		RandomizerSyncManager.LoseOnDeath = new HashSet<RandomizerSyncManager.Pickup>();
+		foreach (int i in new int[]
+		{
+			6,
+			13,
+			15,
+			17,
+			19,
+			21
+		})
+		{
+			RandomizerSyncManager.LoseOnDeath.Add(new RandomizerSyncManager.Pickup("upgrade", i.ToString()));
+		}
 	}
 
 	// Token: 0x06003794 RID: 14228
 	public static void Update()
 	{
+		if (RandomizerSyncManager.PickupQueue.Count > 0 && !RandomizerSyncManager.webClient.IsBusy)
+		{
+			RandomizerSyncManager.Pickup pickup = RandomizerSyncManager.PickupQueue.Dequeue();
+			string uriString = string.Concat(new object[]
+			{
+				RandomizerSyncManager.SERVER_ROOT,
+				Randomizer.SyncId,
+				"/",
+				pickup.type,
+				"/",
+				pickup.id
+			});
+			RandomizerSyncManager.webClient.DownloadStringAsync(new Uri(uriString));
+		}
 		RandomizerSyncManager.Countdown--;
 		if (RandomizerSyncManager.Countdown <= 0 && !RandomizerSyncManager.getClient.IsBusy)
 		{
@@ -31,34 +61,6 @@ public static class RandomizerSyncManager
 	{
 	}
 
-	// Token: 0x06003796 RID: 14230
-	public static string DecimalToArbitrarySystem(long decimalNumber, int radix)
-	{
-		if (radix < 2 || radix > "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".Length)
-		{
-			throw new ArgumentException("The radix must be >= 2 and <= " + "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".Length.ToString());
-		}
-		if (decimalNumber == 0L)
-		{
-			return "0";
-		}
-		int num = 63;
-		long num2 = Math.Abs(decimalNumber);
-		char[] array = new char[64];
-		while (num2 != 0L)
-		{
-			int index = (int)(num2 % (long)radix);
-			array[num--] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"[index];
-			num2 /= (long)radix;
-		}
-		string text = new string(array, num + 1, 64 - num - 1);
-		if (decimalNumber < 0L)
-		{
-			text = "-" + text;
-		}
-		return text;
-	}
-
 	// Token: 0x06003797 RID: 14231
 	public static bool getBit(int bf, int bit)
 	{
@@ -69,33 +71,6 @@ public static class RandomizerSyncManager
 	public static int getTaste(int bf, int taste)
 	{
 		return bf >> 2 * taste & 3;
-	}
-
-	// Token: 0x06003799 RID: 14233
-	public static void FoundPickups(string pickupType, int pickupId)
-	{
-		string uriString = string.Concat(new object[]
-		{
-			RandomizerSyncManager.SERVER_ROOT,
-			Randomizer.SyncId,
-			"/",
-			pickupType,
-			"/",
-			pickupId
-		});
-		RandomizerSyncManager.webClient.DownloadStringAsync(new Uri(uriString));
-	}
-
-	// Token: 0x0600379A RID: 14234
-	public static void FoundPickups(string teleporterName)
-	{
-		RandomizerSyncManager.webClient.DownloadStringAsync(new Uri(string.Concat(new object[]
-		{
-			RandomizerSyncManager.SERVER_ROOT,
-			Randomizer.SyncId,
-			"/teleporter/",
-			teleporterName
-		})));
 	}
 
 	// Token: 0x0600379B RID: 14235
@@ -249,6 +224,34 @@ public static class RandomizerSyncManager
 		}
 	}
 
+	// Token: 0x060037AA RID: 14250
+	public static void onSave()
+	{
+		foreach (RandomizerSyncManager.Pickup p in RandomizerSyncManager.UnsavedPickups)
+		{
+			RandomizerSyncManager.PickupQueue.Enqueue(p);
+		}
+		RandomizerSyncManager.UnsavedPickups.Clear();
+	}
+
+	// Token: 0x060037C2 RID: 14274
+	public static void FoundPickup(string type, string id)
+	{
+		RandomizerSyncManager.Pickup p = new RandomizerSyncManager.Pickup(type, id);
+		if (RandomizerSyncManager.LoseOnDeath.Contains(p))
+		{
+			RandomizerSyncManager.UnsavedPickups.Add(p);
+			return;
+		}
+		RandomizerSyncManager.PickupQueue.Enqueue(p);
+	}
+
+	// Token: 0x06003826 RID: 14374
+	public static void onDeath()
+	{
+		RandomizerSyncManager.UnsavedPickups.Clear();
+	}
+
 	// Token: 0x04003268 RID: 12904
 	public static int Countdown;
 
@@ -269,4 +272,47 @@ public static class RandomizerSyncManager
 
 	// Token: 0x0400326E RID: 12910
 	public static WebClient getClient;
+
+	// Token: 0x0400329E RID: 12958
+	public static List<RandomizerSyncManager.Pickup> UnsavedPickups;
+
+	// Token: 0x0400329F RID: 12959
+	public static Queue<RandomizerSyncManager.Pickup> PickupQueue;
+
+	// Token: 0x04003308 RID: 13064
+	public static HashSet<RandomizerSyncManager.Pickup> LoseOnDeath;
+
+	// Token: 0x02000A02 RID: 2562
+	public class Pickup
+	{
+		// Token: 0x060037C5 RID: 14277
+		public Pickup(string _type, string _id)
+		{
+			this.type = _type;
+			this.id = _id;
+		}
+
+		// Token: 0x06003873 RID: 14451
+		public override bool Equals(object obj)
+		{
+			if (obj == null || base.GetType() != obj.GetType())
+			{
+				return false;
+			}
+			RandomizerSyncManager.Pickup p = (RandomizerSyncManager.Pickup)obj;
+			return this.type == p.type && this.id == p.id;
+		}
+
+		// Token: 0x06003874 RID: 14452
+		public override int GetHashCode()
+		{
+			return this.type.GetHashCode() ^ this.id.GetHashCode();
+		}
+
+		// Token: 0x04003295 RID: 12949
+		public string id;
+
+		// Token: 0x04003296 RID: 12950
+		public string type;
+	}
 }
