@@ -63,7 +63,6 @@ public static class RandomizerSwitch
     }
     
     public static void AbilityPickup(int Ability) {
-        RandomizerSyncManager.FoundPickup("skill", Ability.ToString());
         Randomizer.GiveAbility = true;
         switch (Ability)
 		{
@@ -113,7 +112,6 @@ public static class RandomizerSwitch
     }
     public static void EventPickup(int Value) 
     {
-        RandomizerSyncManager.FoundPickup("event", Value.ToString());
         switch (Value)
         {
             case 0:
@@ -144,14 +142,16 @@ public static class RandomizerSwitch
     
 	public static void TeleportPickup(string Value)
 	{
-        RandomizerSyncManager.FoundPickup("teleporter", Value);
 		TeleporterController.Activate(Randomizer.TeleportTable[Value].ToString());
 		Randomizer.showHint(Value + " teleporter activated");
 	}
+
     
-    
-    public static void GivePickup(RandomizerAction Action)
+    public static void GivePickup(RandomizerAction Action, int coords, bool found_locally=true)
     {
+        if(found_locally)
+            RandomizerSyncManager.FoundPickup(Action, coords);
+
         switch (Action.Action) {
             case "AC":                
                 SkillPointPickup();
@@ -178,7 +178,6 @@ public static class RandomizerSwitch
                 EventPickup((int)Action.Value);
                 break;
             case "RB":
-                RandomizerSyncManager.FoundPickup("upgrade", ((int)Action.Value).ToString());
                 RandomizerBonus.UpgradeID((int)Action.Value);
                 break;
             case "TP":
@@ -188,7 +187,5 @@ public static class RandomizerSwitch
                 Randomizer.showHint("Nothing");
                 return;
         }
-             
     }
-        
 }

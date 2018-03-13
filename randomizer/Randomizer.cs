@@ -9,7 +9,7 @@ using UnityEngine;
 // Token: 0x020009EF RID: 2543
 public static class Randomizer
 {
-	// Token: 0x0600373A RID: 14138 RVA: 0x000E06A0 File Offset: 0x000DE8A0
+	// Token: 0x0600373A RID: 14138
 	public static void initialize()
 	{
 		Randomizer.OHKO = false;
@@ -47,7 +47,7 @@ public static class Randomizer
 		if (File.Exists("randomizer.dat"))
 		{
 			string[] array = File.ReadAllLines("randomizer.dat");
-			string[] array2 = array[0].Split(new char[]
+			string[] array3 = array[0].Split(new char[]
 			{
 				'|'
 			})[0].Split(new char[]
@@ -55,7 +55,7 @@ public static class Randomizer
 				','
 			});
 			Randomizer.SeedMeta = array[0];
-			foreach (string text in array2)
+			foreach (string text in array3)
 			{
 				if (text.ToLower() == "ohko")
 				{
@@ -64,7 +64,7 @@ public static class Randomizer
 				if (text.ToLower().StartsWith("sync"))
 				{
 					Randomizer.Sync = true;
-					int.TryParse(text.Substring(4), out Randomizer.SyncId);
+					Randomizer.SyncId = text.Substring(4);
 				}
 				if (text.ToLower() == "0xp")
 				{
@@ -88,39 +88,39 @@ public static class Randomizer
 					RandomizerClues.initialize();
 				}
 			}
-			for (int j = 1; j < array.Length; j++)
+			for (int i = 1; i < array.Length; i++)
 			{
-				string[] array3 = array[j].Split(new char[]
+				string[] array2 = array[i].Split(new char[]
 				{
 					'|'
 				});
 				int num;
-				int.TryParse(array3[0], out num);
-				if (array3[1] == "TP")
+				int.TryParse(array2[0], out num);
+				if (array2[1] == "TP")
 				{
-					Randomizer.Table[num] = new RandomizerAction(array3[1], array3[2]);
+					Randomizer.Table[num] = new RandomizerAction(array2[1], array2[2]);
 				}
 				else
 				{
 					int num2;
-					int.TryParse(array3[2], out num2);
-					Randomizer.Table[num] = new RandomizerAction(array3[1], num2);
-					if (Randomizer.CluesMode && array3[1] == "EV" && num2 % 2 == 0)
+					int.TryParse(array2[2], out num2);
+					Randomizer.Table[num] = new RandomizerAction(array2[1], num2);
+					if (Randomizer.CluesMode && array2[1] == "EV" && num2 % 2 == 0)
 					{
-						RandomizerClues.AddClue(array3[3], num2 / 2);
+						RandomizerClues.AddClue(array2[3], num2 / 2);
 					}
 				}
 			}
 		}
 	}
 
-	// Token: 0x0600373B RID: 14139 RVA: 0x0002B458 File Offset: 0x00029658
+	// Token: 0x0600373B RID: 14139
 	public static void getPickup()
 	{
 		Randomizer.getPickup(Characters.Sein.Position);
 	}
 
-	// Token: 0x0600373C RID: 14140 RVA: 0x000E09F0 File Offset: 0x000DEBF0
+	// Token: 0x0600373C RID: 14140
 	public static void returnToStart()
 	{
 		if (Characters.Sein.Abilities.Carry.IsCarrying || !Characters.Sein.Controller.CanMove || !Characters.Sein.Active)
@@ -140,7 +140,7 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x0600373D RID: 14141 RVA: 0x0002B469 File Offset: 0x00029669
+	// Token: 0x0600373D RID: 14141
 	public static void getEvent(int ID)
 	{
 		RandomizerBonus.CollectPickup();
@@ -148,23 +148,23 @@ public static class Randomizer
 		{
 			Randomizer.changeColor();
 		}
-		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[ID * 4]);
+		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[ID * 4], ID * 4, true);
 	}
 
-	// Token: 0x0600373E RID: 14142 RVA: 0x0002B498 File Offset: 0x00029698
+	// Token: 0x0600373E RID: 14142
 	public static void showHint(string message)
 	{
 		Randomizer.Message = message;
 		Randomizer.MessageQueue.Enqueue(message);
 	}
 
-	// Token: 0x0600373F RID: 14143 RVA: 0x0002B4AB File Offset: 0x000296AB
+	// Token: 0x0600373F RID: 14143
 	public static void playLastMessage()
 	{
 		Randomizer.MessageQueue.Enqueue(Randomizer.Message);
 	}
 
-	// Token: 0x06003740 RID: 14144 RVA: 0x0002B4BC File Offset: 0x000296BC
+	// Token: 0x06003740 RID: 14144
 	public static void log(string message)
 	{
 		StreamWriter streamWriter = File.AppendText("randomizer.log");
@@ -173,20 +173,20 @@ public static class Randomizer
 		streamWriter.Dispose();
 	}
 
-	// Token: 0x06003741 RID: 14145 RVA: 0x000E0AA4 File Offset: 0x000DECA4
+	// Token: 0x06003741 RID: 14145
 	public static bool WindRestored()
 	{
 		return Sein.World.Events.WindRestored && Scenes.Manager.CurrentScene != null && Scenes.Manager.CurrentScene.Scene != "forlornRuinsResurrection" && Scenes.Manager.CurrentScene.Scene != "forlornRuinsRotatingLaserFlipped";
 	}
 
-	// Token: 0x06003742 RID: 14146 RVA: 0x0002B4DA File Offset: 0x000296DA
+	// Token: 0x06003742 RID: 14146
 	public static void getSkill()
 	{
 		Characters.Sein.Inventory.SkillPointsCollected += 134217728;
 		Randomizer.getPickup();
 	}
 
-	// Token: 0x06003743 RID: 14147 RVA: 0x000E0AFC File Offset: 0x000DECFC
+	// Token: 0x06003743 RID: 14147
 	public static void hintAndLog(float x, float y)
 	{
 		string message = ((int)x).ToString() + " " + ((int)y).ToString();
@@ -194,7 +194,7 @@ public static class Randomizer
 		Randomizer.log(message);
 	}
 
-	// Token: 0x06003744 RID: 14148 RVA: 0x000E0B34 File Offset: 0x000DED34
+	// Token: 0x06003744 RID: 14148
 	public static void getPickup(Vector3 position)
 	{
 		RandomizerBonus.CollectPickup();
@@ -205,7 +205,7 @@ public static class Randomizer
 		int num = (int)(Math.Floor((double)((int)position.x) / Randomizer.GridFactor) * Randomizer.GridFactor) * 10000 + (int)(Math.Floor((double)((int)position.y) / Randomizer.GridFactor) * Randomizer.GridFactor);
 		if (Randomizer.Table.ContainsKey(num))
 		{
-			RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num]);
+			RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num], num, true);
 			return;
 		}
 		for (int i = -1; i <= 1; i++)
@@ -214,7 +214,7 @@ public static class Randomizer
 			{
 				if (Randomizer.Table.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * i + j)))
 				{
-					RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num + (int)Randomizer.GridFactor * (10000 * i + j)]);
+					RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num + (int)Randomizer.GridFactor * (10000 * i + j)], num, true);
 					return;
 				}
 			}
@@ -225,7 +225,7 @@ public static class Randomizer
 			{
 				if (Randomizer.Table.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * k + l)))
 				{
-					RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num + (int)Randomizer.GridFactor * (10000 * k + l)]);
+					RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num + (int)Randomizer.GridFactor * (10000 * k + l)], num, true);
 					return;
 				}
 			}
@@ -233,7 +233,7 @@ public static class Randomizer
 		Randomizer.showHint("Error finding pickup at " + ((int)position.x).ToString() + ", " + ((int)position.y).ToString());
 	}
 
-	// Token: 0x06003745 RID: 14149 RVA: 0x000E0CC4 File Offset: 0x000DEEC4
+	// Token: 0x06003745 RID: 14149
 	public static void Update()
 	{
 		Randomizer.UpdateMessages();
@@ -324,7 +324,7 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x06003746 RID: 14150 RVA: 0x0002B4FC File Offset: 0x000296FC
+	// Token: 0x06003746 RID: 14150
 	public static void showChaosEffect(string message)
 	{
 		if (Randomizer.ChaosVerbose)
@@ -333,13 +333,13 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x06003747 RID: 14151 RVA: 0x0002B510 File Offset: 0x00029710
+	// Token: 0x06003747 RID: 14151
 	public static void showChaosMessage(string message)
 	{
 		Randomizer.MessageQueue.Enqueue(message);
 	}
 
-	// Token: 0x06003748 RID: 14152 RVA: 0x000E0F58 File Offset: 0x000DF158
+	// Token: 0x06003748 RID: 14152
 	public static void getMapStone()
 	{
 		if (!Randomizer.ProgressiveMapStones)
@@ -353,10 +353,10 @@ public static class Randomizer
 			Randomizer.changeColor();
 		}
 		Characters.Sein.Inventory.SkillPointsCollected += 8388608;
-		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[20 + RandomizerBonus.MapStoneProgression() * 4]);
+		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[20 + RandomizerBonus.MapStoneProgression() * 4], 20 + RandomizerBonus.MapStoneProgression() * 4, true);
 	}
 
-	// Token: 0x06003749 RID: 14153 RVA: 0x000E0FC4 File Offset: 0x000DF1C4
+	// Token: 0x06003749 RID: 14153
 	public static void showProgress()
 	{
 		string text = "";
@@ -404,14 +404,14 @@ public static class Randomizer
 		Randomizer.MessageQueue.Enqueue(text);
 	}
 
-	// Token: 0x0600374A RID: 14154 RVA: 0x000E1104 File Offset: 0x000DF304
+	// Token: 0x0600374A RID: 14154
 	public static void showSeedInfo()
 	{
 		string obj = "v2.1 - seed loaded: " + Randomizer.SeedMeta;
 		Randomizer.MessageQueue.Enqueue(obj);
 	}
 
-	// Token: 0x0600374B RID: 14155 RVA: 0x000E112C File Offset: 0x000DF32C
+	// Token: 0x0600374B RID: 14155
 	public static void changeColor()
 	{
 		if (Characters.Sein)
@@ -420,7 +420,7 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x0600374C RID: 14156 RVA: 0x000E1184 File Offset: 0x000DF384
+	// Token: 0x0600374C RID: 14156
 	public static void UpdateMessages()
 	{
 		if (Randomizer.MessageQueueTime == 0)
@@ -502,6 +502,6 @@ public static class Randomizer
 	// Token: 0x04003240 RID: 12864
 	public static bool Sync;
 
-	// Token: 0x04003241 RID: 12865
-	public static int SyncId;
+	// Token: 0x0400353A RID: 13626
+	public static string SyncId;
 }

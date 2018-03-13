@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using Game;
+using Sein.World;
 
 // Token: 0x020009FF RID: 2559
 public static class RandomizerSyncManager
@@ -11,26 +12,29 @@ public static class RandomizerSyncManager
 	{
 		RandomizerSyncManager.Countdown = 60 * RandomizerSyncManager.PERIOD;
 		RandomizerSyncManager.webClient = new WebClient();
+		RandomizerSyncManager.webClient.DownloadStringCompleted += RandomizerSyncManager.RetryOnFail;
 		RandomizerSyncManager.getClient = new WebClient();
-		RandomizerSyncManager.UnsavedPickups = new List<RandomizerSyncManager.Pickup>();
-		RandomizerSyncManager.PickupQueue = new Queue<RandomizerSyncManager.Pickup>();
 		RandomizerSyncManager.getClient.DownloadStringCompleted += RandomizerSyncManager.CheckPickups;
-		RandomizerSyncManager.LoseOnDeath = new HashSet<RandomizerSyncManager.Pickup>();
+		RandomizerSyncManager.SendingPickup = null;
+		if (RandomizerSyncManager.UnsavedPickups == null)
+		{
+			RandomizerSyncManager.UnsavedPickups = new List<RandomizerSyncManager.Pickup>();
+		}
+		if (RandomizerSyncManager.PickupQueue == null)
+		{
+			RandomizerSyncManager.PickupQueue = new Queue<RandomizerSyncManager.Pickup>();
+		}
+		RandomizerSyncManager.LoseOnDeath = new HashSet<string>();
 		RandomizerSyncManager.SkillInfos = new List<RandomizerSyncManager.SkillInfoLine>();
 		RandomizerSyncManager.EventInfos = new List<RandomizerSyncManager.EventInfoLine>();
 		RandomizerSyncManager.UpgradeInfos = new List<RandomizerSyncManager.UpgradeInfoLine>();
-		foreach (int i in new int[]
-		{
-			6,
-			13,
-			15,
-			17,
-			19,
-			21
-		})
-		{
-			RandomizerSyncManager.LoseOnDeath.Add(new RandomizerSyncManager.Pickup("upgrade", i.ToString()));
-		}
+		RandomizerSyncManager.TeleportInfos = new List<RandomizerSyncManager.TeleportInfoLine>();
+		RandomizerSyncManager.TeleportInfos.Add(new RandomizerSyncManager.TeleportInfoLine("Grove", 0));
+		RandomizerSyncManager.TeleportInfos.Add(new RandomizerSyncManager.TeleportInfoLine("Swamp", 1));
+		RandomizerSyncManager.TeleportInfos.Add(new RandomizerSyncManager.TeleportInfoLine("Grotto", 2));
+		RandomizerSyncManager.TeleportInfos.Add(new RandomizerSyncManager.TeleportInfoLine("Valley", 3));
+		RandomizerSyncManager.TeleportInfos.Add(new RandomizerSyncManager.TeleportInfoLine("Forlorn", 4));
+		RandomizerSyncManager.TeleportInfos.Add(new RandomizerSyncManager.TeleportInfoLine("Sorrow", 5));
 		RandomizerSyncManager.SkillInfos.Add(new RandomizerSyncManager.SkillInfoLine(0, 0, AbilityType.Bash));
 		RandomizerSyncManager.SkillInfos.Add(new RandomizerSyncManager.SkillInfoLine(2, 1, AbilityType.ChargeFlame));
 		RandomizerSyncManager.SkillInfos.Add(new RandomizerSyncManager.SkillInfoLine(3, 2, AbilityType.WallJump));
@@ -41,6 +45,11 @@ public static class RandomizerSyncManager
 		RandomizerSyncManager.SkillInfos.Add(new RandomizerSyncManager.SkillInfoLine(14, 7, AbilityType.Glide));
 		RandomizerSyncManager.SkillInfos.Add(new RandomizerSyncManager.SkillInfoLine(50, 8, AbilityType.Dash));
 		RandomizerSyncManager.SkillInfos.Add(new RandomizerSyncManager.SkillInfoLine(51, 9, AbilityType.Grenade));
+		RandomizerSyncManager.EventInfos.Add(new RandomizerSyncManager.EventInfoLine(0, 0, () => Keys.GinsoTree));
+		RandomizerSyncManager.EventInfos.Add(new RandomizerSyncManager.EventInfoLine(1, 1, () => Sein.World.Events.WaterPurified));
+		RandomizerSyncManager.EventInfos.Add(new RandomizerSyncManager.EventInfoLine(2, 2, () => Keys.ForlornRuins));
+		RandomizerSyncManager.EventInfos.Add(new RandomizerSyncManager.EventInfoLine(3, 3, () => Sein.World.Events.WindRestored));
+		RandomizerSyncManager.EventInfos.Add(new RandomizerSyncManager.EventInfoLine(4, 4, () => Keys.MountHoru));
 		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(17, 0, true, () => RandomizerBonus.WaterVeinShards()));
 		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(19, 1, true, () => RandomizerBonus.GumonSealShards()));
 		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(21, 2, true, () => RandomizerBonus.SunstoneShards()));
@@ -92,25 +101,16 @@ public static class RandomizerSyncManager
 	// Token: 0x06003794 RID: 14228
 	public static void Update()
 	{
-		if (RandomizerSyncManager.PickupQueue.Count > 0 && !RandomizerSyncManager.webClient.IsBusy)
+		if (RandomizerSyncManager.SendingPickup == null && RandomizerSyncManager.PickupQueue.Count > 0 && !RandomizerSyncManager.webClient.IsBusy)
 		{
-			RandomizerSyncManager.Pickup pickup = RandomizerSyncManager.PickupQueue.Dequeue();
-			string uriString = string.Concat(new object[]
-			{
-				RandomizerSyncManager.SERVER_ROOT,
-				Randomizer.SyncId,
-				"/",
-				pickup.type,
-				"/",
-				pickup.id
-			});
-			RandomizerSyncManager.webClient.DownloadStringAsync(new Uri(uriString));
+			RandomizerSyncManager.SendingPickup = RandomizerSyncManager.PickupQueue.Dequeue();
+			RandomizerSyncManager.webClient.DownloadStringAsync(new Uri(RandomizerSyncManager.SendingPickup.GetURL()));
 		}
 		RandomizerSyncManager.Countdown--;
 		if (RandomizerSyncManager.Countdown <= 0 && !RandomizerSyncManager.getClient.IsBusy)
 		{
 			RandomizerSyncManager.Countdown = 60 * RandomizerSyncManager.PERIOD;
-			RandomizerSyncManager.getClient.DownloadStringAsync(new Uri(RandomizerSyncManager.SERVER_ROOT + Randomizer.SyncId.ToString()));
+			RandomizerSyncManager.getClient.DownloadStringAsync(new Uri(RandomizerSyncManager.SERVER_ROOT + Randomizer.SyncId));
 		}
 	}
 
@@ -143,33 +143,17 @@ public static class RandomizerSyncManager
 			int skill_bf = int.Parse(array[0]);
 			foreach (RandomizerSyncManager.SkillInfoLine sfl in RandomizerSyncManager.SkillInfos)
 			{
-				bool bit = RandomizerSyncManager.getBit(skill_bf, sfl.bit);
-				if (bit != Characters.Sein.PlayerAbilities.HasAbility(sfl.skill))
+				if (RandomizerSyncManager.getBit(skill_bf, sfl.bit) && !Characters.Sein.PlayerAbilities.HasAbility(sfl.skill))
 				{
-					if (bit)
-					{
-						RandomizerSwitch.AbilityPickup(sfl.id);
-					}
-					else
-					{
-						RandomizerSyncManager.PickupQueue.Enqueue(new RandomizerSyncManager.Pickup("skill", sfl.id.ToString()));
-					}
+					RandomizerSwitch.GivePickup(new RandomizerAction("SK", sfl.id), 0, false);
 				}
 			}
 			int event_bf = int.Parse(array[1]);
 			foreach (RandomizerSyncManager.EventInfoLine efl in RandomizerSyncManager.EventInfos)
 			{
-				bool bit2 = RandomizerSyncManager.getBit(event_bf, efl.bit);
-				if (bit2 != efl.checker())
+				if (RandomizerSyncManager.getBit(event_bf, efl.bit) && !efl.checker())
 				{
-					if (bit2)
-					{
-						RandomizerSwitch.EventPickup(efl.id);
-					}
-					else
-					{
-						RandomizerSyncManager.PickupQueue.Enqueue(new RandomizerSyncManager.Pickup("event", efl.id.ToString()));
-					}
+					RandomizerSwitch.GivePickup(new RandomizerAction("EV", efl.id), 0, false);
 				}
 			}
 			int upgrade_bf = int.Parse(array[2]);
@@ -177,59 +161,23 @@ public static class RandomizerSyncManager
 			{
 				if (ufl.stacks)
 				{
-					int taste = RandomizerSyncManager.getTaste(upgrade_bf, ufl.bit);
-					if (taste != ufl.counter())
+					if (RandomizerSyncManager.getTaste(upgrade_bf, ufl.bit) > ufl.counter())
 					{
-						if (taste > ufl.counter())
-						{
-							RandomizerBonus.UpgradeID(ufl.id);
-						}
-						else if (!RandomizerSyncManager.UnsavedPickups.Contains(new RandomizerSyncManager.Pickup("upgrade", ufl.id.ToString())))
-						{
-							RandomizerSyncManager.UnsavedPickups.Add(new RandomizerSyncManager.Pickup("upgrade", ufl.id.ToString()));
-						}
+						RandomizerSwitch.GivePickup(new RandomizerAction("RB", ufl.id), 0, false);
 					}
 				}
-				else
+				else if (RandomizerSyncManager.getBit(upgrade_bf, ufl.bit) && 1 != ufl.counter())
 				{
-					bool bit3 = RandomizerSyncManager.getBit(upgrade_bf, ufl.bit);
-					if (bit3 != (1 == ufl.counter()))
-					{
-						if (bit3)
-						{
-							RandomizerBonus.UpgradeID(ufl.id);
-						}
-						else
-						{
-							RandomizerSyncManager.PickupQueue.Enqueue(new RandomizerSyncManager.Pickup("upgrade", ufl.id.ToString()));
-						}
-					}
+					RandomizerSwitch.GivePickup(new RandomizerAction("RB", ufl.id), 0, false);
 				}
 			}
 			int bf = int.Parse(array[3]);
-			if (RandomizerSyncManager.getBit(bf, 0))
+			foreach (RandomizerSyncManager.TeleportInfoLine tfl in RandomizerSyncManager.TeleportInfos)
 			{
-				TeleporterController.Activate(Randomizer.TeleportTable["Grove"].ToString());
-			}
-			if (RandomizerSyncManager.getBit(bf, 1))
-			{
-				TeleporterController.Activate(Randomizer.TeleportTable["Swamp"].ToString());
-			}
-			if (RandomizerSyncManager.getBit(bf, 2))
-			{
-				TeleporterController.Activate(Randomizer.TeleportTable["Grotto"].ToString());
-			}
-			if (RandomizerSyncManager.getBit(bf, 3))
-			{
-				TeleporterController.Activate(Randomizer.TeleportTable["Valley"].ToString());
-			}
-			if (RandomizerSyncManager.getBit(bf, 4))
-			{
-				TeleporterController.Activate(Randomizer.TeleportTable["Forlorn"].ToString());
-			}
-			if (RandomizerSyncManager.getBit(bf, 5))
-			{
-				TeleporterController.Activate(Randomizer.TeleportTable["Sorrow"].ToString());
+				if (RandomizerSyncManager.getBit(bf, tfl.bit) && !RandomizerSyncManager.isTeleporterActivated(tfl.id))
+				{
+					RandomizerSwitch.GivePickup(new RandomizerAction("TP", tfl.id), 0, false);
+				}
 			}
 			return;
 		}
@@ -245,11 +193,45 @@ public static class RandomizerSyncManager
 		RandomizerSyncManager.UnsavedPickups.Clear();
 	}
 
-	// Token: 0x060037C2 RID: 14274
-	public static void FoundPickup(string type, string id)
+	// Token: 0x06003826 RID: 14374
+	public static void onDeath()
 	{
-		RandomizerSyncManager.Pickup p = new RandomizerSyncManager.Pickup(type, id);
-		if (RandomizerSyncManager.LoseOnDeath.Contains(p))
+		RandomizerSyncManager.UnsavedPickups.Clear();
+	}
+
+	// Token: 0x06003A18 RID: 14872
+	public static void RetryOnFail(object sender, DownloadStringCompletedEventArgs e)
+	{
+		if (!e.Cancelled && e.Error == null)
+		{
+			RandomizerSyncManager.SendingPickup = null;
+			return;
+		}
+		if (e.Error.GetType().Name == "WebException")
+		{
+			HttpStatusCode statusCode = ((HttpWebResponse)((WebException)e.Error).Response).StatusCode;
+			if (statusCode == HttpStatusCode.NotAcceptable)
+			{
+				RandomizerSyncManager.SendingPickup = null;
+				return;
+			}
+			if (statusCode == HttpStatusCode.Gone)
+			{
+				if (RandomizerSyncManager.SendingPickup.type == "RB")
+				{
+					RandomizerBonus.UpgradeID(-int.Parse(RandomizerSyncManager.SendingPickup.id));
+				}
+				RandomizerSyncManager.SendingPickup = null;
+			}
+		}
+		RandomizerSyncManager.webClient.DownloadStringAsync(new Uri(RandomizerSyncManager.SendingPickup.GetURL()));
+	}
+
+	// Token: 0x06003A1B RID: 14875
+	public static void FoundPickup(RandomizerAction action, int coords)
+	{
+		RandomizerSyncManager.Pickup p = new RandomizerSyncManager.Pickup(action, coords);
+		if (RandomizerSyncManager.LoseOnDeath.Contains(p.type + p.id))
 		{
 			RandomizerSyncManager.UnsavedPickups.Add(p);
 			return;
@@ -257,10 +239,17 @@ public static class RandomizerSyncManager
 		RandomizerSyncManager.PickupQueue.Enqueue(p);
 	}
 
-	// Token: 0x06003826 RID: 14374
-	public static void onDeath()
+	// Token: 0x06003E49 RID: 15945
+	public static bool isTeleporterActivated(string identifier)
 	{
-		RandomizerSyncManager.UnsavedPickups.Clear();
+		foreach (GameMapTeleporter current in TeleporterController.Instance.Teleporters)
+		{
+			if (current.Identifier == Randomizer.TeleportTable[identifier].ToString())
+			{
+				return current.Activated;
+			}
+		}
+		return false;
 	}
 
 	// Token: 0x04003268 RID: 12904
@@ -290,9 +279,6 @@ public static class RandomizerSyncManager
 	// Token: 0x0400329F RID: 12959
 	public static Queue<RandomizerSyncManager.Pickup> PickupQueue;
 
-	// Token: 0x04003308 RID: 13064
-	public static HashSet<RandomizerSyncManager.Pickup> LoseOnDeath;
-
 	// Token: 0x04003339 RID: 13113
 	public static List<RandomizerSyncManager.SkillInfoLine> SkillInfos;
 
@@ -302,16 +288,18 @@ public static class RandomizerSyncManager
 	// Token: 0x0400333B RID: 13115
 	public static List<RandomizerSyncManager.UpgradeInfoLine> UpgradeInfos;
 
+	// Token: 0x0400347B RID: 13435
+	public static HashSet<string> LoseOnDeath;
+
+	// Token: 0x0400347F RID: 13439
+	public static RandomizerSyncManager.Pickup SendingPickup;
+
+	// Token: 0x040037E0 RID: 14304
+	public static List<RandomizerSyncManager.TeleportInfoLine> TeleportInfos;
+
 	// Token: 0x02000A02 RID: 2562
 	public class Pickup
 	{
-		// Token: 0x060037C5 RID: 14277
-		public Pickup(string _type, string _id)
-		{
-			this.type = _type;
-			this.id = _id;
-		}
-
 		// Token: 0x06003873 RID: 14451
 		public override bool Equals(object obj)
 		{
@@ -320,13 +308,45 @@ public static class RandomizerSyncManager
 				return false;
 			}
 			RandomizerSyncManager.Pickup p = (RandomizerSyncManager.Pickup)obj;
-			return this.type == p.type && this.id == p.id;
+			return this.type == p.type && this.id == p.id && this.coords == p.coords;
 		}
 
 		// Token: 0x06003874 RID: 14452
 		public override int GetHashCode()
 		{
-			return this.type.GetHashCode() ^ this.id.GetHashCode();
+			return (this.type + this.id).GetHashCode() ^ this.coords.GetHashCode();
+		}
+
+		// Token: 0x06003A1D RID: 14877
+		public Pickup(string _type, string _id, int _coords)
+		{
+			this.type = _type;
+			this.id = _id;
+			this.coords = _coords;
+		}
+
+		// Token: 0x06003A1E RID: 14878
+		public Pickup(RandomizerAction action, int _coords)
+		{
+			this.type = action.Action;
+			this.id = ((this.type == "TP") ? ((string)action.Value) : ((int)action.Value).ToString());
+			this.coords = _coords;
+		}
+
+		// Token: 0x06003A1F RID: 14879
+		public string GetURL()
+		{
+			return string.Concat(new object[]
+			{
+				RandomizerSyncManager.SERVER_ROOT,
+				Randomizer.SyncId,
+				"/",
+				RandomizerSyncManager.SendingPickup.coords,
+				"/",
+				RandomizerSyncManager.SendingPickup.type,
+				"/",
+				RandomizerSyncManager.SendingPickup.id
+			});
 		}
 
 		// Token: 0x04003295 RID: 12949
@@ -334,6 +354,9 @@ public static class RandomizerSyncManager
 
 		// Token: 0x04003296 RID: 12950
 		public string type;
+
+		// Token: 0x04003481 RID: 13441
+		public int coords;
 	}
 
 	// Token: 0x02000A0A RID: 2570
@@ -459,6 +482,40 @@ public static class RandomizerSyncManager
 		public RandomizerSyncManager.EventChecker checker;
 
 		// Token: 0x04003322 RID: 13090
+		public int bit;
+	}
+
+	// Token: 0x02000A23 RID: 2595
+	public class TeleportInfoLine
+	{
+		// Token: 0x06003E3C RID: 15932
+		public TeleportInfoLine(string _id, int _bit)
+		{
+			this.bit = _bit;
+			this.id = _id;
+		}
+
+		// Token: 0x06003E3D RID: 15933
+		public override bool Equals(object obj)
+		{
+			if (obj == null || base.GetType() != obj.GetType())
+			{
+				return false;
+			}
+			RandomizerSyncManager.TeleportInfoLine p = (RandomizerSyncManager.TeleportInfoLine)obj;
+			return this.bit == p.bit && this.id == p.id;
+		}
+
+		// Token: 0x06003E3E RID: 15934
+		public override int GetHashCode()
+		{
+			return this.bit.GetHashCode() ^ this.id.GetHashCode();
+		}
+
+		// Token: 0x040037D2 RID: 14290
+		public string id;
+
+		// Token: 0x040037D3 RID: 14291
 		public int bit;
 	}
 }
