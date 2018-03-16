@@ -107,6 +107,12 @@ public static class RandomizerSyncManager
 			RandomizerSyncManager.webClient.DownloadStringAsync(new Uri(RandomizerSyncManager.SendingPickup.GetURL()));
 		}
 		RandomizerSyncManager.Countdown--;
+		RandomizerSyncManager.ChaosTimeoutCounter--;
+		if (RandomizerSyncManager.ChaosTimeoutCounter < 0)
+		{
+			RandomizerChaosManager.ClearEffects();
+			RandomizerSyncManager.ChaosTimeoutCounter = 216000;
+		}
 		if (RandomizerSyncManager.Countdown <= 0 && !RandomizerSyncManager.getClient.IsBusy)
 		{
 			RandomizerSyncManager.Countdown = 60 * RandomizerSyncManager.PERIOD;
@@ -195,12 +201,36 @@ public static class RandomizerSyncManager
 					}
 					else
 					{
+						Randomizer.ChaosVerbose = true;
 						RandomizerChaosManager.SpawnEffect();
+						RandomizerSyncManager.ChaosTimeoutCounter = 3600;
 					}
 					RandomizerSyncManager.webClient.DownloadStringAsync(new Uri(RandomizerSyncManager.SERVER_ROOT + Randomizer.SyncId + "/signalCallback/" + signal));
 				}
 			}
 			return;
+		}
+		if (e.Error.GetType().Name == "WebException" && ((HttpWebResponse)((WebException)e.Error).Response).StatusCode == HttpStatusCode.PreconditionFailed)
+		{
+			if (!Randomizer.SyncId.Contains("."))
+			{
+				Randomizer.showHint("@NO PID FOUND.@");
+				Randomizer.showHint("@ADD IT IN THE SEED LIKE THIS@");
+				Randomizer.showHint("@SYNC[GID].[PID] @");
+				Randomizer.showHint("@ALT+L UNTIL YOU DO@");
+				Randomizer.showHint("@OR YOU'LL SEE ALL THIS AGAIN ;)@");
+				return;
+			}
+			string url = string.Concat(new string[]
+			{
+				RandomizerSyncManager.SERVER_ROOT,
+				"getNewGame?id=" + Randomizer.SyncId,
+				"&mode=",
+				Randomizer.SyncMode.ToString(),
+				"&shared=",
+				Randomizer.ShareParams
+			});
+			RandomizerSyncManager.webClient.DownloadStringAsync(new Uri(url));
 		}
 	}
 
@@ -223,54 +253,34 @@ public static class RandomizerSyncManager
 	// Token: 0x0600379B RID: 14235
 	public static void RetryOnFail(object sender, DownloadStringCompletedEventArgs e)
 	{
-		if (!e.Cancelled && e.Error == null)
+		if (e.Cancelled || e.Error != null)
 		{
-			RandomizerSyncManager.SendingPickup = null;
+			if (e.Error.GetType().Name == "WebException")
+			{
+				HttpStatusCode statusCode = ((HttpWebResponse)((WebException)e.Error).Response).StatusCode;
+				if (statusCode == HttpStatusCode.NotAcceptable)
+				{
+					RandomizerSyncManager.SendingPickup = null;
+					return;
+				}
+				if (statusCode == HttpStatusCode.Gone)
+				{
+					if (RandomizerSyncManager.SendingPickup.type == "RB")
+					{
+						RandomizerBonus.UpgradeID(-int.Parse(RandomizerSyncManager.SendingPickup.id));
+					}
+					RandomizerSyncManager.SendingPickup = null;
+				}
+			}
+			RandomizerSyncManager.webClient.DownloadStringAsync(new Uri(RandomizerSyncManager.SendingPickup.GetURL()));
 			return;
 		}
-		if (e.Error.GetType().Name == "WebException")
+		if (e.Result.ToString().StartsWith("GC|"))
 		{
-			HttpStatusCode statusCode = ((HttpWebResponse)((WebException)e.Error).Response).StatusCode;
-			if (statusCode == HttpStatusCode.NotAcceptable)
-			{
-				RandomizerSyncManager.SendingPickup = null;
-				return;
-			}
-			if (statusCode == HttpStatusCode.PreconditionFailed)
-			{
-				if (!Randomizer.SyncId.Contains("."))
-				{
-					Random rnd = new Random();
-					Randomizer.showHint("@NO PID FOUND.@");
-					Randomizer.showHint("@NEW ONE RANDOMLY BEING GENERATED@");
-					Randomizer.showHint("@FIND YOUR GAME (ID " + Randomizer.SyncId + ")@");
-					Randomizer.showHint("@GET THE NUMBER THERE@");
-					Randomizer.showHint("@PUT IT IN THE SEED LIKE THIS@");
-					Randomizer.showHint("SYNC<GID>.<PID> @");
-					Randomizer.showHint("@DON'T ALT+L UNTIL YOU DO@");
-					Randomizer.showHint("@OR YOU'LL SEE ALL THIS AGAIN ;)@");
-					Randomizer.SyncId = Randomizer.SyncId + "." + rnd.Next(1000000, 100000000).ToString();
-				}
-				string url = string.Concat(new string[]
-				{
-					RandomizerSyncManager.SERVER_ROOT,
-					"getNewGame?mode=",
-					Randomizer.SyncMode.ToString(),
-					"&shared=",
-					Randomizer.ShareParams
-				});
-				Randomizer.SyncId = RandomizerSyncManager.webClient.DownloadString(new Uri(url));
-			}
-			if (statusCode == HttpStatusCode.Gone)
-			{
-				if (RandomizerSyncManager.SendingPickup.type == "RB")
-				{
-					RandomizerBonus.UpgradeID(-int.Parse(RandomizerSyncManager.SendingPickup.id));
-				}
-				RandomizerSyncManager.SendingPickup = null;
-			}
+			Randomizer.SyncId = e.Result.ToString().Substring(3);
+			return;
 		}
-		RandomizerSyncManager.webClient.DownloadStringAsync(new Uri(RandomizerSyncManager.SendingPickup.GetURL()));
+		RandomizerSyncManager.SendingPickup = null;
 	}
 
 	// Token: 0x0600379C RID: 14236
@@ -342,6 +352,9 @@ public static class RandomizerSyncManager
 
 	// Token: 0x04003276 RID: 12918
 	public static List<RandomizerSyncManager.TeleportInfoLine> TeleportInfos;
+
+	// Token: 0x0400377D RID: 14205
+	public static int ChaosTimeoutCounter = 0;
 
 	// Token: 0x02000A00 RID: 2560
 	public class Pickup
