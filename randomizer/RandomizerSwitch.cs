@@ -149,9 +149,11 @@ public static class RandomizerSwitch
     
     public static void GivePickup(RandomizerAction Action, int coords, bool found_locally=true)
     {
-        if(found_locally)
+        if (found_locally && Randomizer.Sync)
+        {
             RandomizerSyncManager.FoundPickup(Action, coords);
-
+        }
+        
         switch (Action.Action) {
             case "AC":                
                 SkillPointPickup();

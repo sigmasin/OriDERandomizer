@@ -15,6 +15,8 @@ public static class Randomizer
 		Randomizer.OHKO = false;
 		Randomizer.ZeroXP = false;
 		Randomizer.Sync = false;
+		Randomizer.SyncMode = 1;
+		Randomizer.ShareParams = "";
 		Randomizer.BonusActive = true;
 		Randomizer.GiveAbility = false;
 		Randomizer.Chaos = false;
@@ -44,8 +46,24 @@ public static class Randomizer
 		Randomizer.MessageQueue = new Queue();
 		Randomizer.MessageQueueTime = 0;
 		RandomizerRebinding.ParseRebinding();
+		string file_name;
 		if (File.Exists("randomizer.dat"))
 		{
+			file_name = "randomizer.dat";
+		}
+		else
+		{
+			string[] seeds = Directory.GetFiles(".", "randomizer*dat");
+			if (seeds.Length > 1)
+			{
+				Randomizer.showHint("@MULTIPLE SEEDS, USING" + seeds[0] + "!@");
+				Randomizer.showHint("@DELETE UR OLD SEEDS!@");
+			}
+			file_name = seeds[0];
+		}
+		if (file_name != "")
+		{
+			File.Move(file_name, "randomizer.dat");
 			string[] array = File.ReadAllLines("randomizer.dat");
 			string[] array3 = array[0].Split(new char[]
 			{
@@ -65,6 +83,14 @@ public static class Randomizer
 				{
 					Randomizer.Sync = true;
 					Randomizer.SyncId = text.Substring(4);
+				}
+				if (text.ToLower().StartsWith("mode="))
+				{
+					Randomizer.SyncMode = int.Parse(text.Substring(5));
+				}
+				if (text.ToLower().StartsWith("shared="))
+				{
+					Randomizer.ShareParams = text.Substring(7);
 				}
 				if (text.ToLower() == "0xp")
 				{
@@ -502,6 +528,12 @@ public static class Randomizer
 	// Token: 0x04003240 RID: 12864
 	public static bool Sync;
 
-	// Token: 0x0400353A RID: 13626
+	// Token: 0x04003241 RID: 12865
 	public static string SyncId;
+
+	// Token: 0x040032C5 RID: 12997
+	public static int SyncMode;
+
+	// Token: 0x04003358 RID: 13144
+	public static string ShareParams;
 }
