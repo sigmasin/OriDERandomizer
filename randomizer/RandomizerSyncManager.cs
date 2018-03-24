@@ -7,7 +7,7 @@ using Sein.World;
 // Token: 0x020009FF RID: 2559
 public static class RandomizerSyncManager
 {
-	// Token: 0x06003793 RID: 14227
+	// Token: 0x06003793 RID: 14227 RVA: 0x000E2E5C File Offset: 0x000E105C
 	public static void Initialize()
 	{
 		RandomizerSyncManager.Countdown = 60 * RandomizerSyncManager.PERIOD;
@@ -98,7 +98,7 @@ public static class RandomizerSyncManager
 		}));
 	}
 
-	// Token: 0x06003794 RID: 14228
+	// Token: 0x06003794 RID: 14228 RVA: 0x000E3364 File Offset: 0x000E1564
 	public static void Update()
 	{
 		if (RandomizerSyncManager.SendingPickup == null && RandomizerSyncManager.PickupQueue.Count > 0 && !RandomizerSyncManager.webClient.IsBusy)
@@ -116,28 +116,28 @@ public static class RandomizerSyncManager
 		if (RandomizerSyncManager.Countdown <= 0 && !RandomizerSyncManager.getClient.IsBusy)
 		{
 			RandomizerSyncManager.Countdown = 60 * RandomizerSyncManager.PERIOD;
-			RandomizerSyncManager.getClient.DownloadStringAsync(new Uri(RandomizerSyncManager.SERVER_ROOT + Randomizer.SyncId));
+			RandomizerSyncManager.getClient.DownloadStringAsync(new Uri(RandomizerSyncManager.SERVER_ROOT + Randomizer.SyncId + "/" + Game.Characters.Sein.Position.x.ToString() + "," + Game.Characters.Sein.Position.y.ToString()));
 		}
 	}
 
-	// Token: 0x06003795 RID: 14229
+	// Token: 0x06003795 RID: 14229 RVA: 0x0002B7DB File Offset: 0x000299DB
 	static RandomizerSyncManager()
 	{
 	}
 
-	// Token: 0x06003796 RID: 14230
+	// Token: 0x06003796 RID: 14230 RVA: 0x0002B7F3 File Offset: 0x000299F3
 	public static bool getBit(int bf, int bit)
 	{
 		return 1 == (bf >> bit & 1);
 	}
 
-	// Token: 0x06003797 RID: 14231
+	// Token: 0x06003797 RID: 14231 RVA: 0x0002B800 File Offset: 0x00029A00
 	public static int getTaste(int bf, int taste)
 	{
 		return bf >> 2 * taste & 3;
 	}
 
-	// Token: 0x06003798 RID: 14232
+	// Token: 0x06003798 RID: 14232 RVA: 0x000E3428 File Offset: 0x000E1628
 	public static void CheckPickups(object sender, DownloadStringCompletedEventArgs e)
 	{
 		if (!e.Cancelled && e.Error == null)
@@ -187,14 +187,14 @@ public static class RandomizerSyncManager
 			}
 			if (array.Length > 4)
 			{
-				foreach (string signal in array[4].Split(new char[]
+				foreach (string text in array[4].Split(new char[]
 				{
 					'|'
 				}))
 				{
-					if (!(signal == "haha"))
+					if (!(text == "haha"))
 					{
-						if (signal == "stop")
+						if (text == "stop")
 						{
 							RandomizerChaosManager.ClearEffects();
 						}
@@ -205,7 +205,7 @@ public static class RandomizerSyncManager
 						RandomizerChaosManager.SpawnEffect();
 						RandomizerSyncManager.ChaosTimeoutCounter = 3600;
 					}
-					RandomizerSyncManager.webClient.DownloadStringAsync(new Uri(RandomizerSyncManager.SERVER_ROOT + Randomizer.SyncId + "/signalCallback/" + signal));
+					RandomizerSyncManager.webClient.DownloadStringAsync(new Uri(RandomizerSyncManager.SERVER_ROOT + Randomizer.SyncId + "/signalCallback/" + text));
 				}
 			}
 			return;
@@ -221,7 +221,7 @@ public static class RandomizerSyncManager
 				Randomizer.showHint("@OR YOU'LL SEE ALL THIS AGAIN ;)@");
 				return;
 			}
-			string url = string.Concat(new string[]
+			string uriString = string.Concat(new string[]
 			{
 				RandomizerSyncManager.SERVER_ROOT,
 				"getNewGame?id=" + Randomizer.SyncId,
@@ -230,11 +230,11 @@ public static class RandomizerSyncManager
 				"&shared=",
 				Randomizer.ShareParams
 			});
-			RandomizerSyncManager.webClient.DownloadStringAsync(new Uri(url));
+			RandomizerSyncManager.webClient.DownloadStringAsync(new Uri(uriString));
 		}
 	}
 
-	// Token: 0x06003799 RID: 14233
+	// Token: 0x06003799 RID: 14233 RVA: 0x000E3830 File Offset: 0x000E1A30
 	public static void onSave()
 	{
 		foreach (RandomizerSyncManager.Pickup item in RandomizerSyncManager.UnsavedPickups)
@@ -244,13 +244,13 @@ public static class RandomizerSyncManager
 		RandomizerSyncManager.UnsavedPickups.Clear();
 	}
 
-	// Token: 0x0600379A RID: 14234
+	// Token: 0x0600379A RID: 14234 RVA: 0x0002B80C File Offset: 0x00029A0C
 	public static void onDeath()
 	{
 		RandomizerSyncManager.UnsavedPickups.Clear();
 	}
 
-	// Token: 0x0600379B RID: 14235
+	// Token: 0x0600379B RID: 14235 RVA: 0x000E3890 File Offset: 0x000E1A90
 	public static void RetryOnFail(object sender, DownloadStringCompletedEventArgs e)
 	{
 		if (e.Cancelled || e.Error != null)
@@ -283,7 +283,7 @@ public static class RandomizerSyncManager
 		RandomizerSyncManager.SendingPickup = null;
 	}
 
-	// Token: 0x0600379C RID: 14236
+	// Token: 0x0600379C RID: 14236 RVA: 0x000E3980 File Offset: 0x000E1B80
 	public static void FoundPickup(RandomizerAction action, int coords)
 	{
 		RandomizerSyncManager.Pickup pickup = new RandomizerSyncManager.Pickup(action, coords);
@@ -295,7 +295,7 @@ public static class RandomizerSyncManager
 		RandomizerSyncManager.PickupQueue.Enqueue(pickup);
 	}
 
-	// Token: 0x0600379D RID: 14237
+	// Token: 0x0600379D RID: 14237 RVA: 0x000E39CC File Offset: 0x000E1BCC
 	public static bool isTeleporterActivated(string identifier)
 	{
 		foreach (GameMapTeleporter gameMapTeleporter in TeleporterController.Instance.Teleporters)
@@ -308,58 +308,58 @@ public static class RandomizerSyncManager
 		return false;
 	}
 
-	// Token: 0x04003268 RID: 12904
+	// Token: 0x0400326A RID: 12906
 	public static int Countdown;
 
-	// Token: 0x04003269 RID: 12905
+	// Token: 0x0400326B RID: 12907
 	public static int PERIOD = 1;
 
-	// Token: 0x0400326A RID: 12906
+	// Token: 0x0400326C RID: 12908
 	public static WebClient webClient;
 
-	// Token: 0x0400326B RID: 12907
+	// Token: 0x0400326D RID: 12909
 	public static string SERVER_ROOT = "http://orirandocoopserver.appspot.com/";
 
-	// Token: 0x0400326C RID: 12908
+	// Token: 0x0400326E RID: 12910
 	public static string lastRaw;
 
-	// Token: 0x0400326D RID: 12909
+	// Token: 0x0400326F RID: 12911
 	public static bool canRun;
 
-	// Token: 0x0400326E RID: 12910
+	// Token: 0x04003270 RID: 12912
 	public static WebClient getClient;
 
-	// Token: 0x0400326F RID: 12911
+	// Token: 0x04003271 RID: 12913
 	public static List<RandomizerSyncManager.Pickup> UnsavedPickups;
 
-	// Token: 0x04003270 RID: 12912
+	// Token: 0x04003272 RID: 12914
 	public static Queue<RandomizerSyncManager.Pickup> PickupQueue;
 
-	// Token: 0x04003271 RID: 12913
+	// Token: 0x04003273 RID: 12915
 	public static List<RandomizerSyncManager.SkillInfoLine> SkillInfos;
 
-	// Token: 0x04003272 RID: 12914
+	// Token: 0x04003274 RID: 12916
 	public static List<RandomizerSyncManager.EventInfoLine> EventInfos;
 
-	// Token: 0x04003273 RID: 12915
+	// Token: 0x04003275 RID: 12917
 	public static List<RandomizerSyncManager.UpgradeInfoLine> UpgradeInfos;
 
-	// Token: 0x04003274 RID: 12916
+	// Token: 0x04003276 RID: 12918
 	public static HashSet<string> LoseOnDeath;
 
-	// Token: 0x04003275 RID: 12917
+	// Token: 0x04003277 RID: 12919
 	public static RandomizerSyncManager.Pickup SendingPickup;
 
-	// Token: 0x04003276 RID: 12918
+	// Token: 0x04003278 RID: 12920
 	public static List<RandomizerSyncManager.TeleportInfoLine> TeleportInfos;
 
-	// Token: 0x0400377D RID: 14205
+	// Token: 0x04003279 RID: 12921
 	public static int ChaosTimeoutCounter = 0;
 
 	// Token: 0x02000A00 RID: 2560
 	public class Pickup
 	{
-		// Token: 0x0600379E RID: 14238
+		// Token: 0x0600379E RID: 14238 RVA: 0x000E3A48 File Offset: 0x000E1C48
 		public override bool Equals(object obj)
 		{
 			if (obj == null || base.GetType() != obj.GetType())
@@ -370,13 +370,13 @@ public static class RandomizerSyncManager
 			return this.type == pickup.type && this.id == pickup.id && this.coords == pickup.coords;
 		}
 
-		// Token: 0x0600379F RID: 14239
+		// Token: 0x0600379F RID: 14239 RVA: 0x0002B818 File Offset: 0x00029A18
 		public override int GetHashCode()
 		{
 			return (this.type + this.id).GetHashCode() ^ this.coords.GetHashCode();
 		}
 
-		// Token: 0x060037A0 RID: 14240
+		// Token: 0x060037A0 RID: 14240 RVA: 0x0002B83C File Offset: 0x00029A3C
 		public Pickup(string _type, string _id, int _coords)
 		{
 			this.type = _type;
@@ -384,7 +384,7 @@ public static class RandomizerSyncManager
 			this.coords = _coords;
 		}
 
-		// Token: 0x060037A1 RID: 14241
+		// Token: 0x060037A1 RID: 14241 RVA: 0x000E3AA8 File Offset: 0x000E1CA8
 		public Pickup(RandomizerAction action, int _coords)
 		{
 			this.type = action.Action;
@@ -392,7 +392,7 @@ public static class RandomizerSyncManager
 			this.coords = _coords;
 		}
 
-		// Token: 0x060037A2 RID: 14242
+		// Token: 0x060037A2 RID: 14242 RVA: 0x000E3B08 File Offset: 0x000E1D08
 		public string GetURL()
 		{
 			return string.Concat(new object[]
@@ -408,20 +408,20 @@ public static class RandomizerSyncManager
 			});
 		}
 
-		// Token: 0x04003277 RID: 12919
+		// Token: 0x0400327A RID: 12922
 		public string id;
 
-		// Token: 0x04003278 RID: 12920
+		// Token: 0x0400327B RID: 12923
 		public string type;
 
-		// Token: 0x04003279 RID: 12921
+		// Token: 0x0400327C RID: 12924
 		public int coords;
 	}
 
 	// Token: 0x02000A01 RID: 2561
 	public class SkillInfoLine
 	{
-		// Token: 0x060037A3 RID: 14243
+		// Token: 0x060037A3 RID: 14243 RVA: 0x0002B859 File Offset: 0x00029A59
 		public SkillInfoLine(int _id, int _bit, AbilityType _skill)
 		{
 			this.bit = _bit;
@@ -429,7 +429,7 @@ public static class RandomizerSyncManager
 			this.skill = _skill;
 		}
 
-		// Token: 0x060037A4 RID: 14244
+		// Token: 0x060037A4 RID: 14244 RVA: 0x000E3B74 File Offset: 0x000E1D74
 		public override bool Equals(object obj)
 		{
 			if (obj == null || base.GetType() != obj.GetType())
@@ -440,19 +440,19 @@ public static class RandomizerSyncManager
 			return this.bit == skillInfoLine.bit && this.id == skillInfoLine.id && this.skill == skillInfoLine.skill;
 		}
 
-		// Token: 0x060037A5 RID: 14245
+		// Token: 0x060037A5 RID: 14245 RVA: 0x0002B876 File Offset: 0x00029A76
 		public override int GetHashCode()
 		{
 			return this.skill.GetHashCode() ^ this.id.GetHashCode() ^ this.bit.GetHashCode();
 		}
 
-		// Token: 0x0400327A RID: 12922
+		// Token: 0x0400327D RID: 12925
 		public int id;
 
-		// Token: 0x0400327B RID: 12923
+		// Token: 0x0400327E RID: 12926
 		public int bit;
 
-		// Token: 0x0400327C RID: 12924
+		// Token: 0x0400327F RID: 12927
 		public AbilityType skill;
 	}
 
@@ -463,7 +463,7 @@ public static class RandomizerSyncManager
 	// Token: 0x02000A03 RID: 2563
 	public class UpgradeInfoLine
 	{
-		// Token: 0x060037AA RID: 14250
+		// Token: 0x060037AA RID: 14250 RVA: 0x0002B8A1 File Offset: 0x00029AA1
 		public UpgradeInfoLine(int _id, int _bit, bool _stacks, RandomizerSyncManager.UpgradeCounter _counter)
 		{
 			this.bit = _bit;
@@ -472,7 +472,7 @@ public static class RandomizerSyncManager
 			this.counter = _counter;
 		}
 
-		// Token: 0x060037AB RID: 14251
+		// Token: 0x060037AB RID: 14251 RVA: 0x000E3BC8 File Offset: 0x000E1DC8
 		public override bool Equals(object obj)
 		{
 			if (obj == null || base.GetType() != obj.GetType())
@@ -483,22 +483,22 @@ public static class RandomizerSyncManager
 			return this.bit == upgradeInfoLine.bit && this.id == upgradeInfoLine.id;
 		}
 
-		// Token: 0x060037AC RID: 14252
+		// Token: 0x060037AC RID: 14252 RVA: 0x0002B8C6 File Offset: 0x00029AC6
 		public override int GetHashCode()
 		{
 			return this.bit.GetHashCode() ^ this.id.GetHashCode();
 		}
 
-		// Token: 0x0400327D RID: 12925
+		// Token: 0x04003280 RID: 12928
 		public int id;
 
-		// Token: 0x0400327E RID: 12926
+		// Token: 0x04003281 RID: 12929
 		public int bit;
 
-		// Token: 0x0400327F RID: 12927
+		// Token: 0x04003282 RID: 12930
 		public bool stacks;
 
-		// Token: 0x04003280 RID: 12928
+		// Token: 0x04003283 RID: 12931
 		public RandomizerSyncManager.UpgradeCounter counter;
 	}
 
@@ -509,7 +509,7 @@ public static class RandomizerSyncManager
 	// Token: 0x02000A05 RID: 2565
 	public class EventInfoLine
 	{
-		// Token: 0x060037B1 RID: 14257
+		// Token: 0x060037B1 RID: 14257 RVA: 0x0002B8DF File Offset: 0x00029ADF
 		public EventInfoLine(int _id, int _bit, RandomizerSyncManager.EventChecker _checker)
 		{
 			this.bit = _bit;
@@ -517,7 +517,7 @@ public static class RandomizerSyncManager
 			this.checker = _checker;
 		}
 
-		// Token: 0x060037B2 RID: 14258
+		// Token: 0x060037B2 RID: 14258 RVA: 0x000E3C10 File Offset: 0x000E1E10
 		public override bool Equals(object obj)
 		{
 			if (obj == null || base.GetType() != obj.GetType())
@@ -528,33 +528,33 @@ public static class RandomizerSyncManager
 			return this.bit == eventInfoLine.bit && this.id == eventInfoLine.id;
 		}
 
-		// Token: 0x060037B3 RID: 14259
+		// Token: 0x060037B3 RID: 14259 RVA: 0x0002B8FC File Offset: 0x00029AFC
 		public override int GetHashCode()
 		{
 			return this.bit.GetHashCode() ^ this.id.GetHashCode();
 		}
 
-		// Token: 0x04003281 RID: 12929
+		// Token: 0x04003284 RID: 12932
 		public int id;
 
-		// Token: 0x04003282 RID: 12930
+		// Token: 0x04003285 RID: 12933
 		public RandomizerSyncManager.EventChecker checker;
 
-		// Token: 0x04003283 RID: 12931
+		// Token: 0x04003286 RID: 12934
 		public int bit;
 	}
 
 	// Token: 0x02000A07 RID: 2567
 	public class TeleportInfoLine
 	{
-		// Token: 0x060037C6 RID: 14278
+		// Token: 0x060037C6 RID: 14278 RVA: 0x0002B987 File Offset: 0x00029B87
 		public TeleportInfoLine(string _id, int _bit)
 		{
 			this.bit = _bit;
 			this.id = _id;
 		}
 
-		// Token: 0x060037C7 RID: 14279
+		// Token: 0x060037C7 RID: 14279 RVA: 0x000E3C58 File Offset: 0x000E1E58
 		public override bool Equals(object obj)
 		{
 			if (obj == null || base.GetType() != obj.GetType())
@@ -565,16 +565,16 @@ public static class RandomizerSyncManager
 			return this.bit == teleportInfoLine.bit && this.id == teleportInfoLine.id;
 		}
 
-		// Token: 0x060037C8 RID: 14280
+		// Token: 0x060037C8 RID: 14280 RVA: 0x0002B99D File Offset: 0x00029B9D
 		public override int GetHashCode()
 		{
 			return this.bit.GetHashCode() ^ this.id.GetHashCode();
 		}
 
-		// Token: 0x04003295 RID: 12949
+		// Token: 0x04003298 RID: 12952
 		public string id;
 
-		// Token: 0x04003296 RID: 12950
+		// Token: 0x04003299 RID: 12953
 		public int bit;
 	}
 }
