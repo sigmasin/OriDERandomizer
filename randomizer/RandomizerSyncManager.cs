@@ -235,25 +235,12 @@ public static class RandomizerSyncManager
 		}
 		if (e.Error.GetType().Name == "WebException" && ((HttpWebResponse)((WebException)e.Error).Response).StatusCode == HttpStatusCode.PreconditionFailed)
 		{
-			if (!Randomizer.SyncId.Contains("."))
-			{
-				Randomizer.showHint("@NO PID FOUND.@");
-				Randomizer.showHint("@ADD IT IN THE SEED LIKE THIS@");
-				Randomizer.showHint("@SYNC[GID].[PID] @");
-				Randomizer.showHint("@ALT+L ONCE YOU DO@");
-				Randomizer.showHint("@OR YOU'LL SEE ALL THIS AGAIN ;)@");
+				Randomizer.showHint("@SERVER BELIEVES YOUR GAME DOES NOT EXIST@");
+				Randomizer.showHint("@IF THIS IS YOUR FIRST TIME SEEING THIS@");
+				Randomizer.showHint("@ALT+L AND HOPE IT FIXES ITSELF!@");
+				Randomizer.showHint("@IF NOT, PING ME (EIKO) IN THE DISCORD@");
+				Randomizer.showHint("@SORRY :C@");
 				return;
-			}
-			string uriString = string.Concat(new string[]
-			{
-				RandomizerSyncManager.SERVER_ROOT,
-				"getNewGame?id=" + Randomizer.SyncId,
-				"&mode=",
-				Randomizer.SyncMode.ToString(),
-				"&shared=",
-				Randomizer.ShareParams
-			});
-			RandomizerSyncManager.webClient.DownloadStringAsync(new Uri(uriString));
 		}
 	}
 
