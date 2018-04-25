@@ -210,19 +210,15 @@ public static class RandomizerSyncManager
 			}
 			if (array.Length > 4)
 			{
-				foreach (string text in array[4].Split(new char[]
+				foreach (string text in array[4].Split('|'))
 				{
-					'|'
-				}))
-				{
-					if (!(text == "haha"))
+					if (text == "stop")
 					{
-						if (text == "stop")
-						{
-							RandomizerChaosManager.ClearEffects();
-						}
+						RandomizerChaosManager.ClearEffects();
+					} else if( text.StartsWith("msg:")) {
+						Randomizer.showHint(text.Substring(4));
 					}
-					else
+					else if(text == "spawnChaos")
 					{
 						Randomizer.ChaosVerbose = true;
 						RandomizerChaosManager.SpawnEffect();
