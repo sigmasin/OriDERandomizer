@@ -1463,7 +1463,7 @@
           <Requirement mode="dboost">HC+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="dboost">HC+HC+HC+HC+HC+Bash</Requirement>
           <Requirement mode="extreme">Bash</Requirement>
-          <Requirement mode="extreme">HC</Requirement>
+          <Requirement mode="extreme">HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>

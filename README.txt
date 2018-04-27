@@ -46,7 +46,7 @@ Alt+C:              Toggle color shifting
 
 CHAOS MODE?
 
-I recommend just trying it out once before reading this section. Alt+C toggles it on and off -- when toggling off, all effects will be removed immediately.
+I recommend just trying it out once before reading this section. Alt+K toggles it on and off -- when toggling off, all effects will be removed immediately.
 
 Chaos mode spawns random effects at intervals of 5-15 seconds. The duration varies by effect, but is in the range of 5-60 seconds (thus, multiple effects can occur simultaneously). Possible effects include:
 
