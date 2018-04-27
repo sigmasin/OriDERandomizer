@@ -943,7 +943,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
 
     reach_area("SunkenGladesRunaway")
 
-    while itemCount > 0:
+    while itemCount > 0 or (balanced and balanceListLeftovers):
 
         balanceLevel += 1
         # open all paths that we can already access

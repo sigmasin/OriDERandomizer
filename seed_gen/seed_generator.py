@@ -940,7 +940,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
     spoilerPath = ""
 
     reach_area("SunkenGladesRunaway")
-    while itemCount > 0:
+    while itemCount > 0 or (balanced and balanceListLeftovers):
 
         balanceLevel += 1
         # open all paths that we can already access
@@ -1005,6 +1005,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
             else:
                 itemsToAssign.append(assign_random())
             itemCount -= 1
+
         # force assign things if using --prefer-path-difficulty
         if pathDifficulty:
             for item in list(itemsToAssign):
