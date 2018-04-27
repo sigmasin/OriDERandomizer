@@ -23037,14 +23037,15 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 	$m['prepare_path'].__bind_type__ = 0;
 	$m['prepare_path'].__args__ = [null,null,['free_space']];
 	$m['get_location_from_balance_list'] = function() {
-		var target,$mul22,$div11,$div12,$mul21;
+		var target,$div11,$div12,location,$mul22,$mul21;
 		target = $p['float_int']((typeof ($mul21=$p['pow']($m.random['random'](), (typeof ($div11=1.0)==typeof ($div12=(typeof balanceLevel == "undefined"?$m.balanceLevel:balanceLevel)) && typeof $div11=='number' && $div12 !== 0?
 			$div11/$div12:
 			$p['op_div']($div11,$div12))))==typeof ($mul22=$p['len']((typeof balanceList == "undefined"?$m.balanceList:balanceList))) && typeof $mul21=='number'?
 			$mul21*$mul22:
 			$p['op_mul']($mul21,$mul22)));
-		$m.balanceListLeftovers['append']((typeof balanceList == "undefined"?$m.balanceList:balanceList).__getitem__(target).__getitem__(0));
-		return (typeof balanceList == "undefined"?$m.balanceList:balanceList).__getitem__(target).__getitem__(1);
+		location = $m.balanceList['pop'](target);
+		$m.balanceListLeftovers['append'](location.__getitem__(0));
+		return location.__getitem__(1);
 	};
 	$m['get_location_from_balance_list'].__name__ = 'get_location_from_balance_list';
 
@@ -24219,7 +24220,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 		panel['add'](row3);
 		panel['add'](row4);
 		panel['add'](row5);
-		title = $pyjs_kwargs_call(null, $m['HTML'], null, null, [{StyleName:'title'}, 'Ori DE Randomizer (v2.2.0)']);
+		title = $pyjs_kwargs_call(null, $m['HTML'], null, null, [{StyleName:'title'}, 'Ori DE Randomizer (v2.2.1)']);
 		row0['add'](title);
 		row1_1 = $pyjs_kwargs_call(null, $m['HorizontalPanel'], null, null, [{StyleName:'inner_row'}]);
 		row1_2 = $pyjs_kwargs_call(null, $m['HorizontalPanel'], null, null, [{StyleName:'inner_row'}]);

@@ -340,8 +340,9 @@ def prepare_path(free_space):
 
 def get_location_from_balance_list():
     target = int(pow(random.random(), 1.0 / balanceLevel) * len(balanceList))
-    balanceListLeftovers.append(balanceList[target][0])
-    return balanceList[target][1]
+    location = balanceList.pop(target)
+    balanceListLeftovers.append(location[0])
+    return location[1]
 
 def assign_random(recurseCount = 0):
     value = random.random()
