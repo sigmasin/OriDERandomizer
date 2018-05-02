@@ -1,25 +1,26 @@
 using System;
 using System.Collections;
 using System.IO;
-using Core;
-using Game;
-using Sein.World;
 using UnityEngine;
 
 // Token: 0x020009EF RID: 2543
-public static class Randomizer
+public static partial class Randomizer
 {
-	// Token: 0x0600373A RID: 14138
+	// Token: 0x0600373A RID: 14138 RVA: 0x000E0750 File Offset: 0x000DE950
 	public static void initialize()
 	{
 		Randomizer.OHKO = false;
 		Randomizer.ZeroXP = false;
+		Randomizer.Sync = false;
+		Randomizer.SyncMode = 1;
+		Randomizer.ShareParams = "";
 		Randomizer.BonusActive = true;
 		Randomizer.GiveAbility = false;
 		Randomizer.Chaos = false;
 		Randomizer.ChaosVerbose = false;
 		Randomizer.Returning = false;
 		RandomizerChaosManager.initialize();
+		RandomizerSyncManager.Initialize();
 		Randomizer.DamageModifier = 1f;
 		Randomizer.Table = new Hashtable();
 		Randomizer.GridFactor = 4.0;
@@ -53,29 +54,42 @@ public static class Randomizer
 				','
 			});
 			Randomizer.SeedMeta = array[0];
-			for (int i = 0; i < array2.Length; i++)
+			foreach (string text2 in array2)
 			{
-				if (array2[i].ToLower() == "ohko")
+				if (text2.ToLower() == "ohko")
 				{
 					Randomizer.OHKO = true;
 				}
-				if (array2[i].ToLower() == "0xp")
+				if (text2.ToLower().StartsWith("sync"))
+				{
+					Randomizer.Sync = true;
+					Randomizer.SyncId = text2.Substring(4);
+				}
+				if (text2.ToLower().StartsWith("mode="))
+				{
+					Randomizer.SyncMode = int.Parse(text2.Substring(5));
+				}
+				if (text2.ToLower().StartsWith("shared="))
+				{
+					Randomizer.ShareParams = text2.Substring(7);
+				}
+				if (text2.ToLower() == "0xp")
 				{
 					Randomizer.ZeroXP = true;
 				}
-				if (array2[i].ToLower() == "nobonus")
+				if (text2.ToLower() == "nobonus")
 				{
 					Randomizer.BonusActive = false;
 				}
-				if (array2[i].ToLower() == "nonprogressivemapstones")
+				if (text2.ToLower() == "nonprogressivemapstones")
 				{
 					Randomizer.ProgressiveMapStones = false;
 				}
-				if (array2[i].ToLower() == "forcetrees")
+				if (text2.ToLower() == "forcetrees")
 				{
 					Randomizer.ForceTrees = true;
 				}
-				if (array2[i].ToLower() == "clues")
+				if (text2.ToLower() == "clues")
 				{
 					Randomizer.CluesMode = true;
 					RandomizerClues.initialize();
@@ -83,29 +97,30 @@ public static class Randomizer
 			}
 			for (int j = 1; j < array.Length; j++)
 			{
-				string[] array3 = array[j].Split(new char[]
+				string[] array4 = array[j].Split(new char[]
 				{
 					'|'
 				});
 				int num;
-				int.TryParse(array3[0], out num);
-				if (array3[1] == "TP")
+				int.TryParse(array4[0], out num);
+				if (array4[1] == "TP")
 				{
-					Randomizer.Table[num] = new RandomizerAction(array3[1], array3[2]);
+					Randomizer.Table[num] = new RandomizerAction(array4[1], array4[2]);
 				}
 				else
 				{
 					int num2;
-					int.TryParse(array3[2], out num2);
-					Randomizer.Table[num] = new RandomizerAction(array3[1], num2);
-					if (Randomizer.CluesMode && array3[1] == "EV" && num2 % 2 == 0)
+					int.TryParse(array4[2], out num2);
+					Randomizer.Table[num] = new RandomizerAction(array4[1], num2);
+					if (Randomizer.CluesMode && array4[1] == "EV" && num2 % 2 == 0)
 					{
-						RandomizerClues.AddClue(array3[3], num2 / 2);
+						RandomizerClues.AddClue(array4[3], num2 / 2);
 					}
 				}
 			}
 		}
 	}
+
 
 	// Token: 0x0600373B RID: 14139
 	public static void getPickup()
@@ -141,7 +156,7 @@ public static class Randomizer
 		{
 			Randomizer.changeColor();
 		}
-		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[ID * 4]);
+		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[ID * 4], ID * 4, true);
 	}
 
 	// Token: 0x0600373E RID: 14142
@@ -160,10 +175,10 @@ public static class Randomizer
 	// Token: 0x06003740 RID: 14144
 	public static void log(string message)
 	{
-		StreamWriter expr_0A = File.AppendText("randomizer.log");
-		expr_0A.WriteLine(message);
-		expr_0A.Flush();
-		expr_0A.Dispose();
+		StreamWriter streamWriter = File.AppendText("randomizer.log");
+		streamWriter.WriteLine(message);
+		streamWriter.Flush();
+		streamWriter.Dispose();
 	}
 
 	// Token: 0x06003741 RID: 14145
@@ -182,9 +197,9 @@ public static class Randomizer
 	// Token: 0x06003743 RID: 14147
 	public static void hintAndLog(float x, float y)
 	{
-		string expr_1E = ((int)x).ToString() + " " + ((int)y).ToString();
-		Randomizer.showHint(expr_1E);
-		Randomizer.log(expr_1E);
+		string message = ((int)x).ToString() + " " + ((int)y).ToString();
+		Randomizer.showHint(message);
+		Randomizer.log(message);
 	}
 
 	// Token: 0x06003744 RID: 14148
@@ -198,7 +213,7 @@ public static class Randomizer
 		int num = (int)(Math.Floor((double)((int)position.x) / Randomizer.GridFactor) * Randomizer.GridFactor) * 10000 + (int)(Math.Floor((double)((int)position.y) / Randomizer.GridFactor) * Randomizer.GridFactor);
 		if (Randomizer.Table.ContainsKey(num))
 		{
-			RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num]);
+			RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num], num, true);
 			return;
 		}
 		for (int i = -1; i <= 1; i++)
@@ -207,7 +222,7 @@ public static class Randomizer
 			{
 				if (Randomizer.Table.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * i + j)))
 				{
-					RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num + (int)Randomizer.GridFactor * (10000 * i + j)]);
+					RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num + (int)Randomizer.GridFactor * (10000 * i + j)], num, true);
 					return;
 				}
 			}
@@ -218,7 +233,7 @@ public static class Randomizer
 			{
 				if (Randomizer.Table.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * k + l)))
 				{
-					RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num + (int)Randomizer.GridFactor * (10000 * k + l)]);
+					RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num + (int)Randomizer.GridFactor * (10000 * k + l)], num, true);
 					return;
 				}
 			}
@@ -241,6 +256,10 @@ public static class Randomizer
 			if (Randomizer.Chaos)
 			{
 				RandomizerChaosManager.Update();
+			}
+			if (Randomizer.Sync)
+			{
+				RandomizerSyncManager.Update();
 			}
 			if (Randomizer.Returning)
 			{
@@ -273,13 +292,13 @@ public static class Randomizer
 			}
 			if (MoonInput.GetKeyDown(RandomizerRebinding.ColorShift))
 			{
-				string message = "Color shift enabled";
+				string obj = "Color shift enabled";
 				if (Randomizer.ColorShift)
 				{
-					message = "Color shift disabled";
+					obj = "Color shift disabled";
 				}
 				Randomizer.ColorShift = !Randomizer.ColorShift;
-				Randomizer.MessageQueue.Enqueue(message);
+				Randomizer.MessageQueue.Enqueue(obj);
 			}
 			if (MoonInput.GetKeyDown(RandomizerRebinding.ToggleChaos) && Characters.Sein)
 			{
@@ -342,7 +361,7 @@ public static class Randomizer
 			Randomizer.changeColor();
 		}
 		Characters.Sein.Inventory.SkillPointsCollected += 8388608;
-		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[20 + RandomizerBonus.MapStoneProgression() * 4]);
+		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[20 + RandomizerBonus.MapStoneProgression() * 4], 20 + RandomizerBonus.MapStoneProgression() * 4, true);
 	}
 
 	// Token: 0x06003749 RID: 14153
@@ -396,8 +415,8 @@ public static class Randomizer
 	// Token: 0x0600374A RID: 14154
 	public static void showSeedInfo()
 	{
-		string message = "v2.1 - seed loaded: " + Randomizer.SeedMeta;
-		Randomizer.MessageQueue.Enqueue(message);
+		string obj = "v2.1 - seed loaded: " + Randomizer.SeedMeta;
+		Randomizer.MessageQueue.Enqueue(obj);
 	}
 
 	// Token: 0x0600374B RID: 14155
@@ -409,7 +428,7 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x060037C8 RID: 14280
+	// Token: 0x0600374C RID: 14156
 	public static void UpdateMessages()
 	{
 		if (Randomizer.MessageQueueTime == 0)
@@ -482,9 +501,21 @@ public static class Randomizer
 	// Token: 0x0400323D RID: 12861
 	public static bool ColorShift;
 
-	// Token: 0x0400328A RID: 12938
+	// Token: 0x0400323E RID: 12862
 	public static Queue MessageQueue;
 
-	// Token: 0x0400329F RID: 12959
+	// Token: 0x0400323F RID: 12863
 	public static int MessageQueueTime;
+
+	// Token: 0x04003240 RID: 12864
+	public static bool Sync;
+
+	// Token: 0x04003241 RID: 12865
+	public static string SyncId;
+
+	// Token: 0x040032C5 RID: 12997
+	public static int SyncMode;
+
+	// Token: 0x04003358 RID: 13144
+	public static string ShareParams;
 }
