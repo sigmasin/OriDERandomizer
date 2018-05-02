@@ -8,13 +8,13 @@ using Game;
 [Serializable]
 public class SaveGameController
 {
-	// Token: 0x0600352D RID: 13613 RVA: 0x00002517 File Offset: 0x00000717
+	// Token: 0x0600352D RID: 13613
 	public SaveGameController()
 	{
 	}
 
 	// Token: 0x17000849 RID: 2121
-	// (get) Token: 0x0600352E RID: 13614 RVA: 0x00029BF1 File Offset: 0x00027DF1
+	// (get) Token: 0x0600352E RID: 13614
 	public int CurrentSlotIndex
 	{
 		get
@@ -24,7 +24,7 @@ public class SaveGameController
 	}
 
 	// Token: 0x1700084A RID: 2122
-	// (get) Token: 0x0600352F RID: 13615 RVA: 0x00029BF8 File Offset: 0x00027DF8
+	// (get) Token: 0x0600352F RID: 13615
 	public int CurrentBackupIndex
 	{
 		get
@@ -34,7 +34,7 @@ public class SaveGameController
 	}
 
 	// Token: 0x1700084B RID: 2123
-	// (get) Token: 0x06003530 RID: 13616 RVA: 0x0000424E File Offset: 0x0000244E
+	// (get) Token: 0x06003530 RID: 13616
 	public bool SaveGameQueried
 	{
 		get
@@ -43,7 +43,7 @@ public class SaveGameController
 		}
 	}
 
-	// Token: 0x06003531 RID: 13617 RVA: 0x000D9518 File Offset: 0x000D7718
+	// Token: 0x06003531 RID: 13617
 	public void SaveToFile(string filename)
 	{
 		using (BinaryWriter binaryWriter = new BinaryWriter(File.Open(filename, FileMode.Create, FileAccess.Write, FileShare.ReadWrite)))
@@ -52,7 +52,7 @@ public class SaveGameController
 		}
 	}
 
-	// Token: 0x06003532 RID: 13618 RVA: 0x000D9558 File Offset: 0x000D7758
+	// Token: 0x06003532 RID: 13618
 	public bool LoadFromFile(string filename)
 	{
 		bool result;
@@ -63,7 +63,7 @@ public class SaveGameController
 		return result;
 	}
 
-	// Token: 0x06003533 RID: 13619 RVA: 0x000D959C File Offset: 0x000D779C
+	// Token: 0x06003533 RID: 13619
 	public byte[] SaveToBytes()
 	{
 		MemoryStream memoryStream = new MemoryStream();
@@ -74,7 +74,7 @@ public class SaveGameController
 		return memoryStream.ToArray();
 	}
 
-	// Token: 0x06003534 RID: 13620 RVA: 0x00029BFF File Offset: 0x00027DFF
+	// Token: 0x06003534 RID: 13620
 	public void SaveToWriter(BinaryWriter writer)
 	{
 		SaveSlotsManager.CurrentSaveSlot.SaveToWriter(writer);
@@ -82,7 +82,7 @@ public class SaveGameController
 	}
 
 	// Token: 0x1700084C RID: 2124
-	// (get) Token: 0x06003535 RID: 13621 RVA: 0x000D95E0 File Offset: 0x000D77E0
+	// (get) Token: 0x06003535 RID: 13621
 	public bool SaveWasOneLifeAndKilled
 	{
 		get
@@ -92,7 +92,7 @@ public class SaveGameController
 		}
 	}
 
-	// Token: 0x06003536 RID: 13622 RVA: 0x00029C17 File Offset: 0x00027E17
+	// Token: 0x06003536 RID: 13622
 	public bool LoadFromReader(BinaryReader reader)
 	{
 		if (!SaveSlotsManager.CurrentSaveSlot.LoadFromReader(reader))
@@ -110,7 +110,7 @@ public class SaveGameController
 		return true;
 	}
 
-	// Token: 0x06003537 RID: 13623 RVA: 0x000D9604 File Offset: 0x000D7804
+	// Token: 0x06003537 RID: 13623
 	public bool LoadFromBytes(byte[] binary)
 	{
 		bool result;
@@ -121,7 +121,7 @@ public class SaveGameController
 		return result;
 	}
 
-	// Token: 0x06003538 RID: 13624 RVA: 0x000D9644 File Offset: 0x000D7844
+	// Token: 0x06003538 RID: 13624
 	public bool SaveExists(int slotIndex)
 	{
 		if (!this.CanPerformLoad())
@@ -137,7 +137,7 @@ public class SaveGameController
 	}
 
 	// Token: 0x1700084D RID: 2125
-	// (get) Token: 0x06003539 RID: 13625 RVA: 0x000D96A0 File Offset: 0x000D78A0
+	// (get) Token: 0x06003539 RID: 13625
 	public bool SaveFileExists
 	{
 		get
@@ -164,7 +164,7 @@ public class SaveGameController
 	}
 
 	// Token: 0x1700084E RID: 2126
-	// (get) Token: 0x0600353A RID: 13626 RVA: 0x00029C4A File Offset: 0x00027E4A
+	// (get) Token: 0x0600353A RID: 13626
 	public string CurrentSaveFilePath
 	{
 		get
@@ -173,7 +173,7 @@ public class SaveGameController
 		}
 	}
 
-	// Token: 0x0600353B RID: 13627 RVA: 0x000D9704 File Offset: 0x000D7904
+	// Token: 0x0600353B RID: 13627
 	public string GetSaveFilePath(int slotIndex, int backupIndex = -1)
 	{
 		if (backupIndex == -1)
@@ -183,13 +183,13 @@ public class SaveGameController
 		return Path.Combine(OutputFolder.PlayerDataFolderPath, string.Format("saveFile{0}_bkup{1}.sav", slotIndex, backupIndex));
 	}
 
-	// Token: 0x0600353C RID: 13628 RVA: 0x00029C59 File Offset: 0x00027E59
+	// Token: 0x0600353C RID: 13628
 	public void Refresh()
 	{
 		this.CanPerformLoad();
 	}
 
-	// Token: 0x0600353D RID: 13629 RVA: 0x00029C62 File Offset: 0x00027E62
+	// Token: 0x0600353D RID: 13629
 	public bool PerformLoad()
 	{
 		if (Recorder.IsPlaying)
@@ -205,7 +205,7 @@ public class SaveGameController
 		return result;
 	}
 
-	// Token: 0x0600353E RID: 13630 RVA: 0x00029C9E File Offset: 0x00027E9E
+	// Token: 0x0600353E RID: 13630
 	public bool PerformLoadWithoutCheckpointRestore()
 	{
 		if (Recorder.IsPlaying)
@@ -215,7 +215,7 @@ public class SaveGameController
 		return this.CanPerformLoad() && this.LoadFromFile(this.GetSaveFilePath(this.CurrentSlotIndex, this.CurrentBackupIndex));
 	}
 
-	// Token: 0x0600353F RID: 13631 RVA: 0x00029CD4 File Offset: 0x00027ED4
+	// Token: 0x0600353F RID: 13631
 	public bool OnLoadComplete(byte[] buffer)
 	{
 		bool result = this.LoadFromBytes(buffer);
@@ -223,14 +223,15 @@ public class SaveGameController
 		return result;
 	}
 
-	// Token: 0x06003540 RID: 13632 RVA: 0x00029CE3 File Offset: 0x00027EE3
+	// Token: 0x06003540 RID: 13632
 	public void PerformSave()
 	{
 		if (!this.CanPerformSave())
 		{
 			return;
 		}
-		if(Randomizer.Sync) {
+		if (Randomizer.Sync)
+		{
 			RandomizerSyncManager.onSave();
 		}
 		SaveSlotsManager.CurrentSaveSlot.FillData();
@@ -242,31 +243,31 @@ public class SaveGameController
 		}
 	}
 
-	// Token: 0x06003541 RID: 13633 RVA: 0x00029D20 File Offset: 0x00027F20
+	// Token: 0x06003541 RID: 13633
 	public bool CanPerformLoad()
 	{
 		return !GameController.Instance.IsDemo;
 	}
 
-	// Token: 0x06003542 RID: 13634 RVA: 0x00029D2F File Offset: 0x00027F2F
+	// Token: 0x06003542 RID: 13634
 	public bool CanPerformSave()
 	{
 		return !Recorder.IsPlaying && !GameController.Instance.IsDemo;
 	}
 
-	// Token: 0x06003543 RID: 13635 RVA: 0x000028FF File Offset: 0x00000AFF
+	// Token: 0x06003543 RID: 13635
 	public void OnSaveComplete()
 	{
 	}
 
-	// Token: 0x06003544 RID: 13636 RVA: 0x00029D47 File Offset: 0x00027F47
+	// Token: 0x06003544 RID: 13636
 	public void RestoreCheckpoint()
 	{
 		GameController.Instance.IsLoadingGame = true;
 		LateStartHook.AddLateStartMethod(new Action(this.RestoreCheckpointPart1));
 	}
 
-	// Token: 0x06003545 RID: 13637 RVA: 0x000D9758 File Offset: 0x000D7958
+	// Token: 0x06003545 RID: 13637
 	public void RestoreCheckpointPart1()
 	{
 		GameController.Instance.IsLoadingGame = true;
@@ -295,7 +296,7 @@ public class SaveGameController
 		InstantLoadScenesController.Instance.LoadScenesAtPosition(null, true, false);
 	}
 
-	// Token: 0x06003546 RID: 13638 RVA: 0x00029D65 File Offset: 0x00027F65
+	// Token: 0x06003546 RID: 13638
 	public void OnFinishedLoading()
 	{
 		GameController.Instance.MainMenuCanBeOpened = true;

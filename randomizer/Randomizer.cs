@@ -1,26 +1,29 @@
 using System;
 using System.Collections;
 using System.IO;
+using Core;
+using Game;
+using Sein.World;
 using UnityEngine;
 
 // Token: 0x020009EF RID: 2543
-public static partial class Randomizer
+public static class Randomizer
 {
-	// Token: 0x0600373A RID: 14138 RVA: 0x000E0750 File Offset: 0x000DE950
+	// Token: 0x0600373A RID: 14138
 	public static void initialize()
 	{
 		Randomizer.OHKO = false;
 		Randomizer.ZeroXP = false;
-		Randomizer.Sync = false;
-		Randomizer.SyncMode = 1;
-		Randomizer.ShareParams = "";
 		Randomizer.BonusActive = true;
 		Randomizer.GiveAbility = false;
 		Randomizer.Chaos = false;
 		Randomizer.ChaosVerbose = false;
 		Randomizer.Returning = false;
-		RandomizerChaosManager.initialize();
+		Randomizer.Sync = false;
+		Randomizer.SyncMode = 1;
+		Randomizer.ShareParams = "";
 		RandomizerSyncManager.Initialize();
+		RandomizerChaosManager.initialize();
 		Randomizer.DamageModifier = 1f;
 		Randomizer.Table = new Hashtable();
 		Randomizer.GridFactor = 4.0;
@@ -46,7 +49,7 @@ public static partial class Randomizer
 		if (File.Exists("randomizer.dat"))
 		{
 			string[] array = File.ReadAllLines("randomizer.dat");
-			string[] array2 = array[0].Split(new char[]
+			string[] array3 = array[0].Split(new char[]
 			{
 				'|'
 			})[0].Split(new char[]
@@ -54,73 +57,94 @@ public static partial class Randomizer
 				','
 			});
 			Randomizer.SeedMeta = array[0];
-			foreach (string text2 in array2)
+			foreach (string text in array3)
 			{
-				if (text2.ToLower() == "ohko")
+				if (text.ToLower() == "ohko")
 				{
 					Randomizer.OHKO = true;
 				}
-				if (text2.ToLower().StartsWith("sync"))
+				if (text.ToLower().StartsWith("sync"))
 				{
 					Randomizer.Sync = true;
-					Randomizer.SyncId = text2.Substring(4);
+					Randomizer.SyncId = text.Substring(4);
 				}
-				if (text2.ToLower().StartsWith("mode="))
+				if (text.ToLower().StartsWith("mode="))
 				{
-					Randomizer.SyncMode = int.Parse(text2.Substring(5));
+					string text2 = text.Substring(5);
+					int syncMode;
+					if (text2 == "shared")
+					{
+						syncMode = 1;
+					}
+					else if (text2 == "swap")
+					{
+						syncMode = 2;
+					}
+					else if (text2 == "split")
+					{
+						syncMode = 3;
+					}
+					else if (text2 == "none")
+					{
+						syncMode = 4;
+					}
+					else
+					{
+						syncMode = int.Parse(text2);
+					}
+					Randomizer.SyncMode = syncMode;
 				}
-				if (text2.ToLower().StartsWith("shared="))
+				if (text.ToLower().StartsWith("shared="))
 				{
-					Randomizer.ShareParams = text2.Substring(7);
+					Randomizer.ShareParams = text.Substring(7);
 				}
-				if (text2.ToLower() == "0xp")
+				if (text.ToLower() == "0xp")
 				{
 					Randomizer.ZeroXP = true;
 				}
-				if (text2.ToLower() == "nobonus")
+				if (text.ToLower() == "nobonus")
 				{
 					Randomizer.BonusActive = false;
 				}
-				if (text2.ToLower() == "nonprogressivemapstones")
+				if (text.ToLower() == "nonprogressivemapstones")
 				{
 					Randomizer.ProgressiveMapStones = false;
 				}
-				if (text2.ToLower() == "forcetrees")
+				if (text.ToLower() == "forcetrees")
 				{
 					Randomizer.ForceTrees = true;
 				}
-				if (text2.ToLower() == "clues")
+				if (text.ToLower() == "clues")
 				{
 					Randomizer.CluesMode = true;
 					RandomizerClues.initialize();
 				}
 			}
-			for (int j = 1; j < array.Length; j++)
+			for (int i = 1; i < array.Length; i++)
 			{
-				string[] array4 = array[j].Split(new char[]
+				string[] array2 = array[i].Split(new char[]
 				{
 					'|'
 				});
 				int num;
-				int.TryParse(array4[0], out num);
-				if (array4[1] == "TP")
+				int.TryParse(array2[0], out num);
+				if (array2[1] == "TP")
 				{
-					Randomizer.Table[num] = new RandomizerAction(array4[1], array4[2]);
+					Randomizer.Table[num] = new RandomizerAction(array2[1], array2[2]);
 				}
 				else
 				{
 					int num2;
-					int.TryParse(array4[2], out num2);
-					Randomizer.Table[num] = new RandomizerAction(array4[1], num2);
-					if (Randomizer.CluesMode && array4[1] == "EV" && num2 % 2 == 0)
+					int.TryParse(array2[2], out num2);
+					Randomizer.Table[num] = new RandomizerAction(array2[1], num2);
+					if (Randomizer.CluesMode && array2[1] == "EV" && num2 % 2 == 0)
 					{
-						RandomizerClues.AddClue(array4[3], num2 / 2);
+						RandomizerClues.AddClue(array2[3], num2 / 2);
 					}
 				}
 			}
 		}
 	}
-
 
 	// Token: 0x0600373B RID: 14139
 	public static void getPickup()
@@ -192,6 +216,10 @@ public static partial class Randomizer
 	{
 		Characters.Sein.Inventory.SkillPointsCollected += 134217728;
 		Randomizer.getPickup();
+		if (Randomizer.CluesMode && RandomizerBonus.SkillTreeProgression() % 3 == 0)
+		{
+			Randomizer.showHint(RandomizerClues.GetClues());
+		}
 	}
 
 	// Token: 0x06003743 RID: 14147
@@ -222,7 +250,7 @@ public static partial class Randomizer
 			{
 				if (Randomizer.Table.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * i + j)))
 				{
-					RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num + (int)Randomizer.GridFactor * (10000 * i + j)], num, true);
+					RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num + (int)Randomizer.GridFactor * (10000 * i + j)], num + (int)Randomizer.GridFactor * (10000 * i + j), true);
 					return;
 				}
 			}
@@ -233,7 +261,7 @@ public static partial class Randomizer
 			{
 				if (Randomizer.Table.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * k + l)))
 				{
-					RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num + (int)Randomizer.GridFactor * (10000 * k + l)], num, true);
+					RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num + (int)Randomizer.GridFactor * (10000 * k + l)], num + (int)Randomizer.GridFactor * (10000 * k + l), true);
 					return;
 				}
 			}
@@ -415,7 +443,7 @@ public static partial class Randomizer
 	// Token: 0x0600374A RID: 14154
 	public static void showSeedInfo()
 	{
-		string obj = "v2.1 - seed loaded: " + Randomizer.SeedMeta;
+		string obj = "v2.2 - seed loaded: " + Randomizer.SeedMeta;
 		Randomizer.MessageQueue.Enqueue(obj);
 	}
 
@@ -513,9 +541,9 @@ public static partial class Randomizer
 	// Token: 0x04003241 RID: 12865
 	public static string SyncId;
 
-	// Token: 0x040032C5 RID: 12997
+	// Token: 0x04003242 RID: 12866
 	public static int SyncMode;
 
-	// Token: 0x04003358 RID: 13144
+	// Token: 0x04003243 RID: 12867
 	public static string ShareParams;
 }

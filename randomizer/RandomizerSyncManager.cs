@@ -230,12 +230,7 @@ public static class RandomizerSyncManager
 			return;
 		}
 		if (e.Error.GetType().Name == "WebException" && ((HttpWebResponse)((WebException)e.Error).Response).StatusCode == HttpStatusCode.PreconditionFailed)
-		{
-				Randomizer.showHint("@SERVER BELIEVES YOUR GAME DOES NOT EXIST@");
-				Randomizer.showHint("@IF THIS IS YOUR FIRST TIME SEEING THIS@");
-				Randomizer.showHint("@ALT+L AND HOPE IT FIXES ITSELF!@");
-				Randomizer.showHint("@IF NOT, PING ME (EIKO) IN THE DISCORD@");
-				Randomizer.showHint("@SORRY :C@");
+				Randomizer.showHint("Co-op server error, try reloading the seed (Alt+L)");
 				return;
 		}
 	}
