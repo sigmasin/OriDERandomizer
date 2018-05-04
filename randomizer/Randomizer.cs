@@ -22,7 +22,6 @@ public static class Randomizer
 		Randomizer.Sync = false;
 		Randomizer.SyncMode = 1;
 		Randomizer.ShareParams = "";
-		RandomizerSyncManager.Initialize();
 		RandomizerChaosManager.initialize();
 		Randomizer.DamageModifier = 1f;
 		Randomizer.Table = new Hashtable();
@@ -67,10 +66,11 @@ public static class Randomizer
 				{
 					Randomizer.Sync = true;
 					Randomizer.SyncId = text.Substring(4);
+					RandomizerSyncManager.Initialize();
 				}
 				if (text.ToLower().StartsWith("mode="))
 				{
-					string text2 = text.Substring(5);
+					string text2 = text.Substring(5).ToLower();
 					int syncMode;
 					if (text2 == "shared")
 					{
@@ -218,7 +218,7 @@ public static class Randomizer
 		Randomizer.getPickup();
 		if (Randomizer.CluesMode && RandomizerBonus.SkillTreeProgression() % 3 == 0)
 		{
-			Randomizer.showHint(RandomizerClues.GetClues());
+			Randomizer.MessageQueue.Enqueue(RandomizerClues.GetClues());
 		}
 	}
 
@@ -279,6 +279,7 @@ public static class Randomizer
 			Characters.Sein.Energy.Gain((float)RandomizerBonus.EnergyRegeneration() * (Characters.Sein.PlayerAbilities.EnergyEfficiency.HasAbility ? 0.0003f : 0.0002f));
 			if (Randomizer.ForceTrees && Scenes.Manager.CurrentScene != null && Scenes.Manager.CurrentScene.Scene == "catAndMouseResurrectionRoom" && RandomizerBonus.SkillTreeProgression() < 10)
 			{
+				Randomizer.MessageQueue.Enqueue("Trees (" + RandomizerBonus.SkillTreeProgression().ToString() + "/10)");
 				Characters.Sein.Position = new Vector3(20f, 105f);
 			}
 			if (Randomizer.Chaos)
@@ -443,7 +444,7 @@ public static class Randomizer
 	// Token: 0x0600374A RID: 14154
 	public static void showSeedInfo()
 	{
-		string obj = "v2.2 - seed loaded: " + Randomizer.SeedMeta;
+		string obj = "v2.3 - seed loaded: " + Randomizer.SeedMeta;
 		Randomizer.MessageQueue.Enqueue(obj);
 	}
 

@@ -1,4 +1,13 @@
 
+v2.3
+
+DLL changes:
+
+-Fixed bugs with sync starting and sending data
+-Fixed a bug where the clue auto-display would overwrite "show last pickup"
+-Trying to enter the final escape without visiting all trees in force trees mode will now display a hint
+
+
 v2.2
 
 DLL changes:

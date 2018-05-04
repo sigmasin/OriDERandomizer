@@ -69,16 +69,15 @@ public static class RandomizerBonus
             if (RandomizerBonus.HealthRegeneration() > 0) 
             {
                 Characters.Sein.Inventory.SkillPointsCollected -= 1 << -ID;
-                Randomizer.showHint("Health Regeneration (" + RandomizerBonus.HealthRegeneration().ToString() + "/3)");
-                }
+            }
+            Randomizer.showHint("Health Regeneration (" + RandomizerBonus.HealthRegeneration().ToString() + "/3)");
             break;
         case 15:
-            Randomizer.showHint("Energy Regeneration");
             if (RandomizerBonus.EnergyRegeneration() < 3) 
             {
                 Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
-                Randomizer.showHint("Energy Regeneration (" + RandomizerBonus.EnergyRegeneration().ToString() + "/3)");
             }
+            Randomizer.showHint("Energy Regeneration (" + RandomizerBonus.EnergyRegeneration().ToString() + "/3)");
             break;
         case -15:
             Randomizer.showHint("Energy Regeneration");
