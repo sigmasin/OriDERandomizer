@@ -185,9 +185,12 @@ public static class RandomizerSwitch
             case "TP":
                 TeleportPickup((string)Action.Value);
                 break;
+            case "SH":
+                Randomizer.showHint((string)Action.Value);
+                break;
             case "NO":
                 Randomizer.showHint("Nothing");
                 return;
         }
     }
-}
+}   

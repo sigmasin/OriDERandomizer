@@ -57,10 +57,7 @@ public class SeinHealthController : SaveSerialize, ISeinReceiver
 	// Token: 0x0600116F RID: 4463
 	public void OnRespawn()
 	{
-		if (Randomizer.Sync)
-		{
-			RandomizerSyncManager.onDeath();
-		}
+		Randomizer.OnDeath();
 		InstantiateUtility.Instantiate(this.RespawnEffect, this.m_sein.Transform.position, Quaternion.identity);
 		this.m_sein.Mortality.DamageReciever.MakeInvincible(1f);
 	}

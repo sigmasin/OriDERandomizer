@@ -8,6 +8,7 @@ public class SeinInventory : SaveSerialize
 	public SeinInventory()
 	{
 		this.RandomizerItems = new Dictionary<int, int>();
+		this.ItemsAtLastSave = new Dictionary<int, int>();
 	}
 
 	// Token: 0x14000015 RID: 21
@@ -121,6 +122,13 @@ public class SeinInventory : SaveSerialize
 		this.RandomizerItems[code] = this.GetRandomizerItem(code) + value;
 	}
 
+	public void OnSave() {
+		 this.ItemsAtLastSave = new Dictionary<int,int>(this.RandomizerItems);
+	}
+	public void OnDeath() {
+		 this.RandomizerItems = new Dictionary<int,int>(this.ItemsAtLastSave);
+	}
+
 	// Token: 0x04001098 RID: 4248
 	public int Keystones;
 
@@ -129,6 +137,9 @@ public class SeinInventory : SaveSerialize
 
 	// Token: 0x0400109A RID: 4250
 	public int SkillPointsCollected;
+
+	// Token: 0x040032A3 RID: 12963
+	public Dictionary<int, int> ItemsAtLastSave;
 
 	// Token: 0x040032A3 RID: 12963
 	public Dictionary<int, int> RandomizerItems;
