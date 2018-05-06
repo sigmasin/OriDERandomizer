@@ -19,8 +19,8 @@ public static class RandomizerRebinding
 		streamWriter.WriteLine("ForceChaosEffect: F");
 		streamWriter.WriteLine("ShowProgress: P");
 		streamWriter.WriteLine("ColorShift: C");
-		streamWriter.WriteLine("BonusSwitch: Mouse0");
-		streamWriter.WriteLine("BonusToggle: Mouse1");
+		streamWriter.WriteLine("BonusSwitch: Q");
+		streamWriter.WriteLine("BonusToggle: E");
 		streamWriter.Flush();
 		streamWriter.Close();
 	}
@@ -77,8 +77,8 @@ public static class RandomizerRebinding
 		RandomizerRebinding.ForceChaosEffect = KeyCode.F;
 		RandomizerRebinding.ShowProgress = KeyCode.P;
 		RandomizerRebinding.ColorShift = KeyCode.C;
-		RandomizerRebinding.BonusSwitch = KeyCode.Mouse0;
-		RandomizerRebinding.BonusToggle = KeyCode.Mouse1;
+		RandomizerRebinding.BonusSwitch = KeyCode.Q;
+		RandomizerRebinding.BonusToggle = KeyCode.E;
 	}
 
 	// Token: 0x04003262 RID: 12898

@@ -76,7 +76,9 @@ public static class RandomizerBonusSkill
             if (Characters.Sein.Energy.Current >= 0.25f)
             {
                 Characters.Sein.Energy.SetCurrent(Characters.Sein.Energy.Current - 0.25f);
-                Characters.Sein.PhysicsSpeed.Set(0f, 0f);
+                Characters.Sein.PlatformBehaviour.PlatformMovement.LocalSpeedX = 0f;
+                Characters.Sein.PlatformBehaviour.PlatformMovement.LocalSpeedY = 0f;
+                Characters.Sein.PlatformBehaviour.InstantStop.Enter();
                 return;
             }
             break;
