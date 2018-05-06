@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using Core;
 using Game;
@@ -128,7 +129,8 @@ public static class Randomizer
 				});
 				int num;
 				int.TryParse(array4[0], out num);
-				if (array4[1] == "TP")
+				List<string> skips = new List<string>() { "TP", "SH", "NO" };
+				if (skips.Contains(array4[1]))
 				{
 					Randomizer.Table[num] = new RandomizerAction(array4[1], array4[2]);
 				}
@@ -372,6 +374,26 @@ public static class Randomizer
 		}
 	}
 
+	public static void OnDeath()
+	{
+		if (Randomizer.Sync)
+		{
+			RandomizerSyncManager.onDeath();
+		}
+		Characters.Sein.Inventory.OnDeath();
+		RandomizerBonusSkill.OnDeath();
+	}
+
+	public static void OnSave()
+	{
+		if (Randomizer.Sync)
+		{
+			RandomizerSyncManager.onSave();
+		}
+		Characters.Sein.Inventory.OnSave();
+		RandomizerBonusSkill.OnSave();
+	}
+
 	// Token: 0x0600374F RID: 14159 RVA: 0x0002B4B1 File Offset: 0x000296B1
 	public static void showChaosEffect(string message)
 	{
@@ -400,7 +422,6 @@ public static class Randomizer
 		{
 			Randomizer.changeColor();
 		}
-		Characters.Sein.Inventory.SkillPointsCollected += 8388608;
 		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[20 + RandomizerBonus.MapStoneProgression() * 4], 20 + RandomizerBonus.MapStoneProgression() * 4, true);
 	}
 

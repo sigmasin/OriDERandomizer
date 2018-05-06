@@ -128,17 +128,15 @@ public static class RandomizerSyncManager
 		{
 			RandomizerSyncManager.Countdown = 60 * RandomizerSyncManager.PERIOD;
 			WebClient webClient = RandomizerSyncManager.getClient;
-			string[] array2 = new string[6];
+			string[] array2 = new string[7];
 			array2[0] = RandomizerSyncManager.SERVER_ROOT;
 			array2[1] = Randomizer.SyncId;
 			array2[2] = "/";
-			int num = 3;
 			Vector3 position = Characters.Sein.Position;
-			array2[num] = position.x.ToString();
+			array2[3] = position.x.ToString();
 			array2[4] = ",";
-			int num2 = 5;
-			position = Characters.Sein.Position;
-			array2[num2] = position.y.ToString();
+			array2[5] = position.y.ToString();
+			array2[6] = "/";
 			webClient.DownloadStringAsync(new Uri(string.Concat(array2)));
 		}
 	}
@@ -185,27 +183,24 @@ public static class RandomizerSyncManager
 					RandomizerSwitch.GivePickup(new RandomizerAction("EV", eventInfoLine.id), 0, false);
 				}
 			}
-			int bf3 = int.Parse(array[2]);
-			foreach (RandomizerSyncManager.UpgradeInfoLine upgradeInfoLine in RandomizerSyncManager.UpgradeInfos)
-			{
-				if (upgradeInfoLine.stacks)
-				{
-					if (RandomizerSyncManager.getTaste(bf3, upgradeInfoLine.bit) > upgradeInfoLine.counter())
-					{
-						RandomizerSwitch.GivePickup(new RandomizerAction("RB", upgradeInfoLine.id), 0, false);
-					}
-				}
-				else if (RandomizerSyncManager.getBit(bf3, upgradeInfoLine.bit) && 1 != upgradeInfoLine.counter())
-				{
-					RandomizerSwitch.GivePickup(new RandomizerAction("RB", upgradeInfoLine.id), 0, false);
-				}
-			}
-			int bf4 = int.Parse(array[3]);
+			int bf4 = int.Parse(array[2]);
 			foreach (RandomizerSyncManager.TeleportInfoLine teleportInfoLine in RandomizerSyncManager.TeleportInfos)
 			{
 				if (RandomizerSyncManager.getBit(bf4, teleportInfoLine.bit) && !RandomizerSyncManager.isTeleporterActivated(teleportInfoLine.id))
 				{
 					RandomizerSwitch.GivePickup(new RandomizerAction("TP", teleportInfoLine.id), 0, false);
+				}
+			}
+			string[] upgrades = array[3].Split(';');
+			foreach(string rawUpgrade in upgrades)
+			{
+				string[] splitpair = rawUpgrade.Split('x');
+				int id = int.Parse(splitpair[0]);
+				int cnt = int.Parse(splitpair[1]);
+				if(RandomizerBonus.UpgradeCount(id) < cnt) {
+					RandomizerBonus.UpgradeID(id);
+				} else if(RandomizerBonus.UpgradeCount(id) > cnt) {
+					RandomizerBonus.UpgradeID(-id);					
 				}
 			}
 			if (array.Length > 4)
