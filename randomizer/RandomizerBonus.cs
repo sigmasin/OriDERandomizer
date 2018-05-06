@@ -269,6 +269,11 @@
         {
             return Characters.Sein.Inventory.GetRandomizerItem(27);
         }
+
+        public static void CollectMapstone() {
+            Characters.Sein.Inventory.IncRandomizerItem(23, 1);
+            CollectPickup();
+        }
         
         public static void CollectPickup() {
             Characters.Sein.Inventory.IncRandomizerItem(0, 1);
