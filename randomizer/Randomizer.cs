@@ -439,7 +439,7 @@ public static class Randomizer
 			Randomizer.getPickup();
 			return;
 		}
-		RandomizerBonus.CollectPickup();
+		RandomizerBonus.CollectMapstone();
 		if (Randomizer.ColorShift)
 		{
 			Randomizer.changeColor();
