@@ -22,6 +22,7 @@ public static class Randomizer
 		Randomizer.Returning = false;
 		Randomizer.Sync = false;
 		Randomizer.SyncMode = 1;
+		Randomizer.StringKeyPickupTypes  = new List<string>() { "TP", "SH", "NO" };
 		Randomizer.ShareParams = "";
 		RandomizerChaosManager.initialize();
 		Randomizer.DamageModifier = 1f;
@@ -135,8 +136,7 @@ public static class Randomizer
 				});
 				int num;
 				int.TryParse(array4[0], out num);
-				List<string> skips = new List<string>() { "TP", "SH", "NO" };
-				if (skips.Contains(array4[1]))
+				if (Randomizer.StringKeyPickupTypes.Contains(array4[1]))
 				{
 					Randomizer.Table[num] = new RandomizerAction(array4[1], array4[2]);
 				}
@@ -621,6 +621,8 @@ public static class Randomizer
 
 	// Token: 0x0400323F RID: 12863
 	public static bool ColorShift;
+
+	public static List<string> StringKeyPickupTypes;
 
 	// Token: 0x04003240 RID: 12864
 	public static Queue MessageQueue;

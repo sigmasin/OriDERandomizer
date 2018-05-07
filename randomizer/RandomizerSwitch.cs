@@ -190,7 +190,7 @@ public static class RandomizerSwitch
                 break;
             case "NO":
                 Randomizer.showHint("Nothing");
-                return;
+                break;
         }
     }
 }   

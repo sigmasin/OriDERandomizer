@@ -48,6 +48,9 @@ public static class RandomizerRebinding
 		}
 		catch (Exception)
 		{
+			File.Delete("RandomizerRebinding.txt");
+			Randomizer.showHint("Bindings reset to default");
+			RandomizerRebinding.WriteDefaultFile();
 			RandomizerRebinding.LoadDefaultBinds();
 		}
 	}

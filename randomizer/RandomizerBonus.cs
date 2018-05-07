@@ -21,7 +21,7 @@
                 {
                     RandomizerBonusSkill.UnlockedBonusSkills.Add(ID);
                     RandomizerBonusSkill.ActiveBonus = ID;
-                    RandomizerBonusSkill.PlayMessage();
+                    RandomizerBonusSkill.PlayMessage(true);
                 }
                 return;
             }
@@ -48,13 +48,13 @@
             case 6:
                 if(remove) {
                      if(RandomizerBonus.SpiritFlameLevel() > 0) {
-                            Characters.Sein.Inventory.IncRandomizerItem(ID, =1);
-                            Randomizer.showHint("Spirit Flame Upgrade x" + RandomizerBonus.SpiritFlameLevel().ToString());                
+                        Characters.Sein.Inventory.IncRandomizerItem(ID, -1);
+                        Randomizer.showHint("Spirit Flame Upgrade x" + RandomizerBonus.SpiritFlameLevel().ToString());                
                     }
-                    break;
+                } else {
+                    Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
+                    Randomizer.showHint("Spirit Flame Upgrade x" + RandomizerBonus.SpiritFlameLevel().ToString());                    
                 }
-                Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
-                Randomizer.showHint("Spirit Flame Upgrade x" + RandomizerBonus.SpiritFlameLevel().ToString());
                 break;
             case 8:
                 Randomizer.showHint("Explosion Power Upgrade");
@@ -71,31 +71,29 @@
                 }
                 break;
             case 10:
+                Randomizer.showHint("Extra Air Dash");
                 if (!RandomizerBonus.DoubleAirDash()) 
                 {
-                    Randomizer.showHint("Extra Air Dash");
                     Characters.Sein.Inventory.SetRandomizerItem(ID, 1);
                 }
                 break;
             case 11:
+                Randomizer.showHint("Charge Dash Efficiency");
                 if (!RandomizerBonus.ChargeDashEfficiency()) 
                 {
-                    Randomizer.showHint("Charge Dash Efficiency");
                     Characters.Sein.Inventory.SetRandomizerItem(ID, 1);
                 }
                 break;
             case 12:
-                if(remove)
-                    {
-                    if (RandomizerBonus.DoubleJumpUpgrades() > 0) 
-                    {
+                if(remove) {
+                    if (RandomizerBonus.DoubleJumpUpgrades() > 0)  {
                         Characters.Sein.Inventory.IncRandomizerItem(ID, -1);                
                         Randomizer.showHint("Extra Double Jump x" + RandomizerBonus.DoubleJumpUpgrades().ToString());
                     }
-                    break;                
+                } else {
+                    Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
+                    Randomizer.showHint("Extra Double Jump x" + RandomizerBonus.DoubleJumpUpgrades().ToString());                    
                 }
-                Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
-                Randomizer.showHint("Extra Double Jump x" + RandomizerBonus.DoubleJumpUpgrades().ToString());
                 break;
             case 13:
                 if(remove) {
@@ -104,11 +102,11 @@
                         Characters.Sein.Inventory.IncRandomizerItem(ID, -1);
                         Randomizer.showHint("Health Regeneration x" + RandomizerBonus.HealthRegeneration().ToString());
                     }
-                    break;                
+                } else {
+                    Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
+                    Randomizer.showHint("Health Regeneration x" + RandomizerBonus.HealthRegeneration().ToString());
                 }
-                Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
-                Randomizer.showHint("Health Regeneration x" + RandomizerBonus.HealthRegeneration().ToString());
-                break;
+                break;                    
             case 15:
                 if(remove) {
                     if (RandomizerBonus.EnergyRegeneration() > 0)
@@ -116,22 +114,19 @@
                         Characters.Sein.Inventory.IncRandomizerItem(ID, -1);
                         Randomizer.showHint("Energy Regeneration x" + RandomizerBonus.EnergyRegeneration().ToString());
                     }
-                    break;
+                } else {
+                    Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
+                    Randomizer.showHint("Energy Regeneration x" + RandomizerBonus.EnergyRegeneration().ToString());                    
                 }
-                Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
-                Randomizer.showHint("Energy Regeneration x" + RandomizerBonus.EnergyRegeneration().ToString());
                 break;
             case 17:
                 if(remove) {
                     if(RandomizerBonus.WaterVeinShards() > 0)
                     {
                         Characters.Sein.Inventory.IncRandomizerItem(ID, -1);
-                        Keys.GinsoTree = false;
                         Randomizer.showHint("*Water Vein Shard (" + RandomizerBonus.WaterVeinShards().ToString() + "/3)*");
                     }
-                    break;                
-                }
-                if (RandomizerBonus.WaterVeinShards() >= 3)
+                } else if (RandomizerBonus.WaterVeinShards() >= 3)
                 {
                     Randomizer.showHint("*Water Vein Shard (extra)*");
                 }
@@ -139,12 +134,8 @@
                 {
                     Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
                     Randomizer.showHint("*Water Vein Shard (" + RandomizerBonus.WaterVeinShards().ToString() + "/3)*");
-                    if (RandomizerBonus.WaterVeinShards() == 3)
-                    {
-                        Keys.GinsoTree = true;
-                        Randomizer.showHint("*Water Vein Shard (3/3)*");
-                    }
                 }
+                Keys.GinsoTree = RandomizerBonus.WaterVeinShards() >= 3;
                 break;
             case 19:
                 if(remove)
@@ -152,12 +143,9 @@
                     if(RandomizerBonus.GumonSealShards() > 0)
                     {
                         Characters.Sein.Inventory.IncRandomizerItem(ID, -1);
-                        Keys.ForlornRuins = false;
                         Randomizer.showHint("#Gumon Seal Shard (" + RandomizerBonus.GumonSealShards().ToString() + "/3)#");
                     }
-                    break;                
-                }
-                if (RandomizerBonus.GumonSealShards() >= 3)
+                } else  if (RandomizerBonus.GumonSealShards() >= 3)
                 {
                     Randomizer.showHint("#Gumon Seal Shard (extra)#");
                 }
@@ -165,23 +153,17 @@
                 {
                     Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
                     Randomizer.showHint("#Gumon Seal Shard (" + RandomizerBonus.GumonSealShards().ToString() + "/3)#");
-                    if (RandomizerBonus.GumonSealShards() == 3)
-                    {
-                        Keys.ForlornRuins = true;
-                    }
                 }
+                Keys.ForlornRuins = RandomizerBonus.GumonSealShards() >= 3;
                 break;
             case 21:
                 if(remove) {
-                    if(RandomizerBonus.GumonSealShards() > 0)
+                    if(RandomizerBonus.SunstoneShards() > 0)
                     {
                         Characters.Sein.Inventory.IncRandomizerItem(ID, -1);
-                        Keys.MountHoru = false;
                         Randomizer.showHint("@Sunstone Shard (" + RandomizerBonus.SunstoneShards().ToString() + "/3)@");
                     }                    
-                    break;
-                }
-                if (RandomizerBonus.SunstoneShards() >= 3)
+                } else if (RandomizerBonus.SunstoneShards() >= 3)
                 {
                     Randomizer.showHint("@Sunstone Shard (extra)@");
                 }
@@ -189,13 +171,9 @@
                 {
                     Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
                     Randomizer.showHint("@Sunstone Shard (" + RandomizerBonus.SunstoneShards().ToString() + "/3)@");
-                    if (RandomizerBonus.SunstoneShards() == 3)
-                    {
-                        Keys.MountHoru = true;
-                    }
                 }
+                Keys.MountHoru = RandomizerBonus.SunstoneShards() >= 3;
                 break;
-            break;
         }
     }
 

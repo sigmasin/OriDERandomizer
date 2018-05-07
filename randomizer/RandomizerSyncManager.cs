@@ -398,7 +398,7 @@ public static class RandomizerSyncManager
 		public Pickup(RandomizerAction action, int _coords)
 		{
 			this.type = action.Action;
-			this.id = ((this.type == "TP") ? ((string)action.Value) : ((int)action.Value).ToString());
+			this.id = (Randomizer.StringKeyPickupTypes.Contains(this.type) ? ((string)action.Value) : ((int)action.Value).ToString());
 			this.coords = _coords;
 		}
 
