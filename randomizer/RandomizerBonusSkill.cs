@@ -10,17 +10,17 @@ public static class RandomizerBonusSkill
     {
         if (RandomizerBonusSkill.UnlockedBonusSkills.Count < 1)
         {
-            RandomizerBonusSkill.PlayMessage();
+            RandomizerBonusSkill.PlayMessage(false);
             return;
         }
         RandomizerBonusSkill.ActiveBonus = (RandomizerBonusSkill.ActiveBonus + 1) % RandomizerBonusSkill.UnlockedBonusSkills.Count;
-        RandomizerBonusSkill.PlayMessage();
+        RandomizerBonusSkill.PlayMessage(false);
     }
 
     // Token: 0x060038B3 RID: 14515
-    public static void PlayMessage()
+    public static void PlayMessage(bool history)
     {
-        RandomizerBonusSkill.PlayMessage(RandomizerBonusSkill.UnlockedBonusSkills[RandomizerBonusSkill.ActiveBonus]);
+        RandomizerBonusSkill.PlayMessage(RandomizerBonusSkill.UnlockedBonusSkills[RandomizerBonusSkill.ActiveBonus], history);
     }
 
     // Token: 0x060038B4 RID: 14516
@@ -119,26 +119,31 @@ public static class RandomizerBonusSkill
     }
 
     // Token: 0x06003AA2 RID: 15010
-    public static void PlayMessage(int code)
+    public static void PlayMessage(int code, bool history)
     {
-        switch (code)
-        {
-        case 101:
-            Randomizer.showHint("Polarity Shift");
-            return;
-        case 102:
-            Randomizer.showHint("Gravity Swap");
-            return;
-        case 103:
-            Randomizer.showHint("Drag Racer");
-            return;
-        case 104:
-            Randomizer.showHint("Airbrake");
-            return;
-        default:
-            Randomizer.showHint("No bonus skills unlocked");
-            return;
-        }
+        string message = "No bonus skill";
+            switch (code)
+            {
+            case 101:
+                message = "Polarity Shift";
+                break;
+            case 102:
+                message = "Gravity Swap";
+                break;
+            case 103:
+                message = "Drag Racer";
+                break;
+            case 104:
+                message = "Airbrake";
+                break;
+            }
+            if(history)
+            {
+                Randomizer.showHint(message);
+            } else {
+                Randomizer.MessageQueue.Enqueue(message);
+            }
+
     }
 
     // Token: 0x06003AE8 RID: 15080
