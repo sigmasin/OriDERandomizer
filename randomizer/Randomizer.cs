@@ -160,6 +160,10 @@ public static class Randomizer
 					}
 				}
 			}
+			if (Randomizer.CluesMode)
+			{
+				RandomizerClues.FinishClues();
+			}
 		}
 	}
 

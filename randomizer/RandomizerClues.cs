@@ -71,6 +71,17 @@ public static class RandomizerClues
 			red
 		});
 	}
+	public static void FinishClues()
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			if (RandomizerClues.RevealOrder[i] == 0)
+			{
+				RandomizerClues.Clues.Add("The Void");
+				RandomizerClues.RevealOrder[i] = RandomizerClues.Clues.Count;
+			}
+		}
+	}
 
 	// Token: 0x040032A4 RID: 12964
 	public static List<string> Clues;
