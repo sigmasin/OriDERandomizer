@@ -21,6 +21,7 @@ public static class RandomizerBonusSkill
         Randomizer.showHint(RandomizerBonusSkill.CurrentBonusName());
         if(!RandomizerBonusSkill.UnlockedBonusSkills.Contains(ID))
         {
+            Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
             RandomizerBonusSkill.UnlockedBonusSkills.Add(ID);
             RandomizerBonusSkill.ActiveBonus = ID;            
         }
@@ -94,6 +95,13 @@ public static class RandomizerBonusSkill
     static RandomizerBonusSkill()
     {
         RandomizerBonusSkill.ActiveDrainSkills = new HashSet<int>();
+        foreach (int code in RandomizerBonusSkill.BonusSkillNames.Keys)
+        {
+            if ((code >= 100) && (Characters.Sein.Inventory.GetRandomizerItem(code) > 0))
+            {
+                RandomizerBonusSkill.UnlockedBonusSkills.Add(code);
+            }
+        }
     }
 
     // Token: 0x060037DD RID: 14301
@@ -154,6 +162,7 @@ public static class RandomizerBonusSkill
     public static void FoundBonusSkill(int ID)
     {
         Randomizer.showHint(RandomizerBonusSkill.BonusSkillNames[ID]);
+        Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
         if (!RandomizerBonusSkill.UnlockedBonusSkills.Contains(ID))
         {
             RandomizerBonusSkill.UnlockedBonusSkills.Add(ID);
