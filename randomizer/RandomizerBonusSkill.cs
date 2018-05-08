@@ -2,35 +2,38 @@ using System;
 using System.Collections.Generic;
 using Game;
 
-// Token: 0x02000A0D RID: 2573
+// Token: 0x02000A0A RID: 2570
 public static class RandomizerBonusSkill
 {
-    // Token: 0x060038B2 RID: 14514
+    // Token: 0x060037D9 RID: 14297
     public static void SwitchBonusSkill()
     {
         if (RandomizerBonusSkill.UnlockedBonusSkills.Count < 1)
         {
-            RandomizerBonusSkill.PlayMessage(false);
+            Randomizer.MessageQueue.Enqueue("No bonus skills unlocked!");
             return;
         }
         RandomizerBonusSkill.ActiveBonus = (RandomizerBonusSkill.ActiveBonus + 1) % RandomizerBonusSkill.UnlockedBonusSkills.Count;
-        RandomizerBonusSkill.PlayMessage(false);
+        Randomizer.MessageQueue.Enqueue(RandomizerBonusSkill.CurrentBonusName());
     }
 
-    // Token: 0x060038B3 RID: 14515
-    public static void PlayMessage(bool history)
-    {
-        RandomizerBonusSkill.PlayMessage(RandomizerBonusSkill.UnlockedBonusSkills[RandomizerBonusSkill.ActiveBonus], history);
+    public static void FoundBonusSkill(int ID) {
+        Randomizer.showHint(RandomizerBonusSkill.CurrentBonusName());
+        if(!RandomizerBonusSkill.UnlockedBonusSkills.Contains(ID))
+        {
+            RandomizerBonusSkill.UnlockedBonusSkills.Add(ID);
+            RandomizerBonusSkill.ActiveBonus = ID;            
+        }
     }
 
-    // Token: 0x060038B4 RID: 14516
+    // Token: 0x060037DB RID: 14299
     public static void ActivateBonusSkill()
     {
         if (RandomizerBonusSkill.UnlockedBonusSkills.Count == 0)
         {
             return;
         }
-        int current = RandomizerBonusSkill.UnlockedBonusSkills[RandomizerBonusSkill.ActiveBonus];
+        int current = RandomizerBonusSkill.CurrentBonus();
         switch (current)
         {
         case 101:
@@ -46,13 +49,13 @@ public static class RandomizerBonusSkill
             if (RandomizerBonusSkill.ActiveDrainSkills.Contains(current))
             {
                 RandomizerBonusSkill.ActiveDrainSkills.Remove(current);
-                Randomizer.showHint("Gravity Shift off");
+                Randomizer.MessageQueue.Enqueue("Gravity Shift off");
                 Characters.Sein.PlatformBehaviour.Gravity.BaseSettings.GravityAngle = 0f;
                 RandomizerBonusSkill.EnergyDrainRate -= 0.001f;
                 return;
             }
             RandomizerBonusSkill.ActiveDrainSkills.Add(current);
-            Randomizer.showHint("Gravity Shift on");
+            Randomizer.MessageQueue.Enqueue("Gravity Shift on");
             Characters.Sein.PlatformBehaviour.Gravity.BaseSettings.GravityAngle = 180f;
             RandomizerBonusSkill.EnergyDrainRate += 0.001f;
             return;
@@ -60,14 +63,14 @@ public static class RandomizerBonusSkill
             if (RandomizerBonusSkill.ActiveDrainSkills.Contains(current))
             {
                 RandomizerBonusSkill.ActiveDrainSkills.Remove(current);
-                Randomizer.showHint("Drag Racer off");
+                Randomizer.MessageQueue.Enqueue("Drag Racer off");
                 Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Ground.MaxSpeed = 11.6666f;
                 Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Air.MaxSpeed = 11.6666f;
                 RandomizerBonusSkill.EnergyDrainRate -= 0.002f;
                 return;
             }
             RandomizerBonusSkill.ActiveDrainSkills.Add(current);
-            Randomizer.showHint("Drag Racer on");
+            Randomizer.MessageQueue.Enqueue("Drag Racer on");
             Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Ground.MaxSpeed = 35f;
             Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Air.MaxSpeed = 35f;
             RandomizerBonusSkill.EnergyDrainRate += 0.002f;
@@ -87,13 +90,13 @@ public static class RandomizerBonusSkill
         }
     }
 
-    // Token: 0x060038B5 RID: 14517
+    // Token: 0x060037DC RID: 14300
     static RandomizerBonusSkill()
     {
         RandomizerBonusSkill.ActiveDrainSkills = new HashSet<int>();
     }
 
-    // Token: 0x06003910 RID: 14608
+    // Token: 0x060037DD RID: 14301
     public static void Update()
     {
         if (RandomizerBonusSkill.EnergyDrainRate > 0f)
@@ -108,7 +111,7 @@ public static class RandomizerBonusSkill
         }
     }
 
-    // Token: 0x06003911 RID: 14609
+    // Token: 0x060037DE RID: 14302
     public static void DisableAllPersistant()
     {
         RandomizerBonusSkill.ActiveDrainSkills.Clear();
@@ -118,59 +121,61 @@ public static class RandomizerBonusSkill
         Characters.Sein.PlatformBehaviour.Gravity.BaseSettings.GravityAngle = 0f;
     }
 
-    // Token: 0x06003AA2 RID: 15010
-    public static void PlayMessage(int code, bool history)
-    {
-        string message = "No bonus skill";
-            switch (code)
-            {
-            case 101:
-                message = "Polarity Shift";
-                break;
-            case 102:
-                message = "Gravity Swap";
-                break;
-            case 103:
-                message = "Drag Racer";
-                break;
-            case 104:
-                message = "Airbrake";
-                break;
-            }
-            if(history)
-            {
-                Randomizer.showHint(message);
-            } else {
-                Randomizer.MessageQueue.Enqueue(message);
-            }
-
-    }
-
-    // Token: 0x06003AE8 RID: 15080
+    // Token: 0x060037E0 RID: 14304
     public static void OnSave()
     {
         RandomizerBonusSkill.BonusSkillsLastSave = new List<int>(RandomizerBonusSkill.UnlockedBonusSkills);
     }
 
-    // Token: 0x06003AE9 RID: 15081
+    // Token: 0x060037E1 RID: 14305
     public static void OnDeath()
     {
         RandomizerBonusSkill.DisableAllPersistant();
         RandomizerBonusSkill.UnlockedBonusSkills = new List<int>(RandomizerBonusSkill.BonusSkillsLastSave);
     }
 
-    // Token: 0x0400333E RID: 13118
+    // Token: 0x06003997 RID: 14743
+    public static int CurrentBonus()
+    {
+        if(RandomizerBonusSkill.UnlockedBonusSkills.Count > RandomizerBonusSkill.ActiveBonus)
+            return RandomizerBonusSkill.UnlockedBonusSkills[RandomizerBonusSkill.ActiveBonus];
+        else
+            return 0;
+    }
+
+    public static string CurrentBonusName()
+    {
+        if(RandomizerBonusSkill.UnlockedBonusSkills.Count > RandomizerBonusSkill.ActiveBonus)
+            return RandomizerBonusSkill.BonusSkillNames[RandomizerBonusSkill.CurrentBonus()];
+        else
+            return "None";
+    }
+
+    public static void FoundBonusSkill(int ID)
+    {
+        Randomizer.showHint(RandomizerBonusSkill.BonusSkillNames[ID]);
+        if (!RandomizerBonusSkill.UnlockedBonusSkills.Contains(ID))
+        {
+            RandomizerBonusSkill.UnlockedBonusSkills.Add(ID);
+            RandomizerBonusSkill.ActiveBonus = RandomizerBonusSkill.UnlockedBonusSkills.Count - 1;
+        }
+    }
+
+    // Token: 0x040032A0 RID: 12960
     public static int ActiveBonus = 0;
 
-    // Token: 0x0400333F RID: 13119
+    public static Dictionary<int,string> BonusSkillNames = new Dictionary<int, string> () { {101, "Polarity Shift"}, { 102, "Gravity Swap"}, { 103, "ExtremeSpeed"} , {104, "Airbrake" }};
+
+    // Token: 0x040032A1 RID: 12961
     public static List<int> UnlockedBonusSkills = new List<int>();
 
-    // Token: 0x04003374 RID: 13172
+    // Token: 0x040032A2 RID: 12962
     public static float EnergyDrainRate;
 
-    // Token: 0x04003383 RID: 13187
+    // Token: 0x040032A3 RID: 12963
     public static HashSet<int> ActiveDrainSkills;
 
-    // Token: 0x04003492 RID: 13458
+    // Token: 0x040032A4 RID: 12964
     public static List<int> BonusSkillsLastSave = new List<int>();
 }
+

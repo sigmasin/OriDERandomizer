@@ -17,12 +17,7 @@
             }
             if(ID >= 100) 
             {
-                if(!RandomizerBonusSkill.UnlockedBonusSkills.Contains(ID))
-                {
-                    RandomizerBonusSkill.UnlockedBonusSkills.Add(ID);
-                    RandomizerBonusSkill.ActiveBonus = ID;
-                    RandomizerBonusSkill.PlayMessage(true);
-                }
+                RandomizerBonus.FoundBonusSkill(ID);
                 return;
             }
             switch (ID)
