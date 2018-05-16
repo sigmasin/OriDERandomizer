@@ -21,6 +21,9 @@ public static class Randomizer
 		Randomizer.ChaosVerbose = false;
 		Randomizer.Returning = false;
 		Randomizer.Sync = false;
+		Randomizer.ForceMaps = false;
+		Randomizer.ForceRandomEscape = false;
+		Randomizer.WhichEscape = -1;
 		Randomizer.SyncMode = 1;
 		Randomizer.StringKeyPickupTypes  = new List<string>() { "TP", "SH", "NO" };
 		Randomizer.ShareParams = "";
@@ -118,6 +121,14 @@ public static class Randomizer
 				{
 					Randomizer.ForceTrees = true;
 				}
+				if (text.ToLower() == "forcemaps")
+				{
+					Randomizer.ForceMaps = true;
+				}
+				if (text.ToLower() == "forcerandomescape")
+				{
+					Randomizer.ForceRandomEscape = true;
+				}
 				if (text.ToLower() == "clues")
 				{
 					Randomizer.CluesMode = true;
@@ -140,7 +151,7 @@ public static class Randomizer
 				{
 					Randomizer.Table[num] = new RandomizerAction(array4[1], array4[2]);
 				}
-				else
+				else 
 				{
 					int num2;
 					int.TryParse(array4[2], out num2);
@@ -152,7 +163,13 @@ public static class Randomizer
 					}
 					else
 					{
+
 						Randomizer.Table[num] = new RandomizerAction(array4[1], num2);
+						if(array4[1] == "EX" && Randomizer.ForceRandomEscape && Randomizer.WhichEscape < 0)
+						{
+							// note: NOT STABLE FOR COOP heh
+							Randomizer.WhichEscape = num2 % 3;
+						}
 						if (Randomizer.CluesMode && array4[1] == "EV" && num2 % 2 == 0)
 						{
 							RandomizerClues.AddClue(array4[3], num2 / 2);
@@ -290,18 +307,58 @@ public static class Randomizer
 		Randomizer.showHint("Error finding pickup at " + ((int)position.x).ToString() + ", " + ((int)position.y).ToString());
 	}
 
+	public static bool canFinalEscape() {
+		if(Randomizer.ForceTrees && RandomizerBonus.SkillTreeProgression() < 10)
+		{
+			Randomizer.MessageQueue.Enqueue("Trees (" + RandomizerBonus.SkillTreeProgression().ToString() + "/10)");
+			return false;
+		}
+		if(Randomizer.ForceMaps && RandomizerBonus.MapStoneProgression() < 9)
+		{
+			Randomizer.MessageQueue.Enqueue("Maps (" + RandomizerBonus.MapStoneProgression().ToString() + "/9)");
+			return false;
+		}
+		if(Randomizer.ForceRandomEscape)
+		{
+			// Ginso
+			if(Randomizer.WhichEscape == 0 && !RandomizerBonus.GinsoEscapeDone()) 
+			{
+				Randomizer.MessageQueue.Enqueue("*Do Ginso Escape*");
+				return false;
+			}
+			if(Randomizer.WhichEscape == 1 && !RandomizerBonus.ForlornEscapeDone()) 
+			{
+				Randomizer.MessageQueue.Enqueue("#Do Forlorn Escape#");
+				return false;
+			}
+		}
+		return true;
+	}
 	// Token: 0x0600374E RID: 14158 RVA: 0x000E0FD8 File Offset: 0x000DF1D8
 	public static void Update()
 	{
+
+		 if(Randomizer.ForceRandomEscape && Scenes.Manager.CurrentScene != null)
+		 {
+		 	if(!RandomizerBonus.GinsoEscapeDone() && Scenes.Manager.CurrentScene.Scene == "kuroMomentTreeDuplicate")
+			{
+				Characters.Sein.Inventory.SetRandomizerItem(300, 1);
+				Randomizer.MessageQueue.Enqueue("*Ginso Escape Cleared*");
+			}
+		 	if(!RandomizerBonus.ForlornEscapeDone() && Scenes.Manager.CurrentScene.Scene == "forlornRuinsNestC")
+			{
+				Characters.Sein.Inventory.SetRandomizerItem(301, 1);
+				Randomizer.MessageQueue.Enqueue("#Forlorn Escape Cleared#");
+			}
+		}
 		Randomizer.UpdateMessages();
 		if (Characters.Sein && !Characters.Sein.IsSuspended)
 		{
 			RandomizerBonusSkill.Update();
 			Characters.Sein.Mortality.Health.GainHealth((float)RandomizerBonus.HealthRegeneration() * (Characters.Sein.PlayerAbilities.HealthEfficiency.HasAbility ? 0.0016f : 0.0008f));
 			Characters.Sein.Energy.Gain((float)RandomizerBonus.EnergyRegeneration() * (Characters.Sein.PlayerAbilities.EnergyEfficiency.HasAbility ? 0.0003f : 0.0002f));
-			if (Randomizer.ForceTrees && Scenes.Manager.CurrentScene != null && Scenes.Manager.CurrentScene.Scene == "catAndMouseResurrectionRoom" && RandomizerBonus.SkillTreeProgression() < 10)
+			if (Scenes.Manager.CurrentScene != null && Scenes.Manager.CurrentScene.Scene == "catAndMouseResurrectionRoom" && !Randomizer.canFinalEscape())
 			{
-				Randomizer.MessageQueue.Enqueue("Trees (" + RandomizerBonus.SkillTreeProgression().ToString() + "/10)");
 				if (Randomizer.Entrance)
 				{
 					Randomizer.EnterDoor(new Vector3(-242f, 489f));
@@ -455,15 +512,40 @@ public static class Randomizer
 	public static void showProgress()
 	{
 		string text = "";
-		if (RandomizerBonus.SkillTreeProgression() < 10)
-		{
-			text = text + "Trees (" + RandomizerBonus.SkillTreeProgression().ToString() + "/10)  ";
-		}
-		else
+		if (RandomizerBonus.SkillTreeProgression() == 10 && Randomizer.ForceTrees)
 		{
 			text += "$Trees (10/10)$  ";
 		}
-		text = text + "Maps (" + RandomizerBonus.MapStoneProgression().ToString() + "/9)  ";
+		else
+		{
+			text = text + "Trees (" + RandomizerBonus.SkillTreeProgression().ToString() + "/10)  ";
+		}
+		if (RandomizerBonus.MapStoneProgression() == 9 && Randomizer.ForceMaps)
+		{
+			text += "$Maps (9/9)$  ";
+		}
+		else 
+		{
+			text = text + "Maps (" + RandomizerBonus.MapStoneProgression().ToString() + "/9)  ";
+		}
+		if(Randomizer.ForceRandomEscape)
+		{
+			if(Randomizer.WhichEscape == 0) {
+				if(RandomizerBonus.GinsoEscapeDone())
+					text += "$Escape: Ginso$ ";
+				else
+					text += "Escape: Ginso ";
+			}
+			else if(Randomizer.WhichEscape == 1) {
+				if(RandomizerBonus.ForlornEscapeDone())
+					text += "$Escape: Forlorn$ ";
+				else
+					text += "Escape: Forlorn ";
+			}
+			else {
+				text += "Escape: Horu ";
+			}
+		}
 		text = text + "Total (" + RandomizerBonus.GetPickupCount().ToString() + "/248)\n";
 		if (Randomizer.CluesMode)
 		{
@@ -643,6 +725,11 @@ public static class Randomizer
 	// Token: 0x04003244 RID: 12868
 	public static int SyncMode;
 
+	public static bool ForceMaps;
+
+	public static bool ForceRandomEscape;
+
+	public static int WhichEscape;
 	// Token: 0x04003245 RID: 12869
 	public static string ShareParams;
 
