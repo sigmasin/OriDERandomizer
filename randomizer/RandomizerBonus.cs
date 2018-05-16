@@ -315,6 +315,16 @@ public static class RandomizerBonus
         return Characters.Sein.Inventory.GetRandomizerItem(ID);
     }
 
+    public static bool GinsoEscapeDone()
+    {
+        return RandomizerBonus.UpgradeCount(300) > 0;
+    }
+
+    public static bool ForlornEscapeDone()
+    {
+        return RandomizerBonus.UpgradeCount(301) > 0;
+    }
+
     // Token: 0x06003770 RID: 14192
     public static void CollectMapstone()
     {
