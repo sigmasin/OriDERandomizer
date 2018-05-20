@@ -40,48 +40,48 @@ public static class RandomizerBonusSkill
         case 101:
             if (Characters.Sein.Energy.Current > 0f)
             {
-                float temp = Characters.Sein.Energy.Current * 4f;
+                float amount = Characters.Sein.Energy.Current * 4f;
                 Characters.Sein.Energy.SetCurrent(Characters.Sein.Mortality.Health.Amount / 4f);
-                Characters.Sein.Mortality.Health.SetAmount(temp);
+                Characters.Sein.Mortality.Health.SetAmount(amount);
                 return;
             }
             break;
         case 102:
-            if (RandomizerBonusSkill.ActiveDrainSkills.Contains(current))
+            if (RandomizerBonusSkill.ActiveDrainSkills.Contains(item))
             {
-                RandomizerBonusSkill.ActiveDrainSkills.Remove(current);
+                RandomizerBonusSkill.ActiveDrainSkills.Remove(item);
                 Randomizer.MessageQueue.Enqueue("Gravity Shift off");
                 Characters.Sein.PlatformBehaviour.Gravity.BaseSettings.GravityAngle = 0f;
-                RandomizerBonusSkill.EnergyDrainRate -= 0.001f;
-                return;
-            }
-            RandomizerBonusSkill.ActiveDrainSkills.Add(current);
-            Randomizer.MessageQueue.Enqueue("Gravity Shift on");
-            Characters.Sein.PlatformBehaviour.Gravity.BaseSettings.GravityAngle = 180f;
-            RandomizerBonusSkill.EnergyDrainRate += 0.001f;
-            return;
-        case 103:
-            if (RandomizerBonusSkill.ActiveDrainSkills.Contains(current))
-            {
-                RandomizerBonusSkill.ActiveDrainSkills.Remove(current);
-                Randomizer.MessageQueue.Enqueue("Drag Racer off");
-                Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Ground.MaxSpeed = 11.6666f;
-                Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Air.MaxSpeed = 11.6666f;
                 RandomizerBonusSkill.EnergyDrainRate -= 0.002f;
                 return;
             }
-            RandomizerBonusSkill.ActiveDrainSkills.Add(current);
-            Randomizer.MessageQueue.Enqueue("Drag Racer on");
+            RandomizerBonusSkill.ActiveDrainSkills.Add(item);
+            Randomizer.MessageQueue.Enqueue("Gravity Shift on");
+            Characters.Sein.PlatformBehaviour.Gravity.BaseSettings.GravityAngle = 180f;
+            RandomizerBonusSkill.EnergyDrainRate += 0.002f;
+            return;
+        case 103:
+            if (RandomizerBonusSkill.ActiveDrainSkills.Contains(item))
+            {
+                RandomizerBonusSkill.ActiveDrainSkills.Remove(item);
+                Randomizer.MessageQueue.Enqueue("ExtremeSpeed off");
+                Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Ground.MaxSpeed = 11.6666f;
+                Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Air.MaxSpeed = 11.6666f;
+                RandomizerBonusSkill.EnergyDrainRate -= 0.001f;
+                return;
+            }
+            RandomizerBonusSkill.ActiveDrainSkills.Add(item);
+            Randomizer.MessageQueue.Enqueue("ExtremeSpeed on");
             Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Ground.MaxSpeed = 35f;
             Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Air.MaxSpeed = 35f;
-            RandomizerBonusSkill.EnergyDrainRate += 0.002f;
+            RandomizerBonusSkill.EnergyDrainRate += 0.001f;
             return;
         case 104:
             if (Characters.Sein.Energy.Current >= 0.25f)
             {
                 Characters.Sein.Energy.SetCurrent(Characters.Sein.Energy.Current - 0.25f);
                 Characters.Sein.PlatformBehaviour.PlatformMovement.LocalSpeedX = 0f;
-                Characters.Sein.PlatformBehaviour.PlatformMovement.LocalSpeedY = 0f;
+                Characters.Sein.PlatformBehaviour.PlatformMovement.LocalSpeedY = 0.1f;
                 Characters.Sein.PlatformBehaviour.InstantStop.Enter();
                 return;
             }
