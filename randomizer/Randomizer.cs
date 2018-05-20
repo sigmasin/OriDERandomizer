@@ -343,9 +343,7 @@ public static class Randomizer
 		}
 		if (Characters.Sein && !Characters.Sein.IsSuspended)
 		{
-			RandomizerBonusSkill.Update();
-			Characters.Sein.Mortality.Health.GainHealth((float)RandomizerBonus.HealthRegeneration() * (Characters.Sein.PlayerAbilities.HealthEfficiency.HasAbility ? 0.0016f : 0.0008f));
-			Characters.Sein.Energy.Gain((float)RandomizerBonus.EnergyRegeneration() * (Characters.Sein.PlayerAbilities.EnergyEfficiency.HasAbility ? 0.0003f : 0.0002f));
+			RandomizerBonus.Update();
 			if (Scenes.Manager.CurrentScene != null)
 			{
 				 if(Scenes.Manager.CurrentScene.Scene == "catAndMouseResurrectionRoom")
