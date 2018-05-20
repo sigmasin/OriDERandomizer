@@ -1067,7 +1067,6 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         # open all reachable doors (for the next iteration)
         for area in doorQueue.keys():
             if doorQueue[area].target not in areasReached:
-                currentAreas.append(doorQueue[area].target)
                 difficulty = doorQueue[area].cost()[2]
                 seedDifficulty += difficulty * difficulty
             reach_area(doorQueue[area].target)
@@ -1077,7 +1076,6 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
 
         for area in mapQueue.keys():
             if mapQueue[area].target not in areasReached:
-                currentAreas.append(mapQueue[area].target)
                 difficulty = mapQueue[area].cost()[2]
                 seedDifficulty += difficulty * difficulty
             reach_area(mapQueue[area].target)

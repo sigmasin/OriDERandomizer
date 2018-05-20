@@ -323,7 +323,8 @@
           <Requirement mode="normal">Bash+DoubleJump+Climb</Requirement>
           <Requirement mode="normal">Bash+Grenade+Climb</Requirement>
           <Requirement mode="normal">Bash+Grenade+WallJump</Requirement>
-          <Requirement mode="lure">Bash+WallJump</Requirement>
+          <Requirement mode="extended">Bash+WallJump</Requirement>
+          <Requirement mode="extended">Bash+Climb</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
           <Requirement mode="cdash-farming">Dash</Requirement>
         </Requirements>
@@ -370,6 +371,13 @@
         <Item>EX100</Item>
         <Difficulty>0</Difficulty>
         <Zone>Grove</Zone>
+      </Location>
+      <Location>
+        <X>423</X>
+        <Y>-169</Y>
+        <Item>EC</Item>
+        <Difficulty>0</Difficulty>
+        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -1081,9 +1089,11 @@
           <Requirement mode="normal">Dash+DoubleJump</Requirement>
           <Requirement mode="normal">Dash+ChargeJump</Requirement>
           <Requirement mode="normal">Dash+Bash+Grenade</Requirement>
+          <Requirement mode="speed">ChargeJump+Climb</Requirement>
+          <Requirement mode="speed">ChargeJump+WallJump</Requirement>
+          <Requirement mode="speed">Bash+Grenade</Requirement>
           <Requirement mode="extended">WallJump</Requirement>
           <Requirement mode="extended">DoubleJump</Requirement>
-          <Requirement mode="extended">ChargeJump</Requirement>
           <Requirement mode="extended">Dash</Requirement>
           <Requirement mode="glitched">Free</Requirement>
         </Requirements>
@@ -1416,6 +1426,7 @@
           <Requirement mode="normal">Climb</Requirement>
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">Wind+Glide</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1510,6 +1521,16 @@
       </Connection>
       <Connection>
         <Home name="HollowGrove"/>
+        <Target name="MortarCell"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash</Requirement>
+          <Requirement mode="extreme">WallJump+DoubleJump</Requirement>
+          <Requirement mode="glitched">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
         <Target name="LowerGinsoTree"/>
         <Requirements>
           <Requirement mode="normal">GinsoKey+WallJump+DoubleJump</Requirement>
@@ -1563,17 +1584,20 @@
           <Requirement mode="lure">Bash+Climb</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="RightGinso"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">Wind+Glide</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+        </Requirements>
     </Connections>
   </Area>
-  <Area name="MoonGrotto">
+  <Area name="RightGinso">
     <Locations>
-      <Location>
-        <X>423</X>
-        <Y>-169</Y>
-        <Item>EC</Item>
-        <Difficulty>0</Difficulty>
-        <Zone>Grotto</Zone>
-      </Location>
       <Location>
         <X>703</X>
         <Y>-82</Y>
@@ -1588,6 +1612,12 @@
         <Difficulty>0</Difficulty>
         <Zone>Swamp</Zone>
       </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="MoonGrotto">
+    <Locations>
     </Locations>
     <Connections>
       <Connection>
@@ -1607,7 +1637,10 @@
         <Home name="MoonGrotto"/>
         <Target name="DeathGauntlet"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1632,16 +1665,6 @@
       </Connection>
       <Connection>
         <Home name="MoonGrotto"/>
-        <Target name="MortarCell"/>
-        <Requirements>
-          <Requirement mode="normal">ChargeJump</Requirement>
-          <Requirement mode="normal">Bash</Requirement>
-          <Requirement mode="extreme">WallJump+DoubleJump</Requirement>
-          <Requirement mode="glitched">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="MoonGrotto"/>
         <Target name="SwampGrottoWater"/>
         <Requirements>
           <Requirement mode="normal">Water</Requirement>
@@ -1657,21 +1680,28 @@
           <Requirement mode="normal">ChargeJump+ChargeFlame+Climb</Requirement>
           <Requirement mode="normal">ChargeJump+Grenade+WallJump</Requirement>
           <Requirement mode="normal">ChargeJump+Grenade+Climb</Requirement>
-          <Requirement mode="lure">Bash+ChargeFlame+Water</Requirement>
+          <Requirement mode="lure">Bash+ChargeFlame+Water+WallJump</Requirement>
+          <Requirement mode="lure">Bash+ChargeFlame+Water+Climb</Requirement>
           <Requirement mode="lure">Bash+Grenade+Water</Requirement>
           <Requirement mode="speed-lure">Bash+Climb</Requirement>
           <Requirement mode="speed-lure">Bash+WallJump</Requirement>
           <Requirement mode="speed-lure">Bash+Grenade</Requirement>
           <Requirement mode="speed-lure">Bash+ChargeJump</Requirement>
           <Requirement mode="extended">ChargeJump+Climb</Requirement>
-          <Requirement mode="extended">DoubleJump+ChargeFlame+Dash+Water</Requirement>
-          <Requirement mode="extended">DoubleJump+ChargeFlame+Glide+Water</Requirement>
-          <Requirement mode="extended-damage">DoubleJump+ChargeFlame+Water+HC+HC+HC+HC</Requirement>
-          <Requirement mode="extended-damage">Dash+Stomp+ChargeFlame+Water+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended">DoubleJump+ChargeFlame+Dash+Water+WallJump</Requirement>
+          <Requirement mode="extended">DoubleJump+ChargeFlame+Dash+Water+Climb</Requirement>
+          <Requirement mode="extended">DoubleJump+ChargeFlame+Glide+Water+WallJump</Requirement>
+          <Requirement mode="extended">DoubleJump+ChargeFlame+Glide+Water+Climb</Requirement>
+          <Requirement mode="extended-damage">DoubleJump+ChargeFlame+Water+HC+HC+HC+HC+WallJump</Requirement>
+          <Requirement mode="extended-damage">DoubleJump+ChargeFlame+Water+HC+HC+HC+HC+Climb</Requirement>
+          <Requirement mode="extended-damage">Dash+Stomp+ChargeFlame+Water+HC+HC+HC+HC+WallJump</Requirement>
+          <Requirement mode="extended-damage">Dash+Stomp+ChargeFlame+Water+HC+HC+HC+HC+Climb</Requirement>
           <Requirement mode="dboost-hard">DoubleJump+ChargeFlame+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="dboost-hard">Stomp+ChargeFlame+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost-hard">Stomp+ChargeFlame+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+WallJump</Requirement>
+          <Requirement mode="dboost-hard">Stomp+ChargeFlame+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+Climb</Requirement>
           <Requirement mode="extreme">DoubleJump+ChargeFlame+HC+HC+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="extreme">Stomp+ChargeFlame+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Stomp+ChargeFlame+HC+HC+HC+HC+HC+HC+HC+WallJump</Requirement>
+          <Requirement mode="extreme">Stomp+ChargeFlame+HC+HC+HC+HC+HC+HC+HC+Climb</Requirement>
           <Requirement mode="extreme">ChargeJump+ChargeFlame</Requirement>
           <Requirement mode="extreme">ChargeJump+Grenade</Requirement>
           <Requirement mode="glitched">Dash</Requirement>
@@ -1684,8 +1714,10 @@
           <Requirement mode="normal">Grenade+Climb+ChargeJump</Requirement>
           <Requirement mode="speed">Grenade+Bash</Requirement>
           <Requirement mode="extended-damage">ChargeFlame+Climb+ChargeJump</Requirement>
-          <Requirement mode="extended-damage">ChargeFlame+DoubleJump</Requirement>
-          <Requirement mode="dbash">ChargeFlame+Bash</Requirement>
+          <Requirement mode="extended-damage">ChargeFlame+DoubleJump+WallJump</Requirement>
+          <Requirement mode="extended-damage">ChargeFlame+DoubleJump+Climb</Requirement>
+          <Requirement mode="dbash">ChargeFlame+Bash+WallJump</Requirement>
+          <Requirement mode="dbash">ChargeFlame+Bash+Climb</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1699,7 +1731,10 @@
         <Home name="MoonGrotto"/>
         <Target name="DrainlessCell"/>
         <Requirements>
-          <Requirement mode="normal">Stomp</Requirement>
+          <Requirement mode="normal">Stomp+WallJump</Requirement>
+          <Requirement mode="normal">Stomp+Climb</Requirement>
+          <Requirement mode="normal">Stomp+Bash+Grenade</Requirement>
+          <Requirement mode="normal">Stomp+ChargeJump</Requirement>
           <Requirement mode="extended">ChargeJump+Climb</Requirement>
         </Requirements>
       </Connection>
@@ -1707,8 +1742,10 @@
         <Home name="MoonGrotto"/>
         <Target name="RightGrottoHealth"/>
         <Requirements>
-          <Requirement mode="normal">DoubleJump+Bash</Requirement>
-          <Requirement mode="normal">DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="normal">DoubleJump+Bash+WallJump</Requirement>
+          <Requirement mode="normal">DoubleJump+Bash+Climb</Requirement>
+          <Requirement mode="normal">DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">DoubleJump+ChargeJump+Climb</Requirement>
           <Requirement mode="normal">Glide+ChargeJump</Requirement>
         </Requirements>
       </Connection>
@@ -1733,7 +1770,10 @@
         <Home name="MoonGrotto"/>
         <Target name="GumoHideout"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1741,16 +1781,20 @@
         <Target name="MoonGrottoAirOrb"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump+DoubleJump</Requirement>
-          <Requirement mode="normal">Bash</Requirement>
+          <Requirement mode="normal">Bash+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Climb</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="MoonGrotto"/>
         <Target name="SwampPlant"/>
         <Requirements>
-          <Requirement mode="normal">ChargeFlame</Requirement>
-          <Requirement mode="normal">Grenade</Requirement>
-          <Requirement mode="cdash">Dash</Requirement>
+          <Requirement mode="normal">ChargeFlame+WallJump</Requirement>
+          <Requirement mode="normal">ChargeFlame+Climb</Requirement>
+          <Requirement mode="normal">Grenade+WallJump</Requirement>
+          <Requirement mode="normal">Grenade+Climb</Requirement>
+          <Requirement mode="cdash">Dash+WallJump</Requirement>
+          <Requirement mode="cdash">Dash+Climb</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1761,6 +1805,7 @@
           <Requirement mode="normal">Stomp+Grenade</Requirement>
           <Requirement mode="cdash">Stomp+Dash</Requirement>
           <Requirement mode="extended">ChargeFlame</Requirement>
+          <Requirement mode="extended">Climb+ChargeJump+Grenade</Requirement>
           <Requirement mode="extreme">Bash+Grenade</Requirement>
           <Requirement mode="extreme">Bash+Dash</Requirement>
         </Requirements>
@@ -1787,8 +1832,13 @@
         <Home name="MoonGrotto"/>
         <Target name="DeathGauntletRoofPlant"/>
         <Requirements>
-          <Requirement mode="extended">ChargeFlame+DoubleJump</Requirement>
-          <Requirement mode="extended">ChargeFlame+Bash</Requirement>
+          <Requirement mode="extended">ChargeFlame+DoubleJump+WallJump</Requirement>
+          <Requirement mode="extended">ChargeFlame+Bash+WallJump</Requirement>
+          <Requirement mode="extended">ChargeFlame+DoubleJump+Climb</Requirement>
+          <Requirement mode="extended">ChargeFlame+Bash+Climb</Requirement>
+          <Requirement mode="extended">ChargeFlame+ChargeJump</Requirement>
+          <Requirement mode="extended">Grenade+ChargeJump</Requirement>
+          <Requirement mode="extended">ChargeFlame+Bash+Grenade</Requirement>
         </Requirements>
       </Connection>
     </Connections>
