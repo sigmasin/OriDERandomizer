@@ -203,8 +203,57 @@ public static class RandomizerBonus
             }
             Keys.MountHoru = (RandomizerBonus.SunstoneShards() >= 3);
             return;
+        case 30:
+            if (!flag)
+            {
+                Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
+                Randomizer.showHint("Bleeding x" + RandomizerBonus.Bleeding().ToString());
+                return;
+            }
+            if (RandomizerBonus.HealthRegeneration() > 0)
+            {
+                Characters.Sein.Inventory.IncRandomizerItem(ID, -1);
+                Randomizer.showHint("Bleeding x" + RandomizerBonus.Bleeding().ToString());
+                return;
+            }
+            break;
+        case 31:
+            if (!flag)
+            {
+                Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
+                Randomizer.showHint("Lifesteal x" + RandomizerBonus.Lifesteal().ToString());
+                return;
+            }
+            if (RandomizerBonus.HealthRegeneration() > 0)
+            {
+                Characters.Sein.Inventory.IncRandomizerItem(ID, -1);
+                Randomizer.showHint("Lifesteal x" + RandomizerBonus.Lifesteal().ToString());
+                return;
+            }
+            break;
         default:
             return;
+        }
+    }
+
+    public static void Update() {
+        Characters.Sein.Mortality.Health.GainHealth((float)RandomizerBonus.HealthRegeneration() * (Characters.Sein.PlayerAbilities.HealthEfficiency.HasAbility ? 0.0016f : 0.0008f));
+        Characters.Sein.Mortality.Health.LoseHealth((float)RandomizerBonus.Bleeding() * 0.0008f);
+        if (Characters.Sein.Mortality.Health.Amount <= 0f)
+        {
+            Characters.Sein.Mortality.DamageReciever.OnRecieveDamage(new Damage(1f, default(Vector2), default(Vector3), DamageType.Water, null));
+        }
+        Characters.Sein.Energy.Gain((float)RandomizerBonus.EnergyRegeneration() * (Characters.Sein.PlayerAbilities.EnergyEfficiency.HasAbility ? 0.0003f : 0.0002f));
+        Characters.Sein.Mortality.Health.GainHealth(health_delta);
+        RandomizerBonusSkill.Update();
+    }
+
+    public static void DamageDealt(float damage) {
+        if(Characters.Sein) {
+            if(damage > 20f) {
+                damage = 20f;
+            }
+            Characters.Sein.Mortality.Health.GainHealth((float)RandomizerBonus.Lifesteal() * .1f * damage);
         }
     }
 
@@ -290,7 +339,14 @@ public static class RandomizerBonus
     {
         return Characters.Sein.Inventory.GetRandomizerItem(9) > 0;
     }
-
+    public static int Bleeding()
+    {
+        return Characters.Sein.Inventory.GetRandomizerItem(30);
+    }
+    public static int Lifesteal()
+    {
+        return Characters.Sein.Inventory.GetRandomizerItem(31);
+    }
     // Token: 0x0600376C RID: 14188
     public static void CollectPickup()
     {
