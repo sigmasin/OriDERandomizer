@@ -17,16 +17,6 @@ public static class RandomizerBonusSkill
         Randomizer.MessageQueue.Enqueue(RandomizerBonusSkill.CurrentBonusName());
     }
 
-    public static void FoundBonusSkill(int ID) {
-        Randomizer.showHint(RandomizerBonusSkill.CurrentBonusName());
-        if(!RandomizerBonusSkill.UnlockedBonusSkills.Contains(ID))
-        {
-            Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
-            RandomizerBonusSkill.UnlockedBonusSkills.Add(ID);
-            RandomizerBonusSkill.ActiveBonus = ID;            
-        }
-    }
-
     // Token: 0x060037DB RID: 14299
     public static void ActivateBonusSkill()
     {
@@ -34,8 +24,8 @@ public static class RandomizerBonusSkill
         {
             return;
         }
-        int current = RandomizerBonusSkill.CurrentBonus();
-        switch (current)
+        int item = RandomizerBonusSkill.CurrentBonus();
+        switch (item)
         {
         case 101:
             if (Characters.Sein.Energy.Current > 0f)
@@ -80,9 +70,7 @@ public static class RandomizerBonusSkill
             if (Characters.Sein.Energy.Current >= 0.25f)
             {
                 Characters.Sein.Energy.SetCurrent(Characters.Sein.Energy.Current - 0.25f);
-                Characters.Sein.PlatformBehaviour.PlatformMovement.LocalSpeedX = 0f;
-                Characters.Sein.PlatformBehaviour.PlatformMovement.LocalSpeedY = 0.1f;
-                Characters.Sein.PlatformBehaviour.InstantStop.Enter();
+                Characters.Sein.PlatformBehaviour.PlatformMovement.LocalSpeedY = 8f;
                 return;
             }
             break;
@@ -173,7 +161,7 @@ public static class RandomizerBonusSkill
     // Token: 0x040032A0 RID: 12960
     public static int ActiveBonus = 0;
 
-    public static Dictionary<int,string> BonusSkillNames = new Dictionary<int, string> () { {101, "Polarity Shift"}, { 102, "Gravity Swap"}, { 103, "ExtremeSpeed"} , {104, "Airbrake" }};
+    public static Dictionary<int,string> BonusSkillNames = new Dictionary<int, string> () { {101, "Polarity Shift"}, { 102, "Gravity Swap"}, { 103, "ExtremeSpeed"} , {104, "Energy Jump" }};
 
     // Token: 0x040032A1 RID: 12961
     public static List<int> UnlockedBonusSkills = new List<int>();

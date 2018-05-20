@@ -177,10 +177,12 @@ public static class Randomizer
 					}
 				}
 			}
+
 			if (Randomizer.CluesMode)
 			{
 				RandomizerClues.FinishClues();
 			}
+
 		}
 	}
 
@@ -338,7 +340,8 @@ public static class Randomizer
 	public static void Update()
 	{
 
-		 if(Randomizer.ForceRandomEscape && Scenes.Manager.CurrentScene != null)
+		Randomizer.UpdateMessages();
+		 if(Characters.Sein && Randomizer.ForceRandomEscape && Scenes.Manager.CurrentScene != null)
 		 {
 		 	if(!RandomizerBonus.GinsoEscapeDone() && Scenes.Manager.CurrentScene.Scene == "kuroMomentTreeDuplicate")
 			{
@@ -351,7 +354,6 @@ public static class Randomizer
 				Randomizer.MessageQueue.Enqueue("#Forlorn Escape Cleared#");
 			}
 		}
-		Randomizer.UpdateMessages();
 		if (Characters.Sein && !Characters.Sein.IsSuspended)
 		{
 			RandomizerBonusSkill.Update();
@@ -384,12 +386,12 @@ public static class Randomizer
 		}
 		if (MoonInput.GetKey(KeyCode.LeftAlt) || MoonInput.GetKey(KeyCode.RightAlt))
 		{
-			if (MoonInput.GetKeyDown(RandomizerRebinding.BonusSwitch))
+			if (MoonInput.GetKeyDown(RandomizerRebinding.BonusSwitch) && Characters.Sein)
 			{
 				RandomizerBonusSkill.SwitchBonusSkill();
 				return;
 			}
-			if (MoonInput.GetKeyDown(RandomizerRebinding.BonusToggle))
+			if (MoonInput.GetKeyDown(RandomizerRebinding.BonusToggle) && Characters.Sein)
 			{
 				RandomizerBonusSkill.ActivateBonusSkill();
 				return;
