@@ -96,9 +96,9 @@
         </Requirements>
       </Connection>
       <Connection>
+        <Entrance/>
         <Home name="SunkenGladesRunaway"/>
         <Target name="Forlorn"/>
-        <Entrance/>
         <Requirements>
           <Requirement mode="dboost-light">ForlornKey+TPForlorn+DoubleJump+ChargeJump</Requirement>
           <Requirement mode="dboost-light">ForlornKey+TPForlorn+DoubleJump+Bash</Requirement>
@@ -1602,9 +1602,9 @@
     </Locations>
     <Connections>
       <Connection>
+        <Entrance/>
         <Home name="GinsoOuterDoor"/>
         <Target name="GinsoInnerDoor"/>
-        <Entrance/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
@@ -3254,9 +3254,9 @@
         </Requirements>
       </Connection>
       <Connection>
+        <Entrance/>
         <Home name="HoruFields"/>
         <Target name="DoorWarp"/>
-        <Entrance/>
         <Requirements>
           <Requirement mode="extended">HoruKey</Requirement>
         </Requirements>
@@ -3268,9 +3268,9 @@
     </Locations>
     <Connections>
       <Connection>
+        <Entrance/>
         <Home name="HoruOuterDoor"/>
         <Target name="HoruInnerDoor"/>
-        <Entrance/>
         <Requirements>
           <Requirement mode="normal">HoruKey</Requirement>
         </Requirements>
@@ -3466,9 +3466,9 @@
     </Locations>
     <Connections>
       <Connection>
+        <Entrance/>
         <Home name="L1OuterDoor"/>
         <Target name="L1InnerDoor"/>
-        <Entrance/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
@@ -3513,9 +3513,9 @@
     </Locations>
     <Connections>
       <Connection>
+        <Entrance/>
         <Home name="L2OuterDoor"/>
         <Target name="L2InnerDoor"/>
-        <Entrance/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
@@ -3560,9 +3560,9 @@
     </Locations>
     <Connections>
       <Connection>
+        <Entrance/>
         <Home name="L3OuterDoor"/>
         <Target name="L3InnerDoor"/>
-        <Entrance/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
@@ -3607,9 +3607,9 @@
     </Locations>
     <Connections>
       <Connection>
+        <Entrance/>
         <Home name="L4OuterDoor"/>
         <Target name="L4InnerDoor"/>
-        <Entrance/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
@@ -3675,9 +3675,9 @@
     </Locations>
     <Connections>
       <Connection>
+        <Entrance/>
         <Home name="R1OuterDoor"/>
         <Target name="R1InnerDoor"/>
-        <Entrance/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
@@ -3736,9 +3736,9 @@
     </Locations>
     <Connections>
       <Connection>
+        <Entrance/>
         <Home name="R2OuterDoor"/>
         <Target name="R2InnerDoor"/>
-        <Entrance/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
@@ -3783,9 +3783,9 @@
     </Locations>
     <Connections>
       <Connection>
+        <Entrance/>
         <Home name="R3OuterDoor"/>
         <Target name="R3InnerDoor"/>
-        <Entrance/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
@@ -3852,9 +3852,9 @@
     </Locations>
     <Connections>
       <Connection>
+        <Entrance/>
         <Home name="R4OuterDoor"/>
         <Target name="R4InnerDoor"/>
-        <Entrance/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
@@ -3967,9 +3967,9 @@
     </Locations>
     <Connections>
       <Connection>
+        <Entrance/>
         <Home name="HoruEscapeOuterDoor"/>
         <Target name="HoruEscapeInnerDoor"/>
-        <Entrance/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
@@ -4571,8 +4571,9 @@
         <Home name="OutsideForlornCliff"/>
         <Target name="LowerValley"/>
         <Requirements>
-          <Requirement mode="normal">Bash+ChargeJump</Requirement>
-          <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="normal">Bash+ChargeJump+Stomp</Requirement>
+          <Requirement mode="dbash">Bash+Stomp</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -4595,9 +4596,9 @@
     </Locations>
     <Connections>
       <Connection>
+        <Entrance/>
         <Home name="ForlornOuterDoor"/>
         <Target name="ForlornInnerDoor"/>
-        <Entrance/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>

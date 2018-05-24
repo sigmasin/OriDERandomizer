@@ -539,22 +539,29 @@ def randomize_entrances(areas):
 
     doorStr = ""
 
-    activeGroups = [0, 1, 2]
-    targets = [3, 4, 5, 6, 7, 8, 9, 10, 12]
+    # activeGroups = [0, 1, 2]
+    # targets = [3, 4, 5, 6, 7, 8, 9, 10, 12]
+    # for now, make R1 vanilla
+
+    doorStr += connect_doors(outerDoors[2].pop(0), innerDoors[7].pop(0), areas)
+
+    activeGroups = [0, 1, 8]
+    targets = [3, 4, 5, 6, 8, 9, 10, 12]
 
     random.shuffle(targets)
 
-    horuEntryGroup = random.randint(4,10)
+    horuEntryGroup = random.randint(4,9)
     if horuEntryGroup >= 7:
-        horuEntryGroup += 1
+        horuEntryGroup += 2
     if horuEntryGroup == 11:
         horuEntryGroup = 1
         if random.random() > 0.5:
             doorStr += connect_doors(firstDoors[0], innerDoors[1].pop(0), areas)
-            doorStr += connect_doors(firstDoors[1], outerDoors[1].pop(0), areas)
+            outerDoors[0].append(firstDoors[1])
         else:
             doorStr += connect_doors(firstDoors[0], outerDoors[1].pop(0), areas)
-            doorStr += connect_doors(firstDoors[1], innerDoors[1].pop(0), areas)
+            outerDoors[0].append(firstDoors[1])
+            outerDoors[0].append(innerDoors[1].pop(0))
     else:
         requirements = ["Free"]
         if firstDoors[1].name == "GinsoDoorOuter":
