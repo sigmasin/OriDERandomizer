@@ -3659,6 +3659,13 @@
         <Difficulty>7</Difficulty>
         <Zone>Horu</Zone>
       </Location>
+      <Location>
+        <X>13</X>
+        <Y>164</Y>
+        <Item>EX200</Item>
+        <Difficulty>7</Difficulty>
+        <Zone>Horu</Zone>
+      </Location>
     </Locations>
     <Connections>
     </Connections>
@@ -3904,19 +3911,6 @@
         <Difficulty>7</Difficulty>
         <Zone>Horu</Zone>
       </Location>
-    </Locations>
-    <Connections>
-    </Connections>
-  </Area>
-  <Area name="HoruHub">
-    <Locations>
-      <Location>
-        <X>13</X>
-        <Y>164</Y>
-        <Item>EX200</Item>
-        <Difficulty>7</Difficulty>
-        <Zone>Horu</Zone>
-      </Location>
       <Location>
         <X>129</X>
         <Y>165</Y>
@@ -3924,15 +3918,21 @@
         <Difficulty>7</Difficulty>
         <Zone>Horu</Zone>
       </Location>
-      <Location>
-        <X>98</X>
-        <Y>130</Y>
-        <Item>EX200</Item>
-        <Difficulty>7</Difficulty>
-        <Zone>Horu</Zone>
-      </Location>
     </Locations>
     <Connections>
+    </Connections>
+  </Area>
+  <Area name="HoruHub">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="HoruHub"/>
+        <Target name="HoruBottom"/>
+        <Requirements>
+          <Requirement mode="normal">GinsoKey+ForlornKey</Requirement>
+        </Requirements>
+      </Connection>
       <Connection>
         <Home name="HoruHub"/>
         <Target name="HoruEscapeOuterDoor"/>
@@ -3989,7 +3989,20 @@
         </Requirements>
       </Connection>
     </Connections>
-  </Area>  
+  </Area>
+  <Area name="HoruBottom">
+    <Locations>
+      <Location>
+        <X>98</X>
+        <Y>130</Y>
+        <Item>EX200</Item>
+        <Difficulty>7</Difficulty>
+        <Zone>Horu</Zone>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
   <Area name="End">
     <Locations>
       <Location>
