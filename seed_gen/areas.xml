@@ -98,6 +98,7 @@
       <Connection>
         <Home name="SunkenGladesRunaway"/>
         <Target name="Forlorn"/>
+        <Entrance/>
         <Requirements>
           <Requirement mode="dboost-light">ForlornKey+TPForlorn+DoubleJump+ChargeJump</Requirement>
           <Requirement mode="dboost-light">ForlornKey+TPForlorn+DoubleJump+Bash</Requirement>
@@ -1531,10 +1532,9 @@
       </Connection>
       <Connection>
         <Home name="HollowGrove"/>
-        <Target name="LowerGinsoTree"/>
+        <Target name="GinsoOuterDoor"/>
         <Requirements>
-          <Requirement mode="normal">GinsoKey+WallJump+DoubleJump</Requirement>
-          <Requirement mode="normal">GinsoKey+ChargeJump</Requirement>
+          <Requirement mode="normal">GinsoKey</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1594,6 +1594,36 @@
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="normal">Bash+Grenade</Requirement>
         </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="GinsoOuterDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="GinsoOuterDoor"/>
+        <Target name="GinsoInnerDoor"/>
+        <Entrance/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="GinsoInnerDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="GinsoInnerDoor"/>
+        <Target name="LowerGinsoTree"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="RightGinso">
@@ -3211,7 +3241,7 @@
       </Connection>
       <Connection>
         <Home name="HoruFields"/>
-        <Target name="Horu"/>
+        <Target name="HoruOuterDoor"/>
         <Requirements>
           <Requirement mode="normal">HoruKey+Bash+DoubleJump+Glide+WallJump</Requirement>
           <Requirement mode="normal">HoruKey+Bash+DoubleJump+ChargeJump+WallJump</Requirement>
@@ -3226,8 +3256,43 @@
       <Connection>
         <Home name="HoruFields"/>
         <Target name="DoorWarp"/>
+        <Entrance/>
         <Requirements>
           <Requirement mode="extended">HoruKey</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HoruOuterDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="HoruOuterDoor"/>
+        <Target name="HoruInnerDoor"/>
+        <Entrance/>
+        <Requirements>
+          <Requirement mode="normal">HoruKey</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HoruInnerDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="HoruInnerDoor"/>
+        <Target name="Horu"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="extended">Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="extended">Bash+Grenade+Climb</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -3295,32 +3360,74 @@
   </Area>
   <Area name="Horu">
     <Locations>
-      <Location>
-        <X>193</X>
-        <Y>384</Y>
-        <Item>EX100</Item>
-        <Difficulty>5</Difficulty>
-        <Zone>Horu</Zone>
-      </Location>
-      <Location>
-        <X>148</X>
-        <Y>363</Y>
-        <Item>MS</Item>
-        <Difficulty>5</Difficulty>
-        <Zone>Horu</Zone>
-      </Location>
-      <Location>
-        <X>249</X>
-        <Y>403</Y>
-        <Item>EC</Item>
-        <Difficulty>5</Difficulty>
-        <Zone>Horu</Zone>
-      </Location>
     </Locations>
     <Connections>
       <Connection>
         <Home name="Horu"/>
-        <Target name="HoruStomp"/>
+        <Target name="L1OuterDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="L2OuterDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="L3OuterDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="L4OuterDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="R1OuterDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="R2OuterDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="R3OuterDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="R4OuterDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="HoruEscapeOuterDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="HoruHub"/>
         <Requirements>
           <Requirement mode="normal">Stomp</Requirement>
         </Requirements>
@@ -3354,7 +3461,427 @@
     <Connections>
     </Connections>
   </Area>
-  <Area name="HoruStomp">
+  <Area name="L1OuterDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="L1OuterDoor"/>
+        <Target name="L1InnerDoor"/>
+        <Entrance/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="L1OuterDoor"/>
+        <Target name="HoruInnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="L1InnerDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="L1InnerDoor"/>
+        <Target name="L1"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb+Stomp</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb+Stomp</Requirement>
+          <Requirement mode="extended">Bash+Grenade+WallJump+Stomp</Requirement>
+          <Requirement mode="extended">Bash+Grenade+Climb+Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="L1">
+    <Locations>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="L2OuterDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="L2OuterDoor"/>
+        <Target name="L2InnerDoor"/>
+        <Entrance/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="L2OuterDoor"/>
+        <Target name="HoruInnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="L2InnerDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="L2InnerDoor"/>
+        <Target name="L2"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb+Stomp</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb+Stomp</Requirement>
+          <Requirement mode="extended">Bash+Grenade+WallJump+Stomp</Requirement>
+          <Requirement mode="extended">Bash+Grenade+Climb+Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="L2">
+    <Locations>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="L3OuterDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="L3OuterDoor"/>
+        <Target name="L3InnerDoor"/>
+        <Entrance/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="L3OuterDoor"/>
+        <Target name="HoruInnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="L3InnerDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="L3InnerDoor"/>
+        <Target name="L3"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="extended">Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="extended">Bash+Grenade+Climb</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="L3">
+    <Locations>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="L4OuterDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="L4OuterDoor"/>
+        <Target name="L4InnerDoor"/>
+        <Entrance/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="L4OuterDoor"/>
+        <Target name="HoruInnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="L4InnerDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="L4InnerDoor"/>
+        <Target name="L4"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb+Stomp</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb+Stomp</Requirement>
+          <Requirement mode="extended">Bash+Grenade+WallJump+Stomp</Requirement>
+          <Requirement mode="extended">Bash+Grenade+Climb+Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="L4">
+    <Locations>
+      <Location>
+        <X>-29</X>
+        <Y>148</Y>
+        <Item>EX200</Item>
+        <Difficulty>7</Difficulty>
+        <Zone>Horu</Zone>
+      </Location>
+      <Location>
+        <X>-191</X>
+        <Y>194</Y>
+        <Item>EX200</Item>
+        <Difficulty>7</Difficulty>
+        <Zone>Horu</Zone>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="R1OuterDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="R1OuterDoor"/>
+        <Target name="R1InnerDoor"/>
+        <Entrance/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="R1InnerDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="R1InnerDoor"/>
+        <Target name="R1"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="extended">Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="extended">Bash+Grenade+Climb</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="R1">
+    <Locations>
+      <Location>
+        <X>193</X>
+        <Y>384</Y>
+        <Item>EX100</Item>
+        <Difficulty>5</Difficulty>
+        <Zone>Horu</Zone>
+      </Location>
+      <Location>
+        <X>148</X>
+        <Y>363</Y>
+        <Item>MS</Item>
+        <Difficulty>5</Difficulty>
+        <Zone>Horu</Zone>
+      </Location>
+      <Location>
+        <X>249</X>
+        <Y>403</Y>
+        <Item>EC</Item>
+        <Difficulty>5</Difficulty>
+        <Zone>Horu</Zone>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="R2OuterDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="R2OuterDoor"/>
+        <Target name="R2InnerDoor"/>
+        <Entrance/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="R2OuterDoor"/>
+        <Target name="HoruInnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="R2InnerDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="R2InnerDoor"/>
+        <Target name="R2"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb+Stomp</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb+Stomp</Requirement>
+          <Requirement mode="extended">Bash+Grenade+WallJump+Stomp</Requirement>
+          <Requirement mode="extended">Bash+Grenade+Climb+Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="R2">
+    <Locations>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="R3OuterDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="R3OuterDoor"/>
+        <Target name="R3InnerDoor"/>
+        <Entrance/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="R3OuterDoor"/>
+        <Target name="HoruInnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="R3InnerDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="R3InnerDoor"/>
+        <Target name="R3"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="extended">Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="extended">Bash+Grenade+Climb</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="R3">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="R3"/>
+        <Target name="R3Plant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="R3Plant">
+    <Locations>
+      <Location>
+        <X>318</X>
+        <Y>245</Y>
+        <Item>Plant</Item>
+        <Difficulty>7</Difficulty>
+        <Zone>Horu</Zone>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="R4OuterDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="R4OuterDoor"/>
+        <Target name="R4InnerDoor"/>
+        <Entrance/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="R4OuterDoor"/>
+        <Target name="HoruInnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="R4InnerDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="R4InnerDoor"/>
+        <Target name="R4"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="extended">Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="extended">Bash+Grenade+Climb</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="R4">
     <Locations>
       <Location>
         <X>191</X>
@@ -3377,20 +3904,12 @@
         <Difficulty>7</Difficulty>
         <Zone>Horu</Zone>
       </Location>
-      <Location>
-        <X>-191</X>
-        <Y>194</Y>
-        <Item>EX200</Item>
-        <Difficulty>7</Difficulty>
-        <Zone>Horu</Zone>
-      </Location>
-      <Location>
-        <X>-29</X>
-        <Y>148</Y>
-        <Item>EX200</Item>
-        <Difficulty>7</Difficulty>
-        <Zone>Horu</Zone>
-      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="HoruHub">
+    <Locations>
       <Location>
         <X>13</X>
         <Y>164</Y>
@@ -3415,42 +3934,19 @@
     </Locations>
     <Connections>
       <Connection>
-        <Home name="HoruStomp"/>
-        <Target name="HoruStompPlant"/>
+        <Home name="HoruHub"/>
+        <Target name="HoruEscapeOuterDoor"/>
         <Requirements>
-          <Requirement mode="normal">ChargeFlame</Requirement>
-          <Requirement mode="normal">Grenade</Requirement>
-          <Requirement mode="cdash">Dash</Requirement>
+          <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="HoruStomp"/>
-        <Target name="End"/>
-        <Requirements>
-          <Requirement mode="normal">Climb+Dash+Stomp+Glide+Bash+ChargeJump+Grenade+GinsoKey+ForlornKey+HoruKey</Requirement>
-          <Requirement mode="extended">Dash+Stomp+Glide+Bash+ChargeJump+Grenade+GinsoKey+ForlornKey+HoruKey</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="HoruStomp"/>
+        <Home name="HoruHub"/>
         <Target name="DoorWarp"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
-    </Connections>
-  </Area>
-  <Area name="HoruStompPlant">
-    <Locations>
-      <Location>
-        <X>318</X>
-        <Y>245</Y>
-        <Item>Plant</Item>
-        <Difficulty>7</Difficulty>
-        <Zone>Horu</Zone>
-      </Location>
-    </Locations>
-    <Connections>
     </Connections>
   </Area>
   <Area name="DoorWarp">
@@ -3464,6 +3960,34 @@
       </Location>
     </Locations>
     <Connections>
+    </Connections>
+  </Area>
+  <Area name="HoruEscapeOuterDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="HoruEscapeOuterDoor"/>
+        <Target name="HoruEscapeInnerDoor"/>
+        <Entrance/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HoruEscapeInnerDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="HoruEscapeInnerDoor"/>
+        <Target name="End"/>
+        <Requirements>
+          <Requirement mode="normal">Climb+Dash+Stomp+Glide+Bash+ChargeJump+Grenade+GinsoKey+ForlornKey+HoruKey</Requirement>
+          <Requirement mode="extended">Dash+Stomp+Glide+Bash+ChargeJump+Grenade+GinsoKey+ForlornKey+HoruKey</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>  
   <Area name="End">
@@ -3736,7 +4260,7 @@
       </Connection>
       <Connection>
         <Home name="ValleyMain"/>
-        <Target name="Forlorn"/>
+        <Target name="ForlornOuterDoor"/>
         <Requirements>
           <Requirement mode="normal">ForlornKey</Requirement>
         </Requirements>
@@ -4051,6 +4575,33 @@
       </Location>
     </Locations>
     <Connections>
+    </Connections>
+  </Area>
+  <Area name="ForlornOuterDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="ForlornOuterDoor"/>
+        <Target name="ForlornInnerDoor"/>
+        <Entrance/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="ForlornInnerDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="ForlornInnerDoor"/>
+        <Target name="Forlorn"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="Forlorn">

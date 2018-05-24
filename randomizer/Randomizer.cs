@@ -41,6 +41,8 @@ public static class Randomizer
 		Randomizer.TeleportTable["Grove"] = "spiritTree";
 		Randomizer.TeleportTable["Swamp"] = "swamp";
 		Randomizer.TeleportTable["Valley"] = "sorrowPass";
+		Randomizer.Entrance = false;
+		Randomizer.DoorTable = new Hashtable();
 		Randomizer.ColorShift = false;
 		Randomizer.MessageQueue = new Queue();
 		Randomizer.MessageQueueTime = 0;
@@ -119,6 +121,10 @@ public static class Randomizer
 					Randomizer.CluesMode = true;
 					RandomizerClues.initialize();
 				}
+				if (text.ToLower() == "entrance")
+				{
+					Randomizer.Entrance = true;
+				}
 			}
 			for (int i = 1; i < array.Length; i++)
 			{
@@ -136,10 +142,19 @@ public static class Randomizer
 				{
 					int num2;
 					int.TryParse(array2[2], out num2);
-					Randomizer.Table[num] = new RandomizerAction(array2[1], num2);
-					if (Randomizer.CluesMode && array2[1] == "EV" && num2 % 2 == 0)
+					if (array2[1] == "EN")
 					{
-						RandomizerClues.AddClue(array2[3], num2 / 2);
+						int num3;
+						int.TryParse(array2[3], out num3);
+						Randomizer.DoorTable[num] = new Vector3((float)num2, (float)num3);
+					}
+					else
+					{
+						Randomizer.Table[num] = new RandomizerAction(array2[1], num2);
+						if (Randomizer.CluesMode && array2[1] == "EV" && num2 % 2 == 0)
+						{
+							RandomizerClues.AddClue(array2[3], num2 / 2);
+						}
 					}
 				}
 			}
@@ -280,7 +295,14 @@ public static class Randomizer
 			if (Randomizer.ForceTrees && Scenes.Manager.CurrentScene != null && Scenes.Manager.CurrentScene.Scene == "catAndMouseResurrectionRoom" && RandomizerBonus.SkillTreeProgression() < 10)
 			{
 				Randomizer.MessageQueue.Enqueue("Trees (" + RandomizerBonus.SkillTreeProgression().ToString() + "/10)");
-				Characters.Sein.Position = new Vector3(20f, 105f);
+				if (Randomizer.Entrance)
+				{
+					Randomizer.EnterDoor(new Vector3(-242f, 489f));
+				}
+				else
+				{
+					Characters.Sein.Position = new Vector3(20f, 105f);
+				}
 			}
 			if (Randomizer.Chaos)
 			{
@@ -473,6 +495,44 @@ public static class Randomizer
 		Randomizer.MessageQueueTime--;
 	}
 
+	// Token: 0x060037E7 RID: 14311
+	public static void EnterDoor(Vector3 position)
+	{
+		if (!Randomizer.Entrance)
+		{
+			return;
+		}
+		int num = (int)(Math.Floor((double)((int)position.x) / Randomizer.GridFactor) * Randomizer.GridFactor) * 10000 + (int)(Math.Floor((double)((int)position.y) / Randomizer.GridFactor) * Randomizer.GridFactor);
+		if (Randomizer.DoorTable.ContainsKey(num))
+		{
+			Characters.Sein.Position = (Vector3)Randomizer.DoorTable[num];
+			return;
+		}
+		for (int i = -1; i <= 1; i++)
+		{
+			for (int j = -1; j <= 1; j++)
+			{
+				if (Randomizer.DoorTable.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * i + j)))
+				{
+					Characters.Sein.Position = (Vector3)Randomizer.DoorTable[num + (int)Randomizer.GridFactor * (10000 * i + j)];
+					return;
+				}
+			}
+		}
+		for (int k = -2; k <= 2; k += 4)
+		{
+			for (int l = -1; l <= 1; l++)
+			{
+				if (Randomizer.DoorTable.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * k + l)))
+				{
+					Characters.Sein.Position = (Vector3)Randomizer.DoorTable[num + (int)Randomizer.GridFactor * (10000 * k + l)];
+					return;
+				}
+			}
+		}
+		Randomizer.showHint("Error using door at " + ((int)position.x).ToString() + ", " + ((int)position.y).ToString());
+	}
+
 	// Token: 0x0400322B RID: 12843
 	public static Hashtable Table;
 
@@ -547,4 +607,10 @@ public static class Randomizer
 
 	// Token: 0x04003243 RID: 12867
 	public static string ShareParams;
+
+	// Token: 0x04003244 RID: 12868
+	public static bool Entrance;
+
+	// Token: 0x04003245 RID: 12869
+	public static Hashtable DoorTable;
 }
