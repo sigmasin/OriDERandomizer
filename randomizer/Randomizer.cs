@@ -252,6 +252,12 @@ public static class Randomizer
 	}
 
 	// Token: 0x0600374B RID: 14155 RVA: 0x0002B475 File Offset: 0x00029675
+	public static void getSkill(int tree)
+	{
+		Randomizer.getSkill();
+		Randomizer.setTree(tree);
+	}
+
 	public static void getSkill()
 	{
 		Characters.Sein.Inventory.IncRandomizerItem(27, 1);
@@ -260,6 +266,11 @@ public static class Randomizer
 		{
 			Randomizer.MessageQueue.Enqueue(RandomizerClues.GetClues());
 		}
+	}
+	public static void setTree(int tree)
+	{
+		if(Characters.Sein.Inventory.SkillPointsCollected >> (tree + 6) % 2 == 0)
+			Characters.Sein.Inventory.SkillPointsCollected += 1 << (tree + 6);
 	}
 
 	// Token: 0x0600374C RID: 14156 RVA: 0x000E0DE4 File Offset: 0x000DEFE4
