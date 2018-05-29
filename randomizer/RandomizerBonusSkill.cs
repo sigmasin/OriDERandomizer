@@ -42,13 +42,13 @@ public static class RandomizerBonusSkill
                 RandomizerBonusSkill.ActiveDrainSkills.Remove(item);
                 Randomizer.MessageQueue.Enqueue("Gravity Shift off");
                 Characters.Sein.PlatformBehaviour.Gravity.BaseSettings.GravityAngle = 0f;
-                RandomizerBonusSkill.EnergyDrainRate -= 0.002f;
+                RandomizerBonusSkill.EnergyDrainRate -= 0.001f;
                 return;
             }
             RandomizerBonusSkill.ActiveDrainSkills.Add(item);
             Randomizer.MessageQueue.Enqueue("Gravity Shift on");
             Characters.Sein.PlatformBehaviour.Gravity.BaseSettings.GravityAngle = 180f;
-            RandomizerBonusSkill.EnergyDrainRate += 0.002f;
+            RandomizerBonusSkill.EnergyDrainRate += 0.001f;
             return;
         case 103:
             if (RandomizerBonusSkill.ActiveDrainSkills.Contains(item))
@@ -62,8 +62,8 @@ public static class RandomizerBonusSkill
             }
             RandomizerBonusSkill.ActiveDrainSkills.Add(item);
             Randomizer.MessageQueue.Enqueue("ExtremeSpeed on");
-            Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Ground.MaxSpeed = 35f;
-            Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Air.MaxSpeed = 35f;
+            Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Ground.MaxSpeed = 40f;
+            Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Air.MaxSpeed = 40f;
             RandomizerBonusSkill.EnergyDrainRate += 0.001f;
             return;
         case 104:
