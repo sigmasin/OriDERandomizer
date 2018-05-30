@@ -1525,7 +1525,9 @@
         <Target name="MortarCell"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
-          <Requirement mode="normal">Bash</Requirement>
+          <Requirement mode="normal">Climb+Bash</Requirement>
+          <Requirement mode="normal">WallJump+Bash</Requirement>
+          <Requirement mode="lure-hard">Bash</Requirement>
           <Requirement mode="extreme">WallJump+DoubleJump</Requirement>
           <Requirement mode="glitched">Free</Requirement>
         </Requirements>
