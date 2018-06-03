@@ -2,14 +2,14 @@ using System;
 using System.IO;
 using UnityEngine;
 
-// Token: 0x020009FE RID: 2558
+// Token: 0x02000A00 RID: 2560
 public static class RandomizerRebinding
 {
-	// Token: 0x06003795 RID: 14229 RVA: 0x000E2C88 File Offset: 0x000E0E88
+	// Token: 0x060037AA RID: 14250 RVA: 0x000E35C0 File Offset: 0x000E17C0
 	public static void WriteDefaultFile()
 	{
 		StreamWriter streamWriter = new StreamWriter("RandomizerRebinding.txt");
-		streamWriter.WriteLine("All binds are Alt + the input given here. Syntax errors will load default binds.");
+		streamWriter.WriteLine("These bindings are Alt + the input given here. Syntax errors will load default binds.");
 		streamWriter.WriteLine("Functions are unbound if there is no key after the colon. Only single binds are supported.");
 		streamWriter.WriteLine("ReplayMessage: T");
 		streamWriter.WriteLine("ReturnToStart: R");
@@ -20,12 +20,16 @@ public static class RandomizerRebinding
 		streamWriter.WriteLine("ShowProgress: P");
 		streamWriter.WriteLine("ColorShift: C");
 		streamWriter.WriteLine("BonusSwitch: Q");
-		streamWriter.WriteLine("BonusToggle: E");
+		streamWriter.WriteLine("BonusToggle: Mouse1");
+		streamWriter.WriteLine("These bindings are for easy double bashing. Leave them blank to disable. Hold button while bashing to preform. (No alt required)");
+		streamWriter.WriteLine("Mouse Options: as above. Controller Options: LeftShoulder (Grenade), RightShoulder (Dash)... (WIP: Link to full list here).");
+		streamWriter.WriteLine("DoubleBashController: RightShoulder");
+		streamWriter.WriteLine("DoubleBashKeyboard: R");
 		streamWriter.Flush();
 		streamWriter.Close();
 	}
 
-	// Token: 0x06003796 RID: 14230 RVA: 0x000E2D18 File Offset: 0x000E0F18
+	// Token: 0x060037AB RID: 14251 RVA: 0x000E3668 File Offset: 0x000E1868
 	public static void ParseRebinding()
 	{
 		if (!File.Exists("RandomizerRebinding.txt"))
@@ -44,7 +48,19 @@ public static class RandomizerRebinding
 			RandomizerRebinding.ShowProgress = RandomizerRebinding.StringToKeyBinding(array[8]);
 			RandomizerRebinding.ColorShift = RandomizerRebinding.StringToKeyBinding(array[9]);
 			RandomizerRebinding.BonusSwitch = RandomizerRebinding.StringToKeyBinding(array[10]);
-			RandomizerRebinding.BonusToggle  = RandomizerRebinding.StringToKeyBinding(array[11]);
+			RandomizerRebinding.BonusToggle = RandomizerRebinding.StringToKeyBinding(array[11]);
+			RandomizerRebinding.DoubleBashKeyboard = RandomizerRebinding.StringToKeyBinding(array[15]);
+			string[] array2 = array[14].Split(new char[]
+			{
+				':'
+			});
+			if (array2[1].Trim() != "")
+			{
+				RandomizerRebinding.DoubleBashController = Core.Input.GetButton((Core.Input.Button)((int)Enum.Parse(typeof(Core.Input.Button), array2[1].Trim())));
+			} else {
+				RandomizerRebinding.DoubleBashController = null;
+			}
+
 		}
 		catch (Exception)
 		{
@@ -55,7 +71,12 @@ public static class RandomizerRebinding
 		}
 	}
 
-	// Token: 0x06003797 RID: 14231 RVA: 0x000E2DC4 File Offset: 0x000E0FC4
+	public static bool DoubleBashPressed() {
+		return (RandomizerRebinding.DoubleBashKeyboard != KeyCode.None && MoonInput.GetKeyDown(RandomizerRebinding.DoubleBashKeyboard)
+			 || (RandomizerRebinding.DoubleBashController != null && RandomizerRebinding.DoubleBashController.IsPressed));
+	}
+
+	// Token: 0x060037AC RID: 14252 RVA: 0x000E3748 File Offset: 0x000E1948
 	public static KeyCode StringToKeyBinding(string s)
 	{
 		string[] array = s.Split(new char[]
@@ -69,7 +90,7 @@ public static class RandomizerRebinding
 		return KeyCode.None;
 	}
 
-	// Token: 0x06003798 RID: 14232 RVA: 0x0002B70D File Offset: 0x0002990D
+	// Token: 0x060037AD RID: 14253 RVA: 0x000E379C File Offset: 0x000E199C
 	public static void LoadDefaultBinds()
 	{
 		RandomizerRebinding.ReplayMessage = KeyCode.T;
@@ -81,34 +102,42 @@ public static class RandomizerRebinding
 		RandomizerRebinding.ShowProgress = KeyCode.P;
 		RandomizerRebinding.ColorShift = KeyCode.C;
 		RandomizerRebinding.BonusSwitch = KeyCode.Q;
-		RandomizerRebinding.BonusToggle = KeyCode.E;
+		RandomizerRebinding.BonusToggle = KeyCode.Mouse1;
+		RandomizerRebinding.DoubleBashKeyboard = KeyCode.R;
+		RandomizerRebinding.DoubleBashController = Core.Input.RightShoulder;
 	}
 
-	// Token: 0x04003262 RID: 12898
+	// Token: 0x04003269 RID: 12905
 	public static KeyCode ReplayMessage;
 
-	// Token: 0x04003263 RID: 12899
+	// Token: 0x0400326A RID: 12906
 	public static KeyCode ReturnToStart;
 
-	// Token: 0x04003264 RID: 12900
+	// Token: 0x0400326B RID: 12907
 	public static KeyCode ReloadSeed;
 
-	// Token: 0x04003265 RID: 12901
+	// Token: 0x0400326C RID: 12908
 	public static KeyCode ToggleChaos;
 
-	// Token: 0x04003266 RID: 12902
+	// Token: 0x0400326D RID: 12909
 	public static KeyCode ChaosVerbosity;
 
-	// Token: 0x04003267 RID: 12903
+	// Token: 0x0400326E RID: 12910
 	public static KeyCode ForceChaosEffect;
 
-	// Token: 0x04003268 RID: 12904
+	// Token: 0x0400326F RID: 12911
 	public static KeyCode ShowProgress;
 
-	// Token: 0x04003269 RID: 12905
+	// Token: 0x04003270 RID: 12912
 	public static KeyCode ColorShift;
 
+	// Token: 0x04003271 RID: 12913
 	public static KeyCode BonusSwitch;
 
+	// Token: 0x04003272 RID: 12914
 	public static KeyCode BonusToggle;
+
+	public static KeyCode DoubleBashKeyboard;
+
+	public static Core.Input.InputButtonProcessor DoubleBashController;
 }
