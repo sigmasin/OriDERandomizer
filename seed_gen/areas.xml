@@ -3260,7 +3260,10 @@
         <Home name="HoruFields"/>
         <Target name="DoorWarp"/>
         <Requirements>
-          <Requirement mode="extended">HoruKey</Requirement>
+          <Requirement mode="extended">HoruKey+WallJump+DoubleJump</Requirement>
+          <Requirement mode="extended">HoruKey+ChargeJump</Requirement>
+          <Requirement mode="extended">HoruKey+Bash+Grenade</Requirement>
+          <Requirement mode="extreme">HoruKey+Bash</Requirement>
         </Requirements>
       </Connection>
     </Connections>

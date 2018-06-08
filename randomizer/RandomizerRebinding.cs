@@ -1,44 +1,69 @@
 using System;
+using System.Collections;
 using System.IO;
+using Core;
 using UnityEngine;
 
-// Token: 0x020009FE RID: 2558
+// Token: 0x020009FC RID: 2556
 public static class RandomizerRebinding
 {
-	// Token: 0x060039A9 RID: 14761
+	// Token: 0x0600378C RID: 14220
 	public static void WriteDefaultFile()
 	{
-		StreamWriter expr_0A = new StreamWriter("RandomizerRebinding.txt");
-		expr_0A.WriteLine("All binds are Alt + the input given here. Syntax errors will load default binds.");
-		expr_0A.WriteLine("Functions are unbound if there is no key after the colon. Only single binds are supported.");
-		expr_0A.WriteLine("ReplayMessage: T");
-		expr_0A.WriteLine("ReturnToStart: R");
-		expr_0A.WriteLine("ReloadSeed: L");
-		expr_0A.WriteLine("ToggleChaos: C");
-		expr_0A.WriteLine("ChaosVerbosity: V");
-		expr_0A.WriteLine("ForceChaosEffect: F");
-		expr_0A.WriteLine("ShowProgress: P");
-		expr_0A.Flush();
-		expr_0A.Close();
+		StreamWriter streamWriter = new StreamWriter("RandomizerRebinding.txt");
+		streamWriter.WriteLine("Bind syntax: Key1+Key2, Key1+Key3+Key4, ... Syntax errors will load default binds.");
+		streamWriter.WriteLine("Functions are unbound if there is no binding specified.");
+		streamWriter.WriteLine("Supported binds are Unity KeyCodes (https://docs.unity3d.com/ScriptReference/KeyCode.html) and the following actions:");
+		streamWriter.WriteLine("Jump, SpiritFlame, Bash, SoulFlame, ChargeJump, Glide, Dash, Grenade, Left, Right, Up, Down, LeftStick, RightStick, Start, Select");
+		streamWriter.WriteLine("Replay Message: LeftAlt+T, RightAlt+T");
+		streamWriter.WriteLine("Return to Start: LeftAlt+R, RightAlt+R");
+		streamWriter.WriteLine("Reload Seed: LeftAlt+L, RightAlt+L");
+		streamWriter.WriteLine("Toggle Chaos: LeftAlt+K, RightAlt+K");
+		streamWriter.WriteLine("Chaos Verbosity: LeftAlt+V, RightAlt+V");
+		streamWriter.WriteLine("Force Chaos Effect: LeftAlt+F, RightAlt+F");
+		streamWriter.WriteLine("Show Progress: LeftAlt+P, RightAlt+P");
+		streamWriter.WriteLine("Color Shift: LeftAlt+C, RightAlt+C");
+		streamWriter.WriteLine("Double Bash: Grenade");
+		streamWriter.Flush();
+		streamWriter.Close();
 	}
 
-	// Token: 0x060039AA RID: 14762
+	// Token: 0x0600378D RID: 14221
 	public static void ParseRebinding()
 	{
+		RandomizerRebinding.ActionMap = new Hashtable();
+		RandomizerRebinding.ActionMap.Add("Jump", Core.Input.Jump);
+		RandomizerRebinding.ActionMap.Add("SpiritFlame", Core.Input.SpiritFlame);
+		RandomizerRebinding.ActionMap.Add("Bash", Core.Input.Bash);
+		RandomizerRebinding.ActionMap.Add("SoulFlame", Core.Input.SoulFlame);
+		RandomizerRebinding.ActionMap.Add("ChargeJump", Core.Input.ChargeJump);
+		RandomizerRebinding.ActionMap.Add("Glide", Core.Input.Glide);
+		RandomizerRebinding.ActionMap.Add("Dash", Core.Input.RightShoulder);
+		RandomizerRebinding.ActionMap.Add("Grenade", Core.Input.LeftShoulder);
+		RandomizerRebinding.ActionMap.Add("Left", Core.Input.Left);
+		RandomizerRebinding.ActionMap.Add("Right", Core.Input.Right);
+		RandomizerRebinding.ActionMap.Add("Up", Core.Input.Up);
+		RandomizerRebinding.ActionMap.Add("Down", Core.Input.Down);
+		RandomizerRebinding.ActionMap.Add("LeftStick", Core.Input.LeftStick);
+		RandomizerRebinding.ActionMap.Add("RightStick", Core.Input.RightStick);
+		RandomizerRebinding.ActionMap.Add("Start", Core.Input.Start);
+		RandomizerRebinding.ActionMap.Add("Select", Core.Input.Select);
 		if (!File.Exists("RandomizerRebinding.txt"))
 		{
 			RandomizerRebinding.WriteDefaultFile();
 		}
 		try
 		{
-			string[] expr_1C = File.ReadAllLines("RandomizerRebinding.txt");
-			RandomizerRebinding.ReplayMessage = RandomizerRebinding.StringToKeyBinding(expr_1C[2]);
-			RandomizerRebinding.ReturnToStart = RandomizerRebinding.StringToKeyBinding(expr_1C[3]);
-			RandomizerRebinding.ReloadSeed = RandomizerRebinding.StringToKeyBinding(expr_1C[4]);
-			RandomizerRebinding.ToggleChaos = RandomizerRebinding.StringToKeyBinding(expr_1C[5]);
-			RandomizerRebinding.ChaosVerbosity = RandomizerRebinding.StringToKeyBinding(expr_1C[6]);
-			RandomizerRebinding.ForceChaosEffect = RandomizerRebinding.StringToKeyBinding(expr_1C[7]);
-			RandomizerRebinding.ShowProgress = RandomizerRebinding.StringToKeyBinding(expr_1C[8]);
+			string[] array = File.ReadAllLines("RandomizerRebinding.txt");
+			RandomizerRebinding.ReplayMessage = RandomizerRebinding.ParseLine(array[4]);
+			RandomizerRebinding.ReturnToStart = RandomizerRebinding.ParseLine(array[5]);
+			RandomizerRebinding.ReloadSeed = RandomizerRebinding.ParseLine(array[6]);
+			RandomizerRebinding.ToggleChaos = RandomizerRebinding.ParseLine(array[7]);
+			RandomizerRebinding.ChaosVerbosity = RandomizerRebinding.ParseLine(array[8]);
+			RandomizerRebinding.ForceChaosEffect = RandomizerRebinding.ParseLine(array[9]);
+			RandomizerRebinding.ShowProgress = RandomizerRebinding.ParseLine(array[10]);
+			RandomizerRebinding.ColorShift = RandomizerRebinding.ParseLine(array[11]);
+			RandomizerRebinding.DoubleBash = RandomizerRebinding.ParseLine(array[12]);
 		}
 		catch (Exception)
 		{
@@ -46,50 +71,168 @@ public static class RandomizerRebinding
 		}
 	}
 
-	// Token: 0x060039AB RID: 14763
+	// Token: 0x0600378E RID: 14222
 	public static KeyCode StringToKeyBinding(string s)
 	{
-		string[] line = s.Split(new char[]
+		if (s != "")
 		{
-			':'
-		});
-		if (line[1].Trim() != "")
-		{
-			return (KeyCode)((int)Enum.Parse(typeof(KeyCode), line[1].Trim()));
+			return (KeyCode)((int)Enum.Parse(typeof(KeyCode), s));
 		}
 		return KeyCode.None;
 	}
 
-	// Token: 0x060039AC RID: 14764
+	// Token: 0x0600378F RID: 14223
 	public static void LoadDefaultBinds()
 	{
-		RandomizerRebinding.ReplayMessage = KeyCode.T;
-		RandomizerRebinding.ReturnToStart = KeyCode.R;
-		RandomizerRebinding.ReloadSeed = KeyCode.L;
-		RandomizerRebinding.ToggleChaos = KeyCode.C;
-		RandomizerRebinding.ChaosVerbosity = KeyCode.V;
-		RandomizerRebinding.ForceChaosEffect = KeyCode.F;
-		RandomizerRebinding.ShowProgress = KeyCode.P;
+		RandomizerRebinding.ReplayMessage = RandomizerRebinding.ParseLine("Replay Message: LeftAlt+T, RightAlt+T");
+		RandomizerRebinding.ReturnToStart = RandomizerRebinding.ParseLine("Return to Start: LeftAlt+R, RightAlt+R");
+		RandomizerRebinding.ReloadSeed = RandomizerRebinding.ParseLine("Reload Seed: LeftAlt+L, RightAlt+L");
+		RandomizerRebinding.ToggleChaos = RandomizerRebinding.ParseLine("Toggle Chaos: LeftAlt+K, RightAlt+K");
+		RandomizerRebinding.ChaosVerbosity = RandomizerRebinding.ParseLine("Chaos Verbosity: LeftAlt+V, RightAlt+V");
+		RandomizerRebinding.ForceChaosEffect = RandomizerRebinding.ParseLine("Force Chaos Effect: LeftAlt+F, RightAlt+F");
+		RandomizerRebinding.ShowProgress = RandomizerRebinding.ParseLine("Show Progress: LeftAlt+P, RightAlt+P");
+		RandomizerRebinding.ColorShift = RandomizerRebinding.ParseLine("Color Shift: LeftAlt+C, RightAlt+C");
+		RandomizerRebinding.DoubleBash = RandomizerRebinding.ParseLine("Double Bash: Grenade");
 	}
 
-	// Token: 0x040033A3 RID: 13219
-	public static KeyCode ReplayMessage;
+	// Token: 0x060037F8 RID: 14328
+	public static RandomizerRebinding.BindSet ParseLine(string line)
+	{
+		string[] array3 = line.Split(new char[]
+		{
+			':'
+		})[1].Split(new char[]
+		{
+			','
+		});
+		ArrayList bindSet = new ArrayList();
+		string[] array2 = array3;
+		for (int i = 0; i < array2.Length; i++)
+		{
+			string[] array4 = array2[i].Split(new char[]
+			{
+				'+'
+			});
+			ArrayList bind = new ArrayList();
+			foreach (string key in array4)
+			{
+				bind.Add(new RandomizerRebinding.Bind(key));
+			}
+			bindSet.Add(bind);
+		}
+		return new RandomizerRebinding.BindSet(bindSet);
+	}
 
-	// Token: 0x040033A4 RID: 13220
-	public static KeyCode ReturnToStart;
+	// Token: 0x040032AA RID: 12970
+	public static Hashtable ActionMap;
 
-	// Token: 0x040033A5 RID: 13221
-	public static KeyCode ReloadSeed;
+	// Token: 0x040032E1 RID: 13025
+	public static RandomizerRebinding.BindSet ReplayMessage;
 
-	// Token: 0x040033A6 RID: 13222
-	public static KeyCode ToggleChaos;
+	// Token: 0x040032E2 RID: 13026
+	public static RandomizerRebinding.BindSet ReturnToStart;
 
-	// Token: 0x040033A7 RID: 13223
-	public static KeyCode ChaosVerbosity;
+	// Token: 0x040032E3 RID: 13027
+	public static RandomizerRebinding.BindSet ReloadSeed;
 
-	// Token: 0x040033A8 RID: 13224
-	public static KeyCode ForceChaosEffect;
+	// Token: 0x040032E4 RID: 13028
+	public static RandomizerRebinding.BindSet ToggleChaos;
 
-	// Token: 0x040033A9 RID: 13225
-	public static KeyCode ShowProgress;
+	// Token: 0x040032E5 RID: 13029
+	public static RandomizerRebinding.BindSet ChaosVerbosity;
+
+	// Token: 0x040032E6 RID: 13030
+	public static RandomizerRebinding.BindSet ForceChaosEffect;
+
+	// Token: 0x040032E7 RID: 13031
+	public static RandomizerRebinding.BindSet ShowProgress;
+
+	// Token: 0x040032E8 RID: 13032
+	public static RandomizerRebinding.BindSet ColorShift;
+
+	// Token: 0x040032E9 RID: 13033
+	public static RandomizerRebinding.BindSet DoubleBash;
+
+	// Token: 0x02000A08 RID: 2568
+	public class Bind
+	{
+		// Token: 0x060037CA RID: 14282
+		public Bind(string input)
+		{
+			input = input.Trim();
+			if (RandomizerRebinding.ActionMap.ContainsKey(input))
+			{
+				this.Action = (Core.Input.InputButtonProcessor)RandomizerRebinding.ActionMap[input];
+				this.ActionBind = true;
+				return;
+			}
+			this.ActionBind = false;
+			this.Key = RandomizerRebinding.StringToKeyBinding(input);
+		}
+
+		// Token: 0x060037CB RID: 14283
+		public bool IsPressed()
+		{
+			if (this.ActionBind)
+			{
+				return this.Action.Pressed;
+			}
+			return MoonInput.GetKey(this.Key);
+		}
+
+		// Token: 0x0400329F RID: 12959
+		public KeyCode Key;
+
+		// Token: 0x040032A0 RID: 12960
+		public Core.Input.InputButtonProcessor Action;
+
+		// Token: 0x040032A1 RID: 12961
+		public bool ActionBind;
+	}
+
+	// Token: 0x02000A09 RID: 2569
+	public class BindSet
+	{
+		// Token: 0x060037F2 RID: 14322
+		public BindSet(ArrayList binds)
+		{
+			this.binds = binds;
+			this.wasPressed = true;
+		}
+
+		// Token: 0x060037F3 RID: 14323
+		public bool IsPressed()
+		{
+			foreach (object obj in this.binds)
+			{
+				ArrayList arrayList = (ArrayList)obj;
+				bool active = true;
+				foreach(Bind bind in arrayList)
+				{
+					if(!bind.IsPressed()) 
+					{
+						active=false;
+						break;
+					}
+				}
+				if (active)
+				{
+					if(this.wasPressed)
+					{
+						return false;
+					}
+					this.wasPressed = true;
+					return true;
+				}
+			}
+			this.wasPressed = false;
+			return false;
+		}
+
+		// Token: 0x040032E0 RID: 13024
+		public ArrayList binds;
+
+		// Token: 0x04003459 RID: 13401
+		public bool wasPressed;
+	}
 }
