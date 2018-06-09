@@ -1,7 +1,17 @@
 
+v2.5
+
+To update to v2.5, please delete RandomizerRebindings.txt in steamapps/common/Ori DE. A new default file will automatically be created. Note: to experiment with new binds, reloading the seed will also reload your binds (you don't have to restart the game).
+
+-Reworked the rebinding system to support multiple binds, combination binds, and actions as well as keys
+-Added a double bash bind - when the bind specified is held at the end of a bash, a double bash will occur
+-Set the default fill method to "balanced"
+
+
 v2.4
 
 -add entrance randomizer
+
 
 v2.3
 

@@ -51,6 +51,8 @@ public static class Randomizer
 		Randomizer.ColorShift = false;
 		Randomizer.MessageQueue = new Queue();
 		Randomizer.MessageQueueTime = 0;
+		Randomizer.QueueBash = false;
+		Randomizer.BashWasQueued = false;
 		RandomizerRebinding.ParseRebinding();
 		if (File.Exists("randomizer.dat"))
 		{
@@ -167,7 +169,7 @@ public static class Randomizer
 						Randomizer.Table[num] = new RandomizerAction(array4[1], num2);
 						if(array4[1] == "EX" && Randomizer.ForceRandomEscape && Randomizer.WhichEscape < 0)
 						{
-							// note: NOT STABLE FOR COOP heh
+							// note: NEED A BETTER WAY TO GET WHICH RANDOM DOOR IS FORCED
 							Randomizer.WhichEscape = num2 % 3;
 						}
 						if (Randomizer.CluesMode && array4[1] == "EV" && num2 % 2 == 0)
@@ -254,8 +256,8 @@ public static class Randomizer
 	// Token: 0x0600374B RID: 14155 RVA: 0x0002B475 File Offset: 0x00029675
 	public static void getSkill(int tree)
 	{
-		Randomizer.getSkill();
 		Randomizer.setTree(tree);
+		Randomizer.getSkill();
 	}
 
 	public static void getSkill()
@@ -269,11 +271,16 @@ public static class Randomizer
 	}
 	public static void setTree(int tree)
 	{
-		if(Characters.Sein.Inventory.SkillPointsCollected >> (tree + 6) % 2 == 0)
-			Characters.Sein.Inventory.SkillPointsCollected += 1 << (tree + 6);
-	}
-
-	// Token: 0x0600374C RID: 14156 RVA: 0x000E0DE4 File Offset: 0x000DEFE4
+		int treeOffset = tree + 6;
+		if ((Characters.Sein.Inventory.SkillPointsCollected >> treeOffset) % 2 == 0)
+		{
+			int newVal = Characters.Sein.Inventory.SkillPointsCollected = 1 << treeOffset;
+			while ((Characters.Sein.Inventory.SkillPointsCollected >> treeOffset) % 2 == 0)
+			{
+				Characters.Sein.Inventory.SkillPointsCollected = newVal;
+			}
+		}
+	}	// Token: 0x0600374C RID: 14156 RVA: 0x000E0DE4 File Offset: 0x000DEFE4
 	public static void hintAndLog(float x, float y)
 	{
 		string message = ((int)x).ToString() + " " + ((int)y).ToString();
@@ -393,78 +400,79 @@ public static class Randomizer
 				Randomizer.Returning = false;
 			}
 		}
-		if (MoonInput.GetKey(KeyCode.LeftAlt) || MoonInput.GetKey(KeyCode.RightAlt))
+		if (RandomizerRebinding.BonusSwitch.IsPressed() && Characters.Sein)
 		{
-			if (MoonInput.GetKeyDown(RandomizerRebinding.BonusSwitch) && Characters.Sein)
+			RandomizerBonusSkill.SwitchBonusSkill();
+			return;
+		}
+		if (RandomizerRebinding.BonusToggle.IsPressed() && Characters.Sein)
+		{
+			RandomizerBonusSkill.ActivateBonusSkill();
+			return;
+		}
+		if (RandomizerRebinding.ReplayMessage.IsPressed())
+		{
+			Randomizer.playLastMessage();
+			return;
+		}
+		if (RandomizerRebinding.ReturnToStart.IsPressed() && Characters.Sein)
+		{
+			Randomizer.returnToStart();
+			return;
+		}
+		if (RandomizerRebinding.ReloadSeed.IsPressed())
+		{
+			Randomizer.initialize();
+			Randomizer.showSeedInfo();
+			return;
+		}
+		if (RandomizerRebinding.ShowProgress.IsPressed() && Characters.Sein)
+		{
+			Randomizer.showProgress();
+			return;
+		}
+		if (RandomizerRebinding.ColorShift.IsPressed())
+		{
+			string obj = "Color shift enabled";
+			if (Randomizer.ColorShift)
 			{
-				RandomizerBonusSkill.SwitchBonusSkill();
+				obj = "Color shift disabled";
+			}
+			Randomizer.ColorShift = !Randomizer.ColorShift;
+			Randomizer.MessageQueue.Enqueue(obj);
+		}
+		if (RandomizerRebinding.ToggleChaos.IsPressed() && Characters.Sein)
+		{
+			if (Randomizer.Chaos)
+			{
+				Randomizer.showChaosMessage("Chaos deactivated");
+				Randomizer.Chaos = false;
+				RandomizerChaosManager.ClearEffects();
 				return;
 			}
-			if (MoonInput.GetKeyDown(RandomizerRebinding.BonusToggle) && Characters.Sein)
+			Randomizer.showChaosMessage("Chaos activated");
+			Randomizer.Chaos = true;
+			return;
+		}
+		else if (RandomizerRebinding.ChaosVerbosity.IsPressed() && Randomizer.Chaos)
+		{
+			Randomizer.ChaosVerbose = !Randomizer.ChaosVerbose;
+			if (Randomizer.ChaosVerbose)
 			{
-				RandomizerBonusSkill.ActivateBonusSkill();
+				Randomizer.showChaosMessage("Chaos messages enabled");
 				return;
 			}
-			if (MoonInput.GetKeyDown(RandomizerRebinding.ReplayMessage))
-			{
-				Randomizer.playLastMessage();
-				return;
-			}
-			if (MoonInput.GetKeyDown(RandomizerRebinding.ReturnToStart) && Characters.Sein)
-			{
-				Randomizer.returnToStart();
-				return;
-			}
-			if (MoonInput.GetKeyDown(RandomizerRebinding.ReloadSeed))
-			{
-				Randomizer.initialize();
-				Randomizer.showSeedInfo();
-				return;
-			}
-			if (MoonInput.GetKeyDown(RandomizerRebinding.ShowProgress) && Characters.Sein)
-			{
-				Randomizer.showProgress();
-				return;
-			}
-			if (MoonInput.GetKeyDown(RandomizerRebinding.ColorShift))
-			{
-				string obj = "Color shift enabled";
-				if (Randomizer.ColorShift)
-				{
-					obj = "Color shift disabled";
-				}
-				Randomizer.ColorShift = !Randomizer.ColorShift;
-				Randomizer.MessageQueue.Enqueue(obj);
-			}
-			if (MoonInput.GetKeyDown(RandomizerRebinding.ToggleChaos) && Characters.Sein)
-			{
-				if (Randomizer.Chaos)
-				{
-					Randomizer.showChaosMessage("Chaos deactivated");
-					Randomizer.Chaos = false;
-					RandomizerChaosManager.ClearEffects();
-					return;
-				}
-				Randomizer.showChaosMessage("Chaos activated");
-				Randomizer.Chaos = true;
-				return;
-			}
-			else if (MoonInput.GetKeyDown(RandomizerRebinding.ChaosVerbosity) && Randomizer.Chaos)
-			{
-				Randomizer.ChaosVerbose = !Randomizer.ChaosVerbose;
-				if (Randomizer.ChaosVerbose)
-				{
-					Randomizer.showChaosMessage("Chaos messages enabled");
-					return;
-				}
-				Randomizer.showChaosMessage("Chaos messages disabled");
-				return;
-			}
-			else if (MoonInput.GetKeyDown(RandomizerRebinding.ForceChaosEffect) && Randomizer.Chaos && Characters.Sein)
+			Randomizer.showChaosMessage("Chaos messages disabled");
+			return;
+		}
+		else
+		{
+			if (RandomizerRebinding.ForceChaosEffect.IsPressed() && Randomizer.Chaos && Characters.Sein)
 			{
 				RandomizerChaosManager.SpawnEffect();
 				return;
 			}
+			return;
 		}
 	}
 
@@ -595,7 +603,7 @@ public static class Randomizer
 	// Token: 0x06003753 RID: 14163 RVA: 0x000E1420 File Offset: 0x000DF620
 	public static void showSeedInfo()
 	{
-		string obj = "v2.3 - seed loaded: " + Randomizer.SeedMeta;
+		string obj = "v2.5 - seed loaded: " + Randomizer.SeedMeta;
 		Randomizer.MessageQueue.Enqueue(obj);
 	}
 
@@ -624,7 +632,7 @@ public static class Randomizer
 		Randomizer.MessageQueueTime--;
 	}
 
-	// Token: 0x060037E7 RID: 14311
+	// Token: 0x0600374D RID: 14157
 	public static void EnterDoor(Vector3 position)
 	{
 		if (!Randomizer.Entrance)
@@ -749,4 +757,10 @@ public static class Randomizer
 
 	// Token: 0x04003245 RID: 12869
 	public static Hashtable DoorTable;
+
+	// Token: 0x04003246 RID: 12870
+	public static bool QueueBash;
+
+	// Token: 0x04003247 RID: 12871
+	public static bool BashWasQueued;
 }
