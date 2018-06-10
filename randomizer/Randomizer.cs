@@ -274,7 +274,7 @@ public static class Randomizer
 		int treeOffset = tree + 6;
 		if ((Characters.Sein.Inventory.SkillPointsCollected >> treeOffset) % 2 == 0)
 		{
-			int newVal = Characters.Sein.Inventory.SkillPointsCollected = 1 << treeOffset;
+			int newVal = Characters.Sein.Inventory.SkillPointsCollected + (1 << treeOffset);
 			while ((Characters.Sein.Inventory.SkillPointsCollected >> treeOffset) % 2 == 0)
 			{
 				Characters.Sein.Inventory.SkillPointsCollected = newVal;

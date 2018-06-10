@@ -205,10 +205,7 @@ public static class RandomizerSyncManager
 			}
 			if (array.Length > 4)
 			{
-				foreach (string text in array[4].Split(new char[]
-				{
-					'|'
-				}))
+				foreach (string text in array[4].Split(new char[] { '|' }))
 				{
 					if (text == "stop")
 					{
@@ -217,6 +214,20 @@ public static class RandomizerSyncManager
 					else if (text.StartsWith("msg:"))
 					{
 						Randomizer.showHint(text.Substring(4));
+					}
+					else if (text.StartsWith("pickup:"))
+					{
+						string[] parts = RandomizerSyncManager.SendingUri.ToString().Split(new char[] { ':' });
+						RandomizerAction action;
+						if(Randomizer.StringKeyPickupTypes.Contains(parts[0])) {
+							 action = new RandomizerAction(parts[0], parts[1]);
+						} else {
+							int pickup_id;
+							int.TryParse(parts[1], out pickup_id);
+							action = new RandomizerAction(parts[0], pickup_id);
+						}
+						RandomizerSwitch.GivePickup(action, 0, false);
+
 					}
 					else if (text == "spawnChaos")
 					{
