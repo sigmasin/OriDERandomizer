@@ -48,6 +48,7 @@ public static class Randomizer
 		Randomizer.MessageQueueTime = 0;
 		Randomizer.QueueBash = false;
 		Randomizer.BashWasQueued = false;
+		Randomizer.BashTap = false;
 		RandomizerRebinding.ParseRebinding();
 		if (File.Exists("randomizer.dat"))
 		{
@@ -622,4 +623,7 @@ public static class Randomizer
 
 	// Token: 0x04003247 RID: 12871
 	public static bool BashWasQueued;
+
+	// Token: 0x040032F7 RID: 13047
+	public static bool BashTap;
 }
