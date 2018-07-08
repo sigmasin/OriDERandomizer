@@ -117,9 +117,19 @@ public static class RandomizerRebinding
 			ArrayList bind = new ArrayList();
 			foreach (string key in array4)
 			{
-				bind.Add(new RandomizerRebinding.Bind(key));
+				if (key.ToLower() == "tap")
+				{
+					Randomizer.BashTap = true;
+				}
+				else 
+				{
+					bind.Add(new RandomizerRebinding.Bind(key));
+				}
 			}
-			bindSet.Add(bind);
+			if (bind.Count > 0) 
+			{
+				bindSet.Add(bind);
+			}
 		}
 		return new RandomizerRebinding.BindSet(bindSet);
 	}

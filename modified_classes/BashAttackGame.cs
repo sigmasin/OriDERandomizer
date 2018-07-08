@@ -12,16 +12,16 @@ internal class BashAttackGame : Suspendable, IPooled
 	}
 
 	// Token: 0x14000001 RID: 1
-	// (add) Token: 0x06000097 RID: 151 RVA: 0x000029CF File Offset: 0x00000BCF
-	// (remove) Token: 0x06000098 RID: 152 RVA: 0x000029E8 File Offset: 0x00000BE8
+	// (add) Token: 0x06000097 RID: 151 RVA: 0x0002D2E4 File Offset: 0x0002B4E4
+	// (remove) Token: 0x06000098 RID: 152 RVA: 0x0002D31C File Offset: 0x0002B51C
 	public event Action<float> BashGameComplete;
 
 	// Token: 0x1700001E RID: 30
-	// (get) Token: 0x06000099 RID: 153 RVA: 0x00002A01 File Offset: 0x00000C01
-	// (set) Token: 0x0600009A RID: 154 RVA: 0x00002A09 File Offset: 0x00000C09
+	// (get) Token: 0x06000099 RID: 153 RVA: 0x000029CF File Offset: 0x00000BCF
+	// (set) Token: 0x0600009A RID: 154 RVA: 0x000029D7 File Offset: 0x00000BD7
 	public override bool IsSuspended { get; set; }
 
-	// Token: 0x0600009B RID: 155 RVA: 0x0002D2F4 File Offset: 0x0002B4F4
+	// Token: 0x0600009B RID: 155 RVA: 0x0002D354 File Offset: 0x0002B554
 	public void OnPoolSpawned()
 	{
 		this.m_bashLoopingAudioSource = null;
@@ -38,7 +38,7 @@ internal class BashAttackGame : Suspendable, IPooled
 		this.BashGameComplete = null;
 	}
 
-	// Token: 0x0600009C RID: 156 RVA: 0x0002D370 File Offset: 0x0002B570
+	// Token: 0x0600009C RID: 156 RVA: 0x0002D3D0 File Offset: 0x0002B5D0
 	public void ChangeState(BashAttackGame.State state)
 	{
 		this.m_currentState = state;
@@ -47,38 +47,42 @@ internal class BashAttackGame : Suspendable, IPooled
 		{
 		case BashAttackGame.State.Appearing:
 			this.BashAttackCritical.enabled = false;
-			break;
+			return;
 		case BashAttackGame.State.Playing:
 			this.BashAttackCritical.enabled = true;
-			break;
+			return;
 		case BashAttackGame.State.Disappearing:
 			this.BashAttackCritical.enabled = false;
 			if (this.m_bashLoopingAudioSource)
 			{
 				InstantiateUtility.Destroy(this.m_bashLoopingAudioSource.gameObject);
 			}
-			break;
+			return;
+		default:
+			return;
 		}
 	}
 
-	// Token: 0x0600009D RID: 157 RVA: 0x0002D3FC File Offset: 0x0002B5FC
+	// Token: 0x0600009D RID: 157 RVA: 0x0002D448 File Offset: 0x0002B648
 	public void UpdateMode()
 	{
 		if (Core.Input.AnalogAxisLeft.magnitude > 0.2f)
 		{
 			this.m_mode = BashAttackGame.Modes.Controller;
+			return;
 		}
-		else if (Core.Input.CursorMoved || GameSettings.Instance.CurrentControlScheme == ControlScheme.KeyboardAndMouse)
+		if (Core.Input.CursorMoved || GameSettings.Instance.CurrentControlScheme == ControlScheme.KeyboardAndMouse)
 		{
 			this.m_mode = BashAttackGame.Modes.Mouse;
+			return;
 		}
-		else if (Core.Input.DigiPadAxis.magnitude > 0.2f && this.m_mode != BashAttackGame.Modes.Mouse)
+		if (Core.Input.DigiPadAxis.magnitude > 0.2f && this.m_mode != BashAttackGame.Modes.Mouse)
 		{
 			this.m_mode = BashAttackGame.Modes.Keyboard;
 		}
 	}
 
-	// Token: 0x0600009E RID: 158 RVA: 0x0002D47C File Offset: 0x0002B67C
+	// Token: 0x0600009E RID: 158 RVA: 0x0002D4B0 File Offset: 0x0002B6B0
 	public void FixedUpdate()
 	{
 		if (this.IsSuspended)
@@ -145,13 +149,13 @@ internal class BashAttackGame : Suspendable, IPooled
 		}
 	}
 
-	// Token: 0x0600009F RID: 159 RVA: 0x00002A12 File Offset: 0x00000C12
+	// Token: 0x0600009F RID: 159 RVA: 0x000029E0 File Offset: 0x00000BE0
 	public void SendDirection(Vector2 direction)
 	{
 		this.m_keyboardAngle = MoonMath.Angle.AngleFromVector(direction) - 90f;
 	}
 
-	// Token: 0x060000A0 RID: 160 RVA: 0x0002D6E0 File Offset: 0x0002B8E0
+	// Token: 0x060000A0 RID: 160 RVA: 0x0002D714 File Offset: 0x0002B914
 	public void UpdateState()
 	{
 		switch (this.m_currentState)
@@ -169,7 +173,7 @@ internal class BashAttackGame : Suspendable, IPooled
 		this.m_stateCurrentTime += Time.deltaTime;
 	}
 
-	// Token: 0x060000A1 RID: 161 RVA: 0x0002D740 File Offset: 0x0002B940
+	// Token: 0x060000A1 RID: 161 RVA: 0x0002D764 File Offset: 0x0002B964
 	private void UpdateDisappearingState()
 	{
 		float time = Mathf.Clamp01(this.m_stateCurrentTime / this.DisappearTime);
@@ -177,7 +181,7 @@ internal class BashAttackGame : Suspendable, IPooled
 		InstantiateUtility.Destroy(base.gameObject, 1f);
 	}
 
-	// Token: 0x060000A2 RID: 162 RVA: 0x0002D794 File Offset: 0x0002B994
+	// Token: 0x060000A2 RID: 162
 	private void UpdatePlayingState()
 	{
 		if (this.m_nextBashLoopPlayedTime <= this.m_stateCurrentTime)
@@ -195,13 +199,14 @@ internal class BashAttackGame : Suspendable, IPooled
 		{
 			this.GameFinished();
 		}
-		if (this.ButtonBash.Released)
+		RandomizerRebinding.DoubleBash.wasPressed = false;
+		if (this.ButtonBash.Released || (RandomizerRebinding.DoubleBash.IsPressed() && Randomizer.BashTap))
 		{
 			this.GameFinished();
 		}
 	}
 
-	// Token: 0x060000A3 RID: 163 RVA: 0x0002D87C File Offset: 0x0002BA7C
+	// Token: 0x060000A3 RID: 163 RVA: 0x0002D890 File Offset: 0x0002BA90
 	private void UpdateAppearingState()
 	{
 		float num = Mathf.Clamp01(this.m_stateCurrentTime / this.AppearTime);
@@ -212,21 +217,21 @@ internal class BashAttackGame : Suspendable, IPooled
 		}
 	}
 
-	// Token: 0x060000A4 RID: 164 RVA: 0x00002A26 File Offset: 0x00000C26
+	// Token: 0x060000A4 RID: 164 RVA: 0x000029F4 File Offset: 0x00000BF4
 	public new void Awake()
 	{
 		base.Awake();
 		this.m_originalArrowScale = this.ArrowSprite.localScale;
 	}
 
-	// Token: 0x060000A5 RID: 165 RVA: 0x00002A3F File Offset: 0x00000C3F
+	// Token: 0x060000A5 RID: 165 RVA: 0x00002A0D File Offset: 0x00000C0D
 	public void Start()
 	{
 		this.ChangeState(this.m_currentState);
 		this.ArrowSprite.localScale = Vector3.zero;
 	}
 
-	// Token: 0x060000A6 RID: 166
+	// Token: 0x060000A6 RID: 166 RVA: 0x0002D8E4 File Offset: 0x0002BAE4
 	private void GameFinished()
 	{
 		Sound.Play((!Characters.Sein.PlayerAbilities.BashBuff.HasAbility) ? Characters.Sein.Abilities.Bash.BashEndSound.GetSound(null) : Characters.Sein.Abilities.Bash.UpgradedBashEndSound.GetSound(null), base.transform.position, null);
@@ -241,7 +246,7 @@ internal class BashAttackGame : Suspendable, IPooled
 	}
 
 	// Token: 0x1700001F RID: 31
-	// (get) Token: 0x060000A7 RID: 167 RVA: 0x00002A5D File Offset: 0x00000C5D
+	// (get) Token: 0x060000A7 RID: 167 RVA: 0x00002A2B File Offset: 0x00000C2B
 	public Core.Input.InputButtonProcessor ButtonBash
 	{
 		get
