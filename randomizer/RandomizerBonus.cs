@@ -492,7 +492,7 @@ public static class RandomizerBonus
         else if(dungeonId == 1)
         {
             Keys.ForlornRuins = true;
-            Randomizer.showHint("%Forlorn Ruins Unlocked%");
+            Randomizer.showHint("#Forlorn Ruins Unlocked#");
         }
         else if(dungeonId == 2)
         {
