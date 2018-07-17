@@ -1680,7 +1680,7 @@ def main():
     modeSelection.addItem("Shards")
     modeSelection.addItem("Limitkeys")
     modeSelection.addItem("Clues")
-    modeSelection.setSelectedIndex(1)
+    modeSelection.setSelectedIndex(3)
 
     row1_2.add(modeText)
     row1_2.add(modeSelection)
