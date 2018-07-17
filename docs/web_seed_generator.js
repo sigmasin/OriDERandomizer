@@ -11,6 +11,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 	$m['re'] = $p['___import___']('re', null);
 	$m['math'] = $p['___import___']('math', null);
 	$m['time'] = $p['___import___']('time', null);
+	$m['datetime'] = $p['___import___']('datetime', null);
 	$m['Random'] = (function(){
 		var $cls_definition = new Object();
 		var $method;
@@ -1817,13 +1818,17 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 	$m['seed_hash'].__bind_type__ = 0;
 	$m['seed_hash'].__args__ = [null,null,['seed']];
 	$m['generate'] = function() {
-		var $add464,includePlants,no_teleporters,zeroxp,$add426,$add427,$add424,$add425,$add422,$add423,$add420,$add421,$add428,$add429,hard,sync_id,$mod7,$mod8,playerCountIn,$add453,$add452,$add451,$add450,$add457,$add456,$add455,$add454,$add459,$add458,mode,clues,force_trees,shards,$add440,$add441,$add442,$add443,$add444,$add445,$add446,$add447,$add448,$add449,prefer_path_difficulty,non_progressive_mapstones,exp_pool,balanced,limitkeys,nobonus,entrance,$add419,$add418,$add417,$add416,$add415,$add462,$add463,$add460,$add461,$add466,$add465,sharedSeedFlags,seed,$add439,$add438,$add431,$add430,$add433,$add432,$add435,$add434,$add437,$add436,$mul58,modes,ohko,$mul57,$mul56,$mul55,flags,starved,syncFlags;
+		var includePlants,no_teleporters,zeroxp,now,$add426,$add427,$add424,$add425,$add422,$add423,$add420,$add421,$add428,$add429,hard,sync_id,$mod7,$mod8,playerCountIn,$add453,$add452,$add451,$add450,$add457,$add456,$add455,$add454,$add459,$add458,mode,clues,force_trees,shards,$add440,$add441,$add442,$add443,$add444,$add445,$add446,$add447,$add448,$add449,prefer_path_difficulty,non_progressive_mapstones,exp_pool,balanced,limitkeys,nobonus,$add474,$add471,$add470,$add473,$add472,entrance,$add419,$add418,$add417,$add416,$add415,$add468,$add469,$add462,$add463,$add460,$add461,$add466,$add467,$add464,$add465,sharedSeedFlags,seed,$add439,$add438,$add431,$add430,$add433,$add432,$add435,$add434,$add437,$add436,$mul58,modes,ohko,$mul57,$mul56,$mul55,flags,starved,syncFlags;
 		$m.genButton['setText']('Generating...');
 		seed = $m.seedSelection['getText']();
 		if ($p['bool']($p['op_eq'](seed, ''))) {
 			seed = $p['str']((2147483647)&((typeof ($mul55=$m['time']['time']())==typeof ($mul56=1000) && typeof $mul55=='number'?
 				$mul55*$mul56:
 				$p['op_mul']($mul55,$mul56))));
+		}
+		if ($p['bool']($p['op_eq'](seed['strip']()['lower'](), 'daily'))) {
+			now = $m['datetime']['datetime']['now']();
+			seed = $p['__op_add']($add421=$p['__op_add']($add419=$p['__op_add']($add417=$p['__op_add']($add415=$p['str']($p['getattr'](now, 'year')),$add416='-'),$add418=$p['str']($p['getattr'](now, 'month'))),$add420='-'),$add422=$p['str']($p['getattr'](now, 'day')));
 		}
 		hard = $m.hardBox['isChecked']();
 		exp_pool = 10000;
@@ -1950,55 +1955,55 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 		}
 		flags = '';
 		syncFlags = '';
-		flags = $p['__op_add']($add415=flags,$add416=mode);
+		flags = $p['__op_add']($add423=flags,$add424=mode);
 		if ($p['bool'](limitkeys)) {
-			flags = $p['__op_add']($add417=flags,$add418=',limitkeys');
+			flags = $p['__op_add']($add425=flags,$add426=',limitkeys');
 		}
 		if ($p['bool'](shards)) {
-			flags = $p['__op_add']($add419=flags,$add420=',shards');
+			flags = $p['__op_add']($add427=flags,$add428=',shards');
 		}
 		if ($p['bool'](clues)) {
-			flags = $p['__op_add']($add421=flags,$add422=',clues');
+			flags = $p['__op_add']($add429=flags,$add430=',clues');
 		}
 		if ($p['bool'](starved)) {
-			flags = $p['__op_add']($add423=flags,$add424=',starved');
+			flags = $p['__op_add']($add431=flags,$add432=',starved');
 		}
 		if ($p['bool'](prefer_path_difficulty)) {
-			flags = $p['__op_add']($add427=flags,$add428=$p['__op_add']($add425=',prefer_path_difficulty=',$add426=prefer_path_difficulty));
+			flags = $p['__op_add']($add435=flags,$add436=$p['__op_add']($add433=',prefer_path_difficulty=',$add434=prefer_path_difficulty));
 		}
 		if ($p['bool'](hard)) {
-			flags = $p['__op_add']($add429=flags,$add430=',hard');
+			flags = $p['__op_add']($add437=flags,$add438=',hard');
 		}
 		if ($p['bool'](ohko)) {
-			flags = $p['__op_add']($add431=flags,$add432=',OHKO');
+			flags = $p['__op_add']($add439=flags,$add440=',OHKO');
 		}
 		if ($p['bool'](zeroxp)) {
-			flags = $p['__op_add']($add433=flags,$add434=',0XP');
+			flags = $p['__op_add']($add441=flags,$add442=',0XP');
 		}
 		if ($p['bool'](nobonus)) {
-			flags = $p['__op_add']($add435=flags,$add436=',NoBonus');
+			flags = $p['__op_add']($add443=flags,$add444=',NoBonus');
 		}
 		if ($p['bool'](!$p['bool'](includePlants))) {
-			flags = $p['__op_add']($add437=flags,$add438=',NoPlants');
+			flags = $p['__op_add']($add445=flags,$add446=',NoPlants');
 		}
 		if ($p['bool'](force_trees)) {
-			flags = $p['__op_add']($add439=flags,$add440=',ForceTrees');
+			flags = $p['__op_add']($add447=flags,$add448=',ForceTrees');
 		}
 		if ($p['bool'](non_progressive_mapstones)) {
-			flags = $p['__op_add']($add441=flags,$add442=',NonProgressMapStones');
+			flags = $p['__op_add']($add449=flags,$add450=',NonProgressMapStones');
 		}
 		if ($p['bool'](no_teleporters)) {
-			flags = $p['__op_add']($add443=flags,$add444=',NoTeleporters');
+			flags = $p['__op_add']($add451=flags,$add452=',NoTeleporters');
 		}
 		if ($p['bool'](balanced)) {
-			flags = $p['__op_add']($add445=flags,$add446=',balanced');
+			flags = $p['__op_add']($add453=flags,$add454=',balanced');
 		}
 		if ($p['bool'](entrance)) {
-			flags = $p['__op_add']($add447=flags,$add448=',entrance');
+			flags = $p['__op_add']($add455=flags,$add456=',entrance');
 		}
 		playerCountIn = 1;
 		if ($p['bool']($m.enableSync['isChecked']())) {
-			playerCountIn = $p['__op_add']($add449=$m.playerCountSelection['getSelectedIndex'](),$add450=1);
+			playerCountIn = $p['__op_add']($add457=$m.playerCountSelection['getSelectedIndex'](),$add458=1);
 			sharedSeedFlags = $p['list']([]);
 			if ($p['bool']($m.shareSkills['isChecked']())) {
 				sharedSeedFlags['append']('skills');
@@ -2015,8 +2020,8 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 			if ($p['bool']($m.shareUpgrades['isChecked']())) {
 				sharedSeedFlags['append']('upgrades');
 			}
-			syncFlags = $p['__op_add']($add453=syncFlags,$add454=$p['__op_add']($add451=',shared=',$add452='+'['join'](sharedSeedFlags)));
-			syncFlags = $p['__op_add']($add457=syncFlags,$add458=$p['__op_add']($add455=',mode=',$add456=$m.shareModeSelection['getItemText']($m.shareModeSelection['getSelectedIndex']())));
+			syncFlags = $p['__op_add']($add461=syncFlags,$add462=$p['__op_add']($add459=',shared=',$add460='+'['join'](sharedSeedFlags)));
+			syncFlags = $p['__op_add']($add465=syncFlags,$add466=$p['__op_add']($add463=',mode=',$add464=$m.shareModeSelection['getItemText']($m.shareModeSelection['getSelectedIndex']())));
 			sync_id = $m.syncIDSelection['getText']();
 			if ($p['bool'](!$p['bool'](sync_id))) {
 				sync_id = $p['float_int']((typeof ($mod7=(typeof ($mul57=$m['time']['time']())==typeof ($mul58=1000) && typeof $mul57=='number'?
@@ -2025,11 +2030,16 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 					(($mod7=$mod7%$mod8)<0&&$mod8>0?$mod7+$mod8:$mod7):
 					$p['op_mod']($mod7,$mod8)));
 			}
-			syncFlags = $p['__op_add']($add461=syncFlags,$add462=$p['__op_add']($add459=',sync',$add460=$p['str'](sync_id)));
+			syncFlags = $p['__op_add']($add469=syncFlags,$add470=$p['__op_add']($add467=',sync',$add468=$p['str'](sync_id)));
 		}
 		$m.random['seed'](seed);
-		$m['placements'] = $m['placeItemsMulti'](seed, exp_pool, hard, includePlants, shards, limitkeys, clues, no_teleporters, modes, flags, syncFlags, starved, prefer_path_difficulty, non_progressive_mapstones, playerCountIn, balanced, entrance);
-		$m.genButton['setText']($p['__op_add']($add465=$p['__op_add']($add463='Seed ',$add464=seed),$add466=' generated. New seed?'));
+		if ($p['bool']($p['op_eq'](seed['strip']()['lower'](), 'vanilla'))) {
+			$m['placements'] = $p['list']([$p['tuple'](['Vanilla|Vanilla\n-280256|EC|1|Glades\n-1680104|EX|100|Grove\n-12320248|NO|0|Forlorn\n-10440008|KS|1|Misty\n919772|EX|15|Glades\n-1560272|EX|15|Glades\n799776|KS|1|Glades\n-120208|KS|1|Glades\n559720|EX|200|Glades\n799804|AC|1|Glades\n39756|EX|100|Glades\n-400240|EC|1|Glades\n2559800|EX|200|Glades\n-800192|HC|1|Glades\n-600244|KS|1|Glades\n-3160308|SK|3|Glades\n-2840236|EX|15|Glades\n2999808|EX|100|Grove\n4199828|EC|1|Grotto\n-840248|NO|0|Glades\n-480168|AC|1|Glades\n-2480280|EX|200|Glades\n-3360288|EC|1|Glades\n-2480208|EX|15|Glades\n-2400212|KS|1|Glades\n-1840228|MS|1|Glades\n-1840196|KS|1|Glades\n-2200184|KS|1|Glades\n-1800156|KS|1|Glades\n-2200148|KS|1|Glades\n-2160176|AC|1|Glades\n-1560188|EC|1|Glades\n-1680140|AC|1|Glades\n-560160|SK|2|Grove\n399844|NO|0|Grove\n39804|EX|100|Glades\n-160096|EX|100|Grove\n639888|AC|1|Grove\n1479880|HC|1|Grove\n599844|EC|1|Grove\n919908|AC|1|Grove\n1519708|EX|100|Blackroot\n1799708|AC|1|Blackroot\n1959768|EX|100|Blackroot\n2919744|SK|50|Blackroot\n3119768|NO|0|Blackroot\n3039696|EX|100|Blackroot\n3439744|MS|1|Blackroot\n3919688|HC|1|Blackroot\n4159708|NO|0|Blackroot\n4319676|EX|100|Blackroot\n719620|SK|51|Blackroot\n2239640|EX|100|Blackroot\n2519668|AC|1|Blackroot\n2759624|AC|1|Blackroot\n3879576|AC|1|Blackroot\n3359580|EX|100|Blackroot\n2079568|AC|1|Blackroot\n4559492|AC|1|Blackroot\n4599508|EX|100|Blackroot\n3039472|EX|100|Blackroot\n5239456|AC|1|Blackroot\n2999904|MS|1|Grove\n6999916|AC|1|Swamp\n6159900|EX|100|Swamp\n3479880|NO|0|Grove\n3319936|AC|1|Grove\n3639880|NO|0|Grove\n3279920|NO|0|Grove\n6279880|NO|0|Swamp\n4319860|NO|0|Grotto\n5119900|NO|0|Swamp\n3519820|AC|1|Grove\n6639952|EX|200|Swamp\n4079964|AC|1|Swamp\n1719892|EX|200|Grove\n2599880|HC|1|Grove\n2719900|EC|1|Grove\n1839836|EX|100|Grove\n3359784|AC|1|Grove\n3559792|EX|200|Grotto\n4759860|EX|100|Grotto\n4319892|EX|100|Grotto\n3639888|EX|100|Grove\n5799932|HC|1|Swamp\n5399780|NO|0|Grotto\n4479832|EX|200|Grotto\n4999892|AC|1|Swamp\n5919864|EX|200|Swamp\n5399808|HC|1|Grotto\n4199724|EX|100|Grotto\n4239780|HC|1|Grotto\n5519856|EX|100|Grotto\n5359824|NO|0|Grotto\n4479704|AC|1|Grotto\n5119584|MS|1|Grotto\n6199596|KS|1|Grotto\n5719620|EX|100|Grotto\n5879616|KS|1|Grotto\n4959628|EX|15|Grotto\n4639628|EX|15|Grotto\n4479568|AC|1|Grotto\n4759608|NO|0|Grotto\n7839588|SK|5|Grotto\n7559600|EX|100|Grotto\n5439640|EC|1|Grotto\n5639752|EX|100|Grotto\n0|EV|0|Grotto\n4039612|EX|100|Grotto\n3919624|HC|1|Grotto\n3279644|EX|100|Grotto\n4439632|NO|0|Grotto\n4359656|NO|0|Grotto\n4919600|NO|0|Grotto\n3959588|EX|100|Grotto\n5119556|EC|1|Grotto\n5039560|EX|200|Grotto\n6399872|AC|1|Swamp\n3199820|HC|1|Grove\n3399820|NO|0|Grove\n5200140|EX|100|Ginso\n5280264|KS|1|Ginso\n5400276|KS|1|Ginso\n5080304|KS|1|Ginso\n5280296|KS|1|Ginso\n5400100|NO|0|Ginso\n5320328|SK|0|Ginso\n5160336|EX|100|Ginso\n5040476|KS|1|Ginso\n5320488|KS|1|Ginso\n5280500|KS|1|Ginso\n5080496|KS|1|Ginso\n5160384|EX|100|Ginso\n5280404|EX|100|Ginso\n5360432|EC|1|Ginso\n4560564|EX|100|Ginso\n4680612|EX|100|Ginso\n6080608|NO|0|Ginso\n5320660|EX|200|Ginso\n5360732|EX|100|Ginso\n5320824|EX|100|Ginso\n5160864|EX|100|Ginso\n4|EV|1|Ginso\n6759868|NO|0|Swamp\n6359836|EX|100|Swamp\n7599824|EX|100|Swamp\n6839792|KS|1|Swamp\n7639816|KS|1|Swamp\n7959788|MS|1|Swamp\n7679852|EX|100|Swamp\n7199904|EC|1|Swamp\n8599904|SK|4|Swamp\n9119928|EX|200|Swamp\n8839900|EX|100|Swamp\n8719856|EX|200|Swamp\n959960|EX|200|Grove\n1720000|EC|1|Grove\n1240020|NO|0|Grove\n1759964|AC|1|Grove\n1599920|HC|1|Grove\n560340|NO|0|Horu\n-319852|EX|200|Horu\n-1919808|EX|200|Horu\n120164|EX|200|Horu\n1920384|EX|100|Horu\n1480360|MS|1|Horu\n2480400|EC|1|Horu\n3160244|NO|0|Horu\n1880164|EX|200|Horu\n2520192|EX|200|Horu\n1600136|EX|200|Horu\n1280164|EX|200|Horu\n1040112|EX|200|Horu\n960128|EX|200|Horu\n20|EV|5|Horu\n-2080116|AC|1|Valley\n-2240084|EX|100|Valley\n-1800088|NO|0|Valley\n-3200164|EC|1|Valley\n-3559936|AC|1|Valley\n-4199936|EX|100|Valley\n-2919980|AC|1|Valley\n-4600020|SK|14|Valley\n-5479948|EX|200|Sorrow\n-6800032|EX|100|Misty\n-8240012|EX|100|Misty\n-4080172|NO|0|Valley\n-4680068|NO|0|Valley\n-5719844|EX|200|Sorrow\n-3600088|EX|100|Valley\n-4160080|AC|1|Valley\n-4600188|AC|1|Valley\n-3520100|AC|1|Valley\n-5640092|MS|1|Valley\n-5400104|EX|100|Valley\n-4600256|EX|100|Valley\n-5160280|EX|100|Valley\n-5400236|EX|200|Valley\n-4440152|MS|1|Valley\n-7040392|EX|200|Forlorn\n-8440352|EX|100|Forlorn\n-8600356|KS|1|Forlorn\n-8920328|KS|1|Forlorn\n-8880252|KS|1|Forlorn\n-8720256|KS|1|Forlorn\n-8440308|NO|0|Forlorn\n-8160268|NO|0|Forlorn\n-6280316|HC|1|Forlorn\n12|EV|3|Forlorn\n-6080316|NO|0|Forlorn\n-5119796|AC|1|Sorrow\n-4879680|KS|1|Sorrow\n-5039728|KS|1|Sorrow\n-5159700|KS|1|Sorrow\n-5959772|KS|1|Sorrow\n-4519716|NO|0|Sorrow\n-4359680|MS|1|Sorrow\n-6119704|HC|1|Sorrow\n-6719712|AC|1|Sorrow\n-6079672|KS|1|Sorrow\n-6119656|KS|1|Sorrow\n-6039640|KS|1|Sorrow\n-6159632|KS|1|Sorrow\n-6279608|EC|1|Sorrow\n-6319752|NO|0|Sorrow\n-6799732|EX|200|Sorrow\n-4559584|KS|1|Sorrow\n-4159572|KS|1|Sorrow\n-5159576|KS|1|Sorrow\n-5479592|EX|100|Sorrow\n-5919556|KS|1|Sorrow\n-6959592|SK|2|Sorrow\n-6479528|AC|1|Sorrow\n16|EV|4|Sorrow\n-4799416|NO|0|Sorrow\n-9799980|EX|100|Misty\n-10760004|AC|1|Misty\n-10839992|EX|100|Misty\n-10120036|EX|100|Misty\n-10759968|KS|1|Misty\n-11880100|SK|12|Misty\n-11040068|NO|0|Misty\n-8400124|EX|100|Misty\n-7960144|EX|200|Misty\n-9120036|KS|1|Misty\n-7680144|KS|1|Misty\n8|EV|2|Misty\n-6720040|EX|200|Misty\n', 'This seed is vanilla'])]);
+		}
+		else {
+			$m['placements'] = $m['placeItemsMulti'](seed, exp_pool, hard, includePlants, shards, limitkeys, clues, no_teleporters, modes, flags, syncFlags, starved, prefer_path_difficulty, non_progressive_mapstones, playerCountIn, balanced, entrance);
+		}
+		$m.genButton['setText']($p['__op_add']($add473=$p['__op_add']($add471='Seed ',$add472=seed),$add474=' generated. New seed?'));
 		$m['downloadPlayerID'] = 0;
 		$m['downloadSpoilerID'] = 0;
 		$m['spoilerButton']['setStyleName']('active_button');
@@ -2049,22 +2059,22 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 	$m['generate'].__bind_type__ = 0;
 	$m['generate'].__args__ = [null,null];
 	$m['download_seed'] = function() {
-		var dl,$add476,$add470,$add471,element,$add468,$add469,$add475,$add474,$add472,$mod9,$add467,$add473,$mod10;
+		var dl,$mod10,element,$add484,$add479,$add478,$add482,$add483,$add475,$add480,$add477,$add476,$mod9,$add481;
 		if ($p['bool']((typeof placements == "undefined"?$m.placements:placements))) {
 			element = $m['DOM']['createElement']('a');
-			element['setAttribute']('href', $p['__op_add']($add467='data:text/plain;charset=utf-8,',$add468=(typeof encodeURIComponent == "undefined"?$m.encodeURIComponent:encodeURIComponent)((typeof placements == "undefined"?$m.placements:placements).__getitem__($m['downloadPlayerID']).__getitem__(0))));
+			element['setAttribute']('href', $p['__op_add']($add475='data:text/plain;charset=utf-8,',$add476=(typeof encodeURIComponent == "undefined"?$m.encodeURIComponent:encodeURIComponent)((typeof placements == "undefined"?$m.placements:placements).__getitem__($m['downloadPlayerID']).__getitem__(0))));
 			element['setAttribute']('download', 'randomizer.dat');
 			$p['getattr'](element, 'style').display = 'none';
 			dl = $m['DOM']['getElementById']('dl');
 			$m['DOM']['appendChild'](dl, element);
 			element['click']();
 			$m['DOM']['removeChild'](dl, element);
-			$m['downloadPlayerID'] = $p['__op_add']($add469=$m['downloadPlayerID'],$add470=1);
+			$m['downloadPlayerID'] = $p['__op_add']($add477=$m['downloadPlayerID'],$add478=1);
 			$m['downloadPlayerID'] = (typeof ($mod9=$m['downloadPlayerID'])==typeof ($mod10=$p['len']((typeof placements == "undefined"?$m.placements:placements))) && typeof $mod9=='number'?
 				(($mod9=$mod9%$mod10)<0&&$mod10>0?$mod9+$mod10:$mod9):
 				$p['op_mod']($mod9,$mod10));
 			if ($p['bool'](($p['cmp']($p['len']((typeof placements == "undefined"?$m.placements:placements)), 1) == 1))) {
-				$m['seedButton']['setText']($p['__op_add']($add475=$p['__op_add']($add473='Download Seed (P',$add474=$p['str']($p['__op_add']($add471=$m['downloadPlayerID'],$add472=1))),$add476=')'));
+				$m['seedButton']['setText']($p['__op_add']($add483=$p['__op_add']($add481='Download Seed (P',$add482=$p['str']($p['__op_add']($add479=$m['downloadPlayerID'],$add480=1))),$add484=')'));
 			}
 		}
 		return null;
@@ -2074,22 +2084,22 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 	$m['download_seed'].__bind_type__ = 0;
 	$m['download_seed'].__args__ = [null,null];
 	$m['download_spoiler'] = function() {
-		var dl,$mod11,$mod12,$add480,element,$add484,$add485,$add486,$add478,$add482,$add483,$add479,$add477,$add481;
+		var dl,$mod11,$mod12,element,$add485,$add486,$add487,$add492,$add491,$add490,$add493,$add494,$add488,$add489;
 		if ($p['bool']((typeof placements == "undefined"?$m.placements:placements))) {
 			element = $m['DOM']['createElement']('a');
-			element['setAttribute']('href', $p['__op_add']($add477='data:text/plain;charset=utf-8,',$add478=(typeof encodeURIComponent == "undefined"?$m.encodeURIComponent:encodeURIComponent)((typeof placements == "undefined"?$m.placements:placements).__getitem__($m['downloadSpoilerID']).__getitem__(1))));
+			element['setAttribute']('href', $p['__op_add']($add485='data:text/plain;charset=utf-8,',$add486=(typeof encodeURIComponent == "undefined"?$m.encodeURIComponent:encodeURIComponent)((typeof placements == "undefined"?$m.placements:placements).__getitem__($m['downloadSpoilerID']).__getitem__(1))));
 			element['setAttribute']('download', 'spoiler.txt');
 			$p['getattr'](element, 'style').display = 'none';
 			dl = $m['DOM']['getElementById']('dl');
 			$m['DOM']['appendChild'](dl, element);
 			element['click']();
 			$m['DOM']['removeChild'](dl, element);
-			$m['downloadSpoilerID'] = $p['__op_add']($add479=$m['downloadSpoilerID'],$add480=1);
+			$m['downloadSpoilerID'] = $p['__op_add']($add487=$m['downloadSpoilerID'],$add488=1);
 			$m['downloadSpoilerID'] = (typeof ($mod11=$m['downloadSpoilerID'])==typeof ($mod12=$p['len']((typeof placements == "undefined"?$m.placements:placements))) && typeof $mod11=='number'?
 				(($mod11=$mod11%$mod12)<0&&$mod12>0?$mod11+$mod12:$mod11):
 				$p['op_mod']($mod11,$mod12));
 			if ($p['bool'](($p['cmp']($p['len']((typeof placements == "undefined"?$m.placements:placements)), 1) == 1))) {
-				$m['spoilerButton']['setText']($p['__op_add']($add485=$p['__op_add']($add483='Download Spoiler (P',$add484=$p['str']($p['__op_add']($add481=$m['downloadSpoilerID'],$add482=1))),$add486=')'));
+				$m['spoilerButton']['setText']($p['__op_add']($add493=$p['__op_add']($add491='Download Spoiler (P',$add492=$p['str']($p['__op_add']($add489=$m['downloadSpoilerID'],$add490=1))),$add494=')'));
 			}
 		}
 		return null;
@@ -2346,5 +2356,5 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 
 
 /*
-PYJS_DEPS: ['re', 'math', 'time', 'pyjd', 'pyjamas.ui.RootPanel.RootPanel', 'pyjamas', 'pyjamas.ui', 'pyjamas.ui.RootPanel', 'pyjamas.ui.VerticalPanel.VerticalPanel', 'pyjamas.ui.VerticalPanel', 'pyjamas.ui.HorizontalPanel.HorizontalPanel', 'pyjamas.ui.HorizontalPanel', 'pyjamas.ui.DisclosurePanel.DisclosurePanel', 'pyjamas.ui.DisclosurePanel', 'pyjamas.ui.HasAlignment', 'pyjamas.ui.Button.Button', 'pyjamas.ui.Button', 'pyjamas.ui.RadioButton.RadioButton', 'pyjamas.ui.RadioButton', 'pyjamas.ui.CheckBox.CheckBox', 'pyjamas.ui.CheckBox', 'pyjamas.ui.HTML.HTML', 'pyjamas.ui.HTML', 'pyjamas.ui.ListBox.ListBox', 'pyjamas.ui.ListBox', 'pyjamas.ui.TextBox.TextBox', 'pyjamas.ui.TextBox', 'pyjamas.DOM']
+PYJS_DEPS: ['re', 'math', 'time', 'datetime', 'pyjd', 'pyjamas.ui.RootPanel.RootPanel', 'pyjamas', 'pyjamas.ui', 'pyjamas.ui.RootPanel', 'pyjamas.ui.VerticalPanel.VerticalPanel', 'pyjamas.ui.VerticalPanel', 'pyjamas.ui.HorizontalPanel.HorizontalPanel', 'pyjamas.ui.HorizontalPanel', 'pyjamas.ui.DisclosurePanel.DisclosurePanel', 'pyjamas.ui.DisclosurePanel', 'pyjamas.ui.HasAlignment', 'pyjamas.ui.Button.Button', 'pyjamas.ui.Button', 'pyjamas.ui.RadioButton.RadioButton', 'pyjamas.ui.RadioButton', 'pyjamas.ui.CheckBox.CheckBox', 'pyjamas.ui.CheckBox', 'pyjamas.ui.HTML.HTML', 'pyjamas.ui.HTML', 'pyjamas.ui.ListBox.ListBox', 'pyjamas.ui.ListBox', 'pyjamas.ui.TextBox.TextBox', 'pyjamas.ui.TextBox', 'pyjamas.DOM']
 */
