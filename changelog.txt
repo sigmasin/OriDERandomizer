@@ -1,4 +1,20 @@
 
+v2.6
+
+DLL changes:
+
+-Added OriDERandoDecoder.dll to decrypt tournament seeds. Place this in the same directory as Assembly-CSharp.dll
+-When activating a skill tree, seed progress is now shown automatically
+-Sein now follows Ori when using Alt+R
+-Added RandomizerSettings.txt (created automatically on launch). Currently, the only setting is choosing the deadzone for controller bashing (an number between 0 and 1, higher = more deadzone). Alt+L after changing this setting will make it take effect.
+
+Seed generator changes:
+
+-Clues mode is now the default selection on the web seed generator
+-Inputting "daily" (no quotes, case insensitive) into the seed field will now use the current day to seed the generator
+-Inputting "vanilla" (no quotes, case insensitive) into the seed field will return a seed with everything in its vanilla location
+
+
 v2.5
 
 To update to v2.5, please delete RandomizerRebindings.txt in steamapps/common/Ori DE. A new default file will automatically be created. Note: to experiment with new binds, reloading the seed will also reload your binds (you don't have to restart the game).
