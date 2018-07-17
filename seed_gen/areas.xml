@@ -1229,7 +1229,6 @@
           <Requirement mode="extended">ChargeJump+Climb+Grenade</Requirement>
           <Requirement mode="extended">Bash+Grenade</Requirement>
           <Requirement mode="extended">DoubleJump</Requirement>
-          <Requirement mode="glitched">Free</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -2110,18 +2109,9 @@
       </Location>
     </Locations>
     <Connections>
-      <Connection>
-        <Home name="UpperGrottoOrbs"/>
-        <Target name="UpperGrottoOrbsPlant"/>
-        <Requirements>
-          <Requirement mode="normal">ChargeFlame</Requirement>
-          <Requirement mode="normal">Grenade</Requirement>
-          <Requirement mode="cdash">Dash</Requirement>
-        </Requirements>
-      </Connection>
     </Connections>
   </Area>
-  <Area name="UpperGrottoOrbsPlant">
+  <Area name="RightGrottoHealthPlant">
     <Locations>
       <Location>
         <X>540</X>
@@ -2184,6 +2174,15 @@
       </Location>
     </Locations>
     <Connections>
+      <Connection>
+        <Home name="RightGrottoHealth"/>
+        <Target name="RightGrottoHealthPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="MoonGrottoEnergyWater">
@@ -2337,6 +2336,17 @@
           <Requirement mode="normal">WallJump+DoubleJump</Requirement>
           <Requirement mode="normal">Climb+ChargeJump</Requirement>
           <Requirement mode="normal">WallJump+ChargeJump</Requirement>
+          <Requirement mode="normal">Grenade+Bash</Requirement>
+          <Requirement mode="extreme">WallJump+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="GumoHideoutLeft"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Grenade+Bash+Climb</Requirement>
+          <Requirement mode="normal">WallJump+Glide+Wind</Requirement>
           <Requirement mode="extreme">WallJump+Bash</Requirement>
         </Requirements>
       </Connection>
@@ -2538,13 +2548,6 @@
         <Difficulty>1</Difficulty>
         <Zone>Grotto</Zone>
       </Location>
-      <Location>
-        <X>328</X>
-        <Y>-353</Y>
-        <Item>EX100</Item>
-        <Difficulty>2</Difficulty>
-        <Zone>Grotto</Zone>
-      </Location>
     </Locations>
     <Connections>
       <Connection>
@@ -2633,6 +2636,19 @@
         <X>505</X>
         <Y>-439</Y>
         <Item>EX200</Item>
+        <Difficulty>2</Difficulty>
+        <Zone>Grotto</Zone>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="GumoHideoutLeft">
+    <Locations>
+      <Location>
+        <X>328</X>
+        <Y>-353</Y>
+        <Item>EX100</Item>
         <Difficulty>2</Difficulty>
         <Zone>Grotto</Zone>
       </Location>
@@ -3017,8 +3033,8 @@
         <Home name="Swamp"/>
         <Target name="SwampStomp"/>
         <Requirements>
-          <Requirement mode="normal">Stomp</Requirement>
-          <Requirement mode="extended">Climb+ChargeJump</Requirement>
+          <Requirement mode="dboost-light">Stomp</Requirement>
+          <Requirement mode="normal">Stomp+Water</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3152,6 +3168,7 @@
         <Requirements>
           <Requirement mode="normal">Stomp</Requirement>
           <Requirement mode="normal">Bash</Requirement>
+          <Requirement mode="extended">ChargeFlame</Requirement>
         </Requirements>
       </Connection>
       <Connection>
