@@ -6,7 +6,7 @@ DLL changes:
 -Added OriDERandoDecoder.dll to decrypt tournament seeds. Place this in the same directory as Assembly-CSharp.dll
 -When activating a skill tree, seed progress is now shown automatically
 -Sein now follows Ori when using Alt+R
--Added RandomizerSettings.txt (created automatically on launch). Currently, the only setting is choosing the deadzone for controller bashing (an number between 0 and 1, higher = more deadzone). Alt+L after changing this setting will make it take effect.
+-Added RandomizerSettings.txt (created automatically on launch). Currently, the only setting is choosing the deadzone for controller bashing (a number between 0 and 1, higher = more deadzone). Alt+L after changing this setting will make it take effect.
 
 Seed generator changes:
 
