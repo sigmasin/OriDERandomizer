@@ -100,11 +100,11 @@
         <Home name="SunkenGladesRunaway"/>
         <Target name="Forlorn"/>
         <Requirements>
-          <Requirement mode="dboost-light">ForlornKey+TPForlorn+DoubleJump+ChargeJump</Requirement>
-          <Requirement mode="dboost-light">ForlornKey+TPForlorn+DoubleJump+Bash</Requirement>
+          <Requirement mode="dboost-light">ForlornKey+TPForlorn+WallJump+DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="dboost-light">ForlornKey+TPForlorn+WallJump+DoubleJump+Bash</Requirement>
           <Requirement mode="dboost-light">ForlornKey+TPForlorn+Glide+ChargeJump</Requirement>
-          <Requirement mode="dboost-light">ForlornKey+TPForlorn+Glide+Bash</Requirement>
           <Requirement mode="dboost-light">ForlornKey+TPForlorn+Grenade+Bash</Requirement>
+          <Requirement mode="extended-damage">ForlornKey+TPForlorn+Glide+Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -305,12 +305,9 @@
       </Connection>
       <Connection>
         <Home name="WallJump"/>
-        <Target name="SpiritCaverns"/>
+        <Target name="SpiritCavernsDoor"/>
         <Requirements>
-          <Requirement mode="normal">KS+KS+Climb</Requirement>
-          <Requirement mode="normal">KS+KS+WallJump</Requirement>
-          <Requirement mode="normal">KS+KS+ChargeJump</Requirement>
-          <Requirement mode="normal">KS+KS+Bash+Grenade</Requirement>
+          <Requirement mode="normal">KS+KS</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -372,13 +369,6 @@
         <Item>EX100</Item>
         <Difficulty>0</Difficulty>
         <Zone>Grove</Zone>
-      </Location>
-      <Location>
-        <X>423</X>
-        <Y>-169</Y>
-        <Item>EC</Item>
-        <Difficulty>0</Difficulty>
-        <Zone>Grotto</Zone>
       </Location>
     </Locations>
     <Connections>
@@ -502,6 +492,22 @@
       </Location>
     </Locations>
     <Connections>
+    </Connections>
+  </Area>
+  <Area name="SpiritCavernsDoor">
+    <Locations>
+    </Locations>
+    <Connections>
+      <Connection>
+        <Home name="SpiritCavernsDoor"/>
+        <Target name="SpiritCaverns"/>
+        <Requirements>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="SpiritCaverns">
@@ -1649,6 +1655,13 @@
   </Area>
   <Area name="MoonGrotto">
     <Locations>
+      <Location>
+        <X>423</X>
+        <Y>-169</Y>
+        <Item>EC</Item>
+        <Difficulty>0</Difficulty>
+        <Zone>Grotto</Zone>
+      </Location>
     </Locations>
     <Connections>
       <Connection>
@@ -4083,6 +4096,8 @@
         <Home name="ValleyEntry"/>
         <Target name="ValleyEntryTreePlant"/>
         <Requirements>
+          <Requirement mode="normal">ChargeJump+ChargeFlame</Requirement>
+          <Requirement mode="extended">WallJump+ChargeFlame</Requirement>
           <Requirement mode="extended">Grenade</Requirement>
         </Requirements>
       </Connection>
@@ -4635,7 +4650,10 @@
         <Home name="ForlornInnerDoor"/>
         <Target name="Forlorn"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="extended">Free</Requirement>
         </Requirements>
       </Connection>
     </Connections>
