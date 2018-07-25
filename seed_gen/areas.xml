@@ -1093,9 +1093,10 @@
         <Home name="RazielNo"/>
         <Target name="BlackrootGrottoConnection"/>
         <Requirements>
-          <Requirement mode="normal">Dash+DoubleJump</Requirement>
-          <Requirement mode="normal">Dash+ChargeJump</Requirement>
+          <Requirement mode="normal">Dash+WallJump</Requirement>
+          <Requirement mode="normal">Dash+Climb</Requirement>
           <Requirement mode="normal">Dash+Bash+Grenade</Requirement>
+          <Reuqirement mode="normal">Dash+ChargeJump</Reuqirement>
           <Requirement mode="speed">ChargeJump+Climb</Requirement>
           <Requirement mode="speed">ChargeJump+WallJump</Requirement>
           <Requirement mode="speed">Bash+Grenade</Requirement>
