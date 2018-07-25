@@ -1048,7 +1048,6 @@
           <Requirement mode="normal">Bash+Grenade</Requirement>
           <Requirement mode="normal">Glide+WallJump+Grenade</Requirement>
           <Requirement mode="extended">DoubleJump+Grenade</Requirement>
-          <Requirement mode="extended">DoubleJump+ChargeFlame</Requirement>
           <Requirement mode="cdash-farming">ChargeJump+Climb+Dash</Requirement>
           <Requirement mode="cdash-farming">ChargeJump+WallJump+Dash</Requirement>
           <Requirement mode="cdash-farming">DoubleJump+Dash</Requirement>
