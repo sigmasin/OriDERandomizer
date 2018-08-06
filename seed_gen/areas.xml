@@ -422,6 +422,19 @@
       </Connection>
     </Connections>
   </Area>
+  <Area name="DeathGauntletEC">
+    <Locations>
+      <Location>
+        <X>423</X>
+        <Y>-169</Y>
+        <Item>EC</Item>
+        <Difficulty>0</Difficulty>
+        <Zone>Grotto</Zone>
+      </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
   <Area name="WallJumpMapStone">
     <Locations>
       <Location>
@@ -548,12 +561,12 @@
         <Target name="SpiritCavernsTopRight"/>
         <Requirements>
           <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
           <Requirement mode="normal">DoubleJump</Requirement>
           <Requirement mode="dboost-light">ChargeJump</Requirement>
           <Requirement mode="dboost-light">Bash+WallJump</Requirement>
           <Requirement mode="dboost-light">Bash+Climb</Requirement>
           <Requirement mode="lure-hard">Bash</Requirement>
-          <Requirement mode="extreme">Climb</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -585,8 +598,11 @@
         <Home name="SpiritCaverns"/>
         <Target name="SpiritTreeRefined"/>
         <Requirements>
-          <!-- will cause some painted-into-corner scenarios, revisit this if it is too much -->
-          <Requirement mode="normal">KS+KS+KS+KS</Requirement>
+          <Requirement mode="normal">WallJump+KS+KS+KS+KS</Requirement>
+          <Requirement mode="normal">Climb+KS+KS+KS+KS</Requirement>
+          <Requirement mode="normal">ChargeJump+KS+KS+KS+KS</Requirement>
+          <Requirement mode="normal">Bash+Grenade+KS+KS+KS+KS</Requirement>
+          <Requirement mode="extreme">Bash+KS+KS+KS+KS</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -1689,13 +1705,6 @@
   </Area>
   <Area name="MoonGrotto">
     <Locations>
-      <Location>
-        <X>423</X>
-        <Y>-169</Y>
-        <Item>EC</Item>
-        <Difficulty>0</Difficulty>
-        <Zone>Grotto</Zone>
-      </Location>
     </Locations>
     <Connections>
       <Connection>
@@ -1714,6 +1723,16 @@
       <Connection>
         <Home name="MoonGrotto"/>
         <Target name="DeathGauntlet"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="DeathGauntletEC"/>
         <Requirements>
           <Requirement mode="normal">WallJump</Requirement>
           <Requirement mode="normal">Climb</Requirement>
