@@ -1053,7 +1053,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
 
     outputStr += ("-280256|EC|1|Glades\r\n")  # first energy cell
     outputStr += ("-1680104|EX|100|Grove\r\n")  # glitchy 100 orb at spirit tree
-    outputStr += ("-12320248|EX|100|Forlorn\r\n")  # forlorn escape plant
+    outputStr += ("-12320248|SK|51|Forlorn\r\n")  # forlorn escape plant
     # the 2nd keystone in misty can get blocked by alt+R, so make it unimportant
     outputStr += ("-10440008|EX|100|Misty\r\n")
 
@@ -1653,7 +1653,7 @@ def main():
 
     title = HTML("Ori DE Randomizer (v2.6.1)", StyleName="title")
     if datetime.datetime.now().date() > datetime.date(2018,8,3):
-        title = HTML("Ori DE Randomizer (v2.6.2)", StyleName="title")
+        title = HTML("Ori DE Randomizer (v2.6.3)", StyleName="title")
 
     row0.add(title)
 
