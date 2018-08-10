@@ -2194,6 +2194,8 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections>
+    </Connections>
   </Area>
   <Area name="RightGrottoHealthPlant">
     <Locations>

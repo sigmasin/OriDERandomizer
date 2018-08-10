@@ -24044,7 +24044,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 		}
 		if ($p['bool']($p['op_eq'](seed['strip']()['lower'](), 'daily'))) {
 			now = $m['datetime']['datetime']['now']();
-			seed = $p['__op_add']($add421=$p['__op_add']($add419=$p['__op_add']($add417=$p['__op_add']($add415=$p['str']($p['getattr'](now, 'year'))['zfill'](4),$add416='-'),$add418=$p['str']($p['getattr'](now, 'month'))['zfill'](2)),$add420='-'),$add422=$p['str']($p['getattr'](now, 'day'))['zfill'](2));
+			seed = $p['__op_add']($add421=$p['__op_add']($add419=$p['__op_add']($add417=$p['__op_add']($add415=$p['str']($p['str']($p['getattr'](now, 'year'))['zfill'](4)),$add416='-'),$add418=$p['str']($p['str']($p['getattr'](now, 'month'))['zfill'](2))),$add420='-'),$add422=$p['str']($p['str']($p['getattr'](now, 'day'))['zfill'](2)));
 		}
 		hard = $m.hardBox['isChecked']();
 		exp_pool = 10000;
@@ -24344,7 +24344,7 @@ $pyjs.loaded_modules['web_seed_generator'] = function (__mod_name__) {
 		panel['add'](row5);
 		title = $pyjs_kwargs_call(null, $m['HTML'], null, null, [{StyleName:'title'}, 'Ori DE Randomizer (v2.6.3)']);
 		if ($p['bool'](($p['cmp']($m['datetime']['datetime']['now']()['date'](), $m['datetime']['date'](2018, 8, 6)) == 1))) {
-			title = $pyjs_kwargs_call(null, $m['HTML'], null, null, [{StyleName:'title'}, 'Ori DE Randomizer (v2.6.4)']);
+			title = $pyjs_kwargs_call(null, $m['HTML'], null, null, [{StyleName:'title'}, 'Ori DE Randomizer (v2.6.5)']);
 		}
 		row0['add'](title);
 		row1_1 = $pyjs_kwargs_call(null, $m['HorizontalPanel'], null, null, [{StyleName:'inner_row'}]);

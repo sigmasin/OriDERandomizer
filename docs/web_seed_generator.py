@@ -1386,7 +1386,7 @@ def generate():
         seed = str(0x7FFFFFFF & (time.time() * 1000))
     if seed.strip().lower() == "daily":
         now = datetime.datetime.now()
-        seed = str(now.year).zfill(4) + "-" + str(now.month).zfill(2) + "-" + str(now.day).zfill(2)
+        seed = str(str(now.year).zfill(4)) + "-" + str(str(now.month).zfill(2)) + "-" + str(str(now.day).zfill(2))
     hard = hardBox.isChecked()
     exp_pool = 10000
     if hard:
@@ -1651,7 +1651,7 @@ def main():
 
     title = HTML("Ori DE Randomizer (v2.6.3)", StyleName="title")
     if datetime.datetime.now().date() > datetime.date(2018,8,6):
-        title = HTML("Ori DE Randomizer (v2.6.4)", StyleName="title")
+        title = HTML("Ori DE Randomizer (v2.6.5)", StyleName="title")
 
     row0.add(title)
 
