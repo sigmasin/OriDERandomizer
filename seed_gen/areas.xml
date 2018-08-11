@@ -1701,6 +1701,29 @@
       </Location>
     </Locations>
     <Connections>
+      <Connection>
+        <Home name="RightGinso"/>
+        <Target name="RightGinsoHealth"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="RightGinsoHealth">
+    <Locations>
+      <Location>
+        <X>581</X>
+        <Y>-67</Y>
+        <Item>HC</Item>
+        <Difficulty>1</Difficulty>
+        <Zone>Swamp</Zone>
+      </Location>
+    </Locations>
+    <Connections>
     </Connections>
   </Area>
   <Area name="MoonGrotto">
@@ -1716,8 +1739,30 @@
           <Requirement mode="normal">WallJump+DoubleJump</Requirement>
           <Requirement mode="normal">Climb+DoubleJump</Requirement>
           <Requirement mode="normal">Grenade+Bash</Requirement>
+          <Requirement mode="normal">WallJump+Glide</Requirement>
           <Requirement mode="extended">WallJump</Requirement>
           <Requirement mode="extended">Climb</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="Iceless"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Climb+DoubleJump</Requirement>
+          <Requirement mode="normal">Grenade+Bash</Requirement>
+          <Requirement mode="normal">WallJump+Glide</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="RightGinso"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1742,10 +1787,24 @@
       </Connection>
       <Connection>
         <Home name="MoonGrotto"/>
-        <Target name="UpperGrottoOrbs"/>
+        <Target name="UpperGrottoOrb"/>
         <Requirements>
           <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">WallJump+ChargeJump</Requirement>
+          <Requirement mode="normal">Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="UpperGrotto100"/>
+        <Requirements>
+          <Requirement mode="normal">DoubleJump</Requirement>
           <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">Bash+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Climb</Requirement>
           <Requirement mode="extreme">Bash</Requirement>
         </Requirements>
       </Connection>
@@ -1756,7 +1815,7 @@
           <Requirement mode="normal">WallJump+DoubleJump</Requirement>
           <Requirement mode="normal">Climb+DoubleJump+ChargeJump</Requirement>
           <Requirement mode="extended">Grenade+Bash</Requirement>
-          <Requirement mode="dboost">ChargeJump</Requirement>
+          <Requirement mode="dboost">ChargeJump+HC+HC+HC+HC</Requirement>
           <Requirement mode="extreme">Bash</Requirement>
         </Requirements>
       </Connection>
@@ -2150,7 +2209,7 @@
     <Connections>
     </Connections>
   </Area>
-  <Area name="UpperGrottoOrbs">
+  <Area name="UpperGrotto100">
     <Locations>
       <Location>
         <X>477</X>
@@ -2159,6 +2218,12 @@
         <Difficulty>1</Difficulty>
         <Zone>Grotto</Zone>
       </Location>
+    </Locations>
+    <Connections>
+    </Connections>
+  </Area>
+  <Area name="UpperGrottoOrb">
+    <Locations>
       <Location>
         <X>432</X>
         <Y>-108</Y>
@@ -2166,22 +2231,8 @@
         <Difficulty>1</Difficulty>
         <Zone>Grotto</Zone>
       </Location>
-      <Location>
-        <X>581</X>
-        <Y>-67</Y>
-        <Item>HC</Item>
-        <Difficulty>1</Difficulty>
-        <Zone>Swamp</Zone>
-      </Location>
     </Locations>
     <Connections>
-      <Connection>
-        <Home name="UpperGrottoOrbs"/>
-        <Target name="Iceless"/>
-        <Requirements>
-          <Requirement mode="normal">Free</Requirement>
-        </Requirements>
-      </Connection>
     </Connections>
   </Area>
   <Area name="Iceless">
@@ -2195,6 +2246,13 @@
       </Location>
     </Locations>
     <Connections>
+      <Connection>
+        <Home name="Iceless"/>
+        <Target name="HollowGrove"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="RightGrottoHealthPlant">
