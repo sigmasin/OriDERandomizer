@@ -1513,6 +1513,17 @@
       </Connection>
       <Connection>
         <Home name="HollowGrove"/>
+        <Target name="SpiderSacEnergy"/>
+        <Requirements>
+          <Requirement mode="normal">Climb+Glide</Requirement>
+          <Requirement mode="normal">WallJump+Glide</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="extended">DoubleJump</Requirement>
+          <Requirement mode="extended">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
         <Target name="GroveWater"/>
         <Requirements>
           <Requirement mode="normal">Water</Requirement>
@@ -1741,7 +1752,7 @@
           <Requirement mode="normal">Grenade+Bash</Requirement>
           <Requirement mode="normal">WallJump+Glide</Requirement>
           <Requirement mode="extended">WallJump</Requirement>
-          <Requirement mode="extended">Climb</Requirement>
+          <Requirement mode="extended">Climb+Glide</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -1761,7 +1772,9 @@
         <Target name="RightGinso"/>
         <Requirements>
           <Requirement mode="normal">WallJump</Requirement>
-          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">Climb+Glide</Requirement>
+          <Requirement mode="normal">Climb+DoubleJump</Requirement>
+          <Requirement mode="normal">Climb+ChargeJump</Requirement>
           <Requirement mode="normal">Bash+Grenade</Requirement>
         </Requirements>
       </Connection>
@@ -3186,8 +3199,9 @@
         <Target name="SwampEnergy"/>
         <Requirements>
           <Requirement mode="normal">Wind+Glide</Requirement>
-          <Requirement mode="normal">ChargeJump+Climb+Glide</Requirement>
-          <Requirement mode="normal">ChargeJump+Climb+DoubleJump</Requirement>
+          <Requirement mode="speed">ChargeJump+Climb+Glide</Requirement>
+          <Requirement mode="speed">ChargeJump+Climb+DoubleJump</Requirement>
+          <Requirement mode="extended">ChargeJump+Climb+Grenade</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
           <!-- dbash here requires dboosting, but only 2 if done right -->
         </Requirements>
@@ -3874,6 +3888,7 @@
           <Requirement mode="normal">Bash+Glide+ChargeJump+Climb</Requirement>
           <Requirement mode="extended">Bash+Grenade+WallJump</Requirement>
           <Requirement mode="extended">Bash+Grenade+Climb</Requirement>
+          <Requirement mode="extreme">ChargeJump+WallJump+DoubleJump+Glide+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
     </Connections>

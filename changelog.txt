@@ -1,4 +1,41 @@
 
+v2.6.7
+
+-Removed an impossible path, expecting climb-only access to swamp from the grotto teleporter area
+-Accessing the spider sac energy cell from grove with wall interaction and glide is now in standard (when the rest of the spider sac area is still inaccessible)
+
+v2.6.6
+
+-Remove the microledge cjump from the grotto teleporter area up to swamp and grove from standard (was present in error)
+-Climb+Glide is now sufficient to access iceless from grotto
+
+v2.6.5
+
+-Fix an error that was preventing the generation of daily seeds
+
+v2.6.4
+
+-Removed some impossible paths (spirit tree and death gauntlet with no wall interaction)
+
+v2.6.3
+
+-Added a copy of grenade to the plant at the end of the forlorn escape
+
+v2.6.2
+
+-Luring a fronkey into the spirit caverns to access the lower 3 pickups with only bash is now in standard
+-Clean water can no longer appear on the final escape in standard
+-Added several master paths:
+    Bash+CFlame access to the CFlame tree
+    Bashless Horu climb
+    Iceless
+
+v2.6.1
+
+-Wall Jump and Charge Flame now give access to the valley entry plant in expert
+-Forlorn now requires some form of verticality to clear in standard (since you might drop the orb off before clearing the rest)
+-Going over the blackroot boulder no longer requires verticality in standard -- it is assumed that if you know how to glitch the boulder to break it without stomp, you know to get the teleporter before doing so and getting stuck on the low ground
+
 v2.6
 
 DLL changes:
