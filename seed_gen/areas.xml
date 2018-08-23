@@ -1881,7 +1881,13 @@
         <Target name="DrainExp"/>
         <Requirements>
           <Requirement mode="normal">Grenade+Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">Grenade+DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="normal">Grenade+Glide+ChargeJump</Requirement>
           <Requirement mode="speed">Grenade+Bash</Requirement>
+          <Requirement mode="speed">ChargeFlame+DoubleJump+Bash</Requirement>
+          <Requirement mode="speed">ChargeFlame+Glide+Bash</Requirement>
+          <Requirement mode="dboost-light">ChargeFlame+ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="dboost-light">ChargeFlame+ChargeJump+Glide</Requirement>
           <Requirement mode="extended-damage">ChargeFlame+Climb+ChargeJump</Requirement>
           <Requirement mode="extended-damage">ChargeFlame+DoubleJump+WallJump</Requirement>
           <Requirement mode="extended-damage">ChargeFlame+DoubleJump+Climb</Requirement>
@@ -3174,16 +3180,29 @@
         <Target name="DrainExp"/>
         <Requirements>
           <Requirement mode="normal">Water+Climb+ChargeJump</Requirement>
-          <Requirement mode="normal">Water+DoubleJump</Requirement>
-          <Requirement mode="normal">Water+Glide</Requirement>
-          <Requirement mode="normal">Water+Dash</Requirement>
-          <Requirement mode="normal">Water+Bash+Grenade</Requirement>
-          <Requirement mode="dbash">Water+Bash</Requirement>
-          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+Climb+ChargeJump</Requirement>
-          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+DoubleJump</Requirement>
-          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+Glide</Requirement>
-          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+Dash</Requirement>
+          <Requirement mode="normal">Water+DoubleJump+Climb</Requirement>
+          <Requirement mode="normal">Water+DoubleJump+WallJump</Requirement>
+          <Requirement mode="normal">Water+DoubleJump+Glide+ChargeJump</Requirement>
+          <Requirement mode="normal">Water+ChargeFlame+Stomp+Glide+WallJump</Requirement>
+          <Requirement mode="normal">Water+Grenade+Stomp+Glide+WallJump</Requirement>
+          <Requirement mode="normal">Water+Grenade+Bash+Climb</Requirement>
+          <Requirement mode="normal">Water+Grenade+Bash+WallJump</Requirement>
+          <Requirement mode="normal">Water+Grenade+Bash+Glide</Requirement>
+          <Requirement mode="normal">Water+Grenade+Bash+DoubleJump</Requirement>
+          <Requirement mode="normal">Water+Dash+Glide+Climb</Requirement>
+          <Requirement mode="extended">Water+Dash+Glide+WallJump</Requirement>
+          <Requirement mode="extended">Water+DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="dboost">HC+HC+HC+HC+Water+Grenade+Bash</Requirement>
+          <Requirement mode="extreme">Water+Bash</Requirement>
           <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+Bash</Requirement>
+          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+Climb+ChargeJump</Requirement>
+          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+DoubleJump+Climb</Requirement>
+          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+DoubleJump+WallJump</Requirement>
+          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+ChargeFlame+Stomp+Glide+WallJump</Requirement>
+          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+Grenade+Stomp+Glide+WallJump</Requirement>
+          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+Dash+Glide+Climb</Requirement>
+          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+Dash+Glide+WallJump</Requirement>
+          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+DoubleJump+ChargeJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
