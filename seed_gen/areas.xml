@@ -3185,10 +3185,16 @@
           <Requirement mode="normal">Water+DoubleJump+Glide+ChargeJump</Requirement>
           <Requirement mode="normal">Water+ChargeFlame+Stomp+Glide+WallJump</Requirement>
           <Requirement mode="normal">Water+Grenade+Stomp+Glide+WallJump</Requirement>
+          <Requirement mode="normal">Water+Grenade+Bash+Climb</Requirement>
+          <Requirement mode="normal">Water+Grenade+Bash+WallJump</Requirement>
+          <Requirement mode="normal">Water+Grenade+Bash+Glide</Requirement>
+          <Requirement mode="normal">Water+Grenade+Bash+DoubleJump</Requirement>
           <Requirement mode="normal">Water+Dash+Glide+Climb</Requirement>
           <Requirement mode="extended">Water+Dash+Glide+WallJump</Requirement>
           <Requirement mode="extended">Water+DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="dboost">HC+HC+HC+HC+Water+Grenade+Bash</Requirement>
           <Requirement mode="extreme">Water+Bash</Requirement>
+          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+Bash</Requirement>
           <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+Climb+ChargeJump</Requirement>
           <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+DoubleJump+Climb</Requirement>
           <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+DoubleJump+WallJump</Requirement>
