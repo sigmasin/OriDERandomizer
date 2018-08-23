@@ -1881,7 +1881,13 @@
         <Target name="DrainExp"/>
         <Requirements>
           <Requirement mode="normal">Grenade+Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">Grenade+DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="normal">Grenade+Glide+ChargeJump</Requirement>
           <Requirement mode="speed">Grenade+Bash</Requirement>
+          <Requirement mode="speed">ChargeFlame+DoubleJump+Bash</Requirement>
+          <Requirement mode="speed">ChargeFlame+Glide+Bash</Requirement>
+          <Requirement mode="dboost-light">ChargeFlame+ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="dboost-light">ChargeFlame+ChargeJump+Glide</Requirement>
           <Requirement mode="extended-damage">ChargeFlame+Climb+ChargeJump</Requirement>
           <Requirement mode="extended-damage">ChargeFlame+DoubleJump+WallJump</Requirement>
           <Requirement mode="extended-damage">ChargeFlame+DoubleJump+Climb</Requirement>
