@@ -3199,23 +3199,6 @@
       </Connection>
       <Connection>
         <Home name="Swamp"/>
-        <Target name="DrainExp"/>
-        <Requirements>
-          <Requirement mode="normal">Water+Climb+ChargeJump</Requirement>
-          <Requirement mode="normal">Water+DoubleJump</Requirement>
-          <Requirement mode="normal">Water+Dash+Glide+Climb</Requirement>
-          <Requirement mode="normal">Water+Bash+Grenade</Requirement>
-          <Requirement mode="extended">Water+Dash+Glide+WallJump</Requirement>
-          <Requirement mode="dbash">Water+Bash</Requirement>
-          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+Climb+ChargeJump</Requirement>
-          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+DoubleJump</Requirement>
-          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+Dash+Glide+Climb</Requirement>
-          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+Dash+Glide+WallJump</Requirement>
-          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC+Bash</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="Swamp"/>
         <Target name="SwampStomp"/>
         <Requirements>
           <Requirement mode="dboost-light">Stomp</Requirement>
