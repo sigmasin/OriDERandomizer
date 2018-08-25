@@ -548,7 +548,7 @@
         <Target name="SpiritCavernsTopLeft"/>
         <Requirements>
           <Requirement mode="normal">WallJump</Requirement>
-          <Requirement mode="normal">DoubleJump</Requirement>
+          <Requirement mode="normal">DoubleJump+Bash</Requirement>
           <Requirement mode="dboost-light">ChargeJump</Requirement>
           <Requirement mode="dboost-light">Bash+WallJump</Requirement>
           <Requirement mode="dboost-light">Bash+Climb</Requirement>
@@ -562,7 +562,7 @@
         <Requirements>
           <Requirement mode="normal">WallJump</Requirement>
           <Requirement mode="normal">Climb</Requirement>
-          <Requirement mode="normal">DoubleJump</Requirement>
+          <Requirement mode="normal">DoubleJump+Bash</Requirement>
           <Requirement mode="dboost-light">ChargeJump</Requirement>
           <Requirement mode="dboost-light">Bash+WallJump</Requirement>
           <Requirement mode="dboost-light">Bash+Climb</Requirement>
