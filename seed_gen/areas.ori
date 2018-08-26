@@ -611,7 +611,7 @@ home: DashArea
 		extended Dash
 home: RazielNoArea
 	loc: RazielNo
-	loc: BoulderExp
+	loc: BlackrootBoulderExp
 		normal Dash Stomp
 		extended Stomp
 		glitched Free
