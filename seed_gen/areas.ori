@@ -1010,8 +1010,6 @@ home: MoonGrottoAirOrb
 		cdash Dash
 home: SideFallCell
 	loc: GrottoHideoutFallAbilityCell
-	loc: GumoHideoutRedirectAbilityCell
-		dboost-light Free
 	conn: GumoHideout
 		normal Free
 	conn: GumoHideoutPartialMobile
@@ -1059,11 +1057,6 @@ home: GumoHideout
 home: GumoHideoutPartialMobile
 	loc: GumoHideoutRightHangingExp
 	loc: GumoHideoutLeftHangingExp
-	loc: LeftGumoHideoutSwim
-		normal Water
-		dboost Free
-	loc: GumoHideoutRedirectAbilityCell
-		dboost-light Free
 	conn: MobileGumoHideoutPlants
 		normal ChargeFlame
 		normal Grenade
