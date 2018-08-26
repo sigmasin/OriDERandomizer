@@ -2799,13 +2799,6 @@
       </Connection>
       <Connection>
         <Home name="SunkenGladesRunaway"/>
-        <Target name="GumoHideoutMapStone"/>
-        <Requirements>
-          <Requirement mode="normal">TPGrotto+Mapstone</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="SunkenGladesRunaway"/>
         <Target name="HollowGrove"/>
         <Requirements>
           <Requirement mode="normal">TPSwamp</Requirement>
@@ -3287,7 +3280,7 @@
       </Connection>
       <Connection>
         <Home name="SpiritTreeRefined"/>
-        <Target name="SpiderSac"/>
+        <Target name="SpiderSacArea"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame+WallJump</Requirement>
           <Requirement mode="normal">ChargeFlame+ChargeJump</Requirement>
@@ -3850,7 +3843,7 @@
       </Connection>
       <Connection>
         <Home name="HollowGrove"/>
-        <Target name="SpiderSac"/>
+        <Target name="SpiderSacArea"/>
         <Requirements>
           <Requirement mode="normal">WallJump+Bash</Requirement>
           <Requirement mode="normal">Climb+Bash</Requirement>
