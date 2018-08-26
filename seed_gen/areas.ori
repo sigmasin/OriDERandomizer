@@ -857,10 +857,10 @@ home: MoonGrotto
 		normal Stomp Bash Grenade
 		normal Stomp ChargeJump
 		extended ChargeJump Climb
-	loc: MoonGrottoEnergyWater
+	loc: GrottoEnergyDoorSwim
 		normal Water Energy=2
 		dboost Energy=2
-	loc: MoonGrottoEnergyTop
+	loc: GrottoEnergyDoorHealthCell
 		normal ChargeJump Energy=2
 		normal WallJump DoubleJump Energy=2
 		speed WallJump Energy=2
@@ -933,7 +933,7 @@ home: MoonGrotto
 		normal DoubleJump ChargeJump WallJump
 		normal DoubleJump ChargeJump Climb
 		normal Glide ChargeJump
-	loc: MoonGrottoAirOrb
+	conn: MoonGrottoAirOrb
 		normal ChargeJump DoubleJump
 		normal Bash WallJump
 		normal Bash Climb
