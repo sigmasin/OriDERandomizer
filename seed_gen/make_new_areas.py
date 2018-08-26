@@ -2,7 +2,7 @@ import lxml.etree as XML
 
 meta = []
 
-with open("areas_meta.txt", 'r') as f:
+with open("areas.ori", 'r') as f:
 	meta = f.readlines()
 
 new_areas = XML.Element("Areas")
@@ -128,7 +128,7 @@ for line in meta:
 		target = tokens[1]
 
 		CloseConnection()
-		OpenConnection(loc)
+		OpenConnection(target)
 	else:
 		assert(area_name)
 		assert(area is not None)
@@ -136,4 +136,4 @@ for line in meta:
 		AddRequirement(tokens)
 
 new_tree = XML.ElementTree(new_areas)
-new_tree.write("areas_new_tmp.xml", pretty_print=True)
+new_tree.write("areas_new.xml", pretty_print=True)
