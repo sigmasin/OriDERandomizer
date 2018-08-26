@@ -109,7 +109,7 @@
       </Location>
     </Locations>
   </Area>
-  <Area name="WallJumpKeystone">
+  <Area name="GladesMapKeystone">
     <Locations>
       <Location>
         <X>-59</X>
@@ -131,7 +131,7 @@
       </Location>
     </Locations>
   </Area>
-  <Area name="LeftWallJumpHiddenExp">
+  <Area name="LeftGladesHiddenExp">
     <Locations>
       <Location>
         <X>-283</X>
@@ -208,7 +208,7 @@
       </Location>
     </Locations>
   </Area>
-  <Area name="LeftWallJumpExp">
+  <Area name="LeftGladesExp">
     <Locations>
       <Location>
         <X>-247</X>
@@ -219,7 +219,7 @@
       </Location>
     </Locations>
   </Area>
-  <Area name="LeftWallJumpKeystone">
+  <Area name="LeftGladesKeystone">
     <Locations>
       <Location>
         <X>-238</X>
@@ -230,7 +230,7 @@
       </Location>
     </Locations>
   </Area>
-  <Area name="LeftWallJumpMapstone">
+  <Area name="LeftGladesMapstone">
     <Locations>
       <Location>
         <X>-184</X>
@@ -912,7 +912,7 @@
       </Location>
     </Locations>
   </Area>
-  <Area name="OuterSwampMortarCell">
+  <Area name="OuterSwampMortarAbilityCell">
     <Locations>
       <Location>
         <X>502</X>
@@ -2100,7 +2100,7 @@
       </Location>
     </Locations>
   </Area>
-  <Area name="OutsideForlornTree">
+  <Area name="OutsideForlornTreeExp">
     <Locations>
       <Location>
         <X>-460</X>
@@ -2111,7 +2111,7 @@
       </Location>
     </Locations>
   </Area>
-  <Area name="OutsideForlornWater">
+  <Area name="OutsideForlornWaterExp">
     <Locations>
       <Location>
         <X>-514</X>
@@ -2122,7 +2122,7 @@
       </Location>
     </Locations>
   </Area>
-  <Area name="OutsideForlornCliff">
+  <Area name="OutsideForlornCliffExp">
     <Locations>
       <Location>
         <X>-538</X>
@@ -2719,23 +2719,3889 @@
         <Requirements>
           <Requirement mode="normal">Grenade+Water</Requirement>
           <Requirement mode="dboost">Grenade+HC+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="dboost">Grenade+HC+HC+HC+HC+HC+Stomp</Requirement>
+          <Requirement mode="dboost">Grenade+Stomp+HC+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="SunkenGladesRunaway"/>
         <Target name="GladesGrenadeTree"/>
         <Requirements>
+          <Requirement mode="normal">Grenade+ChargeJump</Requirement>
+          <Requirement mode="normal">Grenade+Bash</Requirement>
           <Requirement mode="speed">Grenade+WallJump+DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="GladesMainPool"/>
+        <Requirements>
+          <Requirement mode="normal">Water</Requirement>
+          <Requirement mode="dboost">Bash</Requirement>
+          <Requirement mode="dboost">Stomp</Requirement>
+          <Requirement mode="dboost">HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="GladesMainPoolDeep"/>
+        <Requirements>
+          <Requirement mode="normal">Water</Requirement>
+          <Requirement mode="dboost">HC+HC+HC+HC+HC+HC+HC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="FronkeyWalkRoof"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Glide+Wind</Requirement>
+          <Requirement mode="lure">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="WallJump"/>
+        <Requirements>
+          <Requirement mode="normal">KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="DashArea"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="Forlorn"/>
+        <Requirements>
+          <Requirement mode="dboost-light">ForlornKey+TPForlorn+WallJump+DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="dboost-light">ForlornKey+TPForlorn+WallJump+DoubleJump+Bash</Requirement>
+          <Requirement mode="dboost-light">ForlornKey+TPForlorn+Glide+ChargeJump</Requirement>
+          <Requirement mode="dboost-light">ForlornKey+TPForlorn+Grenade+Bash</Requirement>
+          <Requirement mode="extended-damage">ForlornKey+TPForlorn+Glide+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="MoonGrotto"/>
+        <Requirements>
+          <Requirement mode="normal">TPGrotto+ChargeJump</Requirement>
+          <Requirement mode="normal">TPGrotto+WallJump</Requirement>
+          <Requirement mode="normal">TPGrotto+Climb</Requirement>
+          <Requirement mode="normal">TPGrotto+Grenade+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="GumoHideoutMapStone"/>
+        <Requirements>
+          <Requirement mode="normal">TPGrotto+Mapstone</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="HollowGrove"/>
+        <Requirements>
+          <Requirement mode="normal">TPSwamp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="SpiritTreeRefined"/>
+        <Requirements>
+          <Requirement mode="normal">TPGrove</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="ValleyRight"/>
+        <Requirements>
+          <Requirement mode="normal">TPValley+Bash+WallJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="SunstoneArea"/>
+        <Requirements>
+          <Requirement mode="normal">TPSorrow+Glide+Climb+ChargeJump+Stomp</Requirement>
+          <Requirement mode="extended-damage">TPSorrow+Glide+Stomp+ChargeJump+Dash+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dbash">TPSorrow+Glide+Stomp+Bash</Requirement>
+          <Requirement mode="dbash">TPSorrow+Glide+ChargeJump+Bash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="WallJump">
+    <Connections>
+      <Connection>
+        <Home name="WallJump"/>
+        <Target name="FourthHealthCell"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="WallJump"/>
+        <Target name="GladesMapKeystone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="WallJump"/>
+        <Target name="WallJumpSkillTree"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="WallJump"/>
+        <Target name="LeftGladesHiddenExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="WallJump"/>
+        <Target name="AboveFourthHealth"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Climb</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="speed">WallJump+DoubleJump</Requirement>
+          <Requirement mode="extended">Climb+DoubleJump</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="WallJump"/>
+        <Target name="WallJumpAreaExp"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="lure-hard">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="WallJump"/>
+        <Target name="GladesMap"/>
+        <Requirements>
+          <Requirement mode="normal">Mapstone</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="WallJump"/>
+        <Target name="DeathGauntlet"/>
+        <Requirements>
+          <Requirement mode="dboost-light">WallJump+EC+EC+EC+EC</Requirement>
+          <Requirement mode="dboost-light">Climb+EC+EC+EC+EC</Requirement>
+          <Requirement mode="dboost-light">ChargeJump+Bash+EC+EC+EC+EC</Requirement>
+          <Requirement mode="normal">Grenade+Bash+EC+EC+EC+EC</Requirement>
+          <Requirement mode="normal">Climb+DoubleJump+Glide+EC+EC+EC+EC</Requirement>
+          <Requirement mode="normal">WallJump+DoubleJump+Glide+EC+EC+EC+EC</Requirement>
+          <Requirement mode="timed-level">WallJump+EC+EC</Requirement>
+          <Requirement mode="timed-level">Climb+EC+EC</Requirement>
+          <Requirement mode="timed-level">ChargeJump+Bash+EC+EC</Requirement>
+          <Requirement mode="timed-level">Grenade+Bash+EC+EC</Requirement>
+          <Requirement mode="lure">Bash+EC+EC+EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="WallJump"/>
+        <Target name="LeftWallJump"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="lure-hard">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="WallJump"/>
+        <Target name="SpiritCavernsDoor"/>
+        <Requirements>
+          <Requirement mode="normal">KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="WallJump"/>
+        <Target name="GladesLaserArea"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">ChargeJump+WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+Glide</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+Climb</Requirement>
+          <Requirement mode="normal">Bash+Grenade+Climb</Requirement>
+          <Requirement mode="normal">Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="extended">Bash+WallJump</Requirement>
+          <Requirement mode="extended">Bash+Climb</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="cdash-farming">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="WallJump"/>
+        <Target name="LowerChargeFlameArea"/>
+        <Requirements>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="cdash-farming">Dash</Requirement>
+          <Requirement mode="glitched">Dash+Bash+WallJump</Requirement>
+          <Requirement mode="glitched">Dash+Bash+Climb</Requirement>
+          <Requirement mode="glitched">Dash+ChargeJump</Requirement>
+          <Requirement mode="glitched">Dash+WallJump+DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="DeathGauntlet">
+    <Connections>
+      <Connection>
+        <Home name="DeathGauntlet"/>
+        <Target name="DeathGauntletExp"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="DeathGauntlet"/>
+        <Target name="DeathGauntletStompSwim"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp+Water</Requirement>
+          <Requirement mode="dboost">Stomp</Requirement>
+          <Requirement mode="extended-damage">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DeathGauntlet"/>
+        <Target name="DeathGauntletSwimEnergyDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Water+EC+EC+EC+EC</Requirement>
+          <Requirement mode="dboost">EC+EC+EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DeathGauntlet"/>
+        <Target name="DeathGauntletRoof"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DeathGauntlet"/>
+        <Target name="DeathGauntletRoofPlantAccess"/>
+        <Requirements>
+          <Requirement mode="extended">ChargeFlame+DoubleJump+WallJump</Requirement>
+          <Requirement mode="extended">ChargeFlame+Bash+WallJump</Requirement>
+          <Requirement mode="extended">ChargeFlame+DoubleJump+Climb</Requirement>
+          <Requirement mode="extended">ChargeFlame+Bash+Climb</Requirement>
+          <Requirement mode="extended">ChargeFlame+Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DeathGauntlet"/>
+        <Target name="MoonGrotto"/>
+        <Requirements>
+          <Requirement mode="dboost-light">WallJump</Requirement>
+          <Requirement mode="dboost-light">Climb</Requirement>
+          <Requirement mode="dboost-light">ChargeJump+Bash</Requirement>
+          <Requirement mode="normal">Grenade+Bash</Requirement>
+          <Requirement mode="normal">Climb+DoubleJump+Glide</Requirement>
+          <Requirement mode="normal">WallJump+DoubleJump+Glide</Requirement>
+          <Requirement mode="timed-level">WallJump</Requirement>
+          <Requirement mode="timed-level">Climb</Requirement>
+          <Requirement mode="timed-level">ChargeJump+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DeathGauntlet"/>
+        <Target name="SunkenGladesRunaway"/>
+        <Requirements>
+          <Requirement mode="normal">DoubleJump+EC+EC+EC+EC</Requirement>
+          <Requirement mode="normal">Glide+EC+EC+EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="LeftWallJump">
+    <Connections>
+      <Connection>
+        <Home name="LeftWallJump"/>
+        <Target name="WallJumpAreaEnergyCell"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="LeftWallJump"/>
+        <Target name="LeftGladesExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftWallJump"/>
+        <Target name="LeftGladesKeystone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftWallJump"/>
+        <Target name="LeftGladesMapstone"/>
+        <Requirements/>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="SpiritCavernsDoor">
+    <Connections>
+      <Connection>
+        <Home name="SpiritCavernsDoor"/>
+        <Target name="SpiritCaverns"/>
+        <Requirements>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="lure">Bash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="SpiritCaverns">
+    <Connections>
+      <Connection>
+        <Home name="SpiritCaverns"/>
+        <Target name="SpiritCavernsKeystone1"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="SpiritCaverns"/>
+        <Target name="SpiritCavernsKeystone2"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SpiritCaverns"/>
+        <Target name="SpiritCavernsTopLeftKeystone"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">DoubleJump</Requirement>
+          <Requirement mode="dboost-light">ChargeJump</Requirement>
+          <Requirement mode="dboost-light">Bash+WallJump</Requirement>
+          <Requirement mode="dboost-light">Bash+Climb</Requirement>
+          <Requirement mode="lure-hard">Bash</Requirement>
+          <Requirement mode="extreme">Climb</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SpiritCaverns"/>
+        <Target name="SpiritCavernsTopRightKeystone"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">DoubleJump</Requirement>
+          <Requirement mode="dboost-light">ChargeJump</Requirement>
+          <Requirement mode="dboost-light">Bash+WallJump</Requirement>
+          <Requirement mode="dboost-light">Bash+Climb</Requirement>
+          <Requirement mode="lure-hard">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SpiritCaverns"/>
+        <Target name="SpiritCavernsAbilityCell"/>
+        <Requirements>
+          <Requirement mode="speed">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SpiritCaverns"/>
+        <Target name="GladesLaserArea"/>
+        <Requirements>
+          <Requirement mode="normal">DoubleJump+EC+EC+EC+EC</Requirement>
+          <Requirement mode="normal">Bash+EC+EC+EC+EC</Requirement>
+          <Requirement mode="normal">ChargeJump+EC+EC+EC+EC</Requirement>
+          <Requirement mode="cdash-farming">Dash+EC+EC+EC+EC</Requirement>
+          <Requirement mode="extended-damage">WallJump+Glide+EC+EC+EC+EC</Requirement>
+          <Requirement mode="glitched">DoubleJump+EC+EC+EC</Requirement>
+          <Requirement mode="glitched">Bash+EC+EC+EC</Requirement>
+          <Requirement mode="glitched">ChargeJump+EC+EC+EC</Requirement>
+          <Requirement mode="glitched">Dash+EC+EC+EC</Requirement>
+          <Requirement mode="glitched">WallJump+Glide+EC+EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SpiritCaverns"/>
+        <Target name="SpiritTreeRefined"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+KS+KS+KS+KS</Requirement>
+          <Requirement mode="normal">Climb+KS+KS+KS+KS</Requirement>
+          <Requirement mode="normal">ChargeJump+KS+KS+KS+KS</Requirement>
+          <Requirement mode="normal">Bash+Grenade+KS+KS+KS+KS</Requirement>
+          <Requirement mode="extreme">Bash+KS+KS+KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="GladesLaserArea">
+    <Connections>
+      <Connection>
+        <Home name="GladesLaserArea"/>
+        <Target name="GladesLaser"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="GladesLaserArea"/>
+        <Target name="GladesLaserGrenade"/>
+        <Requirements>
+          <Requirement mode="normal">Grenade+Bash+WallJump</Requirement>
+          <Requirement mode="normal">Grenade+Bash+Climb</Requirement>
+          <Requirement mode="extended">Grenade+ChargeJump+Water</Requirement>
+          <Requirement mode="extended-damage">Grenade+ChargeJump</Requirement>
+          <Requirement mode="cdash">Grenade+Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GladesLaserArea"/>
+        <Target name="WallJump"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GladesLaserArea"/>
+        <Target name="SpiritCaverns"/>
+        <Requirements>
+          <Requirement mode="normal">EC+EC+EC+EC</Requirement>
+          <Requirement mode="timed-level">EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="ChargeFlameArea">
+    <Connections>
+      <Connection>
+        <Home name="ChargeFlameArea"/>
+        <Target name="ChargeFlameSkillTree"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="ChargeFlameArea"/>
+        <Target name="ChargeFlameAreaPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash-farming">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ChargeFlameArea"/>
+        <Target name="SpiritTreeRefined"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump+ChargeFlame</Requirement>
+          <Requirement mode="normal">ChargeJump+Grenade</Requirement>
+          <Requirement mode="speed">ChargeJump+Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ChargeFlameArea"/>
+        <Target name="LowerChargeFlameArea"/>
+        <Requirements/>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="LowerChargeFlameArea">
+    <Connections>
+      <Connection>
+        <Home name="LowerChargeFlameArea"/>
+        <Target name="ChargeFlameAreaExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerChargeFlameArea"/>
+        <Target name="WallJump"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="normal">Stomp</Requirement>
+          <Requirement mode="cdash-farming">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerChargeFlameArea"/>
+        <Target name="ChargeFlameArea"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">Bash+Stomp</Requirement>
+          <Requirement mode="lure-hard">Bash+ChargeFlame</Requirement>
+          <Requirement mode="cdash-farming">Bash+Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="SpiritTreeRefined">
+    <Connections>
+      <Connection>
+        <Home name="SpiritTreeRefined"/>
+        <Target name="ChargeFlameTree"/>
+        <Requirements>
+          <Requirement mode="normal">DoubleJump+Climb</Requirement>
+          <Requirement mode="normal">DoubleJump+WallJump</Requirement>
+          <Requirement mode="normal">ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="normal">ChargeJump+Glide</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="speed">Dash+WallJump</Requirement>
+          <Requirement mode="speed">Dash+Climb</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SpiritTreeRefined"/>
+        <Target name="ChargeFlameArea"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SpiritTreeRefined"/>
+        <Target name="ValleyEntry"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="normal">Stomp+WallJump</Requirement>
+          <Requirement mode="normal">Stomp+Climb</Requirement>
+          <Requirement mode="normal">Stomp+DoubleJump</Requirement>
+          <Requirement mode="normal">Stomp+ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SpiritTreeRefined"/>
+        <Target name="SpiderSac"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame+WallJump</Requirement>
+          <Requirement mode="normal">ChargeFlame+ChargeJump</Requirement>
+          <Requirement mode="normal">ChargeFlame+Climb+DoubleJump</Requirement>
+          <Requirement mode="normal">ChargeFlame+Climb+Glide</Requirement>
+          <Requirement mode="normal">ChargeFlame+Climb+Dash</Requirement>
+          <Requirement mode="normal">Grenade+WallJump</Requirement>
+          <Requirement mode="normal">Grenade+ChargeJump</Requirement>
+          <Requirement mode="normal">Grenade+Climb+DoubleJump</Requirement>
+          <Requirement mode="normal">Grenade+Climb+Glide</Requirement>
+          <Requirement mode="normal">Grenade+Climb+Dash</Requirement>
+          <Requirement mode="normal">Grenade+Bash</Requirement>
+          <Requirement mode="extended">ChargeFlame+Climb</Requirement>
+          <Requirement mode="extended">Grenade+Climb</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="ChargeFlameTree">
+    <Connections>
+      <Connection>
+        <Home name="ChargeFlameTree"/>
+        <Target name="AboveChargeFlameTreeExp"/>
+        <Requirements/>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="SpiderSacArea">
+    <Connections>
+      <Connection>
+        <Home name="SpiderSacArea"/>
+        <Target name="SpiderSacHealthCell"/>
+        <Requirements>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SpiderSacArea"/>
+        <Target name="SpiderSacGrenadeDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Grenade+Bash</Requirement>
+          <Requirement mode="normal">Grenade+DoubleJump+WallJump</Requirement>
+          <Requirement mode="normal">Grenade+ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SpiderSacArea"/>
+        <Target name="SpiderSacEnergyDoor"/>
+        <Requirements>
+          <Requirement mode="normal">EC+EC+EC+EC</Requirement>
+          <Requirement mode="timed-level">EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SpiderSacArea"/>
+        <Target name="ChargeFlameTree"/>
+        <Requirements>
+          <Requirement mode="extended">ChargeFlame+Glide</Requirement>
+          <Requirement mode="extended">Grenade+Glide</Requirement>
+          <Requirement mode="extended">Stomp+Glide</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SpiderSacArea"/>
+        <Target name="HollowGrove"/>
+        <Requirements>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">DoubleJump</Requirement>
+          <Requirement mode="normal">Glide</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SpiderSacArea"/>
+        <Target name="SpiderSacDropArea"/>
+        <Requirements>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">DoubleJump</Requirement>
+          <Requirement mode="normal">Glide</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SpiderSacArea"/>
+        <Target name="DeathGauntletRoof"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp+Water</Requirement>
+          <Requirement mode="dboost">Stomp+Bash+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost">Stomp+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SpiderSacArea"/>
+        <Target name="SpiritTreeRefined"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame+WallJump</Requirement>
+          <Requirement mode="normal">ChargeFlame+Climb</Requirement>
+          <Requirement mode="normal">ChargeFlame+ChargeJump</Requirement>
+          <Requirement mode="normal">Grenade+WallJump</Requirement>
+          <Requirement mode="normal">Grenade+Climb</Requirement>
+          <Requirement mode="normal">Grenade+ChargeJump</Requirement>
+          <Requirement mode="normal">Stomp+WallJump</Requirement>
+          <Requirement mode="normal">Stomp+Climb</Requirement>
+          <Requirement mode="normal">Stomp+ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="SpiderSacDropArea">
+    <Connections>
+      <Connection>
+        <Home name="SpiderSacDropArea"/>
+        <Target name="SpiderSacEnergyCell"/>
+        <Requirements/>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="DashArea">
+    <Connections>
+      <Connection>
+        <Home name="DashArea"/>
+        <Target name="DashAreaOrbRoomExp"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="DashArea"/>
+        <Target name="DashAreaAbilityCell"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DashArea"/>
+        <Target name="DashAreaRoofExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DashArea"/>
+        <Target name="DashSkillTree"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DashArea"/>
+        <Target name="DashAreaPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump+Climb+ChargeFlame</Requirement>
+          <Requirement mode="normal">ChargeJump+WallJump+ChargeFlame</Requirement>
+          <Requirement mode="normal">Glide+WallJump+ChargeFlame</Requirement>
+          <Requirement mode="normal">ChargeJump+Climb+Grenade</Requirement>
+          <Requirement mode="normal">ChargeJump+WallJump+Grenade</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">Glide+WallJump+Grenade</Requirement>
+          <Requirement mode="extended">DoubleJump+Grenade</Requirement>
+          <Requirement mode="cdash-farming">ChargeJump+Climb+Dash</Requirement>
+          <Requirement mode="cdash-farming">ChargeJump+WallJump+Dash</Requirement>
+          <Requirement mode="cdash-farming">DoubleJump+Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DashArea"/>
+        <Target name="DashAreaMapstone"/>
+        <Requirements>
+          <Requirement mode="normal">Dash</Requirement>
+          <Requirement mode="extended">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DashArea"/>
+        <Target name="DeathGauntlet"/>
+        <Requirements>
+          <Requirement mode="dboost-light">WallJump+EC+EC+EC+EC</Requirement>
+          <Requirement mode="dboost-light">Climb+EC+EC+EC+EC</Requirement>
+          <Requirement mode="dboost-light">ChargeJump+Bash+EC+EC+EC+EC</Requirement>
+          <Requirement mode="normal">Grenade+Bash+EC+EC+EC+EC</Requirement>
+          <Requirement mode="normal">Climb+DoubleJump+Glide+EC+EC+EC+EC</Requirement>
+          <Requirement mode="normal">WallJump+DoubleJump+Glide+EC+EC+EC+EC</Requirement>
+          <Requirement mode="timed-level">WallJump+EC+EC</Requirement>
+          <Requirement mode="timed-level">Climb+EC+EC</Requirement>
+          <Requirement mode="timed-level">ChargeJump+Bash+EC+EC</Requirement>
+          <Requirement mode="timed-level">Grenade+Bash+EC+EC</Requirement>
+          <Requirement mode="lure">Bash+EC+EC+EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DashArea"/>
+        <Target name="LowerBlackRoot"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp+ChargeJump</Requirement>
+          <Requirement mode="normal">Stomp+Grenade+Bash</Requirement>
+          <Requirement mode="normal">Stomp+Dash+DoubleJump</Requirement>
+          <Requirement mode="normal">Stomp+Dash+Grenade+Bash</Requirement>
+          <Requirement mode="normal">Stomp+Dash</Requirement>
+          <Requirement mode="normal">Stomp+ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Stomp+Grenade</Requirement>
+          <Requirement mode="normal">Stomp+Grenade+Water</Requirement>
+          <Requirement mode="timed-level">Stomp</Requirement>
+          <Requirement mode="extended">Stomp</Requirement>
+          <Requirement mode="extended">ChargeJump+Climb</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
+          <Requirement mode="glitched">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DashArea"/>
+        <Target name="RazielNoArea"/>
+        <Requirements>
+          <Requirement mode="normal">Dash+WallJump</Requirement>
+          <Requirement mode="normal">Dash+ChargeJump</Requirement>
+          <Requirement mode="normal">Dash+Bash+Grenade</Requirement>
+          <Requirement mode="normal">Dash+Climb+DoubleJump</Requirement>
+          <Requirement mode="speed">WallJump</Requirement>
+          <Requirement mode="speed">ChargeJump</Requirement>
+          <Requirement mode="speed">Bash+Grenade</Requirement>
+          <Requirement mode="speed">Climb+DoubleJump</Requirement>
+          <Requirement mode="extended">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="RazielNoArea">
+    <Connections>
+      <Connection>
+        <Home name="RazielNoArea"/>
+        <Target name="RazielNo"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="RazielNoArea"/>
+        <Target name="BlackrootBoulderExp"/>
+        <Requirements>
+          <Requirement mode="normal">Dash+Stomp</Requirement>
+          <Requirement mode="extended">Stomp</Requirement>
+          <Requirement mode="glitched">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="RazielNoArea"/>
+        <Target name="BlackrootGrottoConnection"/>
+        <Requirements>
+          <Requirement mode="normal">Dash+WallJump</Requirement>
+          <Requirement mode="normal">Dash+Climb</Requirement>
+          <Requirement mode="normal">Dash+Bash+Grenade</Requirement>
+          <Requirement mode="normal">Dash+ChargeJump</Requirement>
+          <Requirement mode="speed">ChargeJump+Climb</Requirement>
+          <Requirement mode="speed">ChargeJump+WallJump</Requirement>
+          <Requirement mode="speed">Bash+Grenade</Requirement>
+          <Requirement mode="extended">WallJump</Requirement>
+          <Requirement mode="extended">DoubleJump</Requirement>
+          <Requirement mode="extended">Dash</Requirement>
+          <Requirement mode="glitched">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="RazielNoArea"/>
+        <Target name="GumoHideout"/>
+        <Requirements>
+          <Requirement mode="glitched">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="BlackrootGrottoConnection">
+    <Connections>
+      <Connection>
+        <Home name="BlackrootGrottoConnection"/>
+        <Target name="BlackrootTeleporterHealthCell"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="BlackrootGrottoConnection"/>
+        <Target name="BlackrootMap"/>
+        <Requirements>
+          <Requirement mode="normal">Mapstone</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="BlackrootGrottoConnection"/>
+        <Target name="SideFallCell"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="LowerBlackRoot">
+    <Connections>
+      <Connection>
+        <Home name="LowerBlackRoot"/>
+        <Target name="LowerBlackrootAbilityCell"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Grenade+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerBlackRoot"/>
+        <Target name="LowerBlackrootLaserAbilityCell"/>
+        <Requirements>
+          <Requirement mode="speed">Dash+DoubleJump</Requirement>
+          <Requirement mode="normal">Dash+Grenade+Bash</Requirement>
+          <Requirement mode="extended">DoubleJump</Requirement>
+          <Requirement mode="extended">Grenade+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerBlackRoot"/>
+        <Target name="LowerBlackrootLaserExp"/>
+        <Requirements>
+          <Requirement mode="normal">Dash</Requirement>
+          <Requirement mode="extended">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerBlackRoot"/>
+        <Target name="LowerBlackrootGrenadeThrow"/>
+        <Requirements>
+          <Requirement mode="speed">ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="timed-level">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerBlackRoot"/>
+        <Target name="BottomBlackRoot"/>
+        <Requirements>
+          <Requirement mode="normal">Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerBlackRoot"/>
+        <Target name="GrenadeArea"/>
+        <Requirements>
+          <Requirement mode="normal">Dash</Requirement>
+          <Requirement mode="extended">ChargeJump+Climb+Grenade</Requirement>
+          <Requirement mode="extended">Bash+Grenade</Requirement>
+          <Requirement mode="extended">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="GrenadeArea">
+    <Connections>
+      <Connection>
+        <Home name="GrenadeArea"/>
+        <Target name="GrenadeSkillTree"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="GrenadeArea"/>
+        <Target name="GrenadeAreaExp"/>
+        <Requirements>
+          <Requirement mode="normal">Bash</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">DoubleJump</Requirement>
+          <Requirement mode="normal">Glide</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GrenadeArea"/>
+        <Target name="GrenadeAreaAbilityCell"/>
+        <Requirements>
+          <Requirement mode="normal">Grenade+Bash</Requirement>
+          <Requirement mode="normal">Grenade+ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="BottomBlackRoot">
+    <Connections>
+      <Connection>
+        <Home name="BottomBlackRoot"/>
+        <Target name="LostGroveLongSwim"/>
+        <Requirements>
+          <Requirement mode="normal">Water</Requirement>
+          <Requirement mode="dboost-hard">HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="BottomBlackRoot"/>
+        <Target name="FinalBlackRoot"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="extended-damage">Grenade+ChargeJump+Dash+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">Grenade+ChargeJump+Glide+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">Grenade+ChargeJump+DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="FinalBlackRoot">
+    <Connections>
+      <Connection>
+        <Home name="FinalBlackRoot"/>
+        <Target name="LostGroveAbilityCell"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="FinalBlackRoot"/>
+        <Target name="LostGroveHiddenExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="FinalBlackRoot"/>
+        <Target name="LostGroveTeleporter"/>
+        <Requirements/>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HollowGrove">
+    <Connections>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="HollowGroveMapstone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="GroveSpiderWaterSwim"/>
+        <Requirements>
+          <Requirement mode="normal">Water</Requirement>
+          <Requirement mode="dboost">HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost">Bash+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
+          <Requirement mode="extreme">HC+HC+HC+HC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="SwampTeleporterAbilityCell"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump+DoubleJump+Glide</Requirement>
+          <Requirement mode="normal">Wind+Glide</Requirement>
+          <Requirement mode="extended">Grenade+Bash</Requirement>
+          <Requirement mode="cdash-farming">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="GroveWaterStompAbilityCell"/>
+        <Requirements>
+          <Requirement mode="normal">Water+Stomp</Requirement>
+          <Requirement mode="dboost">Stomp+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="lure-hard">Bash+Water</Requirement>
+          <Requirement mode="lure-hard">Bash+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Stomp</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
+          <Requirement mode="glitched">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="OuterSwampGrenadeExp"/>
+        <Requirements>
+          <Requirement mode="normal">Grenade+WallJump</Requirement>
+          <Requirement mode="normal">Grenade+Climb</Requirement>
           <Requirement mode="normal">Grenade+ChargeJump</Requirement>
           <Requirement mode="normal">Grenade+Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="SunkenGladesRunaway"/>
-        <Target name="GladesGrenadeTree"/>
+        <Home name="HollowGrove"/>
+        <Target name="OuterSwampMortarAbilityCell"/>
         <Requirements>
-          <Requirement mode="normal">KS+KS</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Climb+Bash</Requirement>
+          <Requirement mode="normal">WallJump+Bash</Requirement>
+          <Requirement mode="lure-hard">Bash</Requirement>
+          <Requirement mode="extreme">WallJump+DoubleJump</Requirement>
+          <Requirement mode="glitched">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="HoruFieldsHealthCell"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+          <Requirement mode="lure">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="HollowGroveMap"/>
+        <Requirements>
+          <Requirement mode="normal">Mapstone</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="HollowGroveTreeAbilityCell"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Wind+Glide</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="lure">Bash+WallJump</Requirement>
+          <Requirement mode="lure">Bash+Climb</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="cdash-farming">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="SpiderSacDropArea"/>
+        <Requirements>
+          <Requirement mode="normal">Climb+Glide</Requirement>
+          <Requirement mode="normal">WallJump+Glide</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="extended">DoubleJump</Requirement>
+          <Requirement mode="extended">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="MoonGrotto"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">Wind+Glide</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="DeathGauntlet"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="DeathGauntletRoof"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">WallJump+Stomp+Water</Requirement>
+          <Requirement mode="normal">Climb+Stomp+Water</Requirement>
+          <Requirement mode="normal">Bash+Stomp+Water</Requirement>
+          <Requirement mode="dboost">Stomp+Bash+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost">WallJump+Stomp+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost">Climb+Stomp+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">WallJump+Stomp</Requirement>
+          <Requirement mode="extreme">Climb+Stomp</Requirement>
+          <Requirement mode="extreme">WallJump+Bash</Requirement>
+          <Requirement mode="extreme">Climb+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="SpiderSac"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+Bash</Requirement>
+          <Requirement mode="normal">Climb+Bash</Requirement>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Climb+DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="UpperGroveSpiderArea"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+WallJump</Requirement>
+          <Requirement mode="normal">ChargeJump+WallJump+DoubleJump</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="GinsoOuterDoor"/>
+        <Requirements>
+          <Requirement mode="normal">GinsoKey</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="HoruFields"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+DoubleJump</Requirement>
+          <Requirement mode="normal">Bash+Glide</Requirement>
+          <Requirement mode="normal">Stomp+ChargeJump+Glide+WallJump</Requirement>
+          <Requirement mode="normal">Stomp+ChargeJump+Glide+Climb</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="HollowGrovePlants"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash-farming">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="RightGinso"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">Wind+Glide</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="Iceless"/>
+        <Requirements>
+          <Requirement mode="extreme">WallJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="GinsoOuterDoor">
+    <Connections>
+      <Connection>
+        <Home name="GinsoOuterDoor"/>
+        <Target name="GinsoInnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="GinsoInnerDoor">
+    <Connections>
+      <Connection>
+        <Home name="GinsoInnerDoor"/>
+        <Target name="LowerGinsoTree"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="extreme">Dash+WallJump</Requirement>
+          <Requirement mode="extreme">Dash+Climb</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="RightGinso">
+    <Connections>
+      <Connection>
+        <Home name="RightGinso"/>
+        <Target name="OuterSwampAbilityCell"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="RightGinso"/>
+        <Target name="OuterSwampStompExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="RightGinso"/>
+        <Target name="OuterSwampHealthCell"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="MoonGrotto">
+    <Connections>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="DeathGauntletEnergyCell"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="GrottoLasersRoofExp"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">WallJump+ChargeJump</Requirement>
+          <Requirement mode="normal">Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="AboveGrottoTeleporterExp"/>
+        <Requirements>
+          <Requirement mode="normal">DoubleJump</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">Bash+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Climb</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="LeftGrottoTeleporterExp"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Climb+DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="extended">Grenade+Bash</Requirement>
+          <Requirement mode="dboost">ChargeJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="SwampEntranceSwim"/>
+        <Requirements>
+          <Requirement mode="normal">Water</Requirement>
+          <Requirement mode="dboost">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="GrottoEnergyDoorSwim"/>
+        <Requirements>
+          <Requirement mode="normal">Water+EC+EC</Requirement>
+          <Requirement mode="dboost">EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="GrottoEnergyDoorHealthCell"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump+EC+EC</Requirement>
+          <Requirement mode="normal">WallJump+DoubleJump+EC+EC</Requirement>
+          <Requirement mode="speed">WallJump+EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="SwampEntrancePlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame+WallJump</Requirement>
+          <Requirement mode="normal">ChargeFlame+Climb</Requirement>
+          <Requirement mode="normal">Grenade+WallJump</Requirement>
+          <Requirement mode="normal">Grenade+Climb</Requirement>
+          <Requirement mode="cdash">Dash+WallJump</Requirement>
+          <Requirement mode="cdash">Dash+Climb</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="MoonGrottoStompPlant"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp+ChargeFlame</Requirement>
+          <Requirement mode="normal">Stomp+Grenade</Requirement>
+          <Requirement mode="cdash">Stomp+Dash</Requirement>
+          <Requirement mode="extended">ChargeFlame</Requirement>
+          <Requirement mode="extended">Climb+ChargeJump+Grenade</Requirement>
+          <Requirement mode="extreme">Bash+Grenade</Requirement>
+          <Requirement mode="extreme">Bash+Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="OuterSwampMortarPlant"/>
+        <Requirements>
+          <Requirement mode="normal">DoubleJump+ChargeFlame</Requirement>
+          <Requirement mode="normal">DoubleJump+Grenade</Requirement>
+          <Requirement mode="normal">ChargeJump+ChargeFlame</Requirement>
+          <Requirement mode="normal">ChargeJump+Grenade</Requirement>
+          <Requirement mode="normal">Bash+ChargeFlame</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">Glide+ChargeFlame</Requirement>
+          <Requirement mode="normal">Glide+Grenade</Requirement>
+          <Requirement mode="speed">Dash+ChargeFlame</Requirement>
+          <Requirement mode="speed">Dash+Grenade</Requirement>
+          <Requirement mode="extended">Grenade</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="Iceless"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Climb+DoubleJump</Requirement>
+          <Requirement mode="normal">Grenade+Bash</Requirement>
+          <Requirement mode="normal">WallJump+Glide</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="HollowGrove"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Climb+DoubleJump</Requirement>
+          <Requirement mode="normal">Grenade+Bash</Requirement>
+          <Requirement mode="normal">WallJump+Glide</Requirement>
+          <Requirement mode="extended">WallJump</Requirement>
+          <Requirement mode="extended">Climb+Glide</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="RightGinso"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb+Glide</Requirement>
+          <Requirement mode="normal">Climb+DoubleJump</Requirement>
+          <Requirement mode="normal">Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="DeathGauntlet"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="RightGrottoHealth"/>
+        <Requirements>
+          <Requirement mode="normal">DoubleJump+Bash+WallJump</Requirement>
+          <Requirement mode="normal">DoubleJump+Bash+Climb</Requirement>
+          <Requirement mode="normal">DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">Glide+ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="MoonGrottoAirOrb"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Bash+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Climb</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="Swamp"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp+ChargeJump</Requirement>
+          <Requirement mode="normal">ChargeJump+ChargeFlame+WallJump</Requirement>
+          <Requirement mode="normal">ChargeJump+ChargeFlame+Climb</Requirement>
+          <Requirement mode="normal">ChargeJump+Grenade+WallJump</Requirement>
+          <Requirement mode="normal">ChargeJump+Grenade+Climb</Requirement>
+          <Requirement mode="lure">Bash+ChargeFlame+Water+WallJump</Requirement>
+          <Requirement mode="lure">Bash+ChargeFlame+Water+Climb</Requirement>
+          <Requirement mode="lure">Bash+Grenade+Water</Requirement>
+          <Requirement mode="speed-lure">Bash+Climb</Requirement>
+          <Requirement mode="speed-lure">Bash+WallJump</Requirement>
+          <Requirement mode="speed-lure">Bash+Grenade</Requirement>
+          <Requirement mode="speed-lure">Bash+ChargeJump</Requirement>
+          <Requirement mode="extended">ChargeJump+Climb</Requirement>
+          <Requirement mode="extended">DoubleJump+ChargeFlame+Dash+Water+WallJump</Requirement>
+          <Requirement mode="extended">DoubleJump+ChargeFlame+Dash+Water+Climb</Requirement>
+          <Requirement mode="extended">DoubleJump+ChargeFlame+Glide+Water+WallJump</Requirement>
+          <Requirement mode="extended">DoubleJump+ChargeFlame+Glide+Water+Climb</Requirement>
+          <Requirement mode="extended-damage">DoubleJump+ChargeFlame+Water+WallJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">DoubleJump+ChargeFlame+Water+Climb+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">Dash+Stomp+ChargeFlame+Water+WallJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">Dash+Stomp+ChargeFlame+Water+Climb+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost-hard">DoubleJump+ChargeFlame+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost-hard">Stomp+ChargeFlame+WallJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost-hard">Stomp+ChargeFlame+Climb+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">DoubleJump+ChargeFlame+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Stomp+ChargeFlame+WallJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Stomp+ChargeFlame+Climb+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">ChargeJump+ChargeFlame</Requirement>
+          <Requirement mode="extreme">ChargeJump+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="SwampDrainlessArea"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp+WallJump</Requirement>
+          <Requirement mode="normal">Stomp+Climb</Requirement>
+          <Requirement mode="normal">Stomp+Bash+Grenade</Requirement>
+          <Requirement mode="normal">Stomp+ChargeJump</Requirement>
+          <Requirement mode="extended">ChargeJump+Climb</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="InnerSwampDrainArea"/>
+        <Requirements>
+          <Requirement mode="normal">Grenade+Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">Grenade+DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="normal">Grenade+Glide+ChargeJump</Requirement>
+          <Requirement mode="speed">Grenade+Bash</Requirement>
+          <Requirement mode="speed">ChargeFlame+DoubleJump+Bash</Requirement>
+          <Requirement mode="speed">ChargeFlame+Glide+Bash</Requirement>
+          <Requirement mode="dboost-light">ChargeFlame+ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="dboost-light">ChargeFlame+ChargeJump+Glide</Requirement>
+          <Requirement mode="extended-damage">ChargeFlame+Climb+ChargeJump</Requirement>
+          <Requirement mode="extended-damage">ChargeFlame+DoubleJump+WallJump</Requirement>
+          <Requirement mode="extended-damage">ChargeFlame+DoubleJump+Climb</Requirement>
+          <Requirement mode="dbash">ChargeFlame+Bash+WallJump</Requirement>
+          <Requirement mode="dbash">ChargeFlame+Bash+Climb</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="InnerSwampSkyArea"/>
+        <Requirements>
+          <Requirement mode="glitched">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="GumoHideout"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="DeathGauntletRoof"/>
+        <Requirements>
+          <Requirement mode="extreme">Bash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HollowGrovePlants">
+    <Connections>
+      <Connection>
+        <Home name="HollowGrovePlants"/>
+        <Target name="HollowGroveMapPlant"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrovePlants"/>
+        <Target name="HollowGroveTreePlant"/>
+        <Requirements/>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="UpperGroveSpiderArea">
+    <Connections>
+      <Connection>
+        <Home name="UpperGroveSpiderArea"/>
+        <Target name="GroveAboveSpiderWaterExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperGroveSpiderArea"/>
+        <Target name="GroveAboveSpiderWaterHealthCell"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperGroveSpiderArea"/>
+        <Target name="GroveAboveSpiderWaterEnergyCell"/>
+        <Requirements>
+          <Requirement mode="normal">Grenade</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="Iceless">
+    <Connections>
+      <Connection>
+        <Home name="Iceless"/>
+        <Target name="IcelessExp"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="Iceless"/>
+        <Target name="HollowGrove"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="RightGrottoHealth">
+    <Connections>
+      <Connection>
+        <Home name="RightGrottoHealth"/>
+        <Target name="BelowGrottoTeleporterHealthCell"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="RightGrottoHealth"/>
+        <Target name="BelowGrottoTeleporterPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="MoonGrottoAirOrb">
+    <Connections>
+      <Connection>
+        <Home name="MoonGrottoAirOrb"/>
+        <Target name="GrottoSwampDrainAccessExp"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrottoAirOrb"/>
+        <Target name="GrottoSwampDrainAccessPlant"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp+ChargeFlame+WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Stomp+ChargeFlame+ChargeJump+Glide</Requirement>
+          <Requirement mode="normal">Stomp+ChargeFlame+ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Stomp+ChargeFlame+ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">Stomp+Grenade</Requirement>
+          <Requirement mode="extended">Grenade</Requirement>
+          <Requirement mode="extended">ChargeFlame+Bash</Requirement>
+          <Requirement mode="extended-damage">ChargeFlame+WallJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">ChargeFlame+ChargeJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">ChargeFlame+DoubleJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">ChargeFlame+Glide+HC+HC+HC+HC</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="SideFallCell">
+    <Connections>
+      <Connection>
+        <Home name="SideFallCell"/>
+        <Target name="GrottoHideoutFallAbilityCell"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="SideFallCell"/>
+        <Target name="GumoHideout"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SideFallCell"/>
+        <Target name="GumoHideoutPartialMobile"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="GumoHideout">
+    <Connections>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="GumoHideoutMapstone"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="GumoHideoutMiniboss"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="GumoHideoutCrusherExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="GumoHideoutCrusherKeystone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="GumoHideoutRedirectAbilityCell"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">WallJump+ChargeJump</Requirement>
+          <Requirement mode="normal">Glide+Wind</Requirement>
+          <Requirement mode="extreme">WallJump+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="FarLeftGumoHideoutExp"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Grenade+Bash+Climb</Requirement>
+          <Requirement mode="normal">WallJump+Glide+Wind</Requirement>
+          <Requirement mode="extreme">WallJump+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="GumoHideoutMap"/>
+        <Requirements>
+          <Requirement mode="normal">Mapstone</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="DoubleJumpArea"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+KS+KS</Requirement>
+          <Requirement mode="dboost-light">Climb+KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="MobileGumoHideout"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">WallJump+ChargeJump</Requirement>
+          <Requirement mode="normal">Grenade+Bash</Requirement>
+          <Requirement mode="extreme">WallJump+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="GumoHideoutPartialMobile"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">WallJump+ChargeJump</Requirement>
+          <Requirement mode="normal">Glide+Wind</Requirement>
+          <Requirement mode="extreme">WallJump+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="LowerBlackRoot"/>
+        <Requirements>
+          <Requirement mode="glitched">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="SideFallCell"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">Glide+Wind</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="GumoHideoutPartialMobile">
+    <Connections>
+      <Connection>
+        <Home name="GumoHideoutPartialMobile"/>
+        <Target name="GumoHideoutRightHangingExp"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideoutPartialMobile"/>
+        <Target name="GumoHideoutLeftHangingExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideoutPartialMobile"/>
+        <Target name="MobileGumoHideoutPlants"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideoutPartialMobile"/>
+        <Target name="HideoutRedirect"/>
+        <Requirements>
+          <Requirement mode="normal">EC+EC+EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="DoubleJumpArea">
+    <Connections>
+      <Connection>
+        <Home name="DoubleJumpArea"/>
+        <Target name="DoubleJumpSkillTree"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="DoubleJumpArea"/>
+        <Target name="DoubleJumpAreaExp"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash</Requirement>
+          <Requirement mode="normal">Climb+DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="MobileGumoHideout">
+    <Connections>
+      <Connection>
+        <Home name="MobileGumoHideout"/>
+        <Target name="GumoHideoutEnergyCell"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="MobileGumoHideout"/>
+        <Target name="GumoHideoutRockfallExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MobileGumoHideout"/>
+        <Target name="WaterVein"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MobileGumoHideout"/>
+        <Target name="LeftGumoHideoutExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MobileGumoHideout"/>
+        <Target name="LeftGumoHideoutHealthCell"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MobileGumoHideout"/>
+        <Target name="LeftGumoHideoutSwim"/>
+        <Requirements>
+          <Requirement mode="normal">Water</Requirement>
+          <Requirement mode="dboost">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MobileGumoHideout"/>
+        <Target name="MoonGrotto"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MobileGumoHideout"/>
+        <Target name="HideoutRedirect"/>
+        <Requirements>
+          <Requirement mode="normal">EC+EC+EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MobileGumoHideout"/>
+        <Target name="MobileGumoHideoutPlants"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="MobileGumoHideoutPlants">
+    <Connections>
+      <Connection>
+        <Home name="MobileGumoHideoutPlants"/>
+        <Target name="LeftGumoHideoutLowerPlant"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="MobileGumoHideoutPlants"/>
+        <Target name="LeftGumoHideoutUpperPlant"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MobileGumoHideoutPlants"/>
+        <Target name="GumoHideoutRedirectPlant"/>
+        <Requirements/>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HideoutRedirect">
+    <Connections>
+      <Connection>
+        <Home name="HideoutRedirect"/>
+        <Target name="GumoHideoutRedirectEnergyCell"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HideoutRedirect"/>
+        <Target name="GumoHideoutRedirectExp"/>
+        <Requirements/>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="DeathGauntletRoof">
+    <Connections>
+      <Connection>
+        <Home name="DeathGauntletRoof"/>
+        <Target name="DeathGauntletRoofHealthCell"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DeathGauntletRoof"/>
+        <Target name="DeathGauntletRoofPlantAccess"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DeathGauntletRoof"/>
+        <Target name="DeathGauntlet"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="DeathGauntletRoofPlantAccess">
+    <Connections>
+      <Connection>
+        <Home name="DeathGauntletRoofPlantAccess"/>
+        <Target name="DeathGauntletRoofPlant"/>
+        <Requirements/>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="LowerGinsoTree">
+    <Connections>
+      <Connection>
+        <Home name="LowerGinsoTree"/>
+        <Target name="LowerGinsoHiddenExp"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="LowerGinsoTree"/>
+        <Target name="LowerGinsoKeystone1"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerGinsoTree"/>
+        <Target name="LowerGinsoKeystone2"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerGinsoTree"/>
+        <Target name="LowerGinsoKeystone3"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerGinsoTree"/>
+        <Target name="LowerGinsoKeystone4"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerGinsoTree"/>
+        <Target name="LowerGinsoPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerGinsoTree"/>
+        <Target name="BashTree"/>
+        <Requirements>
+          <Requirement mode="normal">KS+KS+KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerGinsoTree"/>
+        <Target name="Horu"/>
+        <Requirements>
+          <Requirement mode="glitched">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="BashTree">
+    <Connections>
+      <Connection>
+        <Home name="BashTree"/>
+        <Target name="BashSkillTree"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="BashTree"/>
+        <Target name="UpperGinsoTree"/>
+        <Requirements>
+          <Requirement mode="normal">Bash</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="UpperGinsoTree">
+    <Connections>
+      <Connection>
+        <Home name="UpperGinsoTree"/>
+        <Target name="BashAreaExp"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="UpperGinsoTree"/>
+        <Target name="UpperGinsoLowerKeystone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperGinsoTree"/>
+        <Target name="UpperGinsoRightKeystone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperGinsoTree"/>
+        <Target name="UpperGinsoUpperRightKeystone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperGinsoTree"/>
+        <Target name="UpperGinsoUpperLeftKeystone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperGinsoTree"/>
+        <Target name="TopGinsoTree"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+WallJump+KS+KS+KS+KS</Requirement>
+          <Requirement mode="normal">Bash+Climb+KS+KS+KS+KS</Requirement>
+          <Requirement mode="dboost">ChargeJump+WallJump+HC+HC+HC+HC+HC+KS+KS+KS+KS</Requirement>
+          <Requirement mode="dboost">ChargeJump+Climb+HC+HC+HC+HC+HC+KS+KS+KS+KS</Requirement>
+          <Requirement mode="extended">Bash+ChargeJump+KS+KS+KS+KS</Requirement>
+          <Requirement mode="extended-damage">ChargeJump+HC+HC+HC+HC+HC+KS+KS+KS+KS</Requirement>
+          <Requirement mode="extended-damage">ChargeJump+DoubleJump+KS+KS+KS+KS</Requirement>
+          <Requirement mode="extreme">WallJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperGinsoTree"/>
+        <Target name="UpperGinsoFloors"/>
+        <Requirements>
+          <Requirement mode="normal">Bash</Requirement>
+          <Requirement mode="normal">Stomp</Requirement>
+          <Requirement mode="extended">ChargeFlame</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="UpperGinsoFloors">
+    <Connections>
+      <Connection>
+        <Home name="UpperGinsoFloors"/>
+        <Target name="UpperGinsoRedirectLowerExp"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="UpperGinsoFloors"/>
+        <Target name="UpperGinsoRedirectUpperExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperGinsoFloors"/>
+        <Target name="UpperGinsoEnergyCell"/>
+        <Requirements/>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="TopGinsoTree">
+    <Connections>
+      <Connection>
+        <Home name="TopGinsoTree"/>
+        <Target name="TopGinsoLeftLowerExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="TopGinsoTree"/>
+        <Target name="TopGinsoLeftUpperExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="TopGinsoTree"/>
+        <Target name="TopGinsoRightPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="TopGinsoTree"/>
+        <Target name="GinsoEscape"/>
+        <Requirements>
+          <Requirement mode="normal">Bash</Requirement>
+          <Requirement mode="speed">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="GinsoEscape">
+    <Connections>
+      <Connection>
+        <Home name="GinsoEscape"/>
+        <Target name="GinsoEscapeSpiderExp"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="GinsoEscape"/>
+        <Target name="GinsoEscapeJumpPadExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GinsoEscape"/>
+        <Target name="GinsoEscapeProjectileExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GinsoEscape"/>
+        <Target name="GinsoEscapeHangingExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GinsoEscape"/>
+        <Target name="GinsoEscapeExit"/>
+        <Requirements/>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="Swamp">
+    <Connections>
+      <Connection>
+        <Home name="Swamp"/>
+        <Target name="InnerSwampStompExp"/>
+        <Requirements>
+          <Requirement mode="dboost-light">Stomp</Requirement>
+          <Requirement mode="normal">Stomp+Water</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Swamp"/>
+        <Target name="SwampMap"/>
+        <Requirements>
+          <Requirement mode="normal">Mapstone</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Swamp"/>
+        <Target name="SwampDrainlessArea"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+          <Requirement mode="extended">ChargeJump+Climb</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Swamp"/>
+        <Target name="InnerSwampSkyArea"/>
+        <Requirements>
+          <Requirement mode="normal">Wind+Glide</Requirement>
+          <Requirement mode="speed">ChargeJump+Climb+Glide</Requirement>
+          <Requirement mode="speed">ChargeJump+Climb+DoubleJump</Requirement>
+          <Requirement mode="extended">ChargeJump+Climb+Grenade</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Swamp"/>
+        <Target name="InnerSwampDrainArea"/>
+        <Requirements>
+          <Requirement mode="normal">Water+Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">Water+DoubleJump+Climb</Requirement>
+          <Requirement mode="normal">Water+DoubleJump+WallJump</Requirement>
+          <Requirement mode="normal">Water+DoubleJump+Glide+ChargeJump</Requirement>
+          <Requirement mode="normal">Water+ChargeFlame+Stomp+Glide+WallJump</Requirement>
+          <Requirement mode="normal">Water+Grenade+Stomp+Glide+WallJump</Requirement>
+          <Requirement mode="normal">Water+Grenade+Bash+Climb</Requirement>
+          <Requirement mode="normal">Water+Grenade+Bash+WallJump</Requirement>
+          <Requirement mode="normal">Water+Grenade+Bash+Glide</Requirement>
+          <Requirement mode="normal">Water+Grenade+Bash+DoubleJump</Requirement>
+          <Requirement mode="normal">Water+Dash+Glide+Climb</Requirement>
+          <Requirement mode="extended">Water+Dash+Glide+WallJump</Requirement>
+          <Requirement mode="extended">Water+DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="dboost">Water+Grenade+Bash+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Water+Bash</Requirement>
+          <Requirement mode="extreme">Bash+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Climb+ChargeJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">DoubleJump+Climb+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">DoubleJump+WallJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">ChargeFlame+Stomp+Glide+WallJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Grenade+Stomp+Glide+WallJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Dash+Glide+Climb+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Dash+Glide+WallJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">DoubleJump+ChargeJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Swamp"/>
+        <Target name="SwampWater"/>
+        <Requirements>
+          <Requirement mode="normal">Water</Requirement>
+          <Requirement mode="extreme">HC+HC+HC+HC+HC+HC+HC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Swamp"/>
+        <Target name="RightSwamp"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+KS+KS</Requirement>
+          <Requirement mode="normal">Climb+KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="SwampDrainlessArea">
+    <Connections>
+      <Connection>
+        <Home name="SwampDrainlessArea"/>
+        <Target name="SwampEntranceAbilityCell"/>
+        <Requirements/>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="InnerSwampDrainArea">
+    <Connections>
+      <Connection>
+        <Home name="InnerSwampDrainArea"/>
+        <Target name="InnerSwampDrainExp"/>
+        <Requirements/>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="InnerSwampSkyArea">
+    <Connections>
+      <Connection>
+        <Home name="InnerSwampSkyArea"/>
+        <Target name="InnerSwampEnergyCell"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="InnerSwampSkyArea"/>
+        <Target name="Swamp"/>
+        <Requirements/>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="SwampWater">
+    <Connections>
+      <Connection>
+        <Home name="SwampWater"/>
+        <Target name="InnerSwampHiddenSwimExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SwampWater"/>
+        <Target name="InnerSwampSwimLeftKeystone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SwampWater"/>
+        <Target name="InnerSwampSwimRightKeystone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SwampWater"/>
+        <Target name="InnerSwampSwimMapstone"/>
+        <Requirements/>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="RightSwamp">
+    <Connections>
+      <Connection>
+        <Home name="RightSwamp"/>
+        <Target name="StompSkillTree"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="RightSwamp"/>
+        <Target name="StompAreaExp"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+          <Requirement mode="normal">Bash</Requirement>
+          <Requirement mode="extended">ChargeFlame</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="RightSwamp"/>
+        <Target name="StompAreaRoofExp"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="RightSwamp"/>
+        <Target name="StompAreaGrenadeExp"/>
+        <Requirements>
+          <Requirement mode="normal">Grenade+Water</Requirement>
+          <Requirement mode="dboost">Grenade</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HoruFields">
+    <Connections>
+      <Connection>
+        <Home name="HoruFields"/>
+        <Target name="HoruFieldsHiddenExp"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="HoruFields"/>
+        <Target name="HoruFieldsAbilityCell"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+DoubleJump+Bash</Requirement>
+          <Requirement mode="normal">Climb+ChargeJump</Requirement>
+          <Requirement mode="dboost">WallJump+Bash+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost">DoubleJump+Bash+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HoruFields"/>
+        <Target name="HoruFieldsEnergy"/>
+        <Requirements>
+          <Requirement mode="normal">Bash</Requirement>
+          <Requirement mode="normal">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HoruFields"/>
+        <Target name="HoruOuterDoor"/>
+        <Requirements>
+          <Requirement mode="normal">HoruKey+Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="normal">HoruKey+Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">HoruKey+Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">HoruKey+Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="normal">HoruKey+Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">HoruKey+Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="extended">HoruKey+Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="extended">HoruKey+Bash+Grenade+Climb</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HoruOuterDoor">
+    <Connections>
+      <Connection>
+        <Home name="HoruOuterDoor"/>
+        <Target name="HoruInnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">HoruKey</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HoruInnerDoor">
+    <Connections>
+      <Connection>
+        <Home name="HoruInnerDoor"/>
+        <Target name="Horu"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="extended">Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="extended">Bash+Grenade+Climb</Requirement>
+          <Requirement mode="extreme">ChargeJump+WallJump+DoubleJump+Glide+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HoruInnerDoor"/>
+        <Target name="HoruMapLedge"/>
+        <Requirements>
+          <Requirement mode="extreme">ChargeJump+WallJump+DoubleJump+HC+HC+HC+HC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HoruInnerDoor"/>
+        <Target name="HoruBasement"/>
+        <Requirements>
+          <Requirement mode="extended">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HoruFieldsEnergy">
+    <Connections>
+      <Connection>
+        <Home name="HoruFieldsEnergy"/>
+        <Target name="HoruFieldsEnergyCell"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="HoruFieldsEnergy"/>
+        <Target name="HoruFieldsPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="Horu">
+    <Connections>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="HoruMapLedge"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="L1OuterDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="L2OuterDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="L3OuterDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="L4OuterDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="R1OuterDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="R2OuterDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="R3OuterDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="R4OuterDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="HoruEscapeOuterDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="HoruHub"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Horu"/>
+        <Target name="LowerGinsoTree"/>
+        <Requirements>
+          <Requirement mode="glitched">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HoruMapLedge">
+    <Connections>
+      <Connection>
+        <Home name="HoruMapLedge"/>
+        <Target name="HoruMap"/>
+        <Requirements>
+          <Requirement mode="normal">Mapstone</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="L1OuterDoor">
+    <Connections>
+      <Connection>
+        <Home name="L1OuterDoor"/>
+        <Target name="L1InnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="L1OuterDoor"/>
+        <Target name="HoruInnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="L1InnerDoor">
+    <Connections>
+      <Connection>
+        <Home name="L1InnerDoor"/>
+        <Target name="L1"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb+Stomp</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb+Stomp</Requirement>
+          <Requirement mode="extended">Bash+Grenade+WallJump+Stomp</Requirement>
+          <Requirement mode="extended">Bash+Grenade+Climb+Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="L1">
+    <Connections/>
+  </Area>
+  <Area name="L2OuterDoor">
+    <Connections>
+      <Connection>
+        <Home name="L2OuterDoor"/>
+        <Target name="L2InnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="L2OuterDoor"/>
+        <Target name="HoruInnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="L2InnerDoor">
+    <Connections>
+      <Connection>
+        <Home name="L2InnerDoor"/>
+        <Target name="L2"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb+Stomp</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb+Stomp</Requirement>
+          <Requirement mode="extended">Bash+Grenade+WallJump+Stomp</Requirement>
+          <Requirement mode="extended">Bash+Grenade+Climb+Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="L2">
+    <Connections/>
+  </Area>
+  <Area name="L3OuterDoor">
+    <Connections>
+      <Connection>
+        <Home name="L3OuterDoor"/>
+        <Target name="L3InnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="L3OuterDoor"/>
+        <Target name="HoruInnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="L3InnerDoor">
+    <Connections>
+      <Connection>
+        <Home name="L3InnerDoor"/>
+        <Target name="L3"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="extended">Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="extended">Bash+Grenade+Climb</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="L3">
+    <Connections/>
+  </Area>
+  <Area name="L4OuterDoor">
+    <Connections>
+      <Connection>
+        <Home name="L4OuterDoor"/>
+        <Target name="L4InnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="L4OuterDoor"/>
+        <Target name="HoruInnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="L4InnerDoor">
+    <Connections>
+      <Connection>
+        <Home name="L4InnerDoor"/>
+        <Target name="L4"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb+Stomp</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb+Stomp</Requirement>
+          <Requirement mode="extended">Bash+Grenade+WallJump+Stomp</Requirement>
+          <Requirement mode="extended">Bash+Grenade+Climb+Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="L4">
+    <Connections>
+      <Connection>
+        <Home name="L4"/>
+        <Target name="HoruL4LowerExp"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="L4"/>
+        <Target name="HoruL4ChaseExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="L4"/>
+        <Target name="HoruLavaDrainedLeftExp"/>
+        <Requirements/>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="R1OuterDoor">
+    <Connections>
+      <Connection>
+        <Home name="R1OuterDoor"/>
+        <Target name="R1InnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="R1InnerDoor">
+    <Connections>
+      <Connection>
+        <Home name="R1InnerDoor"/>
+        <Target name="R1"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="extended">Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="extended">Bash+Grenade+Climb</Requirement>
+          <Requirement mode="extreme">ChargeJump+WallJump+DoubleJump+Glide+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="R1">
+    <Connections>
+      <Connection>
+        <Home name="R1"/>
+        <Target name="HoruR1HangingExp"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="R1"/>
+        <Target name="HoruR1Mapstone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="R1"/>
+        <Target name="HoruR1EnergyCell"/>
+        <Requirements/>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="R2OuterDoor">
+    <Connections>
+      <Connection>
+        <Home name="R2OuterDoor"/>
+        <Target name="R2InnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="R2OuterDoor"/>
+        <Target name="HoruInnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="R2InnerDoor">
+    <Connections>
+      <Connection>
+        <Home name="R2InnerDoor"/>
+        <Target name="R2"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb+Stomp</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb+Stomp</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb+Stomp</Requirement>
+          <Requirement mode="extended">Bash+Grenade+WallJump+Stomp</Requirement>
+          <Requirement mode="extended">Bash+Grenade+Climb+Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="R2">
+    <Connections/>
+  </Area>
+  <Area name="R3OuterDoor">
+    <Connections>
+      <Connection>
+        <Home name="R3OuterDoor"/>
+        <Target name="R3InnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="R3OuterDoor"/>
+        <Target name="HoruInnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="R3InnerDoor">
+    <Connections>
+      <Connection>
+        <Home name="R3InnerDoor"/>
+        <Target name="R3"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="extended">Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="extended">Bash+Grenade+Climb</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="R3">
+    <Connections>
+      <Connection>
+        <Home name="R3"/>
+        <Target name="HoruR3Plant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="R4OuterDoor">
+    <Connections>
+      <Connection>
+        <Home name="R4OuterDoor"/>
+        <Target name="R4InnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="R4OuterDoor"/>
+        <Target name="HoruInnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="R4InnerDoor">
+    <Connections>
+      <Connection>
+        <Home name="R4InnerDoor"/>
+        <Target name="R4"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="extended">Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="extended">Bash+Grenade+Climb</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="R4">
+    <Connections>
+      <Connection>
+        <Home name="R4"/>
+        <Target name="HoruR4StompExp"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="R4"/>
+        <Target name="HoruR4LaserExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="R4"/>
+        <Target name="HoruR4DrainedExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="R4"/>
+        <Target name="HoruLavaDrainedRightExp"/>
+        <Requirements/>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HoruHub">
+    <Connections>
+      <Connection>
+        <Home name="HoruHub"/>
+        <Target name="HoruTeleporterExp"/>
+        <Requirements>
+          <Requirement mode="normal">GinsoKey+ForlornKey</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HoruHub"/>
+        <Target name="HoruBasement"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HoruBasement">
+    <Connections>
+      <Connection>
+        <Home name="HoruBasement"/>
+        <Target name="DoorWarpExp"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Climb+DoubleJump</Requirement>
+          <Requirement mode="normal">WallJump+ChargeJump</Requirement>
+          <Requirement mode="normal">Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">Glide+ChargeJump</Requirement>
+          <Requirement mode="normal">DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="extended">ChargeJump</Requirement>
+          <Requirement mode="extended">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HoruBasement"/>
+        <Target name="HoruEscapeOuterDoor"/>
+        <Requirements/>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HoruEscapeOuterDoor">
+    <Connections>
+      <Connection>
+        <Home name="HoruEscapeOuterDoor"/>
+        <Target name="HoruEscapeInnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HoruEscapeInnerDoor">
+    <Connections>
+      <Connection>
+        <Home name="HoruEscapeInnerDoor"/>
+        <Target name="FinalEscape"/>
+        <Requirements>
+          <Requirement mode="normal">Climb+Dash+Stomp+Glide+Bash+ChargeJump+Grenade+Water+GinsoKey+ForlornKey+HoruKey</Requirement>
+          <Requirement mode="extended">Dash+Stomp+Glide+Bash+ChargeJump+Grenade+GinsoKey+ForlornKey+HoruKey</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="ValleyEntry">
+    <Connections>
+      <Connection>
+        <Home name="ValleyEntry"/>
+        <Target name="ValleyEntryAbilityCell"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="ValleyEntry"/>
+        <Target name="ValleyRightSwimExp"/>
+        <Requirements>
+          <Requirement mode="normal">Water+Stomp+WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Water+Stomp+WallJump+Bash</Requirement>
+          <Requirement mode="normal">Water+Stomp+WallJump+ChargeJump</Requirement>
+          <Requirement mode="normal">Water+Stomp+Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">Water+Stomp+Climb+DoubleJump</Requirement>
+          <Requirement mode="dboost">Stomp+WallJump+DoubleJump</Requirement>
+          <Requirement mode="dboost">Stomp+WallJump+Bash</Requirement>
+          <Requirement mode="dboost">Stomp+WallJump+ChargeJump</Requirement>
+          <Requirement mode="dboost">Stomp+Climb+ChargeJump</Requirement>
+          <Requirement mode="dboost">Stomp+Climb+DoubleJump</Requirement>
+          <Requirement mode="extended">Bash+Water</Requirement>
+          <Requirement mode="extended-damage">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyEntry"/>
+        <Target name="ValleyEntryTree"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Bash+Climb</Requirement>
+          <Requirement mode="normal">DoubleJump+Climb</Requirement>
+          <Requirement mode="normal">ChargeJump+Climb</Requirement>
+          <Requirement mode="lure">Bash</Requirement>
+          <Requirement mode="dboost">ChargeJump+HC+HC+HC+HC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyEntry"/>
+        <Target name="ValleyEntryTreePlantAccess"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump+ChargeFlame</Requirement>
+          <Requirement mode="extended">WallJump+ChargeFlame</Requirement>
+          <Requirement mode="extended">Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyEntry"/>
+        <Target name="ValleyRight"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp+Bash+WallJump</Requirement>
+          <Requirement mode="normal">Stomp+Bash+DoubleJump</Requirement>
+          <Requirement mode="normal">Stomp+Bash+Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">Stomp+Bash+Grenade</Requirement>
+          <Requirement mode="extended">Bash+DoubleJump</Requirement>
+          <Requirement mode="extended">Bash+Climb+ChargeJump</Requirement>
+          <Requirement mode="extended">Bash+WallJump</Requirement>
+          <Requirement mode="extended">Bash+Grenade</Requirement>
+          <Requirement mode="extended-damage">Stomp+ChargeJump+DoubleJump+WallJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="extreme">Stomp+WallJump+DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="extreme">Stomp+WallJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyEntry"/>
+        <Target name="SpiritTreeRefined"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="ValleyEntryTree">
+    <Connections>
+      <Connection>
+        <Home name="ValleyEntryTree"/>
+        <Target name="ValleyEntryTreeExp"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="ValleyEntryTree"/>
+        <Target name="ValleyEntryGrenadeLongSwim"/>
+        <Requirements>
+          <Requirement mode="normal">Water+Grenade</Requirement>
+          <Requirement mode="dboost-hard">Grenade+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost-hard">Grenade+Bash+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Grenade+HC+HC+HC+HC+HC+HC+HC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyEntryTree"/>
+        <Target name="ValleyEntryTreePlantAccess"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump+Climb+ChargeFlame</Requirement>
+          <Requirement mode="normal">ChargeJump+Climb+Grenade</Requirement>
+          <Requirement mode="normal">ChargeJump+DoubleJump+ChargeFlame</Requirement>
+          <Requirement mode="normal">ChargeJump+DoubleJump+Grenade</Requirement>
+          <Requirement mode="normal">Bash+ChargeFlame</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">Glide+ChargeFlame</Requirement>
+          <Requirement mode="normal">Glide+Grenade</Requirement>
+          <Requirement mode="cdash-farming">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="ValleyEntryTreePlantAccess">
+    <Connections>
+      <Connection>
+        <Home name="ValleyEntryTreePlantAccess"/>
+        <Target name="ValleyEntryTreePlant"/>
+        <Requirements/>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="ValleyRight">
+    <Connections>
+      <Connection>
+        <Home name="ValleyRight"/>
+        <Target name="ValleyRightFastStomplessCell"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="ValleyRight"/>
+        <Target name="ValleyRightExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyRight"/>
+        <Target name="ValleyRightBirdStompCell"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump+Climb</Requirement>
+          <Requirement mode="speed">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyRight"/>
+        <Target name="ValleyMain"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+Stomp</Requirement>
+          <Requirement mode="extended">Dash+Bash</Requirement>
+          <Requirement mode="extended">Dash+Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="ValleyMain">
+    <Connections>
+      <Connection>
+        <Home name="ValleyMain"/>
+        <Target name="GlideSkillFeather"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="ValleyMain"/>
+        <Target name="KuroPerchExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyMain"/>
+        <Target name="MistyEntranceStompExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyMain"/>
+        <Target name="MistyEntranceTreeExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyMain"/>
+        <Target name="WilhelmExp"/>
+        <Requirements>
+          <Requirement mode="normal">Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">WallJump+DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade+Climb</Requirement>
+          <Requirement mode="normal">Bash+Grenade+WallJump+DoubleJump</Requirement>
+          <Requirement mode="extended">Bash+Grenade</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyMain"/>
+        <Target name="Sorrow"/>
+        <Requirements>
+          <Requirement mode="normal">Wind+Glide</Requirement>
+          <Requirement mode="speed-lure">Glide+DoubleJump+Bash+Dash</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="extended-damage">ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">ChargeJump+Glide+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">ChargeJump+Dash+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyMain"/>
+        <Target name="Misty"/>
+        <Requirements>
+          <Requirement mode="normal">Glide+Bash</Requirement>
+          <Requirement mode="dboost">Bash+DoubleJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyMain"/>
+        <Target name="ForlornOuterDoor"/>
+        <Requirements>
+          <Requirement mode="normal">ForlornKey</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyMain"/>
+        <Target name="RightForlorn"/>
+        <Requirements>
+          <Requirement mode="glitched">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyMain"/>
+        <Target name="LowerValley"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyMain"/>
+        <Target name="LowerValleyPlantApproach"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyMain"/>
+        <Target name="ValleyForlornApproach"/>
+        <Requirements/>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="LowerValley">
+    <Connections>
+      <Connection>
+        <Home name="LowerValley"/>
+        <Target name="ValleyThreeBirdAbilityCell"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerValley"/>
+        <Target name="LowerValleyMapstone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerValley"/>
+        <Target name="LowerValleyExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerValley"/>
+        <Target name="ValleyMainFACS"/>
+        <Requirements>
+          <Requirement mode="normal">Climb+ChargeJump</Requirement>
+          <Requirement mode="extended">Bash+Glide</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerValley"/>
+        <Target name="LowerValleyPlantApproach"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+DoubleJump</Requirement>
+          <Requirement mode="normal">Bash+Glide</Requirement>
+          <Requirement mode="normal">ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="normal">ChargeJump+Glide</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LowerValley"/>
+        <Target name="ValleyEntry"/>
+        <Requirements>
+          <Requirement mode="normal">Bash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="LowerValleyPlantApproach">
+    <Connections>
+      <Connection>
+        <Home name="LowerValleyPlantApproach"/>
+        <Target name="ValleyMainPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="OutsideForlorn">
+    <Connections>
+      <Connection>
+        <Home name="OutsideForlorn"/>
+        <Target name="OutsideForlornTreeExp"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="OutsideForlorn"/>
+        <Target name="OutsideForlornWaterExp"/>
+        <Requirements>
+          <Requirement mode="normal">Water</Requirement>
+          <Requirement mode="dboost">HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="OutsideForlorn"/>
+        <Target name="OutsideForlornCliff"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+ChargeJump</Requirement>
+          <Requirement mode="normal">Climb+ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Glide</Requirement>
+          <Requirement mode="normal">Bash+DoubleJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="ValleyForlornApproach">
+    <Connections>
+      <Connection>
+        <Home name="ValleyForlornApproach"/>
+        <Target name="ValleyForlornApproachGrenade"/>
+        <Requirements>
+          <Requirement mode="normal">Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyForlornApproach"/>
+        <Target name="ValleyMap"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+Mapstone</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="OutsideForlornCliff">
+    <Connections>
+      <Connection>
+        <Home name="OutsideForlornCliff"/>
+        <Target name="OutsideForlornCliffExp"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="OutsideForlornCliff"/>
+        <Target name="ValleyForlornApproachMapstone"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+Stomp</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="OutsideForlornCliff"/>
+        <Target name="LowerValley"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+ChargeJump+Stomp</Requirement>
+          <Requirement mode="dbash">Bash+Stomp</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="OutsideForlornCliff"/>
+        <Target name="ValleyForlornApproach"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+Stomp</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="ForlornOuterDoor">
+    <Connections>
+      <Connection>
+        <Home name="ForlornOuterDoor"/>
+        <Target name="ForlornInnerDoor"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="ForlornInnerDoor">
+    <Connections>
+      <Connection>
+        <Home name="ForlornInnerDoor"/>
+        <Target name="Forlorn"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="extended">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="Forlorn">
+    <Connections>
+      <Connection>
+        <Home name="Forlorn"/>
+        <Target name="ForlornEntranceExp"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="Forlorn"/>
+        <Target name="ForlornHiddenSpiderExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Forlorn"/>
+        <Target name="ForlornKeystone1"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Forlorn"/>
+        <Target name="ForlornKeystone2"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Forlorn"/>
+        <Target name="ForlornKeystone3"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Forlorn"/>
+        <Target name="ForlornKeystone4"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Forlorn"/>
+        <Target name="ForlornPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Forlorn"/>
+        <Target name="ForlornMap"/>
+        <Requirements>
+          <Requirement mode="normal">Mapstone</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Forlorn"/>
+        <Target name="RightForlorn"/>
+        <Requirements>
+          <Requirement mode="normal">Glide+Stomp+Bash+WallJump+KS+KS+KS+KS</Requirement>
+          <Requirement mode="normal">Glide+Stomp+Bash+Climb+KS+KS+KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Forlorn"/>
+        <Target name="OutsideForlorn"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="RightForlorn">
+    <Connections>
+      <Connection>
+        <Home name="RightForlorn"/>
+        <Target name="RightForlornHealthCell"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="RightForlorn"/>
+        <Target name="ForlornEscape"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="RightForlorn"/>
+        <Target name="RightForlornPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="Sorrow">
+    <Connections>
+      <Connection>
+        <Home name="Sorrow"/>
+        <Target name="SorrowEntranceAbilityCell"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="Sorrow"/>
+        <Target name="SorrowMainShaftKeystone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Sorrow"/>
+        <Target name="SorrowSpikeKeystone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Sorrow"/>
+        <Target name="SorrowHiddenKeystone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Sorrow"/>
+        <Target name="SorrowLowerLeftKeystone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Sorrow"/>
+        <Target name="SorrowHealthCell"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Sorrow"/>
+        <Target name="SorrowMapstone"/>
+        <Requirements>
+          <Requirement mode="normal">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Sorrow"/>
+        <Target name="SorrowMap"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+Mapstone</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Sorrow"/>
+        <Target name="LeftSorrow"/>
+        <Requirements>
+          <Requirement mode="normal">Glide+KS+KS+KS+KS</Requirement>
+          <Requirement mode="extreme">Bash+KS+KS+KS+KS</Requirement>
+          <Requirement mode="extreme">ChargeJump+Climb+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+KS+KS+KS+KS</Requirement>
+          <Requirement mode="extreme">ChargeJump+Dash+WallJump+DoubleJump+HC+KS+KS+KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Sorrow"/>
+        <Target name="Horu"/>
+        <Requirements>
+          <Requirement mode="glitched">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Sorrow"/>
+        <Target name="ValleyMain"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="LeftSorrow">
+    <Connections>
+      <Connection>
+        <Home name="LeftSorrow"/>
+        <Target name="LeftSorrowAbilityCell"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="LeftSorrow"/>
+        <Target name="LeftSorrowKeystone1"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftSorrow"/>
+        <Target name="LeftSorrowKeystone2"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftSorrow"/>
+        <Target name="LeftSorrowKeystone3"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftSorrow"/>
+        <Target name="LeftSorrowKeystone4"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftSorrow"/>
+        <Target name="LeftSorrowEnergyCell"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftSorrow"/>
+        <Target name="LeftSorrowGrenade"/>
+        <Requirements>
+          <Requirement mode="normal">Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftSorrow"/>
+        <Target name="LeftSorrowPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftSorrow"/>
+        <Target name="UpperSorrow"/>
+        <Requirements>
+          <Requirement mode="normal">KS+KS+KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="UpperSorrow">
+    <Connections>
+      <Connection>
+        <Home name="UpperSorrow"/>
+        <Target name="UpperSorrowRightKeystone"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="UpperSorrow"/>
+        <Target name="UpperSorrowFarRightKeystone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperSorrow"/>
+        <Target name="UpperSorrowLeftKeystone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperSorrow"/>
+        <Target name="UpperSorrowSpikeExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperSorrow"/>
+        <Target name="UpperSorrowFarLeftKeystone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperSorrow"/>
+        <Target name="ChargeJump"/>
+        <Requirements>
+          <Requirement mode="normal">KS+KS+KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperSorrow"/>
+        <Target name="Sorrow"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+          <Requirement mode="extended">Climb+ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="ChargeJump">
+    <Connections>
+      <Connection>
+        <Home name="ChargeJump"/>
+        <Target name="ChargeJumpSkillTree"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="ChargeJump"/>
+        <Target name="AboveChargeJumpAbilityCell"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ChargeJump"/>
+        <Target name="SunstoneArea"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump+Climb</Requirement>
+          <Requirement mode="extended">Bash+Glide</Requirement>
+          <Requirement mode="extended">Bash+Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="SunstoneArea">
+    <Connections>
+      <Connection>
+        <Home name="SunstoneArea"/>
+        <Target name="Sunstone"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="SunstoneArea"/>
+        <Target name="SunstonePlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunstoneArea"/>
+        <Target name="UpperSorrow"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+          <Requirement mode="extended">Climb+ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="Misty">
+    <Connections>
+      <Connection>
+        <Home name="Misty"/>
+        <Target name="MistyFrogNookExp"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="Misty"/>
+        <Target name="MistyAbilityCell"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Misty"/>
+        <Target name="MistyMortarCorridorUpperExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Misty"/>
+        <Target name="MistyMortarCorridorHiddenExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Misty"/>
+        <Target name="MistyKeystone1"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Misty"/>
+        <Target name="ClimbSkillTree"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Misty"/>
+        <Target name="MistyPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Misty"/>
+        <Target name="MistyPostClimb"/>
+        <Requirements>
+          <Requirement mode="normal">Climb+DoubleJump</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Misty"/>
+        <Target name="Forlorn"/>
+        <Requirements>
+          <Requirement mode="glitched">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Misty"/>
+        <Target name="RightForlorn"/>
+        <Requirements>
+          <Requirement mode="glitched">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="MistyPostClimb">
+    <Connections>
+      <Connection>
+        <Home name="MistyPostClimb"/>
+        <Target name="MistyPostClimbSpikeCave"/>
+        <Requirements/>
+      </Connection>
+      <Connection>
+        <Home name="MistyPostClimb"/>
+        <Target name="MistyPostClimbAboveSpikePit"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MistyPostClimb"/>
+        <Target name="MistyKeystone3"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MistyPostClimb"/>
+        <Target name="MistyKeystone4"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MistyPostClimb"/>
+        <Target name="MistyGrenade"/>
+        <Requirements>
+          <Requirement mode="normal">Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MistyPostClimb"/>
+        <Target name="GumonSeal"/>
+        <Requirements>
+          <Requirement mode="normal">KS+KS+KS+KS</Requirement>
         </Requirements>
       </Connection>
     </Connections>
