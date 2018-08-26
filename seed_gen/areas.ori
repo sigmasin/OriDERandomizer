@@ -1137,14 +1137,15 @@ home: UpperGinsoTree
 	pickup: UpperGinsoUpperRightKeystone
 	pickup: UpperGinsoUpperLeftKeystone
 	conn: TopGinsoTree
-		normal Bash WallJump Keystone=4
-		normal Bash Climb Keystone=4
-		dboost ChargeJump WallJump Health=5 Keystone=4
-		dboost ChargeJump Climb Health=5 Keystone=4
-		extended Bash ChargeJump Keystone=4
-		extended-damage ChargeJump Health=5 Keystone=4
-		extended-damage ChargeJump DoubleJump Keystone=4
-		extreme WallJump DoubleJump Health=7 Keystone=4
+		all Keystone=4
+		normal Bash WallJump
+		normal Bash Climb
+		dboost ChargeJump WallJump Health=5
+		dboost ChargeJump Climb Health=5
+		extended Bash ChargeJump
+		extended-damage ChargeJump Health=5
+		extended-damage ChargeJump DoubleJump
+		extreme WallJump DoubleJump Health=7
 	conn: UpperGinsoFloors
 		normal Bash
 		normal Stomp
