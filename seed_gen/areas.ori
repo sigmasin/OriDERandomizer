@@ -513,15 +513,10 @@ home: SpiritTreeRefined
 		extended Grenade Climb
 home: ChargeFlameTree
 	loc: AboveChargeFlameTreeExp
-home: SpiderSac
+home: SpiderSacArea
 	loc: SpiderSacHealthCell
 		normal Grenade
 		normal ChargeFlame
-	loc: SpiderSacEnergyCell
-		normal Grenade
-		normal ChargeFlame
-		normal DoubleJump
-		normal Glide
 	loc: SpiderSacGrenadeDoor
 		normal Grenade Bash
 		normal Grenade DoubleJump WallJump
@@ -534,6 +529,11 @@ home: SpiderSac
 		extended Grenade Glide
 		extended Stomp Glide
 	conn: HollowGrove
+		normal Grenade
+		normal ChargeFlame
+		normal DoubleJump
+		normal Glide
+	conn: SpiderSacDropArea
 		normal Grenade
 		normal ChargeFlame
 		normal DoubleJump
@@ -553,6 +553,8 @@ home: SpiderSac
 		normal Stomp WallJump
 		normal Stomp Climb
 		normal Stomp ChargeJump
+home: SpiderSacDropArea
+	loc: SpiderSacEnergyCell
 home: DashArea
 	loc: DashAreaOrbRoomExp
 	loc: DashAreaAbilityCell
@@ -684,19 +686,13 @@ home: FinalBlackRoot
 	loc: LostGroveTeleporter
 home: HollowGrove
 	loc: HollowGroveMapstone
-	loc: SpiderSacEnergyCell
-		normal Climb Glide
-		normal WallJump Glide
-		normal Bash Grenade
-		extended DoubleJump
-		extended Bash
 	loc: GroveSpiderWaterSwim
 		normal Water
 		dboost Health=6
 		dboost Bash Health=5
 		extreme Bash
 		extreme Health=4
-	loc: SwampTelerporterAbilityCell
+	loc: SwampTeleporterAbilityCell
 		normal ChargeJump DoubleJump Glide
 		normal Wind Glide
 		extended Grenade Bash
@@ -735,6 +731,12 @@ home: HollowGrove
 		lure Bash Climb
 		dbash Bash
 		cdash-farming Dash
+	conn: SpiderSacDropArea
+		normal Climb Glide
+		normal WallJump Glide
+		normal Bash Grenade
+		extended DoubleJump
+		extended Bash
 	conn: MoonGrotto
 		normal WallJump
 		normal Climb
