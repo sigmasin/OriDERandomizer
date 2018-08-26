@@ -316,7 +316,7 @@ home: WallJump
 		speed WallJump DoubleJump
 		extended Climb DoubleJump
 		dbash Bash
-	loc: RightWallJump
+	loc: WallJumpAreaExp
 		normal ChargeJump
 		normal Bash Grenade
 		lure-hard Bash
@@ -368,11 +368,11 @@ home: DeathGauntlet
 		normal Stomp Water
 		dboost Stomp
 		extended-damage Free
-	loc: DeathGauntletRoof
-		normal ChargeJump
 	loc: DeathGauntletSwimEnergyDoor
 		normal Water Energy=4
 		dboost Energy=4
+	conn: DeathGauntletRoof
+		normal ChargeJump
 	conn: MoonGrotto
 		dboost-light WallJump
 		dboost-light Climb
@@ -478,7 +478,7 @@ home: LowerChargeFlameArea
 		lure-hard Bash ChargeFlame
 		cdash-farming Bash Dash
 home: SpiritTreeRefined
-	loc: AboveChargeFlameTreeExp
+	loc: ChargeFlameTree
 		normal DoubleJump Climb
 		normal DoubleJump WallJump
 		normal ChargeJump Climb
@@ -511,11 +511,13 @@ home: SpiritTreeRefined
 		normal Grenade Bash
 		extended ChargeFlame Climb
 		extended Grenade Climb
+home: ChargeFlameTree
+	loc: AboveChargeFlameTreeExp
 home: SpiderSac
 	loc: SpiderSacHealthCell
 		normal Grenade
 		normal ChargeFlame
-	loc: SpiderSacEnergyDoor
+	loc: SpiderSacEnergyCell
 		normal Grenade
 		normal ChargeFlame
 		normal DoubleJump
