@@ -1467,17 +1467,6 @@ home: HoruEscapeInnerDoor
 		extended Dash Stomp Glide Bash ChargeJump Grenade GinsoKey ForlornKey HoruKey
 home: ValleyEntry
 	loc: ValleyEntryAbilityCell
-	loc: ValleyEntryTree
-		normal WallJump
-		normal Bash Climb
-		normal DoubleJump Climb
-		normal ChargeJump Climb
-		lure Bash
-		dboost ChargeJump Health=4
-	loc: ValleyEntryTreePlant
-		normal ChargeJump ChargeFlame
-		extended WallJump ChargeFlame
-		extended Grenade
 	loc: ValleyRightSwimExp
 		normal Water Stomp WallJump DoubleJump
 		normal Water Stomp WallJump Bash
@@ -1491,6 +1480,17 @@ home: ValleyEntry
 		dboost Stomp Climb DoubleJump
 		extended Bash Water
 		extended-damage Bash
+	conn: ValleyEntryTree
+		normal WallJump
+		normal Bash Climb
+		normal DoubleJump Climb
+		normal ChargeJump Climb
+		lure Bash
+		dboost ChargeJump Health=4
+	conn: ValleyEntryTreePlantAccess
+		normal ChargeJump ChargeFlame
+		extended WallJump ChargeFlame
+		extended Grenade
 	conn: ValleyRight
 		normal Stomp Bash WallJump
 		normal Stomp Bash DoubleJump
@@ -1514,7 +1514,7 @@ home: ValleyEntryTree
 		dboost-hard Grenade Health=14
 		dboost-hard Grenade Bash Health=13
 		extreme Grenade Health=7
-	loc: ValleyEntryTreePlant
+	conn: ValleyEntryTreePlantAccess
 		normal ChargeJump Climb ChargeFlame
 		normal ChargeJump Climb Grenade
 		normal ChargeJump DoubleJump ChargeFlame
@@ -1524,6 +1524,8 @@ home: ValleyEntryTree
 		normal Glide ChargeFlame
 		normal Glide Grenade
 		cdash-farming Dash
+home: ValleyEntryTreePlantAccess
+	loc: ValleyEntryTreePlant
 home: ValleyRight
 	loc: ValleyRightFastStomplessCell
 	loc: ValleyRightExp
@@ -1544,18 +1546,8 @@ home: ValleyMain
 		normal WallJump DoubleJump ChargeJump
 		normal Bash Grenade Climb
 		normal Bash Grenade WallJump DoubleJump
+		extended Bash Grenade
 		dbash Bash
-	loc: ValleyForlornApproachGrenade
-		normal Grenade
-	loc: ValleyMainFACS
-		normal Climb ChargeJump
-		extended Bash Glide
-	loc: ValleyMainPlant
-		normal ChargeFlame
-		normal Grenade
-		cdash Dash
-	loc: ValleyMap
-		normal Bash Mapstone
 	conn: Sorrow
 		normal Wind Glide
 		speed-lure Glide DoubleJump Bash Dash
@@ -1573,7 +1565,8 @@ home: ValleyMain
 	conn: RightForlorn
 		glitched Free
 	conn: LowerValley
-		normal Free
+	conn: LowerValleyPlantApproach
+	conn: ValleyForlornApproach
 home: LowerValley
 	loc: ValleyThreeBirdAbilityCell
 	loc: LowerValleyMapstone
@@ -1603,26 +1596,28 @@ home: OutsideForlorn
 		normal Water
 		dboost Health=4
 		dboost Stomp
-	loc: OutsideForlornCliff
+	conn: OutsideForlornCliff
 		normal WallJump ChargeJump
 		normal Climb ChargeJump
 		normal Bash Glide
 		normal Bash DoubleJump
 		normal Bash Grenade
+home: ValleyForlornApproach
+	loc: ValleyForlornApproachGrenade
+		normal Grenade
+	loc: ValleyMap
+		normal Bash Mapstone
 home: OutsideForlornCliff
 	loc: OutsideForlornCliffExp
-	loc: ValleyForlornApproachGrenade
-		normal Bash Stomp Grenade
-		extreme Bash Grenade
-	loc: ValleyMap
-		normal Bash Stomp Mapstone
-		extreme Bash Mapstone
 	loc: ValleyForlornApproachMapstone
 		normal Bash Stomp
 		extreme Bash
 	conn: LowerValley
 		normal Bash ChargeJump Stomp
 		dbash Bash Stomp
+		extreme Bash
+	conn: ValleyForlornApproach
+		normal Bash Stomp
 		extreme Bash
 home: ForlornOuterDoor
 	conn: ForlornInnerDoor
@@ -1673,12 +1668,6 @@ home: Sorrow
 		normal Bash
 	loc: SorrowMap
 		normal Bash Mapstone
-	loc: WilhelmExp
-		normal Climb ChargeJump
-		normal WallJump DoubleJump ChargeJump
-		normal Bash Grenade Climb
-		normal Bash Grenade WallJump DoubleJump
-		dbash Bash
 	conn: LeftSorrow
 		normal Glide Keystone=4
 		extreme Bash Keystone=4
