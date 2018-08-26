@@ -373,6 +373,12 @@ home: DeathGauntlet
 		dboost Energy=4
 	conn: DeathGauntletRoof
 		normal ChargeJump
+	conn: DeathGauntletRoofPlantAccess
+		extended ChargeFlame DoubleJump WallJump
+		extended ChargeFlame Bash WallJump
+		extended ChargeFlame DoubleJump Climb
+		extended ChargeFlame Bash Climb
+		extended ChargeFlame Bash Grenade
 	conn: MoonGrotto
 		dboost-light WallJump
 		dboost-light Climb
@@ -892,14 +898,6 @@ home: MoonGrotto
 		speed Dash Grenade
 		extended Grenade
 		cdash Dash
-	loc: DeathGauntletRoofPlant
-		extended ChargeFlame DoubleJump WallJump
-		extended ChargeFlame Bash WallJump
-		extended ChargeFlame DoubleJump Climb
-		extended ChargeFlame Bash Climb
-		extended ChargeFlame ChargeJump
-		extended Grenade ChargeJump
-		extended ChargeFlame Bash Grenade
 	conn: Iceless
 		normal ChargeJump WallJump
 		normal ChargeJump Climb
@@ -1096,12 +1094,14 @@ home: HideoutRedirect
 	loc: GumoHideoutRedirectExp
 home: DeathGauntletRoof
 	loc: DeathGauntletRoofHealthCell
-	loc: DeathGauntletRoofPlant
+	conn: DeathGauntletRoofPlantAccess
 		normal ChargeFlame
 		normal Grenade
 		cdash Dash
 	conn: DeathGauntlet
 		normal Free
+home: DeathGauntletRoofPlantAccess
+	loc: DeathGauntletRoofPlant
 home: LowerGinsoTree
 	loc: LowerGinsoHiddenExp
 	loc: LowerGinsoKeystone1
