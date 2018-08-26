@@ -126,6 +126,20 @@
       </Connection>
       <Connection>
         <Home name="SunkenGladesRunaway"/>
+        <Target name="SideFallCell"/>
+        <Requirements>
+          <Requirement mode="normal">TPGrotto+Glide+Wind</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="WaterVeinArea"/>
+        <Requirements>
+          <Requirement mode="normal">TPGrotto+Glide+Wind</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
         <Target name="HollowGrove"/>
         <Requirements>
           <Requirement mode="normal">TPSwamp</Requirement>
@@ -2559,6 +2573,13 @@
           <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="WaterVeinArea"/>
+        <Requirements>
+          <Requirement mode="normal">Glide+Wind</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="GumoHideoutPartialMobile">
@@ -2684,20 +2705,6 @@
         <Zone>Grotto</Zone>
       </Location>
       <Location>
-        <X>567</X>
-        <Y>-246</Y>
-        <Item>EX100</Item>
-        <Difficulty>1</Difficulty>
-        <Zone>Grotto</Zone>
-      </Location>
-      <Location>
-        <X>0</X>
-        <Y>0</Y>
-        <Item>EVGinsoKey</Item>
-        <Difficulty>1</Difficulty>
-        <Zone>Grotto</Zone>
-      </Location>
-      <Location>
         <X>406</X>
         <Y>-386</Y>
         <Item>EX100</Item>
@@ -2744,6 +2751,33 @@
           <Requirement mode="cdash">Dash</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="MobileGumoHideout"/>
+        <Target name="WaterVeinArea"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="WaterVeinArea">
+    <Locations>
+      <Location>
+        <X>567</X>
+        <Y>-246</Y>
+        <Item>EX100</Item>
+        <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
+      </Location>
+      <Location>
+        <X>0</X>
+        <Y>0</Y>
+        <Item>EVGinsoKey</Item>
+        <Difficulty>1</Difficulty>
+        <Zone>Grotto</Zone>
+      </Location>
+    </Locations>
+    <Connections>
     </Connections>
   </Area>
   <Area name="MobileGumoHideoutPlants">
@@ -4500,6 +4534,14 @@
         <Target name="OutsideForlornGrenade"/>
         <Requirements>
           <Requirement mode="normal">Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyMain"/>
+        <Target name="OutsideForlorn"/>
+        <Requirements>
+          <Requirement mode="normal">Bash+Stomp</Requirement>
+          <Requirement mode="extended">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
