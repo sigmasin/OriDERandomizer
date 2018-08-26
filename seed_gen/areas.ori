@@ -1144,8 +1144,7 @@ home: UpperGinsoTree
 		extended Bash ChargeJump Keystone=4
 		extended-damage ChargeJump Health=5 Keystone=4
 		extended-damage ChargeJump DoubleJump Keystone=4
-		-- FIXME this path is a softlock
-		extreme WallJump DoubleJump Health=7
+		extreme WallJump DoubleJump Health=7 Keystone=4
 	conn: UpperGinsoFloors
 		normal Bash
 		normal Stomp
