@@ -99,7 +99,7 @@ for line in meta:
 	if tokens[0][:2] == '--':
 		continue
 
-	if tokens[0] == "pickup:":
+	if tokens[0] == "loc:":
 		assert not area
 		assert not conn
 
@@ -128,7 +128,7 @@ for line in meta:
 		area_el = XML.SubElement(new_areas, "Area", name=area_name)
 		area = XML.SubElement(area_el, "Connections")
 		CloseConnection()
-	elif tokens[0] == "loc:":
+	elif tokens[0] == "pickup:":
 		assert area_name
 		assert area is not None
 		loc = tokens[1]

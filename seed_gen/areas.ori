@@ -1,275 +1,275 @@
 -- all pickups in the game
-pickup: FirstPickup 92 -227 EX15 0 Glades
-pickup: FronkeyFight -154 -271 EX15 0 Glades
-pickup: GladesKeystone1 83 -222 KS 0 Glades
-pickup: GladesKeystone2 -11 -206 KS 0 Glades
-pickup: GladesGrenadePool 59 -280 EX200 2 Glades
-pickup: GladesGrenadeTree 82 -196 AC 1 Glades
-pickup: GladesMainPool 5 -241 EX100 1 Glades
-pickup: GladesMainPoolDeep -40 -239 EC 2 Glades
-pickup: FronkeyWalkRoof 257 -199 EX200 1 Glades
-pickup: FourthHealthCell -80 -189 HC 0 Glades
-pickup: GladesMapKeystone -59 -244 KS 0 Glades
-pickup: WallJumpSkillTree -316 -308 SKWallJump 0 Glades
-pickup: LeftGladesHiddenExp -283 -236 EX15 0 Glades
-pickup: DeathGauntletExp 303 -190 EX100 0 Grove
-pickup: DeathGauntletEnergyCell 423 -169 EC 0 Grotto
-pickup: GladesMap -81 -248 MapStone 0 Glades
-pickup: AboveFourthHealth -48 -166 AC 1 Glades
-pickup: WallJumpAreaExp -245 -277 EX200 2 Glades
-pickup: WallJumpAreaEnergyCell -336 -288 EC 0 Glades
-pickup: LeftGladesExp -247 -207 EX15 0 Glades
-pickup: LeftGladesKeystone -238 -212 KS 0 Glades
-pickup: LeftGladesMapstone -184 -227 MS 0 Glades
-pickup: SpiritCavernsKeystone1 -182 -193 KS 0 Glades
-pickup: SpiritCavernsKeystone2 -217 -183 KS 0 Glades
-pickup: SpiritCavernsTopRightKeystone -177 -154 KS 0 Glades
-pickup: SpiritCavernsTopLeftKeystone -217 -146 KS 0 Glades
-pickup: SpiritCavernsAbilityCell -216 -176 AC 1 Glades
-pickup: GladesLaser -155 -186 EC 2 Glades
-pickup: GladesLaserGrenade -165 -140 AC 3 Glades
-pickup: ChargeFlameSkillTree -56 -160 SKChargeFlame 0 Grove
-pickup: ChargeFlameAreaPlant 43 -156 Plant 1 Grove
-pickup: ChargeFlameAreaExp 4 -196 EX100 0 Glades
-pickup: AboveChargeFlameTreeExp -14 -95 EX100 1 Grove
-pickup: SpiderSacEnergyDoor 64 -109 AC 1 Grove
-pickup: SpiderSacHealthCell 151 -117 HC 1 Grove
-pickup: SpiderSacEnergyCell 60 -155 EC 0 Grove
-pickup: SpiderSacGrenadeDoor 93 -92 AC 2 Grove
-pickup: DashAreaOrbRoomExp 154 -291 EX100 1 Blackroot
-pickup: DashAreaAbilityCell 183 -291 AC 1 Blackroot
-pickup: DashAreaRoofExp 197 -229 EX100 0 Blackroot
-pickup: DashSkillTree 292 -256 SKDash 0 Blackroot
-pickup: DashAreaPlant 313 -232 Plant 2 Blackroot
-pickup: RazielNo 304 -303 EX100 0 Blackroot
-pickup: DashAreaMapstone 346 -255 MS 0 Blackroot
-pickup: BlackrootTeleporterHealthCell 394 -309 HC 0 Blackroot
-pickup: BlackrootMap 418 -291 MapStone 0 Blackroot
-pickup: BlackrootBoulderExp 432 -324 EX100 1 Blackroot
-pickup: GrenadeSkillTree 72 -380 SKGrenade 2 Blackroot
-pickup: GrenadeAreaExp 224 -359 EX100 2 Blackroot
-pickup: GrenadeAreaAbilityCell 252 -331 AC 3 Blackroot
-pickup: LowerBlackrootAbilityCell 279 -375 AC 1 Blackroot
-pickup: LowerBlackrootLaserAbilityCell 391 -423 AC 2 Blackroot
-pickup: LowerBlackrootLaserExp 339 -418 EX100 2 Blackroot
-pickup: LowerBlackrootGrenadeThrow 208 -431 AC 3 Blackroot
-pickup: LostGroveAbilityCell 459 -506 AC 4 Blackroot
-pickup: LostGroveHiddenExp 462 -489 EX100 4 Blackroot
-pickup: LostGroveTeleporter 307 -525 EX100 4 Blackroot
-pickup: LostGroveLongSwim 527 -544 AC 4 Blackroot
-pickup: HollowGroveMapstone 300 -94 MS 0 Grove
-pickup: OuterSwampAbilityCell 703 -82 AC 0 Swamp
-pickup: OuterSwampStompExp 618 -98 EX100 0 Swamp
-pickup: OuterSwampHealthCell 581 -67 HC 1 Swamp
-pickup: HollowGroveMap 351 -119 MapStone 1 Grove
-pickup: HollowGroveTreeAbilityCell 333 -61 AC 1 Grove
-pickup: HollowGroveMapPlant 365 -119 Plant 1 Grove
-pickup: HollowGroveTreePlant 330 -78 Plant 1 Grove
-pickup: SwampEntrancePlant 628 -120 Plant 1 Swamp
-pickup: MoonGrottoStompPlant 435 -140 Plant 1 Grotto
-pickup: OuterSwampMortarPlant 515 -100 Plant 1 Swamp
-pickup: GroveWaterStompAbilityCell 354 -178 AC 3 Grove
-pickup: OuterSwampGrenadeExp 666 -48 EX200 1 Swamp
-pickup: SwampTeleporterAbilityCell 409 -34 AC 1 Swamp
-pickup: GroveAboveSpiderWaterExp 174 -105 EX200 1 Grove
-pickup: GroveAboveSpiderWaterHealthCell 261 -117 HC 1 Grove
-pickup: GroveAboveSpiderWaterEnergyCell 272 -97 EC 2 Grove
-pickup: GroveSpiderWaterSwim 187 -163 EX100 1 Grove
-pickup: DeathGauntletSwimEnergyDoor 339 -216 AC 2 Grove
-pickup: DeathGauntletStompSwim 356 -207 EX200 1 Grotto
-pickup: AboveGrottoTeleporterExp 477 -140 EX100 1 Grotto
-pickup: GrottoLasersRoofExp 432 -108 EX100 1 Grotto
-pickup: IcelessExp 365 -109 EX100 1 Grove
-pickup: BelowGrottoTeleporterPlant 540 -220 Plant 2 Grotto
-pickup: LeftGrottoTeleporterExp 449 -166 EX200 1 Grotto
-pickup: OuterSwampMortarAbilityCell 502 -108 AC 2 Swamp
-pickup: SwampEntranceSwim 595 -136 EX200 1 Swamp
-pickup: BelowGrottoTeleporterHealthCell 543 -189 HC 2 Grotto
-pickup: GrottoEnergyDoorSwim 423 -274 EX100 1 Grotto
-pickup: GrottoEnergyDoorHealthCell 424 -220 HC 2 Grotto
-pickup: GrottoSwampDrainAccessExp 552 -141 EX100 2 Grotto
-pickup: GrottoSwampDrainAccessPlant 537 -176 Plant 2 Grotto
-pickup: GrottoHideoutFallAbilityCell 451 -296 AC 1 Grotto
-pickup: GumoHideoutMapstone 513 -413 MS 1 Grotto
-pickup: GumoHideoutMiniboss 620 -404 KS 2 Grotto
-pickup: GumoHideoutCrusherExp 572 -378 EX100 0 Grotto
-pickup: GumoHideoutCrusherKeystone 590 -384 KS 0 Grotto
-pickup: GumoHideoutRightHangingExp 496 -369 EX15 1 Grotto
-pickup: GumoHideoutLeftHangingExp 467 -369 EX15 1 Grotto
-pickup: GumoHideoutRedirectAbilityCell 449 -430 AC 1 Grotto
-pickup: GumoHideoutMap 477 -389 MapStone 1 Grotto
-pickup: DoubleJumpSkillTree 784 -412 SKDoubleJump 0 Grotto
-pickup: DoubleJumpAreaExp 759 -398 EX100 1 Grotto
-pickup: GumoHideoutEnergyCell 545 -357 EC 1 Grotto
-pickup: GumoHideoutRockfallExp 567 -246 EX100 1 Grotto
-pickup: WaterVein 0 0 EVGinsoKey 1 Grotto
-pickup: LeftGumoHideoutExp 406 -386 EX100 1 Grotto
-pickup: LeftGumoHideoutHealthCell 393 -375 HC 1 Grotto
-pickup: LeftGumoHideoutLowerPlant 447 -368 Plant 1 Grotto
-pickup: LeftGumoHideoutUpperPlant 439 -344 Plant 1 Grotto
-pickup: GumoHideoutRedirectPlant 492 -400 Plant 1 Grotto
-pickup: LeftGumoHideoutSwim 397 -411 EX100 1 Grotto
-pickup: GumoHideoutRedirectEnergyCell 515 -441 EC 2 Grotto
-pickup: GumoHideoutRedirectExp 505 -439 EX200 2 Grotto
-pickup: FarLeftGumoHideoutExp 328 -353 EX100 2 Grotto
-pickup: SwampEntranceAbilityCell 643 -127 AC 1 Swamp
-pickup: DeathGauntletRoofHealthCell 321 -179 HC 1 Grove
-pickup: DeathGauntletRoofPlant 342 -179 Plant 2 Grove
-pickup: LowerGinsoHiddenExp 523 142 EX100 1 Ginso
-pickup: LowerGinsoKeystone1 531 267 KS 1 Ginso
-pickup: LowerGinsoKeystone2 540 277 KS 1 Ginso
-pickup: LowerGinsoKeystone3 508 304 KS 1 Ginso
-pickup: LowerGinsoKeystone4 529 297 KS 1 Ginso
-pickup: LowerGinsoPlant 540 101 Plant 3 Ginso
-pickup: BashSkillTree 532 328 SKBash 1 Ginso
-pickup: BashAreaExp 518 339 EX100 1 Ginso
-pickup: UpperGinsoLowerKeystone 507 476 KS 1 Ginso
-pickup: UpperGinsoRightKeystone 535 488 KS 1 Ginso
-pickup: UpperGinsoUpperRightKeystone 531 502 KS 1 Ginso
-pickup: UpperGinsoUpperLeftKeystone 508 498 KS 1 Ginso
-pickup: UpperGinsoRedirectLowerExp 517 384 EX100 1 Ginso
-pickup: UpperGinsoRedirectUpperExp 530 407 EX100 2 Ginso
-pickup: UpperGinsoEnergyCell 536 434 EC 1 Ginso
-pickup: TopGinsoLeftLowerExp 456 566 EX100 1 Ginso
-pickup: TopGinsoLeftUpperExp 471 614 EX100 1 Ginso
-pickup: TopGinsoRightPlant 610 611 Plant 3 Ginso
-pickup: GinsoEscapeSpiderExp 534 661 EX200 2 Ginso
-pickup: GinsoEscapeJumpPadExp 537 733 EX100 2 Ginso
-pickup: GinsoEscapeProjectileExp 533 827 EX100 2 Ginso
-pickup: GinsoEscapeHangingExp 519 867 EX100 2 Ginso
-pickup: GinsoEscapeExit 0 4 EVWater 2 Ginso
-pickup: SwampMap 677 -129 MapStone 2 Swamp
-pickup: InnerSwampDrainExp 636 -162 EX100 2 Swamp
-pickup: InnerSwampHiddenSwimExp 761 -173 EX100 2 Swamp
-pickup: InnerSwampSwimLeftKeystone 684 -205 KS 2 Swamp
-pickup: InnerSwampSwimRightKeystone 766 -183 KS 2 Swamp
-pickup: InnerSwampSwimMapstone 796 -210 MS 2 Swamp
-pickup: InnerSwampStompExp 770 -148 EX100 1 Swamp
-pickup: InnerSwampEnergyCell 722 -95 EC 2 Swamp
-pickup: StompSkillTree 860 -96 SKStomp 1 Swamp
-pickup: StompAreaRoofExp 914 -71 EX200 3 Swamp
-pickup: StompAreaExp 884 -98 EX100 2 Swamp
-pickup: StompAreaGrenadeExp 874 -143 EX200 2 Swamp
-pickup: HoruFieldsHiddenExp 97 -37 EX200 3 Grove
-pickup: HoruFieldsEnergyCell 175 1 EC 3 Grove
-pickup: HoruFieldsPlant 124 21 Plant 4 Grove
-pickup: HoruFieldsAbilityCell 176 -34 AC 3 Grove
-pickup: HoruFieldsHealthCell 160 -78 HC 2 Grove
-pickup: HoruMap 56 343 MapStone 6 Horu
-pickup: HoruL4LowerExp -29 148 EX200 7 Horu
-pickup: HoruL4ChaseExp -191 194 EX200 7 Horu
-pickup: HoruLavaDrainedLeftExp 13 164 EX200 7 Horu
-pickup: HoruR1HangingExp 193 384 EX100 5 Horu
-pickup: HoruR1Mapstone 148 363 MS 5 Horu
-pickup: HoruR1EnergyCell 249 403 EC 5 Horu
-pickup: HoruR3Plant 318 245 Plant 7 Horu
-pickup: HoruR4StompExp 191 165 EX200 7 Horu
-pickup: HoruR4LaserExp 253 194 EX200 7 Horu
-pickup: HoruR4DrainedExp 163 136 EX200 7 Horu
-pickup: HoruLavaDrainedRightExp 129 165 EX200 7 Horu
-pickup: DoorWarpExp 106 112 EX200 5 Horu
-pickup: HoruTeleporterExp 98 130 EX200 7 Horu
-pickup: FinalEscape 0 20 EVWarmth 0 Horu
-pickup: ValleyEntryAbilityCell -205 -113 AC 1 Valley
-pickup: ValleyEntryTreeExp -221 -84 EX100 2 Valley
-pickup: ValleyEntryTreePlant -179 -88 Plant 2 Valley
-pickup: ValleyEntryGrenadeLongSwim -320 -162 EC 3 Valley
-pickup: ValleyRightFastStomplessCell -355 65 AC 1 Valley
-pickup: ValleyRightExp -418 67 EX100 1 Valley
-pickup: ValleyRightBirdStompCell -292 20 AC 1 Valley
-pickup: GlideSkillFeather -460 -20 SKGlide 1 Valley
-pickup: KuroPerchExp -546 54 EX200 1 Sorrow
-pickup: MistyEntranceStompExp -678 -29 EX100 1 Misty
-pickup: MistyEntranceTreeExp -822 -9 EX100 1 Misty
-pickup: ValleyMap -408 -170 MapStone 3 Valley
-pickup: ValleyMainPlant -468 -67 Plant 1 Valley
-pickup: WilhelmExp -572 157 EX200 1 Sorrow
-pickup: ValleyRightSwimExp -359 -87 EX100 1 Valley
-pickup: ValleyMainFACS -415 -80 AC 3 Valley
-pickup: ValleyForlornApproachGrenade -460 -187 AC 3 Valley
-pickup: ValleyThreeBirdAbilityCell -350 -98 AC 2 Valley
-pickup: LowerValleyMapstone -561 -89 MS 1 Valley
-pickup: LowerValleyExp -538 -104 EX100 1 Valley
-pickup: OutsideForlornTreeExp -460 -255 EX100 3 Valley
-pickup: OutsideForlornWaterExp -514 -277 EX100 3 Valley
-pickup: OutsideForlornCliffExp -538 -234 EX200 3 Valley
-pickup: ValleyForlornApproachMapstone -443 -152 MS 2 Valley
-pickup: ForlornEntranceExp -703 -390 EX200 4 Forlorn
-pickup: ForlornHiddenSpiderExp -841 -350 EX100 4 Forlorn
-pickup: ForlornKeystone1 -858 -353 KS 4 Forlorn
-pickup: ForlornKeystone2 -892 -328 KS 4 Forlorn
-pickup: ForlornKeystone3 -888 -251 KS 4 Forlorn
-pickup: ForlornKeystone4 -869 -255 KS 4 Forlorn
-pickup: ForlornMap -843 -308 MapStone 5 Forlorn
-pickup: ForlornPlant -815 -266 Plant 5 Forlorn
-pickup: RightForlornHealthCell -625 -315 HC 5 Forlorn
-pickup: ForlornEscape 0 12 EVWind 6 Forlorn
-pickup: RightForlornPlant -607 -314 Plant 6 Forlorn
-pickup: SorrowEntranceAbilityCell -510 204 AC 1 Sorrow
-pickup: SorrowMainShaftKeystone -485 323 KS 1 Sorrow
-pickup: SorrowSpikeKeystone -503 274 KS 1 Sorrow
-pickup: SorrowHiddenKeystone -514 303 KS 3 Sorrow
-pickup: SorrowLowerLeftKeystone -596 229 KS 1 Sorrow
-pickup: SorrowMap -451 284 MapStone 4 Sorrow
-pickup: SorrowMapstone -435 322 MS 3 Sorrow
-pickup: SorrowHealthCell -609 299 HC 3 Sorrow
-pickup: LeftSorrowAbilityCell -671 289 AC 2 Sorrow
-pickup: LeftSorrowKeystone1 -608 329 KS 2 Sorrow
-pickup: LeftSorrowKeystone2 -612 347 KS 3 Sorrow
-pickup: LeftSorrowKeystone3 -604 361 KS 3 Sorrow
-pickup: LeftSorrowKeystone4 -613 371 KS 3 Sorrow
-pickup: LeftSorrowEnergyCell -627 393 EC 3 Sorrow
-pickup: LeftSorrowPlant -630 249 Plant 2 Sorrow
-pickup: LeftSorrowGrenade -677 269 EX200 4 Sorrow
-pickup: UpperSorrowRightKeystone -456 419 KS 3 Sorrow
-pickup: UpperSorrowFarRightKeystone -414 429 KS 3 Sorrow
-pickup: UpperSorrowLeftKeystone -514 427 KS 1 Sorrow
-pickup: UpperSorrowSpikeExp -545 409 EX100 1 Sorrow
-pickup: UpperSorrowFarLeftKeystone -592 445 KS 2 Sorrow
-pickup: ChargeJumpSkillTree -696 408 SKChargeJump 2 Sorrow
-pickup: AboveChargeJumpAbilityCell -646 473 AC 5 Sorrow
-pickup: Sunstone 0 16 EVHoruKey 4 Sorrow
-pickup: SunstonePlant -478 586 Plant 4 Sorrow
-pickup: MistyFrogNookExp -979 23 EX100 1 Misty
-pickup: MistyAbilityCell -1075 -2 AC 1 Misty
-pickup: MistyMortarCorridorUpperExp -1082 8 EX100 2 Misty
-pickup: MistyMortarCorridorHiddenExp -1009 -35 EX100 1 Misty
-pickup: MistyKeystone1 -1076 32 KS 1 Misty
-pickup: ClimbSkillTree -1188 -100 SKClimb 1 Misty
-pickup: MistyPlant -1102 -67 Plant 2 Misty
-pickup: MistyPostClimbSpikeCave -837 -123 EX100 1 Misty
-pickup: MistyPostClimbAboveSpikePit -796 -144 EX200 1 Misty
-pickup: MistyKeystone3 -912 -36 KS 1 Misty
-pickup: MistyKeystone4 -768 -144 KS 1 Misty
-pickup: GumonSeal 0 8 EVForlornKey 3 Misty
-pickup: MistyGrenade -671 -39 EX200 5 Misty
+loc: FirstPickup 92 -227 EX15 0 Glades
+loc: FronkeyFight -154 -271 EX15 0 Glades
+loc: GladesKeystone1 83 -222 KS 0 Glades
+loc: GladesKeystone2 -11 -206 KS 0 Glades
+loc: GladesGrenadePool 59 -280 EX200 2 Glades
+loc: GladesGrenadeTree 82 -196 AC 1 Glades
+loc: GladesMainPool 5 -241 EX100 1 Glades
+loc: GladesMainPoolDeep -40 -239 EC 2 Glades
+loc: FronkeyWalkRoof 257 -199 EX200 1 Glades
+loc: FourthHealthCell -80 -189 HC 0 Glades
+loc: GladesMapKeystone -59 -244 KS 0 Glades
+loc: WallJumpSkillTree -316 -308 SKWallJump 0 Glades
+loc: LeftGladesHiddenExp -283 -236 EX15 0 Glades
+loc: DeathGauntletExp 303 -190 EX100 0 Grove
+loc: DeathGauntletEnergyCell 423 -169 EC 0 Grotto
+loc: GladesMap -81 -248 MapStone 0 Glades
+loc: AboveFourthHealth -48 -166 AC 1 Glades
+loc: WallJumpAreaExp -245 -277 EX200 2 Glades
+loc: WallJumpAreaEnergyCell -336 -288 EC 0 Glades
+loc: LeftGladesExp -247 -207 EX15 0 Glades
+loc: LeftGladesKeystone -238 -212 KS 0 Glades
+loc: LeftGladesMapstone -184 -227 MS 0 Glades
+loc: SpiritCavernsKeystone1 -182 -193 KS 0 Glades
+loc: SpiritCavernsKeystone2 -217 -183 KS 0 Glades
+loc: SpiritCavernsTopRightKeystone -177 -154 KS 0 Glades
+loc: SpiritCavernsTopLeftKeystone -217 -146 KS 0 Glades
+loc: SpiritCavernsAbilityCell -216 -176 AC 1 Glades
+loc: GladesLaser -155 -186 EC 2 Glades
+loc: GladesLaserGrenade -165 -140 AC 3 Glades
+loc: ChargeFlameSkillTree -56 -160 SKChargeFlame 0 Grove
+loc: ChargeFlameAreaPlant 43 -156 Plant 1 Grove
+loc: ChargeFlameAreaExp 4 -196 EX100 0 Glades
+loc: AboveChargeFlameTreeExp -14 -95 EX100 1 Grove
+loc: SpiderSacEnergyDoor 64 -109 AC 1 Grove
+loc: SpiderSacHealthCell 151 -117 HC 1 Grove
+loc: SpiderSacEnergyCell 60 -155 EC 0 Grove
+loc: SpiderSacGrenadeDoor 93 -92 AC 2 Grove
+loc: DashAreaOrbRoomExp 154 -291 EX100 1 Blackroot
+loc: DashAreaAbilityCell 183 -291 AC 1 Blackroot
+loc: DashAreaRoofExp 197 -229 EX100 0 Blackroot
+loc: DashSkillTree 292 -256 SKDash 0 Blackroot
+loc: DashAreaPlant 313 -232 Plant 2 Blackroot
+loc: RazielNo 304 -303 EX100 0 Blackroot
+loc: DashAreaMapstone 346 -255 MS 0 Blackroot
+loc: BlackrootTeleporterHealthCell 394 -309 HC 0 Blackroot
+loc: BlackrootMap 418 -291 MapStone 0 Blackroot
+loc: BlackrootBoulderExp 432 -324 EX100 1 Blackroot
+loc: GrenadeSkillTree 72 -380 SKGrenade 2 Blackroot
+loc: GrenadeAreaExp 224 -359 EX100 2 Blackroot
+loc: GrenadeAreaAbilityCell 252 -331 AC 3 Blackroot
+loc: LowerBlackrootAbilityCell 279 -375 AC 1 Blackroot
+loc: LowerBlackrootLaserAbilityCell 391 -423 AC 2 Blackroot
+loc: LowerBlackrootLaserExp 339 -418 EX100 2 Blackroot
+loc: LowerBlackrootGrenadeThrow 208 -431 AC 3 Blackroot
+loc: LostGroveAbilityCell 459 -506 AC 4 Blackroot
+loc: LostGroveHiddenExp 462 -489 EX100 4 Blackroot
+loc: LostGroveTeleporter 307 -525 EX100 4 Blackroot
+loc: LostGroveLongSwim 527 -544 AC 4 Blackroot
+loc: HollowGroveMapstone 300 -94 MS 0 Grove
+loc: OuterSwampAbilityCell 703 -82 AC 0 Swamp
+loc: OuterSwampStompExp 618 -98 EX100 0 Swamp
+loc: OuterSwampHealthCell 581 -67 HC 1 Swamp
+loc: HollowGroveMap 351 -119 MapStone 1 Grove
+loc: HollowGroveTreeAbilityCell 333 -61 AC 1 Grove
+loc: HollowGroveMapPlant 365 -119 Plant 1 Grove
+loc: HollowGroveTreePlant 330 -78 Plant 1 Grove
+loc: SwampEntrancePlant 628 -120 Plant 1 Swamp
+loc: MoonGrottoStompPlant 435 -140 Plant 1 Grotto
+loc: OuterSwampMortarPlant 515 -100 Plant 1 Swamp
+loc: GroveWaterStompAbilityCell 354 -178 AC 3 Grove
+loc: OuterSwampGrenadeExp 666 -48 EX200 1 Swamp
+loc: SwampTeleporterAbilityCell 409 -34 AC 1 Swamp
+loc: GroveAboveSpiderWaterExp 174 -105 EX200 1 Grove
+loc: GroveAboveSpiderWaterHealthCell 261 -117 HC 1 Grove
+loc: GroveAboveSpiderWaterEnergyCell 272 -97 EC 2 Grove
+loc: GroveSpiderWaterSwim 187 -163 EX100 1 Grove
+loc: DeathGauntletSwimEnergyDoor 339 -216 AC 2 Grove
+loc: DeathGauntletStompSwim 356 -207 EX200 1 Grotto
+loc: AboveGrottoTeleporterExp 477 -140 EX100 1 Grotto
+loc: GrottoLasersRoofExp 432 -108 EX100 1 Grotto
+loc: IcelessExp 365 -109 EX100 1 Grove
+loc: BelowGrottoTeleporterPlant 540 -220 Plant 2 Grotto
+loc: LeftGrottoTeleporterExp 449 -166 EX200 1 Grotto
+loc: OuterSwampMortarAbilityCell 502 -108 AC 2 Swamp
+loc: SwampEntranceSwim 595 -136 EX200 1 Swamp
+loc: BelowGrottoTeleporterHealthCell 543 -189 HC 2 Grotto
+loc: GrottoEnergyDoorSwim 423 -274 EX100 1 Grotto
+loc: GrottoEnergyDoorHealthCell 424 -220 HC 2 Grotto
+loc: GrottoSwampDrainAccessExp 552 -141 EX100 2 Grotto
+loc: GrottoSwampDrainAccessPlant 537 -176 Plant 2 Grotto
+loc: GrottoHideoutFallAbilityCell 451 -296 AC 1 Grotto
+loc: GumoHideoutMapstone 513 -413 MS 1 Grotto
+loc: GumoHideoutMiniboss 620 -404 KS 2 Grotto
+loc: GumoHideoutCrusherExp 572 -378 EX100 0 Grotto
+loc: GumoHideoutCrusherKeystone 590 -384 KS 0 Grotto
+loc: GumoHideoutRightHangingExp 496 -369 EX15 1 Grotto
+loc: GumoHideoutLeftHangingExp 467 -369 EX15 1 Grotto
+loc: GumoHideoutRedirectAbilityCell 449 -430 AC 1 Grotto
+loc: GumoHideoutMap 477 -389 MapStone 1 Grotto
+loc: DoubleJumpSkillTree 784 -412 SKDoubleJump 0 Grotto
+loc: DoubleJumpAreaExp 759 -398 EX100 1 Grotto
+loc: GumoHideoutEnergyCell 545 -357 EC 1 Grotto
+loc: GumoHideoutRockfallExp 567 -246 EX100 1 Grotto
+loc: WaterVein 0 0 EVGinsoKey 1 Grotto
+loc: LeftGumoHideoutExp 406 -386 EX100 1 Grotto
+loc: LeftGumoHideoutHealthCell 393 -375 HC 1 Grotto
+loc: LeftGumoHideoutLowerPlant 447 -368 Plant 1 Grotto
+loc: LeftGumoHideoutUpperPlant 439 -344 Plant 1 Grotto
+loc: GumoHideoutRedirectPlant 492 -400 Plant 1 Grotto
+loc: LeftGumoHideoutSwim 397 -411 EX100 1 Grotto
+loc: GumoHideoutRedirectEnergyCell 515 -441 EC 2 Grotto
+loc: GumoHideoutRedirectExp 505 -439 EX200 2 Grotto
+loc: FarLeftGumoHideoutExp 328 -353 EX100 2 Grotto
+loc: SwampEntranceAbilityCell 643 -127 AC 1 Swamp
+loc: DeathGauntletRoofHealthCell 321 -179 HC 1 Grove
+loc: DeathGauntletRoofPlant 342 -179 Plant 2 Grove
+loc: LowerGinsoHiddenExp 523 142 EX100 1 Ginso
+loc: LowerGinsoKeystone1 531 267 KS 1 Ginso
+loc: LowerGinsoKeystone2 540 277 KS 1 Ginso
+loc: LowerGinsoKeystone3 508 304 KS 1 Ginso
+loc: LowerGinsoKeystone4 529 297 KS 1 Ginso
+loc: LowerGinsoPlant 540 101 Plant 3 Ginso
+loc: BashSkillTree 532 328 SKBash 1 Ginso
+loc: BashAreaExp 518 339 EX100 1 Ginso
+loc: UpperGinsoLowerKeystone 507 476 KS 1 Ginso
+loc: UpperGinsoRightKeystone 535 488 KS 1 Ginso
+loc: UpperGinsoUpperRightKeystone 531 502 KS 1 Ginso
+loc: UpperGinsoUpperLeftKeystone 508 498 KS 1 Ginso
+loc: UpperGinsoRedirectLowerExp 517 384 EX100 1 Ginso
+loc: UpperGinsoRedirectUpperExp 530 407 EX100 2 Ginso
+loc: UpperGinsoEnergyCell 536 434 EC 1 Ginso
+loc: TopGinsoLeftLowerExp 456 566 EX100 1 Ginso
+loc: TopGinsoLeftUpperExp 471 614 EX100 1 Ginso
+loc: TopGinsoRightPlant 610 611 Plant 3 Ginso
+loc: GinsoEscapeSpiderExp 534 661 EX200 2 Ginso
+loc: GinsoEscapeJumpPadExp 537 733 EX100 2 Ginso
+loc: GinsoEscapeProjectileExp 533 827 EX100 2 Ginso
+loc: GinsoEscapeHangingExp 519 867 EX100 2 Ginso
+loc: GinsoEscapeExit 0 4 EVWater 2 Ginso
+loc: SwampMap 677 -129 MapStone 2 Swamp
+loc: InnerSwampDrainExp 636 -162 EX100 2 Swamp
+loc: InnerSwampHiddenSwimExp 761 -173 EX100 2 Swamp
+loc: InnerSwampSwimLeftKeystone 684 -205 KS 2 Swamp
+loc: InnerSwampSwimRightKeystone 766 -183 KS 2 Swamp
+loc: InnerSwampSwimMapstone 796 -210 MS 2 Swamp
+loc: InnerSwampStompExp 770 -148 EX100 1 Swamp
+loc: InnerSwampEnergyCell 722 -95 EC 2 Swamp
+loc: StompSkillTree 860 -96 SKStomp 1 Swamp
+loc: StompAreaRoofExp 914 -71 EX200 3 Swamp
+loc: StompAreaExp 884 -98 EX100 2 Swamp
+loc: StompAreaGrenadeExp 874 -143 EX200 2 Swamp
+loc: HoruFieldsHiddenExp 97 -37 EX200 3 Grove
+loc: HoruFieldsEnergyCell 175 1 EC 3 Grove
+loc: HoruFieldsPlant 124 21 Plant 4 Grove
+loc: HoruFieldsAbilityCell 176 -34 AC 3 Grove
+loc: HoruFieldsHealthCell 160 -78 HC 2 Grove
+loc: HoruMap 56 343 MapStone 6 Horu
+loc: HoruL4LowerExp -29 148 EX200 7 Horu
+loc: HoruL4ChaseExp -191 194 EX200 7 Horu
+loc: HoruLavaDrainedLeftExp 13 164 EX200 7 Horu
+loc: HoruR1HangingExp 193 384 EX100 5 Horu
+loc: HoruR1Mapstone 148 363 MS 5 Horu
+loc: HoruR1EnergyCell 249 403 EC 5 Horu
+loc: HoruR3Plant 318 245 Plant 7 Horu
+loc: HoruR4StompExp 191 165 EX200 7 Horu
+loc: HoruR4LaserExp 253 194 EX200 7 Horu
+loc: HoruR4DrainedExp 163 136 EX200 7 Horu
+loc: HoruLavaDrainedRightExp 129 165 EX200 7 Horu
+loc: DoorWarpExp 106 112 EX200 5 Horu
+loc: HoruTeleporterExp 98 130 EX200 7 Horu
+loc: FinalEscape 0 20 EVWarmth 0 Horu
+loc: ValleyEntryAbilityCell -205 -113 AC 1 Valley
+loc: ValleyEntryTreeExp -221 -84 EX100 2 Valley
+loc: ValleyEntryTreePlant -179 -88 Plant 2 Valley
+loc: ValleyEntryGrenadeLongSwim -320 -162 EC 3 Valley
+loc: ValleyRightFastStomplessCell -355 65 AC 1 Valley
+loc: ValleyRightExp -418 67 EX100 1 Valley
+loc: ValleyRightBirdStompCell -292 20 AC 1 Valley
+loc: GlideSkillFeather -460 -20 SKGlide 1 Valley
+loc: KuroPerchExp -546 54 EX200 1 Sorrow
+loc: MistyEntranceStompExp -678 -29 EX100 1 Misty
+loc: MistyEntranceTreeExp -822 -9 EX100 1 Misty
+loc: ValleyMap -408 -170 MapStone 3 Valley
+loc: ValleyMainPlant -468 -67 Plant 1 Valley
+loc: WilhelmExp -572 157 EX200 1 Sorrow
+loc: ValleyRightSwimExp -359 -87 EX100 1 Valley
+loc: ValleyMainFACS -415 -80 AC 3 Valley
+loc: ValleyForlornApproachGrenade -460 -187 AC 3 Valley
+loc: ValleyThreeBirdAbilityCell -350 -98 AC 2 Valley
+loc: LowerValleyMapstone -561 -89 MS 1 Valley
+loc: LowerValleyExp -538 -104 EX100 1 Valley
+loc: OutsideForlornTreeExp -460 -255 EX100 3 Valley
+loc: OutsideForlornWaterExp -514 -277 EX100 3 Valley
+loc: OutsideForlornCliffExp -538 -234 EX200 3 Valley
+loc: ValleyForlornApproachMapstone -443 -152 MS 2 Valley
+loc: ForlornEntranceExp -703 -390 EX200 4 Forlorn
+loc: ForlornHiddenSpiderExp -841 -350 EX100 4 Forlorn
+loc: ForlornKeystone1 -858 -353 KS 4 Forlorn
+loc: ForlornKeystone2 -892 -328 KS 4 Forlorn
+loc: ForlornKeystone3 -888 -251 KS 4 Forlorn
+loc: ForlornKeystone4 -869 -255 KS 4 Forlorn
+loc: ForlornMap -843 -308 MapStone 5 Forlorn
+loc: ForlornPlant -815 -266 Plant 5 Forlorn
+loc: RightForlornHealthCell -625 -315 HC 5 Forlorn
+loc: ForlornEscape 0 12 EVWind 6 Forlorn
+loc: RightForlornPlant -607 -314 Plant 6 Forlorn
+loc: SorrowEntranceAbilityCell -510 204 AC 1 Sorrow
+loc: SorrowMainShaftKeystone -485 323 KS 1 Sorrow
+loc: SorrowSpikeKeystone -503 274 KS 1 Sorrow
+loc: SorrowHiddenKeystone -514 303 KS 3 Sorrow
+loc: SorrowLowerLeftKeystone -596 229 KS 1 Sorrow
+loc: SorrowMap -451 284 MapStone 4 Sorrow
+loc: SorrowMapstone -435 322 MS 3 Sorrow
+loc: SorrowHealthCell -609 299 HC 3 Sorrow
+loc: LeftSorrowAbilityCell -671 289 AC 2 Sorrow
+loc: LeftSorrowKeystone1 -608 329 KS 2 Sorrow
+loc: LeftSorrowKeystone2 -612 347 KS 3 Sorrow
+loc: LeftSorrowKeystone3 -604 361 KS 3 Sorrow
+loc: LeftSorrowKeystone4 -613 371 KS 3 Sorrow
+loc: LeftSorrowEnergyCell -627 393 EC 3 Sorrow
+loc: LeftSorrowPlant -630 249 Plant 2 Sorrow
+loc: LeftSorrowGrenade -677 269 EX200 4 Sorrow
+loc: UpperSorrowRightKeystone -456 419 KS 3 Sorrow
+loc: UpperSorrowFarRightKeystone -414 429 KS 3 Sorrow
+loc: UpperSorrowLeftKeystone -514 427 KS 1 Sorrow
+loc: UpperSorrowSpikeExp -545 409 EX100 1 Sorrow
+loc: UpperSorrowFarLeftKeystone -592 445 KS 2 Sorrow
+loc: ChargeJumpSkillTree -696 408 SKChargeJump 2 Sorrow
+loc: AboveChargeJumpAbilityCell -646 473 AC 5 Sorrow
+loc: Sunstone 0 16 EVHoruKey 4 Sorrow
+loc: SunstonePlant -478 586 Plant 4 Sorrow
+loc: MistyFrogNookExp -979 23 EX100 1 Misty
+loc: MistyAbilityCell -1075 -2 AC 1 Misty
+loc: MistyMortarCorridorUpperExp -1082 8 EX100 2 Misty
+loc: MistyMortarCorridorHiddenExp -1009 -35 EX100 1 Misty
+loc: MistyKeystone1 -1076 32 KS 1 Misty
+loc: ClimbSkillTree -1188 -100 SKClimb 1 Misty
+loc: MistyPlant -1102 -67 Plant 2 Misty
+loc: MistyPostClimbSpikeCave -837 -123 EX100 1 Misty
+loc: MistyPostClimbAboveSpikePit -796 -144 EX200 1 Misty
+loc: MistyKeystone3 -912 -36 KS 1 Misty
+loc: MistyKeystone4 -768 -144 KS 1 Misty
+loc: GumonSeal 0 8 EVForlornKey 3 Misty
+loc: MistyGrenade -671 -39 EX200 5 Misty
 
 -- area definitions and connections
 home: SunkenGladesRunaway
-	loc: FirstPickup
-	loc: FronkeyFight
-	loc: GladesKeystone1
-	loc: GladesKeystone2
-	loc: GladesGrenadePool
+	pickup: FirstPickup
+	pickup: FronkeyFight
+	pickup: GladesKeystone1
+	pickup: GladesKeystone2
+	pickup: GladesGrenadePool
 		all Grenade
 		normal Water
 		dboost Health=6
 		dboost Stomp Health=5
-	loc: GladesGrenadeTree
+	pickup: GladesGrenadeTree
 		all Grenade
 		normal ChargeJump
 		normal Bash
 		speed WallJump DoubleJump
-	loc: GladesMainPool
+	pickup: GladesMainPool
 		normal Water
 		dboost Bash
 		dboost Stomp
 		dboost Health=4
 		extreme Free
-	loc: GladesMainPoolDeep
+	pickup: GladesMainPoolDeep
 		normal Water
 		dboost Health=7
-	loc: FronkeyWalkRoof
+	pickup: FronkeyWalkRoof
 		normal ChargeJump
 		normal Glide Wind
 		lure Bash
@@ -306,22 +306,22 @@ home: SunkenGladesRunaway
 		dbash TPSorrow Glide Stomp Bash
 		dbash TPSorrow Glide ChargeJump Bash
 home: WallJump
-	loc: FourthHealthCell
-	loc: GladesMapKeystone
-	loc: WallJumpSkillTree
-	loc: LeftGladesHiddenExp
-	loc: AboveFourthHealth
+	pickup: FourthHealthCell
+	pickup: GladesMapKeystone
+	pickup: WallJumpSkillTree
+	pickup: LeftGladesHiddenExp
+	pickup: AboveFourthHealth
 		normal Bash WallJump
 		normal Bash Climb
 		normal ChargeJump
 		speed WallJump DoubleJump
 		extended Climb DoubleJump
 		dbash Bash
-	loc: WallJumpAreaExp
+	pickup: WallJumpAreaExp
 		normal ChargeJump
 		normal Bash Grenade
 		lure-hard Bash
-	loc: GladesMap
+	pickup: GladesMap
 		normal Mapstone
 	conn: DeathGauntlet
 		dboost-light WallJump Energy=4
@@ -364,12 +364,12 @@ home: WallJump
 		glitched Dash ChargeJump
 		glitched Dash WallJump DoubleJump
 home: DeathGauntlet
-	loc: DeathGauntletExp
-	loc: DeathGauntletStompSwim
+	pickup: DeathGauntletExp
+	pickup: DeathGauntletStompSwim
 		normal Stomp Water
 		dboost Stomp
 		extended-damage Free
-	loc: DeathGauntletSwimEnergyDoor
+	pickup: DeathGauntletSwimEnergyDoor
 		normal Water Energy=4
 		dboost Energy=4
 	conn: DeathGauntletRoof
@@ -394,10 +394,10 @@ home: DeathGauntlet
 		normal DoubleJump Energy=4
 		normal Glide Energy=4
 home: LeftWallJump
-	loc: WallJumpAreaEnergyCell
-	loc: LeftGladesExp
-	loc: LeftGladesKeystone
-	loc: LeftGladesMapstone
+	pickup: WallJumpAreaEnergyCell
+	pickup: LeftGladesExp
+	pickup: LeftGladesKeystone
+	pickup: LeftGladesMapstone
 home: SpiritCavernsDoor
 	conn: SpiritCaverns
 		normal Climb
@@ -406,9 +406,9 @@ home: SpiritCavernsDoor
 		normal Bash Grenade
 		lure Bash
 home: SpiritCaverns
-	loc: SpiritCavernsKeystone1
-	loc: SpiritCavernsKeystone2
-	loc: SpiritCavernsTopLeftKeystone
+	pickup: SpiritCavernsKeystone1
+	pickup: SpiritCavernsKeystone2
+	pickup: SpiritCavernsTopLeftKeystone
 		normal WallJump
 		normal DoubleJump
 		dboost-light ChargeJump
@@ -416,7 +416,7 @@ home: SpiritCaverns
 		dboost-light Bash Climb
 		lure-hard Bash
 		extreme Climb
-	loc: SpiritCavernsTopRightKeystone
+	pickup: SpiritCavernsTopRightKeystone
 		normal WallJump
 		normal Climb
 		normal DoubleJump
@@ -424,7 +424,7 @@ home: SpiritCaverns
 		dboost-light Bash WallJump
 		dboost-light Bash Climb
 		lure-hard Bash
-	loc: SpiritCavernsAbilityCell
+	pickup: SpiritCavernsAbilityCell
 		speed WallJump DoubleJump
 		normal ChargeJump
 		normal Bash
@@ -446,8 +446,8 @@ home: SpiritCaverns
 		normal Bash Grenade Keystone=4
 		extreme Bash Keystone=4
 home: GladesLaserArea
-	loc: GladesLaser
-	loc: GladesLaserGrenade
+	pickup: GladesLaser
+	pickup: GladesLaserGrenade
 		normal Grenade Bash WallJump
 		normal Grenade Bash Climb
 		extended Grenade ChargeJump Water
@@ -458,8 +458,8 @@ home: GladesLaserArea
 		normal Energy=4
 		timed-level Energy=2
 home: ChargeFlameArea
-	loc: ChargeFlameSkillTree
-	loc: ChargeFlameAreaPlant
+	pickup: ChargeFlameSkillTree
+	pickup: ChargeFlameAreaPlant
 		normal ChargeFlame
 		normal Grenade
 		cdash-farming Dash
@@ -469,7 +469,7 @@ home: ChargeFlameArea
 		speed ChargeJump Stomp
 	conn: LowerChargeFlameArea
 home: LowerChargeFlameArea
-	loc: ChargeFlameAreaExp
+	pickup: ChargeFlameAreaExp
 	conn: WallJump
 		normal ChargeFlame
 		normal Grenade
@@ -517,16 +517,16 @@ home: SpiritTreeRefined
 		extended ChargeFlame Climb
 		extended Grenade Climb
 home: ChargeFlameTree
-	loc: AboveChargeFlameTreeExp
+	pickup: AboveChargeFlameTreeExp
 home: SpiderSacArea
-	loc: SpiderSacHealthCell
+	pickup: SpiderSacHealthCell
 		normal Grenade
 		normal ChargeFlame
-	loc: SpiderSacGrenadeDoor
+	pickup: SpiderSacGrenadeDoor
 		normal Grenade Bash
 		normal Grenade DoubleJump WallJump
 		normal Grenade ChargeJump
-	loc: SpiderSacEnergyDoor
+	pickup: SpiderSacEnergyDoor
 		normal Energy=4
 		timed-level Energy=2
 	conn: ChargeFlameTree
@@ -559,13 +559,13 @@ home: SpiderSacArea
 		normal Stomp Climb
 		normal Stomp ChargeJump
 home: SpiderSacDropArea
-	loc: SpiderSacEnergyCell
+	pickup: SpiderSacEnergyCell
 home: DashArea
-	loc: DashAreaOrbRoomExp
-	loc: DashAreaAbilityCell
-	loc: DashAreaRoofExp
-	loc: DashSkillTree
-	loc: DashAreaPlant
+	pickup: DashAreaOrbRoomExp
+	pickup: DashAreaAbilityCell
+	pickup: DashAreaRoofExp
+	pickup: DashSkillTree
+	pickup: DashAreaPlant
 		normal ChargeJump Climb ChargeFlame
 		normal ChargeJump WallJump ChargeFlame
 		normal Glide WallJump ChargeFlame
@@ -577,7 +577,7 @@ home: DashArea
 		cdash-farming ChargeJump Climb Dash
 		cdash-farming ChargeJump WallJump Dash
 		cdash-farming DoubleJump Dash
-	loc: DashAreaMapstone
+	pickup: DashAreaMapstone
 		normal Dash
 		extended Free
 	conn: DeathGauntlet
@@ -617,8 +617,8 @@ home: DashArea
 		speed Climb DoubleJump
 		extended Dash
 home: RazielNoArea
-	loc: RazielNo
-	loc: BlackrootBoulderExp
+	pickup: RazielNo
+	pickup: BlackrootBoulderExp
 		normal Dash Stomp
 		extended Stomp
 		glitched Free
@@ -637,24 +637,24 @@ home: RazielNoArea
 	conn: GumoHideout
 		glitched Free
 home: BlackrootGrottoConnection
-	loc: BlackrootTeleporterHealthCell
-	loc: BlackrootMap
+	pickup: BlackrootTeleporterHealthCell
+	pickup: BlackrootMap
 		normal Mapstone
 	conn: SideFallCell
 		normal Stomp
 home: LowerBlackRoot
-	loc: LowerBlackrootAbilityCell
+	pickup: LowerBlackrootAbilityCell
 		normal ChargeJump
 		normal Grenade Bash
-	loc: LowerBlackrootLaserAbilityCell
+	pickup: LowerBlackrootLaserAbilityCell
 		speed Dash DoubleJump
 		normal Dash Grenade Bash
 		extended DoubleJump
 		extended Grenade Bash
-	loc: LowerBlackrootLaserExp
+	pickup: LowerBlackrootLaserExp
 		normal Dash
 		extended Free
-	loc: LowerBlackrootGrenadeThrow
+	pickup: LowerBlackrootGrenadeThrow
 		speed ChargeJump DoubleJump
 		normal Grenade
 		timed-level Free
@@ -666,17 +666,17 @@ home: LowerBlackRoot
 		extended Bash Grenade
 		extended DoubleJump
 home: GrenadeArea
-	loc: GrenadeSkillTree
-	loc: GrenadeAreaExp
+	pickup: GrenadeSkillTree
+	pickup: GrenadeAreaExp
 		normal Bash
 		normal ChargeJump
 		normal DoubleJump
 		normal Glide
-	loc: GrenadeAreaAbilityCell
+	pickup: GrenadeAreaAbilityCell
 		normal Grenade Bash
 		normal Grenade ChargeJump
 home: BottomBlackRoot
-	loc: LostGroveLongSwim
+	pickup: LostGroveLongSwim
 		normal Water
 		dboost-hard Health=12
 		extreme Health=6
@@ -686,23 +686,23 @@ home: BottomBlackRoot
 		extended-damage Grenade ChargeJump Glide Health=5
 		extended-damage Grenade ChargeJump DoubleJump
 home: FinalBlackRoot
-	loc: LostGroveAbilityCell
-	loc: LostGroveHiddenExp
-	loc: LostGroveTeleporter
+	pickup: LostGroveAbilityCell
+	pickup: LostGroveHiddenExp
+	pickup: LostGroveTeleporter
 home: HollowGrove
-	loc: HollowGroveMapstone
-	loc: GroveSpiderWaterSwim
+	pickup: HollowGroveMapstone
+	pickup: GroveSpiderWaterSwim
 		normal Water
 		dboost Health=6
 		dboost Bash Health=5
 		extreme Bash
 		extreme Health=4
-	loc: SwampTeleporterAbilityCell
+	pickup: SwampTeleporterAbilityCell
 		normal ChargeJump DoubleJump Glide
 		normal Wind Glide
 		extended Grenade Bash
 		cdash-farming Dash
-	loc: GroveWaterStompAbilityCell
+	pickup: GroveWaterStompAbilityCell
 		normal Water Stomp
 		dboost Stomp Health=5
 		lure-hard Bash Water
@@ -710,24 +710,24 @@ home: HollowGrove
 		extreme Stomp
 		extreme Bash
 		glitched Bash
-	loc: OuterSwampGrenadeExp
+	pickup: OuterSwampGrenadeExp
 		normal Grenade WallJump
 		normal Grenade Climb
 		normal Grenade ChargeJump
 		normal Grenade Bash
-	loc: OuterSwampMortarAbilityCell
+	pickup: OuterSwampMortarAbilityCell
 		normal ChargeJump
 		normal Climb Bash
 		normal WallJump Bash
 		lure-hard Bash
 		extreme WallJump DoubleJump
 		glitched Free
-	loc: HoruFieldsHealthCell
+	pickup: HoruFieldsHealthCell
 		normal Stomp
 		lure Free
-	loc: HollowGroveMap
+	pickup: HollowGroveMap
 		normal Mapstone
-	loc: HollowGroveTreeAbilityCell
+	pickup: HollowGroveTreeAbilityCell
 		normal WallJump DoubleJump
 		normal Wind Glide
 		normal ChargeJump
@@ -804,56 +804,56 @@ home: GinsoInnerDoor
 		extreme Dash WallJump
 		extreme Dash Climb
 home: RightGinso
-	loc: OuterSwampAbilityCell
-	loc: OuterSwampStompExp
-	loc: OuterSwampHealthCell
+	pickup: OuterSwampAbilityCell
+	pickup: OuterSwampStompExp
+	pickup: OuterSwampHealthCell
 		normal WallJump DoubleJump
 		normal ChargeJump
 		normal Bash Grenade
 		extreme Bash
 home: MoonGrotto
-	loc: DeathGauntletEnergyCell
+	pickup: DeathGauntletEnergyCell
 		normal WallJump
 		normal Climb
 		normal ChargeJump
 		normal Bash Grenade
-	loc: GrottoLasersRoofExp
+	pickup: GrottoLasersRoofExp
 		normal WallJump DoubleJump
 		normal WallJump ChargeJump
 		normal Climb ChargeJump
 		normal Bash Grenade
 		extreme Bash
-	loc: AboveGrottoTeleporterExp
+	pickup: AboveGrottoTeleporterExp
 		normal DoubleJump
 		normal ChargeJump
 		normal Bash Grenade
 		normal Bash WallJump
 		normal Bash Climb
 		extreme Bash
-	loc: LeftGrottoTeleporterExp
+	pickup: LeftGrottoTeleporterExp
 		normal WallJump DoubleJump
 		normal Climb DoubleJump ChargeJump
 		extended Grenade Bash
 		dboost ChargeJump Health=4
 		extreme Bash
-	loc: SwampEntranceSwim
+	pickup: SwampEntranceSwim
 		normal Water
 		dboost Free
-	loc: GrottoEnergyDoorSwim
+	pickup: GrottoEnergyDoorSwim
 		normal Water Energy=2
 		dboost Energy=2
-	loc: GrottoEnergyDoorHealthCell
+	pickup: GrottoEnergyDoorHealthCell
 		normal ChargeJump Energy=2
 		normal WallJump DoubleJump Energy=2
 		speed WallJump Energy=2
-	loc: SwampEntrancePlant
+	pickup: SwampEntrancePlant
 		normal ChargeFlame WallJump
 		normal ChargeFlame Climb
 		normal Grenade WallJump
 		normal Grenade Climb
 		cdash Dash WallJump
 		cdash Dash Climb
-	loc: MoonGrottoStompPlant
+	pickup: MoonGrottoStompPlant
 		normal Stomp ChargeFlame
 		normal Stomp Grenade
 		cdash Stomp Dash
@@ -861,7 +861,7 @@ home: MoonGrotto
 		extended Climb ChargeJump Grenade
 		extreme Bash Grenade
 		extreme Bash Dash
-	loc: OuterSwampMortarPlant
+	pickup: OuterSwampMortarPlant
 		normal DoubleJump ChargeFlame
 		normal DoubleJump Grenade
 		normal ChargeJump ChargeFlame
@@ -971,25 +971,25 @@ home: MoonGrotto
 	conn: DeathGauntletRoof
 		extreme Bash
 home: HollowGrovePlants
-	loc: HollowGroveMapPlant
-	loc: HollowGroveTreePlant
+	pickup: HollowGroveMapPlant
+	pickup: HollowGroveTreePlant
 home: UpperGroveSpiderArea
-	loc: GroveAboveSpiderWaterExp
-	loc: GroveAboveSpiderWaterHealthCell
-	loc: GroveAboveSpiderWaterEnergyCell
+	pickup: GroveAboveSpiderWaterExp
+	pickup: GroveAboveSpiderWaterHealthCell
+	pickup: GroveAboveSpiderWaterEnergyCell
 		normal Grenade
 home: Iceless
-	loc: IcelessExp
+	pickup: IcelessExp
 	conn: HollowGrove
 home: RightGrottoHealth
-	loc: BelowGrottoTeleporterHealthCell
-	loc: BelowGrottoTeleporterPlant
+	pickup: BelowGrottoTeleporterHealthCell
+	pickup: BelowGrottoTeleporterPlant
 		normal ChargeFlame
 		normal Grenade
 		cdash Dash
 home: MoonGrottoAirOrb
-	loc: GrottoSwampDrainAccessExp
-	loc: GrottoSwampDrainAccessPlant
+	pickup: GrottoSwampDrainAccessExp
+	pickup: GrottoSwampDrainAccessPlant
 		normal Stomp ChargeFlame WallJump DoubleJump
 		normal Stomp ChargeFlame ChargeJump Glide
 		normal Stomp ChargeFlame ChargeJump DoubleJump
@@ -1003,26 +1003,26 @@ home: MoonGrottoAirOrb
 		extended-damage ChargeFlame Glide Health=4
 		cdash Dash
 home: SideFallCell
-	loc: GrottoHideoutFallAbilityCell
+	pickup: GrottoHideoutFallAbilityCell
 	conn: GumoHideout
 	conn: GumoHideoutPartialMobile
 home: GumoHideout
-	loc: GumoHideoutMapstone
-	loc: GumoHideoutMiniboss
-	loc: GumoHideoutCrusherExp
-	loc: GumoHideoutCrusherKeystone
-	loc: GumoHideoutRedirectAbilityCell
+	pickup: GumoHideoutMapstone
+	pickup: GumoHideoutMiniboss
+	pickup: GumoHideoutCrusherExp
+	pickup: GumoHideoutCrusherKeystone
+	pickup: GumoHideoutRedirectAbilityCell
 		normal WallJump DoubleJump
 		normal Climb ChargeJump
 		normal WallJump ChargeJump
 		normal Glide Wind
 		extreme WallJump Bash
-	loc: FarLeftGumoHideoutExp
+	pickup: FarLeftGumoHideoutExp
 		normal WallJump DoubleJump
 		normal Grenade Bash Climb
 		normal WallJump Glide Wind
 		extreme WallJump Bash
-	loc: GumoHideoutMap
+	pickup: GumoHideoutMap
 		normal Mapstone
 	conn: DoubleJumpArea
 		normal WallJump Keystone=2
@@ -1047,8 +1047,8 @@ home: GumoHideout
 		normal ChargeJump
 		dbash Bash
 home: GumoHideoutPartialMobile
-	loc: GumoHideoutRightHangingExp
-	loc: GumoHideoutLeftHangingExp
+	pickup: GumoHideoutRightHangingExp
+	pickup: GumoHideoutLeftHangingExp
 	conn: MobileGumoHideoutPlants
 		normal ChargeFlame
 		normal Grenade
@@ -1056,19 +1056,19 @@ home: GumoHideoutPartialMobile
 	conn: HideoutRedirect
 		normal Energy=4
 home: DoubleJumpArea
-	loc: DoubleJumpSkillTree
-	loc: DoubleJumpAreaExp
+	pickup: DoubleJumpSkillTree
+	pickup: DoubleJumpAreaExp
 		normal WallJump DoubleJump
 		normal ChargeJump
 		normal Bash
 		normal Climb DoubleJump
 home: MobileGumoHideout
-	loc: GumoHideoutEnergyCell
-	loc: GumoHideoutRockfallExp
-	loc: WaterVein
-	loc: LeftGumoHideoutExp
-	loc: LeftGumoHideoutHealthCell
-	loc: LeftGumoHideoutSwim
+	pickup: GumoHideoutEnergyCell
+	pickup: GumoHideoutRockfallExp
+	pickup: WaterVein
+	pickup: LeftGumoHideoutExp
+	pickup: LeftGumoHideoutHealthCell
+	pickup: LeftGumoHideoutSwim
 		normal Water
 		dboost Free
 	conn: MoonGrotto
@@ -1079,28 +1079,28 @@ home: MobileGumoHideout
 		normal Grenade
 		cdash Dash
 home: MobileGumoHideoutPlants
-	loc: LeftGumoHideoutLowerPlant
-	loc: LeftGumoHideoutUpperPlant
-	loc: GumoHideoutRedirectPlant
+	pickup: LeftGumoHideoutLowerPlant
+	pickup: LeftGumoHideoutUpperPlant
+	pickup: GumoHideoutRedirectPlant
 home: HideoutRedirect
-	loc: GumoHideoutRedirectEnergyCell
-	loc: GumoHideoutRedirectExp
+	pickup: GumoHideoutRedirectEnergyCell
+	pickup: GumoHideoutRedirectExp
 home: DeathGauntletRoof
-	loc: DeathGauntletRoofHealthCell
+	pickup: DeathGauntletRoofHealthCell
 	conn: DeathGauntletRoofPlantAccess
 		normal ChargeFlame
 		normal Grenade
 		cdash Dash
 	conn: DeathGauntlet
 home: DeathGauntletRoofPlantAccess
-	loc: DeathGauntletRoofPlant
+	pickup: DeathGauntletRoofPlant
 home: LowerGinsoTree
-	loc: LowerGinsoHiddenExp
-	loc: LowerGinsoKeystone1
-	loc: LowerGinsoKeystone2
-	loc: LowerGinsoKeystone3
-	loc: LowerGinsoKeystone4
-	loc: LowerGinsoPlant
+	pickup: LowerGinsoHiddenExp
+	pickup: LowerGinsoKeystone1
+	pickup: LowerGinsoKeystone2
+	pickup: LowerGinsoKeystone3
+	pickup: LowerGinsoKeystone4
+	pickup: LowerGinsoPlant
 		normal ChargeFlame
 		normal Grenade
 		cdash Dash
@@ -1109,16 +1109,16 @@ home: LowerGinsoTree
 	conn: Horu
 		glitched Dash
 home: BashTree
-	loc: BashSkillTree
+	pickup: BashSkillTree
 	conn: UpperGinsoTree
 		normal Bash
 		normal ChargeJump
 home: UpperGinsoTree
-	loc: BashAreaExp
-	loc: UpperGinsoLowerKeystone
-	loc: UpperGinsoRightKeystone
-	loc: UpperGinsoUpperRightKeystone
-	loc: UpperGinsoUpperLeftKeystone
+	pickup: BashAreaExp
+	pickup: UpperGinsoLowerKeystone
+	pickup: UpperGinsoRightKeystone
+	pickup: UpperGinsoUpperRightKeystone
+	pickup: UpperGinsoUpperLeftKeystone
 	conn: TopGinsoTree
 		normal Bash WallJump Keystone=4
 		normal Bash Climb Keystone=4
@@ -1133,13 +1133,13 @@ home: UpperGinsoTree
 		normal Stomp
 		extended ChargeFlame
 home: UpperGinsoFloors
-	loc: UpperGinsoRedirectLowerExp
-	loc: UpperGinsoRedirectUpperExp
-	loc: UpperGinsoEnergyCell
+	pickup: UpperGinsoRedirectLowerExp
+	pickup: UpperGinsoRedirectUpperExp
+	pickup: UpperGinsoEnergyCell
 home: TopGinsoTree
-	loc: TopGinsoLeftLowerExp
-	loc: TopGinsoLeftUpperExp
-	loc: TopGinsoRightPlant
+	pickup: TopGinsoLeftLowerExp
+	pickup: TopGinsoLeftUpperExp
+	pickup: TopGinsoRightPlant
 		normal ChargeFlame
 		normal Grenade
 		cdash Dash
@@ -1147,16 +1147,16 @@ home: TopGinsoTree
 		normal Bash
 		speed Stomp
 home: GinsoEscape
-	loc: GinsoEscapeSpiderExp
-	loc: GinsoEscapeJumpPadExp
-	loc: GinsoEscapeProjectileExp
-	loc: GinsoEscapeHangingExp
-	loc: GinsoEscapeExit
+	pickup: GinsoEscapeSpiderExp
+	pickup: GinsoEscapeJumpPadExp
+	pickup: GinsoEscapeProjectileExp
+	pickup: GinsoEscapeHangingExp
+	pickup: GinsoEscapeExit
 home: Swamp
-	loc: InnerSwampStompExp
+	pickup: InnerSwampStompExp
 		dboost-light Stomp
 		normal Stomp Water
-	loc: SwampMap
+	pickup: SwampMap
 		normal Mapstone
 	conn: SwampDrainlessArea
 		normal Stomp
@@ -1199,32 +1199,32 @@ home: Swamp
 		normal WallJump Keystone=2
 		normal Climb Keystone=2
 home: SwampDrainlessArea
-	loc: SwampEntranceAbilityCell
+	pickup: SwampEntranceAbilityCell
 home: InnerSwampDrainArea
-	loc: InnerSwampDrainExp
+	pickup: InnerSwampDrainExp
 home: InnerSwampSkyArea
-	loc: InnerSwampEnergyCell
+	pickup: InnerSwampEnergyCell
 	conn: Swamp
 home: SwampWater
-	loc: InnerSwampHiddenSwimExp
-	loc: InnerSwampSwimLeftKeystone
-	loc: InnerSwampSwimRightKeystone
-	loc: InnerSwampSwimMapstone
+	pickup: InnerSwampHiddenSwimExp
+	pickup: InnerSwampSwimLeftKeystone
+	pickup: InnerSwampSwimRightKeystone
+	pickup: InnerSwampSwimMapstone
 home: RightSwamp
-	loc: StompSkillTree
-	loc: StompAreaExp
+	pickup: StompSkillTree
+	pickup: StompAreaExp
 		normal Stomp
 		normal Bash
 		extended ChargeFlame
-	loc: StompAreaRoofExp
+	pickup: StompAreaRoofExp
 		normal ChargeJump
 		dbash Bash
-	loc: StompAreaGrenadeExp
+	pickup: StompAreaGrenadeExp
 		normal Grenade Water
 		dboost Grenade
 home: HoruFields
-	loc: HoruFieldsHiddenExp
-	loc: HoruFieldsAbilityCell
+	pickup: HoruFieldsHiddenExp
+	pickup: HoruFieldsAbilityCell
 		normal WallJump DoubleJump Bash
 		normal Climb ChargeJump
 		dboost WallJump Bash Health=5
@@ -1261,8 +1261,8 @@ home: HoruInnerDoor
 	conn: HoruBasement
 		extended Free
 home: HoruFieldsEnergy
-	loc: HoruFieldsEnergyCell
-	loc: HoruFieldsPlant
+	pickup: HoruFieldsEnergyCell
+	pickup: HoruFieldsPlant
 		normal ChargeFlame
 		normal Grenade
 		cdash Dash
@@ -1288,7 +1288,7 @@ home: Horu
 	conn: LowerGinsoTree
 		glitched Dash
 home: HoruMapLedge
-	loc: HoruMap
+	pickup: HoruMap
 		normal Mapstone
 home: L1OuterDoor
 	conn: L1InnerDoor
@@ -1348,9 +1348,9 @@ home: L4InnerDoor
 		extended Bash Grenade WallJump Stomp
 		extended Bash Grenade Climb Stomp
 home: L4
-	loc: HoruL4LowerExp
-	loc: HoruL4ChaseExp
-	loc: HoruLavaDrainedLeftExp
+	pickup: HoruL4LowerExp
+	pickup: HoruL4ChaseExp
+	pickup: HoruLavaDrainedLeftExp
 home: R1OuterDoor
 	conn: R1InnerDoor
 home: R1InnerDoor
@@ -1365,9 +1365,9 @@ home: R1InnerDoor
 		extended Bash Grenade Climb
 		extreme ChargeJump WallJump DoubleJump Glide Health=8
 home: R1
-	loc: HoruR1HangingExp
-	loc: HoruR1Mapstone
-	loc: HoruR1EnergyCell
+	pickup: HoruR1HangingExp
+	pickup: HoruR1Mapstone
+	pickup: HoruR1EnergyCell
 home: R2OuterDoor
 	conn: R2InnerDoor
 	conn: HoruInnerDoor
@@ -1397,7 +1397,7 @@ home: R3InnerDoor
 		extended Bash Grenade WallJump
 		extended Bash Grenade Climb
 home: R3
-	loc: HoruR3Plant
+	pickup: HoruR3Plant
 		normal ChargeFlame
 		normal Grenade
 		cdash Dash
@@ -1415,16 +1415,16 @@ home: R4InnerDoor
 		extended Bash Grenade WallJump
 		extended Bash Grenade Climb
 home: R4
-	loc: HoruR4StompExp
-	loc: HoruR4LaserExp
-	loc: HoruR4DrainedExp
-	loc: HoruLavaDrainedRightExp
+	pickup: HoruR4StompExp
+	pickup: HoruR4LaserExp
+	pickup: HoruR4DrainedExp
+	pickup: HoruLavaDrainedRightExp
 home: HoruHub
-	loc: HoruTeleporterExp
+	pickup: HoruTeleporterExp
 		normal GinsoKey ForlornKey
 	conn: HoruBasement
 home: HoruBasement
-	loc: DoorWarpExp
+	pickup: DoorWarpExp
 		normal WallJump DoubleJump
 		normal Climb DoubleJump
 		normal WallJump ChargeJump
@@ -1438,12 +1438,12 @@ home: HoruBasement
 home: HoruEscapeOuterDoor
 	conn: HoruEscapeInnerDoor
 home: HoruEscapeInnerDoor
-	loc: FinalEscape
+	pickup: FinalEscape
 		normal Climb Dash Stomp Glide Bash ChargeJump Grenade Water GinsoKey ForlornKey HoruKey
 		extended Dash Stomp Glide Bash ChargeJump Grenade GinsoKey ForlornKey HoruKey
 home: ValleyEntry
-	loc: ValleyEntryAbilityCell
-	loc: ValleyRightSwimExp
+	pickup: ValleyEntryAbilityCell
+	pickup: ValleyRightSwimExp
 		normal Water Stomp WallJump DoubleJump
 		normal Water Stomp WallJump Bash
 		normal Water Stomp WallJump ChargeJump
@@ -1484,8 +1484,8 @@ home: ValleyEntry
 		normal ChargeFlame
 		normal Grenade
 home: ValleyEntryTree
-	loc: ValleyEntryTreeExp
-	loc: ValleyEntryGrenadeLongSwim
+	pickup: ValleyEntryTreeExp
+	pickup: ValleyEntryGrenadeLongSwim
 		normal Water Grenade
 		dboost-hard Grenade Health=14
 		dboost-hard Grenade Bash Health=13
@@ -1501,11 +1501,11 @@ home: ValleyEntryTree
 		normal Glide Grenade
 		cdash-farming Dash
 home: ValleyEntryTreePlantAccess
-	loc: ValleyEntryTreePlant
+	pickup: ValleyEntryTreePlant
 home: ValleyRight
-	loc: ValleyRightFastStomplessCell
-	loc: ValleyRightExp
-	loc: ValleyRightBirdStompCell
+	pickup: ValleyRightFastStomplessCell
+	pickup: ValleyRightExp
+	pickup: ValleyRightBirdStompCell
 		normal ChargeJump Climb
 		speed Stomp
 	conn: ValleyMain
@@ -1513,11 +1513,11 @@ home: ValleyRight
 		extended Dash Bash
 		extended Dash Stomp
 home: ValleyMain
-	loc: GlideSkillFeather
-	loc: KuroPerchExp
-	loc: MistyEntranceStompExp
-	loc: MistyEntranceTreeExp
-	loc: WilhelmExp
+	pickup: GlideSkillFeather
+	pickup: KuroPerchExp
+	pickup: MistyEntranceStompExp
+	pickup: MistyEntranceTreeExp
+	pickup: WilhelmExp
 		normal Climb ChargeJump
 		normal WallJump DoubleJump ChargeJump
 		normal Bash Grenade Climb
@@ -1544,10 +1544,10 @@ home: ValleyMain
 	conn: LowerValleyPlantApproach
 	conn: ValleyForlornApproach
 home: LowerValley
-	loc: ValleyThreeBirdAbilityCell
-	loc: LowerValleyMapstone
-	loc: LowerValleyExp
-	loc: ValleyMainFACS
+	pickup: ValleyThreeBirdAbilityCell
+	pickup: LowerValleyMapstone
+	pickup: LowerValleyExp
+	pickup: ValleyMainFACS
 		normal Climb ChargeJump
 		extended Bash Glide
 	conn: LowerValleyPlantApproach
@@ -1558,17 +1558,17 @@ home: LowerValley
 	conn: ValleyEntry
 		normal Bash
 home: LowerValleyPlantApproach
-	loc: ValleyMainPlant
+	pickup: ValleyMainPlant
 		normal ChargeFlame
 		normal Grenade
 		cdash Dash
 home: OutsideForlorn
-	loc: OutsideForlornTreeExp
+	pickup: OutsideForlornTreeExp
 		normal WallJump
 		normal Climb
 		normal ChargeJump
 		normal Bash Grenade
-	loc: OutsideForlornWaterExp
+	pickup: OutsideForlornWaterExp
 		normal Water
 		dboost Health=4
 		dboost Stomp
@@ -1579,13 +1579,13 @@ home: OutsideForlorn
 		normal Bash DoubleJump
 		normal Bash Grenade
 home: ValleyForlornApproach
-	loc: ValleyForlornApproachGrenade
+	pickup: ValleyForlornApproachGrenade
 		normal Grenade
-	loc: ValleyMap
+	pickup: ValleyMap
 		normal Bash Mapstone
 home: OutsideForlornCliff
-	loc: OutsideForlornCliffExp
-	loc: ValleyForlornApproachMapstone
+	pickup: OutsideForlornCliffExp
+	pickup: ValleyForlornApproachMapstone
 		normal Bash Stomp
 		extreme Bash
 	conn: LowerValley
@@ -1604,17 +1604,17 @@ home: ForlornInnerDoor
 		normal Bash Grenade
 		extended Free
 home: Forlorn
-	loc: ForlornEntranceExp
-	loc: ForlornHiddenSpiderExp
-	loc: ForlornKeystone1
-	loc: ForlornKeystone2
-	loc: ForlornKeystone3
-	loc: ForlornKeystone4
-	loc: ForlornPlant
+	pickup: ForlornEntranceExp
+	pickup: ForlornHiddenSpiderExp
+	pickup: ForlornKeystone1
+	pickup: ForlornKeystone2
+	pickup: ForlornKeystone3
+	pickup: ForlornKeystone4
+	pickup: ForlornPlant
 		normal ChargeFlame
 		normal Grenade
 		cdash Dash
-	loc: ForlornMap
+	pickup: ForlornMap
 		normal Mapstone
 	conn: RightForlorn
 		normal Glide Stomp Bash WallJump Keystone=4
@@ -1624,24 +1624,24 @@ home: Forlorn
 		normal Climb
 		normal ChargeJump
 home: RightForlorn
-	loc: RightForlornHealthCell
-	loc: ForlornEscape
-	loc: RightForlornPlant
+	pickup: RightForlornHealthCell
+	pickup: ForlornEscape
+	pickup: RightForlornPlant
 		normal ChargeFlame
 		normal Grenade
 		cdash Dash
 home: Sorrow
-	loc: SorrowEntranceAbilityCell
-	loc: SorrowMainShaftKeystone
-	loc: SorrowSpikeKeystone
-	loc: SorrowHiddenKeystone
-	loc: SorrowLowerLeftKeystone
-	loc: SorrowHealthCell
+	pickup: SorrowEntranceAbilityCell
+	pickup: SorrowMainShaftKeystone
+	pickup: SorrowSpikeKeystone
+	pickup: SorrowHiddenKeystone
+	pickup: SorrowLowerLeftKeystone
+	pickup: SorrowHealthCell
 		normal ChargeJump
 		dbash Bash
-	loc: SorrowMapstone
+	pickup: SorrowMapstone
 		normal Bash
-	loc: SorrowMap
+	pickup: SorrowMap
 		normal Bash Mapstone
 	conn: LeftSorrow
 		normal Glide Keystone=4
@@ -1653,42 +1653,42 @@ home: Sorrow
 	conn: ValleyMain
 		normal Stomp
 home: LeftSorrow
-	loc: LeftSorrowAbilityCell
-	loc: LeftSorrowKeystone1
-	loc: LeftSorrowKeystone2
-	loc: LeftSorrowKeystone3
-	loc: LeftSorrowKeystone4
-	loc: LeftSorrowEnergyCell
-	loc: LeftSorrowGrenade
+	pickup: LeftSorrowAbilityCell
+	pickup: LeftSorrowKeystone1
+	pickup: LeftSorrowKeystone2
+	pickup: LeftSorrowKeystone3
+	pickup: LeftSorrowKeystone4
+	pickup: LeftSorrowEnergyCell
+	pickup: LeftSorrowGrenade
 		normal Grenade
-	loc: LeftSorrowPlant
+	pickup: LeftSorrowPlant
 		normal ChargeFlame
 		normal Grenade
 		cdash Dash
 	conn: UpperSorrow
 		normal Keystone=4
 home: UpperSorrow
-	loc: UpperSorrowRightKeystone
-	loc: UpperSorrowFarRightKeystone
-	loc: UpperSorrowLeftKeystone
-	loc: UpperSorrowSpikeExp
-	loc: UpperSorrowFarLeftKeystone
+	pickup: UpperSorrowRightKeystone
+	pickup: UpperSorrowFarRightKeystone
+	pickup: UpperSorrowLeftKeystone
+	pickup: UpperSorrowSpikeExp
+	pickup: UpperSorrowFarLeftKeystone
 	conn: ChargeJump
 		normal Keystone=4
 	conn: Sorrow
 		normal Stomp
 		extended Climb ChargeJump
 home: ChargeJump
-	loc: ChargeJumpSkillTree
-	loc: AboveChargeJumpAbilityCell
+	pickup: ChargeJumpSkillTree
+	pickup: AboveChargeJumpAbilityCell
 		normal ChargeJump
 	conn: SunstoneArea
 		normal ChargeJump Climb
 		extended Bash Glide
 		extended Bash Dash
 home: SunstoneArea
-	loc: Sunstone
-	loc: SunstonePlant
+	pickup: Sunstone
+	pickup: SunstonePlant
 		normal ChargeFlame
 		normal Grenade
 		cdash Dash
@@ -1696,13 +1696,13 @@ home: SunstoneArea
 		normal Stomp
 		extended Climb ChargeJump
 home: Misty
-	loc: MistyFrogNookExp
-	loc: MistyAbilityCell
-	loc: MistyMortarCorridorUpperExp
-	loc: MistyMortarCorridorHiddenExp
-	loc: MistyKeystone1
-	loc: ClimbSkillTree
-	loc: MistyPlant
+	pickup: MistyFrogNookExp
+	pickup: MistyAbilityCell
+	pickup: MistyMortarCorridorUpperExp
+	pickup: MistyMortarCorridorHiddenExp
+	pickup: MistyKeystone1
+	pickup: ClimbSkillTree
+	pickup: MistyPlant
 		normal ChargeFlame
 		normal Grenade
 		cdash Dash
@@ -1714,11 +1714,11 @@ home: Misty
 	conn: RightForlorn
 		glitched Free
 home: MistyPostClimb
-	loc: MistyPostClimbSpikeCave
-	loc: MistyPostClimbAboveSpikePit
-	loc: MistyKeystone3
-	loc: MistyKeystone4
-	loc: MistyGrenade
+	pickup: MistyPostClimbSpikeCave
+	pickup: MistyPostClimbAboveSpikePit
+	pickup: MistyKeystone3
+	pickup: MistyKeystone4
+	pickup: MistyGrenade
 		normal Grenade
-	loc: GumonSeal
+	pickup: GumonSeal
 		normal Keystone=4
