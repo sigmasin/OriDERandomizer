@@ -291,8 +291,9 @@ home: SunkenGladesRunaway
 		normal TPGrotto WallJump
 		normal TPGrotto Climb
 		normal TPGrotto Grenade Bash
-	conn: GumoHideoutMapStone
-		normal TPGrotto Mapstone
+	-- This path temporarily removed until Grotto can be refactored
+	--conn: GumoHideoutMap
+	--	normal TPGrotto Mapstone
 	conn: HollowGrove
 		normal TPSwamp
 	conn: SpiritTreeRefined
@@ -503,7 +504,7 @@ home: SpiritTreeRefined
 		normal Stomp Climb
 		normal Stomp DoubleJump
 		normal Stomp ChargeJump
-	conn: SpiderSac
+	conn: SpiderSacArea
 		normal ChargeFlame WallJump
 		normal ChargeFlame ChargeJump
 		normal ChargeFlame Climb DoubleJump
@@ -766,7 +767,7 @@ home: HollowGrove
 		extreme Climb Stomp
 		extreme WallJump Bash
 		extreme Climb Bash
-	conn: SpiderSac
+	conn: SpiderSacArea
 		normal WallJump Bash
 		normal Climb Bash
 		normal WallJump DoubleJump
