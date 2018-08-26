@@ -1231,15 +1231,15 @@ home: RightSwamp
 		dboost Grenade
 home: HoruFields
 	loc: HoruFieldsHiddenExp
-	loc: HoruFieldsEnergy
-		normal Bash
-		normal DoubleJump
 	loc: HoruFieldsAbilityCell
 		normal WallJump DoubleJump Bash
 		normal Climb ChargeJump
 		dboost WallJump Bash Health=5
 		dboost DoubleJump Bash Health=5
 		dbash Bash
+	conn: HoruFieldsEnergy
+		normal Bash
+		normal DoubleJump
 	conn: HoruOuterDoor
 		normal HoruKey Bash DoubleJump Glide WallJump
 		normal HoruKey Bash DoubleJump ChargeJump WallJump
@@ -1249,11 +1249,6 @@ home: HoruFields
 		normal HoruKey Bash Glide ChargeJump Climb
 		extended HoruKey Bash Grenade WallJump
 		extended HoruKey Bash Grenade Climb
-	loc: DoorWarpExp
-		extended HoruKey WallJump DoubleJump
-		extended HoruKey ChargeJump
-		extended HoruKey Bash Grenade
-		extreme HoruKey Bash
 home: HoruOuterDoor
 	conn: HoruInnerDoor
 		normal HoruKey
@@ -1268,8 +1263,10 @@ home: HoruInnerDoor
 		extended Bash Grenade WallJump
 		extended Bash Grenade Climb
 		extreme ChargeJump WallJump DoubleJump Glide Health=8
-	loc: HoruMap
-		extreme ChargeJump WallJump DoubleJump Health=4 Mapstone
+	conn: HoruMapLedge
+		extreme ChargeJump WallJump DoubleJump Health=4
+	conn: HoruBasement
+		extended Free
 home: HoruFieldsEnergy
 	loc: HoruFieldsEnergyCell
 	loc: HoruFieldsPlant
@@ -1277,8 +1274,7 @@ home: HoruFieldsEnergy
 		normal Grenade
 		cdash Dash
 home: Horu
-	loc: HoruMap
-		normal Mapstone
+	conn: HoruMapLedge
 	conn: L1OuterDoor
 		normal Free
 	conn: L2OuterDoor
@@ -1301,6 +1297,9 @@ home: Horu
 		normal Stomp
 	conn: LowerGinsoTree
 		glitched Dash
+home: HoruMapLedge
+	loc: HoruMap
+		normal Mapstone
 home: L1OuterDoor
 	conn: L1InnerDoor
 		normal Free
@@ -1445,10 +1444,20 @@ home: R4
 home: HoruHub
 	loc: HoruTeleporterExp
 		normal GinsoKey ForlornKey
+	conn: HoruBasement
+		normal Free
+home: HoruBasement
 	loc: DoorWarpExp
-		normal Free
+		normal WallJump DoubleJump
+		normal Climb DoubleJump
+		normal WallJump ChargeJump
+		normal Climb ChargeJump
+		normal Glide ChargeJump
+		normal DoubleJump ChargeJump
+		normal Bash Grenade
+		extended ChargeJump
+		extended DoubleJump
 	conn: HoruEscapeOuterDoor
-		normal Free
 home: HoruEscapeOuterDoor
 	conn: HoruEscapeInnerDoor
 		normal Free
