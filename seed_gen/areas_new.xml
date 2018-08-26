@@ -2287,7 +2287,7 @@
       </Location>
     </Locations>
   </Area>
-  <Area name="SorrowKeystoneAboveSpikes">
+  <Area name="SorrowSpikeKeystone">
     <Locations>
       <Location>
         <X>-503</X>
@@ -2298,7 +2298,7 @@
       </Location>
     </Locations>
   </Area>
-  <Area name="SorrowEntrance">
+  <Area name="SorrowHiddenKeystone">
     <Locations>
       <Location>
         <X>-514</X>
@@ -2309,7 +2309,7 @@
       </Location>
     </Locations>
   </Area>
-  <Area name="Sorrow KS">
+  <Area name="SorrowLowerLeftKeystone">
     <Locations>
       <Location>
         <X>-596</X>

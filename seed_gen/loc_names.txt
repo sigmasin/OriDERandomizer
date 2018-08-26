@@ -206,9 +206,9 @@ ForlornEscape EVWind
 RightForlornPlant Plant
 SorrowEntranceAbilityCell AC
 SorrowMainShaftKeystone KS
-SorrowKeystoneAboveSpikes KS
-SorrowEntrance KS
-Sorrow KS KS
+SorrowSpikeKeystone KS
+SorrowHiddenKeystone KS
+SorrowLowerLeftKeystone KS
 SorrowMap MapStone
 SorrowMapstone MS
 SorrowHealthCell HC
