@@ -14,6 +14,7 @@ has_reqs = False
 all_req = None
 
 loc_homes = {}
+homes = {}
 
 def OpenConnection(target):
 	global area, area_name, conn
@@ -77,6 +78,19 @@ def CloseConnection():
 	has_reqs = False
 	all_req = None
 
+# collect home names for validation purposes later
+for line in meta:
+	tokens = line.split()
+
+	if len(tokens) == 0:
+		continue
+	if tokens[0][:2] == '--':
+		continue
+
+	if tokens[0] == "home:":
+		homes[tokens[1]] = True
+
+# now actually parse the file
 for line in meta:
 	tokens = line.split()
 
@@ -86,8 +100,8 @@ for line in meta:
 		continue
 
 	if tokens[0] == "pickup:":
-		assert(not area)
-		assert(not conn)
+		assert not area
+		assert not conn
 
 		loc_name = tokens[1]
 		loc_x = tokens[2]
@@ -105,35 +119,43 @@ for line in meta:
 		XML.SubElement(new_loc, "Item").text = loc_item
 		XML.SubElement(new_loc, "Difficulty").text = loc_diff
 		XML.SubElement(new_loc, "Zone").text = loc_zone
+
+		loc_homes[loc_name] = "NOT LINKED"
 	elif tokens[0] == "home:":
-		assert(len(tokens) == 2)
+		assert len(tokens) == 2
 		area_name = tokens[1]
 
 		area_el = XML.SubElement(new_areas, "Area", name=area_name)
 		area = XML.SubElement(area_el, "Connections")
 		conn = None
 	elif tokens[0] == "loc:":
-		assert(area_name)
-		assert(area is not None)
+		assert area_name
+		assert area is not None
 		loc = tokens[1]
 
-		assert(loc not in loc_homes)
+		assert loc_homes[loc] == "NOT LINKED", loc
 		loc_homes[loc] = area_name
 
 		CloseConnection()
 		OpenConnection(loc)
 	elif tokens[0] == "conn:":
-		assert(area_name)
-		assert(area is not None)
+		assert area_name
+		assert area is not None
 		target = tokens[1]
+
+		assert target in homes, target
+		assert target not in loc_homes, target
 
 		CloseConnection()
 		OpenConnection(target)
 	else:
-		assert(area_name)
-		assert(area is not None)
-		assert(conn is not None)
+		assert area_name
+		assert area is not None
+		assert conn is not None
 		AddRequirement(tokens)
+
+for loc, area in loc_homes.items():
+	assert area != "NOT LINKED", loc
 
 new_tree = XML.ElementTree(new_areas)
 new_tree.write("areas_new.xml", pretty_print=True)
