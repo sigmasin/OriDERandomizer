@@ -9,6 +9,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="FronkeyFight">
     <Locations>
@@ -20,6 +21,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GladesKeystone1">
     <Locations>
@@ -31,6 +33,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GladesKeystone2">
     <Locations>
@@ -42,6 +45,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GladesGrenadePool">
     <Locations>
@@ -53,6 +57,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GladesGrenadeTree">
     <Locations>
@@ -64,6 +69,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GladesMainPool">
     <Locations>
@@ -75,6 +81,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GladesMainPoolDeep">
     <Locations>
@@ -86,6 +93,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="FronkeyWalkRoof">
     <Locations>
@@ -97,6 +105,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="FourthHealthCell">
     <Locations>
@@ -108,6 +117,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GladesMapKeystone">
     <Locations>
@@ -119,6 +129,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="WallJumpSkillTree">
     <Locations>
@@ -130,6 +141,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LeftGladesHiddenExp">
     <Locations>
@@ -141,6 +153,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="DeathGauntletExp">
     <Locations>
@@ -152,6 +165,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="DeathGauntletEnergyCell">
     <Locations>
@@ -163,6 +177,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GladesMap">
     <Locations>
@@ -174,6 +189,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="AboveFourthHealth">
     <Locations>
@@ -185,6 +201,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="WallJumpAreaExp">
     <Locations>
@@ -196,6 +213,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="WallJumpAreaEnergyCell">
     <Locations>
@@ -207,6 +225,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LeftGladesExp">
     <Locations>
@@ -218,6 +237,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LeftGladesKeystone">
     <Locations>
@@ -229,6 +249,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LeftGladesMapstone">
     <Locations>
@@ -240,6 +261,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SpiritCavernsKeystone1">
     <Locations>
@@ -251,6 +273,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SpiritCavernsKeystone2">
     <Locations>
@@ -262,6 +285,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SpiritCavernsTopRightKeystone">
     <Locations>
@@ -273,6 +297,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SpiritCavernsTopLeftKeystone">
     <Locations>
@@ -284,6 +309,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SpiritCavernsAbilityCell">
     <Locations>
@@ -295,6 +321,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GladesLaser">
     <Locations>
@@ -306,6 +333,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GladesLaserGrenade">
     <Locations>
@@ -317,6 +345,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ChargeFlameSkillTree">
     <Locations>
@@ -328,6 +357,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ChargeFlameAreaPlant">
     <Locations>
@@ -339,6 +369,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ChargeFlameAreaExp">
     <Locations>
@@ -350,6 +381,7 @@
         <Zone>Glades</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="AboveChargeFlameTreeExp">
     <Locations>
@@ -361,6 +393,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SpiderSacEnergyDoor">
     <Locations>
@@ -372,6 +405,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SpiderSacHealthCell">
     <Locations>
@@ -383,6 +417,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SpiderSacEnergyCell">
     <Locations>
@@ -394,6 +429,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SpiderSacGrenadeDoor">
     <Locations>
@@ -405,6 +441,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="DashAreaOrbRoomExp">
     <Locations>
@@ -416,6 +453,7 @@
         <Zone>Blackroot</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="DashAreaAbilityCell">
     <Locations>
@@ -427,6 +465,7 @@
         <Zone>Blackroot</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="DashAreaRoofExp">
     <Locations>
@@ -438,6 +477,7 @@
         <Zone>Blackroot</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="DashSkillTree">
     <Locations>
@@ -449,6 +489,7 @@
         <Zone>Blackroot</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="DashAreaPlant">
     <Locations>
@@ -460,6 +501,7 @@
         <Zone>Blackroot</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="RazielNo">
     <Locations>
@@ -471,6 +513,7 @@
         <Zone>Blackroot</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="DashAreaMapstone">
     <Locations>
@@ -482,6 +525,7 @@
         <Zone>Blackroot</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="BlackrootTeleporterHealthCell">
     <Locations>
@@ -493,6 +537,7 @@
         <Zone>Blackroot</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="BlackrootMap">
     <Locations>
@@ -504,6 +549,7 @@
         <Zone>Blackroot</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="BlackrootBoulderExp">
     <Locations>
@@ -515,6 +561,7 @@
         <Zone>Blackroot</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GrenadeSkillTree">
     <Locations>
@@ -526,6 +573,7 @@
         <Zone>Blackroot</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GrenadeAreaExp">
     <Locations>
@@ -537,6 +585,7 @@
         <Zone>Blackroot</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GrenadeAreaAbilityCell">
     <Locations>
@@ -548,6 +597,7 @@
         <Zone>Blackroot</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LowerBlackrootAbilityCell">
     <Locations>
@@ -559,6 +609,7 @@
         <Zone>Blackroot</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LowerBlackrootLaserAbilityCell">
     <Locations>
@@ -570,6 +621,7 @@
         <Zone>Blackroot</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LowerBlackrootLaserExp">
     <Locations>
@@ -581,6 +633,7 @@
         <Zone>Blackroot</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LowerBlackrootGrenadeThrow">
     <Locations>
@@ -592,6 +645,7 @@
         <Zone>Blackroot</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LostGroveAbilityCell">
     <Locations>
@@ -603,6 +657,7 @@
         <Zone>Blackroot</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LostGroveHiddenExp">
     <Locations>
@@ -614,6 +669,7 @@
         <Zone>Blackroot</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LostGroveTeleporter">
     <Locations>
@@ -625,6 +681,7 @@
         <Zone>Blackroot</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LostGroveLongSwim">
     <Locations>
@@ -636,6 +693,7 @@
         <Zone>Blackroot</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HollowGroveMapstone">
     <Locations>
@@ -647,6 +705,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="OuterSwampAbilityCell">
     <Locations>
@@ -658,6 +717,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="OuterSwampStompExp">
     <Locations>
@@ -669,6 +729,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="OuterSwampHealthCell">
     <Locations>
@@ -680,6 +741,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HollowGroveMap">
     <Locations>
@@ -691,6 +753,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HollowGroveTreeAbilityCell">
     <Locations>
@@ -702,6 +765,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HollowGroveMapPlant">
     <Locations>
@@ -713,6 +777,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HollowGroveTreePlant">
     <Locations>
@@ -724,6 +789,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SwampEntrancePlant">
     <Locations>
@@ -735,6 +801,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="MoonGrottoStompPlant">
     <Locations>
@@ -746,6 +813,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="OuterSwampMortarPlant">
     <Locations>
@@ -757,6 +825,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GroveWaterStompAbilityCell">
     <Locations>
@@ -768,6 +837,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="OuterSwampGrenadeExp">
     <Locations>
@@ -779,6 +849,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SwampTeleporterAbilityCell">
     <Locations>
@@ -790,6 +861,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GroveAboveSpiderWaterExp">
     <Locations>
@@ -801,6 +873,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GroveAboveSpiderWaterHealthCell">
     <Locations>
@@ -812,6 +885,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GroveAboveSpiderWaterEnergyCell">
     <Locations>
@@ -823,6 +897,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GroveSpiderWaterSwim">
     <Locations>
@@ -834,6 +909,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="DeathGauntletSwimEnergyDoor">
     <Locations>
@@ -845,6 +921,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="DeathGauntletStompSwim">
     <Locations>
@@ -856,6 +933,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="AboveGrottoTeleporterExp">
     <Locations>
@@ -867,6 +945,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GrottoLasersRoofExp">
     <Locations>
@@ -878,6 +957,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="IcelessExp">
     <Locations>
@@ -889,6 +969,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="BelowGrottoTeleporterPlant">
     <Locations>
@@ -900,6 +981,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LeftGrottoTeleporterExp">
     <Locations>
@@ -911,6 +993,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="OuterSwampMortarAbilityCell">
     <Locations>
@@ -922,6 +1005,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SwampEntranceSwim">
     <Locations>
@@ -933,6 +1017,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="BelowGrottoTeleporterHealthCell">
     <Locations>
@@ -944,6 +1029,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GrottoEnergyDoorSwim">
     <Locations>
@@ -955,6 +1041,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GrottoEnergyDoorHealthCell">
     <Locations>
@@ -966,6 +1053,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GrottoSwampDrainAccessExp">
     <Locations>
@@ -977,6 +1065,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GrottoSwampDrainAccessPlant">
     <Locations>
@@ -988,6 +1077,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GrottoHideoutFallAbilityCell">
     <Locations>
@@ -999,6 +1089,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GumoHideoutMapstone">
     <Locations>
@@ -1010,6 +1101,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GumoHideoutMiniboss">
     <Locations>
@@ -1021,6 +1113,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GumoHideoutCrusherExp">
     <Locations>
@@ -1032,6 +1125,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GumoHideoutCrusherKeystone">
     <Locations>
@@ -1043,6 +1137,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GumoHideoutRightHangingExp">
     <Locations>
@@ -1054,6 +1149,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GumoHideoutLeftHangingExp">
     <Locations>
@@ -1065,6 +1161,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GumoHideoutRedirectAbilityCell">
     <Locations>
@@ -1076,6 +1173,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GumoHideoutMap">
     <Locations>
@@ -1087,6 +1185,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="DoubleJumpSkillTree">
     <Locations>
@@ -1098,6 +1197,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="DoubleJumpAreaExp">
     <Locations>
@@ -1109,6 +1209,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GumoHideoutEnergyCell">
     <Locations>
@@ -1120,6 +1221,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GumoHideoutRockfallExp">
     <Locations>
@@ -1131,6 +1233,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="WaterVein">
     <Locations>
@@ -1142,6 +1245,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LeftGumoHideoutExp">
     <Locations>
@@ -1153,6 +1257,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LeftGumoHideoutHealthCell">
     <Locations>
@@ -1164,6 +1269,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LeftGumoHideoutLowerPlant">
     <Locations>
@@ -1175,6 +1281,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LeftGumoHideoutUpperPlant">
     <Locations>
@@ -1186,6 +1293,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GumoHideoutRedirectPlant">
     <Locations>
@@ -1197,6 +1305,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LeftGumoHideoutSwim">
     <Locations>
@@ -1208,6 +1317,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GumoHideoutRedirectEnergyCell">
     <Locations>
@@ -1219,6 +1329,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GumoHideoutRedirectExp">
     <Locations>
@@ -1230,6 +1341,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="FarLeftGumoHideoutExp">
     <Locations>
@@ -1241,6 +1353,7 @@
         <Zone>Grotto</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SwampEntranceAbilityCell">
     <Locations>
@@ -1252,6 +1365,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="DeathGauntletRoofHealthCell">
     <Locations>
@@ -1263,6 +1377,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="DeathGauntletRoofPlant">
     <Locations>
@@ -1274,6 +1389,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LowerGinsoHiddenExp">
     <Locations>
@@ -1285,6 +1401,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LowerGinsoKeystone1">
     <Locations>
@@ -1296,6 +1413,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LowerGinsoKeystone2">
     <Locations>
@@ -1307,6 +1425,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LowerGinsoKeystone3">
     <Locations>
@@ -1318,6 +1437,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LowerGinsoKeystone4">
     <Locations>
@@ -1329,6 +1449,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LowerGinsoPlant">
     <Locations>
@@ -1340,6 +1461,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="BashSkillTree">
     <Locations>
@@ -1351,6 +1473,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="BashAreaExp">
     <Locations>
@@ -1362,6 +1485,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="UpperGinsoLowerKeystone">
     <Locations>
@@ -1373,6 +1497,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="UpperGinsoRightKeystone">
     <Locations>
@@ -1384,6 +1509,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="UpperGinsoUpperRightKeystone">
     <Locations>
@@ -1395,6 +1521,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="UpperGinsoUpperLeftKeystone">
     <Locations>
@@ -1406,6 +1533,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="UpperGinsoRedirectLowerExp">
     <Locations>
@@ -1417,6 +1545,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="UpperGinsoRedirectUpperExp">
     <Locations>
@@ -1428,6 +1557,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="UpperGinsoEnergyCell">
     <Locations>
@@ -1439,6 +1569,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="TopGinsoLeftLowerExp">
     <Locations>
@@ -1450,6 +1581,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="TopGinsoLeftUpperExp">
     <Locations>
@@ -1461,6 +1593,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="TopGinsoRightPlant">
     <Locations>
@@ -1472,6 +1605,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GinsoEscapeSpiderExp">
     <Locations>
@@ -1483,6 +1617,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GinsoEscapeJumpPadExp">
     <Locations>
@@ -1494,6 +1629,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GinsoEscapeProjectileExp">
     <Locations>
@@ -1505,6 +1641,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GinsoEscapeHangingExp">
     <Locations>
@@ -1516,6 +1653,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GinsoEscapeExit">
     <Locations>
@@ -1527,6 +1665,7 @@
         <Zone>Ginso</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SwampMap">
     <Locations>
@@ -1538,6 +1677,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="InnerSwampDrainExp">
     <Locations>
@@ -1549,6 +1689,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="InnerSwampHiddenSwimExp">
     <Locations>
@@ -1560,6 +1701,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="InnerSwampSwimLeftKeystone">
     <Locations>
@@ -1571,6 +1713,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="InnerSwampSwimRightKeystone">
     <Locations>
@@ -1582,6 +1725,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="InnerSwampSwimMapstone">
     <Locations>
@@ -1593,6 +1737,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="InnerSwampStompExp">
     <Locations>
@@ -1604,6 +1749,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="InnerSwampEnergyCell">
     <Locations>
@@ -1615,6 +1761,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="StompSkillTree">
     <Locations>
@@ -1626,6 +1773,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="StompAreaRoofExp">
     <Locations>
@@ -1637,6 +1785,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="StompAreaExp">
     <Locations>
@@ -1648,6 +1797,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="StompAreaGrenadeExp">
     <Locations>
@@ -1659,6 +1809,7 @@
         <Zone>Swamp</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HoruFieldsHiddenExp">
     <Locations>
@@ -1670,6 +1821,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HoruFieldsEnergyCell">
     <Locations>
@@ -1681,6 +1833,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HoruFieldsPlant">
     <Locations>
@@ -1692,6 +1845,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HoruFieldsAbilityCell">
     <Locations>
@@ -1703,6 +1857,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HoruFieldsHealthCell">
     <Locations>
@@ -1714,6 +1869,7 @@
         <Zone>Grove</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HoruMap">
     <Locations>
@@ -1725,6 +1881,7 @@
         <Zone>Horu</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HoruL4LowerExp">
     <Locations>
@@ -1736,6 +1893,7 @@
         <Zone>Horu</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HoruL4ChaseExp">
     <Locations>
@@ -1747,6 +1905,7 @@
         <Zone>Horu</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HoruLavaDrainedLeftExp">
     <Locations>
@@ -1758,6 +1917,7 @@
         <Zone>Horu</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HoruR1HangingExp">
     <Locations>
@@ -1769,6 +1929,7 @@
         <Zone>Horu</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HoruR1Mapstone">
     <Locations>
@@ -1780,6 +1941,7 @@
         <Zone>Horu</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HoruR1EnergyCell">
     <Locations>
@@ -1791,6 +1953,7 @@
         <Zone>Horu</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HoruR3Plant">
     <Locations>
@@ -1802,6 +1965,7 @@
         <Zone>Horu</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HoruR4StompExp">
     <Locations>
@@ -1813,6 +1977,7 @@
         <Zone>Horu</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HoruR4LaserExp">
     <Locations>
@@ -1824,6 +1989,7 @@
         <Zone>Horu</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HoruR4DrainedExp">
     <Locations>
@@ -1835,6 +2001,7 @@
         <Zone>Horu</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HoruLavaDrainedRightExp">
     <Locations>
@@ -1846,6 +2013,7 @@
         <Zone>Horu</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="DoorWarpExp">
     <Locations>
@@ -1857,6 +2025,7 @@
         <Zone>Horu</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="HoruTeleporterExp">
     <Locations>
@@ -1868,6 +2037,7 @@
         <Zone>Horu</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="FinalEscape">
     <Locations>
@@ -1879,6 +2049,7 @@
         <Zone>Horu</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ValleyEntryAbilityCell">
     <Locations>
@@ -1890,6 +2061,7 @@
         <Zone>Valley</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ValleyEntryTreeExp">
     <Locations>
@@ -1901,6 +2073,7 @@
         <Zone>Valley</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ValleyEntryTreePlant">
     <Locations>
@@ -1912,6 +2085,7 @@
         <Zone>Valley</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ValleyEntryGrenadeLongSwim">
     <Locations>
@@ -1923,6 +2097,7 @@
         <Zone>Valley</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ValleyRightFastStomplessCell">
     <Locations>
@@ -1934,6 +2109,7 @@
         <Zone>Valley</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ValleyRightExp">
     <Locations>
@@ -1945,6 +2121,7 @@
         <Zone>Valley</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ValleyRightBirdStompCell">
     <Locations>
@@ -1956,6 +2133,7 @@
         <Zone>Valley</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GlideSkillFeather">
     <Locations>
@@ -1967,6 +2145,7 @@
         <Zone>Valley</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="KuroPerchExp">
     <Locations>
@@ -1978,6 +2157,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="MistyEntranceStompExp">
     <Locations>
@@ -1989,6 +2169,7 @@
         <Zone>Misty</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="MistyEntranceTreeExp">
     <Locations>
@@ -2000,6 +2181,7 @@
         <Zone>Misty</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ValleyMap">
     <Locations>
@@ -2011,6 +2193,7 @@
         <Zone>Valley</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ValleyMainPlant">
     <Locations>
@@ -2022,6 +2205,7 @@
         <Zone>Valley</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="WilhelmExp">
     <Locations>
@@ -2033,6 +2217,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ValleyRightSwimExp">
     <Locations>
@@ -2044,6 +2229,7 @@
         <Zone>Valley</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ValleyMainFACS">
     <Locations>
@@ -2055,6 +2241,7 @@
         <Zone>Valley</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ValleyForlornApproachGrenade">
     <Locations>
@@ -2066,6 +2253,7 @@
         <Zone>Valley</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ValleyThreeBirdAbilityCell">
     <Locations>
@@ -2077,6 +2265,7 @@
         <Zone>Valley</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LowerValleyMapstone">
     <Locations>
@@ -2088,6 +2277,7 @@
         <Zone>Valley</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LowerValleyExp">
     <Locations>
@@ -2099,6 +2289,7 @@
         <Zone>Valley</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="OutsideForlornTreeExp">
     <Locations>
@@ -2110,6 +2301,7 @@
         <Zone>Valley</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="OutsideForlornWaterExp">
     <Locations>
@@ -2121,6 +2313,7 @@
         <Zone>Valley</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="OutsideForlornCliffExp">
     <Locations>
@@ -2132,6 +2325,7 @@
         <Zone>Valley</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ValleyForlornApproachMapstone">
     <Locations>
@@ -2143,6 +2337,7 @@
         <Zone>Valley</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ForlornEntranceExp">
     <Locations>
@@ -2154,6 +2349,7 @@
         <Zone>Forlorn</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ForlornHiddenSpiderExp">
     <Locations>
@@ -2165,6 +2361,7 @@
         <Zone>Forlorn</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ForlornKeystone1">
     <Locations>
@@ -2176,6 +2373,7 @@
         <Zone>Forlorn</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ForlornKeystone2">
     <Locations>
@@ -2187,6 +2385,7 @@
         <Zone>Forlorn</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ForlornKeystone3">
     <Locations>
@@ -2198,6 +2397,7 @@
         <Zone>Forlorn</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ForlornKeystone4">
     <Locations>
@@ -2209,6 +2409,7 @@
         <Zone>Forlorn</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ForlornMap">
     <Locations>
@@ -2220,6 +2421,7 @@
         <Zone>Forlorn</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ForlornPlant">
     <Locations>
@@ -2231,6 +2433,7 @@
         <Zone>Forlorn</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="RightForlornHealthCell">
     <Locations>
@@ -2242,6 +2445,7 @@
         <Zone>Forlorn</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ForlornEscape">
     <Locations>
@@ -2253,6 +2457,7 @@
         <Zone>Forlorn</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="RightForlornPlant">
     <Locations>
@@ -2264,6 +2469,7 @@
         <Zone>Forlorn</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SorrowEntranceAbilityCell">
     <Locations>
@@ -2275,6 +2481,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SorrowMainShaftKeystone">
     <Locations>
@@ -2286,6 +2493,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SorrowSpikeKeystone">
     <Locations>
@@ -2297,6 +2505,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SorrowHiddenKeystone">
     <Locations>
@@ -2308,6 +2517,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SorrowLowerLeftKeystone">
     <Locations>
@@ -2319,6 +2529,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SorrowMap">
     <Locations>
@@ -2330,6 +2541,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SorrowMapstone">
     <Locations>
@@ -2341,6 +2553,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SorrowHealthCell">
     <Locations>
@@ -2352,6 +2565,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LeftSorrowAbilityCell">
     <Locations>
@@ -2363,6 +2577,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LeftSorrowKeystone1">
     <Locations>
@@ -2374,6 +2589,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LeftSorrowKeystone2">
     <Locations>
@@ -2385,6 +2601,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LeftSorrowKeystone3">
     <Locations>
@@ -2396,6 +2613,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LeftSorrowKeystone4">
     <Locations>
@@ -2407,6 +2625,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LeftSorrowEnergyCell">
     <Locations>
@@ -2418,6 +2637,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LeftSorrowPlant">
     <Locations>
@@ -2429,6 +2649,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="LeftSorrowGrenade">
     <Locations>
@@ -2440,6 +2661,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="UpperSorrowRightKeystone">
     <Locations>
@@ -2451,6 +2673,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="UpperSorrowFarRightKeystone">
     <Locations>
@@ -2462,6 +2685,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="UpperSorrowLeftKeystone">
     <Locations>
@@ -2473,6 +2697,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="UpperSorrowSpikeExp">
     <Locations>
@@ -2484,6 +2709,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="UpperSorrowFarLeftKeystone">
     <Locations>
@@ -2495,6 +2721,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ChargeJumpSkillTree">
     <Locations>
@@ -2506,6 +2733,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="AboveChargeJumpAbilityCell">
     <Locations>
@@ -2517,6 +2745,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="Sunstone">
     <Locations>
@@ -2528,6 +2757,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SunstonePlant">
     <Locations>
@@ -2539,6 +2769,7 @@
         <Zone>Sorrow</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="MistyFrogNookExp">
     <Locations>
@@ -2550,6 +2781,7 @@
         <Zone>Misty</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="MistyAbilityCell">
     <Locations>
@@ -2561,6 +2793,7 @@
         <Zone>Misty</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="MistyMortarCorridorUpperExp">
     <Locations>
@@ -2572,6 +2805,7 @@
         <Zone>Misty</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="MistyMortarCorridorHiddenExp">
     <Locations>
@@ -2583,6 +2817,7 @@
         <Zone>Misty</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="MistyKeystone1">
     <Locations>
@@ -2594,6 +2829,7 @@
         <Zone>Misty</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="ClimbSkillTree">
     <Locations>
@@ -2605,6 +2841,7 @@
         <Zone>Misty</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="MistyPlant">
     <Locations>
@@ -2616,6 +2853,7 @@
         <Zone>Misty</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="MistyPostClimbSpikeCave">
     <Locations>
@@ -2627,6 +2865,7 @@
         <Zone>Misty</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="MistyPostClimbAboveSpikePit">
     <Locations>
@@ -2638,6 +2877,7 @@
         <Zone>Misty</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="MistyKeystone3">
     <Locations>
@@ -2649,6 +2889,7 @@
         <Zone>Misty</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="MistyKeystone4">
     <Locations>
@@ -2660,6 +2901,7 @@
         <Zone>Misty</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="GumonSeal">
     <Locations>
@@ -2671,6 +2913,7 @@
         <Zone>Misty</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="MistyGrenade">
     <Locations>
@@ -2682,8 +2925,10 @@
         <Zone>Misty</Zone>
       </Location>
     </Locations>
+    <Connections/>
   </Area>
   <Area name="SunkenGladesRunaway">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="SunkenGladesRunaway"/>
@@ -2831,6 +3076,7 @@
     </Connections>
   </Area>
   <Area name="WallJump">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="WallJump"/>
@@ -2885,7 +3131,7 @@
         <Home name="WallJump"/>
         <Target name="GladesMap"/>
         <Requirements>
-          <Requirement mode="normal">Mapstone</Requirement>
+          <Requirement mode="normal">MS</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -2956,6 +3202,7 @@
     </Connections>
   </Area>
   <Area name="DeathGauntlet">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="DeathGauntlet"/>
@@ -3018,13 +3265,14 @@
         <Home name="DeathGauntlet"/>
         <Target name="SunkenGladesRunaway"/>
         <Requirements>
-          <Requirement mode="normal">DoubleJump+EC+EC+EC+EC</Requirement>
-          <Requirement mode="normal">Glide+EC+EC+EC+EC</Requirement>
+          <Requirement mode="normal">EC+EC+EC+EC+DoubleJump</Requirement>
+          <Requirement mode="normal">EC+EC+EC+EC+Glide</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
   <Area name="LeftWallJump">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="LeftWallJump"/>
@@ -3057,6 +3305,7 @@
     </Connections>
   </Area>
   <Area name="SpiritCavernsDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="SpiritCavernsDoor"/>
@@ -3072,6 +3321,7 @@
     </Connections>
   </Area>
   <Area name="SpiritCaverns">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="SpiritCaverns"/>
@@ -3142,16 +3392,17 @@
         <Home name="SpiritCaverns"/>
         <Target name="SpiritTreeRefined"/>
         <Requirements>
-          <Requirement mode="normal">WallJump+KS+KS+KS+KS</Requirement>
-          <Requirement mode="normal">Climb+KS+KS+KS+KS</Requirement>
-          <Requirement mode="normal">ChargeJump+KS+KS+KS+KS</Requirement>
-          <Requirement mode="normal">Bash+Grenade+KS+KS+KS+KS</Requirement>
-          <Requirement mode="extreme">Bash+KS+KS+KS+KS</Requirement>
+          <Requirement mode="normal">KS+KS+KS+KS+WallJump</Requirement>
+          <Requirement mode="normal">KS+KS+KS+KS+Climb</Requirement>
+          <Requirement mode="normal">KS+KS+KS+KS+ChargeJump</Requirement>
+          <Requirement mode="normal">KS+KS+KS+KS+Bash+Grenade</Requirement>
+          <Requirement mode="extreme">KS+KS+KS+KS+Bash</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
   <Area name="GladesLaserArea">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="GladesLaserArea"/>
@@ -3189,6 +3440,7 @@
     </Connections>
   </Area>
   <Area name="ChargeFlameArea">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="ChargeFlameArea"/>
@@ -3225,6 +3477,7 @@
     </Connections>
   </Area>
   <Area name="LowerChargeFlameArea">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="LowerChargeFlameArea"/>
@@ -3259,6 +3512,7 @@
     </Connections>
   </Area>
   <Area name="SpiritTreeRefined">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="SpiritTreeRefined"/>
@@ -3316,6 +3570,7 @@
     </Connections>
   </Area>
   <Area name="ChargeFlameTree">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="ChargeFlameTree"/>
@@ -3327,6 +3582,7 @@
     </Connections>
   </Area>
   <Area name="SpiderSacArea">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="SpiderSacArea"/>
@@ -3357,9 +3613,9 @@
         <Home name="SpiderSacArea"/>
         <Target name="ChargeFlameTree"/>
         <Requirements>
-          <Requirement mode="extended">ChargeFlame+Glide</Requirement>
-          <Requirement mode="extended">Grenade+Glide</Requirement>
-          <Requirement mode="extended">Stomp+Glide</Requirement>
+          <Requirement mode="extended">Glide+ChargeFlame</Requirement>
+          <Requirement mode="extended">Glide+Grenade</Requirement>
+          <Requirement mode="extended">Glide+Stomp</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3410,6 +3666,7 @@
     </Connections>
   </Area>
   <Area name="SpiderSacDropArea">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="SpiderSacDropArea"/>
@@ -3421,6 +3678,7 @@
     </Connections>
   </Area>
   <Area name="DashArea">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="DashArea"/>
@@ -3529,6 +3787,7 @@
     </Connections>
   </Area>
   <Area name="RazielNoArea">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="RazielNoArea"/>
@@ -3573,6 +3832,7 @@
     </Connections>
   </Area>
   <Area name="BlackrootGrottoConnection">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="BlackrootGrottoConnection"/>
@@ -3585,7 +3845,7 @@
         <Home name="BlackrootGrottoConnection"/>
         <Target name="BlackrootMap"/>
         <Requirements>
-          <Requirement mode="normal">Mapstone</Requirement>
+          <Requirement mode="normal">MS</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3598,6 +3858,7 @@
     </Connections>
   </Area>
   <Area name="LowerBlackRoot">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="LowerBlackRoot"/>
@@ -3654,6 +3915,7 @@
     </Connections>
   </Area>
   <Area name="GrenadeArea">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="GrenadeArea"/>
@@ -3683,6 +3945,7 @@
     </Connections>
   </Area>
   <Area name="BottomBlackRoot">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="BottomBlackRoot"/>
@@ -3697,7 +3960,7 @@
         <Home name="BottomBlackRoot"/>
         <Target name="FinalBlackRoot"/>
         <Requirements>
-          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">Grenade+Bash</Requirement>
           <Requirement mode="extended-damage">Grenade+ChargeJump+Dash+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="extended-damage">Grenade+ChargeJump+Glide+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="extended-damage">Grenade+ChargeJump+DoubleJump</Requirement>
@@ -3706,6 +3969,7 @@
     </Connections>
   </Area>
   <Area name="FinalBlackRoot">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="FinalBlackRoot"/>
@@ -3731,6 +3995,7 @@
     </Connections>
   </Area>
   <Area name="HollowGrove">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="HollowGrove"/>
@@ -3807,7 +4072,7 @@
         <Home name="HollowGrove"/>
         <Target name="HollowGroveMap"/>
         <Requirements>
-          <Requirement mode="normal">Mapstone</Requirement>
+          <Requirement mode="normal">MS</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3940,6 +4205,7 @@
     </Connections>
   </Area>
   <Area name="GinsoOuterDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="GinsoOuterDoor"/>
@@ -3951,6 +4217,7 @@
     </Connections>
   </Area>
   <Area name="GinsoInnerDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="GinsoInnerDoor"/>
@@ -3966,6 +4233,7 @@
     </Connections>
   </Area>
   <Area name="RightGinso">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="RightGinso"/>
@@ -3994,6 +4262,7 @@
     </Connections>
   </Area>
   <Area name="MoonGrotto">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="MoonGrotto"/>
@@ -4051,7 +4320,7 @@
         <Home name="MoonGrotto"/>
         <Target name="GrottoEnergyDoorSwim"/>
         <Requirements>
-          <Requirement mode="normal">Water+EC+EC</Requirement>
+          <Requirement mode="normal">EC+EC+Water</Requirement>
           <Requirement mode="dboost">EC+EC</Requirement>
         </Requirements>
       </Connection>
@@ -4059,9 +4328,9 @@
         <Home name="MoonGrotto"/>
         <Target name="GrottoEnergyDoorHealthCell"/>
         <Requirements>
-          <Requirement mode="normal">ChargeJump+EC+EC</Requirement>
-          <Requirement mode="normal">WallJump+DoubleJump+EC+EC</Requirement>
-          <Requirement mode="speed">WallJump+EC+EC</Requirement>
+          <Requirement mode="normal">EC+EC+ChargeJump</Requirement>
+          <Requirement mode="normal">EC+EC+WallJump+DoubleJump</Requirement>
+          <Requirement mode="speed">EC+EC+WallJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -4266,6 +4535,7 @@
     </Connections>
   </Area>
   <Area name="HollowGrovePlants">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="HollowGrovePlants"/>
@@ -4284,6 +4554,7 @@
     </Connections>
   </Area>
   <Area name="UpperGroveSpiderArea">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="UpperGroveSpiderArea"/>
@@ -4309,6 +4580,7 @@
     </Connections>
   </Area>
   <Area name="Iceless">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="Iceless"/>
@@ -4327,6 +4599,7 @@
     </Connections>
   </Area>
   <Area name="RightGrottoHealth">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="RightGrottoHealth"/>
@@ -4347,6 +4620,7 @@
     </Connections>
   </Area>
   <Area name="MoonGrottoAirOrb">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="MoonGrottoAirOrb"/>
@@ -4376,6 +4650,7 @@
     </Connections>
   </Area>
   <Area name="SideFallCell">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="SideFallCell"/>
@@ -4401,6 +4676,7 @@
     </Connections>
   </Area>
   <Area name="GumoHideout">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="GumoHideout"/>
@@ -4455,15 +4731,15 @@
         <Home name="GumoHideout"/>
         <Target name="GumoHideoutMap"/>
         <Requirements>
-          <Requirement mode="normal">Mapstone</Requirement>
+          <Requirement mode="normal">MS</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="GumoHideout"/>
         <Target name="DoubleJumpArea"/>
         <Requirements>
-          <Requirement mode="normal">WallJump+KS+KS</Requirement>
-          <Requirement mode="dboost-light">Climb+KS+KS</Requirement>
+          <Requirement mode="normal">KS+KS+WallJump</Requirement>
+          <Requirement mode="dboost-light">KS+KS+Climb</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -4508,6 +4784,7 @@
     </Connections>
   </Area>
   <Area name="GumoHideoutPartialMobile">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="GumoHideoutPartialMobile"/>
@@ -4542,6 +4819,7 @@
     </Connections>
   </Area>
   <Area name="DoubleJumpArea">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="DoubleJumpArea"/>
@@ -4563,6 +4841,7 @@
     </Connections>
   </Area>
   <Area name="MobileGumoHideout">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="MobileGumoHideout"/>
@@ -4633,6 +4912,7 @@
     </Connections>
   </Area>
   <Area name="MobileGumoHideoutPlants">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="MobileGumoHideoutPlants"/>
@@ -4658,6 +4938,7 @@
     </Connections>
   </Area>
   <Area name="HideoutRedirect">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="HideoutRedirect"/>
@@ -4676,6 +4957,7 @@
     </Connections>
   </Area>
   <Area name="DeathGauntletRoof">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="DeathGauntletRoof"/>
@@ -4703,6 +4985,7 @@
     </Connections>
   </Area>
   <Area name="DeathGauntletRoofPlantAccess">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="DeathGauntletRoofPlantAccess"/>
@@ -4714,6 +4997,7 @@
     </Connections>
   </Area>
   <Area name="LowerGinsoTree">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="LowerGinsoTree"/>
@@ -4776,6 +5060,7 @@
     </Connections>
   </Area>
   <Area name="BashTree">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="BashTree"/>
@@ -4795,6 +5080,7 @@
     </Connections>
   </Area>
   <Area name="UpperGinsoTree">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="UpperGinsoTree"/>
@@ -4835,14 +5121,14 @@
         <Home name="UpperGinsoTree"/>
         <Target name="TopGinsoTree"/>
         <Requirements>
-          <Requirement mode="normal">Bash+WallJump+KS+KS+KS+KS</Requirement>
-          <Requirement mode="normal">Bash+Climb+KS+KS+KS+KS</Requirement>
-          <Requirement mode="dboost">ChargeJump+WallJump+HC+HC+HC+HC+HC+KS+KS+KS+KS</Requirement>
-          <Requirement mode="dboost">ChargeJump+Climb+HC+HC+HC+HC+HC+KS+KS+KS+KS</Requirement>
-          <Requirement mode="extended">Bash+ChargeJump+KS+KS+KS+KS</Requirement>
-          <Requirement mode="extended-damage">ChargeJump+HC+HC+HC+HC+HC+KS+KS+KS+KS</Requirement>
-          <Requirement mode="extended-damage">ChargeJump+DoubleJump+KS+KS+KS+KS</Requirement>
-          <Requirement mode="extreme">WallJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="normal">KS+KS+KS+KS+Bash+WallJump</Requirement>
+          <Requirement mode="normal">KS+KS+KS+KS+Bash+Climb</Requirement>
+          <Requirement mode="dboost">KS+KS+KS+KS+ChargeJump+WallJump+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost">KS+KS+KS+KS+ChargeJump+Climb+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended">KS+KS+KS+KS+Bash+ChargeJump</Requirement>
+          <Requirement mode="extended-damage">KS+KS+KS+KS+ChargeJump+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">KS+KS+KS+KS+ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="extreme">KS+KS+KS+KS+WallJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -4857,6 +5143,7 @@
     </Connections>
   </Area>
   <Area name="UpperGinsoFloors">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="UpperGinsoFloors"/>
@@ -4882,6 +5169,7 @@
     </Connections>
   </Area>
   <Area name="TopGinsoTree">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="TopGinsoTree"/>
@@ -4917,6 +5205,7 @@
     </Connections>
   </Area>
   <Area name="GinsoEscape">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="GinsoEscape"/>
@@ -4956,6 +5245,7 @@
     </Connections>
   </Area>
   <Area name="Swamp">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="Swamp"/>
@@ -4969,7 +5259,7 @@
         <Home name="Swamp"/>
         <Target name="SwampMap"/>
         <Requirements>
-          <Requirement mode="normal">Mapstone</Requirement>
+          <Requirement mode="normal">MS</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -5033,13 +5323,14 @@
         <Home name="Swamp"/>
         <Target name="RightSwamp"/>
         <Requirements>
-          <Requirement mode="normal">WallJump+KS+KS</Requirement>
-          <Requirement mode="normal">Climb+KS+KS</Requirement>
+          <Requirement mode="normal">KS+KS+WallJump</Requirement>
+          <Requirement mode="normal">KS+KS+Climb</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
   <Area name="SwampDrainlessArea">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="SwampDrainlessArea"/>
@@ -5051,6 +5342,7 @@
     </Connections>
   </Area>
   <Area name="InnerSwampDrainArea">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="InnerSwampDrainArea"/>
@@ -5062,6 +5354,7 @@
     </Connections>
   </Area>
   <Area name="InnerSwampSkyArea">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="InnerSwampSkyArea"/>
@@ -5080,6 +5373,7 @@
     </Connections>
   </Area>
   <Area name="SwampWater">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="SwampWater"/>
@@ -5112,6 +5406,7 @@
     </Connections>
   </Area>
   <Area name="RightSwamp">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="RightSwamp"/>
@@ -5148,6 +5443,7 @@
     </Connections>
   </Area>
   <Area name="HoruFields">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="HoruFields"/>
@@ -5192,6 +5488,7 @@
     </Connections>
   </Area>
   <Area name="HoruOuterDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="HoruOuterDoor"/>
@@ -5203,6 +5500,7 @@
     </Connections>
   </Area>
   <Area name="HoruInnerDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="HoruInnerDoor"/>
@@ -5236,6 +5534,7 @@
     </Connections>
   </Area>
   <Area name="HoruFieldsEnergy">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="HoruFieldsEnergy"/>
@@ -5256,6 +5555,7 @@
     </Connections>
   </Area>
   <Area name="Horu">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="Horu"/>
@@ -5344,17 +5644,19 @@
     </Connections>
   </Area>
   <Area name="HoruMapLedge">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="HoruMapLedge"/>
         <Target name="HoruMap"/>
         <Requirements>
-          <Requirement mode="normal">Mapstone</Requirement>
+          <Requirement mode="normal">MS</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
   <Area name="L1OuterDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="L1OuterDoor"/>
@@ -5373,27 +5675,30 @@
     </Connections>
   </Area>
   <Area name="L1InnerDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="L1InnerDoor"/>
         <Target name="L1"/>
         <Requirements>
-          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump+Stomp</Requirement>
-          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump+Stomp</Requirement>
-          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump+Stomp</Requirement>
-          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb+Stomp</Requirement>
-          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb+Stomp</Requirement>
-          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb+Stomp</Requirement>
-          <Requirement mode="extended">Bash+Grenade+WallJump+Stomp</Requirement>
-          <Requirement mode="extended">Bash+Grenade+Climb+Stomp</Requirement>
+          <Requirement mode="normal">Bash+Stomp+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Stomp+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Stomp+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Stomp+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="normal">Bash+Stomp+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">Bash+Stomp+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="extended">Bash+Stomp+Grenade+WallJump</Requirement>
+          <Requirement mode="extended">Bash+Stomp+Grenade+Climb</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
   <Area name="L1">
+    <Locations/>
     <Connections/>
   </Area>
   <Area name="L2OuterDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="L2OuterDoor"/>
@@ -5412,27 +5717,30 @@
     </Connections>
   </Area>
   <Area name="L2InnerDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="L2InnerDoor"/>
         <Target name="L2"/>
         <Requirements>
-          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump+Stomp</Requirement>
-          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump+Stomp</Requirement>
-          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump+Stomp</Requirement>
-          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb+Stomp</Requirement>
-          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb+Stomp</Requirement>
-          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb+Stomp</Requirement>
-          <Requirement mode="extended">Bash+Grenade+WallJump+Stomp</Requirement>
-          <Requirement mode="extended">Bash+Grenade+Climb+Stomp</Requirement>
+          <Requirement mode="normal">Bash+Stomp+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Stomp+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Stomp+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Stomp+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="normal">Bash+Stomp+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">Bash+Stomp+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="extended">Bash+Stomp+Grenade+WallJump</Requirement>
+          <Requirement mode="extended">Bash+Stomp+Grenade+Climb</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
   <Area name="L2">
+    <Locations/>
     <Connections/>
   </Area>
   <Area name="L3OuterDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="L3OuterDoor"/>
@@ -5451,6 +5759,7 @@
     </Connections>
   </Area>
   <Area name="L3InnerDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="L3InnerDoor"/>
@@ -5469,9 +5778,11 @@
     </Connections>
   </Area>
   <Area name="L3">
+    <Locations/>
     <Connections/>
   </Area>
   <Area name="L4OuterDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="L4OuterDoor"/>
@@ -5490,24 +5801,26 @@
     </Connections>
   </Area>
   <Area name="L4InnerDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="L4InnerDoor"/>
         <Target name="L4"/>
         <Requirements>
-          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump+Stomp</Requirement>
-          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump+Stomp</Requirement>
-          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump+Stomp</Requirement>
-          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb+Stomp</Requirement>
-          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb+Stomp</Requirement>
-          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb+Stomp</Requirement>
-          <Requirement mode="extended">Bash+Grenade+WallJump+Stomp</Requirement>
-          <Requirement mode="extended">Bash+Grenade+Climb+Stomp</Requirement>
+          <Requirement mode="normal">Bash+Stomp+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Stomp+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Stomp+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Stomp+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="normal">Bash+Stomp+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">Bash+Stomp+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="extended">Bash+Stomp+Grenade+WallJump</Requirement>
+          <Requirement mode="extended">Bash+Stomp+Grenade+Climb</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
   <Area name="L4">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="L4"/>
@@ -5533,6 +5846,7 @@
     </Connections>
   </Area>
   <Area name="R1OuterDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="R1OuterDoor"/>
@@ -5544,6 +5858,7 @@
     </Connections>
   </Area>
   <Area name="R1InnerDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="R1InnerDoor"/>
@@ -5563,6 +5878,7 @@
     </Connections>
   </Area>
   <Area name="R1">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="R1"/>
@@ -5588,6 +5904,7 @@
     </Connections>
   </Area>
   <Area name="R2OuterDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="R2OuterDoor"/>
@@ -5606,27 +5923,30 @@
     </Connections>
   </Area>
   <Area name="R2InnerDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="R2InnerDoor"/>
         <Target name="R2"/>
         <Requirements>
-          <Requirement mode="normal">Bash+DoubleJump+Glide+WallJump+Stomp</Requirement>
-          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+WallJump+Stomp</Requirement>
-          <Requirement mode="normal">Bash+Glide+ChargeJump+WallJump+Stomp</Requirement>
-          <Requirement mode="normal">Bash+DoubleJump+Glide+Climb+Stomp</Requirement>
-          <Requirement mode="normal">Bash+DoubleJump+ChargeJump+Climb+Stomp</Requirement>
-          <Requirement mode="normal">Bash+Glide+ChargeJump+Climb+Stomp</Requirement>
-          <Requirement mode="extended">Bash+Grenade+WallJump+Stomp</Requirement>
-          <Requirement mode="extended">Bash+Grenade+Climb+Stomp</Requirement>
+          <Requirement mode="normal">Bash+Stomp+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Stomp+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Stomp+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Stomp+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="normal">Bash+Stomp+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">Bash+Stomp+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="extended">Bash+Stomp+Grenade+WallJump</Requirement>
+          <Requirement mode="extended">Bash+Stomp+Grenade+Climb</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
   <Area name="R2">
+    <Locations/>
     <Connections/>
   </Area>
   <Area name="R3OuterDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="R3OuterDoor"/>
@@ -5645,6 +5965,7 @@
     </Connections>
   </Area>
   <Area name="R3InnerDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="R3InnerDoor"/>
@@ -5663,6 +5984,7 @@
     </Connections>
   </Area>
   <Area name="R3">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="R3"/>
@@ -5676,6 +5998,7 @@
     </Connections>
   </Area>
   <Area name="R4OuterDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="R4OuterDoor"/>
@@ -5694,6 +6017,7 @@
     </Connections>
   </Area>
   <Area name="R4InnerDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="R4InnerDoor"/>
@@ -5712,6 +6036,7 @@
     </Connections>
   </Area>
   <Area name="R4">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="R4"/>
@@ -5744,6 +6069,7 @@
     </Connections>
   </Area>
   <Area name="HoruHub">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="HoruHub"/>
@@ -5762,6 +6088,7 @@
     </Connections>
   </Area>
   <Area name="HoruBasement">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="HoruBasement"/>
@@ -5788,6 +6115,7 @@
     </Connections>
   </Area>
   <Area name="HoruEscapeOuterDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="HoruEscapeOuterDoor"/>
@@ -5799,6 +6127,7 @@
     </Connections>
   </Area>
   <Area name="HoruEscapeInnerDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="HoruEscapeInnerDoor"/>
@@ -5811,6 +6140,7 @@
     </Connections>
   </Area>
   <Area name="ValleyEntry">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="ValleyEntry"/>
@@ -5887,6 +6217,7 @@
     </Connections>
   </Area>
   <Area name="ValleyEntryTree">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="ValleyEntryTree"/>
@@ -5899,7 +6230,7 @@
         <Home name="ValleyEntryTree"/>
         <Target name="ValleyEntryGrenadeLongSwim"/>
         <Requirements>
-          <Requirement mode="normal">Water+Grenade</Requirement>
+          <Requirement mode="normal">Grenade+Water</Requirement>
           <Requirement mode="dboost-hard">Grenade+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="dboost-hard">Grenade+Bash+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="extreme">Grenade+HC+HC+HC+HC+HC+HC+HC</Requirement>
@@ -5923,6 +6254,7 @@
     </Connections>
   </Area>
   <Area name="ValleyEntryTreePlantAccess">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="ValleyEntryTreePlantAccess"/>
@@ -5934,6 +6266,7 @@
     </Connections>
   </Area>
   <Area name="ValleyRight">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="ValleyRight"/>
@@ -5969,6 +6302,7 @@
     </Connections>
   </Area>
   <Area name="ValleyMain">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="ValleyMain"/>
@@ -6070,6 +6404,7 @@
     </Connections>
   </Area>
   <Area name="LowerValley">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="LowerValley"/>
@@ -6120,6 +6455,7 @@
     </Connections>
   </Area>
   <Area name="LowerValleyPlantApproach">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="LowerValleyPlantApproach"/>
@@ -6133,6 +6469,7 @@
     </Connections>
   </Area>
   <Area name="OutsideForlorn">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="OutsideForlorn"/>
@@ -6167,6 +6504,7 @@
     </Connections>
   </Area>
   <Area name="ValleyForlornApproach">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="ValleyForlornApproach"/>
@@ -6179,12 +6517,13 @@
         <Home name="ValleyForlornApproach"/>
         <Target name="ValleyMap"/>
         <Requirements>
-          <Requirement mode="normal">Bash+Mapstone</Requirement>
+          <Requirement mode="normal">Bash+MS</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
   <Area name="OutsideForlornCliff">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="OutsideForlornCliff"/>
@@ -6221,6 +6560,7 @@
     </Connections>
   </Area>
   <Area name="ForlornOuterDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="ForlornOuterDoor"/>
@@ -6232,6 +6572,7 @@
     </Connections>
   </Area>
   <Area name="ForlornInnerDoor">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="ForlornInnerDoor"/>
@@ -6246,6 +6587,7 @@
     </Connections>
   </Area>
   <Area name="Forlorn">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="Forlorn"/>
@@ -6302,15 +6644,15 @@
         <Home name="Forlorn"/>
         <Target name="ForlornMap"/>
         <Requirements>
-          <Requirement mode="normal">Mapstone</Requirement>
+          <Requirement mode="normal">MS</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="Forlorn"/>
         <Target name="RightForlorn"/>
         <Requirements>
-          <Requirement mode="normal">Glide+Stomp+Bash+WallJump+KS+KS+KS+KS</Requirement>
-          <Requirement mode="normal">Glide+Stomp+Bash+Climb+KS+KS+KS+KS</Requirement>
+          <Requirement mode="normal">Glide+Stomp+Bash+KS+KS+KS+KS+WallJump</Requirement>
+          <Requirement mode="normal">Glide+Stomp+Bash+KS+KS+KS+KS+Climb</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -6325,6 +6667,7 @@
     </Connections>
   </Area>
   <Area name="RightForlorn">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="RightForlorn"/>
@@ -6352,6 +6695,7 @@
     </Connections>
   </Area>
   <Area name="Sorrow">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="Sorrow"/>
@@ -6407,17 +6751,17 @@
         <Home name="Sorrow"/>
         <Target name="SorrowMap"/>
         <Requirements>
-          <Requirement mode="normal">Bash+Mapstone</Requirement>
+          <Requirement mode="normal">Bash+MS</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="Sorrow"/>
         <Target name="LeftSorrow"/>
         <Requirements>
-          <Requirement mode="normal">Glide+KS+KS+KS+KS</Requirement>
-          <Requirement mode="extreme">Bash+KS+KS+KS+KS</Requirement>
-          <Requirement mode="extreme">ChargeJump+Climb+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+KS+KS+KS+KS</Requirement>
-          <Requirement mode="extreme">ChargeJump+Dash+WallJump+DoubleJump+HC+KS+KS+KS+KS</Requirement>
+          <Requirement mode="normal">KS+KS+KS+KS+Glide</Requirement>
+          <Requirement mode="extreme">KS+KS+KS+KS+Bash</Requirement>
+          <Requirement mode="extreme">KS+KS+KS+KS+ChargeJump+Climb+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">KS+KS+KS+KS+ChargeJump+Dash+WallJump+DoubleJump+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -6437,6 +6781,7 @@
     </Connections>
   </Area>
   <Area name="LeftSorrow">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="LeftSorrow"/>
@@ -6506,6 +6851,7 @@
     </Connections>
   </Area>
   <Area name="UpperSorrow">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="UpperSorrow"/>
@@ -6560,6 +6906,7 @@
     </Connections>
   </Area>
   <Area name="ChargeJump">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="ChargeJump"/>
@@ -6587,6 +6934,7 @@
     </Connections>
   </Area>
   <Area name="SunstoneArea">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="SunstoneArea"/>
@@ -6615,6 +6963,7 @@
     </Connections>
   </Area>
   <Area name="Misty">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="Misty"/>
@@ -6692,6 +7041,7 @@
     </Connections>
   </Area>
   <Area name="MistyPostClimb">
+    <Locations/>
     <Connections>
       <Connection>
         <Home name="MistyPostClimb"/>

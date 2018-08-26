@@ -53,12 +53,13 @@ def AddRequirement(tokens):
 					pickup = 'HC'
 				elif pickup == 'Energy':
 					pickup = 'EC'
-				elif pickup == 'Mapstone':
-					pickup = 'MS'
 				elif pickup == 'Keystone':
 					pickup = 'KS'
 				req_text += pickup
 			continue
+
+		if thing == 'Mapstone':
+			thing = 'MS'
 
 		req_text += thing
 
@@ -121,11 +122,14 @@ for line in meta:
 		XML.SubElement(new_loc, "Zone").text = loc_zone
 
 		loc_homes[loc_name] = "NOT LINKED"
+
+		XML.SubElement(new_area, "Connections")
 	elif tokens[0] == "home:":
 		assert len(tokens) == 2
 		area_name = tokens[1]
 
 		area_el = XML.SubElement(new_areas, "Area", name=area_name)
+		XML.SubElement(area_el, "Locations")
 		area = XML.SubElement(area_el, "Connections")
 		CloseConnection()
 	elif tokens[0] == "pickup:":
