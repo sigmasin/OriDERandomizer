@@ -88,7 +88,7 @@ for line in meta:
 		continue
 
 	if tokens[0] == "home:":
-		homes[tokens[1]] = True
+		homes[tokens[1]] = "NOT LINKED"
 
 # now actually parse the file
 for line in meta:
@@ -127,7 +127,7 @@ for line in meta:
 
 		area_el = XML.SubElement(new_areas, "Area", name=area_name)
 		area = XML.SubElement(area_el, "Connections")
-		conn = None
+		CloseConnection()
 	elif tokens[0] == "loc:":
 		assert area_name
 		assert area is not None
@@ -145,6 +145,7 @@ for line in meta:
 
 		assert target in homes, target
 		assert target not in loc_homes, target
+		homes[target] = "LINKED"
 
 		CloseConnection()
 		OpenConnection(target)
@@ -156,6 +157,10 @@ for line in meta:
 
 for loc, area in loc_homes.items():
 	assert area != "NOT LINKED", loc
+
+for home, linked in homes.items():
+	if home != "SunkenGladesRunaway":
+		assert linked == "LINKED", home
 
 new_tree = XML.ElementTree(new_areas)
 new_tree.write("areas_new.xml", pretty_print=True)
