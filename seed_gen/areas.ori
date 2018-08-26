@@ -320,9 +320,6 @@ home: WallJump
 		normal ChargeJump
 		normal Bash Grenade
 		lure-hard Bash
-	loc: ChargeFlameAreaExp
-		normal ChargeFlame
-		normal Grenade
 	loc: GladesMap
 		normal Mapstone
 	conn: DeathGauntlet
@@ -357,19 +354,14 @@ home: WallJump
 		extended Bash Climb
 		dbash Bash
 		cdash-farming Dash
-	conn: ChargeFlame
-		normal WallJump Grenade
-		normal WallJump ChargeFlame
-		normal Climb Grenade
-		normal Climb ChargeFlame
-		normal ChargeJump Grenade
-		normal ChargeJump ChargeFlame
-		normal Bash Grenade
-		lure-hard Bash ChargeFlame
+	conn: LowerChargeFlameArea
+		normal Grenade
+		normal ChargeFlame
+		cdash-farming Dash
 		glitched Dash Bash WallJump
 		glitched Dash Bash Climb
-		glitched Dash WallJump DoubleJump
 		glitched Dash ChargeJump
+		glitched Dash WallJump DoubleJump
 home: DeathGauntlet
 	loc: DeathGauntletExp
 	loc: DeathGauntletStompSwim
@@ -459,25 +451,32 @@ home: GladesLaserArea
 	conn: SpiritCaverns
 		normal Energy=4
 		timed-level Energy=2
-home: ChargeFlame
+home: ChargeFlameArea
 	loc: ChargeFlameSkillTree
 	loc: ChargeFlameAreaPlant
 		normal ChargeFlame
 		normal Grenade
 		cdash-farming Dash
-	loc: ChargeFlameAreaExp
-		normal Free
 	conn: SpiritTreeRefined
 		normal ChargeJump ChargeFlame
 		normal ChargeJump Grenade
 		speed ChargeJump Stomp
+	conn: LowerChargeFlameArea
+home: LowerChargeFlameArea
+	loc: ChargeFlameAreaExp
 	conn: WallJump
 		normal ChargeFlame
 		normal Grenade
-		normal Stomp WallJump
-		normal Stomp Climb
-		normal Stomp DoubleJump
-		normal Stomp ChargeJump
+		normal Stomp
+		cdash-farming Dash
+	conn: ChargeFlameArea
+		normal WallJump
+		normal Climb
+		normal ChargeJump
+		normal Bash Grenade
+		normal Bash Stomp
+		lure-hard Bash ChargeFlame
+		cdash-farming Bash Dash
 home: SpiritTreeRefined
 	loc: AboveChargeFlameTreeExp
 		normal DoubleJump Climb
@@ -489,7 +488,7 @@ home: SpiritTreeRefined
 		normal Bash Grenade
 		speed Dash WallJump
 		speed Dash Climb
-	conn: ChargeFlame
+	conn: ChargeFlameArea
 		normal Free
 	conn: ValleyEntry
 		normal ChargeFlame
