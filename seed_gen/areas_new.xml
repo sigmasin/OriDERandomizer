@@ -2683,4 +2683,61 @@
       </Location>
     </Locations>
   </Area>
+  <Area name="SunkenGladesRunaway">
+    <Connections>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="FirstPickup"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="FronkeyFight"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="GladesKeystone1"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="GladesKeystone2"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="GladesGrenadePool"/>
+        <Requirements>
+          <Requirement mode="normal">Grenade+Water</Requirement>
+          <Requirement mode="dboost">Grenade+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost">Grenade+HC+HC+HC+HC+HC+Stomp</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="GladesGrenadeTree"/>
+        <Requirements>
+          <Requirement mode="speed">Grenade+WallJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Grenade+ChargeJump</Requirement>
+          <Requirement mode="normal">Grenade+Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="GladesGrenadeTree"/>
+        <Requirements>
+          <Requirement mode="normal">KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
 </Areas>
