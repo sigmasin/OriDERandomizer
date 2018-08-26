@@ -478,7 +478,7 @@ home: LowerChargeFlameArea
 		lure-hard Bash ChargeFlame
 		cdash-farming Bash Dash
 home: SpiritTreeRefined
-	loc: ChargeFlameTree
+	conn: ChargeFlameTree
 		normal DoubleJump Climb
 		normal DoubleJump WallJump
 		normal ChargeJump Climb
@@ -529,7 +529,7 @@ home: SpiderSac
 	loc: SpiderSacEnergyDoor
 		normal Energy=4
 		timed-level Energy=2
-	loc: ChargeFlameTree
+	conn: ChargeFlameTree
 		extended ChargeFlame Glide
 		extended Grenade Glide
 		extended Stomp Glide
