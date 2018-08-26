@@ -841,28 +841,6 @@ home: MoonGrotto
 	loc: SwampEntranceSwim
 		normal Water
 		dboost Free
-	loc: InnerSwampDrainExp
-		normal Grenade Climb ChargeJump
-		normal Grenade DoubleJump ChargeJump
-		normal Grenade Glide ChargeJump
-		speed Grenade Bash
-		speed ChargeFlame DoubleJump Bash
-		speed ChargeFlame Glide Bash
-		dboost-light ChargeFlame ChargeJump DoubleJump
-		dboost-light ChargeFlame ChargeJump Glide
-		extended-damage ChargeFlame Climb ChargeJump
-		extended-damage ChargeFlame DoubleJump WallJump
-		extended-damage ChargeFlame DoubleJump Climb
-		dbash ChargeFlame Bash WallJump
-		dbash ChargeFlame Bash Climb
-	loc: InnerSwampEnergyCell
-		glitched Dash
-	loc: SwampEntranceAbilityCell
-		normal Stomp WallJump
-		normal Stomp Climb
-		normal Stomp Bash Grenade
-		normal Stomp ChargeJump
-		extended ChargeJump Climb
 	loc: GrottoEnergyDoorSwim
 		normal Water Energy=2
 		dboost Energy=2
@@ -965,6 +943,27 @@ home: MoonGrotto
 		extreme Stomp ChargeFlame Climb Health=7
 		extreme ChargeJump ChargeFlame
 		extreme ChargeJump Grenade
+	conn: SwampDrainlessArea
+		normal Stomp WallJump
+		normal Stomp Climb
+		normal Stomp Bash Grenade
+		normal Stomp ChargeJump
+		extended ChargeJump Climb
+	conn: InnerSwampDrainArea
+		normal Grenade Climb ChargeJump
+		normal Grenade DoubleJump ChargeJump
+		normal Grenade Glide ChargeJump
+		speed Grenade Bash
+		speed ChargeFlame DoubleJump Bash
+		speed ChargeFlame Glide Bash
+		dboost-light ChargeFlame ChargeJump DoubleJump
+		dboost-light ChargeFlame ChargeJump Glide
+		extended-damage ChargeFlame Climb ChargeJump
+		extended-damage ChargeFlame DoubleJump WallJump
+		extended-damage ChargeFlame DoubleJump Climb
+		dbash ChargeFlame Bash WallJump
+		dbash ChargeFlame Bash Climb
+	conn: InnerSwampSkyArea
 		glitched Dash
 	conn: GumoHideout
 		normal WallJump
@@ -1161,10 +1160,21 @@ home: GinsoEscape
 	loc: GinsoEscapeHangingExp
 	loc: GinsoEscapeExit
 home: Swamp
-	loc: SwampEntranceAbilityCell
+	loc: InnerSwampStompExp
+		dboost-light Stomp
+		normal Stomp Water
+	loc: SwampMap
+		normal Mapstone
+	conn: SwampDrainlessArea
 		normal Stomp
 		extended ChargeJump Climb
-	loc: InnerSwampDrainExp
+	conn: InnerSwampSkyArea
+		normal Wind Glide
+		speed ChargeJump Climb Glide
+		speed ChargeJump Climb DoubleJump
+		extended ChargeJump Climb Grenade
+		dbash Bash
+	conn: InnerSwampDrainArea
 		normal Water Climb ChargeJump
 		normal Water DoubleJump Climb
 		normal Water DoubleJump WallJump
@@ -1189,23 +1199,19 @@ home: Swamp
 		extreme Dash Glide Climb Health=7
 		extreme Dash Glide WallJump Health=7
 		extreme DoubleJump ChargeJump Health=7
-	loc: InnerSwampStompExp
-		dboost-light Stomp
-		normal Stomp Water
-	loc: InnerSwampEnergyCell
-		normal Wind Glide
-		speed ChargeJump Climb Glide
-		speed ChargeJump Climb DoubleJump
-		extended ChargeJump Climb Grenade
-		dbash Bash
-	loc: SwampMap
-		normal Mapstone
 	conn: SwampWater
 		normal Water
 		extreme Health=7
 	conn: RightSwamp
 		normal WallJump Keystone=2
 		normal Climb Keystone=2
+home: SwampDrainlessArea
+	loc: SwampEntranceAbilityCell
+home: InnerSwampDrainArea
+	loc: InnerSwampDrainExp
+home: InnerSwampSkyArea
+	loc: InnerSwampEnergyCell
+	conn: Swamp
 home: SwampWater
 	loc: InnerSwampHiddenSwimExp
 	loc: InnerSwampSwimLeftKeystone
