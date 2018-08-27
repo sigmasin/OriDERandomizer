@@ -1962,7 +1962,6 @@
           <Requirement mode="normal">WallJump</Requirement>
           <Requirement mode="normal">Climb</Requirement>
           <Requirement mode="normal">Bash+Grenade</Requirement>
-          <Requirement mode="normal">ChargeJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -2447,21 +2446,29 @@
         <Home name="SideFallCell"/>
         <Target name="GumoHideout"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Grenade+Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="SideFallCell"/>
         <Target name="GumoHideoutPartialMobile"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Grenade+Bash</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="SideFallCell"/>
         <Target name="GumoHideoutRedirectAC"/>
         <Requirements>
-          <Requirement mode="dboost-light">Free</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Grenade+Bash</Requirement>
+          <Requirement mode="dboost-light">ChargeJump</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -3056,7 +3063,7 @@
           <Requirement mode="extended">KS+KS+KS+KS+Bash+ChargeJump</Requirement>
           <Requirement mode="extended-damage">KS+KS+KS+KS+ChargeJump+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="extended-damage">KS+KS+KS+KS+ChargeJump+DoubleJump</Requirement>
-          <Requirement mode="extreme">WallJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">KS+KS+KS+KS+WallJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
           <!-- this can be reached with chargejump only due to a micro ledge-->
         </Requirements>
       </Connection>
@@ -3481,6 +3488,7 @@
           <Requirement mode="normal">HoruKey+Bash+Glide+ChargeJump+Climb</Requirement>
           <Requirement mode="extended">HoruKey+Bash+Grenade+WallJump</Requirement>
           <Requirement mode="extended">HoruKey+Bash+Grenade+Climb</Requirement>
+          <Requirement mode="extreme">ChargeJump+WallJump+DoubleJump+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -4173,6 +4181,14 @@
         <Target name="HoruBottom"/>
         <Requirements>
           <Requirement mode="normal">GinsoKey+ForlornKey</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Entrance/>
+        <Home name="HoruHub"/>
+        <Target name="HoruBottom"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
