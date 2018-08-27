@@ -474,8 +474,10 @@ home: UpperSpiritCaverns
 	conn: GladesLaserArea
 		normal Energy=4
 		glitched Energy=3
-	conn: SpiritTreeRefined
+	conn: SpiritTreeDoor
 		all Keystone=4
+home: SpiritTreeDoor
+	conn: SpiritTreeRefined
 		normal WallJump
 		normal Climb
 		normal Bash
