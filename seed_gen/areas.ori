@@ -272,78 +272,70 @@ home: SunkenGladesRunaway
 	pickup: FronkeyWalkRoof
 		normal ChargeJump
 		normal Glide Wind
+		normal Bash Grenade
 		lure Bash
-	conn: WallJump
+	-- no need to isolate this key door because there's no requirements to get to it or to get past it
+	conn: GladesMain
 		normal Keystone=2
 	conn: DashArea
 		normal WallJump
 		normal Climb
 		normal ChargeJump
 		normal Bash Grenade
-	conn: Forlorn
-		all ForlornKey
-		dboost-light TPForlorn WallJump DoubleJump ChargeJump
-		dboost-light TPForlorn WallJump DoubleJump Bash
-		dboost-light TPForlorn Glide ChargeJump
-		dboost-light TPForlorn Grenade Bash
-		extended-damage TPForlorn Glide Bash
+	conn: SpiritTreeRefined
+		normal TPGrove
 	conn: MoonGrotto
 		all TPGrotto
 		normal ChargeJump
 		normal WallJump
 		normal Climb
 		normal Grenade Bash
-	-- This path temporarily removed until Grotto can be refactored
-	--conn: GumoHideoutMap
-	--	normal TPGrotto Mapstone
 	conn: HollowGrove
 		normal TPSwamp
-	conn: SpiritTreeRefined
-		normal TPGrove
 	conn: ValleyRight
 		normal TPValley Bash WallJump
+	conn: Forlorn
+		all ForlornKey TPForlorn
+		dboost-light WallJump DoubleJump ChargeJump
+		dboost-light WallJump DoubleJump Bash
+		dboost-light Glide ChargeJump
+		dboost-light Grenade Bash
+		extended-damage Glide Bash
 	conn: SunstoneArea
 		all TPSorrow Glide
 		normal Climb ChargeJump Stomp
 		extended-damage Stomp ChargeJump Dash Health=5
 		dbash Stomp Bash
 		dbash ChargeJump Bash
-home: WallJump
+	-- This path temporarily removed until Grotto can be refactored
+	--conn: GumoHideoutMap
+	--	normal TPGrotto Mapstone
+home: GladesMain
 	pickup: FourthHealthCell
 	pickup: GladesMapKeystone
-	pickup: WallJumpSkillTree
-	pickup: LeftGladesHiddenExp
-	pickup: AboveFourthHealth
+	pickup: GladesMap
+		normal Mapstone
+	conn: GladesMainAttic
 		normal Bash WallJump
 		normal Bash Climb
 		normal ChargeJump
 		speed WallJump DoubleJump
 		extended Climb DoubleJump
 		dbash Bash
-	pickup: WallJumpAreaExp
-		normal ChargeJump
-		normal Bash Grenade
-		lure-hard Bash
-	pickup: GladesMap
-		normal Mapstone
+		cdash-farming Dash
 	conn: DeathGauntlet
-		dboost-light WallJump Energy=4
-		dboost-light Climb Energy=4
-		dboost-light ChargeJump Bash Energy=4
 		normal Grenade Bash Energy=4
 		normal Climb DoubleJump Glide Energy=4
 		normal WallJump DoubleJump Glide Energy=4
+		dboost-light WallJump Energy=4
+		dboost-light Climb Energy=4
+		dboost-light ChargeJump Bash Energy=4
 		timed-level WallJump Energy=2
 		timed-level Climb Energy=2
 		timed-level ChargeJump Bash Energy=2
 		timed-level Grenade Bash Energy=2
 		lure Bash Energy=4
-	conn: LeftWallJump
-		normal WallJump
-		normal Climb
-		normal ChargeJump
-		normal Bash Grenade
-		lure-hard Bash
+	conn: LeftGlades
 	conn: SpiritCavernsDoor
 		normal Keystone=2
 	conn: GladesLaserArea
@@ -362,10 +354,40 @@ home: WallJump
 		normal Grenade
 		normal ChargeFlame
 		cdash-farming Dash
-		glitched Dash Bash WallJump
-		glitched Dash Bash Climb
-		glitched Dash ChargeJump
-		glitched Dash WallJump DoubleJump
+home: GladesMainAttic
+	pickup: AboveFourthHealth
+	conn: GladesMain
+	conn: LowerChargeFlameArea
+		glitched Dash
+home: LeftGlades
+	pickup: LeftGladesHiddenExp
+	pickup: WallJumpSkillTree
+	pickup: WallJumpAreaExp
+		normal ChargeJump
+		normal Bash Grenade
+		lure-hard Bash
+	pickup: WallJumpAreaEnergyCell
+		normal WallJump
+		normal ChargeJump
+		normal Climb
+		normal Bash Grenade
+		lure-hard Bash
+	conn: UpperLeftGlades
+		normal WallJump
+		normal Climb
+		normal ChargeJump
+		normal Bash Grenade
+		lure Bash
+home: UpperLeftGlades
+	pickup: LeftGladesExp
+		normal WallJump
+		normal Climb
+		normal Bash Grenade
+		normal ChargeJump
+		extended Bash
+		extended DoubleJump
+	pickup: LeftGladesKeystone
+	pickup: LeftGladesMapstone
 home: DeathGauntlet
 	pickup: DeathGauntletExp
 	pickup: DeathGauntletStompSwim
@@ -398,11 +420,6 @@ home: DeathGauntlet
 		all Energy=4
 		normal DoubleJump
 		normal Glide
-home: LeftWallJump
-	pickup: WallJumpAreaEnergyCell
-	pickup: LeftGladesExp
-	pickup: LeftGladesKeystone
-	pickup: LeftGladesMapstone
 home: SpiritCavernsDoor
 	conn: SpiritCaverns
 		normal Climb
@@ -410,49 +427,67 @@ home: SpiritCavernsDoor
 		normal ChargeJump
 		normal Bash Grenade
 		lure Bash
+		extreme DoubleJump
 home: SpiritCaverns
 	pickup: SpiritCavernsKeystone1
-	pickup: SpiritCavernsKeystone2
-	pickup: SpiritCavernsTopLeftKeystone
-		normal WallJump
-		normal DoubleJump
-		dboost-light ChargeJump
-		dboost-light Bash WallJump
-		dboost-light Bash Climb
-		lure-hard Bash
-		extreme Climb
-	pickup: SpiritCavernsTopRightKeystone
 		normal WallJump
 		normal Climb
-		normal DoubleJump
-		dboost-light ChargeJump
-		dboost-light Bash WallJump
-		dboost-light Bash Climb
-		lure-hard Bash
-	pickup: SpiritCavernsAbilityCell
-		speed WallJump DoubleJump
 		normal ChargeJump
 		normal Bash
-	conn: GladesLaserArea
-		normal DoubleJump Energy=4
-		normal Bash Energy=4
-		normal ChargeJump Energy=4
-		cdash-farming Dash Energy=4
-		extended-damage WallJump Glide Energy=4
-		glitched DoubleJump Energy=3
-		glitched Bash Energy=3
-		glitched ChargeJump Energy=3
-		glitched Dash Energy=3
-		glitched WallJump Glide Energy=3
-	conn: SpiritTreeRefined
-		all Keystone=4
+		extreme DoubleJump
+	pickup: SpiritCavernsKeystone2
+		normal WallJump
+		normal Climb
+		normal ChargeJump
+		normal Bash
+		extreme DoubleJump
+	pickup: SpiritCavernsAbilityCell
+		normal ChargeJump
+		normal Bash
+		speed WallJump DoubleJump
+	conn: UpperSpiritCaverns
 		normal WallJump
 		normal Climb
 		normal ChargeJump
 		normal Bash Grenade
-		extreme Bash
+		dbash Bash
+		extreme DoubleJump
+	conn: GladesLaserArea
+		normal Bash Energy=4
+home: UpperSpiritCaverns
+	pickup: SpiritCavernsTopLeftKeystone
+		normal WallJump
+		normal DoubleJump Climb
+		normal Glide Climb
+		normal Bash Grenade
+		dboost-light ChargeJump
+		dboost-light Bash Climb
+		dbash Bash
+		extreme Climb
+	pickup: SpiritCavernsTopRightKeystone
+		normal WallJump
+		normal Climb
+		normal ChargeJump
+		normal Bash
+		dboost-light DoubleJump
+	conn: SpiritCaverns
+	conn: GladesLaserArea
+		normal Energy=4
+		glitched Energy=3
+	conn: SpiritTreeRefined
+		all Keystone=4
+		normal WallJump
+		normal Climb
+		normal Bash
+		dboost-light ChargeJump
 home: GladesLaserArea
 	pickup: GladesLaser
+		normal DoubleJump
+		normal ChargeJump
+		normal Bash Grenade
+		extended-damage WallJump Glide
+		lure Bash
+		cdash-farming Dash
 	pickup: GladesLaserGrenade
 		all Grenade
 		normal Bash WallJump
