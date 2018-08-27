@@ -475,7 +475,7 @@ home: UpperSpiritCaverns
 		normal Energy=4
 		glitched Energy=3
 	conn: SpiritTreeDoor
-		all Keystone=4
+		normal Keystone=4
 home: SpiritTreeDoor
 	conn: SpiritTreeRefined
 		normal WallJump
