@@ -495,7 +495,7 @@ home: GladesLaserArea
 		extended ChargeJump Water
 		extended-damage ChargeJump
 		cdash Dash
-	conn: WallJump
+	conn: GladesMain
 	conn: SpiritCaverns
 		normal Energy=4
 		timed-level Energy=2
@@ -513,7 +513,7 @@ home: ChargeFlameArea
 	conn: LowerChargeFlameArea
 home: LowerChargeFlameArea
 	pickup: ChargeFlameAreaExp
-	conn: WallJump
+	conn: GladesMain
 		normal ChargeFlame
 		normal Grenade
 		normal Stomp
