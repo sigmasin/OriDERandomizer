@@ -27,7 +27,7 @@ def AddRequirement(tokens):
 	global conn, has_reqs, all_req
 	path_type = tokens[0]
 
-	if path_type == "all":
+	if path_type == "ALL":
 		all_req = tokens[1:]
 		return
 
@@ -66,12 +66,13 @@ def AddRequirement(tokens):
 	req_node.text = req_text
 
 def CloseConnection():
-	global conn, has_reqs, all_req
+	global area_name, conn, has_reqs, all_req
 
 	if conn is None:
 		return
 
 	if not has_reqs:
+		assert not all_req, area_name
 		req_node = XML.SubElement(conn, "Requirement", mode="normal")
 		req_node.text = "Free"
 
