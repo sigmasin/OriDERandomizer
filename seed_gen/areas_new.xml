@@ -3001,12 +3001,13 @@
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="normal">Glide+Wind</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
           <Requirement mode="lure">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="SunkenGladesRunaway"/>
-        <Target name="WallJump"/>
+        <Target name="GladesMain"/>
         <Requirements>
           <Requirement mode="normal">KS+KS</Requirement>
         </Requirements>
@@ -3023,13 +3024,9 @@
       </Connection>
       <Connection>
         <Home name="SunkenGladesRunaway"/>
-        <Target name="Forlorn"/>
+        <Target name="SpiritTreeRefined"/>
         <Requirements>
-          <Requirement mode="dboost-light">ForlornKey+TPForlorn+WallJump+DoubleJump+ChargeJump</Requirement>
-          <Requirement mode="dboost-light">ForlornKey+TPForlorn+WallJump+DoubleJump+Bash</Requirement>
-          <Requirement mode="dboost-light">ForlornKey+TPForlorn+Glide+ChargeJump</Requirement>
-          <Requirement mode="dboost-light">ForlornKey+TPForlorn+Grenade+Bash</Requirement>
-          <Requirement mode="extended-damage">ForlornKey+TPForlorn+Glide+Bash</Requirement>
+          <Requirement mode="normal">TPGrove</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3051,16 +3048,20 @@
       </Connection>
       <Connection>
         <Home name="SunkenGladesRunaway"/>
-        <Target name="SpiritTreeRefined"/>
+        <Target name="ValleyRight"/>
         <Requirements>
-          <Requirement mode="normal">TPGrove</Requirement>
+          <Requirement mode="normal">TPValley+Bash+WallJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="SunkenGladesRunaway"/>
-        <Target name="ValleyRight"/>
+        <Target name="Forlorn"/>
         <Requirements>
-          <Requirement mode="normal">TPValley+Bash+WallJump</Requirement>
+          <Requirement mode="dboost-light">ForlornKey+TPForlorn+WallJump+DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="dboost-light">ForlornKey+TPForlorn+WallJump+DoubleJump+Bash</Requirement>
+          <Requirement mode="dboost-light">ForlornKey+TPForlorn+Glide+ChargeJump</Requirement>
+          <Requirement mode="dboost-light">ForlornKey+TPForlorn+Grenade+Bash</Requirement>
+          <Requirement mode="extended-damage">ForlornKey+TPForlorn+Glide+Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3075,40 +3076,33 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="WallJump">
+  <Area name="GladesMain">
     <Locations/>
     <Connections>
       <Connection>
-        <Home name="WallJump"/>
+        <Home name="GladesMain"/>
         <Target name="FourthHealthCell"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="WallJump"/>
+        <Home name="GladesMain"/>
         <Target name="GladesMapKeystone"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="WallJump"/>
-        <Target name="WallJumpSkillTree"/>
+        <Home name="GladesMain"/>
+        <Target name="GladesMap"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
+          <Requirement mode="normal">MS</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="WallJump"/>
-        <Target name="LeftGladesHiddenExp"/>
-        <Requirements>
-          <Requirement mode="normal">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="WallJump"/>
-        <Target name="AboveFourthHealth"/>
+        <Home name="GladesMain"/>
+        <Target name="GladesMainAttic"/>
         <Requirements>
           <Requirement mode="normal">Bash+WallJump</Requirement>
           <Requirement mode="normal">Bash+Climb</Requirement>
@@ -3116,34 +3110,19 @@
           <Requirement mode="speed">WallJump+DoubleJump</Requirement>
           <Requirement mode="extended">Climb+DoubleJump</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="cdash-farming">Dash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="WallJump"/>
-        <Target name="WallJumpAreaExp"/>
-        <Requirements>
-          <Requirement mode="normal">ChargeJump</Requirement>
-          <Requirement mode="normal">Bash+Grenade</Requirement>
-          <Requirement mode="lure-hard">Bash</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="WallJump"/>
-        <Target name="GladesMap"/>
-        <Requirements>
-          <Requirement mode="normal">MS</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="WallJump"/>
+        <Home name="GladesMain"/>
         <Target name="DeathGauntlet"/>
         <Requirements>
-          <Requirement mode="dboost-light">WallJump+EC+EC+EC+EC</Requirement>
-          <Requirement mode="dboost-light">Climb+EC+EC+EC+EC</Requirement>
-          <Requirement mode="dboost-light">ChargeJump+Bash+EC+EC+EC+EC</Requirement>
           <Requirement mode="normal">Grenade+Bash+EC+EC+EC+EC</Requirement>
           <Requirement mode="normal">Climb+DoubleJump+Glide+EC+EC+EC+EC</Requirement>
           <Requirement mode="normal">WallJump+DoubleJump+Glide+EC+EC+EC+EC</Requirement>
+          <Requirement mode="dboost-light">WallJump+EC+EC+EC+EC</Requirement>
+          <Requirement mode="dboost-light">Climb+EC+EC+EC+EC</Requirement>
+          <Requirement mode="dboost-light">ChargeJump+Bash+EC+EC+EC+EC</Requirement>
           <Requirement mode="timed-level">WallJump+EC+EC</Requirement>
           <Requirement mode="timed-level">Climb+EC+EC</Requirement>
           <Requirement mode="timed-level">ChargeJump+Bash+EC+EC</Requirement>
@@ -3152,25 +3131,21 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="WallJump"/>
-        <Target name="LeftWallJump"/>
+        <Home name="GladesMain"/>
+        <Target name="LeftGlades"/>
         <Requirements>
-          <Requirement mode="normal">WallJump</Requirement>
-          <Requirement mode="normal">Climb</Requirement>
-          <Requirement mode="normal">ChargeJump</Requirement>
-          <Requirement mode="normal">Bash+Grenade</Requirement>
-          <Requirement mode="lure-hard">Bash</Requirement>
+          <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="WallJump"/>
+        <Home name="GladesMain"/>
         <Target name="SpiritCavernsDoor"/>
         <Requirements>
           <Requirement mode="normal">KS+KS</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="WallJump"/>
+        <Home name="GladesMain"/>
         <Target name="GladesLaserArea"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump+Climb</Requirement>
@@ -3187,16 +3162,119 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="WallJump"/>
+        <Home name="GladesMain"/>
         <Target name="LowerChargeFlameArea"/>
         <Requirements>
           <Requirement mode="normal">Grenade</Requirement>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="cdash-farming">Dash</Requirement>
-          <Requirement mode="glitched">Dash+Bash+WallJump</Requirement>
-          <Requirement mode="glitched">Dash+Bash+Climb</Requirement>
-          <Requirement mode="glitched">Dash+ChargeJump</Requirement>
-          <Requirement mode="glitched">Dash+WallJump+DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="GladesMainAttic">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="GladesMainAttic"/>
+        <Target name="AboveFourthHealth"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GladesMainAttic"/>
+        <Target name="GladesMain"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GladesMainAttic"/>
+        <Target name="LowerChargeFlameArea"/>
+        <Requirements>
+          <Requirement mode="glitched">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="LeftGlades">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="LeftGlades"/>
+        <Target name="LeftGladesHiddenExp"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftGlades"/>
+        <Target name="WallJumpSkillTree"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftGlades"/>
+        <Target name="WallJumpAreaExp"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="lure-hard">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftGlades"/>
+        <Target name="WallJumpAreaEnergyCell"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="lure-hard">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftGlades"/>
+        <Target name="UpperLeftGlades"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="lure">Bash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="UpperLeftGlades">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="UpperLeftGlades"/>
+        <Target name="LeftGladesExp"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="extended">Bash</Requirement>
+          <Requirement mode="extended">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperLeftGlades"/>
+        <Target name="LeftGladesKeystone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperLeftGlades"/>
+        <Target name="LeftGladesMapstone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -3271,39 +3349,6 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="LeftWallJump">
-    <Locations/>
-    <Connections>
-      <Connection>
-        <Home name="LeftWallJump"/>
-        <Target name="WallJumpAreaEnergyCell"/>
-        <Requirements>
-          <Requirement mode="normal">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="LeftWallJump"/>
-        <Target name="LeftGladesExp"/>
-        <Requirements>
-          <Requirement mode="normal">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="LeftWallJump"/>
-        <Target name="LeftGladesKeystone"/>
-        <Requirements>
-          <Requirement mode="normal">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="LeftWallJump"/>
-        <Target name="LeftGladesMapstone"/>
-        <Requirements>
-          <Requirement mode="normal">Free</Requirement>
-        </Requirements>
-      </Connection>
-    </Connections>
-  </Area>
   <Area name="SpiritCavernsDoor">
     <Locations/>
     <Connections>
@@ -3316,6 +3361,7 @@
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="normal">Bash+Grenade</Requirement>
           <Requirement mode="lure">Bash</Requirement>
+          <Requirement mode="extreme">DoubleJump</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -3327,76 +3373,117 @@
         <Home name="SpiritCaverns"/>
         <Target name="SpiritCavernsKeystone1"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash</Requirement>
+          <Requirement mode="extreme">DoubleJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="SpiritCaverns"/>
         <Target name="SpiritCavernsKeystone2"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="SpiritCaverns"/>
-        <Target name="SpiritCavernsTopLeftKeystone"/>
-        <Requirements>
-          <Requirement mode="normal">WallJump</Requirement>
-          <Requirement mode="normal">DoubleJump</Requirement>
-          <Requirement mode="dboost-light">ChargeJump</Requirement>
-          <Requirement mode="dboost-light">Bash+WallJump</Requirement>
-          <Requirement mode="dboost-light">Bash+Climb</Requirement>
-          <Requirement mode="lure-hard">Bash</Requirement>
-          <Requirement mode="extreme">Climb</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="SpiritCaverns"/>
-        <Target name="SpiritCavernsTopRightKeystone"/>
-        <Requirements>
           <Requirement mode="normal">WallJump</Requirement>
           <Requirement mode="normal">Climb</Requirement>
-          <Requirement mode="normal">DoubleJump</Requirement>
-          <Requirement mode="dboost-light">ChargeJump</Requirement>
-          <Requirement mode="dboost-light">Bash+WallJump</Requirement>
-          <Requirement mode="dboost-light">Bash+Climb</Requirement>
-          <Requirement mode="lure-hard">Bash</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash</Requirement>
+          <Requirement mode="extreme">DoubleJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="SpiritCaverns"/>
         <Target name="SpiritCavernsAbilityCell"/>
         <Requirements>
-          <Requirement mode="speed">WallJump+DoubleJump</Requirement>
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="normal">Bash</Requirement>
+          <Requirement mode="speed">WallJump+DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SpiritCaverns"/>
+        <Target name="UpperSpiritCaverns"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="extreme">DoubleJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="SpiritCaverns"/>
         <Target name="GladesLaserArea"/>
         <Requirements>
-          <Requirement mode="normal">DoubleJump+EC+EC+EC+EC</Requirement>
           <Requirement mode="normal">Bash+EC+EC+EC+EC</Requirement>
-          <Requirement mode="normal">ChargeJump+EC+EC+EC+EC</Requirement>
-          <Requirement mode="cdash-farming">Dash+EC+EC+EC+EC</Requirement>
-          <Requirement mode="extended-damage">WallJump+Glide+EC+EC+EC+EC</Requirement>
-          <Requirement mode="glitched">DoubleJump+EC+EC+EC</Requirement>
-          <Requirement mode="glitched">Bash+EC+EC+EC</Requirement>
-          <Requirement mode="glitched">ChargeJump+EC+EC+EC</Requirement>
-          <Requirement mode="glitched">Dash+EC+EC+EC</Requirement>
-          <Requirement mode="glitched">WallJump+Glide+EC+EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="UpperSpiritCaverns">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="UpperSpiritCaverns"/>
+        <Target name="SpiritCavernsTopLeftKeystone"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">DoubleJump+Climb</Requirement>
+          <Requirement mode="normal">Glide+Climb</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="dboost-light">ChargeJump</Requirement>
+          <Requirement mode="dboost-light">Bash+Climb</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="extreme">Climb</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="SpiritCaverns"/>
+        <Home name="UpperSpiritCaverns"/>
+        <Target name="SpiritCavernsTopRightKeystone"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash</Requirement>
+          <Requirement mode="dboost-light">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperSpiritCaverns"/>
+        <Target name="SpiritCaverns"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperSpiritCaverns"/>
+        <Target name="GladesLaserArea"/>
+        <Requirements>
+          <Requirement mode="normal">EC+EC+EC+EC</Requirement>
+          <Requirement mode="glitched">EC+EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperSpiritCaverns"/>
+        <Target name="SpiritTreeDoor"/>
+        <Requirements>
+          <Requirement mode="normal">KS+KS+KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="SpiritTreeDoor">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="SpiritTreeDoor"/>
         <Target name="SpiritTreeRefined"/>
         <Requirements>
-          <Requirement mode="normal">KS+KS+KS+KS+WallJump</Requirement>
-          <Requirement mode="normal">KS+KS+KS+KS+Climb</Requirement>
-          <Requirement mode="normal">KS+KS+KS+KS+ChargeJump</Requirement>
-          <Requirement mode="normal">KS+KS+KS+KS+Bash+Grenade</Requirement>
-          <Requirement mode="extreme">KS+KS+KS+KS+Bash</Requirement>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">Bash</Requirement>
+          <Requirement mode="dboost-light">ChargeJump</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -3408,7 +3495,12 @@
         <Home name="GladesLaserArea"/>
         <Target name="GladesLaser"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
+          <Requirement mode="normal">DoubleJump</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="extended-damage">WallJump+Glide</Requirement>
+          <Requirement mode="lure">Bash</Requirement>
+          <Requirement mode="cdash-farming">Dash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3424,7 +3516,7 @@
       </Connection>
       <Connection>
         <Home name="GladesLaserArea"/>
-        <Target name="WallJump"/>
+        <Target name="GladesMain"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
@@ -3488,7 +3580,7 @@
       </Connection>
       <Connection>
         <Home name="LowerChargeFlameArea"/>
-        <Target name="WallJump"/>
+        <Target name="GladesMain"/>
         <Requirements>
           <Requirement mode="normal">ChargeFlame</Requirement>
           <Requirement mode="normal">Grenade</Requirement>
