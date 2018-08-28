@@ -3024,6 +3024,21 @@
       </Connection>
       <Connection>
         <Home name="SunkenGladesRunaway"/>
+        <Target name="DeathGauntletDoor"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump+EC+EC+EC+EC</Requirement>
+          <Requirement mode="normal">Grenade+Bash+EC+EC+EC+EC</Requirement>
+          <Requirement mode="dboost-light">WallJump+EC+EC+EC+EC</Requirement>
+          <Requirement mode="dboost-light">Climb+EC+EC+EC+EC</Requirement>
+          <Requirement mode="timed-level">WallJump+EC+EC</Requirement>
+          <Requirement mode="timed-level">Climb+EC+EC</Requirement>
+          <Requirement mode="timed-level">ChargeJump+EC+EC</Requirement>
+          <Requirement mode="timed-level">Grenade+Bash+EC+EC</Requirement>
+          <Requirement mode="lure">Bash+EC+EC+EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
         <Target name="SpiritTreeRefined"/>
         <Requirements>
           <Requirement mode="normal">TPGrove</Requirement>
@@ -3106,28 +3121,12 @@
         <Requirements>
           <Requirement mode="normal">Bash+WallJump</Requirement>
           <Requirement mode="normal">Bash+Climb</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="speed">WallJump+DoubleJump</Requirement>
           <Requirement mode="extended">Climb+DoubleJump</Requirement>
-          <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="extended">Bash</Requirement>
           <Requirement mode="cdash-farming">Dash</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="GladesMain"/>
-        <Target name="DeathGauntlet"/>
-        <Requirements>
-          <Requirement mode="normal">Grenade+Bash+EC+EC+EC+EC</Requirement>
-          <Requirement mode="normal">Climb+DoubleJump+Glide+EC+EC+EC+EC</Requirement>
-          <Requirement mode="normal">WallJump+DoubleJump+Glide+EC+EC+EC+EC</Requirement>
-          <Requirement mode="dboost-light">WallJump+EC+EC+EC+EC</Requirement>
-          <Requirement mode="dboost-light">Climb+EC+EC+EC+EC</Requirement>
-          <Requirement mode="dboost-light">ChargeJump+Bash+EC+EC+EC+EC</Requirement>
-          <Requirement mode="timed-level">WallJump+EC+EC</Requirement>
-          <Requirement mode="timed-level">Climb+EC+EC</Requirement>
-          <Requirement mode="timed-level">ChargeJump+Bash+EC+EC</Requirement>
-          <Requirement mode="timed-level">Grenade+Bash+EC+EC</Requirement>
-          <Requirement mode="lure">Bash+EC+EC+EC+EC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3279,6 +3278,56 @@
       </Connection>
     </Connections>
   </Area>
+  <Area name="DeathGauntletDoor">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="DeathGauntletDoor"/>
+        <Target name="SunkenGladesRunaway"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DeathGauntletDoor"/>
+        <Target name="DeathGauntlet"/>
+        <Requirements>
+          <Requirement mode="normal">Grenade+Bash</Requirement>
+          <Requirement mode="normal">DoubleJump+Bash</Requirement>
+          <Requirement mode="normal">Glide+Bash</Requirement>
+          <Requirement mode="normal">Climb+DoubleJump+Glide</Requirement>
+          <Requirement mode="normal">WallJump+DoubleJump+Glide</Requirement>
+          <Requirement mode="normal">WallJump+Water</Requirement>
+          <Requirement mode="normal">Climb+Water</Requirement>
+          <Requirement mode="normal">Bash+Water</Requirement>
+          <Requirement mode="speed">WallJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="speed">Climb+HC+HC+HC+HC</Requirement>
+          <Requirement mode="speed">Bash+HC+HC+HC+HC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DeathGauntletDoor"/>
+        <Target name="DeathGauntletMoat"/>
+        <Requirements>
+          <Requirement mode="normal">Water</Requirement>
+          <Requirement mode="dboost">HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">HC+HC+HC+HC</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="DeathGauntletMoat">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="DeathGauntletMoat"/>
+        <Target name="DeathGauntletSwimEnergyDoor"/>
+        <Requirements>
+          <Requirement mode="normal">EC+EC+EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
   <Area name="DeathGauntlet">
     <Locations/>
     <Connections>
@@ -3286,7 +3335,11 @@
         <Home name="DeathGauntlet"/>
         <Target name="DeathGauntletExp"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="lure">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3294,16 +3347,26 @@
         <Target name="DeathGauntletStompSwim"/>
         <Requirements>
           <Requirement mode="normal">Stomp+Water</Requirement>
+          <Requirement mode="lure">Water</Requirement>
           <Requirement mode="dboost">Stomp</Requirement>
           <Requirement mode="extended-damage">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="DeathGauntlet"/>
-        <Target name="DeathGauntletSwimEnergyDoor"/>
+        <Target name="DeathGauntletMoat"/>
         <Requirements>
-          <Requirement mode="normal">Water+EC+EC+EC+EC</Requirement>
-          <Requirement mode="dboost">EC+EC+EC+EC</Requirement>
+          <Requirement mode="normal">Water</Requirement>
+          <Requirement mode="dboost">HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DeathGauntlet"/>
+        <Target name="DeathGauntletDoor"/>
+        <Requirements>
+          <Requirement mode="normal">DoubleJump+EC+EC+EC+EC</Requirement>
+          <Requirement mode="normal">Glide+EC+EC+EC+EC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3337,14 +3400,6 @@
           <Requirement mode="timed-level">WallJump</Requirement>
           <Requirement mode="timed-level">Climb</Requirement>
           <Requirement mode="timed-level">ChargeJump+Bash</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="DeathGauntlet"/>
-        <Target name="SunkenGladesRunaway"/>
-        <Requirements>
-          <Requirement mode="normal">EC+EC+EC+EC+DoubleJump</Requirement>
-          <Requirement mode="normal">EC+EC+EC+EC+Glide</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -3823,23 +3878,6 @@
         <Requirements>
           <Requirement mode="normal">Dash</Requirement>
           <Requirement mode="extended">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="DashArea"/>
-        <Target name="DeathGauntlet"/>
-        <Requirements>
-          <Requirement mode="dboost-light">WallJump+EC+EC+EC+EC</Requirement>
-          <Requirement mode="dboost-light">Climb+EC+EC+EC+EC</Requirement>
-          <Requirement mode="dboost-light">ChargeJump+Bash+EC+EC+EC+EC</Requirement>
-          <Requirement mode="normal">Grenade+Bash+EC+EC+EC+EC</Requirement>
-          <Requirement mode="normal">Climb+DoubleJump+Glide+EC+EC+EC+EC</Requirement>
-          <Requirement mode="normal">WallJump+DoubleJump+Glide+EC+EC+EC+EC</Requirement>
-          <Requirement mode="timed-level">WallJump+EC+EC</Requirement>
-          <Requirement mode="timed-level">Climb+EC+EC</Requirement>
-          <Requirement mode="timed-level">ChargeJump+Bash+EC+EC</Requirement>
-          <Requirement mode="timed-level">Grenade+Bash+EC+EC</Requirement>
-          <Requirement mode="lure">Bash+EC+EC+EC+EC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
