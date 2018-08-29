@@ -1970,7 +1970,7 @@ home: LeftSorrowKeystones
 		extreme ChargeJump Stomp Dash WallJump
 		extreme ChargeJump Stomp DoubleJump Climb
 		extreme ChargeJump Stomp DoubleJump WallJump Glide
-home LeftSorrowMiddleDoor
+home: LeftSorrowMiddleDoor
 	conn: MiddleSorrow
 		normal Glide Bash
 		extended-damage ChargeJump Climb DoubleJump Bash Health=5
