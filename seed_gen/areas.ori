@@ -277,7 +277,7 @@ home: SunkenGladesRunaway
 	-- no need to isolate this key door because there's no requirements to get to it or to get past it
 	conn: GladesMain
 		normal Keystone=2
-	conn: DashArea
+	conn: BlackrootDarknessRoom
 		normal WallJump
 		normal Climb
 		normal ChargeJump
@@ -553,7 +553,7 @@ home: LowerChargeFlameArea
 		normal Climb
 		normal ChargeJump
 		normal Bash Grenade
-		normal Bash Stomp
+		lure-hard Bash Stomp
 		lure-hard Bash ChargeFlame
 		cdash-farming Bash Dash
 home: SpiritTreeRefined
@@ -636,36 +636,52 @@ home: SpiderSacArea
 		normal Stomp ChargeJump
 home: SpiderSacDropArea
 	pickup: SpiderSacEnergyCell
-home: DashArea
+home: BlackrootDarknessRoom
+	-- anchor point: just after watching/skipping the BRB entrance cutscene
 	pickup: DashAreaOrbRoomExp
+		normal WallJump
+		normal Climb
+		normal Bash
+		normal ChargeJump
+		normal DoubleJump
 	pickup: DashAreaAbilityCell
+		normal WallJump
+		normal Climb
+		normal Bash
+		normal ChargeJump
+		normal DoubleJump
 	pickup: DashAreaRoofExp
-	pickup: DashSkillTree
-	pickup: DashAreaPlant
-		normal ChargeJump Climb ChargeFlame
-		normal ChargeJump WallJump ChargeFlame
-		normal Glide WallJump ChargeFlame
-		normal ChargeJump Climb Grenade
-		normal ChargeJump WallJump Grenade
+		normal WallJump
+		normal Climb
 		normal Bash Grenade
-		normal Glide WallJump Grenade
-		extended DoubleJump Grenade
-		cdash-farming ChargeJump Climb Dash
-		cdash-farming ChargeJump WallJump Dash
-		cdash-farming DoubleJump Dash
+		normal ChargeJump
+	conn: DashArea
+		normal WallJump
+		normal Climb
+		normal Bash Grenade
+		normal ChargeJump
+		extended DoubleJump
+home: DashArea
+	-- anchor point: dash tree *after* lifting darkness
+	pickup: DashSkillTree
 	pickup: DashAreaMapstone
 		normal Dash
-		extended Free
-	conn: LowerBlackRoot
+		extended WallJump
+		extended Climb
+		extended Bash Grenade
+		extended ChargeJump
+		extended DoubleJump
+	conn: DashPlantAccess
+		normal ChargeJump Climb
+		normal ChargeJump WallJump
+		normal Glide WallJump
+		normal Bash Grenade
+		-- this path is special; you can't physically get to the plant but you can throw a grenade at it
+		extended DoubleJump Grenade
+	conn: LowerBlackroot
 		normal Stomp ChargeJump
 		normal Stomp Grenade Bash
-		normal Stomp Dash DoubleJump
-		normal Stomp Dash Grenade Bash
 		normal Stomp Dash
-		normal Stomp ChargeJump DoubleJump
-		normal Stomp Grenade
-		normal Stomp Grenade Water
-		timed-level Stomp
 		extended Stomp
 		extended ChargeJump Climb
 		extreme Bash
@@ -679,7 +695,13 @@ home: DashArea
 		speed ChargeJump
 		speed Bash Grenade
 		speed Climb DoubleJump
-		extended Dash
+		extended Climb
+home: DashPlantAccess
+	-- anchor point: on the ledge next to the plant
+	pickup: DashAreaPlant
+		normal ChargeFlame
+		normal Grenade
+		cdash-farming Dash
 home: RazielNoArea
 	pickup: RazielNo
 	pickup: BlackrootBoulderExp
@@ -706,7 +728,7 @@ home: BlackrootGrottoConnection
 		normal Mapstone
 	conn: SideFallCell
 		normal Stomp
-home: LowerBlackRoot
+home: LowerBlackroot
 	pickup: LowerBlackrootAbilityCell
 		normal ChargeJump
 		normal Grenade Bash
@@ -1109,7 +1131,7 @@ home: GumoHideout
 		normal WallJump ChargeJump
 		normal Glide Wind
 		extreme WallJump Bash
-	conn: LowerBlackRoot
+	conn: LowerBlackroot
 		glitched Dash
 	conn: SideFallCell
 		normal Bash Grenade
