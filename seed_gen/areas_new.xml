@@ -3014,7 +3014,7 @@
       </Connection>
       <Connection>
         <Home name="SunkenGladesRunaway"/>
-        <Target name="DashArea"/>
+        <Target name="BlackrootDarknessRoom"/>
         <Requirements>
           <Requirement mode="normal">WallJump</Requirement>
           <Requirement mode="normal">Climb</Requirement>
@@ -3651,7 +3651,7 @@
           <Requirement mode="normal">Climb</Requirement>
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="normal">Bash+Grenade</Requirement>
-          <Requirement mode="normal">Bash+Stomp</Requirement>
+          <Requirement mode="lure-hard">Bash+Stomp</Requirement>
           <Requirement mode="lure-hard">Bash+ChargeFlame</Requirement>
           <Requirement mode="cdash-farming">Bash+Dash</Requirement>
         </Requirements>
@@ -3824,30 +3824,57 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="DashArea">
+  <Area name="BlackrootDarknessRoom">
     <Locations/>
     <Connections>
       <Connection>
-        <Home name="DashArea"/>
+        <Home name="BlackrootDarknessRoom"/>
         <Target name="DashAreaOrbRoomExp"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">Bash</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">DoubleJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="DashArea"/>
+        <Home name="BlackrootDarknessRoom"/>
         <Target name="DashAreaAbilityCell"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">Bash</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">DoubleJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="DashArea"/>
+        <Home name="BlackrootDarknessRoom"/>
         <Target name="DashAreaRoofExp"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="BlackrootDarknessRoom"/>
+        <Target name="DashArea"/>
+        <Requirements>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="extended">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="DashArea">
+    <Locations/>
+    <Connections>
       <Connection>
         <Home name="DashArea"/>
         <Target name="DashSkillTree"/>
@@ -3857,42 +3884,34 @@
       </Connection>
       <Connection>
         <Home name="DashArea"/>
-        <Target name="DashAreaPlant"/>
-        <Requirements>
-          <Requirement mode="normal">ChargeJump+Climb+ChargeFlame</Requirement>
-          <Requirement mode="normal">ChargeJump+WallJump+ChargeFlame</Requirement>
-          <Requirement mode="normal">Glide+WallJump+ChargeFlame</Requirement>
-          <Requirement mode="normal">ChargeJump+Climb+Grenade</Requirement>
-          <Requirement mode="normal">ChargeJump+WallJump+Grenade</Requirement>
-          <Requirement mode="normal">Bash+Grenade</Requirement>
-          <Requirement mode="normal">Glide+WallJump+Grenade</Requirement>
-          <Requirement mode="extended">DoubleJump+Grenade</Requirement>
-          <Requirement mode="cdash-farming">ChargeJump+Climb+Dash</Requirement>
-          <Requirement mode="cdash-farming">ChargeJump+WallJump+Dash</Requirement>
-          <Requirement mode="cdash-farming">DoubleJump+Dash</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="DashArea"/>
         <Target name="DashAreaMapstone"/>
         <Requirements>
           <Requirement mode="normal">Dash</Requirement>
-          <Requirement mode="extended">Free</Requirement>
+          <Requirement mode="extended">WallJump</Requirement>
+          <Requirement mode="extended">Climb</Requirement>
+          <Requirement mode="extended">Bash+Grenade</Requirement>
+          <Requirement mode="extended">ChargeJump</Requirement>
+          <Requirement mode="extended">DoubleJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="DashArea"/>
-        <Target name="LowerBlackRoot"/>
+        <Target name="DashPlantAccess"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">ChargeJump+WallJump</Requirement>
+          <Requirement mode="normal">Glide+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="extended">DoubleJump+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DashArea"/>
+        <Target name="LowerBlackroot"/>
         <Requirements>
           <Requirement mode="normal">Stomp+ChargeJump</Requirement>
           <Requirement mode="normal">Stomp+Grenade+Bash</Requirement>
-          <Requirement mode="normal">Stomp+Dash+DoubleJump</Requirement>
-          <Requirement mode="normal">Stomp+Dash+Grenade+Bash</Requirement>
           <Requirement mode="normal">Stomp+Dash</Requirement>
-          <Requirement mode="normal">Stomp+ChargeJump+DoubleJump</Requirement>
-          <Requirement mode="normal">Stomp+Grenade</Requirement>
-          <Requirement mode="normal">Stomp+Grenade+Water</Requirement>
-          <Requirement mode="timed-level">Stomp</Requirement>
           <Requirement mode="extended">Stomp</Requirement>
           <Requirement mode="extended">ChargeJump+Climb</Requirement>
           <Requirement mode="extreme">Bash</Requirement>
@@ -3911,7 +3930,21 @@
           <Requirement mode="speed">ChargeJump</Requirement>
           <Requirement mode="speed">Bash+Grenade</Requirement>
           <Requirement mode="speed">Climb+DoubleJump</Requirement>
-          <Requirement mode="extended">Dash</Requirement>
+          <Requirement mode="extended">Climb</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="DashPlantAccess">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="DashPlantAccess"/>
+        <Target name="DashAreaPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash-farming">Dash</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -3987,11 +4020,11 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="LowerBlackRoot">
+  <Area name="LowerBlackroot">
     <Locations/>
     <Connections>
       <Connection>
-        <Home name="LowerBlackRoot"/>
+        <Home name="LowerBlackroot"/>
         <Target name="LowerBlackrootAbilityCell"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
@@ -3999,7 +4032,7 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="LowerBlackRoot"/>
+        <Home name="LowerBlackroot"/>
         <Target name="LowerBlackrootLaserAbilityCell"/>
         <Requirements>
           <Requirement mode="speed">Dash+DoubleJump</Requirement>
@@ -4009,7 +4042,7 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="LowerBlackRoot"/>
+        <Home name="LowerBlackroot"/>
         <Target name="LowerBlackrootLaserExp"/>
         <Requirements>
           <Requirement mode="normal">Dash</Requirement>
@@ -4017,7 +4050,7 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="LowerBlackRoot"/>
+        <Home name="LowerBlackroot"/>
         <Target name="LowerBlackrootGrenadeThrow"/>
         <Requirements>
           <Requirement mode="speed">ChargeJump+DoubleJump</Requirement>
@@ -4026,14 +4059,14 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="LowerBlackRoot"/>
+        <Home name="LowerBlackroot"/>
         <Target name="BottomBlackRoot"/>
         <Requirements>
           <Requirement mode="normal">Grenade</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="LowerBlackRoot"/>
+        <Home name="LowerBlackroot"/>
         <Target name="GrenadeArea"/>
         <Requirements>
           <Requirement mode="normal">Dash</Requirement>
@@ -4896,7 +4929,7 @@
       </Connection>
       <Connection>
         <Home name="GumoHideout"/>
-        <Target name="LowerBlackRoot"/>
+        <Target name="LowerBlackroot"/>
         <Requirements>
           <Requirement mode="glitched">Dash</Requirement>
         </Requirements>
