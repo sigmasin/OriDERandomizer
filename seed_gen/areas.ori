@@ -1,0 +1,1812 @@
+-- ALL pickups in the game
+loc: FirstPickup 92 -227 EX15 0 Glades
+loc: FronkeyFight -154 -271 EX15 0 Glades
+loc: GladesKeystone1 83 -222 KS 0 Glades
+loc: GladesKeystone2 -11 -206 KS 0 Glades
+loc: GladesGrenadePool 59 -280 EX200 2 Glades
+loc: GladesGrenadeTree 82 -196 AC 1 Glades
+loc: GladesMainPool 5 -241 EX100 1 Glades
+loc: GladesMainPoolDeep -40 -239 EC 2 Glades
+loc: FronkeyWalkRoof 257 -199 EX200 1 Glades
+loc: FourthHealthCell -80 -189 HC 0 Glades
+loc: GladesMapKeystone -59 -244 KS 0 Glades
+loc: WallJumpSkillTree -316 -308 SKWallJump 0 Glades
+loc: LeftGladesHiddenExp -283 -236 EX15 0 Glades
+loc: DeathGauntletExp 303 -190 EX100 0 Grove
+loc: DeathGauntletEnergyCell 423 -169 EC 0 Grotto
+loc: GladesMap -81 -248 MapStone 0 Glades
+loc: AboveFourthHealth -48 -166 AC 1 Glades
+loc: WallJumpAreaExp -245 -277 EX200 2 Glades
+loc: WallJumpAreaEnergyCell -336 -288 EC 0 Glades
+loc: LeftGladesExp -247 -207 EX15 0 Glades
+loc: LeftGladesKeystone -238 -212 KS 0 Glades
+loc: LeftGladesMapstone -184 -227 MS 0 Glades
+loc: SpiritCavernsKeystone1 -182 -193 KS 0 Glades
+loc: SpiritCavernsKeystone2 -217 -183 KS 0 Glades
+loc: SpiritCavernsTopRightKeystone -177 -154 KS 0 Glades
+loc: SpiritCavernsTopLeftKeystone -217 -146 KS 0 Glades
+loc: SpiritCavernsAbilityCell -216 -176 AC 1 Glades
+loc: GladesLaser -155 -186 EC 2 Glades
+loc: GladesLaserGrenade -165 -140 AC 3 Glades
+loc: ChargeFlameSkillTree -56 -160 SKChargeFlame 0 Grove
+loc: ChargeFlameAreaPlant 43 -156 Plant 1 Grove
+loc: ChargeFlameAreaExp 4 -196 EX100 0 Glades
+loc: AboveChargeFlameTreeExp -14 -95 EX100 1 Grove
+loc: SpiderSacEnergyDoor 64 -109 AC 1 Grove
+loc: SpiderSacHealthCell 151 -117 HC 1 Grove
+loc: SpiderSacEnergyCell 60 -155 EC 0 Grove
+loc: SpiderSacGrenadeDoor 93 -92 AC 2 Grove
+loc: DashAreaOrbRoomExp 154 -291 EX100 1 Blackroot
+loc: DashAreaAbilityCell 183 -291 AC 1 Blackroot
+loc: DashAreaRoofExp 197 -229 EX100 0 Blackroot
+loc: DashSkillTree 292 -256 SKDash 0 Blackroot
+loc: DashAreaPlant 313 -232 Plant 2 Blackroot
+loc: RazielNo 304 -303 EX100 0 Blackroot
+loc: DashAreaMapstone 346 -255 MS 0 Blackroot
+loc: BlackrootTeleporterHealthCell 394 -309 HC 0 Blackroot
+loc: BlackrootMap 418 -291 MapStone 0 Blackroot
+loc: BlackrootBoulderExp 432 -324 EX100 1 Blackroot
+loc: GrenadeSkillTree 72 -380 SKGrenade 2 Blackroot
+loc: GrenadeAreaExp 224 -359 EX100 2 Blackroot
+loc: GrenadeAreaAbilityCell 252 -331 AC 3 Blackroot
+loc: LowerBlackrootAbilityCell 279 -375 AC 1 Blackroot
+loc: LowerBlackrootLaserAbilityCell 391 -423 AC 2 Blackroot
+loc: LowerBlackrootLaserExp 339 -418 EX100 2 Blackroot
+loc: LowerBlackrootGrenadeThrow 208 -431 AC 3 Blackroot
+loc: LostGroveAbilityCell 459 -506 AC 4 Blackroot
+loc: LostGroveHiddenExp 462 -489 EX100 4 Blackroot
+loc: LostGroveTeleporter 307 -525 EX100 4 Blackroot
+loc: LostGroveLongSwim 527 -544 AC 4 Blackroot
+loc: HollowGroveMapstone 300 -94 MS 0 Grove
+loc: OuterSwampAbilityCell 703 -82 AC 0 Swamp
+loc: OuterSwampStompExp 618 -98 EX100 0 Swamp
+loc: OuterSwampHealthCell 581 -67 HC 1 Swamp
+loc: HollowGroveMap 351 -119 MapStone 1 Grove
+loc: HollowGroveTreeAbilityCell 333 -61 AC 1 Grove
+loc: HollowGroveMapPlant 365 -119 Plant 1 Grove
+loc: HollowGroveTreePlant 330 -78 Plant 1 Grove
+loc: SwampEntrancePlant 628 -120 Plant 1 Swamp
+loc: MoonGrottoStompPlant 435 -140 Plant 1 Grotto
+loc: OuterSwampMortarPlant 515 -100 Plant 1 Swamp
+loc: GroveWaterStompAbilityCell 354 -178 AC 3 Grove
+loc: OuterSwampGrenadeExp 666 -48 EX200 1 Swamp
+loc: SwampTeleporterAbilityCell 409 -34 AC 1 Swamp
+loc: GroveAboveSpiderWaterExp 174 -105 EX200 1 Grove
+loc: GroveAboveSpiderWaterHealthCell 261 -117 HC 1 Grove
+loc: GroveAboveSpiderWaterEnergyCell 272 -97 EC 2 Grove
+loc: GroveSpiderWaterSwim 187 -163 EX100 1 Grove
+loc: DeathGauntletSwimEnergyDoor 339 -216 AC 2 Grove
+loc: DeathGauntletStompSwim 356 -207 EX200 1 Grotto
+loc: AboveGrottoTeleporterExp 477 -140 EX100 1 Grotto
+loc: GrottoLasersRoofExp 432 -108 EX100 1 Grotto
+loc: IcelessExp 365 -109 EX100 1 Grove
+loc: BelowGrottoTeleporterPlant 540 -220 Plant 2 Grotto
+loc: LeftGrottoTeleporterExp 449 -166 EX200 1 Grotto
+loc: OuterSwampMortarAbilityCell 502 -108 AC 2 Swamp
+loc: SwampEntranceSwim 595 -136 EX200 1 Swamp
+loc: BelowGrottoTeleporterHealthCell 543 -189 HC 2 Grotto
+loc: GrottoEnergyDoorSwim 423 -274 EX100 1 Grotto
+loc: GrottoEnergyDoorHealthCell 424 -220 HC 2 Grotto
+loc: GrottoSwampDrainAccessExp 552 -141 EX100 2 Grotto
+loc: GrottoSwampDrainAccessPlant 537 -176 Plant 2 Grotto
+loc: GrottoHideoutFallAbilityCell 451 -296 AC 1 Grotto
+loc: GumoHideoutMapstone 513 -413 MS 1 Grotto
+loc: GumoHideoutMiniboss 620 -404 KS 2 Grotto
+loc: GumoHideoutCrusherExp 572 -378 EX100 0 Grotto
+loc: GumoHideoutCrusherKeystone 590 -384 KS 0 Grotto
+loc: GumoHideoutRightHangingExp 496 -369 EX15 1 Grotto
+loc: GumoHideoutLeftHangingExp 467 -369 EX15 1 Grotto
+loc: GumoHideoutRedirectAbilityCell 449 -430 AC 1 Grotto
+loc: GumoHideoutMap 477 -389 MapStone 1 Grotto
+loc: DoubleJumpSkillTree 784 -412 SKDoubleJump 0 Grotto
+loc: DoubleJumpAreaExp 759 -398 EX100 1 Grotto
+loc: GumoHideoutEnergyCell 545 -357 EC 1 Grotto
+loc: GumoHideoutRockfallExp 567 -246 EX100 1 Grotto
+loc: WaterVein 0 0 EVGinsoKey 1 Grotto
+loc: LeftGumoHideoutExp 406 -386 EX100 1 Grotto
+loc: LeftGumoHideoutHealthCell 393 -375 HC 1 Grotto
+loc: LeftGumoHideoutLowerPlant 447 -368 Plant 1 Grotto
+loc: LeftGumoHideoutUpperPlant 439 -344 Plant 1 Grotto
+loc: GumoHideoutRedirectPlant 492 -400 Plant 1 Grotto
+loc: LeftGumoHideoutSwim 397 -411 EX100 1 Grotto
+loc: GumoHideoutRedirectEnergyCell 515 -441 EC 2 Grotto
+loc: GumoHideoutRedirectExp 505 -439 EX200 2 Grotto
+loc: FarLeftGumoHideoutExp 328 -353 EX100 2 Grotto
+loc: SwampEntranceAbilityCell 643 -127 AC 1 Swamp
+loc: DeathGauntletRoofHealthCell 321 -179 HC 1 Grove
+loc: DeathGauntletRoofPlant 342 -179 Plant 2 Grove
+loc: LowerGinsoHiddenExp 523 142 EX100 1 Ginso
+loc: LowerGinsoKeystone1 531 267 KS 1 Ginso
+loc: LowerGinsoKeystone2 540 277 KS 1 Ginso
+loc: LowerGinsoKeystone3 508 304 KS 1 Ginso
+loc: LowerGinsoKeystone4 529 297 KS 1 Ginso
+loc: LowerGinsoPlant 540 101 Plant 3 Ginso
+loc: BashSkillTree 532 328 SKBash 1 Ginso
+loc: BashAreaExp 518 339 EX100 1 Ginso
+loc: UpperGinsoLowerKeystone 507 476 KS 1 Ginso
+loc: UpperGinsoRightKeystone 535 488 KS 1 Ginso
+loc: UpperGinsoUpperRightKeystone 531 502 KS 1 Ginso
+loc: UpperGinsoUpperLeftKeystone 508 498 KS 1 Ginso
+loc: UpperGinsoRedirectLowerExp 517 384 EX100 1 Ginso
+loc: UpperGinsoRedirectUpperExp 530 407 EX100 2 Ginso
+loc: UpperGinsoEnergyCell 536 434 EC 1 Ginso
+loc: TopGinsoLeftLowerExp 456 566 EX100 1 Ginso
+loc: TopGinsoLeftUpperExp 471 614 EX100 1 Ginso
+loc: TopGinsoRightPlant 610 611 Plant 3 Ginso
+loc: GinsoEscapeSpiderExp 534 661 EX200 2 Ginso
+loc: GinsoEscapeJumpPadExp 537 733 EX100 2 Ginso
+loc: GinsoEscapeProjectileExp 533 827 EX100 2 Ginso
+loc: GinsoEscapeHangingExp 519 867 EX100 2 Ginso
+loc: GinsoEscapeExit 0 4 EVWater 2 Ginso
+loc: SwampMap 677 -129 MapStone 2 Swamp
+loc: InnerSwampDrainExp 636 -162 EX100 2 Swamp
+loc: InnerSwampHiddenSwimExp 761 -173 EX100 2 Swamp
+loc: InnerSwampSwimLeftKeystone 684 -205 KS 2 Swamp
+loc: InnerSwampSwimRightKeystone 766 -183 KS 2 Swamp
+loc: InnerSwampSwimMapstone 796 -210 MS 2 Swamp
+loc: InnerSwampStompExp 770 -148 EX100 1 Swamp
+loc: InnerSwampEnergyCell 722 -95 EC 2 Swamp
+loc: StompSkillTree 860 -96 SKStomp 1 Swamp
+loc: StompAreaRoofExp 914 -71 EX200 3 Swamp
+loc: StompAreaExp 884 -98 EX100 2 Swamp
+loc: StompAreaGrenadeExp 874 -143 EX200 2 Swamp
+loc: HoruFieldsHiddenExp 97 -37 EX200 3 Grove
+loc: HoruFieldsEnergyCell 175 1 EC 3 Grove
+loc: HoruFieldsPlant 124 21 Plant 4 Grove
+loc: HoruFieldsAbilityCell 176 -34 AC 3 Grove
+loc: HoruFieldsHealthCell 160 -78 HC 2 Grove
+loc: HoruMap 56 343 MapStone 6 Horu
+loc: HoruL4LowerExp -29 148 EX200 7 Horu
+loc: HoruL4ChaseExp -191 194 EX200 7 Horu
+loc: HoruLavaDrainedLeftExp 13 164 EX200 7 Horu
+loc: HoruR1HangingExp 193 384 EX100 5 Horu
+loc: HoruR1Mapstone 148 363 MS 5 Horu
+loc: HoruR1EnergyCell 249 403 EC 5 Horu
+loc: HoruR3Plant 318 245 Plant 7 Horu
+loc: HoruR4StompExp 191 165 EX200 7 Horu
+loc: HoruR4LaserExp 253 194 EX200 7 Horu
+loc: HoruR4DrainedExp 163 136 EX200 7 Horu
+loc: HoruLavaDrainedRightExp 129 165 EX200 7 Horu
+loc: DoorWarpExp 106 112 EX200 5 Horu
+loc: HoruTeleporterExp 98 130 EX200 7 Horu
+loc: FinalEscape 0 20 EVWarmth 0 Horu
+loc: ValleyEntryAbilityCell -205 -113 AC 1 Valley
+loc: ValleyEntryTreeExp -221 -84 EX100 2 Valley
+loc: ValleyEntryTreePlant -179 -88 Plant 2 Valley
+loc: ValleyEntryGrenadeLongSwim -320 -162 EC 3 Valley
+loc: ValleyRightFastStomplessCell -355 65 AC 1 Valley
+loc: ValleyRightExp -418 67 EX100 1 Valley
+loc: ValleyRightBirdStompCell -292 20 AC 1 Valley
+loc: GlideSkillFeather -460 -20 SKGlide 1 Valley
+loc: KuroPerchExp -546 54 EX200 1 Sorrow
+loc: MistyEntranceStompExp -678 -29 EX100 1 Misty
+loc: MistyEntranceTreeExp -822 -9 EX100 1 Misty
+loc: ValleyMap -408 -170 MapStone 3 Valley
+loc: ValleyMainPlant -468 -67 Plant 1 Valley
+loc: WilhelmExp -572 157 EX200 1 Sorrow
+loc: ValleyRightSwimExp -359 -87 EX100 1 Valley
+loc: ValleyMainFACS -415 -80 AC 3 Valley
+loc: ValleyForlornApproachGrenade -460 -187 AC 3 Valley
+loc: ValleyThreeBirdAbilityCell -350 -98 AC 2 Valley
+loc: LowerValleyMapstone -561 -89 MS 1 Valley
+loc: LowerValleyExp -538 -104 EX100 1 Valley
+loc: OutsideForlornTreeExp -460 -255 EX100 3 Valley
+loc: OutsideForlornWaterExp -514 -277 EX100 3 Valley
+loc: OutsideForlornCliffExp -538 -234 EX200 3 Valley
+loc: ValleyForlornApproachMapstone -443 -152 MS 2 Valley
+loc: ForlornEntranceExp -703 -390 EX200 4 Forlorn
+loc: ForlornHiddenSpiderExp -841 -350 EX100 4 Forlorn
+loc: ForlornKeystone1 -858 -353 KS 4 Forlorn
+loc: ForlornKeystone2 -892 -328 KS 4 Forlorn
+loc: ForlornKeystone3 -888 -251 KS 4 Forlorn
+loc: ForlornKeystone4 -869 -255 KS 4 Forlorn
+loc: ForlornMap -843 -308 MapStone 5 Forlorn
+loc: ForlornPlant -815 -266 Plant 5 Forlorn
+loc: RightForlornHealthCell -625 -315 HC 5 Forlorn
+loc: ForlornEscape 0 12 EVWind 6 Forlorn
+loc: RightForlornPlant -607 -314 Plant 6 Forlorn
+loc: SorrowEntranceAbilityCell -510 204 AC 1 Sorrow
+loc: SorrowMainShaftKeystone -485 323 KS 1 Sorrow
+loc: SorrowSpikeKeystone -503 274 KS 1 Sorrow
+loc: SorrowHiddenKeystone -514 303 KS 3 Sorrow
+loc: SorrowLowerLeftKeystone -596 229 KS 1 Sorrow
+loc: SorrowMap -451 284 MapStone 4 Sorrow
+loc: SorrowMapstone -435 322 MS 3 Sorrow
+loc: SorrowHealthCell -609 299 HC 3 Sorrow
+loc: LeftSorrowAbilityCell -671 289 AC 2 Sorrow
+loc: LeftSorrowKeystone1 -608 329 KS 2 Sorrow
+loc: LeftSorrowKeystone2 -612 347 KS 3 Sorrow
+loc: LeftSorrowKeystone3 -604 361 KS 3 Sorrow
+loc: LeftSorrowKeystone4 -613 371 KS 3 Sorrow
+loc: LeftSorrowEnergyCell -627 393 EC 3 Sorrow
+loc: LeftSorrowPlant -630 249 Plant 2 Sorrow
+loc: LeftSorrowGrenade -677 269 EX200 4 Sorrow
+loc: UpperSorrowRightKeystone -456 419 KS 3 Sorrow
+loc: UpperSorrowFarRightKeystone -414 429 KS 3 Sorrow
+loc: UpperSorrowLeftKeystone -514 427 KS 1 Sorrow
+loc: UpperSorrowSpikeExp -545 409 EX100 1 Sorrow
+loc: UpperSorrowFarLeftKeystone -592 445 KS 2 Sorrow
+loc: ChargeJumpSkillTree -696 408 SKChargeJump 2 Sorrow
+loc: AboveChargeJumpAbilityCell -646 473 AC 5 Sorrow
+loc: Sunstone 0 16 EVHoruKey 4 Sorrow
+loc: SunstonePlant -478 586 Plant 4 Sorrow
+loc: MistyFrogNookExp -979 23 EX100 1 Misty
+loc: MistyAbilityCell -1075 -2 AC 1 Misty
+loc: MistyMortarCorridorUpperExp -1082 8 EX100 2 Misty
+loc: MistyMortarCorridorHiddenExp -1009 -35 EX100 1 Misty
+loc: MistyKeystone1 -1076 32 KS 1 Misty
+loc: ClimbSkillTree -1188 -100 SKClimb 1 Misty
+loc: MistyPlant -1102 -67 Plant 2 Misty
+loc: MistyPostClimbSpikeCave -837 -123 EX100 1 Misty
+loc: MistyPostClimbAboveSpikePit -796 -144 EX200 1 Misty
+loc: MistyKeystone3 -912 -36 KS 1 Misty
+loc: MistyKeystone4 -768 -144 KS 1 Misty
+loc: GumonSeal 0 8 EVForlornKey 3 Misty
+loc: MistyGrenade -671 -39 EX200 5 Misty
+
+-- area definitions and connections
+home: SunkenGladesRunaway
+	pickup: FirstPickup
+	pickup: FronkeyFight
+	pickup: GladesKeystone1
+	pickup: GladesKeystone2
+	pickup: GladesGrenadePool
+		ALL Grenade
+		normal Water
+		dboost Health=6
+		dboost Stomp Health=5
+	pickup: GladesGrenadeTree
+		ALL Grenade
+		normal ChargeJump
+		normal Bash
+		speed WallJump DoubleJump
+	pickup: GladesMainPool
+		normal Water
+		dboost Bash
+		dboost Stomp
+		dboost Health=4
+		extreme Free
+	pickup: GladesMainPoolDeep
+		normal Water
+		dboost Health=7
+	pickup: FronkeyWalkRoof
+		normal ChargeJump
+		normal Glide Wind
+		normal Bash Grenade
+		lure Bash
+	-- no need to isolate this key door because there's no requirements to get to it or to get past it
+	conn: GladesMain
+		normal Keystone=2
+	conn: DashArea
+		normal WallJump
+		normal Climb
+		normal ChargeJump
+		normal Bash Grenade
+	conn: DeathGauntletDoor
+		normal ChargeJump Energy=4
+		normal Grenade Bash Energy=4
+		dboost-light WallJump Energy=4
+		dboost-light Climb Energy=4
+		timed-level WallJump Energy=2
+		timed-level Climb Energy=2
+		timed-level ChargeJump Energy=2
+		timed-level Grenade Bash Energy=2
+		lure Bash Energy=4
+	conn: SpiritTreeRefined
+		normal TPGrove
+	conn: MoonGrotto
+		ALL TPGrotto
+		normal ChargeJump
+		normal WallJump
+		normal Climb
+		normal Grenade Bash
+	conn: HollowGrove
+		normal TPSwamp
+	conn: ValleyRight
+		normal TPValley Bash WallJump
+	conn: Forlorn
+		ALL ForlornKey TPForlorn
+		dboost-light WallJump DoubleJump ChargeJump
+		dboost-light WallJump DoubleJump Bash
+		dboost-light Glide ChargeJump
+		dboost-light Grenade Bash
+		extended-damage Glide Bash
+	conn: SunstoneArea
+		ALL TPSorrow Glide
+		normal Climb ChargeJump Stomp
+		extended-damage Stomp ChargeJump Dash Health=5
+		dbash Stomp Bash
+		dbash ChargeJump Bash
+	-- This path temporarily removed until Grotto can be refactored
+	--conn: GumoHideoutMap
+	--	normal TPGrotto Mapstone
+home: GladesMain
+	pickup: FourthHealthCell
+	pickup: GladesMapKeystone
+	pickup: GladesMap
+		normal Mapstone
+	conn: GladesMainAttic
+		normal Bash WallJump
+		normal Bash Climb
+		normal Bash Grenade
+		normal ChargeJump
+		speed WallJump DoubleJump
+		extended Climb DoubleJump
+		extended Bash
+		cdash-farming Dash
+	conn: LeftGlades
+	conn: SpiritCavernsDoor
+		normal Keystone=2
+	conn: GladesLaserArea
+		normal ChargeJump Climb
+		normal ChargeJump WallJump DoubleJump
+		normal Bash DoubleJump Glide
+		normal Bash DoubleJump WallJump
+		normal Bash DoubleJump Climb
+		normal Bash Grenade Climb
+		normal Bash Grenade WallJump
+		extended Bash WallJump
+		extended Bash Climb
+		dbash Bash
+		cdash-farming Dash
+	conn: LowerChargeFlameArea
+		normal Grenade
+		normal ChargeFlame
+		cdash-farming Dash
+home: GladesMainAttic
+	pickup: AboveFourthHealth
+	conn: GladesMain
+	conn: LowerChargeFlameArea
+		glitched Dash
+home: LeftGlades
+	pickup: LeftGladesHiddenExp
+	pickup: WallJumpSkillTree
+	pickup: WallJumpAreaExp
+		normal ChargeJump
+		normal Bash Grenade
+		lure-hard Bash
+	pickup: WallJumpAreaEnergyCell
+		normal WallJump
+		normal ChargeJump
+		normal Climb
+		normal Bash Grenade
+		lure-hard Bash
+	conn: UpperLeftGlades
+		normal WallJump
+		normal Climb
+		normal ChargeJump
+		normal Bash Grenade
+		lure Bash
+home: UpperLeftGlades
+	pickup: LeftGladesExp
+		normal WallJump
+		normal Climb
+		normal Bash Grenade
+		normal ChargeJump
+		extended Bash
+		extended DoubleJump
+	pickup: LeftGladesKeystone
+	pickup: LeftGladesMapstone
+home: DeathGauntletDoor
+	conn: SunkenGladesRunaway
+	conn: DeathGauntlet
+		normal Grenade Bash
+		normal DoubleJump Bash
+		normal Glide Bash
+		normal Climb DoubleJump Glide
+		normal WallJump DoubleJump Glide
+		normal WallJump Water
+		normal Climb Water
+		normal Bash Water
+		-- these speed paths assume you regroup before jumping in the water
+		-- and then only take a 2-damage swim, possibly killing the slime
+		speed WallJump Health=4
+		speed Climb Health=4
+		speed Bash Health=4
+	conn: DeathGauntletMoat
+		normal Water
+		dboost Health=5
+		extreme Health=4
+home: DeathGauntletMoat
+	pickup: DeathGauntletSwimEnergyDoor
+		normal Energy=4
+home: DeathGauntlet
+	pickup: DeathGauntletExp
+		normal WallJump
+		normal Climb
+		normal Bash Grenade
+		normal ChargeJump
+		lure Bash
+	pickup: DeathGauntletStompSwim
+		normal Stomp Water
+		lure Water
+		dboost Stomp
+		extended-damage Free
+	conn: DeathGauntletMoat
+		normal Water
+		dboost Health=4
+		extreme Free
+	conn: DeathGauntletDoor
+		normal DoubleJump Energy=4
+		normal Glide Energy=4
+	conn: DeathGauntletRoof
+		normal ChargeJump
+	conn: DeathGauntletRoofPlantAccess
+		ALL ChargeFlame
+		extended DoubleJump WallJump
+		extended Bash WallJump
+		extended DoubleJump Climb
+		extended Bash Climb
+		extended Bash Grenade
+	conn: MoonGrotto
+		dboost-light WallJump
+		dboost-light Climb
+		dboost-light ChargeJump Bash
+		normal Grenade Bash
+		normal Climb DoubleJump Glide
+		normal WallJump DoubleJump Glide
+		timed-level WallJump
+		timed-level Climb
+		timed-level ChargeJump Bash
+home: SpiritCavernsDoor
+	conn: SpiritCaverns
+		normal Climb
+		normal WallJump
+		normal ChargeJump
+		normal Bash Grenade
+		lure Bash
+		extreme DoubleJump
+home: SpiritCaverns
+	pickup: SpiritCavernsKeystone1
+		normal WallJump
+		normal Climb
+		normal ChargeJump
+		normal Bash
+		extreme DoubleJump
+	pickup: SpiritCavernsKeystone2
+		normal WallJump
+		normal Climb
+		normal ChargeJump
+		normal Bash
+		extreme DoubleJump
+	pickup: SpiritCavernsAbilityCell
+		normal ChargeJump
+		normal Bash
+		speed WallJump DoubleJump
+	conn: UpperSpiritCaverns
+		normal WallJump
+		normal Climb
+		normal ChargeJump
+		normal Bash Grenade
+		dbash Bash
+		extreme DoubleJump
+	conn: GladesLaserArea
+		normal Bash Energy=4
+home: UpperSpiritCaverns
+	pickup: SpiritCavernsTopLeftKeystone
+		normal WallJump
+		normal DoubleJump Climb
+		normal Glide Climb
+		normal Bash Grenade
+		dboost-light ChargeJump
+		dboost-light Bash Climb
+		dbash Bash
+		extreme Climb
+	pickup: SpiritCavernsTopRightKeystone
+		normal WallJump
+		normal Climb
+		normal ChargeJump
+		normal Bash
+		dboost-light DoubleJump
+	conn: SpiritCaverns
+	conn: GladesLaserArea
+		normal Energy=4
+		glitched Energy=3
+	conn: SpiritTreeDoor
+		normal Keystone=4
+home: SpiritTreeDoor
+	conn: SpiritTreeRefined
+		normal WallJump
+		normal Climb
+		normal Bash
+		dboost-light ChargeJump
+home: GladesLaserArea
+	pickup: GladesLaser
+		normal DoubleJump
+		normal ChargeJump
+		normal Bash Grenade
+		extended-damage WallJump Glide
+		lure Bash
+		cdash-farming Dash
+	pickup: GladesLaserGrenade
+		ALL Grenade
+		normal Bash WallJump
+		normal Bash Climb
+		extended ChargeJump Water
+		extended-damage ChargeJump
+		cdash Dash
+	conn: GladesMain
+	conn: SpiritCaverns
+		normal Energy=4
+		timed-level Energy=2
+home: ChargeFlameArea
+	pickup: ChargeFlameSkillTree
+	pickup: ChargeFlameAreaPlant
+		normal ChargeFlame
+		normal Grenade
+		cdash-farming Dash
+	conn: SpiritTreeRefined
+		ALL ChargeJump
+		normal ChargeFlame
+		normal Grenade
+		speed Stomp
+	conn: LowerChargeFlameArea
+home: LowerChargeFlameArea
+	pickup: ChargeFlameAreaExp
+	conn: GladesMain
+		normal ChargeFlame
+		normal Grenade
+		normal Stomp
+		cdash-farming Dash
+	conn: ChargeFlameArea
+		normal WallJump
+		normal Climb
+		normal ChargeJump
+		normal Bash Grenade
+		normal Bash Stomp
+		lure-hard Bash ChargeFlame
+		cdash-farming Bash Dash
+home: SpiritTreeRefined
+	conn: ChargeFlameTree
+		normal DoubleJump Climb
+		normal DoubleJump WallJump
+		normal ChargeJump Climb
+		normal ChargeJump WallJump
+		normal ChargeJump DoubleJump
+		normal ChargeJump Glide
+		normal Bash Grenade
+		speed Dash WallJump
+		speed Dash Climb
+	conn: ChargeFlameArea
+	conn: ValleyEntry
+		normal ChargeFlame
+		normal Grenade
+		normal Stomp WallJump
+		normal Stomp Climb
+		normal Stomp DoubleJump
+		normal Stomp ChargeJump
+	conn: SpiderSacArea
+		normal ChargeFlame WallJump
+		normal ChargeFlame ChargeJump
+		normal ChargeFlame Climb DoubleJump
+		normal ChargeFlame Climb Glide
+		normal ChargeFlame Climb Dash
+		normal Grenade WallJump
+		normal Grenade ChargeJump
+		normal Grenade Climb DoubleJump
+		normal Grenade Climb Glide
+		normal Grenade Climb Dash
+		normal Grenade Bash
+		extended ChargeFlame Climb
+		extended Grenade Climb
+home: ChargeFlameTree
+	pickup: AboveChargeFlameTreeExp
+home: SpiderSacArea
+	pickup: SpiderSacHealthCell
+		normal Grenade
+		normal ChargeFlame
+	pickup: SpiderSacGrenadeDoor
+		ALL Grenade
+		normal Bash
+		normal DoubleJump WallJump
+		normal ChargeJump
+	pickup: SpiderSacEnergyDoor
+		normal Energy=4
+		timed-level Energy=2
+	conn: ChargeFlameTree
+		ALL Glide
+		extended ChargeFlame
+		extended Grenade
+		extended Stomp
+	conn: HollowGrove
+		normal Grenade
+		normal ChargeFlame
+		normal DoubleJump
+		normal Glide
+	conn: SpiderSacDropArea
+		normal Grenade
+		normal ChargeFlame
+		normal DoubleJump
+		normal Glide
+	conn: DeathGauntletRoof
+		ALL Stomp
+		normal Water
+		dboost Bash Health=4
+		dboost Health=5
+		extreme
+	conn: SpiritTreeRefined
+		normal ChargeFlame WallJump
+		normal ChargeFlame Climb
+		normal ChargeFlame ChargeJump
+		normal Grenade WallJump
+		normal Grenade Climb
+		normal Grenade ChargeJump
+		normal Stomp WallJump
+		normal Stomp Climb
+		normal Stomp ChargeJump
+home: SpiderSacDropArea
+	pickup: SpiderSacEnergyCell
+home: DashArea
+	pickup: DashAreaOrbRoomExp
+	pickup: DashAreaAbilityCell
+	pickup: DashAreaRoofExp
+	pickup: DashSkillTree
+	pickup: DashAreaPlant
+		normal ChargeJump Climb ChargeFlame
+		normal ChargeJump WallJump ChargeFlame
+		normal Glide WallJump ChargeFlame
+		normal ChargeJump Climb Grenade
+		normal ChargeJump WallJump Grenade
+		normal Bash Grenade
+		normal Glide WallJump Grenade
+		extended DoubleJump Grenade
+		cdash-farming ChargeJump Climb Dash
+		cdash-farming ChargeJump WallJump Dash
+		cdash-farming DoubleJump Dash
+	pickup: DashAreaMapstone
+		normal Dash
+		extended Free
+	conn: LowerBlackRoot
+		normal Stomp ChargeJump
+		normal Stomp Grenade Bash
+		normal Stomp Dash DoubleJump
+		normal Stomp Dash Grenade Bash
+		normal Stomp Dash
+		normal Stomp ChargeJump DoubleJump
+		normal Stomp Grenade
+		normal Stomp Grenade Water
+		timed-level Stomp
+		extended Stomp
+		extended ChargeJump Climb
+		extreme Bash
+		glitched Free
+	conn: RazielNoArea
+		normal Dash WallJump
+		normal Dash ChargeJump
+		normal Dash Bash Grenade
+		normal Dash Climb DoubleJump
+		speed WallJump
+		speed ChargeJump
+		speed Bash Grenade
+		speed Climb DoubleJump
+		extended Dash
+home: RazielNoArea
+	pickup: RazielNo
+	pickup: BlackrootBoulderExp
+		normal Dash Stomp
+		extended Stomp
+		glitched Free
+	conn: BlackrootGrottoConnection
+		normal Dash WallJump
+		normal Dash Climb
+		normal Dash Bash Grenade
+		normal Dash ChargeJump
+		speed ChargeJump Climb
+		speed ChargeJump WallJump
+		speed Bash Grenade
+		extended WallJump
+		extended DoubleJump
+		extended Dash
+		glitched Free
+	conn: GumoHideout
+		glitched Free
+home: BlackrootGrottoConnection
+	pickup: BlackrootTeleporterHealthCell
+	pickup: BlackrootMap
+		normal Mapstone
+	conn: SideFallCell
+		normal Stomp
+home: LowerBlackRoot
+	pickup: LowerBlackrootAbilityCell
+		normal ChargeJump
+		normal Grenade Bash
+	pickup: LowerBlackrootLaserAbilityCell
+		speed Dash DoubleJump
+		normal Dash Grenade Bash
+		extended DoubleJump
+		extended Grenade Bash
+	pickup: LowerBlackrootLaserExp
+		normal Dash
+		extended Free
+	pickup: LowerBlackrootGrenadeThrow
+		speed ChargeJump DoubleJump
+		normal Grenade
+		timed-level Free
+	conn: BottomBlackRoot
+		normal Grenade
+	conn: GrenadeArea
+		normal Dash
+		extended ChargeJump Climb Grenade
+		extended Bash Grenade
+		extended DoubleJump
+home: GrenadeArea
+	pickup: GrenadeSkillTree
+	pickup: GrenadeAreaExp
+		normal Bash
+		normal ChargeJump
+		normal DoubleJump
+		normal Glide
+	pickup: GrenadeAreaAbilityCell
+		ALL Grenade
+		normal Bash
+		normal ChargeJump
+home: BottomBlackRoot
+	pickup: LostGroveLongSwim
+		normal Water
+		dboost-hard Health=12
+		extreme Health=6
+	conn: FinalBlackRoot
+		ALL Grenade
+		normal Bash
+		extended-damage ChargeJump Dash Health=5
+		extended-damage ChargeJump Glide Health=5
+		extended-damage ChargeJump DoubleJump
+home: FinalBlackRoot
+	pickup: LostGroveAbilityCell
+	pickup: LostGroveHiddenExp
+	pickup: LostGroveTeleporter
+home: HollowGrove
+	pickup: HollowGroveMapstone
+	pickup: GroveSpiderWaterSwim
+		normal Water
+		dboost Health=6
+		dboost Bash Health=5
+		extreme Bash
+		extreme Health=4
+	pickup: SwampTeleporterAbilityCell
+		normal ChargeJump DoubleJump Glide
+		normal Wind Glide
+		extended Grenade Bash
+		cdash-farming Dash
+	pickup: GroveWaterStompAbilityCell
+		normal Water Stomp
+		dboost Stomp Health=5
+		lure-hard Bash Water
+		lure-hard Bash Health=5
+		extreme Stomp
+		extreme Bash
+		glitched Bash
+	pickup: OuterSwampGrenadeExp
+		ALL Grenade
+		normal WallJump
+		normal Climb
+		normal ChargeJump
+		normal Bash
+	pickup: OuterSwampMortarAbilityCell
+		normal ChargeJump
+		normal Climb Bash
+		normal WallJump Bash
+		lure-hard Bash
+		extreme WallJump DoubleJump
+		glitched Free
+	pickup: HoruFieldsHealthCell
+		normal Stomp
+		lure Free
+	pickup: HollowGroveMap
+		normal Mapstone
+	pickup: HollowGroveTreeAbilityCell
+		normal WallJump DoubleJump
+		normal Wind Glide
+		normal ChargeJump
+		normal Bash Grenade
+		lure Bash WallJump
+		lure Bash Climb
+		dbash Bash
+		cdash-farming Dash
+	conn: SpiderSacDropArea
+		normal Climb Glide
+		normal WallJump Glide
+		normal Bash Grenade
+		extended DoubleJump
+		extended Bash
+	conn: MoonGrotto
+		normal WallJump
+		normal Climb
+		normal ChargeJump
+		normal Bash Grenade
+		normal Wind Glide
+	conn: DeathGauntlet
+		normal WallJump
+		normal Climb
+		normal ChargeJump
+		normal Bash Grenade
+	conn: DeathGauntletRoof
+		normal ChargeJump
+		normal WallJump Stomp Water
+		normal Climb Stomp Water
+		normal Bash Stomp Water
+		dboost Stomp Bash Health=4
+		dboost WallJump Stomp Health=5
+		dboost Climb Stomp Health=5
+		extreme WallJump Stomp
+		extreme Climb Stomp
+		extreme WallJump Bash
+		extreme Climb Bash
+	conn: SpiderSacArea
+		normal WallJump Bash
+		normal Climb Bash
+		normal WallJump DoubleJump
+		normal Climb DoubleJump
+	conn: UpperGroveSpiderArea
+		normal Bash WallJump
+		normal ChargeJump WallJump DoubleJump
+		dbash Bash
+	conn: GinsoOuterDoor
+		normal GinsoKey
+	conn: HoruFields
+		normal Bash DoubleJump
+		normal Bash Glide
+		normal Stomp ChargeJump Glide WallJump
+		normal Stomp ChargeJump Glide Climb
+		dbash Bash
+	conn: HollowGrovePlants
+		normal ChargeFlame
+		normal Grenade
+		cdash-farming Dash
+	conn: RightGinso
+		normal WallJump
+		normal Climb
+		normal Wind Glide
+		normal ChargeJump
+		normal Bash Grenade
+	conn: Iceless
+		extreme WallJump
+home: GinsoOuterDoor
+	conn: GinsoInnerDoor
+home: GinsoInnerDoor
+	conn: LowerGinsoTree
+		normal WallJump DoubleJump
+		normal ChargeJump
+		normal Bash Grenade
+		extreme Dash WallJump
+		extreme Dash Climb
+home: RightGinso
+	pickup: OuterSwampAbilityCell
+	pickup: OuterSwampStompExp
+	pickup: OuterSwampHealthCell
+		normal WallJump DoubleJump
+		normal ChargeJump
+		normal Bash Grenade
+		extreme Bash
+home: MoonGrotto
+	pickup: DeathGauntletEnergyCell
+		normal WallJump
+		normal Climb
+		normal ChargeJump
+		normal Bash Grenade
+	pickup: GrottoLasersRoofExp
+		normal WallJump DoubleJump
+		normal WallJump ChargeJump
+		normal Climb ChargeJump
+		normal Bash Grenade
+		extreme Bash
+	pickup: AboveGrottoTeleporterExp
+		normal DoubleJump
+		normal ChargeJump
+		normal Bash Grenade
+		normal Bash WallJump
+		normal Bash Climb
+		extreme Bash
+	pickup: LeftGrottoTeleporterExp
+		normal WallJump DoubleJump
+		normal Climb DoubleJump ChargeJump
+		extended Grenade Bash
+		dboost ChargeJump Health=4
+		extreme Bash
+	pickup: SwampEntranceSwim
+		normal Water
+		dboost Free
+	pickup: GrottoEnergyDoorSwim
+		ALL Energy=2
+		normal Water
+		dboost
+	pickup: GrottoEnergyDoorHealthCell
+		ALL Energy=2
+		normal ChargeJump
+		normal WallJump DoubleJump
+		speed WallJump
+	pickup: SwampEntrancePlant
+		normal ChargeFlame WallJump
+		normal ChargeFlame Climb
+		normal Grenade WallJump
+		normal Grenade Climb
+		cdash Dash WallJump
+		cdash Dash Climb
+	pickup: MoonGrottoStompPlant
+		normal Stomp ChargeFlame
+		normal Stomp Grenade
+		cdash Stomp Dash
+		extended ChargeFlame
+		extended Climb ChargeJump Grenade
+		extreme Bash Grenade
+		extreme Bash Dash
+	pickup: OuterSwampMortarPlant
+		normal DoubleJump ChargeFlame
+		normal DoubleJump Grenade
+		normal ChargeJump ChargeFlame
+		normal ChargeJump Grenade
+		normal Bash ChargeFlame
+		normal Bash Grenade
+		normal Glide ChargeFlame
+		normal Glide Grenade
+		speed Dash ChargeFlame
+		speed Dash Grenade
+		extended Grenade
+		cdash Dash
+	conn: Iceless
+		normal ChargeJump WallJump
+		normal ChargeJump Climb
+		normal WallJump DoubleJump
+		normal Climb DoubleJump
+		normal Grenade Bash
+		normal WallJump Glide
+	conn: HollowGrove
+		normal ChargeJump WallJump
+		normal ChargeJump Climb
+		normal WallJump DoubleJump
+		normal Climb DoubleJump
+		normal Grenade Bash
+		normal WallJump Glide
+		extended WallJump
+		extended Climb Glide
+	conn: RightGinso
+		normal WallJump
+		normal Climb Glide
+		normal Climb DoubleJump
+		normal Climb ChargeJump
+		normal Bash Grenade
+	conn: DeathGauntlet
+		normal WallJump
+		normal Climb
+		normal ChargeJump
+		normal Bash Grenade
+	conn: RightGrottoHealth
+		normal DoubleJump Bash WallJump
+		normal DoubleJump Bash Climb
+		normal DoubleJump ChargeJump WallJump
+		normal DoubleJump ChargeJump Climb
+		normal Glide ChargeJump
+	conn: MoonGrottoAirOrb
+		normal ChargeJump DoubleJump
+		normal Bash WallJump
+		normal Bash Climb
+	conn: Swamp
+		normal Stomp ChargeJump
+		normal ChargeJump ChargeFlame WallJump
+		normal ChargeJump ChargeFlame Climb
+		normal ChargeJump Grenade WallJump
+		normal ChargeJump Grenade Climb
+		lure Bash ChargeFlame Water WallJump
+		lure Bash ChargeFlame Water Climb
+		lure Bash Grenade Water
+		speed-lure Bash Climb
+		speed-lure Bash WallJump
+		speed-lure Bash Grenade
+		speed-lure Bash ChargeJump
+		extended ChargeJump Climb
+		extended DoubleJump ChargeFlame Dash Water WallJump
+		extended DoubleJump ChargeFlame Dash Water Climb
+		extended DoubleJump ChargeFlame Glide Water WallJump
+		extended DoubleJump ChargeFlame Glide Water Climb
+		extended-damage DoubleJump ChargeFlame Water WallJump Health=4
+		extended-damage DoubleJump ChargeFlame Water Climb Health=4
+		extended-damage Dash Stomp ChargeFlame Water WallJump Health=4
+		extended-damage Dash Stomp ChargeFlame Water Climb Health=4
+		dboost-hard DoubleJump ChargeFlame Health=13
+		dboost-hard Stomp ChargeFlame WallJump Health=13
+		dboost-hard Stomp ChargeFlame Climb Health=13
+		extreme DoubleJump ChargeFlame Health=7
+		extreme Stomp ChargeFlame WallJump Health=7
+		extreme Stomp ChargeFlame Climb Health=7
+		extreme ChargeJump ChargeFlame
+		extreme ChargeJump Grenade
+	conn: SwampDrainlessArea
+		normal Stomp WallJump
+		normal Stomp Climb
+		normal Stomp Bash Grenade
+		normal Stomp ChargeJump
+		extended ChargeJump Climb
+	conn: InnerSwampDrainArea
+		normal Grenade Climb ChargeJump
+		normal Grenade DoubleJump ChargeJump
+		normal Grenade Glide ChargeJump
+		speed Grenade Bash
+		speed ChargeFlame DoubleJump Bash
+		speed ChargeFlame Glide Bash
+		dboost-light ChargeFlame ChargeJump DoubleJump
+		dboost-light ChargeFlame ChargeJump Glide
+		extended-damage ChargeFlame Climb ChargeJump
+		extended-damage ChargeFlame DoubleJump WallJump
+		extended-damage ChargeFlame DoubleJump Climb
+		dbash ChargeFlame Bash WallJump
+		dbash ChargeFlame Bash Climb
+	conn: InnerSwampSkyArea
+		glitched Dash
+	conn: GumoHideout
+		normal WallJump
+		normal Climb
+		normal Bash Grenade
+		normal ChargeJump
+	conn: DeathGauntletRoof
+		extreme Bash
+home: HollowGrovePlants
+	pickup: HollowGroveMapPlant
+	pickup: HollowGroveTreePlant
+home: UpperGroveSpiderArea
+	pickup: GroveAboveSpiderWaterExp
+	pickup: GroveAboveSpiderWaterHealthCell
+	pickup: GroveAboveSpiderWaterEnergyCell
+		normal Grenade
+home: Iceless
+	pickup: IcelessExp
+	conn: HollowGrove
+home: RightGrottoHealth
+	pickup: BelowGrottoTeleporterHealthCell
+	pickup: BelowGrottoTeleporterPlant
+		normal ChargeFlame
+		normal Grenade
+		cdash Dash
+home: MoonGrottoAirOrb
+	pickup: GrottoSwampDrainAccessExp
+	pickup: GrottoSwampDrainAccessPlant
+		normal Stomp ChargeFlame WallJump DoubleJump
+		normal Stomp ChargeFlame ChargeJump Glide
+		normal Stomp ChargeFlame ChargeJump DoubleJump
+		normal Stomp ChargeFlame ChargeJump Climb
+		normal Stomp Grenade
+		extended Grenade
+		extended ChargeFlame Bash
+		extended-damage ChargeFlame WallJump Health=4
+		extended-damage ChargeFlame ChargeJump Health=4
+		extended-damage ChargeFlame DoubleJump Health=4
+		extended-damage ChargeFlame Glide Health=4
+		cdash Dash
+home: SideFallCell
+	pickup: GrottoHideoutFallAbilityCell
+	conn: GumoHideout
+	conn: GumoHideoutPartialMobile
+home: GumoHideout
+	pickup: GumoHideoutMapstone
+	pickup: GumoHideoutMiniboss
+	pickup: GumoHideoutCrusherExp
+	pickup: GumoHideoutCrusherKeystone
+	pickup: GumoHideoutRedirectAbilityCell
+		normal WallJump DoubleJump
+		normal Climb ChargeJump
+		normal WallJump ChargeJump
+		normal Glide Wind
+		extreme WallJump Bash
+	pickup: FarLeftGumoHideoutExp
+		normal WallJump DoubleJump
+		normal Grenade Bash Climb
+		normal WallJump Glide Wind
+		extreme WallJump Bash
+	pickup: GumoHideoutMap
+		normal Mapstone
+	conn: DoubleJumpArea
+		ALL Keystone=2
+		normal WallJump
+		dboost-light Climb
+	conn: MobileGumoHideout
+		normal WallJump DoubleJump
+		normal Climb ChargeJump
+		normal WallJump ChargeJump
+		normal Grenade Bash
+		extreme WallJump Bash
+	conn: GumoHideoutPartialMobile
+		normal WallJump DoubleJump
+		normal Climb ChargeJump
+		normal WallJump ChargeJump
+		normal Glide Wind
+		extreme WallJump Bash
+	conn: LowerBlackRoot
+		glitched Dash
+	conn: SideFallCell
+		normal Bash Grenade
+		normal Glide Wind
+		normal ChargeJump
+		dbash Bash
+home: GumoHideoutPartialMobile
+	pickup: GumoHideoutRightHangingExp
+	pickup: GumoHideoutLeftHangingExp
+	conn: MobileGumoHideoutPlants
+		normal ChargeFlame
+		normal Grenade
+		cdash Dash
+	conn: HideoutRedirect
+		normal Energy=4
+home: DoubleJumpArea
+	pickup: DoubleJumpSkillTree
+	pickup: DoubleJumpAreaExp
+		normal WallJump DoubleJump
+		normal ChargeJump
+		normal Bash
+		normal Climb DoubleJump
+home: MobileGumoHideout
+	pickup: GumoHideoutEnergyCell
+	pickup: GumoHideoutRockfallExp
+	pickup: WaterVein
+	pickup: LeftGumoHideoutExp
+	pickup: LeftGumoHideoutHealthCell
+	pickup: LeftGumoHideoutSwim
+		normal Water
+		dboost Free
+	conn: MoonGrotto
+	conn: HideoutRedirect
+		normal Energy=4
+	conn: MobileGumoHideoutPlants
+		normal ChargeFlame
+		normal Grenade
+		cdash Dash
+home: MobileGumoHideoutPlants
+	pickup: LeftGumoHideoutLowerPlant
+	pickup: LeftGumoHideoutUpperPlant
+	pickup: GumoHideoutRedirectPlant
+home: HideoutRedirect
+	pickup: GumoHideoutRedirectEnergyCell
+	pickup: GumoHideoutRedirectExp
+home: DeathGauntletRoof
+	pickup: DeathGauntletRoofHealthCell
+	conn: DeathGauntletRoofPlantAccess
+		normal ChargeFlame
+		normal Grenade
+		cdash Dash
+	conn: DeathGauntlet
+home: DeathGauntletRoofPlantAccess
+	pickup: DeathGauntletRoofPlant
+home: LowerGinsoTree
+	pickup: LowerGinsoHiddenExp
+	pickup: LowerGinsoKeystone1
+	pickup: LowerGinsoKeystone2
+	pickup: LowerGinsoKeystone3
+	pickup: LowerGinsoKeystone4
+	pickup: LowerGinsoPlant
+		normal ChargeFlame
+		normal Grenade
+		cdash Dash
+	conn: BashTree
+		normal Keystone=4
+	conn: Horu
+		glitched Dash
+home: BashTree
+	pickup: BashSkillTree
+	conn: UpperGinsoTree
+		normal Bash
+		normal ChargeJump
+home: UpperGinsoTree
+	pickup: BashAreaExp
+	pickup: UpperGinsoLowerKeystone
+	pickup: UpperGinsoRightKeystone
+	pickup: UpperGinsoUpperRightKeystone
+	pickup: UpperGinsoUpperLeftKeystone
+	conn: TopGinsoTree
+		ALL Keystone=4
+		normal Bash WallJump
+		normal Bash Climb
+		dboost ChargeJump WallJump Health=5
+		dboost ChargeJump Climb Health=5
+		extended Bash ChargeJump
+		extended-damage ChargeJump Health=5
+		extended-damage ChargeJump DoubleJump
+		extreme WallJump DoubleJump Health=7
+	conn: UpperGinsoFloors
+		normal Bash
+		normal Stomp
+		extended ChargeFlame
+home: UpperGinsoFloors
+	pickup: UpperGinsoRedirectLowerExp
+	pickup: UpperGinsoRedirectUpperExp
+	pickup: UpperGinsoEnergyCell
+home: TopGinsoTree
+	pickup: TopGinsoLeftLowerExp
+	pickup: TopGinsoLeftUpperExp
+	pickup: TopGinsoRightPlant
+		normal ChargeFlame
+		normal Grenade
+		cdash Dash
+	conn: GinsoEscape
+		normal Bash
+		speed Stomp
+home: GinsoEscape
+	pickup: GinsoEscapeSpiderExp
+	pickup: GinsoEscapeJumpPadExp
+	pickup: GinsoEscapeProjectileExp
+	pickup: GinsoEscapeHangingExp
+	pickup: GinsoEscapeExit
+home: Swamp
+	pickup: InnerSwampStompExp
+		ALL Stomp
+		dboost-light
+		normal Water
+	pickup: SwampMap
+		normal Mapstone
+	conn: SwampDrainlessArea
+		normal Stomp
+		extended ChargeJump Climb
+	conn: InnerSwampSkyArea
+		normal Wind Glide
+		speed ChargeJump Climb Glide
+		speed ChargeJump Climb DoubleJump
+		extended ChargeJump Climb Grenade
+		dbash Bash
+	conn: InnerSwampDrainArea
+		normal Water Climb ChargeJump
+		normal Water DoubleJump Climb
+		normal Water DoubleJump WallJump
+		normal Water DoubleJump Glide ChargeJump
+		normal Water ChargeFlame Stomp Glide WallJump
+		normal Water Grenade Stomp Glide WallJump
+		normal Water Grenade Bash Climb
+		normal Water Grenade Bash WallJump
+		normal Water Grenade Bash Glide
+		normal Water Grenade Bash DoubleJump
+		normal Water Dash Glide Climb
+		extended Water Dash Glide WallJump
+		extended Water DoubleJump ChargeJump
+		dboost Water Grenade Bash Health=4
+		extreme Water Bash
+		extreme Bash Health=7
+		extreme Climb ChargeJump Health=7
+		extreme DoubleJump Climb Health=7
+		extreme DoubleJump WallJump Health=7
+		extreme ChargeFlame Stomp Glide WallJump Health=7
+		extreme Grenade Stomp Glide WallJump Health=7
+		extreme Dash Glide Climb Health=7
+		extreme Dash Glide WallJump Health=7
+		extreme DoubleJump ChargeJump Health=7
+	conn: SwampWater
+		normal Water
+		extreme Health=7
+	conn: RightSwamp
+		ALL Keystone=2
+		normal WallJump
+		normal Climb
+home: SwampDrainlessArea
+	pickup: SwampEntranceAbilityCell
+home: InnerSwampDrainArea
+	pickup: InnerSwampDrainExp
+home: InnerSwampSkyArea
+	pickup: InnerSwampEnergyCell
+	conn: Swamp
+home: SwampWater
+	pickup: InnerSwampHiddenSwimExp
+	pickup: InnerSwampSwimLeftKeystone
+	pickup: InnerSwampSwimRightKeystone
+	pickup: InnerSwampSwimMapstone
+home: RightSwamp
+	pickup: StompSkillTree
+	pickup: StompAreaExp
+		normal Stomp
+		normal Bash
+		extended ChargeFlame
+	pickup: StompAreaRoofExp
+		normal ChargeJump
+		dbash Bash
+	pickup: StompAreaGrenadeExp
+		ALL Grenade
+		normal Water
+		dboost
+home: HoruFields
+	pickup: HoruFieldsHiddenExp
+	pickup: HoruFieldsAbilityCell
+		normal WallJump DoubleJump Bash
+		normal Climb ChargeJump
+		dboost WallJump Bash Health=5
+		dboost DoubleJump Bash Health=5
+		dbash Bash
+	conn: HoruFieldsEnergy
+		normal Bash
+		normal DoubleJump
+	conn: HoruOuterDoor
+		ALL HoruKey Bash
+		normal DoubleJump Glide WallJump
+		normal DoubleJump ChargeJump WallJump
+		normal Glide ChargeJump WallJump
+		normal DoubleJump Glide Climb
+		normal DoubleJump ChargeJump Climb
+		normal Glide ChargeJump Climb
+		extended Grenade WallJump
+		extended Grenade Climb
+home: HoruOuterDoor
+	conn: HoruInnerDoor
+		normal HoruKey
+home: HoruInnerDoor
+	conn: Horu
+		normal Bash DoubleJump Glide WallJump
+		normal Bash DoubleJump ChargeJump WallJump
+		normal Bash Glide ChargeJump WallJump
+		normal Bash DoubleJump Glide Climb
+		normal Bash DoubleJump ChargeJump Climb
+		normal Bash Glide ChargeJump Climb
+		extended Bash Grenade WallJump
+		extended Bash Grenade Climb
+		extreme ChargeJump WallJump DoubleJump Glide Health=8
+	conn: HoruMapLedge
+		extreme ChargeJump WallJump DoubleJump Health=4
+	conn: HoruBasement
+		extended Free
+home: HoruFieldsEnergy
+	pickup: HoruFieldsEnergyCell
+	pickup: HoruFieldsPlant
+		normal ChargeFlame
+		normal Grenade
+		cdash Dash
+home: Horu
+	conn: HoruMapLedge
+	conn: L1OuterDoor
+	conn: L2OuterDoor
+		normal Stomp
+	conn: L3OuterDoor
+		normal Stomp
+	conn: L4OuterDoor
+		normal Stomp
+	conn: R1OuterDoor
+	conn: R2OuterDoor
+	conn: R3OuterDoor
+		normal Stomp
+	conn: R4OuterDoor
+		normal Stomp
+	conn: HoruEscapeOuterDoor
+		normal Stomp
+	conn: HoruHub
+		normal Stomp
+	conn: LowerGinsoTree
+		glitched Dash
+home: HoruMapLedge
+	pickup: HoruMap
+		normal Mapstone
+home: L1OuterDoor
+	conn: L1InnerDoor
+	conn: HoruInnerDoor
+home: L1InnerDoor
+	conn: L1
+		ALL Bash Stomp
+		normal DoubleJump Glide WallJump
+		normal DoubleJump ChargeJump WallJump
+		normal Glide ChargeJump WallJump
+		normal DoubleJump Glide Climb
+		normal DoubleJump ChargeJump Climb
+		normal Glide ChargeJump Climb
+		extended Grenade WallJump
+		extended Grenade Climb
+home: L1
+home: L2OuterDoor
+	conn: L2InnerDoor
+	conn: HoruInnerDoor
+		normal Stomp
+home: L2InnerDoor
+	conn: L2
+		ALL Bash Stomp
+		normal DoubleJump Glide WallJump
+		normal DoubleJump ChargeJump WallJump
+		normal Glide ChargeJump WallJump
+		normal DoubleJump Glide Climb
+		normal DoubleJump ChargeJump Climb
+		normal Glide ChargeJump Climb
+		extended Grenade WallJump
+		extended Grenade Climb
+home: L2
+home: L3OuterDoor
+	conn: L3InnerDoor
+	conn: HoruInnerDoor
+		normal Stomp
+home: L3InnerDoor
+	conn: L3
+		ALL Bash
+		normal DoubleJump Glide WallJump
+		normal DoubleJump ChargeJump WallJump
+		normal Glide ChargeJump WallJump
+		normal DoubleJump Glide Climb
+		normal DoubleJump ChargeJump Climb
+		normal Glide ChargeJump Climb
+		extended Grenade WallJump
+		extended Grenade Climb
+home: L3
+home: L4OuterDoor
+	conn: L4InnerDoor
+	conn: HoruInnerDoor
+home: L4InnerDoor
+	conn: L4
+		ALL Bash Stomp
+		normal DoubleJump Glide WallJump
+		normal DoubleJump ChargeJump WallJump
+		normal Glide ChargeJump WallJump
+		normal DoubleJump Glide Climb
+		normal DoubleJump ChargeJump Climb
+		normal Glide ChargeJump Climb
+		extended Grenade WallJump
+		extended Grenade Climb
+home: L4
+	pickup: HoruL4LowerExp
+	pickup: HoruL4ChaseExp
+	pickup: HoruLavaDrainedLeftExp
+home: R1OuterDoor
+	conn: R1InnerDoor
+home: R1InnerDoor
+	conn: R1
+		normal Bash DoubleJump Glide WallJump
+		normal Bash DoubleJump ChargeJump WallJump
+		normal Bash Glide ChargeJump WallJump
+		normal Bash DoubleJump Glide Climb
+		normal Bash DoubleJump ChargeJump Climb
+		normal Bash Glide ChargeJump Climb
+		extended Bash Grenade WallJump
+		extended Bash Grenade Climb
+		extreme ChargeJump WallJump DoubleJump Glide Health=8
+home: R1
+	pickup: HoruR1HangingExp
+	pickup: HoruR1Mapstone
+	pickup: HoruR1EnergyCell
+home: R2OuterDoor
+	conn: R2InnerDoor
+	conn: HoruInnerDoor
+home: R2InnerDoor
+	conn: R2
+		ALL Bash Stomp
+		normal DoubleJump Glide WallJump
+		normal DoubleJump ChargeJump WallJump
+		normal Glide ChargeJump WallJump
+		normal DoubleJump Glide Climb
+		normal DoubleJump ChargeJump Climb
+		normal Glide ChargeJump Climb
+		extended Grenade WallJump
+		extended Grenade Climb
+home: R2
+home: R3OuterDoor
+	conn: R3InnerDoor
+	conn: HoruInnerDoor
+		normal Stomp
+home: R3InnerDoor
+	conn: R3
+		ALL Bash
+		normal DoubleJump Glide WallJump
+		normal DoubleJump ChargeJump WallJump
+		normal Glide ChargeJump WallJump
+		normal DoubleJump Glide Climb
+		normal DoubleJump ChargeJump Climb
+		normal Glide ChargeJump Climb
+		extended Grenade WallJump
+		extended Grenade Climb
+home: R3
+	pickup: HoruR3Plant
+		normal ChargeFlame
+		normal Grenade
+		cdash Dash
+home: R4OuterDoor
+	conn: R4InnerDoor
+	conn: HoruInnerDoor
+home: R4InnerDoor
+	conn: R4
+		ALL Bash
+		normal DoubleJump Glide WallJump
+		normal DoubleJump ChargeJump WallJump
+		normal Glide ChargeJump WallJump
+		normal DoubleJump Glide Climb
+		normal DoubleJump ChargeJump Climb
+		normal Glide ChargeJump Climb
+		extended Grenade WallJump
+		extended Grenade Climb
+home: R4
+	pickup: HoruR4StompExp
+	pickup: HoruR4LaserExp
+	pickup: HoruR4DrainedExp
+	pickup: HoruLavaDrainedRightExp
+home: HoruHub
+	pickup: HoruTeleporterExp
+		normal GinsoKey ForlornKey
+	conn: HoruBasement
+home: HoruBasement
+	pickup: DoorWarpExp
+		normal WallJump DoubleJump
+		normal Climb DoubleJump
+		normal WallJump ChargeJump
+		normal Climb ChargeJump
+		normal Glide ChargeJump
+		normal DoubleJump ChargeJump
+		normal Bash Grenade
+		extended ChargeJump
+		extended DoubleJump
+	conn: HoruEscapeOuterDoor
+home: HoruEscapeOuterDoor
+	conn: HoruEscapeInnerDoor
+home: HoruEscapeInnerDoor
+	pickup: FinalEscape
+		normal Climb Dash Stomp Glide Bash ChargeJump Grenade Water GinsoKey ForlornKey HoruKey
+		extended Dash Stomp Glide Bash ChargeJump Grenade GinsoKey ForlornKey HoruKey
+home: ValleyEntry
+	pickup: ValleyEntryAbilityCell
+	pickup: ValleyRightSwimExp
+		normal Water Stomp WallJump DoubleJump
+		normal Water Stomp WallJump Bash
+		normal Water Stomp WallJump ChargeJump
+		normal Water Stomp Climb ChargeJump
+		normal Water Stomp Climb DoubleJump
+		dboost Stomp WallJump DoubleJump
+		dboost Stomp WallJump Bash
+		dboost Stomp WallJump ChargeJump
+		dboost Stomp Climb ChargeJump
+		dboost Stomp Climb DoubleJump
+		extended Bash Water
+		extended-damage Bash
+	conn: ValleyEntryTree
+		normal WallJump
+		normal Bash Climb
+		normal DoubleJump Climb
+		normal ChargeJump Climb
+		lure Bash
+		dboost ChargeJump Health=4
+	conn: ValleyEntryTreePlantAccess
+		normal ChargeJump ChargeFlame
+		extended WallJump ChargeFlame
+		extended Grenade
+	conn: ValleyRight
+		normal Stomp Bash WallJump
+		normal Stomp Bash DoubleJump
+		normal Stomp Bash Climb ChargeJump
+		normal Stomp Bash Grenade
+		extended Bash DoubleJump
+		extended Bash Climb ChargeJump
+		extended Bash WallJump
+		extended Bash Grenade
+		extended-damage Stomp ChargeJump DoubleJump WallJump Health=7
+		dbash Bash
+		extreme Stomp WallJump DoubleJump ChargeJump
+		extreme Stomp WallJump DoubleJump Health=11
+	conn: SpiritTreeRefined
+		normal ChargeFlame
+		normal Grenade
+home: ValleyEntryTree
+	pickup: ValleyEntryTreeExp
+	pickup: ValleyEntryGrenadeLongSwim
+		ALL Grenade
+		normal Water
+		dboost-hard Health=14
+		dboost-hard Bash Health=13
+		extreme Health=7
+	conn: ValleyEntryTreePlantAccess
+		normal ChargeJump Climb ChargeFlame
+		normal ChargeJump Climb Grenade
+		normal ChargeJump DoubleJump ChargeFlame
+		normal ChargeJump DoubleJump Grenade
+		normal Bash ChargeFlame
+		normal Bash Grenade
+		normal Glide ChargeFlame
+		normal Glide Grenade
+		cdash-farming Dash
+home: ValleyEntryTreePlantAccess
+	pickup: ValleyEntryTreePlant
+home: ValleyRight
+	pickup: ValleyRightFastStomplessCell
+	pickup: ValleyRightExp
+	pickup: ValleyRightBirdStompCell
+		normal ChargeJump Climb
+		speed Stomp
+	conn: ValleyMain
+		normal Bash Stomp
+		extended Dash Bash
+		extended Dash Stomp
+home: ValleyMain
+	pickup: GlideSkillFeather
+	pickup: KuroPerchExp
+	pickup: MistyEntranceStompExp
+	pickup: MistyEntranceTreeExp
+	pickup: WilhelmExp
+		normal Climb ChargeJump
+		normal WallJump DoubleJump ChargeJump
+		normal Bash Grenade Climb
+		normal Bash Grenade WallJump DoubleJump
+		extended Bash Grenade
+		dbash Bash
+	conn: Sorrow
+		normal Wind Glide
+		speed-lure Glide DoubleJump Bash Dash
+		dbash Bash
+		extended-damage ChargeJump DoubleJump Health=9
+		extended-damage ChargeJump Glide Health=9
+		extended-damage ChargeJump Dash Health=9
+		extreme ChargeJump DoubleJump Health=7
+	conn: Misty
+		normal Glide Bash
+		dboost Bash DoubleJump Health=4
+		extreme DoubleJump
+	conn: ForlornOuterDoor
+		normal ForlornKey
+	conn: RightForlorn
+		glitched Free
+	conn: LowerValley
+	conn: LowerValleyPlantApproach
+	conn: ValleyForlornApproach
+home: LowerValley
+	pickup: ValleyThreeBirdAbilityCell
+	pickup: LowerValleyMapstone
+	pickup: LowerValleyExp
+	pickup: ValleyMainFACS
+		normal Climb ChargeJump
+		extended Bash Glide
+	conn: LowerValleyPlantApproach
+		normal Bash DoubleJump
+		normal Bash Glide
+		normal ChargeJump DoubleJump
+		normal ChargeJump Glide
+	conn: ValleyEntry
+		normal Bash
+home: LowerValleyPlantApproach
+	pickup: ValleyMainPlant
+		normal ChargeFlame
+		normal Grenade
+		cdash Dash
+home: OutsideForlorn
+	pickup: OutsideForlornTreeExp
+		normal WallJump
+		normal Climb
+		normal ChargeJump
+		normal Bash Grenade
+	pickup: OutsideForlornWaterExp
+		normal Water
+		dboost Health=4
+		dboost Stomp
+	conn: OutsideForlornCliff
+		normal WallJump ChargeJump
+		normal Climb ChargeJump
+		normal Bash Glide
+		normal Bash DoubleJump
+		normal Bash Grenade
+home: ValleyForlornApproach
+	pickup: ValleyForlornApproachGrenade
+		normal Grenade
+	pickup: ValleyMap
+		normal Bash Mapstone
+home: OutsideForlornCliff
+	pickup: OutsideForlornCliffExp
+	pickup: ValleyForlornApproachMapstone
+		ALL Bash
+		normal Stomp
+		extreme
+	conn: LowerValley
+		ALL Bash
+		normal ChargeJump Stomp
+		dbash Stomp
+		extreme
+	conn: ValleyForlornApproach
+		ALL Bash
+		normal Stomp
+		extreme
+home: ForlornOuterDoor
+	conn: ForlornInnerDoor
+home: ForlornInnerDoor
+	conn: Forlorn
+		normal WallJump DoubleJump
+		normal ChargeJump
+		normal Bash Grenade
+		extended Free
+home: Forlorn
+	pickup: ForlornEntranceExp
+	pickup: ForlornHiddenSpiderExp
+	pickup: ForlornKeystone1
+	pickup: ForlornKeystone2
+	pickup: ForlornKeystone3
+	pickup: ForlornKeystone4
+	pickup: ForlornPlant
+		normal ChargeFlame
+		normal Grenade
+		cdash Dash
+	pickup: ForlornMap
+		normal Mapstone
+	conn: RightForlorn
+		ALL Glide Stomp Bash Keystone=4
+		normal WallJump
+		normal Climb
+	conn: OutsideForlorn
+		normal WallJump
+		normal Climb
+		normal ChargeJump
+home: RightForlorn
+	pickup: RightForlornHealthCell
+	pickup: ForlornEscape
+	pickup: RightForlornPlant
+		normal ChargeFlame
+		normal Grenade
+		cdash Dash
+home: Sorrow
+	pickup: SorrowEntranceAbilityCell
+	pickup: SorrowMainShaftKeystone
+	pickup: SorrowSpikeKeystone
+	pickup: SorrowHiddenKeystone
+	pickup: SorrowLowerLeftKeystone
+	pickup: SorrowHealthCell
+		normal ChargeJump
+		dbash Bash
+	pickup: SorrowMapstone
+		normal Bash
+	pickup: SorrowMap
+		normal Bash Mapstone
+	conn: LeftSorrow
+		ALL Keystone=4
+		normal Glide
+		extreme Bash
+		extreme ChargeJump Climb DoubleJump Health=10
+		extreme ChargeJump Dash WallJump DoubleJump Health=4
+	conn: Horu
+		glitched Dash
+	conn: ValleyMain
+		normal Stomp
+home: LeftSorrow
+	pickup: LeftSorrowAbilityCell
+	pickup: LeftSorrowKeystone1
+	pickup: LeftSorrowKeystone2
+	pickup: LeftSorrowKeystone3
+	pickup: LeftSorrowKeystone4
+	pickup: LeftSorrowEnergyCell
+	pickup: LeftSorrowGrenade
+		normal Grenade
+	pickup: LeftSorrowPlant
+		normal ChargeFlame
+		normal Grenade
+		cdash Dash
+	conn: UpperSorrow
+		normal Keystone=4
+home: UpperSorrow
+	pickup: UpperSorrowRightKeystone
+	pickup: UpperSorrowFarRightKeystone
+	pickup: UpperSorrowLeftKeystone
+	pickup: UpperSorrowSpikeExp
+	pickup: UpperSorrowFarLeftKeystone
+	conn: ChargeJump
+		normal Keystone=4
+	conn: Sorrow
+		normal Stomp
+		extended Climb ChargeJump
+home: ChargeJump
+	pickup: ChargeJumpSkillTree
+	pickup: AboveChargeJumpAbilityCell
+		normal ChargeJump
+	conn: SunstoneArea
+		normal ChargeJump Climb
+		extended Bash Glide
+		extended Bash Dash
+home: SunstoneArea
+	pickup: Sunstone
+	pickup: SunstonePlant
+		normal ChargeFlame
+		normal Grenade
+		cdash Dash
+	conn: UpperSorrow
+		normal Stomp
+		extended Climb ChargeJump
+home: Misty
+	pickup: MistyFrogNookExp
+	pickup: MistyAbilityCell
+	pickup: MistyMortarCorridorUpperExp
+	pickup: MistyMortarCorridorHiddenExp
+	pickup: MistyKeystone1
+	pickup: ClimbSkillTree
+	pickup: MistyPlant
+		normal ChargeFlame
+		normal Grenade
+		cdash Dash
+	conn: MistyPostClimb
+		normal Climb DoubleJump
+		normal ChargeJump
+	conn: Forlorn
+		glitched Free
+	conn: RightForlorn
+		glitched Free
+home: MistyPostClimb
+	pickup: MistyPostClimbSpikeCave
+	pickup: MistyPostClimbAboveSpikePit
+	pickup: MistyKeystone3
+	pickup: MistyKeystone4
+	pickup: MistyGrenade
+		normal Grenade
+	pickup: GumonSeal
+		normal Keystone=4
