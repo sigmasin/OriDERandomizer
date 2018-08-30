@@ -985,7 +985,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         itemPool["EX*"] -= sharedMap[playerID]
         itemCount -= sharedMap[playerID]
 
-    tree = XML.parse("areas.xml")
+    tree = XML.parse("areas_new.xml")
     root = tree.getroot()
 
     for child in root:
@@ -1004,9 +1004,11 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
                 key = loc.to_string()
                 if key not in locationAnalysis.keys():
                     locationAnalysis[key] = itemsToAnalyze.copy()
+                    locationAnalysis[key]["Zone"] = loc.zone
                 zoneKey = loc.zone
                 if zoneKey not in locationAnalysis.keys():
                     locationAnalysis[zoneKey] = itemsToAnalyze.copy()
+                    locationAnalysis[zoneKey]["Zone"] = loc.zone
         for conn in child.find("Connections"):
             connection = Connection(conn.find("Home").attrib["name"], conn.find("Target").attrib["name"])
             entranceConnection = conn.find("Entrance")
@@ -1422,6 +1424,7 @@ def main():
     locationAnalysis = {}
     for i in range(1,10):
         locationAnalysis["MapStone " + str(i)] = itemsToAnalyze.copy()
+        locationAnalysis["MapStone " + str(i)]["Zone"] = "MapStone"
 
     for seedOffset in range(0, args.count):
         
@@ -1429,6 +1432,9 @@ def main():
         random.seed(seed)
 
         placements = placeItemsMulti(seed, args.exp_pool, args.hard, includePlants, args.shards, args.limitkeys, args.clues, args.no_teleporters, args.loc_analysis, args.analysis, modes, flags, syncFlags, args.starved, args.prefer_path_difficulty, args.non_progressive_mapstones, args.players, args.balanced, args.entrance)
+
+        if args.analysis or args.loc_analysis:
+            print(seed)
 
         if not args.analysis and not args.loc_analysis:
             for player in range(0,playerCount):
@@ -1453,9 +1459,11 @@ def main():
         print(skillAnalysis["Grenade"])
 
     if args.loc_analysis:
-        print("location,WallJump,ChargeFlame,DoubleJump,Bash,Stomp,Glide,Climb,ChargeJump,Dash,Grenade,GinsoKey,ForlornKey,HoruKey,Water,Wind,WaterVeinShard,GumonSealShard,SunstoneShard,TPForlorn,TPGrotto,TPSorrow,TPGrove,TPSwamp,TPValley")
+        output = open("analysis.csv", 'w')
+        output.write("Location,Zone,WallJump,ChargeFlame,DoubleJump,Bash,Stomp,Glide,Climb,ChargeJump,Dash,Grenade,GinsoKey,ForlornKey,HoruKey,Water,Wind,WaterVeinShard,GumonSealShard,SunstoneShard,TPForlorn,TPGrotto,TPSorrow,TPGrove,TPSwamp,TPValley\n")
         for key in locationAnalysis.keys():
             line = key + ","
+            line += str(locationAnalysis[key]["Zone"]) + ","
             line += str(locationAnalysis[key]["WallJump"]) + ","
             line += str(locationAnalysis[key]["ChargeFlame"]) + ","
             line += str(locationAnalysis[key]["DoubleJump"]) + ","
@@ -1480,7 +1488,8 @@ def main():
             line += str(locationAnalysis[key]["TPGrove"]) + ","
             line += str(locationAnalysis[key]["TPSwamp"]) + ","
             line += str(locationAnalysis[key]["TPValley"])
-            print(line)
+
+            output.write(line + "\n")
 
 if __name__ == "__main__":
     main()
