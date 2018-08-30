@@ -508,6 +508,7 @@ home: DeathGauntlet
 		extended DoubleJump Climb
 		extended Bash Climb
 		extended Bash Grenade
+		extreme
 	conn: MoonGrotto
 		dboost-light WallJump
 		dboost-light Climb
@@ -771,10 +772,16 @@ home: DashArea
 		normal ChargeJump WallJump
 		normal Glide WallJump
 		normal Bash Grenade
-		-- this path is special; you can't physically get to the plant but you
-		-- can throw a grenade at it
+		-- these paths are special; you can't physically get to the plant but
+		-- you can throw a grenade at it
 		extended DoubleJump Grenade
-	conn: LowerBlackroot
+		extended ChargeJump Grenade
+		-- hahaha enjoy your wasted ability points on cflame burn, sucker
+		extreme WallJump ChargeFlame
+		extreme Climb ChargeFlame
+		extreme ChargeJump ChargeFlame
+		extreme DoubleJump ChargeFlame
+	conn: GrenadeAreaAccess
 		normal Stomp ChargeJump
 		normal Stomp Grenade Bash
 		normal Stomp Dash
@@ -807,59 +814,127 @@ home: RazielNoArea
 		glitched Free
 	conn: BlackrootGrottoConnection
 		normal Dash WallJump
-		normal Dash Climb
+		normal Dash Climb DoubleJump
 		normal Dash Bash Grenade
 		normal Dash ChargeJump
 		speed ChargeJump Climb
 		speed ChargeJump WallJump
 		speed Bash Grenade
 		extended WallJump
-		extended DoubleJump
-		extended Dash
-		glitched Free
+		extended Climb DoubleJump
+		extended ChargeJump
+		extended-damage Dash Climb
+		glitched Climb
 	conn: GumoHideout
 		glitched Free
 home: BlackrootGrottoConnection
+	-- anchor: on the spirit well (blackroot teleporter)
 	pickup: BlackrootTeleporterHealthCell
 	pickup: BlackrootMap
-		normal Mapstone
+		normal WallJump Mapstone
+		normal Climb DoubleJump Mapstone
+		normal Bash Grenade Mapstone
+		normal ChargeJump Mapstone
+		cdash Climb Dash Mapstone
 	conn: SideFallCell
-		normal Stomp
-home: LowerBlackroot
-	pickup: LowerBlackrootAbilityCell
-		normal ChargeJump
-		normal Grenade Bash
-	pickup: LowerBlackrootLaserAbilityCell
-		speed Dash DoubleJump
-		normal Dash Grenade Bash
-		extended DoubleJump
-		extended Grenade Bash
-	pickup: LowerBlackrootLaserExp
-		normal Dash
-		extended Free
-	pickup: LowerBlackrootGrenadeThrow
-		speed ChargeJump DoubleJump
-		normal Grenade
-		timed-level Free
-	conn: BottomBlackRoot
-		normal Grenade
+		normal Stomp WallJump
+		normal Stomp Climb DoubleJump
+		normal Stomp Bash Grenade
+		normal Stomp ChargeJump
+		cdash Stomp Climb Dash
+home: GrenadeAreaAccess
+	-- anchor: on the raised platform between the fronkey and the spike pit
 	conn: GrenadeArea
 		normal Dash
-		extended ChargeJump Climb Grenade
 		extended Bash Grenade
 		extended DoubleJump
-home: GrenadeArea
-	pickup: GrenadeSkillTree
-	pickup: GrenadeAreaExp
-		normal Bash
-		normal ChargeJump
+		gjump ChargeJump Climb Grenade
+	conn: LowerBlackroot
 		normal DoubleJump
-		normal Glide
-	pickup: GrenadeAreaAbilityCell
-		ALL Grenade
-		normal Bash
+		normal Bash Grenade
+		dboost-light Free
+		cdash Dash
+home: LowerBlackroot
+	-- anchor: just past the spike pit, directly below the ability cell
+	pickup: LowerBlackrootAbilityCell
 		normal ChargeJump
-home: BottomBlackRoot
+		normal Bash Grenade
+		dboost DoubleJump Health=5
+		cdash Dash
+		extreme DoubleJump
+	pickup: LowerBlackrootLaserAbilityCell
+		normal Dash Bash Grenade
+		speed Dash DoubleJump
+		dboost Dash ChargeJump Health=4
+		extended DoubleJump Glide
+		extended Bash Grenade
+		extended-damage WallJump Glide Health=4
+		extended-damage Stomp Glide Health=4
+		extended-damage DoubleJump Health=4
+		extended-damage ChargeJump Health=4
+		cdash Dash
+		extreme Stomp Health=4
+	pickup: LowerBlackrootLaserExp
+		normal Dash WallJump
+		normal Dash Climb DoubleJump
+		normal Dash Bash Grenade
+		normal Dash ChargeJump
+		extended WallJump
+		extended DoubleJump
+		extended Bash Grenade
+		extended ChargeJump
+	pickup: LowerBlackrootGrenadeThrow
+		normal WallJump Grenade
+		normal Climb Grenade
+		normal DoubleJump Grenade
+		normal ChargeJump Grenade
+		normal Bash Grenade
+		normal Glide Grenade
+		speed ChargeJump DoubleJump
+		timed-level Free
+	conn: LostGrove
+		normal WallJump Grenade
+		normal DoubleJump Grenade
+		normal Climb Grenade
+		normal ChargeJump Grenade
+		normal Bash Grenade
+home: GrenadeArea
+	-- anchor: just past the laser
+	pickup: GrenadeSkillTree
+		normal Dash WallJump
+		normal Dash Climb
+		normal Dash ChargeJump
+		normal Dash Bash Grenade
+		speed Bash Grenade
+		extended Dash Bash
+		dbash Bash WallJump
+		dbash Bash Climb
+		dbash Bash DoubleJump
+		dbash Bash ChargeJump
+		cdash Dash
+		extreme DoubleJump WallJump
+		extreme DoubleJump Climb
+		extreme ChargeJump
+	pickup: GrenadeAreaExp
+		normal Dash WallJump Glide
+		normal Dash Climb Glide
+		normal Dash Bash Glide
+		normal ChargeJump DoubleJump
+		normal Bash Grenade
+		dboost-light ChargeJump
+		speed Dash DoubleJump
+		dbash Bash WallJump
+		dbash Bash Climb
+		dbash Bash DoubleJump
+		dbash Bash ChargeJump
+		cdash Dash
+	pickup: GrenadeAreaAbilityCell
+		normal Dash Bash Grenade
+		normal Dash ChargeJump Grenade
+		speed Bash Grenade
+		cdash Dash Grenade
+		extreme ChargeJump Grenade
+home: LostGrove
 	pickup: LostGroveLongSwim
 		normal Water
 		dboost-hard Health=12
