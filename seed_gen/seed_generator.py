@@ -225,14 +225,18 @@ def open_free_connections():
     for area in list(areasReached.keys()):
         for connection in areas[area].get_connections():
             cost = connection.cost()
+            reached = connection.target in areasReached
             if cost[0] <= 0:
-                areas[connection.target].difficulty = cost[2]
+                if not reached:
+                    areas[connection.target].difficulty = cost[2]
+                    if len(areas[connection.target].locations) > 0:
+                        areas[connection.target].difficulty += area.difficulty
                 if connection.keys > 0:
                     if area not in doorQueue.keys():
                         doorQueue[area] = connection
                         keystoneCount += connection.keys
                 elif connection.mapstone:
-                    if connection.target not in areasReached:
+                    if not reached:
                         visitMap = True
                         for map in mapQueue.keys():
                             if map == area or mapQueue[map].target == connection.target:
@@ -241,7 +245,7 @@ def open_free_connections():
                             mapQueue[area] = connection
                             mapstoneCount += 1
                 else:
-                    if connection.target not in areasReached:
+                    if not reached:
                         seedDifficulty += cost[2] * cost[2]
                         reach_area(connection.target)
                     if connection.target in areasRemaining:
@@ -486,14 +490,14 @@ def preferred_difficulty_assign(item, locationsToAssign):
     total = 0.0
     for loc in locationsToAssign:
         if pathDifficulty == "easy":
-            total += (15 - loc.difficulty) * (15 - loc.difficulty)
+            total += (20 - loc.difficulty) * (20 - loc.difficulty)
         else:
             total += (loc.difficulty * loc.difficulty)
     value = random.random()
     position = 0.0
     for i in range(0,len(locationsToAssign)):
         if pathDifficulty == "easy":
-            position += (15 - locationsToAssign[i].difficulty) * (15 - locationsToAssign[i].difficulty)/total
+            position += (20 - locationsToAssign[i].difficulty) * (20 - locationsToAssign[i].difficulty)/total
         else:
             position += locationsToAssign[i].difficulty * locationsToAssign[i].difficulty/total
         if value <= position:
