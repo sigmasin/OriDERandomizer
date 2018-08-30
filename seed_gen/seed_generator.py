@@ -230,7 +230,7 @@ def open_free_connections():
                 if not reached:
                     areas[connection.target].difficulty = cost[2]
                     if len(areas[connection.target].locations) > 0:
-                        areas[connection.target].difficulty += area.difficulty
+                        areas[connection.target].difficulty += areas[area].difficulty
                 if connection.keys > 0:
                     if area not in doorQueue.keys():
                         doorQueue[area] = connection
@@ -334,7 +334,8 @@ def prepare_path(free_space):
                         else:
                             requirements.append(req)
                             cost += costs[req]
-                # cost *= len(requirements) # decrease the rate of multi-ability paths
+                # decrease the rate of multi-item paths
+                cost *= max(1, len(requirements) - 1)
                 if len(requirements) <= free_space:
                     for req in requirements:
                         if req not in abilities_to_open:
@@ -346,13 +347,28 @@ def prepare_path(free_space):
         totalCost += 1.0/abilities_to_open[path][0]
     position = 0
     target = random.random() * totalCost
+    path_selected = None
     for path in abilities_to_open:
         position += 1.0/abilities_to_open[path][0]
         if target <= position:
+            path_selected = abilities_to_open[path]
+            break
+    # if a connection will open with a subset of skills in the selected path, use that instead
+    for path in abilities_to_open:
+        isSubset = abilities_to_open[path][0] < path_selected[0]
+        if isSubset:
             for req in abilities_to_open[path][1]:
-                if itemPool[req] > 0:
-                    assignQueue.append(req)
-            return abilities_to_open[path][1]
+                if req not in path_selected[1]:
+                    isSubset = False
+                    break
+            if isSubset:
+                path_selected = abilities_to_open[path]
+    if path_selected:
+        for req in path_selected[1]:
+            if itemPool[req] > 0:
+                assignQueue.append(req)
+        return path_selected[1]
+    return None
 
 def get_location_from_balance_list():
     target = int(pow(random.random(), 1.0 / balanceLevel) * len(balanceList))
