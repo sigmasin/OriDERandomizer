@@ -1762,8 +1762,8 @@ home: SorrowBashLedge
 		extended-damage ChargeJump Climb Health=9
 		extreme ChargeJump WallJump Health=7
 		extreme ChargeJump Climb Health=7
--- anchored on the wooden platform at the start of sorrow
 home: LowerSorrow
+-- anchored on the wooden platform at the start of sorrow
 	pickup: SorrowEntranceAbilityCell
 	pickup: SorrowMainShaftKeystone
 		normal Glide
@@ -1779,19 +1779,19 @@ home: LowerSorrow
 		normal Bash DoubleJump Climb
 		normal Bash Grenade WallJump
 		normal Bash Grenade Climb
-		normal Dash DoubleJump WallJump
-		normal Dash DoubleJump Climb
 		normal ChargeJump DoubleJump WallJump
 		normal ChargeJump DoubleJump Climb
-		extended Climb ChargeJump Grenade
+		speed Dash DoubleJump WallJump
+		speed Dash DoubleJump Climb
+		gjump Climb ChargeJump Grenade
 		extended-damage Climb ChargeJump Health=5
 		extended-damage Climb DoubleJump Health=5
 		extended-damage WallJump DoubleJump Health=5
 		extended-damage WallJump ChargeJump Health=5
 		cdash Dash
 		dbash Bash
-		extreme Climb DoubleJump
 		extreme WallJump DoubleJump
+		extreme Climb DoubleJump
 		extreme WallJump ChargeJump
 		extreme Climb ChargeJump
 	pickup: SorrowHiddenKeystone
@@ -1802,7 +1802,9 @@ home: LowerSorrow
 		speed Bash Dash DoubleJump Climb
 		extended Bash ChargeJump WallJump
 		extended Bash ChargeJump Climb
-		extended Climb ChargeJump Grenade
+		gjump Climb ChargeJump Grenade
+		extended-damage Bash WallJump Health=5
+		extended-damage Bash Climb Health=5
 		cdash Dash
 		dbash Bash
 	pickup: SorrowHealthCell
@@ -1810,7 +1812,7 @@ home: LowerSorrow
 		speed Bash ChargeJump WallJump
 		speed Bash ChargeJump Climb
 		extended ChargeJump Climb
-		extended-damage ChargeJump WallJump Health=5
+		extended-damage ChargeJump WallJump DoubleJump Health=5
 		dbash Bash
 	pickup: SorrowLowerLeftKeystone
 		normal Glide
@@ -1851,6 +1853,7 @@ home: LowerSorrow
 	conn: LeftSorrow
 		normal Glide Bash
 		normal Glide ChargeJump
+		gjump Climb ChargeJump Grenade
 		cdash Dash Bash
 		cdash Dash ChargeJump Energy=2
 		cdash Dash Stomp ChargeJump
@@ -1862,18 +1865,16 @@ home: LowerSorrow
 		normal Climb ChargeJump
 		extended Bash Glide
 		cdash Dash
-		dbash Bash
+		extreme Bash
 		glitched ChargeJump Glide
 	-- long juggle
 	conn: SunstoneArea
 		dbash Bash Glide
-	--TODO: this connection is inaccurate
-	conn: SorrowTeleporter
-		dbash Bash Glide ChargeJump Climb
 home: SorrowMapstoneArea
+--anchored on the level of breakable floors above the mapstone
 	pickup: SorrowMapstone
 		normal Bash
-		extended Climb ChargeJump Grenade
+		gjump Climb ChargeJump Grenade
 		cdash Dash
 	pickup: SorrowMap
 		normal Stomp Mapstone
@@ -1882,6 +1883,7 @@ home: SorrowMapstoneArea
 	conn: Horu
 		glitched Dash
 home: LeftSorrowLowerDoor
+-- anchored at LowerSorrow, after the door has been opened
 	conn: LeftSorrow
 		normal Glide Bash Stomp
 		speed Bash ChargeJump Stomp WallJump
@@ -1892,6 +1894,7 @@ home: LeftSorrowLowerDoor
 		dbash Bash Grenade Stomp
 		dbash Bash DoubleJump Stomp
 home: LeftSorrow
+-- anchored a level above the lower left keystone
 	pickup: LeftSorrowAbilityCell
 		normal WallJump DoubleJump Glide
 		normal ChargeJump Climb DoubleJump
@@ -1926,6 +1929,7 @@ home: LeftSorrow
 		extreme DoubleJump WallJump
 		extreme DoubleJump Climb
 home: LeftSorrowKeystones
+-- anchored next to the frog below the keystone set
 	pickup: LeftSorrowKeystone1
 		normal Glide
 		normal DoubleJump
@@ -1939,22 +1943,22 @@ home: LeftSorrowKeystones
 		normal ChargeJump Climb
 		normal Bash Grenade
 		extended ChargeJump WallJump
-		extreme Bash Dash
+		extreme Bash
 	pickup: LeftSorrowKeystone3
 		normal Glide
 		extended-damage ChargeJump Climb Health=5
-		extreme Bash Dash
+		extreme Bash
 		extreme ChargeJump DoubleJump Health=4
 	pickup: LeftSorrowKeystone4
 		normal Glide
 		extended-damage ChargeJump Climb DoubleJump Health=5
 		extended-damage ChargeJump Climb Dash Health=5
-		extreme Bash Dash
+		extreme Bash
 		extreme ChargeJump DoubleJump Health=4
 	pickup: LeftSorrowEnergyCell
 		normal Glide
 		extended-damage ChargeJump Climb DoubleJump Health=5
-		extreme Bash Dash
+		extreme Bash
 		extreme ChargeJump DoubleJump Health=4
 	conn: LeftSorrowMiddleDoor
 		normal Keystone=4
@@ -1964,26 +1968,33 @@ home: LeftSorrowKeystones
 		cdash Bash Dash Climb
 		cdash Bash Dash WallJump
 		dbash Bash
-		extreme Glide DoubleJump Climb
-		extreme Glide DoubleJump WallJump
+		extreme ChargeJump Stomp Glide DoubleJump WallJump
 		extreme ChargeJump Stomp Dash Climb
 		extreme ChargeJump Stomp Dash WallJump
 		extreme ChargeJump Stomp DoubleJump Climb
-		extreme ChargeJump Stomp DoubleJump WallJump Glide
 home: LeftSorrowMiddleDoor
+-- anchored at the top of the keystone section
 	conn: MiddleSorrow
-		normal Glide Bash
+		normal Glide Bash Stomp WallJump
+		normal Glide Bash Stomp Climb
+		normal DoubleJump Bash Stomp WallJump
+		normal DoubleJump Bash Stomp Climb
+		speed Bash Stomp WallJump
+		speed Bash Stomp Climb
+		speed Bash Stomp DoubleJump
 		extended-damage ChargeJump Climb DoubleJump Bash Health=5
 		extreme Bash Dash Stomp
 		extreme Bash Dash ChargeJump Climb
 		extreme Bash Climb ChargeJump DoubleJump Health=4
 		extreme Bash Stomp ChargeJump DoubleJump Health=4
 home: MiddleSorrow
+-- anchored above the breakable floor in the main shaft
+-- floor is broken if going up, not if coming down from the teleporter
 	conn: UpperSorrow
 		normal Glide
 		normal Bash Grenade WallJump
 		normal Bash Grenade Climb
-		extended ChargeJump Climb Grenade
+		gjump ChargeJump Climb Grenade
 		extended-damage ChargeJump Climb Health=5
 		extended-damage ChargeJump WallJump Health=5
 		extreme ChargeJump Climb Health=4
@@ -2000,11 +2011,9 @@ home: MiddleSorrow
 	-- frog juggle
 	conn: SunstoneArea
 		extended Bash Glide
-	--TODO: this connection is inaccurate
-	conn: SorrowTeleporter
-		extended Bash Glide ChargeJump Climb
--- dbash paths for the tumbleweed not included since you can lose it
 home: UpperSorrow
+-- anchored at the start of the spike cave (if coming from TP, set above)
+-- dbash paths for the tumbleweed not included since you can lose it
 	pickup: UpperSorrowRightKeystone
 		normal Glide
 		cdash ChargeJump Dash Health=5
@@ -2017,10 +2026,10 @@ home: UpperSorrow
 		extreme ChargeJump DoubleJump Health=10
 	pickup: UpperSorrowLeftKeystone
 		normal Glide
-		extended Climb ChargeJump Grenade
 		extended Bash Grenade
 		extended-damage ChargeJump Health=5
 		cdash Dash Energy=2
+		extreme Climb ChargeJump Grenade
 		extreme ChargeJump Health=4
 	pickup: UpperSorrowSpikeExp
 		normal Glide
@@ -2032,14 +2041,25 @@ home: UpperSorrow
 		extreme Dash Health=4 Energy=2
 		extreme Bash Grenade Dash Health=4
 		extreme Bash Grenade DoubleJump Health=4
-	-- TODO: non glide paths for this KS
 	pickup: UpperSorrowFarLeftKeystone
 		normal Glide
+		extreme ChargeJump DoubleJump Dash WallJump Health=4
+		extreme ChargeJump DoubleJump Dash Climb Health=4
+		extreme Bash Grenade DoubleJump Dash WallJump Health=4
+		extreme Bash Grenade DoubleJump Dash Climb Health=4
+		extreme Bash Grenade ChargeJump DoubleJump WallJump Health=7
+		extreme Bash Grenade ChargeJump DoubleJump Climb Health=7
+		extreme ChargeJump DoubleJump WallJump Health=10
+		extreme ChargeJump DoubleJump Climb Health=10
 	conn: MiddleSorrow
+	conn: SunstoneArea
+		glitched: Glide ChargeJump
+	conn: SorrowTeleporter:
+		glitched: Glide ChargeJump Climb
 	conn: ChargeJumpDoor
 		normal Keystone=4
--- the cost of travesing the spikes to the cjump door
 home: ChargeJumpDoor
+-- anchored at the start of the spike cave, after the door has been opened
 	conn: ChargeJumpArea
 		normal Glide
 		extreme ChargeJump DoubleJump Dash Health=4
@@ -2047,22 +2067,78 @@ home: ChargeJumpDoor
 		extreme Bash Grenade ChargeJump DoubleJump Health=7
 		extreme ChargeJump DoubleJump Health=10
 		extreme Bash Grenade DoubleJump Health=13
---TODO: everything below here
 home: ChargeJumpArea
+-- anchored at the cjump tree
 	pickup: ChargeJumpSkillTree
 	conn: AboveChargeJumpArea
-		normal ChargeJump Bash Glide Climb
-		normal ChargeJump Bash Glide WallJump
+		normal ChargeJump Bash Climb
+		normal ChargeJump Bash DoubleJump WallJump
+		gjump ChargeJump Climb Grenade
+		extended-damage ChargeJump Bash WallJump Health=5
+		extended-damage ChargeJump Dash Health=5
+		cdash ChargeJump Dash Climb
+		extreme Bash Climb
+		extreme Bash WallJump
 home: AboveChargeJumpArea
+-- anchored below the ability cell
 	pickup: AboveChargeJumpAbilityCell
 		normal ChargeJump
-home: SorrowTeleporter
-	conn: SunstoneArea
+		normal Bash WallJump
+		normal Bash Climb
+		normal Bash Grenade
+	conn: SorrowTeleporter
 		normal ChargeJump Climb
-		extended Bash Glide
-		extended Bash Dash
+		normal Bash WallJump DoubleJump Glide
+		normal Bash Climb Grenade
+		extended-damage ChargeJump WallJump Dash Health=5
+		extreme Bash
+	conn: ChargeJumpArea
+		lure Bash Stomp WallJump
+		lure Bash Stomp Climb
+		cdash Dash Stomp
+		gjump ChargeJump Climb Grenade Dash
+		gjump ChargeJump Climb Grenade Health=5
+		extended-damage ChargeJump Dash Health=5
+		extended-damage ChargeJump Bash Health=5
+		dbash Bash WallJump
+		dbash Bash Climb
+		extreme Bash
+home: SorrowTeleporter
+-- anchored on the sorrow teleporter (wall intact)
+	conn: BelowSunstoneArea
+		normal ChargeJump Climb Glide
+		normal ChargeJump Climb DoubleJump
+		speed ChargeJump Climb Bash
+		gjump ChargeJump Climb Grenade
+		extended-damage ChargeJump Climb Health=5
+		extended-damage Stomp Bash Grenade Health=5
+		extended-damage ChargeJump WallJump Glide Health=5
+		extreme ChargeJump Climb
+		extreme Stomp Bash Climb
+		extreme Stomp Bash WallJump
+		extreme ChargeJump Bash
+		extreme WallJump DoubleJump Stomp Health=4
+	conn: AboveChargeJumpArea
+		normal ChargeJump Climb Stomp
+		extended Stomp WallJump DoubleJump Glide
+		extended ChargeJump Climb
+		extended-damage ChargeJump WallJump DoubleJump Glide Health=5
+		extreme Stomp Bash
+		extreme ChargeJump Bash
+home: BelowSunstoneArea
+-- anchored above the 2 lasers in the main shaft, floor intact
+	conn: SunstoneArea
+		normal Stomp Glide
+		extended ChargeJump Climb Glide
+		gjump ChargeJump Climb Grenade
+		extreme ChargeJump Climb DoubleJump Health=4
+		extreme Bash
 	conn: UpperSorrow
+		normal Stomp
+		extended ChargeJump Climb
+		extreme Bash	
 home: SunstoneArea
+-- anchored at the top of the main shaft
 	pickup: Sunstone
 	pickup: SunstonePlant
 		normal ChargeFlame
@@ -2071,6 +2147,9 @@ home: SunstoneArea
 	conn: UpperSorrow
 		normal Stomp
 		extended Climb ChargeJump
+	conn: SorrowTeleporter
+		normal Climb ChargeJump DoubleJump
+		extended-damage ChargeJump WallJump DoubleJump Health=5
 home: Misty
 	pickup: MistyFrogNookExp
 	pickup: MistyAbilityCell
