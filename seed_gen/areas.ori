@@ -344,6 +344,7 @@ home: SunkenGladesRunaway
 		normal Climb
 		normal ChargeJump
 		normal Bash Grenade
+		extreme DoubleJump
 	conn: DeathGauntletDoor
 		normal ChargeJump Energy=4
 		normal Grenade Bash Energy=4
@@ -799,6 +800,7 @@ home: DashArea
 		speed Bash Grenade
 		speed Climb DoubleJump
 		extended Climb
+		extreme DoubleJump
 home: DashPlantAccess
 	-- anchor: on the ledge next to the plant, or within grenade throw range
 	pickup: DashAreaPlant
