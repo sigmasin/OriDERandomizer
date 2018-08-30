@@ -3236,6 +3236,13 @@
       </Connection>
       <Connection>
         <Home name="LeftGlades"/>
+        <Target name="GladesMain"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftGlades"/>
         <Target name="UpperLeftGlades"/>
         <Requirements>
           <Requirement mode="normal">WallJump</Requirement>
@@ -3272,6 +3279,13 @@
       <Connection>
         <Home name="UpperLeftGlades"/>
         <Target name="LeftGladesMapstone"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperLeftGlades"/>
+        <Target name="LeftGlades"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
@@ -3400,6 +3414,47 @@
           <Requirement mode="timed-level">WallJump</Requirement>
           <Requirement mode="timed-level">Climb</Requirement>
           <Requirement mode="timed-level">ChargeJump+Bash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="DeathGauntletRoof">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="DeathGauntletRoof"/>
+        <Target name="DeathGauntletRoofHealthCell"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DeathGauntletRoof"/>
+        <Target name="DeathGauntletRoofPlantAccess"/>
+        <Requirements>
+          <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DeathGauntletRoof"/>
+        <Target name="DeathGauntlet"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp</Requirement>
+          <Requirement mode="lure">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="DeathGauntletRoofPlantAccess">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="DeathGauntletRoofPlantAccess"/>
+        <Target name="DeathGauntletRoofPlant"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -3593,7 +3648,13 @@
         <Home name="ChargeFlameArea"/>
         <Target name="ChargeFlameSkillTree"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">Stomp</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Grenade</Requirement>
+          <Requirement mode="normal">ChargeFlame</Requirement>
+          <Requirement mode="cdash-farming">Dash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3609,9 +3670,7 @@
         <Home name="ChargeFlameArea"/>
         <Target name="SpiritTreeRefined"/>
         <Requirements>
-          <Requirement mode="normal">ChargeJump+ChargeFlame</Requirement>
-          <Requirement mode="normal">ChargeJump+Grenade</Requirement>
-          <Requirement mode="speed">ChargeJump+Stomp</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3651,8 +3710,8 @@
           <Requirement mode="normal">Climb</Requirement>
           <Requirement mode="normal">ChargeJump</Requirement>
           <Requirement mode="normal">Bash+Grenade</Requirement>
-          <Requirement mode="lure-hard">Bash+Stomp</Requirement>
-          <Requirement mode="lure-hard">Bash+ChargeFlame</Requirement>
+          <Requirement mode="dbash">Bash+Stomp</Requirement>
+          <Requirement mode="dbash">Bash+ChargeFlame</Requirement>
           <Requirement mode="cdash-farming">Bash+Dash</Requirement>
         </Requirements>
       </Connection>
@@ -5113,46 +5172,6 @@
       <Connection>
         <Home name="HideoutRedirect"/>
         <Target name="GumoHideoutRedirectExp"/>
-        <Requirements>
-          <Requirement mode="normal">Free</Requirement>
-        </Requirements>
-      </Connection>
-    </Connections>
-  </Area>
-  <Area name="DeathGauntletRoof">
-    <Locations/>
-    <Connections>
-      <Connection>
-        <Home name="DeathGauntletRoof"/>
-        <Target name="DeathGauntletRoofHealthCell"/>
-        <Requirements>
-          <Requirement mode="normal">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="DeathGauntletRoof"/>
-        <Target name="DeathGauntletRoofPlantAccess"/>
-        <Requirements>
-          <Requirement mode="normal">ChargeFlame</Requirement>
-          <Requirement mode="normal">Grenade</Requirement>
-          <Requirement mode="cdash">Dash</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="DeathGauntletRoof"/>
-        <Target name="DeathGauntlet"/>
-        <Requirements>
-          <Requirement mode="normal">Free</Requirement>
-        </Requirements>
-      </Connection>
-    </Connections>
-  </Area>
-  <Area name="DeathGauntletRoofPlantAccess">
-    <Locations/>
-    <Connections>
-      <Connection>
-        <Home name="DeathGauntletRoofPlantAccess"/>
-        <Target name="DeathGauntletRoofPlant"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>

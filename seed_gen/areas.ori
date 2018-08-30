@@ -1,4 +1,64 @@
--- ALL pickups in the game
+-- This file defines all of the pickups, areas, and connections making up the
+-- logical progression of Ori DE randomizer.
+-- 
+-- Pickup definitions should be straightforward and should never need to
+-- change. If they do, the format is:
+--     loc: pickup X Y type difficulty zone
+-- Each piece of data must be separated by one or more spaces from the others,
+-- and must not contain spaces. DON'T CHANGE THESE IF YOU DON'T HAVE A GOOD
+-- REASON!
+--
+-- Area definitions are flexible and substantially up to judgment. The intent
+-- of an area is to surround one or more pickup locations and a single,
+-- coherent section of the game world. In limited circumstances, it may be
+-- valid to create an area with zero pickups, in order to represent a notable
+-- gating point where Ori may need some specific set of skills to pass through.
+--
+-- Areas should be built around an "anchor point." An anchor point is a spot in
+-- the game world which is considered to represent where Ori would be if the
+-- player reached a given area. Choose an anchor point that best reflects where
+-- a typical person would view Ori as "being" when in that area.
+--
+-- Areas should be formatted as such:
+--     home: AreaName
+--         -- anchor point: describe where the anchor point is
+--         pickup: PickupWithinThisArea1
+--         pickup: PickupWithinThisArea2
+--             normal RequiredSkill RequiredEvent
+--         conn: DifferentAreaName
+--             lure RequiredSkill
+--             dboost Health=5
+--             extreme Free
+--
+-- Pickups should be referenced with "pickup:" and the name given must be of a
+-- pickup specified earlier in the file. If the pickup is freely accessible
+-- from the anchor point, then you don't need to specify any paths. Otherwise,
+-- specify each path as the path set to which it belongs, followed by the set
+-- of required skills or events, each separated by one or more spaces.
+--
+-- Connections should be referenced with "conn:" and the name given must be of
+-- an area defined elsewhere in the file with "home:". If the connection is
+-- freely available, then you don't need to specify any paths. Otherwise, paths
+-- can be specified just as with pickups.
+--
+-- When specifying paths, do not assume anything about what skills Ori has,
+-- regardless of what might have been needed to reach your area. Be explicit
+-- for every pickup and connection about the full set of skills Ori will need
+-- to reach it.
+--
+-- If a path requires damage boosting, you may specify it as Health=#, where #
+-- is the total amount of health Ori needs to survive.
+--
+-- If a path requires energy, you may specify it as Energy=#, where # is the
+-- total amount of energy Ori needs to pass through.
+--
+-- If a path requires keystones, you may specify it as Keystone=#, where # is
+-- the number of keystones needed in Ori's inventory to open this connection.
+--
+-- Please make sure to provide a path describing the anchor point of your area.
+-- This will make it much easier for others to collaborate on this logic.
+
+-- all pickups in the game
 loc: FirstPickup 92 -227 EX15 0 Glades
 loc: FronkeyFight -154 -271 EX15 0 Glades
 loc: GladesKeystone1 83 -222 KS 0 Glades
@@ -246,6 +306,7 @@ loc: MistyGrenade -671 -39 EX200 5 Misty
 
 -- area definitions and connections
 home: SunkenGladesRunaway
+	-- anchor: the beginning of the game
 	pickup: FirstPickup
 	pickup: FronkeyFight
 	pickup: GladesKeystone1
@@ -274,7 +335,8 @@ home: SunkenGladesRunaway
 		normal Glide Wind
 		normal Bash Grenade
 		lure Bash
-	-- no need to isolate this key door because there's no requirements to get to it or to get past it
+	-- no need to isolate this key door because there's no requirements to get
+	-- to it or to get past it
 	conn: GladesMain
 		normal Keystone=2
 	conn: BlackrootDarknessRoom
@@ -321,6 +383,7 @@ home: SunkenGladesRunaway
 	--conn: GumoHideoutMap
 	--	normal TPGrotto Mapstone
 home: GladesMain
+	-- anchor: just beyond the first keystone door in Glades
 	pickup: FourthHealthCell
 	pickup: GladesMapKeystone
 	pickup: GladesMap
@@ -354,11 +417,13 @@ home: GladesMain
 		normal ChargeFlame
 		cdash-farming Dash
 home: GladesMainAttic
+	-- anchor: on the ledge above the FourthHealthCell
 	pickup: AboveFourthHealth
 	conn: GladesMain
 	conn: LowerChargeFlameArea
 		glitched Dash
 home: LeftGlades
+	-- anchor: left of the Glades map and the wall of brambles
 	pickup: LeftGladesHiddenExp
 	pickup: WallJumpSkillTree
 	pickup: WallJumpAreaExp
@@ -371,13 +436,16 @@ home: LeftGlades
 		normal Climb
 		normal Bash Grenade
 		lure-hard Bash
+	conn: GladesMain
 	conn: UpperLeftGlades
 		normal WallJump
 		normal Climb
 		normal ChargeJump
 		normal Bash Grenade
 		lure Bash
+		extended DoubleJump
 home: UpperLeftGlades
+	-- anchor: just left of the rock near the spinning saw blades
 	pickup: LeftGladesExp
 		normal WallJump
 		normal Climb
@@ -387,7 +455,9 @@ home: UpperLeftGlades
 		extended DoubleJump
 	pickup: LeftGladesKeystone
 	pickup: LeftGladesMapstone
+	conn: LeftGlades
 home: DeathGauntletDoor
+	-- anchor: on the ledge with the 4-energy door opened
 	conn: SunkenGladesRunaway
 	conn: DeathGauntlet
 		normal Grenade Bash
@@ -398,8 +468,6 @@ home: DeathGauntletDoor
 		normal WallJump Water
 		normal Climb Water
 		normal Bash Water
-		-- these speed paths assume you regroup before jumping in the water
-		-- and then only take a 2-damage swim, possibly killing the slime
 		speed WallJump Health=4
 		speed Climb Health=4
 		speed Bash Health=4
@@ -408,9 +476,11 @@ home: DeathGauntletDoor
 		dboost Health=5
 		extreme Health=4
 home: DeathGauntletMoat
+	-- anchor: in the death gauntlet water
 	pickup: DeathGauntletSwimEnergyDoor
 		normal Energy=4
 home: DeathGauntlet
+	-- anchor: on the death gauntlet ledge next to the fronkey
 	pickup: DeathGauntletExp
 		normal WallJump
 		normal Climb
@@ -448,7 +518,21 @@ home: DeathGauntlet
 		timed-level WallJump
 		timed-level Climb
 		timed-level ChargeJump Bash
+home: DeathGauntletRoof
+	-- anchor: above death gauntlet, next to the health cell
+	pickup: DeathGauntletRoofHealthCell
+	conn: DeathGauntletRoofPlantAccess
+	conn: DeathGauntlet
+		normal Stomp
+		lure Free
+home: DeathGauntletRoofPlantAccess
+	-- anchor: next to the death gauntlet roof plant, or within cflame range
+	pickup: DeathGauntletRoofPlant
+		normal ChargeFlame
+		normal Grenade
+		cdash Dash
 home: SpiritCavernsDoor
+	-- anchor: just past the spirit caverns entrance door
 	conn: SpiritCaverns
 		normal Climb
 		normal WallJump
@@ -457,6 +541,7 @@ home: SpiritCavernsDoor
 		lure Bash
 		extreme DoubleJump
 home: SpiritCaverns
+	-- anchor: on the ground just after the first wall in spirit caverns
 	pickup: SpiritCavernsKeystone1
 		normal WallJump
 		normal Climb
@@ -483,6 +568,7 @@ home: SpiritCaverns
 	conn: GladesLaserArea
 		normal Bash Energy=4
 home: UpperSpiritCaverns
+	-- anchor: on the ledge across from the 4-energy gladeser door
 	pickup: SpiritCavernsTopLeftKeystone
 		normal WallJump
 		normal DoubleJump Climb
@@ -505,12 +591,14 @@ home: UpperSpiritCaverns
 	conn: SpiritTreeDoor
 		normal Keystone=4
 home: SpiritTreeDoor
+	-- anchor: logically, same as spirit caverns, but with the exit door open
 	conn: SpiritTreeRefined
 		normal WallJump
 		normal Climb
 		normal Bash
 		dboost-light ChargeJump
 home: GladesLaserArea
+	-- anchor: just to the right of the 4-energy door
 	pickup: GladesLaser
 		normal DoubleJump
 		normal ChargeJump
@@ -530,18 +618,24 @@ home: GladesLaserArea
 		normal Energy=4
 		timed-level Energy=2
 home: ChargeFlameArea
+	-- anchor: just to the right of the blue wall, right of the cflame tree
 	pickup: ChargeFlameSkillTree
+		normal WallJump
+		normal Climb
+		normal Stomp
+		normal ChargeJump
+		normal Grenade
+		normal ChargeFlame
+		cdash-farming Dash
 	pickup: ChargeFlameAreaPlant
 		normal ChargeFlame
 		normal Grenade
 		cdash-farming Dash
 	conn: SpiritTreeRefined
-		ALL ChargeJump
-		normal ChargeFlame
-		normal Grenade
-		speed Stomp
+		normal ChargeJump
 	conn: LowerChargeFlameArea
 home: LowerChargeFlameArea
+	-- anchor: next to the cflame area exp
 	pickup: ChargeFlameAreaExp
 	conn: GladesMain
 		normal ChargeFlame
@@ -553,10 +647,11 @@ home: LowerChargeFlameArea
 		normal Climb
 		normal ChargeJump
 		normal Bash Grenade
-		lure-hard Bash Stomp
-		lure-hard Bash ChargeFlame
+		dbash Bash Stomp
+		dbash Bash ChargeFlame
 		cdash-farming Bash Dash
 home: SpiritTreeRefined
+	-- anchor: the spirit tree spirit well (i.e. grove teleporter)
 	conn: ChargeFlameTree
 		normal DoubleJump Climb
 		normal DoubleJump WallJump
@@ -637,7 +732,7 @@ home: SpiderSacArea
 home: SpiderSacDropArea
 	pickup: SpiderSacEnergyCell
 home: BlackrootDarknessRoom
-	-- anchor point: just after watching/skipping the BRB entrance cutscene
+	-- anchor: just after watching/skipping the BRB entrance cutscene
 	pickup: DashAreaOrbRoomExp
 		normal WallJump
 		normal Climb
@@ -662,7 +757,7 @@ home: BlackrootDarknessRoom
 		normal ChargeJump
 		extended DoubleJump
 home: DashArea
-	-- anchor point: dash tree *after* lifting darkness
+	-- anchor: dash tree *after* lifting darkness
 	pickup: DashSkillTree
 	pickup: DashAreaMapstone
 		normal Dash
@@ -676,7 +771,8 @@ home: DashArea
 		normal ChargeJump WallJump
 		normal Glide WallJump
 		normal Bash Grenade
-		-- this path is special; you can't physically get to the plant but you can throw a grenade at it
+		-- this path is special; you can't physically get to the plant but you
+		-- can throw a grenade at it
 		extended DoubleJump Grenade
 	conn: LowerBlackroot
 		normal Stomp ChargeJump
@@ -697,12 +793,13 @@ home: DashArea
 		speed Climb DoubleJump
 		extended Climb
 home: DashPlantAccess
-	-- anchor point: on the ledge next to the plant
+	-- anchor: on the ledge next to the plant, or within grenade throw range
 	pickup: DashAreaPlant
 		normal ChargeFlame
 		normal Grenade
 		cdash-farming Dash
 home: RazielNoArea
+	-- anchor: on the ledge right before the boulder chase
 	pickup: RazielNo
 	pickup: BlackrootBoulderExp
 		normal Dash Stomp
@@ -1177,15 +1274,6 @@ home: MobileGumoHideoutPlants
 home: HideoutRedirect
 	pickup: GumoHideoutRedirectEnergyCell
 	pickup: GumoHideoutRedirectExp
-home: DeathGauntletRoof
-	pickup: DeathGauntletRoofHealthCell
-	conn: DeathGauntletRoofPlantAccess
-		normal ChargeFlame
-		normal Grenade
-		cdash Dash
-	conn: DeathGauntlet
-home: DeathGauntletRoofPlantAccess
-	pickup: DeathGauntletRoofPlant
 home: LowerGinsoTree
 	pickup: LowerGinsoHiddenExp
 	pickup: LowerGinsoKeystone1
