@@ -2142,7 +2142,7 @@ home: UpperSorrow
 	conn: MiddleSorrow
 	conn: SunstoneArea
 		glitched: Glide ChargeJump
-	conn: SorrowTeleporter:
+	conn: SorrowTeleporter
 		glitched: Glide ChargeJump Climb
 	conn: ChargeJumpDoor
 		normal Keystone=4
