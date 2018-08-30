@@ -371,6 +371,7 @@ home: LeftGlades
 		normal Climb
 		normal Bash Grenade
 		lure-hard Bash
+	conn: GladesMain
 	conn: UpperLeftGlades
 		normal WallJump
 		normal Climb
@@ -387,6 +388,7 @@ home: UpperLeftGlades
 		extended DoubleJump
 	pickup: LeftGladesKeystone
 	pickup: LeftGladesMapstone
+	conn: LeftGlades
 home: DeathGauntletDoor
 	conn: SunkenGladesRunaway
 	conn: DeathGauntlet
@@ -398,8 +400,6 @@ home: DeathGauntletDoor
 		normal WallJump Water
 		normal Climb Water
 		normal Bash Water
-		-- these speed paths assume you regroup before jumping in the water
-		-- and then only take a 2-damage swim, possibly killing the slime
 		speed WallJump Health=4
 		speed Climb Health=4
 		speed Bash Health=4
@@ -448,6 +448,17 @@ home: DeathGauntlet
 		timed-level WallJump
 		timed-level Climb
 		timed-level ChargeJump Bash
+home: DeathGauntletRoof
+	pickup: DeathGauntletRoofHealthCell
+	conn: DeathGauntletRoofPlantAccess
+	conn: DeathGauntlet
+		normal Stomp
+		lure Free
+home: DeathGauntletRoofPlantAccess
+	pickup: DeathGauntletRoofPlant
+		normal ChargeFlame
+		normal Grenade
+		cdash Dash
 home: SpiritCavernsDoor
 	conn: SpiritCaverns
 		normal Climb
@@ -531,15 +542,19 @@ home: GladesLaserArea
 		timed-level Energy=2
 home: ChargeFlameArea
 	pickup: ChargeFlameSkillTree
+		normal WallJump
+		normal Climb
+		normal Stomp
+		normal ChargeJump
+		normal Grenade
+		normal ChargeFlame
+		cdash-farming Dash
 	pickup: ChargeFlameAreaPlant
 		normal ChargeFlame
 		normal Grenade
 		cdash-farming Dash
 	conn: SpiritTreeRefined
-		ALL ChargeJump
-		normal ChargeFlame
-		normal Grenade
-		speed Stomp
+		normal ChargeJump
 	conn: LowerChargeFlameArea
 home: LowerChargeFlameArea
 	pickup: ChargeFlameAreaExp
@@ -553,8 +568,8 @@ home: LowerChargeFlameArea
 		normal Climb
 		normal ChargeJump
 		normal Bash Grenade
-		lure-hard Bash Stomp
-		lure-hard Bash ChargeFlame
+		dbash Bash Stomp
+		dbash Bash ChargeFlame
 		cdash-farming Bash Dash
 home: SpiritTreeRefined
 	conn: ChargeFlameTree
@@ -1177,15 +1192,6 @@ home: MobileGumoHideoutPlants
 home: HideoutRedirect
 	pickup: GumoHideoutRedirectEnergyCell
 	pickup: GumoHideoutRedirectExp
-home: DeathGauntletRoof
-	pickup: DeathGauntletRoofHealthCell
-	conn: DeathGauntletRoofPlantAccess
-		normal ChargeFlame
-		normal Grenade
-		cdash Dash
-	conn: DeathGauntlet
-home: DeathGauntletRoofPlantAccess
-	pickup: DeathGauntletRoofPlant
 home: LowerGinsoTree
 	pickup: LowerGinsoHiddenExp
 	pickup: LowerGinsoKeystone1
