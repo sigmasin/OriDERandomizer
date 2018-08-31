@@ -153,6 +153,7 @@ class Connection:
             score = 0
             energy = 0
             health = 0
+            ability = 0
             for abil in self.requirements[i]:
                 if abil == "EC":
                     energy += 1
@@ -161,6 +162,10 @@ class Connection:
                 elif abil == "HC":
                     health += 1
                     if inventory["HC"] < health:
+                        score += costs[abil.strip()]
+                elif abil == "AC":
+                    ability += 1
+                    if inventory["AC"] < health:
                         score += costs[abil.strip()]
                 else:
                     score += costs[abil.strip()]
@@ -388,7 +393,7 @@ def assign_random(recurseCount = 0):
 
 def assign(item):
     itemPool[item] = max(itemPool[item]-1,0)
-    if item == "EC" or item == "KS" or item == "HC":
+    if item == "EC" or item == "KS" or item == "HC" or item == "AC":
         if costs[item] > 0:
             costs[item] -= 1
     elif item == "WaterVeinShard" or item == "GumonSealShard" or item == "SunstoneShard":
@@ -781,6 +786,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         "Free": 0,
         "MS": 0,
         "KS": 2,
+        "AC": 12,
         "EC": 6,
         "HC": 12,
         "WallJump": 13,

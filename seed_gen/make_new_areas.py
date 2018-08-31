@@ -55,6 +55,8 @@ def AddRequirement(tokens):
 					pickup = 'EC'
 				elif pickup == 'Keystone':
 					pickup = 'KS'
+				elif pickup == 'Ability':
+					pickup = 'AC'
 				req_text += pickup
 			continue
 

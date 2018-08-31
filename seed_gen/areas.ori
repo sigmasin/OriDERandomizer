@@ -1787,8 +1787,8 @@ home: ValleyPostStompDoor
 		normal Bash Grenade
 		extended-damage Stomp ChargeJump DoubleJump WallJump Health=7
 		dbash Bash
-		extreme Stomp WallJump DoubleJump ChargeJump
-		extreme Stomp WallJump DoubleJump Health=11
+		extreme Stomp WallJump DoubleJump ChargeJump Ability=12
+		extreme Stomp WallJump DoubleJump Health=11 Ability=12
 home: ValleyTeleporter
 -- anchored on the valley TP, kill plane is active
 	conn: ValleyPostStompDoor
@@ -1809,15 +1809,16 @@ home: ValleyTeleporter
 		dboost WallJump Glide Health=4
 		dboost Climb Glide Health=4
 		gjump Climb ChargeJump Grenade
-		cdash Dash
-		extreme DoubleJump
+		cdash Dash Ability=6
+		extreme DoubleJump Ability=12
 home: ValleyRight
 -- anchored below the bird stomp cell
 -- no point in connecting to ValleyTeleporter, it's a dead end
 	-- just catching a path that didn't make sense from ValleyTeleporter
 	conn: ValleyPostStompDoor
 		dboost DoubleJump Health=4
-		extreme Health=5
+		extreme Health=7
+		extreme Health=5 Ability=12
 	conn: ValleyStomplessApproach
 		normal WallJump DoubleJump
 		normal WallJump Bash
@@ -1871,8 +1872,7 @@ home: ValleyMain
 	conn: WilhelmLedge
 		normal Wind Glide
 		normal Bash
-		cdash Dash Energy=3
-		cdash Dash DoubleJump
+		cdash Dash Energy=2
 		gjump ChargeJump Climb Grenade
 	conn: ValleyKuroPerch
 		normal Glide
