@@ -4122,6 +4122,60 @@
       </Connection>
     </Connections>
   </Area>
+  <Area name="GrenadeArea">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="GrenadeArea"/>
+        <Target name="GrenadeSkillTree"/>
+        <Requirements>
+          <Requirement mode="normal">Dash+WallJump</Requirement>
+          <Requirement mode="normal">Dash+Climb</Requirement>
+          <Requirement mode="normal">Dash+ChargeJump</Requirement>
+          <Requirement mode="normal">Dash+Bash+Grenade</Requirement>
+          <Requirement mode="speed">Bash+Grenade</Requirement>
+          <Requirement mode="extended">Dash+Bash</Requirement>
+          <Requirement mode="dbash">Bash+WallJump</Requirement>
+          <Requirement mode="dbash">Bash+Climb</Requirement>
+          <Requirement mode="dbash">Bash+DoubleJump</Requirement>
+          <Requirement mode="dbash">Bash+ChargeJump</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+          <Requirement mode="extreme">DoubleJump+WallJump</Requirement>
+          <Requirement mode="extreme">DoubleJump+Climb</Requirement>
+          <Requirement mode="extreme">ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GrenadeArea"/>
+        <Target name="GrenadeAreaExp"/>
+        <Requirements>
+          <Requirement mode="normal">Dash+WallJump+Glide</Requirement>
+          <Requirement mode="normal">Dash+Climb+Glide</Requirement>
+          <Requirement mode="normal">Dash+Bash+Glide</Requirement>
+          <Requirement mode="normal">ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="dboost-light">ChargeJump</Requirement>
+          <Requirement mode="speed">Dash+DoubleJump</Requirement>
+          <Requirement mode="dbash">Bash+WallJump</Requirement>
+          <Requirement mode="dbash">Bash+Climb</Requirement>
+          <Requirement mode="dbash">Bash+DoubleJump</Requirement>
+          <Requirement mode="dbash">Bash+ChargeJump</Requirement>
+          <Requirement mode="cdash">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GrenadeArea"/>
+        <Target name="GrenadeAreaAbilityCell"/>
+        <Requirements>
+          <Requirement mode="normal">Dash+Bash+Grenade</Requirement>
+          <Requirement mode="normal">Dash+ChargeJump+Grenade</Requirement>
+          <Requirement mode="speed">Bash+Grenade</Requirement>
+          <Requirement mode="cdash">Dash+Grenade</Requirement>
+          <Requirement mode="extreme">ChargeJump+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
   <Area name="LowerBlackroot">
     <Locations/>
     <Connections>
@@ -4186,64 +4240,10 @@
         <Target name="LostGrove"/>
         <Requirements>
           <Requirement mode="normal">WallJump+Grenade</Requirement>
-          <Requirement mode="normal">DoubleJump+Grenade</Requirement>
           <Requirement mode="normal">Climb+Grenade</Requirement>
           <Requirement mode="normal">ChargeJump+Grenade</Requirement>
           <Requirement mode="normal">Bash+Grenade</Requirement>
-        </Requirements>
-      </Connection>
-    </Connections>
-  </Area>
-  <Area name="GrenadeArea">
-    <Locations/>
-    <Connections>
-      <Connection>
-        <Home name="GrenadeArea"/>
-        <Target name="GrenadeSkillTree"/>
-        <Requirements>
-          <Requirement mode="normal">Dash+WallJump</Requirement>
-          <Requirement mode="normal">Dash+Climb</Requirement>
-          <Requirement mode="normal">Dash+ChargeJump</Requirement>
-          <Requirement mode="normal">Dash+Bash+Grenade</Requirement>
-          <Requirement mode="speed">Bash+Grenade</Requirement>
-          <Requirement mode="extended">Dash+Bash</Requirement>
-          <Requirement mode="dbash">Bash+WallJump</Requirement>
-          <Requirement mode="dbash">Bash+Climb</Requirement>
-          <Requirement mode="dbash">Bash+DoubleJump</Requirement>
-          <Requirement mode="dbash">Bash+ChargeJump</Requirement>
-          <Requirement mode="cdash">Dash</Requirement>
-          <Requirement mode="extreme">DoubleJump+WallJump</Requirement>
-          <Requirement mode="extreme">DoubleJump+Climb</Requirement>
-          <Requirement mode="extreme">ChargeJump</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="GrenadeArea"/>
-        <Target name="GrenadeAreaExp"/>
-        <Requirements>
-          <Requirement mode="normal">Dash+WallJump+Glide</Requirement>
-          <Requirement mode="normal">Dash+Climb+Glide</Requirement>
-          <Requirement mode="normal">Dash+Bash+Glide</Requirement>
-          <Requirement mode="normal">ChargeJump+DoubleJump</Requirement>
-          <Requirement mode="normal">Bash+Grenade</Requirement>
-          <Requirement mode="dboost-light">ChargeJump</Requirement>
-          <Requirement mode="speed">Dash+DoubleJump</Requirement>
-          <Requirement mode="dbash">Bash+WallJump</Requirement>
-          <Requirement mode="dbash">Bash+Climb</Requirement>
-          <Requirement mode="dbash">Bash+DoubleJump</Requirement>
-          <Requirement mode="dbash">Bash+ChargeJump</Requirement>
-          <Requirement mode="cdash">Dash</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="GrenadeArea"/>
-        <Target name="GrenadeAreaAbilityCell"/>
-        <Requirements>
-          <Requirement mode="normal">Dash+Bash+Grenade</Requirement>
-          <Requirement mode="normal">Dash+ChargeJump+Grenade</Requirement>
-          <Requirement mode="speed">Bash+Grenade</Requirement>
-          <Requirement mode="cdash">Dash+Grenade</Requirement>
-          <Requirement mode="extreme">ChargeJump+Grenade</Requirement>
+          <Requirement mode="extended">DoubleJump+Grenade</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -4262,38 +4262,56 @@
       </Connection>
       <Connection>
         <Home name="LostGrove"/>
-        <Target name="FinalBlackRoot"/>
+        <Target name="LostGroveExit"/>
         <Requirements>
-          <Requirement mode="normal">Grenade+Bash</Requirement>
-          <Requirement mode="extended-damage">Grenade+ChargeJump+Dash+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="extended-damage">Grenade+ChargeJump+Glide+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="extended-damage">Grenade+ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="normal">Grenade+Bash+DoubleJump+WallJump</Requirement>
+          <Requirement mode="normal">Grenade+Bash+DoubleJump+Climb</Requirement>
+          <Requirement mode="dboost-light">Grenade+ChargeJump+DoubleJump+WallJump</Requirement>
+          <Requirement mode="dboost-light">Grenade+ChargeJump+DoubleJump+Climb</Requirement>
+          <Requirement mode="dboost">Grenade+ChargeJump+WallJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dboost">Grenade+ChargeJump+Climb+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended">Grenade+Bash+WallJump</Requirement>
+          <Requirement mode="extended">Grenade+Bash+Climb</Requirement>
+          <Requirement mode="extended">Grenade+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="extended-damage">Grenade+Dash+ChargeJump+WallJump</Requirement>
+          <Requirement mode="extended-damage">Grenade+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="cdash">Grenade+Dash+ChargeJump+Climb</Requirement>
+          <Requirement mode="extreme">Grenade+DoubleJump+WallJump</Requirement>
+          <Requirement mode="extreme">Grenade+DoubleJump+Climb</Requirement>
+          <Requirement mode="gjump">Grenade+ChargeJump+Climb</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
-  <Area name="FinalBlackRoot">
+  <Area name="LostGroveExit">
     <Locations/>
     <Connections>
       <Connection>
-        <Home name="FinalBlackRoot"/>
+        <Home name="LostGroveExit"/>
         <Target name="LostGroveAbilityCell"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="FinalBlackRoot"/>
+        <Home name="LostGroveExit"/>
         <Target name="LostGroveHiddenExp"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">DoubleJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="FinalBlackRoot"/>
+        <Home name="LostGroveExit"/>
         <Target name="LostGroveTeleporter"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
+          <Requirement mode="normal">WallJump</Requirement>
+          <Requirement mode="normal">Climb</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+          <Requirement mode="normal">ChargeJump</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -7028,19 +7046,19 @@
           <Requirement mode="normal">Bash+DoubleJump+Climb</Requirement>
           <Requirement mode="normal">Bash+Grenade+WallJump</Requirement>
           <Requirement mode="normal">Bash+Grenade+Climb</Requirement>
-          <Requirement mode="normal">Dash+DoubleJump+WallJump</Requirement>
-          <Requirement mode="normal">Dash+DoubleJump+Climb</Requirement>
           <Requirement mode="normal">ChargeJump+DoubleJump+WallJump</Requirement>
           <Requirement mode="normal">ChargeJump+DoubleJump+Climb</Requirement>
-          <Requirement mode="extended">Climb+ChargeJump+Grenade</Requirement>
+          <Requirement mode="speed">Dash+DoubleJump+WallJump</Requirement>
+          <Requirement mode="speed">Dash+DoubleJump+Climb</Requirement>
+          <Requirement mode="gjump">Climb+ChargeJump+Grenade</Requirement>
           <Requirement mode="extended-damage">Climb+ChargeJump+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="extended-damage">Climb+DoubleJump+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="extended-damage">WallJump+DoubleJump+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="extended-damage">WallJump+ChargeJump+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="cdash">Dash</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
-          <Requirement mode="extreme">Climb+DoubleJump</Requirement>
           <Requirement mode="extreme">WallJump+DoubleJump</Requirement>
+          <Requirement mode="extreme">Climb+DoubleJump</Requirement>
           <Requirement mode="extreme">WallJump+ChargeJump</Requirement>
           <Requirement mode="extreme">Climb+ChargeJump</Requirement>
         </Requirements>
@@ -7056,7 +7074,9 @@
           <Requirement mode="speed">Bash+Dash+DoubleJump+Climb</Requirement>
           <Requirement mode="extended">Bash+ChargeJump+WallJump</Requirement>
           <Requirement mode="extended">Bash+ChargeJump+Climb</Requirement>
-          <Requirement mode="extended">Climb+ChargeJump+Grenade</Requirement>
+          <Requirement mode="gjump">Climb+ChargeJump+Grenade</Requirement>
+          <Requirement mode="extended-damage">Bash+WallJump+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">Bash+Climb+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="cdash">Dash</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
@@ -7069,7 +7089,7 @@
           <Requirement mode="speed">Bash+ChargeJump+WallJump</Requirement>
           <Requirement mode="speed">Bash+ChargeJump+Climb</Requirement>
           <Requirement mode="extended">ChargeJump+Climb</Requirement>
-          <Requirement mode="extended-damage">ChargeJump+WallJump+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">ChargeJump+WallJump+DoubleJump+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>
@@ -7133,6 +7153,7 @@
         <Requirements>
           <Requirement mode="normal">Glide+Bash</Requirement>
           <Requirement mode="normal">Glide+ChargeJump</Requirement>
+          <Requirement mode="gjump">Climb+ChargeJump+Grenade</Requirement>
           <Requirement mode="cdash">Dash+Bash</Requirement>
           <Requirement mode="cdash">Dash+ChargeJump+EC+EC</Requirement>
           <Requirement mode="cdash">Dash+Stomp+ChargeJump</Requirement>
@@ -7149,7 +7170,7 @@
           <Requirement mode="normal">Climb+ChargeJump</Requirement>
           <Requirement mode="extended">Bash+Glide</Requirement>
           <Requirement mode="cdash">Dash</Requirement>
-          <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
           <Requirement mode="glitched">ChargeJump+Glide</Requirement>
         </Requirements>
       </Connection>
@@ -7158,13 +7179,6 @@
         <Target name="SunstoneArea"/>
         <Requirements>
           <Requirement mode="dbash">Bash+Glide</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="LowerSorrow"/>
-        <Target name="SorrowTeleporter"/>
-        <Requirements>
-          <Requirement mode="dbash">Bash+Glide+ChargeJump+Climb</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -7177,7 +7191,7 @@
         <Target name="SorrowMapstone"/>
         <Requirements>
           <Requirement mode="normal">Bash</Requirement>
-          <Requirement mode="extended">Climb+ChargeJump+Grenade</Requirement>
+          <Requirement mode="gjump">Climb+ChargeJump+Grenade</Requirement>
           <Requirement mode="cdash">Dash</Requirement>
         </Requirements>
       </Connection>
@@ -7300,7 +7314,7 @@
           <Requirement mode="normal">ChargeJump+Climb</Requirement>
           <Requirement mode="normal">Bash+Grenade</Requirement>
           <Requirement mode="extended">ChargeJump+WallJump</Requirement>
-          <Requirement mode="extreme">Bash+Dash</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -7309,7 +7323,7 @@
         <Requirements>
           <Requirement mode="normal">Glide</Requirement>
           <Requirement mode="extended-damage">ChargeJump+Climb+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="extreme">Bash+Dash</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
           <Requirement mode="extreme">ChargeJump+DoubleJump+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
@@ -7320,7 +7334,7 @@
           <Requirement mode="normal">Glide</Requirement>
           <Requirement mode="extended-damage">ChargeJump+Climb+DoubleJump+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="extended-damage">ChargeJump+Climb+Dash+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="extreme">Bash+Dash</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
           <Requirement mode="extreme">ChargeJump+DoubleJump+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
@@ -7330,7 +7344,7 @@
         <Requirements>
           <Requirement mode="normal">Glide</Requirement>
           <Requirement mode="extended-damage">ChargeJump+Climb+DoubleJump+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="extreme">Bash+Dash</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
           <Requirement mode="extreme">ChargeJump+DoubleJump+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
@@ -7350,12 +7364,10 @@
           <Requirement mode="cdash">Bash+Dash+Climb</Requirement>
           <Requirement mode="cdash">Bash+Dash+WallJump</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
-          <Requirement mode="extreme">Glide+DoubleJump+Climb</Requirement>
-          <Requirement mode="extreme">Glide+DoubleJump+WallJump</Requirement>
+          <Requirement mode="extreme">ChargeJump+Stomp+Glide+DoubleJump+WallJump</Requirement>
           <Requirement mode="extreme">ChargeJump+Stomp+Dash+Climb</Requirement>
           <Requirement mode="extreme">ChargeJump+Stomp+Dash+WallJump</Requirement>
           <Requirement mode="extreme">ChargeJump+Stomp+DoubleJump+Climb</Requirement>
-          <Requirement mode="extreme">ChargeJump+Stomp+DoubleJump+WallJump+Glide</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -7367,7 +7379,13 @@
         <Home name="LeftSorrowMiddleDoor"/>
         <Target name="MiddleSorrow"/>
         <Requirements>
-          <Requirement mode="normal">Glide+Bash</Requirement>
+          <Requirement mode="normal">Glide+Bash+Stomp+WallJump</Requirement>
+          <Requirement mode="normal">Glide+Bash+Stomp+Climb</Requirement>
+          <Requirement mode="normal">DoubleJump+Bash+Stomp+WallJump</Requirement>
+          <Requirement mode="normal">DoubleJump+Bash+Stomp+Climb</Requirement>
+          <Requirement mode="speed">Bash+Stomp+WallJump</Requirement>
+          <Requirement mode="speed">Bash+Stomp+Climb</Requirement>
+          <Requirement mode="speed">Bash+Stomp+DoubleJump</Requirement>
           <Requirement mode="extended-damage">ChargeJump+Climb+DoubleJump+Bash+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="extreme">Bash+Dash+Stomp</Requirement>
           <Requirement mode="extreme">Bash+Dash+ChargeJump+Climb</Requirement>
@@ -7387,7 +7405,7 @@
           <Requirement mode="normal">Glide</Requirement>
           <Requirement mode="normal">Bash+Grenade+WallJump</Requirement>
           <Requirement mode="normal">Bash+Grenade+Climb</Requirement>
-          <Requirement mode="extended">ChargeJump+Climb+Grenade</Requirement>
+          <Requirement mode="gjump">ChargeJump+Climb+Grenade</Requirement>
           <Requirement mode="extended-damage">ChargeJump+Climb+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="extended-damage">ChargeJump+WallJump+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="extreme">ChargeJump+Climb+HC+HC+HC+HC</Requirement>
@@ -7425,13 +7443,6 @@
           <Requirement mode="extended">Bash+Glide</Requirement>
         </Requirements>
       </Connection>
-      <Connection>
-        <Home name="MiddleSorrow"/>
-        <Target name="SorrowTeleporter"/>
-        <Requirements>
-          <Requirement mode="extended">Bash+Glide+ChargeJump+Climb</Requirement>
-        </Requirements>
-      </Connection>
     </Connections>
   </Area>
   <Area name="UpperSorrow">
@@ -7462,10 +7473,10 @@
         <Target name="UpperSorrowLeftKeystone"/>
         <Requirements>
           <Requirement mode="normal">Glide</Requirement>
-          <Requirement mode="extended">Climb+ChargeJump+Grenade</Requirement>
           <Requirement mode="extended">Bash+Grenade</Requirement>
           <Requirement mode="extended-damage">ChargeJump+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="cdash">Dash+EC+EC</Requirement>
+          <Requirement mode="extreme">Climb+ChargeJump+Grenade</Requirement>
           <Requirement mode="extreme">ChargeJump+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
@@ -7489,6 +7500,14 @@
         <Target name="UpperSorrowFarLeftKeystone"/>
         <Requirements>
           <Requirement mode="normal">Glide</Requirement>
+          <Requirement mode="extreme">ChargeJump+DoubleJump+Dash+WallJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">ChargeJump+DoubleJump+Dash+Climb+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Bash+Grenade+DoubleJump+Dash+WallJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Bash+Grenade+DoubleJump+Dash+Climb+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Bash+Grenade+ChargeJump+DoubleJump+WallJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Bash+Grenade+ChargeJump+DoubleJump+Climb+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">ChargeJump+DoubleJump+WallJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">ChargeJump+DoubleJump+Climb+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -7496,6 +7515,20 @@
         <Target name="MiddleSorrow"/>
         <Requirements>
           <Requirement mode="normal">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperSorrow"/>
+        <Target name="SunstoneArea"/>
+        <Requirements>
+          <Requirement mode="glitched:">Glide+ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperSorrow"/>
+        <Target name="SorrowTeleporter"/>
+        <Requirements>
+          <Requirement mode="glitched:">Glide+ChargeJump+Climb</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -7538,8 +7571,14 @@
         <Home name="ChargeJumpArea"/>
         <Target name="AboveChargeJumpArea"/>
         <Requirements>
-          <Requirement mode="normal">ChargeJump+Bash+Glide+Climb</Requirement>
-          <Requirement mode="normal">ChargeJump+Bash+Glide+WallJump</Requirement>
+          <Requirement mode="normal">ChargeJump+Bash+Climb</Requirement>
+          <Requirement mode="normal">ChargeJump+Bash+DoubleJump+WallJump</Requirement>
+          <Requirement mode="gjump">ChargeJump+Climb+Grenade</Requirement>
+          <Requirement mode="extended-damage">ChargeJump+Bash+WallJump+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">ChargeJump+Dash+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="cdash">ChargeJump+Dash+Climb</Requirement>
+          <Requirement mode="extreme">Bash+Climb</Requirement>
+          <Requirement mode="extreme">Bash+WallJump</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -7552,6 +7591,36 @@
         <Target name="AboveChargeJumpAbilityCell"/>
         <Requirements>
           <Requirement mode="normal">ChargeJump</Requirement>
+          <Requirement mode="normal">Bash+WallJump</Requirement>
+          <Requirement mode="normal">Bash+Climb</Requirement>
+          <Requirement mode="normal">Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="AboveChargeJumpArea"/>
+        <Target name="SorrowTeleporter"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump+Climb</Requirement>
+          <Requirement mode="normal">Bash+WallJump+DoubleJump+Glide</Requirement>
+          <Requirement mode="normal">Bash+Climb+Grenade</Requirement>
+          <Requirement mode="extended-damage">ChargeJump+WallJump+Dash+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="AboveChargeJumpArea"/>
+        <Target name="ChargeJumpArea"/>
+        <Requirements>
+          <Requirement mode="lure">Bash+Stomp+WallJump</Requirement>
+          <Requirement mode="lure">Bash+Stomp+Climb</Requirement>
+          <Requirement mode="cdash">Dash+Stomp</Requirement>
+          <Requirement mode="gjump">ChargeJump+Climb+Grenade+Dash</Requirement>
+          <Requirement mode="gjump">ChargeJump+Climb+Grenade+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">ChargeJump+Dash+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">ChargeJump+Bash+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dbash">Bash+WallJump</Requirement>
+          <Requirement mode="dbash">Bash+Climb</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -7561,18 +7630,57 @@
     <Connections>
       <Connection>
         <Home name="SorrowTeleporter"/>
-        <Target name="SunstoneArea"/>
+        <Target name="BelowSunstoneArea"/>
         <Requirements>
-          <Requirement mode="normal">ChargeJump+Climb</Requirement>
-          <Requirement mode="extended">Bash+Glide</Requirement>
-          <Requirement mode="extended">Bash+Dash</Requirement>
+          <Requirement mode="normal">ChargeJump+Climb+Glide</Requirement>
+          <Requirement mode="normal">ChargeJump+Climb+DoubleJump</Requirement>
+          <Requirement mode="speed">ChargeJump+Climb+Bash</Requirement>
+          <Requirement mode="gjump">ChargeJump+Climb+Grenade</Requirement>
+          <Requirement mode="extended-damage">ChargeJump+Climb+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">Stomp+Bash+Grenade+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extended-damage">ChargeJump+WallJump+Glide+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">ChargeJump+Climb</Requirement>
+          <Requirement mode="extreme">Stomp+Bash+Climb</Requirement>
+          <Requirement mode="extreme">Stomp+Bash+WallJump</Requirement>
+          <Requirement mode="extreme">ChargeJump+Bash</Requirement>
+          <Requirement mode="extreme">WallJump+DoubleJump+Stomp+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="SorrowTeleporter"/>
+        <Target name="AboveChargeJumpArea"/>
+        <Requirements>
+          <Requirement mode="normal">ChargeJump+Climb+Stomp</Requirement>
+          <Requirement mode="extended">Stomp+WallJump+DoubleJump+Glide</Requirement>
+          <Requirement mode="extended">ChargeJump+Climb</Requirement>
+          <Requirement mode="extended-damage">ChargeJump+WallJump+DoubleJump+Glide+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Stomp+Bash</Requirement>
+          <Requirement mode="extreme">ChargeJump+Bash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="BelowSunstoneArea">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="BelowSunstoneArea"/>
+        <Target name="SunstoneArea"/>
+        <Requirements>
+          <Requirement mode="normal">Stomp+Glide</Requirement>
+          <Requirement mode="extended">ChargeJump+Climb+Glide</Requirement>
+          <Requirement mode="gjump">ChargeJump+Climb+Grenade</Requirement>
+          <Requirement mode="extreme">ChargeJump+Climb+DoubleJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="BelowSunstoneArea"/>
         <Target name="UpperSorrow"/>
         <Requirements>
-          <Requirement mode="normal">Free</Requirement>
+          <Requirement mode="normal">Stomp</Requirement>
+          <Requirement mode="extended">ChargeJump+Climb</Requirement>
+          <Requirement mode="extreme">Bash</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -7602,6 +7710,14 @@
         <Requirements>
           <Requirement mode="normal">Stomp</Requirement>
           <Requirement mode="extended">Climb+ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunstoneArea"/>
+        <Target name="SorrowTeleporter"/>
+        <Requirements>
+          <Requirement mode="normal">Climb+ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="extended-damage">ChargeJump+WallJump+DoubleJump+HC+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
