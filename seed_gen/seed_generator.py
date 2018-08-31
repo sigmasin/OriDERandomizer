@@ -301,11 +301,11 @@ def prepare_path(free_space):
                 gumonSealShard = 0
                 sunstoneShard = 0
                 for req in req_set:
-                    # for paired randomizer -- if the item isn't yours to assign, skip connection
-                    if itemPool[req] == 0:
-                        requirements = []
-                        break
                     if costs[req] > 0:
+                        # for paired randomizer -- if the item isn't yours to assign, skip connection
+                        if itemPool[req] == 0:
+                            requirements = []
+                            break
                         if req == "EC":
                             energy += 1
                             if energy > inventory["EC"]:
@@ -1257,7 +1257,7 @@ def main():
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--preset", help="Choose a preset group of paths for the generator to use", choices=["casual", "standard", "expert", "master", "hard", "ohko", "0xp", "glitched"])
-    parser.add_argument("--custom-logic", help="Customize paths that the generator will use, comma-separated: normal,speed,dbash,extended,extended-damage,lure,speed-lure,lure-hard,dboost,dboost-light,dboost-hard,cdash,cdash-farming,extreme,timed-level,glitched")
+    parser.add_argument("--custom-logic", help="Customize paths that the generator will use, comma-separated: normal,speed,dbash,extended,extended-damage,lure,speed-lure,lure-hard,dboost,dboost-light,dboost-hard,gjump,cdash,cdash-farming,extreme,timed-level,glitched")
     parser.add_argument("--seed", help="Seed number (default 1)", type=int, default=1)
     parser.add_argument("--count", help="Number of seeds to generate (default 1)", type=int, default=1)
     parser.add_argument("--hard", help="Enable hard mode", action="store_true")
@@ -1292,11 +1292,11 @@ def main():
         "standard": ["normal", "speed", "lure", "dboost-light"],
         "dboost": ["normal", "speed", "lure", "dboost", "dboost-light"],
         "expert": ["normal", "speed", "lure", "speed-lure", "dboost", "dboost-light", "cdash", "extended", "extended-damage"],
-        "master": ["normal", "speed", "lure", "speed-lure", "dboost", "dboost-light", "dboost-hard", "cdash", "dbash", "extended", "extended-damage", "lure-hard", "extreme"],
+        "master": ["normal", "speed", "lure", "speed-lure", "dboost", "dboost-light", "dboost-hard", "cdash", "gjump", "dbash", "extended", "extended-damage", "lure-hard", "extreme"],
         "hard": ["normal", "speed", "lure",  "dboost-light", "cdash", "dbash", "extended"],
         "ohko": ["normal", "speed", "lure", "cdash", "dbash", "extended"],
         "0xp": ["normal", "speed", "lure", "dboost-light"],
-        "glitched": ["normal", "speed", "lure", "speed-lure", "dboost", "dboost-light", "dboost-hard", "cdash", "dbash", "extended", "lure-hard", "timed-level", "glitched", "extended-damage", "extreme"]
+        "glitched": ["normal", "speed", "lure", "speed-lure", "dboost", "dboost-light", "dboost-hard", "cdash", "gjump", "dbash", "extended", "lure-hard", "timed-level", "glitched", "extended-damage", "extreme"]
     }
 
     if args.preset:
