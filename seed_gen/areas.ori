@@ -365,8 +365,8 @@ home: SunkenGladesRunaway
 		normal Grenade Bash
 	conn: HollowGrove
 		normal TPSwamp
-	conn: ValleyRight
-		normal TPValley Bash WallJump
+	conn: ValleyTeleporter
+		normal TPValley
 	conn: Forlorn
 		ALL ForlornKey TPForlorn
 		dboost-light WallJump DoubleJump ChargeJump
@@ -374,12 +374,8 @@ home: SunkenGladesRunaway
 		dboost-light Glide ChargeJump
 		dboost-light Grenade Bash
 		extended-damage Glide Bash
-	conn: SunstoneArea
-		ALL TPSorrow Glide
-		normal Climb ChargeJump Stomp
-		extended-damage Stomp ChargeJump Dash Health=5
-		dbash Stomp Bash
-		dbash ChargeJump Bash
+	conn: SorrowTeleporter
+		normal TPSorrow
 	-- This path temporarily removed until Grotto can be refactored
 	--conn: GumoHideoutMap
 	--	normal TPGrotto Mapstone
@@ -1711,20 +1707,8 @@ home: HoruEscapeInnerDoor
 		normal Climb Dash Stomp Glide Bash ChargeJump Grenade Water GinsoKey ForlornKey HoruKey
 		extended Dash Stomp Glide Bash ChargeJump Grenade GinsoKey ForlornKey HoruKey
 home: ValleyEntry
+-- anchored just left of the charge flame wall to valley
 	pickup: ValleyEntryAbilityCell
-	pickup: ValleyRightSwimExp
-		normal Water Stomp WallJump DoubleJump
-		normal Water Stomp WallJump Bash
-		normal Water Stomp WallJump ChargeJump
-		normal Water Stomp Climb ChargeJump
-		normal Water Stomp Climb DoubleJump
-		dboost Stomp WallJump DoubleJump
-		dboost Stomp WallJump Bash
-		dboost Stomp WallJump ChargeJump
-		dboost Stomp Climb ChargeJump
-		dboost Stomp Climb DoubleJump
-		extended Bash Water
-		extended-damage Bash
 	conn: ValleyEntryTree
 		normal WallJump
 		normal Bash Climb
@@ -1736,60 +1720,142 @@ home: ValleyEntry
 		normal ChargeJump ChargeFlame
 		extended WallJump ChargeFlame
 		extended Grenade
-	conn: ValleyRight
-		normal Stomp Bash WallJump
-		normal Stomp Bash DoubleJump
-		normal Stomp Bash Climb ChargeJump
-		normal Stomp Bash Grenade
-		extended Bash DoubleJump
-		extended Bash Climb ChargeJump
+	conn: ValleyPostStompDoor
+		normal Stomp WallJump DoubleJump
+		normal Stomp WallJump Bash
+		normal Stomp WallJump ChargeJump
+		normal Stomp Climb ChargeJump
+		normal Stomp Climb DoubleJump
 		extended Bash WallJump
-		extended Bash Grenade
-		extended-damage Stomp ChargeJump DoubleJump WallJump Health=7
-		dbash Bash
-		extreme Stomp WallJump DoubleJump ChargeJump
-		extreme Stomp WallJump DoubleJump Health=11
+		extended Bash Climb ChargeJump
+		extended Bash Climb DoubleJump
+		extended-damage Bash ChargeJump Health=4
 	conn: SpiritTreeRefined
 		normal ChargeFlame
 		normal Grenade
 home: ValleyEntryTree
+-- anchored on the 100 exp on the valley entry tree
 	pickup: ValleyEntryTreeExp
 	pickup: ValleyEntryGrenadeLongSwim
-		ALL Grenade
-		normal Water
-		dboost-hard Health=14
-		dboost-hard Bash Health=13
-		extreme Health=7
+		normal Grenade Water
+		dboost-hard Grenade Health=14
+		dboost-hard Grenade Bash Health=13
+		extreme Grenade Health=7
 	conn: ValleyEntryTreePlantAccess
-		normal ChargeJump Climb ChargeFlame
-		normal ChargeJump Climb Grenade
-		normal ChargeJump DoubleJump ChargeFlame
-		normal ChargeJump DoubleJump Grenade
-		normal Bash ChargeFlame
-		normal Bash Grenade
-		normal Glide ChargeFlame
-		normal Glide Grenade
+		normal ChargeJump Climb
+		normal ChargeJump DoubleJump
+		normal Bash
+		normal Glide
+		extended Grenade
 		cdash-farming Dash
 home: ValleyEntryTreePlantAccess
 	pickup: ValleyEntryTreePlant
+		normal ChargeFlame
+		normal Grenade
+		cdash-farming Dash
+home: ValleyPostStompDoor
+-- anchored left of the stomp post door
+	pickup: ValleyRightSwimExp
+		normal Water
+		dboost Health=4
+	conn: ValleyRight
+		normal Bash WallJump
+		normal Bash Climb
+		normal Bash ChargeJump
+		normal Bash Grenade
+		extended-damage Stomp ChargeJump DoubleJump WallJump Health=7
+		dbash Bash
+		extreme Stomp WallJump DoubleJump ChargeJump
+		extreme Stomp WallJump DoubleJump Health=11
+home: ValleyTeleporter
+-- anchored on the valley TP, kill plane is active
+	conn: ValleyPostStompDoor
+		normal Bash
+		normal Glide
+		cdash Dash Energy=3
+		cdash Dash DoubleJump
+		extreme DoubleJump
+	conn: ValleyRight
+		normal Bash
+		normal Climb ChargeJump Glide
+		normal WallJump DoubleJump Glide
+		normal Climb DoubleJump Glide
+		speed Dash Glide DoubleJump WallJump
+		speed Dash Glide DoubleJump Climb
+		dboost WallJump DoubleJump Health=4
+		dboost Climb DoubleJump Health=4
+		dboost WallJump Glide Health=4
+		dboost Climb Glide Health=4
+		gjump Climb ChargeJump Grenade
+		cdash Dash
+		extreme DoubleJump
 home: ValleyRight
-	pickup: ValleyRightFastStomplessCell
-	pickup: ValleyRightExp
+-- anchored below the bird stomp cell
+-- no point in connecting to ValleyTeleporter, it's a dead end
+	-- just catching a path that didn't make sense from ValleyTeleporter
+	conn: ValleyPostStompDoor
+		dboost DoubleJump Health=4
+		extreme Health=5
+	conn: ValleyStomplessApproach
+		normal WallJump DoubleJump
+		normal WallJump Bash
+		normal Climb ChargeJump
+		normal Climb DoubleJump Bash
+		normal Bash Grenade Climb
+		cdash WallJump Dash
+home: ValleyStomplessApproach
+-- anchored left of the bird stomp cell
 	pickup: ValleyRightBirdStompCell
 		normal ChargeJump Climb
-		speed Stomp
-	conn: ValleyMain
-		normal Bash Stomp
-		extended Dash Bash
-		extended Dash Stomp
-home: ValleyMain
-	pickup: GlideSkillFeather
-	pickup: KuroPerchExp
-	pickup: MistyEntranceStompExp
-	pickup: MistyEntranceTreeExp
-	-- not fleshed out, will depend on where valley areas get set
+		speed Stomp WallJump
+		speed Stomp Climb
+		speed Stomp DoubleJump
+	pickup: ValleyRightFastStomplessCell
+		normal Glide Wind
+		lure Bash
+		dboost Climb ChargeJump Health=4
+		dboost WallJump ChargeJump Health=4
+		dboost DoubleJump ChargeJump Health=4
+		extreme WallJump DoubleJump Health=5
+		extreme Climb DoubleJump Health=7
+	pickup: ValleyRightExp
+		normal Bash
+		extended-damage ChargeJump WallJump DoubleJump Health=4
+		extended-damage ChargeJump Climb DoubleJump Health=4
+		extreme WallJump DoubleJump
+	conn: ValleyStompless
+		normal Bash
+		extended-damage ChargeJump WallJump DoubleJump Health=4
+		extended-damage ChargeJump Climb DoubleJump Health=4
+		cdash Dash WallJump DoubleJump Energy=2
+		cdash Dash Climb DoubleJump Energy=2
+		extreme WallJump DoubleJump
+home: ValleyStompless
+-- anchored at the fast stompless aim position, rocks intact
 	conn: WilhelmLedge
 		normal Bash
+		cdash Dash Energy=2
+		cdash Dash DoubleJump
+	conn: ValleyMain
+		extended Bash
+		extreme ChargeFlame
+		extreme Grenade
+--TODO Valley from here on
+home: ValleyMain
+-- anchored at the fast stompless aim position, rocks destroyed
+	pickup: GlideSkillFeather
+	pickup: MistyEntranceStompExp
+	pickup: MistyEntranceTreeExp
+	conn: WilhelmLedge
+		normal Wind Glide
+		normal Bash
+		cdash Dash Energy=3
+		cdash Dash DoubleJump
+		gjump ChargeJump Climb Grenade
+	conn: ValleyKuroPerch
+		normal Glide
+		normal Bash
+		cdash Dash
 	conn: Misty
 		normal Glide Bash
 		dboost Bash DoubleJump Health=4
@@ -1801,6 +1867,8 @@ home: ValleyMain
 	conn: LowerValley
 	conn: LowerValleyPlantApproach
 	conn: ValleyForlornApproach
+home: ValleyKuroPerch
+	pickup: KuroPerchExp
 home: LowerValley
 	pickup: ValleyThreeBirdAbilityCell
 	pickup: LowerValleyMapstone
@@ -1892,8 +1960,8 @@ home: RightForlorn
 		normal ChargeFlame
 		normal Grenade
 		cdash Dash
--- TODO backtrack connection returning to valley, 200exp below?
 home: WilhelmLedge
+-- anchored at the wilhelm frog, rocks exist
 	pickup: WilhelmExp
 		normal Climb ChargeJump
 		normal WallJump DoubleJump ChargeJump
@@ -1918,10 +1986,19 @@ home: WilhelmLedge
 		cdash Dash Climb
 		extreme WallJump DoubleJump
 		extreme Climb DoubleJump
+	conn: ValleyMain
+		normal Stomp
+		lure HoruKey
+		extended Climb ChargeJump
+	conn: ValleyKuroPerch
+		normal Stomp
+		lure HoruKey
+		extended Climb ChargeJump
 home: SorrowBashLedge
 	conn: LowerSorrow
 		normal Wind Glide
-		speed-lure Glide DoubleJump Bash Dash
+		speed-lure Glide DoubleJump Bash Dash WallJump
+		speed-lure Glide DoubleJump Bash Dash Climb
 		dbash Bash
 		extended-damage ChargeJump WallJump Health=9
 		extended-damage ChargeJump Climb Health=9
@@ -2271,8 +2348,8 @@ home: AboveChargeJumpArea
 home: SorrowTeleporter
 -- anchored on the sorrow teleporter (wall intact)
 	conn: BelowSunstoneArea
-		normal ChargeJump Climb Glide
 		normal ChargeJump Climb DoubleJump
+		speed ChargeJump Climb Glide
 		speed ChargeJump Climb Bash
 		gjump ChargeJump Climb Grenade
 		extended-damage ChargeJump Climb Health=5
