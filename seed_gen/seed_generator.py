@@ -1065,7 +1065,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
 
     outputStr += ("-280256|EC|1|Glades\n")  # first energy cell
     outputStr += ("-1680104|EX|100|Grove\n")  # glitchy 100 orb at spirit tree
-    outputStr += ("-12320248|EX|100|Forlorn\n")  # forlorn escape plant
+    outputStr += ("-12320248|SK|51|Forlorn\n")  # forlorn escape plant
     # the 2nd keystone in misty can get blocked by alt+R, so make it unimportant
     outputStr += ("-10440008|EX|100|Misty\n")
 
