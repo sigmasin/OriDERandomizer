@@ -706,6 +706,7 @@ home: SpiderSacArea
 		extended ChargeFlame
 		extended Grenade
 		extended Stomp
+		cdash Dash Ability=6
 	conn: HollowGrove
 		normal Grenade
 		normal ChargeFlame
@@ -871,8 +872,8 @@ home: GrenadeArea
 		dbash Bash DoubleJump
 		dbash Bash ChargeJump
 		cdash Dash Ability=6
-		extreme DoubleJump WallJump
-		extreme DoubleJump Climb
+		extended DoubleJump WallJump
+		extended DoubleJump Climb
 		extreme ChargeJump
 	pickup: GrenadeAreaExp
 		normal Dash WallJump Glide
@@ -1108,6 +1109,8 @@ home: MoonGrotto
 		normal WallJump ChargeJump
 		normal Climb ChargeJump
 		normal Bash Grenade
+		cdash WallJump Dash Ability=6
+		cdash Climb Dash Ability=6
 		extreme Bash
 	pickup: AboveGrottoTeleporterExp
 		normal DoubleJump
@@ -1115,6 +1118,7 @@ home: MoonGrotto
 		normal Bash Grenade
 		normal Bash WallJump
 		normal Bash Climb
+		cdash Dash Ability=6
 		extreme Bash
 	pickup: LeftGrottoTeleporterExp
 		normal WallJump DoubleJump
@@ -1691,7 +1695,7 @@ home: R3
 	pickup: HoruR3Plant
 		normal ChargeFlame
 		normal Grenade
-		cdash Dash
+		cdash Dash Ability=6
 home: R4OuterDoor
 	conn: R4InnerDoor
 	conn: HoruInnerDoor
@@ -1864,6 +1868,7 @@ home: ValleyStomplessApproach
 home: ValleyStompless
 -- anchored at the fast stompless aim position, rocks intact
 	conn: WilhelmLedge
+		normal Wind Glide
 		normal Bash
 		cdash Dash Energy=2 Ability=6
 		cdash Dash DoubleJump Ability=6
@@ -1972,7 +1977,7 @@ home: Forlorn
 	pickup: ForlornPlant
 		normal ChargeFlame
 		normal Grenade
-		cdash Dash
+		cdash Dash Ability=6
 	pickup: ForlornMap
 		normal Mapstone
 	conn: RightForlorn
@@ -1989,7 +1994,7 @@ home: RightForlorn
 	pickup: RightForlornPlant
 		normal ChargeFlame
 		normal Grenade
-		cdash Dash
+		cdash Dash Ability=6
 home: WilhelmLedge
 -- anchored at the wilhelm frog, rocks exist
 	pickup: WilhelmExp
@@ -2415,7 +2420,7 @@ home: SunstoneArea
 	pickup: SunstonePlant
 		normal ChargeFlame
 		normal Grenade
-		cdash Dash
+		cdash Dash Ability=6
 	conn: UpperSorrow
 		normal Stomp
 		extended Climb ChargeJump
