@@ -616,9 +616,23 @@ home: GladesLaserArea
 	conn: SpiritCaverns
 		normal Energy=4
 		timed-level Energy=2
-home: ChargeFlameArea
-	-- anchor: just to the right of the blue wall, right of the cflame tree
+home: ChargeFlameSkillTreeChamber
+	-- anchor: at the cflame skill tree
 	pickup: ChargeFlameSkillTree
+	conn: SpiritTreeRefined
+		normal ChargeJump
+	conn: ChargeFlameAreaStump
+		normal ChargeJump
+		normal Grenade
+		normal ChargeFlame
+		cdash Dash Ability=6
+home: ChargeFlameAreaStump
+	-- anchor: on the stump next to the plant
+	pickup: ChargeFlameAreaPlant
+		normal ChargeFlame
+		normal Grenade
+		cdash Dash Ability=6
+	conn: ChargeFlameSkillTreeChamber
 		normal WallJump
 		normal Climb
 		normal Stomp
@@ -626,12 +640,6 @@ home: ChargeFlameArea
 		normal Grenade
 		normal ChargeFlame
 		cdash Dash Ability=6
-	pickup: ChargeFlameAreaPlant
-		normal ChargeFlame
-		normal Grenade
-		cdash Dash Ability=6
-	conn: SpiritTreeRefined
-		normal ChargeJump
 	conn: LowerChargeFlameArea
 home: LowerChargeFlameArea
 	-- anchor: next to the cflame area exp
@@ -641,7 +649,7 @@ home: LowerChargeFlameArea
 		normal Grenade
 		normal Stomp
 		cdash Dash Ability=6
-	conn: ChargeFlameArea
+	conn: ChargeFlameAreaStump
 		normal WallJump
 		normal Climb
 		normal ChargeJump
@@ -661,7 +669,8 @@ home: SpiritTreeRefined
 		normal Bash Grenade
 		speed Dash WallJump
 		speed Dash Climb
-	conn: ChargeFlameArea
+	conn: ChargeFlameSkillTreeChamber
+	conn: ChargeFlameAreaStump
 	conn: ValleyEntry
 		normal ChargeFlame
 		normal Grenade
