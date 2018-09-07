@@ -659,7 +659,7 @@ home: LowerChargeFlameArea
 		lure-hard Bash Dash Ability=6
 home: SpiritTreeRefined
 	-- anchor: the spirit tree spirit well (i.e. grove teleporter)
-	conn: ChargeFlameTree
+	conn: AboveChargeFlameTree
 		normal DoubleJump Climb
 		normal DoubleJump WallJump
 		normal ChargeJump Climb
@@ -695,7 +695,7 @@ home: SpiritTreeRefined
 		extended Grenade Climb
 		cdash Dash Climb Ability=6
 		cdash Dash WallJump Ability=6
-home: ChargeFlameTree
+home: AboveChargeFlameTree
 	pickup: AboveChargeFlameTreeExp
 home: SpiderSacArea
 	pickup: SpiderSacHealthCell
@@ -710,7 +710,7 @@ home: SpiderSacArea
 	pickup: SpiderSacEnergyDoor
 		normal Energy=4
 		timed-level Energy=2
-	conn: ChargeFlameTree
+	conn: AboveChargeFlameTree
 		ALL Glide
 		extended ChargeFlame
 		extended Grenade
