@@ -321,6 +321,7 @@ home: SunkenGladesRunaway
 		normal ChargeJump
 		normal Bash
 		speed WallJump DoubleJump
+		cdash Dash Ability=6
 	pickup: GladesMainPool
 		normal Water
 		dboost Bash
@@ -335,6 +336,7 @@ home: SunkenGladesRunaway
 		normal Glide Wind
 		normal Bash Grenade
 		lure Bash
+		cdash Dash Ability=6
 	-- no need to isolate this key door because there's no requirements to get
 	-- to it or to get past it
 	conn: GladesMain
@@ -483,6 +485,7 @@ home: DeathGauntlet
 		normal Climb
 		normal Bash Grenade
 		normal ChargeJump
+		normal DoubleJump
 		lure Bash
 	pickup: DeathGauntletStompSwim
 		normal Stomp Water
@@ -589,7 +592,7 @@ home: UpperSpiritCaverns
 	conn: SpiritTreeDoor
 		normal Keystone=4
 home: SpiritTreeDoor
-	-- anchor: logically, same as spirit caverns, but with the exit door open
+	-- anchor: logically, same as UpperSpiritCaverns, but the exit door is open
 	conn: SpiritTreeRefined
 		normal WallJump
 		normal Climb
@@ -821,10 +824,6 @@ home: DashPlantAccess
 home: RazielNoArea
 	-- anchor: on the ledge right before the boulder chase
 	pickup: RazielNo
-	pickup: BlackrootBoulderExp
-		normal Dash Stomp
-		extended Stomp
-		glitched Free
 	conn: BlackrootGrottoConnection
 		normal Dash WallJump
 		normal Dash Climb DoubleJump
@@ -836,13 +835,19 @@ home: RazielNoArea
 		extended WallJump
 		extended Climb DoubleJump
 		extended ChargeJump
-		extended-damage Dash Climb
+		extended-damage Dash Climb Ability=3
 		glitched Climb
 	conn: GumoHideout
-		glitched Free
+		glitched Dash WallJump
+		glitched Dash Climb DoubleJump
+		glitched Dash Bash Grenade
+		glitched Dash ChargeJump
 home: BlackrootGrottoConnection
 	-- anchor: on the spirit well (blackroot teleporter)
 	pickup: BlackrootTeleporterHealthCell
+	pickup: BlackrootBoulderExp
+		normal Stomp
+		glitched Free
 	pickup: BlackrootMap
 		normal WallJump Mapstone
 		normal Climb DoubleJump Mapstone
