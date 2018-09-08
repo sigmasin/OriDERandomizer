@@ -2197,6 +2197,7 @@ home: LeftSorrow
 		extreme ChargeJump WallJump Health=4 Ability=12
 		extreme DoubleJump WallJump Ability=12
 		extreme DoubleJump Climb Ability=12
+		extreme Bash
 	pickup: LeftSorrowGrenade
 		normal Grenade Bash WallJump
 		normal Grenade Bash Climb
@@ -2219,6 +2220,7 @@ home: LeftSorrow
 		extreme ChargeJump WallJump Health=4 Ability=12
 		extreme DoubleJump WallJump Ability=12
 		extreme DoubleJump Climb Ability=12
+		extreme Bash
 home: LeftSorrowKeystones
 -- anchored next to the frog below the keystone set
 	pickup: LeftSorrowKeystone1
@@ -2239,18 +2241,18 @@ home: LeftSorrowKeystones
 		normal Glide
 		extended-damage ChargeJump Climb Health=5
 		extreme Bash
-		extreme ChargeJump DoubleJump Health=4
+		extreme ChargeJump DoubleJump Health=4 Ability=12
 	pickup: LeftSorrowKeystone4
 		normal Glide
 		extended-damage ChargeJump Climb DoubleJump Health=5
 		extended-damage ChargeJump Climb Dash Health=5
 		extreme Bash
-		extreme ChargeJump DoubleJump Health=4
+		extreme ChargeJump DoubleJump Health=4 Ability=12
 	pickup: LeftSorrowEnergyCell
 		normal Glide
 		extended-damage ChargeJump Climb DoubleJump Health=5
 		extreme Bash
-		extreme ChargeJump DoubleJump Health=4
+		extreme ChargeJump DoubleJump Health=4 Ability=12
 	conn: LeftSorrowMiddleDoor
 		normal Keystone=4
 	conn: MiddleSorrow
@@ -2278,6 +2280,7 @@ home: LeftSorrowMiddleDoor
 		extreme Bash Dash ChargeJump Climb Ability=6
 		extreme Bash Climb ChargeJump DoubleJump Health=4 Ability=12
 		extreme Bash Stomp ChargeJump DoubleJump Health=4 Ability=12
+		glitched Dash
 home: MiddleSorrow
 -- anchored above the breakable floor in the main shaft
 -- floor is broken if going up, not if coming down from the teleporter
@@ -2311,10 +2314,14 @@ home: UpperSorrow
 		extreme ChargeJump Health=10 Ability=12
 		extreme ChargeJump DoubleJump Health=7 Ability=12
 		extreme ChargeJump Dash Health=4 Ability=12
+		extreme Bash Grenade DoubleJump Health=4 Ability=12
+		extreme Bash Grenade DoubleJump Dash Ability=6
 	pickup: UpperSorrowFarRightKeystone
 		normal Glide
 		extreme ChargeJump Dash Health=7 Ability=12
 		extreme ChargeJump DoubleJump Health=10 Ability=12
+		extreme Bash Grenade DoubleJump Dash Ability=12
+		extreme Bash Grenade DoubleJump Health=7 Ability=12
 	pickup: UpperSorrowLeftKeystone
 		normal Glide
 		extended Bash Grenade
@@ -2354,10 +2361,10 @@ home: ChargeJumpDoor
 	conn: ChargeJumpArea
 		normal Glide
 		extreme ChargeJump DoubleJump Dash Health=4 Ability=12
-		extreme Bash Grenade DoubleJump Dash Health=4 Ability=12
+		extreme Bash Grenade WallJump DoubleJump Dash Health=4 Ability=12
 		extreme Bash Grenade ChargeJump DoubleJump Health=7 Ability=12
 		extreme ChargeJump DoubleJump Health=10 Ability=12
-		extreme Bash Grenade DoubleJump Health=13 Ability=12
+		extreme Bash Grenade WallJump DoubleJump Health=13 Ability=12
 home: ChargeJumpArea
 -- anchored at the cjump tree
 	pickup: ChargeJumpSkillTree
@@ -2377,6 +2384,8 @@ home: AboveChargeJumpArea
 		normal Bash WallJump
 		normal Bash Climb
 		normal Bash Grenade
+		dbash Bash
+		cdash Dash Ability=6
 	conn: SorrowTeleporter
 		normal ChargeJump Climb
 		normal Bash WallJump DoubleJump Glide
@@ -2404,7 +2413,10 @@ home: SorrowTeleporter
 		extended-damage ChargeJump Climb Health=5
 		extended-damage Stomp Bash Grenade Health=5
 		extended-damage ChargeJump WallJump Glide Health=5
-		extreme ChargeJump Climb
+		extended-damage ChargeJump WallJump Dash Health=5 Ability=3
+		extreme ChargeJump Climb Health=4 Ability=12
+		extreme ChargeJump WallJump Glide Health=4 Ability=12
+		extreme ChargeJump WallJump Dash Health=4 Ability=12
 		extreme Stomp Bash Climb
 		extreme Stomp Bash WallJump
 		extreme ChargeJump Bash
