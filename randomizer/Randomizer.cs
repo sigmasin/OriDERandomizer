@@ -35,6 +35,632 @@ public static class Randomizer
 		Randomizer.SeedMeta = "";
 		Randomizer.MistySim = new WorldEvents();
 		Randomizer.MistySim.MoonGuid = new MoonGuid(1061758509, 1206015992, 824243626, -2026069462);
+		Randomizer.NoLava = false;
+		Randomizer.HoruData = new ArrayList();
+		Randomizer.HoruData.Add(new object[]
+		{
+			new MoonGuid(1080329339, 1302332310, 997858217, -1469178753),
+			new byte[256]
+		});
+		Randomizer.HoruData.Add(new object[]
+		{
+			new MoonGuid(-1986835227, 1148497250, 1774981778, -341693584),
+			new byte[256]
+		});
+		Randomizer.HoruData.Add(new object[]
+		{
+			new MoonGuid(-1914403931, 1340852204, -1427003988, -1275885270),
+			new byte[256]
+		});
+		Randomizer.HoruData.Add(new object[]
+		{
+			new MoonGuid(1195046299, 1104194907, -91023438, -1960550170),
+			new byte[256]
+		});
+		Randomizer.HoruData.Add(new object[]
+		{
+			new MoonGuid(1830640752, 1138663465, 465415606, 1194710081),
+			new byte[256]
+		});
+		Randomizer.HoruData.Add(new object[]
+		{
+			new MoonGuid(474831249, 1150619186, -1835199831, 1753869200),
+			new byte[256]
+		});
+		Randomizer.HoruData.Add(new object[]
+		{
+			new MoonGuid(-693646328, 1189415106, 886443144, -618934573),
+			new byte[256]
+		});
+		ArrayList horuData = Randomizer.HoruData;
+		object[] array3 = new object[2];
+		array3[0] = new MoonGuid(1383380092, 1339453148, 41555390, 2136907469);
+		int num4 = 1;
+		byte[] array4 = new byte[256];
+		array4[3] = 128;
+		array4[4] = 64;
+		array3[num4] = array4;
+		horuData.Add(array3);
+		Randomizer.HoruData.Add(new object[]
+		{
+			new MoonGuid(924649609, 1244424682, -1334463316, 1549855571),
+			new byte[]
+			{
+				0,
+				103,
+				102,
+				150,
+				64,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			}
+		});
+		ArrayList horuData2 = Randomizer.HoruData;
+		object[] array5 = new object[2];
+		array5[0] = new MoonGuid(-1402173694, 1299423500, 1804027269, 1017599821);
+		int num5 = 1;
+		byte[] array6 = new byte[256];
+		array6[3] = 128;
+		array6[4] = 64;
+		array5[num5] = array6;
+		horuData2.Add(array5);
+		ArrayList horuData3 = Randomizer.HoruData;
+		object[] array7 = new object[2];
+		array7[0] = new MoonGuid(-680939306, 1295367481, -376876104, -1744906711);
+		int num6 = 1;
+		byte[] array8 = new byte[256];
+		array8[3] = 192;
+		array8[4] = 64;
+		array7[num6] = array8;
+		horuData3.Add(array7);
+		ArrayList horuData4 = Randomizer.HoruData;
+		object[] array9 = new object[2];
+		array9[0] = new MoonGuid(-996043504, 1245827845, 459586237, 422546073);
+		int num7 = 1;
+		byte[] array10 = new byte[256];
+		array10[3] = 128;
+		array10[4] = 64;
+		array9[num7] = array10;
+		horuData4.Add(array9);
+		ArrayList horuData5 = Randomizer.HoruData;
+		object[] array11 = new object[2];
+		array11[0] = new MoonGuid(2118314447, 1335917205, -744314961, 209622932);
+		int num8 = 1;
+		byte[] array12 = new byte[256];
+		array12[3] = 128;
+		array12[4] = 64;
+		array11[num8] = array12;
+		horuData5.Add(array11);
+		Randomizer.HoruData.Add(new object[]
+		{
+			new MoonGuid(844679839, 1270988107, -265306192, -1530626037),
+			new byte[]
+			{
+				0,
+				103,
+				102,
+				150,
+				64,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			}
+		});
+		ArrayList horuData6 = Randomizer.HoruData;
+		object[] array13 = new object[2];
+		array13[0] = new MoonGuid(-1282946185, 1268760771, -1657185898, 636602458);
+		int num9 = 1;
+		byte[] array14 = new byte[256];
+		array14[3] = 128;
+		array14[4] = 64;
+		array13[num9] = array14;
+		horuData6.Add(array13);
+		ArrayList horuData7 = Randomizer.HoruData;
+		object[] array15 = new object[2];
+		array15[0] = new MoonGuid(1881578213, 1232349697, -73649234, -1986038739);
+		int num10 = 1;
+		byte[] array16 = new byte[256];
+		array16[3] = 192;
+		array16[4] = 64;
+		array15[num10] = array16;
+		horuData7.Add(array15);
 		Randomizer.TeleportTable = new Hashtable();
 		Randomizer.TeleportTable["Forlorn"] = "forlorn";
 		Randomizer.TeleportTable["Grotto"] = "moonGrotto";
@@ -55,16 +681,16 @@ public static class Randomizer
 		RandomizerSettings.ParseSettings();
 		if (File.Exists("randomizer.dat"))
 		{
-			string[] array = File.ReadAllLines("randomizer.dat");
-			string[] array3 = array[0].Split(new char[]
+			string[] array17 = File.ReadAllLines("randomizer.dat");
+			string[] array19 = array17[0].Split(new char[]
 			{
 				'|'
 			})[0].Split(new char[]
 			{
 				','
 			});
-			Randomizer.SeedMeta = array[0];
-			foreach (string text in array3)
+			Randomizer.SeedMeta = array17[0];
+			foreach (string text in array19)
 			{
 				if (text.ToLower() == "ohko")
 				{
@@ -131,6 +757,10 @@ public static class Randomizer
 				{
 					Randomizer.Entrance = true;
 				}
+				if (text.ToLower() == "nolava")
+				{
+					Randomizer.NoLava = true;
+				}
 				if (text.ToLower() == "encrypted")
 				{
 					flag = true;
@@ -138,38 +768,38 @@ public static class Randomizer
 			}
 			if (flag)
 			{
-				array = Decoder.Decode(array[1]);
+				array17 = Decoder.Decode(array17[1]);
 			}
-			for (int i = 1; i < array.Length; i++)
+			for (int i = 1; i < array17.Length; i++)
 			{
-				if (!(array[i].Trim() == ""))
+				if (!(array17[i].Trim() == ""))
 				{
-					string[] array2 = array[i].Split(new char[]
+					string[] array18 = array17[i].Split(new char[]
 					{
 						'|'
 					});
-					int num;
-					int.TryParse(array2[0], out num);
-					if (array2[1] == "TP")
+					int num11;
+					int.TryParse(array18[0], out num11);
+					if (array18[1] == "TP")
 					{
-						Randomizer.Table[num] = new RandomizerAction(array2[1], array2[2]);
+						Randomizer.Table[num11] = new RandomizerAction(array18[1], array18[2]);
 					}
 					else
 					{
-						int num2;
-						int.TryParse(array2[2], out num2);
-						if (array2[1] == "EN")
+						int num12;
+						int.TryParse(array18[2], out num12);
+						if (array18[1] == "EN")
 						{
-							int num3;
-							int.TryParse(array2[3], out num3);
-							Randomizer.DoorTable[num] = new Vector3((float)num2, (float)num3);
+							int num13;
+							int.TryParse(array18[3], out num13);
+							Randomizer.DoorTable[num11] = new Vector3((float)num12, (float)num13);
 						}
 						else
 						{
-							Randomizer.Table[num] = new RandomizerAction(array2[1], num2);
-							if (Randomizer.CluesMode && array2[1] == "EV" && num2 % 2 == 0)
+							Randomizer.Table[num11] = new RandomizerAction(array18[1], num12);
+							if (Randomizer.CluesMode && array18[1] == "EV" && num12 % 2 == 0)
 							{
-								RandomizerClues.AddClue(array2[3], num2 / 2);
+								RandomizerClues.AddClue(array18[3], num12 / 2);
 							}
 						}
 					}
@@ -178,13 +808,13 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x0600373C RID: 14140 RVA: 0x0002B409 File Offset: 0x00029609
+	// Token: 0x0600373C RID: 14140
 	public static void getPickup()
 	{
 		Randomizer.getPickup(Characters.Sein.Position);
 	}
 
-	// Token: 0x0600373D RID: 14141 RVA: 0x000E0C10 File Offset: 0x000DEE10
+	// Token: 0x0600373D RID: 14141
 	public static void returnToStart()
 	{
 		if (Characters.Sein.Abilities.Carry.IsCarrying || !Characters.Sein.Controller.CanMove || !Characters.Sein.Active)
@@ -205,7 +835,7 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x0600373E RID: 14142 RVA: 0x0002B41A File Offset: 0x0002961A
+	// Token: 0x0600373E RID: 14142
 	public static void getEvent(int ID)
 	{
 		RandomizerBonus.CollectPickup();
@@ -216,20 +846,20 @@ public static class Randomizer
 		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[ID * 4], ID * 4, true);
 	}
 
-	// Token: 0x0600373F RID: 14143 RVA: 0x0002B44D File Offset: 0x0002964D
+	// Token: 0x0600373F RID: 14143
 	public static void showHint(string message)
 	{
 		Randomizer.Message = message;
 		Randomizer.MessageQueue.Enqueue(message);
 	}
 
-	// Token: 0x06003740 RID: 14144 RVA: 0x0002B460 File Offset: 0x00029660
+	// Token: 0x06003740 RID: 14144
 	public static void playLastMessage()
 	{
 		Randomizer.MessageQueue.Enqueue(Randomizer.Message);
 	}
 
-	// Token: 0x06003741 RID: 14145 RVA: 0x0002B471 File Offset: 0x00029671
+	// Token: 0x06003741 RID: 14145
 	public static void log(string message)
 	{
 		StreamWriter streamWriter = File.AppendText("randomizer.log");
@@ -238,13 +868,13 @@ public static class Randomizer
 		streamWriter.Dispose();
 	}
 
-	// Token: 0x06003742 RID: 14146 RVA: 0x000E0CE0 File Offset: 0x000DEEE0
+	// Token: 0x06003742 RID: 14146
 	public static bool WindRestored()
 	{
 		return Sein.World.Events.WindRestored && Scenes.Manager.CurrentScene != null && Scenes.Manager.CurrentScene.Scene != "forlornRuinsResurrection" && Scenes.Manager.CurrentScene.Scene != "forlornRuinsRotatingLaserFlipped";
 	}
 
-	// Token: 0x06003743 RID: 14147 RVA: 0x0002B48F File Offset: 0x0002968F
+	// Token: 0x06003743 RID: 14147
 	public static void getSkill()
 	{
 		Characters.Sein.Inventory.SkillPointsCollected += 134217728;
@@ -252,7 +882,7 @@ public static class Randomizer
 		Randomizer.showProgress();
 	}
 
-	// Token: 0x06003744 RID: 14148 RVA: 0x000E0D38 File Offset: 0x000DEF38
+	// Token: 0x06003744 RID: 14148
 	public static void hintAndLog(float x, float y)
 	{
 		string message = ((int)x).ToString() + " " + ((int)y).ToString();
@@ -260,7 +890,7 @@ public static class Randomizer
 		Randomizer.log(message);
 	}
 
-	// Token: 0x06003745 RID: 14149 RVA: 0x000E0D70 File Offset: 0x000DEF70
+	// Token: 0x06003745 RID: 14149
 	public static void getPickup(Vector3 position)
 	{
 		RandomizerBonus.CollectPickup();
@@ -299,7 +929,7 @@ public static class Randomizer
 		Randomizer.showHint("Error finding pickup at " + ((int)position.x).ToString() + ", " + ((int)position.y).ToString());
 	}
 
-	// Token: 0x06003746 RID: 14150 RVA: 0x000E0F2C File Offset: 0x000DF12C
+	// Token: 0x06003746 RID: 14150
 	public static void Update()
 	{
 		Randomizer.UpdateMessages();
@@ -400,7 +1030,7 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x06003747 RID: 14151 RVA: 0x0002B4B6 File Offset: 0x000296B6
+	// Token: 0x06003747 RID: 14151
 	public static void showChaosEffect(string message)
 	{
 		if (Randomizer.ChaosVerbose)
@@ -409,13 +1039,13 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x06003748 RID: 14152 RVA: 0x0002B4CA File Offset: 0x000296CA
+	// Token: 0x06003748 RID: 14152
 	public static void showChaosMessage(string message)
 	{
 		Randomizer.MessageQueue.Enqueue(message);
 	}
 
-	// Token: 0x06003749 RID: 14153 RVA: 0x000E1208 File Offset: 0x000DF408
+	// Token: 0x06003749 RID: 14153
 	public static void getMapStone()
 	{
 		if (!Randomizer.ProgressiveMapStones)
@@ -432,7 +1062,7 @@ public static class Randomizer
 		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[20 + RandomizerBonus.MapStoneProgression() * 4], 20 + RandomizerBonus.MapStoneProgression() * 4, true);
 	}
 
-	// Token: 0x0600374A RID: 14154 RVA: 0x000E127C File Offset: 0x000DF47C
+	// Token: 0x0600374A RID: 14154
 	public static void showProgress()
 	{
 		string text = "";
@@ -480,14 +1110,14 @@ public static class Randomizer
 		Randomizer.MessageQueue.Enqueue(text);
 	}
 
-	// Token: 0x0600374B RID: 14155 RVA: 0x000E13BC File Offset: 0x000DF5BC
+	// Token: 0x0600374B RID: 14155
 	public static void showSeedInfo()
 	{
 		string obj = "v2.6 - seed loaded: " + Randomizer.SeedMeta;
 		Randomizer.MessageQueue.Enqueue(obj);
 	}
 
-	// Token: 0x0600374C RID: 14156 RVA: 0x000E13E4 File Offset: 0x000DF5E4
+	// Token: 0x0600374C RID: 14156
 	public static void changeColor()
 	{
 		if (Characters.Sein)
@@ -496,7 +1126,7 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x0600374D RID: 14157 RVA: 0x000E143C File Offset: 0x000DF63C
+	// Token: 0x0600374D RID: 14157
 	public static void UpdateMessages()
 	{
 		if (Randomizer.MessageQueueTime == 0)
@@ -512,7 +1142,7 @@ public static class Randomizer
 		Randomizer.MessageQueueTime--;
 	}
 
-	// Token: 0x0600374E RID: 14158 RVA: 0x000E149C File Offset: 0x000DF69C
+	// Token: 0x0600374E RID: 14158
 	public static void EnterDoor(Vector3 position)
 	{
 		if (!Randomizer.Entrance)
@@ -639,4 +1269,10 @@ public static class Randomizer
 
 	// Token: 0x04003248 RID: 12872
 	public static bool BashTap;
+
+	// Token: 0x040032C6 RID: 12998
+	public static ArrayList HoruData;
+
+	// Token: 0x0400332B RID: 13099
+	public static bool NoLava;
 }
