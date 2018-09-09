@@ -42,6 +42,8 @@ public static class Randomizer
 		Randomizer.TeleportTable["Grove"] = "spiritTree";
 		Randomizer.TeleportTable["Swamp"] = "swamp";
 		Randomizer.TeleportTable["Valley"] = "sorrowPass";
+		Randomizer.TeleportTable["Ginso"] = "ginsoTree";
+		Randomizer.TeleportTable["Horu"] = "mountHoru";
 		Randomizer.Entrance = false;
 		Randomizer.DoorTable = new Hashtable();
 		Randomizer.ColorShift = false;
@@ -51,7 +53,7 @@ public static class Randomizer
 		Randomizer.BashWasQueued = false;
 		Randomizer.BashTap = false;
 		bool flag = false;
-		Randomizer.NoLava = false;
+		Randomizer.OpenMode = false;
 		Randomizer.LoadHoruLavaData();
 		Randomizer.LoadGinsoData();
 		RandomizerRebinding.ParseRebinding();
@@ -134,16 +136,16 @@ public static class Randomizer
 				{
 					Randomizer.Entrance = true;
 				}
-				if (text.ToLower() == "nolava")
+				if (text.ToLower() == "open")
 				{
-					Randomizer.NoLava = true;
+					Randomizer.OpenMode = true;
 				}
 				if (text.ToLower() == "encrypted")
 				{
 					flag = true;
 				}
 			}
-			if (Randomizer.NoLava)
+			if (Randomizer.OpenMode && Characters.Sein)
 			{
 				Game.Checkpoint.SaveGameData.LoadCustomData(Randomizer.HoruData);
 				Game.Checkpoint.SaveGameData.LoadCustomData(Randomizer.GinsoData);
@@ -1835,9 +1837,9 @@ public static class Randomizer
 	// Token: 0x04003249 RID: 12873
 	public static ArrayList HoruData;
 
-	// Token: 0x0400324A RID: 12874
-	public static bool NoLava;
-
 	// Token: 0x0400324B RID: 12875
 	public static ArrayList GinsoData;
+
+	// Token: 0x0400338E RID: 13198
+	public static bool OpenMode;
 }
