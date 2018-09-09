@@ -148,16 +148,16 @@ public class SaveGameData
 		this.PendingScenes.Clear();
 	}
 
-	// Token: 0x0600381B RID: 14363
-	public void DrainLava()
+	// Token: 0x06003898 RID: 14488
+	public void LoadCustomData(ArrayList data)
 	{
 		SaveScene saveScene = new SaveScene();
-		saveScene.SceneGUID = new MoonGuid(1174226403, -1289471298, -20779974, -149801993);
+		saveScene.SceneGUID = (MoonGuid)data[0];
 		this.Scenes.Add(saveScene.SceneGUID, saveScene);
-		for (int i = 0; i < Randomizer.HoruData.Count; i++)
+		for (int i = 1; i < data.Count; i++)
 		{
-			SaveObject saveObject = new SaveObject((MoonGuid)((object[])Randomizer.HoruData[i])[0]);
-			byte[] array = (byte[])((object[])Randomizer.HoruData[i])[1];
+			SaveObject saveObject = new SaveObject((MoonGuid)((object[])data[i])[0]);
+			byte[] array = (byte[])((object[])data[i])[1];
 			BinaryReader binaryReader = new BinaryReader(new MemoryStream(array));
 			int num = array.Length;
 			saveObject.Data.MemoryStream.SetLength((long)num);
@@ -166,6 +166,7 @@ public class SaveGameData
 		}
 	}
 
+	
 	// Token: 0x04001D3F RID: 7487
 	public const int DATA_VERSION = 1;
 
