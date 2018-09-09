@@ -58,16 +58,16 @@ public static class Randomizer
 		RandomizerSettings.ParseSettings();
 		if (File.Exists("randomizer.dat"))
 		{
-			string[] array15 = File.ReadAllLines("randomizer.dat");
-			string[] array17 = array15[0].Split(new char[]
+			string[] array = File.ReadAllLines("randomizer.dat");
+			string[] array3 = array[0].Split(new char[]
 			{
 				'|'
 			})[0].Split(new char[]
 			{
 				','
 			});
-			Randomizer.SeedMeta = array15[0];
-			foreach (string text in array17)
+			Randomizer.SeedMeta = array[0];
+			foreach (string text in array3)
 			{
 				if (text.ToLower() == "ohko")
 				{
@@ -150,38 +150,38 @@ public static class Randomizer
 			}
 			if (flag)
 			{
-				array15 = Decoder.Decode(array15[1]);
+				array = Decoder.Decode(array[1]);
 			}
-			for (int i = 1; i < array15.Length; i++)
+			for (int i = 1; i < array.Length; i++)
 			{
-				if (!(array15[i].Trim() == ""))
+				if (!(array[i].Trim() == ""))
 				{
-					string[] array16 = array15[i].Split(new char[]
+					string[] array2 = array[i].Split(new char[]
 					{
 						'|'
 					});
-					int num8;
-					int.TryParse(array16[0], out num8);
-					if (array16[1] == "TP")
+					int num;
+					int.TryParse(array2[0], out num);
+					if (array2[1] == "TP")
 					{
-						Randomizer.Table[num8] = new RandomizerAction(array16[1], array16[2]);
+						Randomizer.Table[num] = new RandomizerAction(array2[1], array2[2]);
 					}
 					else
 					{
-						int num9;
-						int.TryParse(array16[2], out num9);
-						if (array16[1] == "EN")
+						int num2;
+						int.TryParse(array2[2], out num2);
+						if (array2[1] == "EN")
 						{
-							int num10;
-							int.TryParse(array16[3], out num10);
-							Randomizer.DoorTable[num8] = new Vector3((float)num9, (float)num10);
+							int num3;
+							int.TryParse(array2[3], out num3);
+							Randomizer.DoorTable[num] = new Vector3((float)num2, (float)num3);
 						}
 						else
 						{
-							Randomizer.Table[num8] = new RandomizerAction(array16[1], num9);
-							if (Randomizer.CluesMode && array16[1] == "EV" && num9 % 2 == 0)
+							Randomizer.Table[num] = new RandomizerAction(array2[1], num2);
+							if (Randomizer.CluesMode && array2[1] == "EV" && num2 % 2 == 0)
 							{
-								RandomizerClues.AddClue(array16[3], num9 / 2);
+								RandomizerClues.AddClue(array2[3], num2 / 2);
 							}
 						}
 					}
@@ -342,8 +342,10 @@ public static class Randomizer
 			if (Randomizer.Returning)
 			{
 				Characters.Sein.Position = new Vector3(189f, -215f);
-				Characters.Ori.Position = new Vector3(190f, -210f);
-				Randomizer.Returning = false;
+				if (Scenes.Manager.CurrentScene.Scene == "sunkenGladesRunaway")
+				{
+					Randomizer.Returning = false;
+				}
 			}
 		}
 		if (RandomizerRebinding.ReplayMessage.IsPressed())
@@ -562,7 +564,7 @@ public static class Randomizer
 		Randomizer.showHint("Error using door at " + ((int)position.x).ToString() + ", " + ((int)position.y).ToString());
 	}
 
-	// Token: 0x06003829 RID: 14377
+	// Token: 0x06003750 RID: 14160
 	public static void LoadHoruLavaData()
 	{
 		Randomizer.HoruData = new ArrayList();
@@ -1193,7 +1195,7 @@ public static class Randomizer
 		horuData7.Add(array13);
 	}
 
-	// Token: 0x0600384D RID: 14413
+	// Token: 0x06003751 RID: 14161
 	public static void LoadGinsoData()
 	{
 		Randomizer.GinsoData = new ArrayList();
@@ -1836,6 +1838,6 @@ public static class Randomizer
 	// Token: 0x0400324A RID: 12874
 	public static bool NoLava;
 
-	// Token: 0x0400330D RID: 13069
+	// Token: 0x0400324B RID: 12875
 	public static ArrayList GinsoData;
 }
