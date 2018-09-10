@@ -2095,11 +2095,11 @@ home: WilhelmLedge
 	conn: ValleyMain
 		normal Stomp
 		lure HoruKey
-		extended Climb ChargeJump
+		speed Climb ChargeJump
 	conn: ValleyKuroPerch
 		normal Stomp
 		lure HoruKey
-		extended Climb ChargeJump
+		speed Climb ChargeJump
 home: SorrowBashLedge
 	conn: LowerSorrow
 		normal Wind Glide
@@ -2113,14 +2113,6 @@ home: SorrowBashLedge
 home: LowerSorrow
 -- anchored on the wooden platform at the start of sorrow
 	pickup: SorrowEntranceAbilityCell
-	pickup: SorrowMainShaftKeystone
-		normal Glide
-		normal ChargeJump WallJump
-		normal ChargeJump Climb
-		normal Bash WallJump
-		normal Bash Climb
-		cdash Dash Ability=6
-		dbash Bash
 	pickup: SorrowSpikeKeystone
 		normal Glide
 		normal Bash DoubleJump WallJump
@@ -2149,7 +2141,6 @@ home: LowerSorrow
 		speed Bash Dash DoubleJump WallJump
 		speed Bash Dash DoubleJump Climb
 		extended Bash ChargeJump WallJump
-		extended Bash ChargeJump Climb
 		gjump Climb ChargeJump Grenade
 		extended-damage Bash WallJump Health=5
 		extended-damage Bash Climb Health=5
@@ -2165,15 +2156,15 @@ home: LowerSorrow
 	pickup: SorrowLowerLeftKeystone
 		normal Glide
 		extended Bash DoubleJump
-		extended Climb ChargeJump Grenade
 		cdash Dash Stomp Ability=6
 		cdash Dash Bash Ability=6
 		cdash Dash DoubleJump Ability=6
 		cdash Dash Energy=2 Ability=6
-		dbash Bash
+		gjump Climb ChargeJump Grenade
 		-- triple jump, dboost on the slime projectile
 		extreme DoubleJump Ability=12
 		extreme ChargeJump Health=10 Ability=12
+		extreme Bash
 	-- backtrack connection for leaving from TP
 	conn: WilhelmLedge
 		normal Glide DoubleJump
@@ -2188,6 +2179,14 @@ home: LowerSorrow
 		dbash Bash
 		extreme Glide Health=4 Ability=12
 		extreme DoubleJump Ability=12
+	conn: SorrowMainShaftKeystoneArea
+		normal Glide
+		normal ChargeJump WallJump
+		normal ChargeJump Climb
+		normal Bash WallJump
+		normal Bash Climb
+		cdash Dash Ability=6
+		dbash Bash
 	conn: SorrowMapstoneArea
 		normal ChargeJump WallJump
 		normal ChargeJump Climb
@@ -2218,8 +2217,12 @@ home: LowerSorrow
 	-- long juggle
 	conn: SunstoneArea
 		dbash Bash Glide
+home: SorrowMainShaftKeystoneArea
+-- anchored on the keystone pickup in the main shaft
+	pickup: SorrowMainShaftKeystone
+	conn: LowerSorrow
 home: SorrowMapstoneArea
---anchored on the level of breakable floors above the mapstone
+-- anchored on the level of breakable floors above the mapstone
 	pickup: SorrowMapstone
 		normal Bash
 		gjump Climb ChargeJump Grenade
@@ -2236,7 +2239,7 @@ home: LeftSorrowLowerDoor
 		normal Glide Bash Stomp
 		speed Bash ChargeJump Stomp WallJump
 		speed Bash ChargeJump Stomp Climb 
-		extended ChargeJump Climb DoubleJump
+		speed ChargeJump Climb DoubleJump
 		extended-damage ChargeJump Climb Health=5
 		dbash Bash Stomp Health=5
 		dbash Bash Grenade Stomp
@@ -2251,7 +2254,9 @@ home: LeftSorrow
 		normal Bash Grenade WallJump
 		normal Bash Grenade Climb
 		extended-damage ChargeJump WallJump Health=5
+		extended-damage ChargeJump Climb Health=5
 		extreme ChargeJump WallJump Health=4 Ability=12
+		extreme ChargeJump Climb Health=4 Ability=12
 		extreme DoubleJump WallJump Ability=12
 		extreme DoubleJump Climb Ability=12
 		extreme Bash
@@ -2356,9 +2361,12 @@ home: MiddleSorrow
 	conn: LeftSorrowKeystones
 		cdash Dash Stomp WallJump Ability=6
 		cdash Dash Stomp Climb Ability=6
+	conn: SorrowMainShaftKeystoneArea
+		normal Stomp
+		speed Climb ChargeJump
 	conn: LowerSorrow
 		normal Stomp
-		extended Climb ChargeJump
+		speed Climb ChargeJump
 	-- frog juggle
 	conn: SunstoneArea
 		extended Bash Glide
@@ -2495,8 +2503,8 @@ home: BelowSunstoneArea
 		extreme Bash
 	conn: UpperSorrow
 		normal Stomp
-		extended ChargeJump Climb
-		extreme Bash	
+		speed ChargeJump Climb
+		extreme Bash
 home: SunstoneArea
 -- anchored at the top of the main shaft
 	pickup: Sunstone
@@ -2506,7 +2514,7 @@ home: SunstoneArea
 		cdash Dash Ability=6
 	conn: UpperSorrow
 		normal Stomp
-		extended Climb ChargeJump
+		speed Climb ChargeJump
 	conn: SorrowTeleporter
 		normal Climb ChargeJump DoubleJump
 		extended-damage ChargeJump WallJump DoubleJump Health=5
