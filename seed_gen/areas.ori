@@ -713,6 +713,9 @@ home: SpiderSacTetherArea
 		dboost-light ChargeFlame
 		dboost-light Grenade
 		cdash Dash Ability=6
+	pickup: SpiderSacEnergyDoor
+		normal Energy=4
+		timed-level Energy=2
 	pickup: SpiderSacGrenadeDoor
 		normal Bash Grenade
 		normal DoubleJump WallJump Grenade
@@ -725,15 +728,6 @@ home: SpiderSacTetherArea
 		normal Grenade
 home: SpiderSacArea
 	-- anchor: just to the right of the blue wall
-	pickup: SpiderSacEnergyDoor
-		normal WallJump Energy=4
-		normal Climb Energy=4
-		normal ChargeJump Energy=4
-		normal Bash Grenade Energy=4
-		timed-level WallJump Energy=2
-		timed-level Climb Energy=2
-		timed-level ChargeJump Energy=2
-		timed-level Bash Grenade Energy=2
 	conn: AboveChargeFlameTree
 		-- these paths are a bit funky; basically, if you get here from the
 		-- left with the platform down, you can go get swamp TP, go back and
@@ -746,6 +740,11 @@ home: SpiderSacArea
 		extended Stomp WallJump Glide
 		extended Stomp Climb Glide
 		cdash Dash Ability=6
+	conn: SpiderSacTetherArea
+		normal WallJump
+		normal Climb
+		normal ChargeJump
+		normal Bash Grenade
 	conn: SpiderWaterArea
 		normal DoubleJump
 		normal Glide
