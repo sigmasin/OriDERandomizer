@@ -699,42 +699,61 @@ home: SpiritTreeRefined
 		cdash Dash Climb Ability=6
 		cdash Dash WallJump Ability=6
 home: AboveChargeFlameTree
+	-- anchor: the exp in the tree above charge flame
 	pickup: AboveChargeFlameTreeExp
-home: SpiderSacArea
+home: SpiderSacTetherArea
+	-- anchor: on the rock just below where the spider sac is attached
 	pickup: SpiderSacHealthCell
-		normal Grenade
-		normal ChargeFlame
+		normal ChargeFlame WallJump
+		normal ChargeFlame DoubleJump
+		normal ChargeFlame Climb ChargeJump
+		normal Grenade WallJump
+		normal Grenade DoubleJump
+		normal Grenade Climb ChargeJump
+		dboost-light ChargeFlame
+		dboost-light Grenade
 		cdash Dash Ability=6
 	pickup: SpiderSacGrenadeDoor
-		ALL Grenade
-		normal Bash
-		normal DoubleJump WallJump
-		normal ChargeJump
+		normal Bash Grenade
+		normal DoubleJump WallJump Grenade
+		normal ChargeJump Grenade
+	conn: SpiderWaterArea
+		normal ChargeFlame
+		normal Grenade
+	conn: SpiderSacEnergyNook
+		normal ChargeFlame
+		normal Grenade
+home: SpiderSacArea
+	-- anchor: just to the right of the blue wall
 	pickup: SpiderSacEnergyDoor
-		normal Energy=4
-		timed-level Energy=2
+		normal WallJump Energy=4
+		normal Climb Energy=4
+		normal ChargeJump Energy=4
+		normal Bash Grenade Energy=4
+		timed-level WallJump Energy=2
+		timed-level Climb Energy=2
+		timed-level ChargeJump Energy=2
+		timed-level Bash Grenade Energy=2
 	conn: AboveChargeFlameTree
-		ALL Glide
-		extended ChargeFlame
-		extended Grenade
-		extended Stomp
+		-- these paths are a bit funky; basically, if you get here from the
+		-- left with the platform down, you can go get swamp TP, go back and
+		-- raise the platform up, then come back through here from swamp TP and
+		-- glide to the tree XP
+		extended ChargeFlame WallJump Glide
+		extended ChargeFlame Climb Glide
+		extended Grenade WallJump Glide
+		extended Grenade Climb Glide
+		extended Stomp WallJump Glide
+		extended Stomp Climb Glide
 		cdash Dash Ability=6
-	conn: HollowGrove
-		normal Grenade
-		normal ChargeFlame
+	conn: SpiderWaterArea
 		normal DoubleJump
 		normal Glide
-	conn: SpiderSacDropArea
-		normal Grenade
-		normal ChargeFlame
+		cdash Dash Ability=3
+	conn: SpiderSacEnergyNook
 		normal DoubleJump
 		normal Glide
-	conn: DeathGauntletRoof
-		ALL Stomp
-		normal Water
-		dboost Bash Health=4
-		dboost Health=5
-		extreme
+		cdash Dash Ability=3
 	conn: SpiritTreeRefined
 		normal ChargeFlame WallJump
 		normal ChargeFlame Climb
@@ -742,11 +761,68 @@ home: SpiderSacArea
 		normal Grenade WallJump
 		normal Grenade Climb
 		normal Grenade ChargeJump
+		normal Grenade Bash
 		normal Stomp WallJump
 		normal Stomp Climb
 		normal Stomp ChargeJump
-home: SpiderSacDropArea
+home: SpiderSacEnergyNook
+	-- anchor: in the nook where the energy cell is
 	pickup: SpiderSacEnergyCell
+home: SpiderWaterArea
+	-- anchor: on the left end of the spider water section, before the pegs
+	pickup: GroveSpiderWaterSwim
+		normal Water
+		dboost Health=6
+		dboost Bash Health=5
+		extreme Health=4 Ability=12
+		extreme Bash Ability=12
+	pickup: GroveAboveSpiderWaterExp
+		normal ChargeJump WallJump
+		normal ChargeJump Climb
+		normal Bash WallJump
+		normal Bash Climb
+		dbash Bash
+		cdash Dash Ability=6 
+	pickup: GroveAboveSpiderWaterHealthCell
+		normal ChargeJump WallJump DoubleJump
+		normal ChargeJump Climb
+		normal Bash WallJump
+		speed Bash Grenade
+		extended ChargeJump WallJump Dash
+		dbash Bash
+		cdash Dash Ability=6
+	pickup: GroveAboveSpiderWaterEnergyCell
+		ALL Grenade
+		normal ChargeJump Climb DoubleJump
+		speed Bash
+		speed ChargeJump WallJump
+		speed ChargeJump Climb
+		cdash Dash Ability=6
+	conn: SpiderSacEnergyNook
+		normal Glide
+		normal Bash Grenade
+		speed Dash DoubleJump
+		extended DoubleJump
+		dbash Bash
+		cdash Dash Ability=3
+	conn: SpiderSacArea
+		normal DoubleJump WallJump
+		normal DoubleJump Climb
+		normal Bash WallJump Glide
+		normal Bash Climb Glide
+		speed Dash WallJump Glide
+		speed Dash Climb Glide
+		extended Bash WallJump
+		extended Bash Climb
+		dbash Bash
+		cdash Dash Ability=6
+	conn: HollowGrove
+		normal WallJump
+		normal Climb
+		normal Bash
+		normal ChargeJump
+		normal DoubleJump
+		normal Water
 home: BlackrootDarknessRoom
 	-- anchor: just after watching/skipping the BRB entrance cutscene
 	pickup: DashAreaOrbRoomExp
@@ -990,13 +1066,8 @@ home: LostGroveExit
 		normal Bash Grenade
 		normal ChargeJump
 home: HollowGrove
+	-- anchor: in the kuro CS tree, below the plant and above iceless area
 	pickup: HollowGroveMapstone
-	pickup: GroveSpiderWaterSwim
-		normal Water
-		dboost Health=6
-		dboost Bash Health=5
-		extreme Bash Ability=12
-		extreme Health=4 Ability=12
 	pickup: SwampTeleporterAbilityCell
 		normal ChargeJump DoubleJump Glide
 		normal Wind Glide
@@ -1037,12 +1108,13 @@ home: HollowGrove
 		lure Bash Climb
 		dbash Bash
 		cdash Dash Ability=6
-	conn: SpiderSacDropArea
-		normal Climb Glide
-		normal WallJump Glide
-		normal Bash Grenade
-		extended DoubleJump
-		extended Bash
+	conn: SpiderWaterArea
+		normal WallJump
+		normal Climb
+		normal Bash
+		normal ChargeJump
+		normal DoubleJump
+		normal Water
 	conn: MoonGrotto
 		normal WallJump
 		normal Climb
@@ -1066,15 +1138,6 @@ home: HollowGrove
 		extreme Climb Stomp Ability=12
 		extreme WallJump Bash
 		extreme Climb Bash
-	conn: SpiderSacArea
-		normal WallJump Bash
-		normal Climb Bash
-		normal WallJump DoubleJump
-		normal Climb DoubleJump
-	conn: UpperGroveSpiderArea
-		normal Bash WallJump
-		normal ChargeJump WallJump DoubleJump
-		dbash Bash
 	conn: GinsoOuterDoor
 		normal GinsoKey
 	conn: HoruFields
@@ -1279,11 +1342,6 @@ home: MoonGrotto
 home: HollowGrovePlants
 	pickup: HollowGroveMapPlant
 	pickup: HollowGroveTreePlant
-home: UpperGroveSpiderArea
-	pickup: GroveAboveSpiderWaterExp
-	pickup: GroveAboveSpiderWaterHealthCell
-	pickup: GroveAboveSpiderWaterEnergyCell
-		normal Grenade
 home: Iceless
 	pickup: IcelessExp
 	conn: HollowGrove
