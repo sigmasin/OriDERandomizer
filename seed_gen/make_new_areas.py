@@ -16,6 +16,59 @@ all_req = None
 loc_homes = {}
 homes = {}
 
+allowed_things = [
+	"WallJump",
+	"ChargeFlame",
+	"DoubleJump",
+	"Bash",
+	"Stomp",
+	"Glide",
+	"Climb",
+	"ChargeJump",
+	"Grenade",
+	"Dash",
+	"GinsoKey",
+	"ForlornKey",
+	"HoruKey",
+	"Water",
+	"Wind",
+	"TPGrove",
+	"TPSwamp",
+	"TPGrotto",
+	"TPValley",
+	"TPForlorn",
+	"TPSorrow",
+	"Health",
+	"Energy",
+	"Ability",
+	"Keystone",
+	"Mapstone",
+	"Free"
+]
+
+allowed_paths = [
+	"casual-core",
+	"casual-dboost",
+	"standard-core",
+	"standard-lure",
+	"standard-dboost",
+	"standard-abilities",
+	"expert-core",
+	"expert-lure",
+	"expert-dboost",
+	"expert-abilities",
+	"master-core",
+	"master-lure",
+	"master-dboost",
+	"master-abilities",
+	"dbash",
+	"gjump",
+	"glitched",
+	"timed-level",
+	"insane",
+	"ALL"
+]
+
 def OpenConnection(target):
 	global area, area_name, conn
 	conn = XML.SubElement(area, "Connection")
@@ -23,47 +76,56 @@ def OpenConnection(target):
 	XML.SubElement(conn, "Target", name=target)
 	conn = XML.SubElement(conn, "Requirements")
 
-def AddRequirement(tokens):
-	global conn, has_reqs, all_req
-	path_type = tokens[0]
-
-	if path_type == "ALL":
-		all_req = tokens[1:]
-		return
-
-	req_node = XML.SubElement(conn, "Requirement", mode=path_type)
-	has_reqs = True
-	reqs = tokens[1:]
-	if all_req:
-		reqs = all_req + reqs
-
+def BuildRequirements(reqs):
 	req_text = ""
 
 	for thing in reqs:
 		if req_text:
 			req_text += '+'
 
+		pickup = thing
+		count = 1
+
 		if '=' in thing:
 			pickup, count = thing.split('=')
-			count = int(count)
-			for i in range(count):
-				if i > 0:
-					req_text += '+'
-				if pickup == 'Health':
-					pickup = 'HC'
-				elif pickup == 'Energy':
-					pickup = 'EC'
-				elif pickup == 'Keystone':
-					pickup = 'KS'
-				elif pickup == 'Ability':
-					pickup = 'AC'
-				req_text += pickup
-			continue
 
-		if thing == 'Mapstone':
-			thing = 'MS'
+		assert pickup in allowed_things, pickup
 
-		req_text += thing
+		count = int(count)
+		for i in range(count):
+			if i > 0:
+				req_text += '+'
+			if pickup == 'Health':
+				pickup = 'HC'
+			elif pickup == 'Energy':
+				pickup = 'EC'
+			elif pickup == 'Keystone':
+				pickup = 'KS'
+			elif pickup == 'Ability':
+				pickup = 'AC'
+			elif pickup == 'Mapstone':
+				pickup = 'MS'
+			req_text += pickup
+
+	return req_text
+
+def AddRequirement(tokens):
+	global conn, has_reqs, all_req
+	path_type = tokens[0]
+
+	assert path_type in allowed_paths, path_type
+
+	if path_type == "ALL":
+		all_req = BuildRequirements(tokens[1:])
+		return
+
+	req_node = XML.SubElement(conn, "Requirement", mode=path_type)
+	has_reqs = True
+
+	req_text = BuildRequirements(tokens[1:])
+
+	if all_req:
+		req_text = all_req + '+' + req_text
 
 	req_node.text = req_text
 
@@ -75,7 +137,7 @@ def CloseConnection():
 
 	if not has_reqs:
 		assert not all_req, area_name
-		req_node = XML.SubElement(conn, "Requirement", mode="normal")
+		req_node = XML.SubElement(conn, "Requirement", mode="casual-core")
 		req_node.text = "Free"
 
 	conn = None
@@ -170,4 +232,4 @@ for home, linked in homes.items():
 		assert linked == "LINKED", home
 
 new_tree = XML.ElementTree(new_areas)
-new_tree.write("areas_new.xml", pretty_print=True)
+new_tree.write("areas.xml", pretty_print=True)
