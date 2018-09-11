@@ -1160,12 +1160,166 @@ home: HollowGrove
 home: GinsoOuterDoor
 	conn: GinsoInnerDoor
 home: GinsoInnerDoor
+	-- anchor: Just inside the Ginso tree door after putting in the water vein
 	conn: LowerGinsoTree
 		casual-core WallJump DoubleJump
 		casual-core ChargeJump
 		casual-core Bash Grenade
+		--need to verify
+		expert-core DoubleJump 
 		master-core Dash WallJump Ability=6
 		master-core Dash Climb Ability=6
+home: LowerGinsoTree
+	-- anchor: At the top of the second room near the flower
+	pickup: LowerGinsoHiddenExp
+		casual-core ChargeJump
+		casual-core Bash Grenade
+		casual-core WallJump DoubleJump
+		casual-core Climb DoubleJump
+		master-core Dash Climb Ability=6
+		master-core Dash WallJump Ability=6
+	pickup: LowerGinsoPlant
+		casual-core ChargeFlame DoubleJump
+		casual-core ChargeFlame WallJump
+		casual-core ChargeFlame Climb
+		--can be gotten with a ChargeFlame only, but will fall down after
+		standard-core ChargeFlame
+		casual-core Grenade
+		expert-abilities Dash Ability=6
+	conn: GinsoMiniBossDoor
+	-- TODO: single damage instance falls through the teleporter room
+		casual-core WallJump DoubleJump
+		casual-core WallJump Glide
+		casual-core Climb DoubleJump
+		casual-core Climb Glide
+		casual-core ChargeJump Glide
+		casual-core ChargeJump DoubleJump
+		casual-core Bash Grenade DoubleJump
+		casual-core Bash Grenade Glide
+		expert-core DoubleJump
+	conn: Horu
+		glitched Dash
+home: GinsoMiniBossDoor
+	-- anchor: Just past the Ginso Mini Boss Door which unlocks after mini boss defeat
+	pickup: LowerGinsoKeystone1 --can be gotten with no skills and a 2 hp dboost
+	pickup: LowerGinsoKeystone2
+		casual-core DoubleJump
+		casual-core Glide
+		--involves 2 hp dboost
+		casual-dboost ChargeJump Health=3
+		casual-core Bash Grenade
+	pickup: LowerGinsoKeystone3
+		casual-core WallJump
+		casual-core Climb
+		casual-core ChargeJump
+		casual-core Bash Grenade
+		expert-core DoubleJump
+	pickup: LowerGinsoKeystone4
+		casual-core WallJump
+		casual-core Climb
+		casual-core ChargeJump
+		casual-core Bash Grenade
+		expert-core DoubleJump
+	conn: BashTreeDoor
+		casual-core Keystone=4
+home: BashTreeDoor
+	--anchor: Immediately adjacent to the first Ginso keystone door (unopened)
+	conn: BashTree
+		casual-core WallJump
+		casual-core Climb
+		casual-core ChargeJump
+		casual-core Bash Grenade
+		expert-core DoubleJump
+home: BashTree
+	--anchor: The Bash Tree Itself
+	pickup: BashSkillTree
+	pickup: BashAreaExp
+		casual-core Bash
+		casual-core ChargeJump
+	conn: UpperGinsoTree
+		casual-core Bash
+		casual-core ChargeJump Dash DoubleJump
+		standard-dboost ChargeJump Health=4
+		expert-dboost ChargeJump Health=3
+		expert-abilities ChargeJump Dash Ability=6
+home: UpperGinsoTree
+	--anchor: Near the flower just before the Upper Ginso keystone area.
+	-- TODO: revisit these dboost paths. Classically, CJump and 3HP was sufficient in standard
+	-- Some implicit paths appear to be present here
+	pickup: UpperGinsoLowerKeystone
+		casual-core Bash
+		expert-dboost ChargeJump Health=5
+	pickup: UpperGinsoRightKeystone
+		casual-core Bash
+		expert-dboost ChargeJump Health=5
+	pickup: UpperGinsoUpperRightKeystone
+		casual-core Bash
+		expert-dboost ChargeJump Health=5
+	pickup: UpperGinsoUpperLeftKeystone
+		casual-core Bash
+		expert-dboost ChargeJump Health=5
+	pickup: UpperGinsoRedirectLowerExp
+		casual-core Stomp
+		casual-core Bash
+		casual-core ChargeJump Climb
+		expert-core ChargeFlame
+	pickup: UpperGinsoRedirectUpperExp
+		casual-core Stomp
+		casual-core Bash
+		expert-core ChargeFlame
+	pickup: UpperGinsoEnergyCell
+		casual-core Stomp
+		casual-core Bash
+		casual-core ChargeJump Climb
+		expert-core ChargeFlame
+	conn: UpperGinsoDoor
+		casual-core Keystone=4
+home: UpperGinsoDoor
+	--anchor: Immediately adjacent to the upper ginso keystone door (unopened)
+	-- TODO: recheck these dboost paths, perhaps reconsider their difficult placement
+	conn: TopGinsoTree
+		casual-core Bash WallJump
+		casual-core Bash Climb
+		casual-core Bash ChargeJump
+		casual-core Bash Grenade
+		expert-dboost ChargeJump Health=5
+		expert-dboost ChargeJump DoubleJump Health=3
+		master-core WallJump DoubleJump Health=7 Ability=12
+home: TopGinsoTree
+	--anchor: Where Water Vein is inserted at the top of the Ginso Tree
+	-- TODO: recheck these dboost paths and their difficulties
+	-- (do these spikes actually do 3? What damage are we taking getting to the top left exp?)
+	pickup: TopGinsoLeftLowerExp
+		casual-core DoubleJump
+		casual-core Bash
+		standard-dboost ChargeJump Health=4
+		expert-abilities Dash Ability=6
+	pickup: TopGinsoLeftUpperExp
+		casual-core Bash
+		standard-dboost ChargeJump Health=4
+		standard-dboost Dash DoubleJump Health=4
+		expert-abilities Dash Ability=6
+	pickup: TopGinsoRightPlant
+		casual-core Bash ChargeFlame
+		--requires 2 grenades or an air throw
+		casual-core Bash Grenade 
+		casual-core ChargeJump ChargeFlame
+		casual-core ChargeJump Grenade
+		expert-abilities Dash Ability=6
+	conn: GinsoEscape
+		casual-core Bash Grenade
+		casual-core Bash ChargeJump
+		casual-core Bash WallJump DoubleJump
+		standard-core Bash Stomp DoubleJump
+		standard-core Stomp ChargeJump
+		expert-abilities Stomp Dash Ability=6
+		dbash Bash
+home: GinsoEscape
+	pickup: GinsoEscapeSpiderExp
+	pickup: GinsoEscapeJumpPadExp
+	pickup: GinsoEscapeProjectileExp
+	pickup: GinsoEscapeHangingExp
+	pickup: GinsoEscapeExit
 home: RightGinso
 	pickup: OuterSwampAbilityCell
 	pickup: OuterSwampStompExp
@@ -1449,65 +1603,6 @@ home: MobileGumoHideoutPlants
 home: HideoutRedirect
 	pickup: GumoHideoutRedirectEnergyCell
 	pickup: GumoHideoutRedirectExp
-home: LowerGinsoTree
-	pickup: LowerGinsoHiddenExp
-	pickup: LowerGinsoKeystone1
-	pickup: LowerGinsoKeystone2
-	pickup: LowerGinsoKeystone3
-	pickup: LowerGinsoKeystone4
-	pickup: LowerGinsoPlant
-		casual-core ChargeFlame
-		casual-core Grenade
-		expert-abilities Dash Ability=6
-	conn: BashTree
-		casual-core Keystone=4
-	conn: Horu
-		glitched Dash
-home: BashTree
-	pickup: BashSkillTree
-	conn: UpperGinsoTree
-		casual-core Bash
-		casual-core ChargeJump
-home: UpperGinsoTree
-	pickup: BashAreaExp
-	pickup: UpperGinsoLowerKeystone
-	pickup: UpperGinsoRightKeystone
-	pickup: UpperGinsoUpperRightKeystone
-	pickup: UpperGinsoUpperLeftKeystone
-	conn: TopGinsoTree
-		ALL Keystone=4
-		casual-core Bash WallJump
-		casual-core Bash Climb
-		expert-dboost ChargeJump WallJump Health=5
-		expert-dboost ChargeJump Climb Health=5
-		expert-core Bash ChargeJump
-		expert-dboost ChargeJump Health=5
-		expert-dboost ChargeJump DoubleJump
-		master-core WallJump DoubleJump Health=7 Ability=12
-	conn: UpperGinsoFloors
-		casual-core Bash
-		casual-core Stomp
-		expert-core ChargeFlame
-home: UpperGinsoFloors
-	pickup: UpperGinsoRedirectLowerExp
-	pickup: UpperGinsoRedirectUpperExp
-	pickup: UpperGinsoEnergyCell
-home: TopGinsoTree
-	pickup: TopGinsoLeftLowerExp
-	pickup: TopGinsoLeftUpperExp
-	pickup: TopGinsoRightPlant
-		casual-core ChargeFlame
-		casual-core Grenade
-		expert-abilities Dash Ability=6
-	conn: GinsoEscape
-		casual-core Bash
-		standard-core Stomp
-home: GinsoEscape
-	pickup: GinsoEscapeSpiderExp
-	pickup: GinsoEscapeJumpPadExp
-	pickup: GinsoEscapeProjectileExp
-	pickup: GinsoEscapeHangingExp
-	pickup: GinsoEscapeExit
 home: Swamp
 	pickup: InnerSwampStompExp
 		ALL Stomp
