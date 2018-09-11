@@ -1165,8 +1165,8 @@ home: GinsoInnerDoor
 		normal WallJump DoubleJump
 		normal ChargeJump
 		normal Bash Grenade
-		extended DoubleJump 
 		--need to verify
+		extended DoubleJump 
 		extreme Dash WallJump Ability=6
 		extreme Dash Climb Ability=6
 home: LowerGinsoTree
@@ -1179,7 +1179,11 @@ home: LowerGinsoTree
 		extreme Dash Climb Ability=6
 		extreme Dash WallJump Ability=6
 	pickup: LowerGinsoPlant
-		normal ChargeFlame
+		normal ChargeFlame DoubleJump
+		normal ChargeFlame WallJump
+		normal ChargeFlame Climb
+		--can be gotten with a ChargeFlame only, but will fall down after
+		speed ChargeFlame
 		normal Grenade
 		cdash Dash Ability=6
 	conn: GinsoMiniBossDoor
@@ -1200,21 +1204,21 @@ home: GinsoMiniBossDoor
 	pickup: LowerGinsoKeystone2
 		normal DoubleJump
 		normal Glide
-		normal ChargeJump 
 		--involves 2 hp dboost
+		dboost-light ChargeJump 
 		normal Bash Grenade
 	pickup: LowerGinsoKeystone3
 		normal WallJump
 		normal Climb
 		normal ChargeJump
 		normal Bash Grenade
-		Extended DoubleJump
+		extended DoubleJump
 	pickup: LowerGinsoKeystone4
 		normal WallJump
 		normal Climb
 		normal ChargeJump
 		normal Bash Grenade
-		Extended DoubleJump
+		extended DoubleJump
 	conn: BashTreeDoor
 		normal Keystone=4
 home: BashTreeDoor
@@ -1239,16 +1243,16 @@ home: BashTree
 home: UpperGinsoTree
 	--anchor: Near the flower just before the Upper Ginso keystone area.
 	pickup: UpperGinsoLowerKeystone
-		normal bash
+		normal Bash
 		dboost ChargeJump Health=5
 	pickup: UpperGinsoRightKeystone
-		normal bash
+		normal Bash
 		dboost ChargeJump Health=5
 	pickup: UpperGinsoUpperRightKeystone
-		normal bash
+		normal Bash
 		dboost ChargeJump Health=5
 	pickup: UpperGinsoUpperLeftKeystone
-		normal bash
+		normal Bash
 		dboost ChargeJump Health=5
 	pickup: UpperGinsoRedirectLowerExp
 		normal Stomp
@@ -1287,8 +1291,8 @@ home: TopGinsoTree
 		cdash Dash Ability=6
 	pickup: TopGinsoRightPlant
 		normal Bash ChargeFlame
-		normal Bash Grenade 
 		--requires 2 grenades or an air throw
+		normal Bash Grenade 
 		normal ChargeJump ChargeFlame
 		normal ChargeJump Grenade
 		cdash Dash Ability=6
