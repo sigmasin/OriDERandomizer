@@ -759,22 +759,25 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
     limitKeysPool = ["SKWallJump", "SKChargeFlame", "SKDash", "SKStomp", "SKDoubleJump", "SKGlide", "SKClimb", "SKGrenade", "SKChargeJump", "EVGinsoKey", "EVForlornKey", "EVHoruKey", "SKBash", "EVWater", "EVWind"]
 
     difficultyMap = {
-        "normal": 1,
-        "speed": 2,
-        "lure": 2,
-        "speed-lure": 3,
-        "dboost": 2,
-        "dboost-light": 1,
-        "dboost-hard": 3,
-        "cdash": 2,
-        "cdash-farming": 2,
+        "casual-core": 1,
+        "casual-dboost": 1,
+        "standard-core": 2,
+        "standard-lure": 2,
+        "standard-dboost": 2,
+        "standard-abilities": 2,
+        "expert-core": 3,
+        "expert-lure": 3,
+        "expert-dboost": 3,
+        "expert-abilities": 2,
         "dbash": 3,
-        "extended": 3,
-        "extended-damage": 3,
-        "lure-hard": 4,
-        "extreme": 4,
+        "master-core": 4,
+        "master-lure": 4,
+        "master-dboost": 4,
+        "master-abilities": 3,
+        "gjump": 4,
         "glitched": 5,
-        "timed-level": 5
+        "timed-level": 5,
+        "insane": 5
     }
 
     outputStr = ""
@@ -1011,7 +1014,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         itemPool["EX*"] -= sharedMap[playerID]
         itemCount -= sharedMap[playerID]
 
-    tree = XML.parse("areas_new.xml")
+    tree = XML.parse("areas.xml")
     root = tree.getroot()
 
     for child in root:
@@ -1294,15 +1297,13 @@ def main():
     includePlants = not args.noplants
 
     presets = {
-        "casual": ["normal", "dboost-light"],
-        "standard": ["normal", "speed", "lure", "dboost-light"],
-        "dboost": ["normal", "speed", "lure", "dboost", "dboost-light"],
-        "expert": ["normal", "speed", "lure", "speed-lure", "dboost", "dboost-light", "cdash", "extended", "extended-damage"],
-        "master": ["normal", "speed", "lure", "speed-lure", "dboost", "dboost-light", "dboost-hard", "cdash", "gjump", "dbash", "extended", "extended-damage", "lure-hard", "extreme"],
-        "hard": ["normal", "speed", "lure",  "dboost-light", "cdash", "dbash", "extended"],
-        "ohko": ["normal", "speed", "lure", "cdash", "dbash", "extended"],
-        "0xp": ["normal", "speed", "lure", "dboost-light"],
-        "glitched": ["normal", "speed", "lure", "speed-lure", "dboost", "dboost-light", "dboost-hard", "cdash", "gjump", "dbash", "extended", "lure-hard", "timed-level", "glitched", "extended-damage", "extreme"]
+        "casual": ["casual-core", "casual-dboost"],
+        "standard": ["casual-core", "casual-dboost", "standard-core", "standard-lure", "standard-dboost", "standard-abilities"],
+        "expert": ["casual-core", "casual-dboost", "standard-core", "standard-lure", "standard-dboost", "standard-abilities", "expert-core", "expert-lure", "expert-dboost", "expert-abilities", "dbash"],
+        "master": ["casual-core", "casual-dboost", "standard-core", "standard-lure", "standard-dboost", "standard-abilities", "expert-core", "expert-lure", "expert-dboost", "expert-abilities", "master-core", "master-lure", "master-dboost", "master-abilities", "dbash", "gjump"],
+        "ohko": ["casual-core", "standard-core", "standard-lure", "standard-abilities", "expert-core", "expert-abilities", "dbash"],
+        "0xp": ["casual-core", "casual-dboost", "standard-core", "standard-lure"],
+        "glitched": ["casual-core", "casual-dboost", "standard-core", "standard-lure", "standard-dboost", "standard-abilities", "expert-core", "expert-lure", "expert-dboost", "expert-abilities", "master-core", "master-lure", "master-dboost", "master-abilities", "dbash", "gjump", "glitched", "timed-level"]
     }
 
     if args.preset:
