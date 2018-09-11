@@ -835,7 +835,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
     connectionQueue = []
     assignQueue = []
 
-    itemCount = 244.0
+    itemCount = 252.0
     expRemaining = expPool
     keystoneCount = 0
     mapstoneCount = 0
@@ -843,7 +843,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
     if not hardMode:
         itemPool = OrderedDict([
             ("EX1", 1),
-            ("EX*", 91),
+            ("EX*", 99),
             ("KS", 40),
             ("MS", 11),
             ("AC", 33),
@@ -888,7 +888,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
     else:
         itemPool = OrderedDict([
             ("EX1", 1),
-            ("EX*", 167),
+            ("EX*", 175),
             ("KS", 40),
             ("MS", 11),
             ("AC", 0),

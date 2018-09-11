@@ -230,6 +230,14 @@ loc: HoruLavaDrainedRightExp 129 165 EX200 7 Horu
 loc: DoorWarpExp 106 112 EX200 5 Horu
 loc: HoruTeleporterExp 98 130 EX200 7 Horu
 loc: FinalEscape 0 20 EVWarmth 0 Horu
+loc: HoruR1 0 60 CS 6 Horu
+loc: HoruR2 0 64 CS 6 Horu
+loc: HoruR3 0 68 CS 7 Horu
+loc: HoruR4 0 72 CS 6 Horu
+loc: HoruL1 0 76 CS 6 Horu
+loc: HoruL2 0 80 CS 6 Horu
+loc: HoruL3 0 84 CS 7 Horu
+loc: HoruL4 0 88 CS 6 Horu
 loc: ValleyEntryAbilityCell -205 -113 AC 1 Valley
 loc: ValleyEntryTreeExp -221 -84 EX100 2 Valley
 loc: ValleyEntryTreePlant -179 -88 Plant 2 Valley
@@ -1606,7 +1614,7 @@ home: HideoutRedirect
 home: Swamp
 	pickup: InnerSwampStompExp
 		ALL Stomp
-		casual-dboost
+		casual-dboost Free
 		casual-core Water
 	pickup: SwampMap
 		casual-core Mapstone
@@ -1760,6 +1768,7 @@ home: L1InnerDoor
 		expert-core Grenade WallJump
 		expert-core Grenade Climb
 home: L1
+	pickup: HoruL1
 home: L2OuterDoor
 	conn: L2InnerDoor
 	conn: HoruInnerDoor
@@ -1776,6 +1785,7 @@ home: L2InnerDoor
 		expert-core Grenade WallJump
 		expert-core Grenade Climb
 home: L2
+	pickup: HoruL2
 home: L3OuterDoor
 	conn: L3InnerDoor
 	conn: HoruInnerDoor
@@ -1792,6 +1802,7 @@ home: L3InnerDoor
 		expert-core Grenade WallJump
 		expert-core Grenade Climb
 home: L3
+	pickup: HoruL3
 home: L4OuterDoor
 	conn: L4InnerDoor
 	conn: HoruInnerDoor
@@ -1810,6 +1821,7 @@ home: L4
 	pickup: HoruL4LowerExp
 	pickup: HoruL4ChaseExp
 	pickup: HoruLavaDrainedLeftExp
+	pickup: HoruL4
 home: R1OuterDoor
 	conn: R1InnerDoor
 home: R1InnerDoor
@@ -1827,6 +1839,7 @@ home: R1
 	pickup: HoruR1HangingExp
 	pickup: HoruR1Mapstone
 	pickup: HoruR1EnergyCell
+	pickup: HoruR1
 home: R2OuterDoor
 	conn: R2InnerDoor
 	conn: HoruInnerDoor
@@ -1842,6 +1855,7 @@ home: R2InnerDoor
 		expert-core Grenade WallJump
 		expert-core Grenade Climb
 home: R2
+	pickup: HoruR2
 home: R3OuterDoor
 	conn: R3InnerDoor
 	conn: HoruInnerDoor
@@ -1862,6 +1876,7 @@ home: R3
 		casual-core ChargeFlame
 		casual-core Grenade
 		expert-abilities Dash Ability=6
+	pickup: HoruR3
 home: R4OuterDoor
 	conn: R4InnerDoor
 	conn: HoruInnerDoor
@@ -1881,6 +1896,7 @@ home: R4
 	pickup: HoruR4LaserExp
 	pickup: HoruR4DrainedExp
 	pickup: HoruLavaDrainedRightExp
+	pickup: HoruR4
 home: HoruHub
 	pickup: HoruTeleporterExp
 		casual-core GinsoKey ForlornKey
