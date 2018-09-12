@@ -952,9 +952,11 @@ home: GrenadeAreaAccess
 		gjump ChargeJump Climb Grenade
 	conn: LowerBlackroot
 		casual-core DoubleJump
-		casual-core Bash Grenade
+		casual-core Climb ChargeJump
 		casual-dboost Free
+		standard-core Bash Grenade
 		expert-abilities Dash Ability=3
+		dbash Bash
 home: GrenadeArea
 	-- anchor: just past the laser
 	pickup: GrenadeSkillTree
