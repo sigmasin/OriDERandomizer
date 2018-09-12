@@ -1338,7 +1338,6 @@ home: UpperGinsoDoor
 home: TopGinsoTree
 	--anchor: Where Water Vein is inserted at the top of the Ginso Tree
 	-- TODO: recheck these dboost paths and their difficulties
-	-- (do these spikes actually do 3? What damage are we taking getting to the top left exp?)
 	pickup: TopGinsoLeftLowerExp
 		casual-core DoubleJump WallJump
 		casual-core DoubleJump Climb
@@ -1379,62 +1378,75 @@ home: TopGinsoTree
 		expert-abilities Stomp Dash Ability=6
 home: GinsoEscape
 	--gonna need to go over a lot of these paths for binning into difficulties, some can be quite a pain
-	--consider many casual-accessible strats moved to standard due to the time limit involved
 	pickup: GinsoEscapeSpiderExp
-		casual-core Bash
-		standard-core ChargeJump WallJump
-		standard-core ChargeJump Climb
-		expert-core ChargeJump DoubleJump
+		casual-core Bash DoubleJump WallJump
+		casual-core Bash ChargeJump WallJump
+		casual-core Bash DoubleJump Climb
+		--needs verification
+		standard-core ChargeJump Climb DoubleJump
+		standard-dboost ChargeJump Climb Health=3
+		standard-dboost ChargeJump WallJump Health=3
+		--following master dboost need to be verified
+		master-dboost ChargeJump DoubleJump Dash Health=5
+		master-dboost ChargeJump DoubleJump Glide Health=5
+		dbash Bash
 	pickup: GinsoEscapeJumpPadExp
-		casual-core Bash DoubleJump
-		casual-core Bash ChargeJump
-		standard-core Bash Grenade
-		standard-core ChargeJump WallJump
-		standard-core ChargeJump Climb
-		expert-core ChargeJump DoubleJump
+		casual-core Bash DoubleJump WallJump
+		casual-core Bash ChargeJump WallJump
+		casual-core Bash DoubleJump Climb
+		--needs verification
+		standard-core ChargeJump Climb DoubleJump
+		standard-dboost ChargeJump Climb Health=3
+		standard-dboost ChargeJump WallJump Health=3
+		--following master dboost need to be verified
+		master-dboost ChargeJump DoubleJump Dash Health=5
+		master-dboost ChargeJump DoubleJump Glide Health=5
 		dbash Bash
 	pickup: GinsoEscapeProjectileExp
 		casual-core Bash DoubleJump WallJump
-		casual-core Bash ChargeJump
-		standard-core Bash Grenade
-		standard-core Bash DoubleJump Climb
-		standard-core ChargeJump WallJump
-		standard-core ChargeJump Climb
-		expert-core ChargeJump DoubleJump Dash
-		expert-core ChargeJump DoubleJump Glide
+		casual-core Bash ChargeJump WallJump
+		casual-core Bash DoubleJump Climb
+		--needs verification
+		standard-core ChargeJump Climb DoubleJump
+		standard-dboost ChargeJump Climb Health=3
+		standard-dboost ChargeJump WallJump Health=3
+		--following master dboost need to be verified
+		master-dboost ChargeJump DoubleJump Dash Health=5
+		master-dboost ChargeJump DoubleJump Glide Health=5
 		dbash Bash
 	pickup: GinsoEscapeHangingExp
 		casual-core Bash DoubleJump WallJump
 		casual-core Bash ChargeJump WallJump
-		standard-core Bash Grenade
-		standard-core Bash DoubleJump Climb
-		standard-core ChargeJump WallJump
-		standard-core ChargeJump Climb
-		expert-core ChargeJump DoubleJump Dash
-		expert-core ChargeJump DoubleJump Glide
+		casual-core Bash DoubleJump Climb
+		--needs verification
+		standard-core ChargeJump Climb DoubleJump
+		standard-dboost ChargeJump Climb Health=3
+		standard-dboost ChargeJump WallJump Health=3
+		--following master dboost need to be verified
+		master-dboost ChargeJump DoubleJump Dash Health=5
+		master-dboost ChargeJump DoubleJump Glide Health=5
 		dbash Bash
 	pickup: GinsoEscapeExit
 		casual-core Bash DoubleJump WallJump
 		casual-core Bash ChargeJump WallJump
-		standard-core Bash Grenade
-		standard-core Bash DoubleJump Climb
-		standard-core ChargeJump WallJump DoubleJump
+		casual-core Bash DoubleJump Climb
+		--needs verification
 		standard-core ChargeJump Climb DoubleJump
 		standard-dboost ChargeJump Climb Health=3
 		standard-dboost ChargeJump WallJump Health=3
+		--following master dboost need to be verified
 		master-dboost ChargeJump DoubleJump Dash Health=5
 		master-dboost ChargeJump DoubleJump Glide Health=5
 		dbash Bash
 	conn: Swamp
-		--same requirements as GinsoEscapeExit
 		casual-core Bash DoubleJump WallJump
 		casual-core Bash ChargeJump WallJump
-		standard-core Bash Grenade
-		standard-core Bash DoubleJump Climb
-		standard-core ChargeJump WallJump DoubleJump
+		casual-core Bash DoubleJump Climb
+		--needs verification
 		standard-core ChargeJump Climb DoubleJump
 		standard-dboost ChargeJump Climb Health=3
 		standard-dboost ChargeJump WallJump Health=3
+		--following master dboost need to be verified
 		master-dboost ChargeJump DoubleJump Dash Health=5
 		master-dboost ChargeJump DoubleJump Glide Health=5
 		dbash Bash
