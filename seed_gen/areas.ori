@@ -1204,9 +1204,9 @@ home: LowerGinsoTree
 		--A little more difficult for a 2 hp dboost here, maybe put in expert?
 		standard-dboost ChargeJump
 		--Added in paths to reach the miniboss area airdashing through teleporters
-		standard-abilities WallJump Dash (Ability=3)
-		standard-abilities Climb Dash (Ability=3)
-		standard-abilities ChargeJump Dash (Ability=3)
+		standard-abilities WallJump Dash Ability=3
+		standard-abilities Climb Dash Ability=3
+		standard-abilities ChargeJump Dash Ability=3
 		--involves a relatively precise movement through teleporter area to avoid damage
 		expert-core WallJump
 		--involves double jump climbing
@@ -1218,13 +1218,16 @@ home: LowerGinsoTree
 home: GinsoMiniBossDoor
 	-- anchor: Just past the Ginso Mini Boss Door which unlocks after mini boss defeat
 	pickup: LowerGinsoKeystone1 --can be gotten with no skills and a 2 hp dboost
-		casual-dboost Health=3
+		casual-core DoubleJump
+		standard-core Glide
+		standard-abilities Dash Ability=3
+		standard-dboost Health=3
 	pickup: LowerGinsoKeystone2
 		casual-core DoubleJump
 		casual-core Glide
-		--involves 2 hp dboost
-		casual-dboost ChargeJump Health=3
 		casual-core Bash Grenade
+		--involves 2 hp dboost
+		standard-dboost ChargeJump Health=3
 	pickup: LowerGinsoKeystone3
 		casual-core WallJump
 		casual-core Climb
@@ -1272,9 +1275,9 @@ home: UpperGinsoTree
 		casual-core Bash DoubleJump
 		--May be a little too difficult for casual?
 		casual-core Bash Glide
-		casual-dboost Bash Health=3
-		casual-dboost DoubleJump Health=3
-		-- still a single dboost but movement is a little too much for casual I think
+		-- All dboosts are pickups over spikes
+		standard-dboost Bash Health=3
+		standard-dboost DoubleJump Health=3
 		standard-dboost ChargeJump Health=3
 		expert-dboost Health=5
 	pickup: UpperGinsoRightKeystone
@@ -1347,7 +1350,7 @@ home: TopGinsoTree
 		casual-core ChargeJump Glide
 		--involves lobbing a grenade to the xp in order to avoid damage
 		standard-core Bash Grenade
-		casual-dboost ChargeJump Health=3
+		standard-dboost ChargeJump Health=3
 		expert-core DoubleJump
 		expert-abilities Dash Ability=6
 	pickup: TopGinsoLeftUpperExp
