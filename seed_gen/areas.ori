@@ -1839,15 +1839,58 @@ home: R1InnerDoor
 		master-core ChargeJump WallJump DoubleJump Glide Health=8 Ability=12
 home: R1
     pickup: HoruR1HangingExp
+        casual-core DoubleJump Glide
+        standard-core DoubleJump WallJump
+        standard-core DoubleJump Climb
+        standard-core ChargeJump Climb Glide
+        standard-core Climb Bash Grenade
+        standard-abilities Dash WallJump Ability=3
+        standard-abilities Dash Climb Ability=3
+        expert-core DoubleJump
+        expert-core ChargeJump Climb
+        expert-core Bash Grenade
+        expert-abilities Dash Ability=3
+        expert-dboost ChargeJump Glide Health=5
+        expert-dboost Dash Health=5
+        master-core WallJump Glide
+        master-dboost ChargeJump Health=9
+        master-abilities ChargeJump Health=7 Abilities=12
     conn: HoruR1MapstoneSecret
+        casual-core Glide
+        standard-core Dash DoubleJump
+        expert-core Bash Grenade
+        expert-core DoubleJump
+        expert-dboost Dash Health=5
+        expert-abilities Dash Ability=6 Energy=1
+        master-dboost Health=9
+        master-abilities Health=7
 home: HoruR1MapstoneSecret
     -- anchor: bottom left of the room, between the second crusher and the mapstone fragment
     pickup: HoruR1Mapstone
     conn: HoruR1CutsceneTrigger
+        casual-core Bash ChargeJump Glide
+        casual-core Bash ChargeJump DoubleJump
+        casual-core Bash Grenade Glide
+        casual-core Bash Grenade DoubleJump
+        expert-core Bash DoubleJump Glide
+        expert-dboost ChargeJump DoubleJump Glide Health=5
+        expert-abilities ChargeJump Dash Health=5 Ability=6 Energy=1
+        dbash Bash Glide
+        dbash Bash DoubleJump
+        dbash Bash Dash Ability=3
+        master-core Bash DoubleJump
+        master-abilities DoubleJump Dash Health=7 Ability=12 Energy=4
 home: HoruR1CutsceneTrigger
     -- anchor: at the end of the room, where Ori needs to stand to activate the cutscene
     pickup: HoruR1
     pickup: HoruR1EnergyCell
+        casual-core Climb ChargeJump
+        casual-core Climb Bash Grenade
+        casual-core WallJump DoubleJump
+        casual-core WallJump Glide
+        standard-core Bash Grenade
+        expert-dboost WallJump Health=5
+        master-core DoubleJump
 home: R2OuterDoor
 	conn: R2InnerDoor
 	conn: HoruInnerDoor
