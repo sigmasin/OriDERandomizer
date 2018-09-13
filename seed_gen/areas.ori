@@ -1838,10 +1838,16 @@ home: R1InnerDoor
 		expert-core Bash Grenade Climb
 		master-core ChargeJump WallJump DoubleJump Glide Health=8 Ability=12
 home: R1
-	pickup: HoruR1HangingExp
-	pickup: HoruR1Mapstone
-	pickup: HoruR1EnergyCell
-	pickup: HoruR1
+    pickup: HoruR1HangingExp
+    conn: HoruR1MapstoneSecret
+home: HoruR1MapstoneSecret
+    -- anchor: bottom left of the room, between the second crusher and the mapstone fragment
+    pickup: HoruR1Mapstone
+    conn: HoruR1CutsceneTrigger
+home: HoruR1CutsceneTrigger
+    -- anchor: at the end of the room, where Ori needs to stand to activate the cutscene
+    pickup: HoruR1
+    pickup: HoruR1EnergyCell
 home: R2OuterDoor
 	conn: R2InnerDoor
 	conn: HoruInnerDoor
