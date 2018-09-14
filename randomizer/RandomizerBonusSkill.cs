@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using Game;
 
-// Token: 0x02000A10 RID: 2576
+// Token: 0x02000A0F RID: 2575
 public static class RandomizerBonusSkill
 {
-    // Token: 0x060037F3 RID: 14323
+    // Token: 0x060037F8 RID: 14328 RVA: 0x000E5A10 File Offset: 0x000E3C10
     public static void SwitchBonusSkill()
     {
         if (RandomizerBonusSkill.UnlockedBonusSkills.Count < 1)
@@ -17,7 +17,7 @@ public static class RandomizerBonusSkill
         Randomizer.MessageQueue.Enqueue(RandomizerBonusSkill.CurrentBonusName());
     }
 
-    // Token: 0x060037F4 RID: 14324
+    // Token: 0x060037F9 RID: 14329 RVA: 0x000E5A60 File Offset: 0x000E3C60
     public static void ActivateBonusSkill()
     {
         if (RandomizerBonusSkill.UnlockedBonusSkills.Count == 0)
@@ -79,7 +79,7 @@ public static class RandomizerBonusSkill
         }
     }
 
-    // Token: 0x060037F5 RID: 14325
+    // Token: 0x060037FA RID: 14330 RVA: 0x000E5CF0 File Offset: 0x000E3EF0
     static RandomizerBonusSkill()
     {
         RandomizerBonusSkill.UnlockedBonusSkills = new List<int>();
@@ -87,7 +87,7 @@ public static class RandomizerBonusSkill
         RandomizerBonusSkill.Reset();
     }
 
-    // Token: 0x060037F6 RID: 14326
+    // Token: 0x060037FB RID: 14331 RVA: 0x000E5D5C File Offset: 0x000E3F5C
     public static void Update()
     {
         if (RandomizerBonusSkill.EnergyDrainRate > 0f)
@@ -102,7 +102,7 @@ public static class RandomizerBonusSkill
         }
     }
 
-    // Token: 0x060037F7 RID: 14327
+    // Token: 0x060037FC RID: 14332 RVA: 0x000E5DC0 File Offset: 0x000E3FC0
     public static void DisableAllPersistant()
     {
         RandomizerBonusSkill.ActiveDrainSkills.Clear();
@@ -112,20 +112,20 @@ public static class RandomizerBonusSkill
         Characters.Sein.PlatformBehaviour.Gravity.BaseSettings.GravityAngle = 0f;
     }
 
-    // Token: 0x060037F8 RID: 14328
+    // Token: 0x060037FD RID: 14333 RVA: 0x0002BF6B File Offset: 0x0002A16B
     public static void OnSave()
     {
         RandomizerBonusSkill.BonusSkillsLastSave = new List<int>(RandomizerBonusSkill.UnlockedBonusSkills);
     }
 
-    // Token: 0x060037F9 RID: 14329
+    // Token: 0x060037FE RID: 14334 RVA: 0x0002BF7C File Offset: 0x0002A17C
     public static void OnDeath()
     {
         RandomizerBonusSkill.DisableAllPersistant();
         RandomizerBonusSkill.UnlockedBonusSkills = new List<int>(RandomizerBonusSkill.BonusSkillsLastSave);
     }
 
-    // Token: 0x060037FA RID: 14330
+    // Token: 0x060037FF RID: 14335 RVA: 0x0002BF92 File Offset: 0x0002A192
     public static int CurrentBonus()
     {
         if (RandomizerBonusSkill.UnlockedBonusSkills.Count > RandomizerBonusSkill.ActiveBonus)
@@ -135,7 +135,7 @@ public static class RandomizerBonusSkill
         return 0;
     }
 
-    // Token: 0x060037FB RID: 14331
+    // Token: 0x06003800 RID: 14336 RVA: 0x0002BFB6 File Offset: 0x0002A1B6
     public static string CurrentBonusName()
     {
         if (RandomizerBonusSkill.UnlockedBonusSkills.Count > RandomizerBonusSkill.ActiveBonus)
@@ -145,7 +145,7 @@ public static class RandomizerBonusSkill
         return "None";
     }
 
-    // Token: 0x060037FC RID: 14332
+    // Token: 0x06003801 RID: 14337 RVA: 0x000E5E48 File Offset: 0x000E4048
     public static void FoundBonusSkill(int ID)
     {
         Randomizer.showHint(RandomizerBonusSkill.BonusSkillNames[ID]);
@@ -157,7 +157,7 @@ public static class RandomizerBonusSkill
         }
     }
 
-    // Token: 0x0600384A RID: 14410
+    // Token: 0x06003802 RID: 14338 RVA: 0x000E5EA0 File Offset: 0x000E40A0
     public static void Reset()
     {
         RandomizerBonusSkill.UnlockedBonusSkills = new List<int>();
@@ -174,22 +174,22 @@ public static class RandomizerBonusSkill
         RandomizerBonusSkill.ActiveBonus = 0;
     }
 
-    // Token: 0x040032AF RID: 12975
+    // Token: 0x040032C0 RID: 12992
     public static int ActiveBonus = 0;
 
-    // Token: 0x040032B0 RID: 12976
+    // Token: 0x040032C1 RID: 12993
     public static List<int> UnlockedBonusSkills;
 
-    // Token: 0x040032B1 RID: 12977
+    // Token: 0x040032C2 RID: 12994
     public static float EnergyDrainRate;
 
-    // Token: 0x040032B2 RID: 12978
+    // Token: 0x040032C3 RID: 12995
     public static HashSet<int> ActiveDrainSkills;
 
-    // Token: 0x040032B3 RID: 12979
+    // Token: 0x040032C4 RID: 12996
     public static List<int> BonusSkillsLastSave;
 
-    // Token: 0x040032B4 RID: 12980
+    // Token: 0x040032C5 RID: 12997
     public static Dictionary<int, string> BonusSkillNames = new Dictionary<int, string>
     {
         {

@@ -153,6 +153,7 @@ class Connection:
             score = 0
             energy = 0
             health = 0
+            ability = 0
             for abil in self.requirements[i]:
                 if abil == "EC":
                     energy += 1
@@ -161,6 +162,10 @@ class Connection:
                 elif abil == "HC":
                     health += 1
                     if inventory["HC"] < health:
+                        score += costs[abil.strip()]
+                elif abil == "AC":
+                    ability += 1
+                    if inventory["AC"] < health:
                         score += costs[abil.strip()]
                 else:
                     score += costs[abil.strip()]
@@ -225,14 +230,18 @@ def open_free_connections():
     for area in list(areasReached.keys()):
         for connection in areas[area].get_connections():
             cost = connection.cost()
+            reached = connection.target in areasReached
             if cost[0] <= 0:
-                areas[connection.target].difficulty = cost[2]
+                if not reached:
+                    areas[connection.target].difficulty = cost[2]
+                    if len(areas[connection.target].locations) > 0:
+                        areas[connection.target].difficulty += areas[area].difficulty
                 if connection.keys > 0:
                     if area not in doorQueue.keys():
                         doorQueue[area] = connection
                         keystoneCount += connection.keys
                 elif connection.mapstone:
-                    if connection.target not in areasReached:
+                    if not reached:
                         visitMap = True
                         for map in mapQueue.keys():
                             if map == area or mapQueue[map].target == connection.target:
@@ -241,7 +250,7 @@ def open_free_connections():
                             mapQueue[area] = connection
                             mapstoneCount += 1
                 else:
-                    if connection.target not in areasReached:
+                    if not reached:
                         seedDifficulty += cost[2] * cost[2]
                         reach_area(connection.target)
                     if connection.target in areasRemaining:
@@ -297,11 +306,11 @@ def prepare_path(free_space):
                 gumonSealShard = 0
                 sunstoneShard = 0
                 for req in req_set:
-                    # for paired randomizer -- if the item isn't yours to assign, skip connection
-                    if itemPool[req] == 0:
-                        requirements = []
-                        break
                     if costs[req] > 0:
+                        # for paired randomizer -- if the item isn't yours to assign, skip connection
+                        if itemPool[req] == 0:
+                            requirements = []
+                            break
                         if req == "EC":
                             energy += 1
                             if energy > inventory["EC"]:
@@ -330,7 +339,8 @@ def prepare_path(free_space):
                         else:
                             requirements.append(req)
                             cost += costs[req]
-                # cost *= len(requirements) # decrease the rate of multi-ability paths
+                # decrease the rate of multi-item paths
+                cost *= max(1, len(requirements) - 1)
                 if len(requirements) <= free_space:
                     for req in requirements:
                         if req not in abilities_to_open:
@@ -342,13 +352,28 @@ def prepare_path(free_space):
         totalCost += 1.0/abilities_to_open[path][0]
     position = 0
     target = random.random() * totalCost
+    path_selected = None
     for path in abilities_to_open:
         position += 1.0/abilities_to_open[path][0]
         if target <= position:
+            path_selected = abilities_to_open[path]
+            break
+    # if a connection will open with a subset of skills in the selected path, use that instead
+    for path in abilities_to_open:
+        isSubset = abilities_to_open[path][0] < path_selected[0]
+        if isSubset:
             for req in abilities_to_open[path][1]:
-                if itemPool[req] > 0:
-                    assignQueue.append(req)
-            return abilities_to_open[path][1]
+                if req not in path_selected[1]:
+                    isSubset = False
+                    break
+            if isSubset:
+                path_selected = abilities_to_open[path]
+    if path_selected:
+        for req in path_selected[1]:
+            if itemPool[req] > 0:
+                assignQueue.append(req)
+        return path_selected[1]
+    return None
 
 def get_location_from_balance_list():
     target = int(pow(random.random(), 1.0 / balanceLevel) * len(balanceList))
@@ -368,7 +393,7 @@ def assign_random(recurseCount = 0):
 
 def assign(item):
     itemPool[item] = max(itemPool[item]-1,0)
-    if item == "EC" or item == "KS" or item == "HC":
+    if item == "EC" or item == "KS" or item == "HC" or item == "AC":
         if costs[item] > 0:
             costs[item] -= 1
     elif item == "WaterVeinShard" or item == "GumonSealShard" or item == "SunstoneShard":
@@ -486,14 +511,14 @@ def preferred_difficulty_assign(item, locationsToAssign):
     total = 0.0
     for loc in locationsToAssign:
         if pathDifficulty == "easy":
-            total += (15 - loc.difficulty) * (15 - loc.difficulty)
+            total += (20 - loc.difficulty) * (20 - loc.difficulty)
         else:
             total += (loc.difficulty * loc.difficulty)
     value = random.random()
     position = 0.0
     for i in range(0,len(locationsToAssign)):
         if pathDifficulty == "easy":
-            position += (15 - locationsToAssign[i].difficulty) * (15 - locationsToAssign[i].difficulty)/total
+            position += (20 - locationsToAssign[i].difficulty) * (20 - locationsToAssign[i].difficulty)/total
         else:
             position += locationsToAssign[i].difficulty * locationsToAssign[i].difficulty/total
         if value <= position:
@@ -734,22 +759,25 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
     limitKeysPool = ["SKWallJump", "SKChargeFlame", "SKDash", "SKStomp", "SKDoubleJump", "SKGlide", "SKClimb", "SKGrenade", "SKChargeJump", "EVGinsoKey", "EVForlornKey", "EVHoruKey", "SKBash", "EVWater", "EVWind"]
 
     difficultyMap = {
-        "normal": 1,
-        "speed": 2,
-        "lure": 2,
-        "speed-lure": 3,
-        "dboost": 2,
-        "dboost-light": 1,
-        "dboost-hard": 3,
-        "cdash": 2,
-        "cdash-farming": 2,
+        "casual-core": 1,
+        "casual-dboost": 1,
+        "standard-core": 2,
+        "standard-lure": 2,
+        "standard-dboost": 2,
+        "standard-abilities": 2,
+        "expert-core": 3,
+        "expert-lure": 3,
+        "expert-dboost": 3,
+        "expert-abilities": 2,
         "dbash": 3,
-        "extended": 3,
-        "extended-damage": 3,
-        "lure-hard": 4,
-        "extreme": 4,
+        "master-core": 4,
+        "master-lure": 4,
+        "master-dboost": 4,
+        "master-abilities": 3,
+        "gjump": 4,
         "glitched": 5,
-        "timed-level": 5
+        "timed-level": 5,
+        "insane": 5
     }
 
     outputStr = ""
@@ -761,6 +789,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
         "Free": 0,
         "MS": 0,
         "KS": 2,
+        "AC": 12,
         "EC": 6,
         "HC": 12,
         "WallJump": 13,
@@ -806,7 +835,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
     connectionQueue = []
     assignQueue = []
 
-    itemCount = 244.0
+    itemCount = 252.0
     expRemaining = expPool
     keystoneCount = 0
     mapstoneCount = 0
@@ -814,7 +843,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
     if not hardMode:
         itemPool = OrderedDict([
             ("EX1", 1),
-            ("EX*", 91),
+            ("EX*", 99),
             ("KS", 40),
             ("MS", 11),
             ("AC", 33),
@@ -859,7 +888,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
     else:
         itemPool = OrderedDict([
             ("EX1", 1),
-            ("EX*", 167),
+            ("EX*", 175),
             ("KS", 40),
             ("MS", 11),
             ("AC", 0),
@@ -1004,9 +1033,11 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
                 key = loc.to_string()
                 if key not in locationAnalysis.keys():
                     locationAnalysis[key] = itemsToAnalyze.copy()
+                    locationAnalysis[key]["Zone"] = loc.zone
                 zoneKey = loc.zone
                 if zoneKey not in locationAnalysis.keys():
                     locationAnalysis[zoneKey] = itemsToAnalyze.copy()
+                    locationAnalysis[zoneKey]["Zone"] = loc.zone
         for conn in child.find("Connections"):
             connection = Connection(conn.find("Home").attrib["name"], conn.find("Target").attrib["name"])
             entranceConnection = conn.find("Entrance")
@@ -1037,7 +1068,7 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
 
     outputStr += ("-280256|EC|1|Glades\n")  # first energy cell
     outputStr += ("-1680104|EX|100|Grove\n")  # glitchy 100 orb at spirit tree
-    outputStr += ("-12320248|EX|100|Forlorn\n")  # forlorn escape plant
+    outputStr += ("-12320248|SK|51|Forlorn\n")  # forlorn escape plant
     # the 2nd keystone in misty can get blocked by alt+R, so make it unimportant
     outputStr += ("-10440008|EX|100|Misty\n")
 
@@ -1235,7 +1266,7 @@ def main():
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--preset", help="Choose a preset group of paths for the generator to use", choices=["casual", "standard", "expert", "master", "hard", "ohko", "0xp", "glitched"])
-    parser.add_argument("--custom-logic", help="Customize paths that the generator will use, comma-separated: normal,speed,dbash,extended,extended-damage,lure,speed-lure,lure-hard,dboost,dboost-light,dboost-hard,cdash,cdash-farming,extreme,timed-level,glitched")
+    parser.add_argument("--custom-logic", help="Customize paths that the generator will use, comma-separated: normal,speed,dbash,extended,extended-damage,lure,speed-lure,lure-hard,dboost,dboost-light,dboost-hard,gjump,cdash,cdash-farming,extreme,timed-level,glitched")
     parser.add_argument("--seed", help="Seed number (default 1)", type=int, default=1)
     parser.add_argument("--count", help="Number of seeds to generate (default 1)", type=int, default=1)
     parser.add_argument("--hard", help="Enable hard mode", action="store_true")
@@ -1266,15 +1297,13 @@ def main():
     includePlants = not args.noplants
 
     presets = {
-        "casual": ["normal", "dboost-light"],
-        "standard": ["normal", "speed", "lure", "dboost-light"],
-        "dboost": ["normal", "speed", "lure", "dboost", "dboost-light"],
-        "expert": ["normal", "speed", "lure", "speed-lure", "dboost", "dboost-light", "cdash", "extended", "extended-damage"],
-        "master": ["normal", "speed", "lure", "speed-lure", "dboost", "dboost-light", "dboost-hard", "cdash", "dbash", "extended", "extended-damage", "lure-hard", "extreme"],
-        "hard": ["normal", "speed", "lure",  "dboost-light", "cdash", "dbash", "extended"],
-        "ohko": ["normal", "speed", "lure", "cdash", "dbash", "extended"],
-        "0xp": ["normal", "speed", "lure", "dboost-light"],
-        "glitched": ["normal", "speed", "lure", "speed-lure", "dboost", "dboost-light", "dboost-hard", "cdash", "dbash", "extended", "lure-hard", "timed-level", "glitched", "extended-damage", "extreme"]
+        "casual": ["casual-core", "casual-dboost"],
+        "standard": ["casual-core", "casual-dboost", "standard-core", "standard-lure", "standard-dboost", "standard-abilities"],
+        "expert": ["casual-core", "casual-dboost", "standard-core", "standard-lure", "standard-dboost", "standard-abilities", "expert-core", "expert-lure", "expert-dboost", "expert-abilities", "dbash"],
+        "master": ["casual-core", "casual-dboost", "standard-core", "standard-lure", "standard-dboost", "standard-abilities", "expert-core", "expert-lure", "expert-dboost", "expert-abilities", "master-core", "master-lure", "master-dboost", "master-abilities", "dbash", "gjump"],
+        "ohko": ["casual-core", "standard-core", "standard-lure", "standard-abilities", "expert-core", "expert-abilities", "dbash"],
+        "0xp": ["casual-core", "casual-dboost", "standard-core", "standard-lure"],
+        "glitched": ["casual-core", "casual-dboost", "standard-core", "standard-lure", "standard-dboost", "standard-abilities", "expert-core", "expert-lure", "expert-dboost", "expert-abilities", "master-core", "master-lure", "master-dboost", "master-abilities", "dbash", "gjump", "glitched", "timed-level"]
     }
 
     if args.preset:
@@ -1422,6 +1451,7 @@ def main():
     locationAnalysis = {}
     for i in range(1,10):
         locationAnalysis["MapStone " + str(i)] = itemsToAnalyze.copy()
+        locationAnalysis["MapStone " + str(i)]["Zone"] = "MapStone"
 
     for seedOffset in range(0, args.count):
         
@@ -1429,6 +1459,9 @@ def main():
         random.seed(seed)
 
         placements = placeItemsMulti(seed, args.exp_pool, args.hard, includePlants, args.shards, args.limitkeys, args.clues, args.no_teleporters, args.loc_analysis, args.analysis, modes, flags, syncFlags, args.starved, args.prefer_path_difficulty, args.non_progressive_mapstones, args.players, args.balanced, args.entrance)
+
+        if args.analysis or args.loc_analysis:
+            print(seed)
 
         if not args.analysis and not args.loc_analysis:
             for player in range(0,playerCount):
@@ -1453,9 +1486,11 @@ def main():
         print(skillAnalysis["Grenade"])
 
     if args.loc_analysis:
-        print("location,WallJump,ChargeFlame,DoubleJump,Bash,Stomp,Glide,Climb,ChargeJump,Dash,Grenade,GinsoKey,ForlornKey,HoruKey,Water,Wind,WaterVeinShard,GumonSealShard,SunstoneShard,TPForlorn,TPGrotto,TPSorrow,TPGrove,TPSwamp,TPValley")
+        output = open("analysis.csv", 'w')
+        output.write("Location,Zone,WallJump,ChargeFlame,DoubleJump,Bash,Stomp,Glide,Climb,ChargeJump,Dash,Grenade,GinsoKey,ForlornKey,HoruKey,Water,Wind,WaterVeinShard,GumonSealShard,SunstoneShard,TPForlorn,TPGrotto,TPSorrow,TPGrove,TPSwamp,TPValley\n")
         for key in locationAnalysis.keys():
             line = key + ","
+            line += str(locationAnalysis[key]["Zone"]) + ","
             line += str(locationAnalysis[key]["WallJump"]) + ","
             line += str(locationAnalysis[key]["ChargeFlame"]) + ","
             line += str(locationAnalysis[key]["DoubleJump"]) + ","
@@ -1480,7 +1515,8 @@ def main():
             line += str(locationAnalysis[key]["TPGrove"]) + ","
             line += str(locationAnalysis[key]["TPSwamp"]) + ","
             line += str(locationAnalysis[key]["TPValley"])
-            print(line)
+
+            output.write(line + "\n")
 
 if __name__ == "__main__":
     main()

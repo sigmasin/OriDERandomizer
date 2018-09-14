@@ -39,6 +39,8 @@ public static class RandomizerSyncManager
 		RandomizerSyncManager.TeleportInfos.Add(new RandomizerSyncManager.TeleportInfoLine("Valley", 3));
 		RandomizerSyncManager.TeleportInfos.Add(new RandomizerSyncManager.TeleportInfoLine("Forlorn", 4));
 		RandomizerSyncManager.TeleportInfos.Add(new RandomizerSyncManager.TeleportInfoLine("Sorrow", 5));
+		RandomizerSyncManager.TeleportInfos.Add(new RandomizerSyncManager.TeleportInfoLine("Ginso", 6));
+		RandomizerSyncManager.TeleportInfos.Add(new RandomizerSyncManager.TeleportInfoLine("Horu", 7));
 		RandomizerSyncManager.SkillInfos.Add(new RandomizerSyncManager.SkillInfoLine(0, 0, AbilityType.Bash));
 		RandomizerSyncManager.SkillInfos.Add(new RandomizerSyncManager.SkillInfoLine(2, 1, AbilityType.ChargeFlame));
 		RandomizerSyncManager.SkillInfos.Add(new RandomizerSyncManager.SkillInfoLine(3, 2, AbilityType.WallJump));

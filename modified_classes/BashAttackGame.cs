@@ -12,8 +12,8 @@ internal class BashAttackGame : Suspendable, IPooled
 	}
 
 	// Token: 0x14000001 RID: 1
-	// (add) Token: 0x06000097 RID: 151 RVA: 0x0002D2E4 File Offset: 0x0002B4E4
-	// (remove) Token: 0x06000098 RID: 152 RVA: 0x0002D31C File Offset: 0x0002B51C
+	// (add) Token: 0x06000097 RID: 151 RVA: 0x0002D30C File Offset: 0x0002B50C
+	// (remove) Token: 0x06000098 RID: 152 RVA: 0x0002D344 File Offset: 0x0002B544
 	public event Action<float> BashGameComplete;
 
 	// Token: 0x1700001E RID: 30
@@ -21,7 +21,7 @@ internal class BashAttackGame : Suspendable, IPooled
 	// (set) Token: 0x0600009A RID: 154 RVA: 0x000029D7 File Offset: 0x00000BD7
 	public override bool IsSuspended { get; set; }
 
-	// Token: 0x0600009B RID: 155 RVA: 0x0002D354 File Offset: 0x0002B554
+	// Token: 0x0600009B RID: 155 RVA: 0x0002D37C File Offset: 0x0002B57C
 	public void OnPoolSpawned()
 	{
 		this.m_bashLoopingAudioSource = null;
@@ -38,7 +38,7 @@ internal class BashAttackGame : Suspendable, IPooled
 		this.BashGameComplete = null;
 	}
 
-	// Token: 0x0600009C RID: 156 RVA: 0x0002D3D0 File Offset: 0x0002B5D0
+	// Token: 0x0600009C RID: 156 RVA: 0x0002D3F8 File Offset: 0x0002B5F8
 	public void ChangeState(BashAttackGame.State state)
 	{
 		this.m_currentState = state;
@@ -63,7 +63,7 @@ internal class BashAttackGame : Suspendable, IPooled
 		}
 	}
 
-	// Token: 0x0600009D RID: 157 RVA: 0x0002D448 File Offset: 0x0002B648
+	// Token: 0x0600009D RID: 157 RVA: 0x0002D470 File Offset: 0x0002B670
 	public void UpdateMode()
 	{
 		if (Core.Input.AnalogAxisLeft.magnitude > 0.2f)
@@ -82,7 +82,7 @@ internal class BashAttackGame : Suspendable, IPooled
 		}
 	}
 
-	// Token: 0x0600009E RID: 158 RVA: 0x0002D4B0 File Offset: 0x0002B6B0
+	// Token: 0x0600009E RID: 158
 	public void FixedUpdate()
 	{
 		if (this.IsSuspended)
@@ -132,7 +132,7 @@ internal class BashAttackGame : Suspendable, IPooled
 			{
 				Vector2 vector2 = Core.Input.AnalogAxisLeft;
 				float sqrMagnitude = vector2.sqrMagnitude;
-				if (sqrMagnitude > 0.5f)
+				if (sqrMagnitude > RandomizerSettings.BashDeadzone)
 				{
 					vector2 /= Mathf.Sqrt(sqrMagnitude);
 					this.Angle = Mathf.LerpAngle(this.Angle, Mathf.Atan2(-vector2.x, vector2.y) * 57.29578f, 0.5f);
@@ -155,7 +155,7 @@ internal class BashAttackGame : Suspendable, IPooled
 		this.m_keyboardAngle = MoonMath.Angle.AngleFromVector(direction) - 90f;
 	}
 
-	// Token: 0x060000A0 RID: 160 RVA: 0x0002D714 File Offset: 0x0002B914
+	// Token: 0x060000A0 RID: 160 RVA: 0x0002D73C File Offset: 0x0002B93C
 	public void UpdateState()
 	{
 		switch (this.m_currentState)
@@ -173,7 +173,7 @@ internal class BashAttackGame : Suspendable, IPooled
 		this.m_stateCurrentTime += Time.deltaTime;
 	}
 
-	// Token: 0x060000A1 RID: 161 RVA: 0x0002D764 File Offset: 0x0002B964
+	// Token: 0x060000A1 RID: 161 RVA: 0x0002D78C File Offset: 0x0002B98C
 	private void UpdateDisappearingState()
 	{
 		float time = Mathf.Clamp01(this.m_stateCurrentTime / this.DisappearTime);
@@ -181,7 +181,7 @@ internal class BashAttackGame : Suspendable, IPooled
 		InstantiateUtility.Destroy(base.gameObject, 1f);
 	}
 
-	// Token: 0x060000A2 RID: 162
+	// Token: 0x060000A2 RID: 162 RVA: 0x0002D7E0 File Offset: 0x0002B9E0
 	private void UpdatePlayingState()
 	{
 		if (this.m_nextBashLoopPlayedTime <= this.m_stateCurrentTime)
@@ -206,7 +206,7 @@ internal class BashAttackGame : Suspendable, IPooled
 		}
 	}
 
-	// Token: 0x060000A3 RID: 163 RVA: 0x0002D890 File Offset: 0x0002BA90
+	// Token: 0x060000A3 RID: 163 RVA: 0x0002D8D8 File Offset: 0x0002BAD8
 	private void UpdateAppearingState()
 	{
 		float num = Mathf.Clamp01(this.m_stateCurrentTime / this.AppearTime);
@@ -231,7 +231,7 @@ internal class BashAttackGame : Suspendable, IPooled
 		this.ArrowSprite.localScale = Vector3.zero;
 	}
 
-	// Token: 0x060000A6 RID: 166 RVA: 0x0002D8E4 File Offset: 0x0002BAE4
+	// Token: 0x060000A6 RID: 166 RVA: 0x0002D92C File Offset: 0x0002BB2C
 	private void GameFinished()
 	{
 		Sound.Play((!Characters.Sein.PlayerAbilities.BashBuff.HasAbility) ? Characters.Sein.Abilities.Bash.BashEndSound.GetSound(null) : Characters.Sein.Abilities.Bash.UpgradedBashEndSound.GetSound(null), base.transform.position, null);
