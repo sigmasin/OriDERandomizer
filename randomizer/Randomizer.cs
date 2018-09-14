@@ -10,7 +10,6 @@ using UnityEngine;
 // Token: 0x020009F5 RID: 2549
 public static class Randomizer
 {
-	// Token: 0x0600374E RID: 14158
 	public static void initialize()
 	{
 		Randomizer.OHKO = false;
@@ -287,13 +286,11 @@ public static class Randomizer
 		RandomizerBonusSkill.Reset();
 	}
 
-	// Token: 0x0600374F RID: 14159
 	public static void getPickup()
 	{
 		Randomizer.getPickup(Characters.Sein.Position);
 	}
 
-	// Token: 0x06003750 RID: 14160
 	public static void returnToStart()
 	{
 		if (Characters.Sein.Abilities.Carry.IsCarrying || !Characters.Sein.Controller.CanMove || !Characters.Sein.Active)
@@ -314,7 +311,6 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x06003751 RID: 14161
 	public static void getEvent(int ID)
 	{
 		RandomizerBonus.CollectPickup();
@@ -325,20 +321,17 @@ public static class Randomizer
 		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[ID * 4], ID * 4, true);
 	}
 
-	// Token: 0x06003752 RID: 14162
 	public static void showHint(string message)
 	{
 		Randomizer.Message = message;
 		Randomizer.MessageQueue.Enqueue(message);
 	}
 
-	// Token: 0x06003753 RID: 14163
 	public static void playLastMessage()
 	{
 		Randomizer.MessageQueue.Enqueue(Randomizer.Message);
 	}
 
-	// Token: 0x06003754 RID: 14164
 	public static void log(string message)
 	{
 		StreamWriter streamWriter = File.AppendText("randomizer.log");
@@ -347,13 +340,11 @@ public static class Randomizer
 		streamWriter.Dispose();
 	}
 
-	// Token: 0x06003755 RID: 14165
 	public static bool WindRestored()
 	{
 		return Sein.World.Events.WindRestored && Scenes.Manager.CurrentScene != null && Scenes.Manager.CurrentScene.Scene != "forlornRuinsResurrection" && Scenes.Manager.CurrentScene.Scene != "forlornRuinsRotatingLaserFlipped";
 	}
 
-	// Token: 0x06003756 RID: 14166
 	public static void getSkill()
 	{
 		Characters.Sein.Inventory.IncRandomizerItem(27, 1);
@@ -361,7 +352,6 @@ public static class Randomizer
 		Randomizer.showProgress();
 	}
 
-	// Token: 0x06003757 RID: 14167
 	public static void hintAndLog(float x, float y)
 	{
 		string message = ((int)x).ToString() + " " + ((int)y).ToString();
@@ -369,7 +359,6 @@ public static class Randomizer
 		Randomizer.log(message);
 	}
 
-	// Token: 0x06003758 RID: 14168
 	public static void getPickup(Vector3 position)
 	{
 		RandomizerBonus.CollectPickup();
@@ -408,7 +397,6 @@ public static class Randomizer
 		Randomizer.showHint("Error finding pickup at " + ((int)position.x).ToString() + ", " + ((int)position.y).ToString());
 	}
 
-	// Token: 0x06003759 RID: 14169
 	public static void Update()
 	{
 		Randomizer.UpdateMessages();
@@ -528,7 +516,6 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x0600375A RID: 14170
 	public static void showChaosEffect(string message)
 	{
 		if (Randomizer.ChaosVerbose)
@@ -537,13 +524,11 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x0600375B RID: 14171
 	public static void showChaosMessage(string message)
 	{
 		Randomizer.MessageQueue.Enqueue(message);
 	}
 
-	// Token: 0x0600375C RID: 14172
 	public static void getMapStone()
 	{
 		if (!Randomizer.ProgressiveMapStones)
@@ -559,7 +544,6 @@ public static class Randomizer
 		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[20 + RandomizerBonus.MapStoneProgression() * 4], 20 + RandomizerBonus.MapStoneProgression() * 4, true);
 	}
 
-	// Token: 0x0600375D RID: 14173
 	public static void showProgress()
 	{
 		string text = "";
@@ -655,14 +639,12 @@ public static class Randomizer
 		Randomizer.MessageQueue.Enqueue(text);
 	}
 
-	// Token: 0x0600375E RID: 14174
 	public static void showSeedInfo()
 	{
 		string obj = "v3.0b - seed loaded: " + Randomizer.SeedMeta;
 		Randomizer.MessageQueue.Enqueue(obj);
 	}
 
-	// Token: 0x0600375F RID: 14175
 	public static void changeColor()
 	{
 		if (Characters.Sein)
@@ -671,7 +653,6 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x06003760 RID: 14176
 	public static void UpdateMessages()
 	{
 		if (Randomizer.MessageQueueTime == 0)
@@ -687,7 +668,6 @@ public static class Randomizer
 		Randomizer.MessageQueueTime--;
 	}
 
-	// Token: 0x06003761 RID: 14177
 	public static void OnDeath()
 	{
 		if (Randomizer.Sync)
@@ -698,7 +678,6 @@ public static class Randomizer
 		RandomizerBonusSkill.OnDeath();
 	}
 
-	// Token: 0x06003762 RID: 14178
 	public static void OnSave()
 	{
 		if (Randomizer.Sync)
@@ -709,7 +688,6 @@ public static class Randomizer
 		RandomizerBonusSkill.OnSave();
 	}
 
-	// Token: 0x06003763 RID: 14179
 	public static bool canFinalEscape()
 	{
 		if (Randomizer.fragsEnabled && RandomizerBonus.WarmthFrags() < Randomizer.fragKeyFinish)
@@ -750,7 +728,6 @@ public static class Randomizer
 		return true;
 	}
 
-	// Token: 0x06003764 RID: 14180
 	public static void EnterDoor(Vector3 position)
 	{
 		if (!Randomizer.Entrance)
@@ -788,7 +765,6 @@ public static class Randomizer
 		Randomizer.showHint("Error using door at " + ((int)position.x).ToString() + ", " + ((int)position.y).ToString());
 	}
 
-	// Token: 0x06003765 RID: 14181
 	public static void setTree(int tree)
 	{
 		int num = tree + 6;
@@ -802,14 +778,12 @@ public static class Randomizer
 		}
 	}
 
-	// Token: 0x06003766 RID: 14182
 	public static void getSkill(int tree)
 	{
 		Randomizer.setTree(tree);
 		Randomizer.getSkill();
 	}
 
-	// Token: 0x06003767 RID: 14183
 	public static int ordHash(string s)
 	{
 		int num = 0;
@@ -973,6 +947,33 @@ public static class Randomizer
 
 	// Token: 0x0400324E RID: 12878
 	public static bool BashWasQueued;
+
+	// Token: 0x040032D6 RID: 13014
+	public static bool BashTap;
+
+	// Token: 0x0400334D RID: 13133
+	public static bool fragDungeon;
+
+	// Token: 0x0400334E RID: 13134
+	public static bool fragsEnabled;
+
+	// Token: 0x0400334F RID: 13135
+	public static int maxFrags;
+
+	// Token: 0x04003350 RID: 13136
+	public static int fragKey1;
+
+	// Token: 0x04003351 RID: 13137
+	public static int fragKey2;
+
+	// Token: 0x04003352 RID: 13138
+	public static int fragKey3;
+
+	// Token: 0x04003353 RID: 13139
+	public static List<int> fragDungeonOrder;
+
+	// Token: 0x04003354 RID: 13140
+	public static int fragKeyFinish;
 
 	// Token: 0x0400324F RID: 12879
 	public static bool BashTap;
