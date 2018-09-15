@@ -1865,7 +1865,23 @@ home: R2InnerDoor
 		expert-core Grenade WallJump
 		expert-core Grenade Climb
 home: R2
-	pickup: HoruR2
+    pickup: HoruR2
+        ALL Stomp
+        casual-core Bash Glide DoubleJump WallJump
+        casual-core Bash Glide DoubleJump Climb
+        casual-core Bash Glide DoubleJump ChargeJump
+        casual-core Bash Glide DoubleJump Grenade
+        standard-core Bash Glide WallJump
+        standard-core Bash Glide Climb
+        standard-core Bash Glide ChargeJump
+        standard-core Bash Glide Grenade
+        expert-abilities Bash DoubleJump WallJump
+        expert-abilities Bash DoubleJump Climb
+        expert-abilities Bash DoubleJump ChargeJump
+        expert-abilities Bash DoubleJump Grenade
+        master-core Bash
+        master-dboost DoubleJump ChargeJump Grenade Dash Ability=6 Health=13 Energy=3
+        master-dboost DoubleJump ChargeJump Grenade Dash Ability=12 Health=10 Energy=3
 home: R3OuterDoor
 	conn: R3InnerDoor
 	conn: HoruInnerDoor
