@@ -1102,10 +1102,10 @@ def placeItems(seed, expPool, hardMode, includePlants, shardsMode, limitkeysMode
             (opening, keys, mapstones) = open_free_connections()
             keystoneCount += keys
             mapstoneCount += mapstones
+            if mapstoneCount >= 9:
+                mapstoneCount = 11
             if mapstoneCount == 8:
                 mapstoneCount = 9
-            if mapstoneCount == 10:
-                mapstoneCount = 11
             for connection in connectionQueue:
                 areas[connection[0]].remove_connection(connection[1])
             connectionQueue = []
