@@ -167,6 +167,9 @@ class Connection:
                     ability += 1
                     if inventory["AC"] < health:
                         score += costs[abil.strip()]
+                elif abil == "MS":
+                    if inventory["MS"] < mapstonesSeen:
+                        score += costs[abil.strip()]
                 else:
                     score += costs[abil.strip()]
             if score < minReqScore:
@@ -208,7 +211,7 @@ class Door:
 class Generator:
 
     def reach_area(self, target):
-        if target in self.sharedMap and self.playerID > 1:
+        if self.playerID > 1 and target in self.sharedMap:
             for sharedItem in self.sharedMap[target]:
                 if sharedItem[1] == self.playerID:
                     self.assignQueue.append(sharedItem[0])
@@ -222,6 +225,7 @@ class Generator:
         self.areasReached[target] = True
 
     def open_free_connections(self):
+        global mapstonesSeen
         found = False
         keystoneCount = 0
         mapstoneCount = 0
@@ -240,7 +244,7 @@ class Generator:
                         if area not in self.doorQueue.keys():
                             self.doorQueue[area] = connection
                             keystoneCount += connection.keys
-                    elif connection.mapstone:
+                    elif connection.mapstone and not args.free_mapstones:
                         if not reached:
                             visitMap = True
                             for map in self.mapQueue.keys():
@@ -253,6 +257,13 @@ class Generator:
                         if not reached:
                             self.seedDifficulty += cost[2] * cost[2]
                             self.reach_area(connection.target)
+                            # only reached if args.free_mapstones is true
+                            if connection.mapstone:
+                                mapstonesSeen += 1
+                                if mapstonesSeen >= 9:
+                                    mapstonesSeen = 11
+                                if mapstonesSeen == 8:
+                                    mapstonesSeen = 9
                         if connection.target in self.areasRemaining:
                             self.areasRemaining.remove(connection.target)
                         self.connectionQueue.append((area, connection))
@@ -277,12 +288,12 @@ class Generator:
                     currentLocations.remove(loc)
             locations.extend(currentLocations)
             self.areas[area].clear_locations()
-        if reservedLocations:
-            locations.append(reservedLocations.pop(0))
-            locations.append(reservedLocations.pop(0))
+        if self.reservedLocations:
+            locations.append(self.reservedLocations.pop(0))
+            locations.append(self.reservedLocations.pop(0))
         if self.itemCount > 2 and len(locations) >= 2:
-            reservedLocations.append(locations.pop(random.randrange(len(locations))))
-            reservedLocations.append(locations.pop(random.randrange(len(locations))))
+            self.reservedLocations.append(locations.pop(random.randrange(len(locations))))
+            self.reservedLocations.append(locations.pop(random.randrange(len(locations))))
         return locations
 
 
@@ -393,13 +404,17 @@ class Generator:
 
     def assign(self, item):
         self.itemPool[item] = max(self.itemPool[item]-1,0)
-        if item == "EC" or item == "KS" or item == "HC" or item == "AC":
+        if item == "KS":
+            if costs[item] > 0:
+                costs[item] -= 2
+        # MS not included here since it doesn't really make sense to decrease their cost as you get more
+        elif item in ["EC", "HC", "AC"]:
             if costs[item] > 0:
                 costs[item] -= 1
-        elif item == "WaterVeinShard" or item == "GumonSealShard" or item == "SunstoneShard":
+        elif item in ["WaterVeinShard", "GumonSealShard", "SunstoneShard"]:
             if costs[item] > 0:
                 costs[item] -= 1
-        elif item in costs.keys():
+        elif item in costs.keys() and self.itemPool[item] == 0:
             costs[item] = 0
         inventory[item] += 1
         return item
@@ -768,7 +783,7 @@ class Generator:
         costs = {
             "Free": 0,
             "MS": 0,
-            "KS": 2,
+            "KS": 4,
             "AC": 12,
             "EC": 6,
             "HC": 12,
@@ -800,6 +815,9 @@ class Generator:
             "TPHoru": 180,
             "Open": 1
         }
+
+        if args.free_mapstones:
+            costs["MS"] = 11
 
         # we use OrderedDicts here because the order of a dict depends on the size of the dict and the hash of the keys
         # since python 3.3 the order of a given dict is also dependent on the random hash seed for the current Python invocation
@@ -1074,8 +1092,10 @@ class Generator:
 
         locationsToAssign = []
         self.connectionQueue = []
-        global reservedLocations
-        reservedLocations = []
+        self.reservedLocations = []
+
+        global mapstonesSeen
+        mapstonesSeen = 1
 
         self.skillCount = 10
         self.mapstonesAssigned = 0
@@ -1114,14 +1134,14 @@ class Generator:
                 spoilerPath = self.prepare_path(len(locationsToAssign))
                 if not self.assignQueue:
                     # we've painted ourselves into a corner, try again
-                    if not reservedLocations:
+                    if not self.reservedLocations:
                         if self.playerID == 1:
                             self.sharedMap = {}
                         if depth > args.players * args.players:
                             return
                         return self.placeItems(seed, args, modes, flags, depth+1)
-                    locationsToAssign.append(reservedLocations.pop(0))
-                    locationsToAssign.append(reservedLocations.pop(0))
+                    locationsToAssign.append(self.reservedLocations.pop(0))
+                    locationsToAssign.append(self.reservedLocations.pop(0))
                     spoilerPath = self.prepare_path(len(locationsToAssign))
                 if args.balanced:
                     for item in self.assignQueue:
@@ -1132,14 +1152,14 @@ class Generator:
             itemsToAssign = []
             if len(locationsToAssign) < len(self.assignQueue) + max(keystoneCount - inventory["KS"], 0) + max(mapstoneCount - inventory["MS"], 0):
                 # we've painted ourselves into a corner, try again
-                if not reservedLocations:
+                if not self.reservedLocations:
                     if self.playerID == 1:
                         self.sharedMap = {}
                     if depth > args.players * args.players:
                         return
                     return self.placeItems(seed, args, modes, flags, depth+1)
-                locationsToAssign.append(reservedLocations.pop(0))
-                locationsToAssign.append(reservedLocations.pop(0))
+                locationsToAssign.append(self.reservedLocations.pop(0))
+                locationsToAssign.append(self.reservedLocations.pop(0))
             for i in range(0, len(locationsToAssign)):
                 if self.assignQueue:
                     itemsToAssign.append(self.assign(self.assignQueue.pop(0)))
@@ -1147,6 +1167,10 @@ class Generator:
                     itemsToAssign.append(self.assign("KS"))
                 elif inventory["MS"] < mapstoneCount:
                     itemsToAssign.append(self.assign("MS"))
+                elif inventory["HC"] * args.force_cells < (252 - self.itemCount) and self.itemPool["HC"] > 0:
+                    itemsToAssign.append(self.assign("HC"))
+                elif inventory["EC"] * args.force_cells < (252 - self.itemCount) and self.itemPool["EC"] > 0:
+                    itemsToAssign.append(self.assign("EC"))
                 elif args.balanced and self.itemCount == 0:
                     itemsToAssign.append(self.balanceListLeftovers.pop(0))
                     self.itemCount += 1
