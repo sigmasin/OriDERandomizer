@@ -657,6 +657,8 @@ class Generator:
                 self.sharedList.append("TPGrove")
                 self.sharedList.append("TPSwamp")
                 self.sharedList.append("TPValley")
+                self.sharedList.append("TPGinso")
+                self.sharedList.append("TPHoru")
             if "upgrades" in sharedItems:
                 self.sharedList.append("RB6")
                 self.sharedList.append("RB8")
@@ -793,7 +795,10 @@ class Generator:
             "TPSorrow": 90,
             "TPGrove": 60,
             "TPSwamp": 60,
-            "TPValley": 90
+            "TPValley": 90,
+            "TPGinso": 150,
+            "TPHoru": 180,
+            "Open": 1
         }
 
         # we use OrderedDicts here because the order of a dict depends on the size of the dict and the hash of the keys
@@ -821,7 +826,7 @@ class Generator:
         if not args.hard:
             self.itemPool = OrderedDict([
                 ("EX1", 1),
-                ("EX*", 99),
+                ("EX*", 97),
                 ("KS", 40),
                 ("MS", 11),
                 ("AC", 33),
@@ -861,12 +866,15 @@ class Generator:
                 ("TPSorrow", 1),
                 ("TPGrove", 1),
                 ("TPSwamp", 1),
-                ("TPValley", 1)
+                ("TPValley", 1),
+                ("TPGinso", 1),
+                ("TPHoru", 1),
+                ("Open", 0)
             ])
         else:
             self.itemPool = OrderedDict([
                 ("EX1", 1),
-                ("EX*", 175),
+                ("EX*", 173),
                 ("KS", 40),
                 ("MS", 11),
                 ("AC", 0),
@@ -896,7 +904,10 @@ class Generator:
                 ("TPSorrow", 1),
                 ("TPGrove", 1),
                 ("TPSwamp", 1),
-                ("TPValley", 1)
+                ("TPValley", 1),
+                ("TPGinso", 1),
+                ("TPHoru", 1),
+                ("Open", 0)
             ])
 
         plants = []
@@ -936,7 +947,9 @@ class Generator:
             self.itemPool["TPGrove"] = 0
             self.itemPool["TPSwamp"] = 0
             self.itemPool["TPValley"] = 0
-            self.itemPool["EX*"] += 6
+            self.itemPool["TPGinso"] = 0
+            self.itemPool["TPHoru"] = 0
+            self.itemPool["EX*"] += 8
 
         inventory = OrderedDict([
             ("EX1", 0),
@@ -980,8 +993,14 @@ class Generator:
             ("TPSorrow", 0),
             ("TPGrove", 0),
             ("TPSwamp", 0),
-            ("TPValley", 0)
+            ("TPValley", 0),
+            ("TPGinso", 0),
+            ("TPHoru", 0),
+            ("Open", 0)
         ])
+
+        if args.open:
+            inventory["Open"] = 1
 
         # paired setup for subsequent players
         if self.playerID > 1:
@@ -1325,6 +1344,14 @@ def main():
         flags += ",balanced"
     if args.entrance:
         flags += ",entrance"
+    if args.open:
+        flags += ",open"
+    if args.force_cells != 256:
+        flags += ",cells" + str(args.force_cells)
+    if args.easy:
+        flags += ",easy"
+    if not args.free_mapstones:
+        flags += ",LockedMapStones"
     if args.players > 1:
         syncFlags += ",shared=" + "+".join(args.shared_items.split(","))
         syncFlags += ",mode=" + args.share_mode
@@ -1374,7 +1401,9 @@ def main():
         "TPSorrow": 0,
         "TPGrove": 0,
         "TPSwamp": 0,
-        "TPValley": 0
+        "TPValley": 0,
+        "TPGinso": 0,
+        "TPHoru": 0
     }
 
     locationAnalysis = {}
@@ -1418,7 +1447,7 @@ def main():
 
     if args.loc_analysis:
         output = open("analysis.csv", 'w')
-        output.write("Location,Zone,WallJump,ChargeFlame,DoubleJump,Bash,Stomp,Glide,Climb,ChargeJump,Dash,Grenade,GinsoKey,ForlornKey,HoruKey,Water,Wind,WaterVeinShard,GumonSealShard,SunstoneShard,TPForlorn,TPGrotto,TPSorrow,TPGrove,TPSwamp,TPValley\n")
+        output.write("Location,Zone,WallJump,ChargeFlame,DoubleJump,Bash,Stomp,Glide,Climb,ChargeJump,Dash,Grenade,GinsoKey,ForlornKey,HoruKey,Water,Wind,WaterVeinShard,GumonSealShard,SunstoneShard,TPForlorn,TPGrotto,TPSorrow,TPGrove,TPSwamp,TPValley,TPGinso,TPHoru\n")
         for key in locationAnalysis.keys():
             line = key + ","
             line += str(locationAnalysis[key]["Zone"]) + ","
@@ -1445,7 +1474,9 @@ def main():
             line += str(locationAnalysis[key]["TPSorrow"]) + ","
             line += str(locationAnalysis[key]["TPGrove"]) + ","
             line += str(locationAnalysis[key]["TPSwamp"]) + ","
-            line += str(locationAnalysis[key]["TPValley"])
+            line += str(locationAnalysis[key]["TPValley"]) + ","
+            line += str(locationAnalysis[key]["TPGinso"]) + ","
+            line += str(locationAnalysis[key]["TPHoru"])
 
             output.write(line + "\n")
 
