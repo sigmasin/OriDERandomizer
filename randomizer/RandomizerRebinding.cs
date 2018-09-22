@@ -7,7 +7,7 @@ using UnityEngine;
 // Token: 0x02000A02 RID: 2562
 public static class RandomizerRebinding
 {
-	// Token: 0x060037B3 RID: 14259 RVA: 0x000E4190 File Offset: 0x000E2390
+	// Token: 0x060037B5 RID: 14261 RVA: 0x000E4410 File Offset: 0x000E2610
 	public static void WriteDefaultFile()
 	{
 		StreamWriter streamWriter = new StreamWriter("RandomizerRebinding.txt");
@@ -31,26 +31,26 @@ public static class RandomizerRebinding
 		streamWriter.Close();
 	}
 
-	// Token: 0x060037B4 RID: 14260
+	// Token: 0x060037B6 RID: 14262 RVA: 0x000E44E4 File Offset: 0x000E26E4
 	public static void ParseRebinding()
 	{
 		RandomizerRebinding.ActionMap = new Hashtable();
-		RandomizerRebinding.ActionMap.Add("Jump", Core.Input.Jump);
-		RandomizerRebinding.ActionMap.Add("SpiritFlame", Core.Input.SpiritFlame);
-		RandomizerRebinding.ActionMap.Add("Bash", Core.Input.Bash);
-		RandomizerRebinding.ActionMap.Add("SoulFlame", Core.Input.SoulFlame);
-		RandomizerRebinding.ActionMap.Add("ChargeJump", Core.Input.ChargeJump);
-		RandomizerRebinding.ActionMap.Add("Glide", Core.Input.Glide);
-		RandomizerRebinding.ActionMap.Add("Dash", Core.Input.RightShoulder);
-		RandomizerRebinding.ActionMap.Add("Grenade", Core.Input.LeftShoulder);
-		RandomizerRebinding.ActionMap.Add("Left", Core.Input.Left);
-		RandomizerRebinding.ActionMap.Add("Right", Core.Input.Right);
-		RandomizerRebinding.ActionMap.Add("Up", Core.Input.Up);
-		RandomizerRebinding.ActionMap.Add("Down", Core.Input.Down);
-		RandomizerRebinding.ActionMap.Add("LeftStick", Core.Input.LeftStick);
-		RandomizerRebinding.ActionMap.Add("RightStick", Core.Input.RightStick);
-		RandomizerRebinding.ActionMap.Add("Start", Core.Input.Start);
-		RandomizerRebinding.ActionMap.Add("Select", Core.Input.Select);
+		RandomizerRebinding.ActionMap.Add("Jump", Input.Jump);
+		RandomizerRebinding.ActionMap.Add("SpiritFlame", Input.SpiritFlame);
+		RandomizerRebinding.ActionMap.Add("Bash", Input.Bash);
+		RandomizerRebinding.ActionMap.Add("SoulFlame", Input.SoulFlame);
+		RandomizerRebinding.ActionMap.Add("ChargeJump", Input.ChargeJump);
+		RandomizerRebinding.ActionMap.Add("Glide", Input.Glide);
+		RandomizerRebinding.ActionMap.Add("Dash", Input.RightShoulder);
+		RandomizerRebinding.ActionMap.Add("Grenade", Input.LeftShoulder);
+		RandomizerRebinding.ActionMap.Add("Left", Input.Left);
+		RandomizerRebinding.ActionMap.Add("Right", Input.Right);
+		RandomizerRebinding.ActionMap.Add("Up", Input.Up);
+		RandomizerRebinding.ActionMap.Add("Down", Input.Down);
+		RandomizerRebinding.ActionMap.Add("LeftStick", Input.LeftStick);
+		RandomizerRebinding.ActionMap.Add("RightStick", Input.RightStick);
+		RandomizerRebinding.ActionMap.Add("Start", Input.Start);
+		RandomizerRebinding.ActionMap.Add("Select", Input.Select);
 		if (!File.Exists("RandomizerRebinding.txt"))
 		{
 			RandomizerRebinding.WriteDefaultFile();
@@ -77,17 +77,17 @@ public static class RandomizerRebinding
 		}
 	}
 
-	// Token: 0x060037B5 RID: 14261 RVA: 0x0002BCFE File Offset: 0x00029EFE
+	// Token: 0x060037B7 RID: 14263 RVA: 0x0002BCFE File Offset: 0x00029EFE
 	public static KeyCode StringToKeyBinding(string s)
 	{
 		if (s != "")
 		{
-			return (KeyCode)((int)Enum.Parse(typeof(KeyCode), s));
+			return (int)Enum.Parse(typeof(KeyCode), s);
 		}
-		return KeyCode.None;
+		return 0;
 	}
 
-	// Token: 0x060037B6 RID: 14262 RVA: 0x000E44A0 File Offset: 0x000E26A0
+	// Token: 0x060037B8 RID: 14264 RVA: 0x000E4710 File Offset: 0x000E2910
 	public static void LoadDefaultBinds()
 	{
 		RandomizerRebinding.ReplayMessage = RandomizerRebinding.ParseLine("Replay Message: LeftAlt+T, RightAlt+T");
@@ -103,10 +103,10 @@ public static class RandomizerRebinding
 		RandomizerRebinding.BonusToggle = RandomizerRebinding.ParseLine("BonusToggle: LeftAlt+Mouse1, RightAlt+Mouse1");
 	}
 
-	// Token: 0x060037B7 RID: 14263
+	// Token: 0x060037B9 RID: 14265 RVA: 0x000E47C4 File Offset: 0x000E29C4
 	public static RandomizerRebinding.BindSet ParseLine(string line)
 	{
-		string[] array3 = line.Split(new char[]
+		string[] array = line.Split(new char[]
 		{
 			':'
 		})[1].Split(new char[]
@@ -114,15 +114,15 @@ public static class RandomizerRebinding
 			','
 		});
 		ArrayList arrayList = new ArrayList();
-		string[] array2 = array3;
+		string[] array2 = array;
 		for (int i = 0; i < array2.Length; i++)
 		{
-			string[] array4 = array2[i].Split(new char[]
+			string[] array3 = array2[i].Split(new char[]
 			{
 				'+'
 			});
 			ArrayList arrayList2 = new ArrayList();
-			foreach (string text in array4)
+			foreach (string text in array3)
 			{
 				if (text.Trim().ToLower() == "tap")
 				{
@@ -141,52 +141,52 @@ public static class RandomizerRebinding
 		return new RandomizerRebinding.BindSet(arrayList);
 	}
 
-	// Token: 0x04003278 RID: 12920
+	// Token: 0x0400327C RID: 12924
 	public static Hashtable ActionMap;
 
-	// Token: 0x04003279 RID: 12921
+	// Token: 0x0400327D RID: 12925
 	public static RandomizerRebinding.BindSet ReplayMessage;
 
-	// Token: 0x0400327A RID: 12922
+	// Token: 0x0400327E RID: 12926
 	public static RandomizerRebinding.BindSet ReturnToStart;
 
-	// Token: 0x0400327B RID: 12923
+	// Token: 0x0400327F RID: 12927
 	public static RandomizerRebinding.BindSet ReloadSeed;
 
-	// Token: 0x0400327C RID: 12924
+	// Token: 0x04003280 RID: 12928
 	public static RandomizerRebinding.BindSet ToggleChaos;
 
-	// Token: 0x0400327D RID: 12925
+	// Token: 0x04003281 RID: 12929
 	public static RandomizerRebinding.BindSet ChaosVerbosity;
 
-	// Token: 0x0400327E RID: 12926
+	// Token: 0x04003282 RID: 12930
 	public static RandomizerRebinding.BindSet ForceChaosEffect;
 
-	// Token: 0x0400327F RID: 12927
+	// Token: 0x04003283 RID: 12931
 	public static RandomizerRebinding.BindSet ShowProgress;
 
-	// Token: 0x04003280 RID: 12928
+	// Token: 0x04003284 RID: 12932
 	public static RandomizerRebinding.BindSet ColorShift;
 
-	// Token: 0x04003281 RID: 12929
+	// Token: 0x04003285 RID: 12933
 	public static RandomizerRebinding.BindSet DoubleBash;
 
-	// Token: 0x04003282 RID: 12930
+	// Token: 0x04003286 RID: 12934
 	public static RandomizerRebinding.BindSet BonusSwitch;
 
-	// Token: 0x04003283 RID: 12931
+	// Token: 0x04003287 RID: 12935
 	public static RandomizerRebinding.BindSet BonusToggle;
 
 	// Token: 0x02000A03 RID: 2563
 	public class Bind
 	{
-		// Token: 0x060037B8 RID: 14264 RVA: 0x000E4610 File Offset: 0x000E2810
+		// Token: 0x060037BA RID: 14266 RVA: 0x000E4884 File Offset: 0x000E2A84
 		public Bind(string input)
 		{
 			input = input.Trim();
 			if (RandomizerRebinding.ActionMap.ContainsKey(input))
 			{
-				this.Action = (Core.Input.InputButtonProcessor)RandomizerRebinding.ActionMap[input];
+				this.Action = (Input.InputButtonProcessor)RandomizerRebinding.ActionMap[input];
 				this.ActionBind = true;
 				return;
 			}
@@ -194,7 +194,7 @@ public static class RandomizerRebinding
 			this.Key = RandomizerRebinding.StringToKeyBinding(input);
 		}
 
-		// Token: 0x060037B9 RID: 14265 RVA: 0x0002BD24 File Offset: 0x00029F24
+		// Token: 0x060037BB RID: 14267 RVA: 0x0002BD24 File Offset: 0x00029F24
 		public bool IsPressed()
 		{
 			if (this.ActionBind)
@@ -204,27 +204,27 @@ public static class RandomizerRebinding
 			return MoonInput.GetKey(this.Key);
 		}
 
-		// Token: 0x04003284 RID: 12932
+		// Token: 0x04003288 RID: 12936
 		public KeyCode Key;
 
-		// Token: 0x04003285 RID: 12933
-		public Core.Input.InputButtonProcessor Action;
+		// Token: 0x04003289 RID: 12937
+		public Input.InputButtonProcessor Action;
 
-		// Token: 0x04003286 RID: 12934
+		// Token: 0x0400328A RID: 12938
 		public bool ActionBind;
 	}
 
 	// Token: 0x02000A04 RID: 2564
 	public class BindSet
 	{
-		// Token: 0x060037BA RID: 14266 RVA: 0x0002BD45 File Offset: 0x00029F45
+		// Token: 0x060037BC RID: 14268 RVA: 0x0002BD45 File Offset: 0x00029F45
 		public BindSet(ArrayList binds)
 		{
 			this.binds = binds;
 			this.wasPressed = true;
 		}
 
-		// Token: 0x060037BB RID: 14267 RVA: 0x000E466C File Offset: 0x000E286C
+		// Token: 0x060037BD RID: 14269 RVA: 0x000E48E0 File Offset: 0x000E2AE0
 		public bool IsPressed()
 		{
 			foreach (object obj in this.binds)
@@ -256,10 +256,10 @@ public static class RandomizerRebinding
 			return false;
 		}
 
-		// Token: 0x04003287 RID: 12935
+		// Token: 0x0400328B RID: 12939
 		public ArrayList binds;
 
-		// Token: 0x04003288 RID: 12936
+		// Token: 0x0400328C RID: 12940
 		public bool wasPressed;
 	}
 }
