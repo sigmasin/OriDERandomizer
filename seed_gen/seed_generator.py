@@ -350,6 +350,8 @@ class Generator:
                             else:
                                 requirements.append(req)
                                 cost += costs[req]
+                                if args.easy and self.itemPool[req] > 1:
+                                    requirements.append(req)
                     # decrease the rate of multi-item paths
                     cost *= max(1, len(requirements) - 1)
                     if len(requirements) <= free_space:
@@ -928,6 +930,18 @@ class Generator:
                 ("Open", 0)
             ])
 
+        if args.easy:
+            self.itemPool["EX*"] -= 9
+            self.itemPool["DoubleJump"] += 1
+            self.itemPool["Bash"] += 1
+            self.itemPool["Stomp"] += 1
+            self.itemPool["Glide"] += 1
+            self.itemPool["ChargeJump"] += 1
+            self.itemPool["Dash"] += 1
+            self.itemPool["Grenade"] += 1
+            self.itemPool["Water"] += 1
+            self.itemPool["Wind"] += 1
+
         plants = []
         if args.noplants:
             self.itemCount -= 24
@@ -1313,7 +1327,7 @@ def main():
     parser.add_argument("--entrance", help="Randomize entrances", action="store_true")
     parser.add_argument("--open", help="Activate open mode", action="store_true")
     parser.add_argument("--force-cells", help="Force health and energy cells to appear every N pickups, if they don't randomly", type=int, default=256)
-    parser.add_argument("--easy", help="Add an extra copy of double jump, bash, stomp, glide, charge jump, dash, and grenade", action="store_true")
+    parser.add_argument("--easy", help="Add an extra copy of double jump, bash, stomp, glide, charge jump, dash, grenade, water, and wind", action="store_true")
     parser.add_argument("--free-mapstones", help="Don't require a mapstone to be placed when a map monument becomes accessible", action="store_true")
 
     args = parser.parse_args()
