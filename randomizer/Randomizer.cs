@@ -28,7 +28,8 @@ public static class Randomizer
 		{
 			"TP",
 			"SH",
-			"NO"
+			"NO",
+			"WT"
 		};
 		Randomizer.ShareParams = "";
 		RandomizerChaosManager.initialize();
@@ -40,6 +41,7 @@ public static class Randomizer
 		Randomizer.ProgressiveMapStones = true;
 		Randomizer.ForceTrees = false;
 		Randomizer.CluesMode = false;
+		Randomizer.WorldTour = false;
 		Randomizer.SeedMeta = "";
 		Randomizer.MistySim = new WorldEvents();
 		Randomizer.MistySim.MoonGuid = new MoonGuid(1061758509, 1206015992, 824243626, -2026069462);
@@ -99,80 +101,25 @@ public static class Randomizer
 				{
 					Randomizer.OHKO = true;
 				}
+				if (text.ToLower() == "worldtour")
+				{
+					Randomizer.WorldTour = true;
+				}
 				if (text.ToLower().StartsWith("sync"))
 				{
 					Randomizer.Sync = true;
 					Randomizer.SyncId = text.Substring(4);
 					RandomizerSyncManager.Initialize();
 				}
-				if (text.ToLower() == "frags")
-				{
-					Randomizer.fragDungeon = true;
-				}
 				if (text.ToLower().StartsWith("frags/"))
 				{
 					Randomizer.fragsEnabled = true;
-					int num = Randomizer.ordHash(s) % 6;
 					string[] array6 = text.Split(new char[]
 					{
 						'/'
 					});
 					Randomizer.maxFrags = int.Parse(array6[1]);
-					Randomizer.fragKey1 = int.Parse(array6[2]);
-					Randomizer.fragKey2 = int.Parse(array6[3]);
-					Randomizer.fragKey3 = int.Parse(array6[4]);
-					Randomizer.fragKeyFinish = int.Parse(array6[5]);
-					switch (num)
-					{
-					case 0:
-						Randomizer.fragDungeonOrder = new List<int>
-						{
-							0,
-							1,
-							2
-						};
-						break;
-					case 1:
-						Randomizer.fragDungeonOrder = new List<int>
-						{
-							0,
-							2,
-							1
-						};
-						break;
-					case 2:
-						Randomizer.fragDungeonOrder = new List<int>
-						{
-							1,
-							0,
-							2
-						};
-						break;
-					case 3:
-						Randomizer.fragDungeonOrder = new List<int>
-						{
-							1,
-							2,
-							0
-						};
-						break;
-					case 4:
-						Randomizer.fragDungeonOrder = new List<int>
-						{
-							2,
-							0,
-							1
-						};
-						break;
-					case 5:
-						Randomizer.fragDungeonOrder = new List<int>
-						{
-							2,
-							1,
-							0
-						};
-						break;
-					}
+					Randomizer.fragKeyFinish = Randomizer.maxFrags - int.Parse(array6[2]);
 				}
 				if (text.ToLower().StartsWith("mode="))
 				{
@@ -563,6 +510,14 @@ public static class Randomizer
 		{
 			text = text + "Maps (" + RandomizerBonus.MapStoneProgression().ToString() + "/9)  ";
 		}
+		if (Randomizer.WorldTour && Characters.Sein) {
+			int relics = Characters.Sein.Inventory.GetRandomizerItem(302);
+			if(relics < 11) {
+				text += "Relics (" + relics.ToString() + "/11) ";
+			} else {
+				text += "$Relics (" + relics.ToString() + "/11)$ ";
+			}
+		}
 		if (Randomizer.ForceRandomEscape)
 		{
 			if (Randomizer.WhichEscape == 0)
@@ -592,7 +547,7 @@ public static class Randomizer
 				text += "Escape: Horu ";
 			}
 		}
-		text = text + "Total (" + RandomizerBonus.GetPickupCount().ToString() + "/248)\n";
+		text = text + "Total (" + RandomizerBonus.GetPickupCount().ToString() + "/256)\n";
 		if (Randomizer.CluesMode)
 		{
 			text += RandomizerClues.GetClues();
@@ -701,6 +656,13 @@ public static class Randomizer
 				")"
 			}));
 			return false;
+		}
+		if (Randomizer.WorldTour) {
+			int relics = Characters.Sein.Inventory.GetRandomizerItem(302);
+			if(relics < 11) {
+				text += "Relics (" + relics.ToString() + "/11) ";
+				return false;
+			}
 		}
 		if (Randomizer.ForceTrees && RandomizerBonus.SkillTreeProgression() < 10)
 		{
@@ -948,59 +910,18 @@ public static class Randomizer
 	// Token: 0x0400324E RID: 12878
 	public static bool BashWasQueued;
 
-	// Token: 0x040032D6 RID: 13014
-	public static bool BashTap;
-
-	// Token: 0x0400334D RID: 13133
-	public static bool fragDungeon;
-
-	// Token: 0x0400334E RID: 13134
-	public static bool fragsEnabled;
-
-	// Token: 0x0400334F RID: 13135
-	public static int maxFrags;
-
-	// Token: 0x04003350 RID: 13136
-	public static int fragKey1;
-
-	// Token: 0x04003351 RID: 13137
-	public static int fragKey2;
-
-	// Token: 0x04003352 RID: 13138
-	public static int fragKey3;
-
-	// Token: 0x04003353 RID: 13139
-	public static List<int> fragDungeonOrder;
-
-	// Token: 0x04003354 RID: 13140
-	public static int fragKeyFinish;
-
 	// Token: 0x0400324F RID: 12879
 	public static bool BashTap;
 
-	// Token: 0x04003250 RID: 12880
-	public static bool fragDungeon;
+	public static bool WorldTour;
 
 	// Token: 0x04003251 RID: 12881
 	public static bool fragsEnabled;
 
+	public static int fragKeyFinish;
+
 	// Token: 0x04003252 RID: 12882
 	public static int maxFrags;
-
-	// Token: 0x04003253 RID: 12883
-	public static int fragKey1;
-
-	// Token: 0x04003254 RID: 12884
-	public static int fragKey2;
-
-	// Token: 0x04003255 RID: 12885
-	public static int fragKey3;
-
-	// Token: 0x04003256 RID: 12886
-	public static List<int> fragDungeonOrder;
-
-	// Token: 0x04003257 RID: 12887
-	public static int fragKeyFinish;
 
 	// Token: 0x04003258 RID: 12888
 	public static ArrayList GinsoData;

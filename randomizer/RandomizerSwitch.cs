@@ -188,6 +188,15 @@ public static class RandomizerSwitch
             case "SH":
                 Randomizer.showHint((string)Action.Value);
                 break;
+            case "WT":
+                Characters.Sein.Inventory.IncRandomizerItem(302, 1);
+                int relics = Characters.Sein.Inventory.GetRandomizerItem(302);
+                string relicStr = "\n("+relics.ToString() + ")";
+                if(relics > 10) {
+                    relicStr = "$" + relicStr + "$";
+                }
+                Randomizer.showHint((string)Action.Value + relicStr);
+                break;
             case "NO":
                 Randomizer.showHint("Nothing");
                 break;
