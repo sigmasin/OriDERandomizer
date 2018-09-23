@@ -155,6 +155,20 @@ public static class RandomizerSwitch
         }
         
         switch (Action.Action) {
+            case "MU":
+                string[] pieces = ((string)Action.Value).Split('/');
+                for(int i = 0; i < pieces.Length; i+=2)
+                {
+                    string code = pieces[i];
+                    if(Randomizer.StringKeyPickupTypes.Contains(code)) {
+                        RandomizerSwitch.GivePickup(new RandomizerAction(code, pieces[i+1]), coords, found_locally);
+                    } else {
+                        int id;
+                        int.TryParse(pieces[i+1], out id);
+                        RandomizerSwitch.GivePickup(new RandomizerAction(code, id), coords, found_locally);
+                    }
+                }
+                break;
             case "AC":                
                 SkillPointPickup();
                 break;
@@ -191,7 +205,7 @@ public static class RandomizerSwitch
             case "WT":
                 Characters.Sein.Inventory.IncRandomizerItem(302, 1);
                 int relics = Characters.Sein.Inventory.GetRandomizerItem(302);
-                string relicStr = "\n("+relics.ToString() + ")";
+                string relicStr = "\n("+relics.ToString() + "/11)";
                 if(relics > 10) {
                     relicStr = "$" + relicStr + "$";
                 }

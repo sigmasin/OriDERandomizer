@@ -29,7 +29,8 @@ public static class Randomizer
 			"TP",
 			"SH",
 			"NO",
-			"WT"
+			"WT",
+			"MU"
 		};
 		Randomizer.ShareParams = "";
 		RandomizerChaosManager.initialize();
@@ -62,7 +63,6 @@ public static class Randomizer
 		Randomizer.QueueBash = false;
 		Randomizer.BashWasQueued = false;
 		Randomizer.BashTap = false;
-		Randomizer.fragDungeon = false;
 		Randomizer.fragsEnabled = false;
 		Randomizer.MoveNightBerry = false;
 		Randomizer.WarpCheckCounter = 60;
@@ -174,6 +174,7 @@ public static class Randomizer
 				if (text.ToLower() == "forcerandomescape")
 				{
 					Randomizer.ForceRandomEscape = true;
+					Randomizer.WhichEscape = Randomizer.ordHash(s) % 2;
 				}
 				if (text.ToLower() == "clues")
 				{
@@ -214,14 +215,6 @@ public static class Randomizer
 					else
 					{
 						Randomizer.Table[num2] = new RandomizerAction(array2[1], num3);
-						if (array2[1] == "EX" && Randomizer.ForceRandomEscape && Randomizer.WhichEscape < 0)
-						{
-							Randomizer.WhichEscape = num3 % 3;
-						}
-						if (Randomizer.CluesMode && array2[1] == "EV" && num3 % 2 == 0)
-						{
-							RandomizerClues.AddClue(array2[3], num3 / 2);
-						}
 					}
 				}
 			}
@@ -660,7 +653,7 @@ public static class Randomizer
 		if (Randomizer.WorldTour) {
 			int relics = Characters.Sein.Inventory.GetRandomizerItem(302);
 			if(relics < 11) {
-				text += "Relics (" + relics.ToString() + "/11) ";
+				Randomizer.MessageQueue.Enqueue("Relics (" + relics.ToString() + "/11) ");
 				return false;
 			}
 		}
