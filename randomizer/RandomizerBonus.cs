@@ -224,45 +224,19 @@ public static class RandomizerBonus
             if (!flag)
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
-                int num = RandomizerBonus.WarmthFrags();
-                Randomizer.showHint(string.Concat(new object[]
-                {
-                    "Warmth Fragment (",
-                    num.ToString(),
-                    "/",
-                    Randomizer.fragKeyFinish,
-                    ")@"
-                }));
-                if (Randomizer.fragDungeon)
-                {
-                    if (num == Randomizer.fragKey1)
-                    {
-                        RandomizerBonus.GrantDungeonKey(Randomizer.fragDungeonOrder[0]);
-                    }
-                    if (num == Randomizer.fragKey2)
-                    {
-                        RandomizerBonus.GrantDungeonKey(Randomizer.fragDungeonOrder[1]);
-                    }
-                    if (num == Randomizer.fragKey3)
-                    {
-                        RandomizerBonus.GrantDungeonKey(Randomizer.fragDungeonOrder[2]);
-                    }
-                }
-                return;
-            }
-            if (RandomizerBonus.WarmthFrags() > 0)
+            }else if (RandomizerBonus.WarmthFrags() > 0)
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, -1);
-                Randomizer.showHint(string.Concat(new object[]
-                {
-                    "Warmth Fragment (",
-                    RandomizerBonus.WarmthFrags().ToString(),
-                    "/",
-                    Randomizer.fragKeyFinish,
-                    ")@"
-                }));
-                return;
             }
+            Randomizer.showHint(string.Concat(new object[]
+            {
+                "Warmth Fragment (",
+                RandomizerBonus.WarmthFrags().ToString(),
+                "/",
+                Randomizer.fragKeyFinish,
+                ")@"
+            }));
+            return;
             break;
         case 29:
             return;
