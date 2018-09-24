@@ -680,6 +680,9 @@ home: SpiritTreeRefined
 		casual-core Bash Grenade
 		standard-core Dash WallJump
 		standard-core Dash Climb
+		standard-core Bash Glide WallJump
+		standard-core Bash Glide Climb
+		master-core Bash Glide DoubleJump
 	conn: ChargeFlameSkillTreeChamber
 	conn: ChargeFlameAreaStump
 	conn: ValleyEntry
@@ -728,6 +731,7 @@ home: SpiderSacTetherArea
 		casual-core Bash Grenade
 		casual-core DoubleJump WallJump Grenade
 		casual-core ChargeJump Grenade
+		expert-core DoubleJump Climb Grenade
 	conn: SpiderWaterArea
 		casual-core ChargeFlame
 		casual-core Grenade
@@ -748,6 +752,9 @@ home: SpiderSacArea
 		expert-core Stomp WallJump Glide
 		expert-core Stomp Climb Glide
 		expert-abilities Dash Ability=6
+		master-core ChargeFlame DoubleJump
+		master-core Grenade DoubleJump
+		master-core Stomp DoubleJump
 	conn: SpiderSacTetherArea
 		casual-core WallJump
 		casual-core Climb
@@ -781,29 +788,30 @@ home: SpiderWaterArea
 		casual-core Water
 		expert-dboost Health=6
 		expert-dboost Bash Health=5
-		master-core Health=4 Ability=12
-		master-core Bash Ability=12
+		master-dboost Health=4 Ability=12
+		master-dboost Bash Ability=12
 	pickup: GroveAboveSpiderWaterExp
-		casual-core ChargeJump WallJump
-		casual-core ChargeJump Climb
-		casual-core Bash WallJump
-		casual-core Bash Climb
+		casual-core ChargeJump DoubleJump WallJump
+		casual-core ChargeJump DoubleJump Climb
+		casual-core Bash DoubleJump WallJump
+		casual-core Bash DoubleJump Climb
+		standard-core ChargeJump Bash WallJump
+		standard-core ChargeJump Bash Climb
 		dbash Bash
 		expert-abilities Dash Ability=6 
 	pickup: GroveAboveSpiderWaterHealthCell
 		casual-core ChargeJump WallJump DoubleJump
 		casual-core ChargeJump Climb
 		casual-core Bash WallJump
-		standard-core Bash Grenade
-		expert-core ChargeJump WallJump Dash
+		casual-core Bash Grenade
 		dbash Bash
 		expert-abilities Dash Ability=6
 	pickup: GroveAboveSpiderWaterEnergyCell
 		ALL Grenade
 		casual-core ChargeJump Climb DoubleJump
+		standard-core ChargeJump WallJump DoubleJump Glide
+		standard-core ChargeJump WallJump DoubleJump Dash
 		standard-core Bash
-		standard-core ChargeJump WallJump
-		standard-core ChargeJump Climb
 		expert-abilities Dash Ability=6
 	conn: SpiderSacEnergyNook
 		casual-core Glide
@@ -826,10 +834,11 @@ home: SpiderWaterArea
 	conn: HollowGrove
 		casual-core WallJump
 		casual-core Climb
-		casual-core Bash
 		casual-core ChargeJump
 		casual-core DoubleJump
 		casual-core Water
+		standard-core Bash
+		master-abilities Dash Ability=6
 home: BlackrootDarknessRoom
 	-- anchor: just after watching/skipping the BRB entrance cutscene
 	pickup: DashAreaOrbRoomExp
@@ -849,12 +858,14 @@ home: BlackrootDarknessRoom
 		casual-core Climb
 		casual-core Bash Grenade
 		casual-core ChargeJump
+		master-core Bash
 	conn: DashArea
 		casual-core WallJump
 		casual-core Climb
 		casual-core Bash Grenade
 		casual-core ChargeJump
 		expert-core DoubleJump
+		master-core Bash
 home: DashArea
 	-- anchor: dash tree *after* lifting darkness
 	pickup: DashSkillTree
@@ -1120,10 +1131,11 @@ home: HollowGrove
 	conn: SpiderWaterArea
 		casual-core WallJump
 		casual-core Climb
-		casual-core Bash
 		casual-core ChargeJump
 		casual-core DoubleJump
 		casual-core Water
+		standard-core Bash
+		master-core Free
 	conn: MoonGrotto
 		casual-core WallJump
 		casual-core Climb
