@@ -353,6 +353,17 @@ public static class Randomizer
 				Randomizer.MessageQueue.Enqueue("#Forlorn Escape Cleared#");
 			}
 		}
+		if (Characters.Sein && SkillTreeManager.Instance != null && SkillTreeManager.Instance.NavigationManager.IsVisible)
+		{
+			if (Characters.Sein.IsSuspended)
+			{
+				SkillTreeManager.Instance.NavigationManager.FadeAnimator.SetParentOpacity(1f);
+			}
+			else
+			{
+				SkillTreeManager.Instance.NavigationManager.FadeAnimator.SetParentOpacity(RandomizerSettings.AbilityMenuOpacity);
+			}
+		}
 		if (Characters.Sein && !Characters.Sein.IsSuspended)
 		{
 			RandomizerBonus.Update();
