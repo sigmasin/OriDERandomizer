@@ -427,6 +427,18 @@ class Generator:
         self.assign(item)
         self.assign_to_location(item, location)
 
+    # for use in world tour mode
+    def relic_assign(self, location):
+
+        self.force_assign("Relic", location)
+        self.areas[location.area].remove_location(location)
+
+    def choose_relic_for_zone(self, zone):
+
+        from relics import relics
+        random.shuffle(relics[zone])
+        return relics[zone][0]
+
     def assign_to_location(self, item, location):
 
         assignment = ""
@@ -473,6 +485,9 @@ class Generator:
                 self.skillCount -= 1
         elif item in self.eventsOutput:
             assignment += (str(self.eventsOutput[item][:2]) + "|" + self.eventsOutput[item][2:])
+        elif item == "Relic":
+            relic = self.choose_relic_for_zone(zone)
+            assignment += "WT|#" + relic[0] + "#\\n" + relic[1]
         elif item == "EX*":
             value = self.get_random_exp_value()
             self.expRemaining -= value
@@ -815,7 +830,8 @@ class Generator:
             "TPValley": 90,
             "TPGinso": 150,
             "TPHoru": 180,
-            "Open": 1
+            "Open": 1,
+            "Relic": 1
         }
 
         if args.free_mapstones:
@@ -889,7 +905,8 @@ class Generator:
                 ("TPValley", 1),
                 ("TPGinso", 1),
                 ("TPHoru", 1),
-                ("Open", 0)
+                ("Open", 0),
+                ("Relic", 0)
             ])
         else:
             self.itemPool = OrderedDict([
@@ -927,7 +944,8 @@ class Generator:
                 ("TPValley", 1),
                 ("TPGinso", 1),
                 ("TPHoru", 1),
-                ("Open", 0)
+                ("Open", 0),
+                ("Relic", 0)
             ])
 
         if args.easy:
@@ -983,6 +1001,10 @@ class Generator:
             self.itemPool["TPHoru"] = 0
             self.itemPool["EX*"] += 8
 
+        if args.world_tour:
+            self.itemPool["EX*"] -= 11
+            self.itemPool["Relic"] += 11
+
         inventory = OrderedDict([
             ("EX1", 0),
             ("EX*", 0),
@@ -1028,7 +1050,8 @@ class Generator:
             ("TPValley", 0),
             ("TPGinso", 0),
             ("TPHoru", 0),
-            ("Open", 0)
+            ("Open", 0),
+            ("Relic", 0)
         ])
 
         if args.open:
@@ -1093,6 +1116,48 @@ class Generator:
 
         if args.entrance:
             self.outputStr += self.randomize_entrances()
+
+        if args.world_tour:
+            # accumulate a list of locations per zone
+            # exclude limitkeys locations if applicable
+            locations_by_zone = OrderedDict([
+                ("Glades", []),
+                ("Grove", []),
+                ("Grotto", []),
+                ("Blackroot", []),
+                ("Swamp", []),
+                ("Ginso", []),
+                ("Valley", []),
+                ("Misty", []),
+                ("Forlorn", []),
+                ("Sorrow", []),
+                ("Horu", [])
+            ])
+
+            for area in self.areas.values():
+                for location in area.locations:
+                    locations_by_zone[location.zone].append(location)
+
+            self.relic_spoiler = {}
+            self.spoilerGroup = self.relic_spoiler
+
+            for locations in locations_by_zone.values():
+                random.shuffle(locations)
+
+                relic_loc = None
+
+                while not relic_loc and len(locations):
+                    next_loc = locations.pop()
+                    # Can't put a relic on a map turn-in
+                    if next_loc.orig == "MapStone":
+                        continue
+                    # Can't put a relic on a reserved limitkeys location
+                    if args.limitkeys and next_loc.orig in self.keySpots:
+                        continue
+                    relic_loc = next_loc
+
+                self.relic_assign(relic_loc)
+                self.itemCount -= 1
 
         self.outputStr += ("-280256|EC|1|Glades\n")  # first energy cell
         self.outputStr += ("-1680104|EX|100|Grove\n")  # glitchy 100 orb at spirit tree
@@ -1276,6 +1341,14 @@ class Generator:
             self.mapQueue = OrderedDict()
             spoilerPath = ""
 
+        if args.world_tour:
+            spoilerStr += "Relics: {\n"
+
+            for instance in self.relic_spoiler["Relic"]:
+                spoilerStr += "    " + instance
+
+            spoilerStr += "}\n"
+
         if args.balanced:
             for item in self.balanceList:
                 self.outputStr += item[2]
@@ -1329,6 +1402,7 @@ def main():
     parser.add_argument("--force-cells", help="Force health and energy cells to appear every N pickups, if they don't randomly", type=int, default=256)
     parser.add_argument("--easy", help="Add an extra copy of double jump, bash, stomp, glide, charge jump, dash, grenade, water, and wind", action="store_true")
     parser.add_argument("--free-mapstones", help="Don't require a mapstone to be placed when a map monument becomes accessible", action="store_true")
+    parser.add_argument("--world-tour", help="Prevent Ori from entering the final escape until collecting one relic from each of the zones in the world", action="store_true")
 
     args = parser.parse_args()
 
@@ -1390,6 +1464,8 @@ def main():
         flags += ",easy"
     if not args.free_mapstones:
         flags += ",LockedMapStones"
+    if args.world_tour:
+        flags += ",WorldTour"
     if args.players > 1:
         syncFlags += ",shared=" + "+".join(args.shared_items.split(","))
         syncFlags += ",mode=" + args.share_mode
