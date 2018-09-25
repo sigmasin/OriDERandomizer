@@ -1,3 +1,11 @@
+/*
+
+This class contains a modified load method which logs all saved objects when a
+file is loaded. To be used for investigation purposes only (this code should
+never be present in a release).
+
+*/
+
 using System;
 using System.Collections;
 using System.Collections.Generic;

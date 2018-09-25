@@ -9,7 +9,7 @@ public static class RandomizerSettings
 	{
 		StreamWriter streamWriter = new StreamWriter("RandomizerSettings.txt");
 		streamWriter.WriteLine("Controller Bash Deadzone: 0.5");
-		streamWriter.WriteLine("Ability Menu Opacity: 0.25");
+		streamWriter.WriteLine("Ability Menu Opacity: 0.5");
 		streamWriter.Flush();
 		streamWriter.Close();
 	}
@@ -45,7 +45,7 @@ public static class RandomizerSettings
 	public static void LoadDefaultSettings()
 	{
 		RandomizerSettings.BashDeadzone = 0.5f;
-		RandomizerSettings.AbilityMenuOpacity = 0.25f;
+		RandomizerSettings.AbilityMenuOpacity = 0.5f;
 	}
 
 	// Token: 0x040032C2 RID: 12994
