@@ -862,7 +862,7 @@ class Generator:
         if not args.hard:
             self.itemPool = OrderedDict([
                 ("EX1", 1),
-                ("EX*", 97),
+                ("EX*", 99),
                 ("KS", 40),
                 ("MS", 11),
                 ("AC", 33),
@@ -903,15 +903,15 @@ class Generator:
                 ("TPGrove", 1),
                 ("TPSwamp", 1),
                 ("TPValley", 1),
-                ("TPGinso", 1),
-                ("TPHoru", 1),
+                ("TPGinso", 0),
+                ("TPHoru", 0),
                 ("Open", 0),
                 ("Relic", 0)
             ])
         else:
             self.itemPool = OrderedDict([
                 ("EX1", 1),
-                ("EX*", 173),
+                ("EX*", 175),
                 ("KS", 40),
                 ("MS", 11),
                 ("AC", 0),
@@ -942,8 +942,8 @@ class Generator:
                 ("TPGrove", 1),
                 ("TPSwamp", 1),
                 ("TPValley", 1),
-                ("TPGinso", 1),
-                ("TPHoru", 1),
+                ("TPGinso", 0),
+                ("TPHoru", 0),
                 ("Open", 0),
                 ("Relic", 0)
             ])
@@ -990,6 +990,11 @@ class Generator:
             self.itemPool["HoruKey"] = 0
             self.itemCount -= 3
 
+        if args.open:
+            self.itemPool["TPGinso"] = 1
+            self.itemPool["TPHoru"] = 1
+            self.itemPool["KS"] -= 2
+
         if args.no_teleporters:
             self.itemPool["TPForlorn"] = 0
             self.itemPool["TPGrotto"] = 0
@@ -999,7 +1004,9 @@ class Generator:
             self.itemPool["TPValley"] = 0
             self.itemPool["TPGinso"] = 0
             self.itemPool["TPHoru"] = 0
-            self.itemPool["EX*"] += 8
+            self.itemPool["EX*"] += 6
+            if args.open:
+                self.itemPool["EX*"] += 2
 
         if args.world_tour:
             self.itemPool["EX*"] -= 11
@@ -1187,6 +1194,12 @@ class Generator:
         spoilerPath = ""
 
         self.reach_area("SunkenGladesRunaway")
+        if args.open:
+            self.reach_area("GladesMain")
+            for connection in list(self.areas["SunkenGladesRunaway"].connections):
+                if connection.target == "GladesMain":
+                    self.areas["SunkenGladesRunaway"].remove_connection(connection)
+
         while self.itemCount > 0 or (args.balanced and self.balanceListLeftovers):
 
             self.balanceLevel += 1
