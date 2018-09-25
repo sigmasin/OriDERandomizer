@@ -1343,14 +1343,13 @@ home: UpperGinsoDoorOpened
 		casual-core Bash Climb DoubleJump
 		casual-core Bash WallJump Glide
 		casual-core Bash Climb Glide
-		--dboost crossing the spikes past the keydoor
-		casual-dboost Bash Climb Health=3
-		casual-dboost Bash WallJump Health=3
 		standard-core Bash WallJump
 		standard-core Bash Climb
 		standard-core Bash Grenade
 		expert-core Bash DoubleJump
 		expert-dboost ChargeJump DoubleJump Health=3
+		--needs verification
+		--expert-dboost ChargeJump Health=5 or 7
 		master-core WallJump DoubleJump Health=7 Ability=12
 	conn: UpperGinsoTree
 		casual-core Open Bash
@@ -1386,8 +1385,7 @@ home: TopGinsoTree
 		expert-abilities Dash Ability=6
 	pickup: TopGinsoLeftUpperExp
 		--consider also having double jump for casual access
-		casual-core Bash WallJump
-		casual-core Bash Climb
+		casual-core Bash DoubleJump
 		casual-core Bash Grenade
 		casual-core ChargeJump
 		--involves careful fronkey placement, may move to expert?
