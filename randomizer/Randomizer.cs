@@ -244,6 +244,7 @@ public static class Randomizer
 		}
 		Randomizer.Returning = true;
 		Characters.Sein.Position = new Vector3(189f, -215f);
+		Characters.Sein.Speed = new Vector3(0f, 0f);
 		Characters.Ori.Position = new Vector3(190f, -210f);
 		int value = World.Events.Find(Randomizer.MistySim).Value;
 		if (value != 1 && value != 8)
