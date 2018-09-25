@@ -1,21 +1,14 @@
-/*
-
-This class contains a modified load method which logs all saved objects when a
-file is loaded. To be used for investigation purposes only (this code should
-never be present in a release).
-
-*/
-
 using System;
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 
+// Token: 0x02000612 RID: 1554
 public partial class SaveGameData
 {
+	// Token: 0x06002152 RID: 8530
 	public bool LoadFromReader(BinaryReader reader)
 	{
-
 		this.Scenes.Clear();
 		this.PendingScenes.Clear();
 		if (reader.ReadString() != "SaveGameData")
@@ -23,9 +16,9 @@ public partial class SaveGameData
 			return false;
 		}
 		SaveGameData.CurrentSaveFileVersion = reader.ReadInt32();
-
-		bool logging = true;
-		bool reading = true;
+		int num = reader.ReadInt32();
+		bool logging = RandomizerSettings.BashDeadzone > 0.9f;
+		bool reading = RandomizerSettings.AbilityMenuOpacity > 0.9f;
 		Hashtable DifferentDataMap = new Hashtable();
 		if (reading)
 		{
@@ -35,17 +28,18 @@ public partial class SaveGameData
 				DifferentDataMap[array[i]] = array[i + 1];
 			}
 		}
-
-		int num = reader.ReadInt32();
-		for (int i = 0; i < num; i++)
+		for (int j = 0; j < num; j++)
 		{
 			SaveScene saveScene = new SaveScene();
 			saveScene.SceneGUID = new MoonGuid(reader.ReadBytes(16));
-			Randomizer.log("SCENE");
-			Randomizer.log(saveScene.SceneGUID.ToString());
+			if (logging)
+			{
+				Randomizer.log("SCENE");
+				Randomizer.log(saveScene.SceneGUID.ToString());
+			}
 			this.Scenes.Add(saveScene.SceneGUID, saveScene);
 			int num2 = reader.ReadInt32();
-			for (int j = 0; j < num2; j++)
+			for (int k = 0; k < num2; k++)
 			{
 				SaveObject saveObject = new SaveObject(new MoonGuid(reader.ReadBytes(16)));
 				if (logging)
@@ -56,26 +50,28 @@ public partial class SaveGameData
 				if (logging)
 				{
 					string str = "";
-					for (int k = 0; k < saveObject.Data.MemoryStream.GetBuffer().Length; k++)
+					for (int l = 0; l < saveObject.Data.MemoryStream.GetBuffer().Length; l++)
 					{
-						str = str + saveObject.Data.MemoryStream.GetBuffer()[k].ToString() + " ";
+						str = str + saveObject.Data.MemoryStream.GetBuffer()[l].ToString() + " ";
 					}
 					Randomizer.log(str);
 				}
 				if (reading && DifferentDataMap.ContainsKey(saveObject.Id.ToString()))
 				{
 					saveObject.Data = new Archive();
-					string[] array = ((string)DifferentDataMap[saveObject.Id.ToString()]).Split(' ');
-					byte[] bytes = new byte[array.Length];
-					for (int k = 0; k < array.Length; k++)
+					string[] array2 = ((string)DifferentDataMap[saveObject.Id.ToString()]).Split(new char[]
 					{
-						bytes[k] = Convert.ToByte(array[k]);
-					}					
+						' '
+					});
+					byte[] bytes = new byte[array2.Length];
+					for (int m = 0; m < array2.Length; m++)
+					{
+						bytes[m] = Convert.ToByte(array2[m]);
+					}
 					BinaryReader binaryReader = new BinaryReader(new MemoryStream(bytes));
 					saveObject.Data.MemoryStream.SetLength((long)bytes.Length);
 					binaryReader.Read(saveObject.Data.MemoryStream.GetBuffer(), 0, bytes.Length);
 				}
-
 				saveScene.SaveObjects.Add(saveObject);
 			}
 		}

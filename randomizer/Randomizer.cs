@@ -77,6 +77,7 @@ public static class Randomizer
 		Randomizer.HoruMap["mountHoruBreakyPathTop"] = 84;
 		Randomizer.HoruMap["mountHoruFallingBlocks"] = 88;
 		Randomizer.OpenMode = false;
+		RandomizerDataMaps.LoadGladesData();
 		RandomizerDataMaps.LoadGinsoData();
 		RandomizerDataMaps.LoadForlornData();
 		RandomizerDataMaps.LoadHoruData();
@@ -950,4 +951,7 @@ public static class Randomizer
 
 	// Token: 0x04003459 RID: 13401
 	public static bool MoveNightBerry;
+
+	// Token: 0x040032F7 RID: 13047
+	public static ArrayList GladesData;
 }
