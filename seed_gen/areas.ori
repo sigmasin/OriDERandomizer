@@ -1226,6 +1226,7 @@ home: GinsoMiniBossDoor
 		casual-core Bash Grenade
 		--involves 2 hp dboost
 		standard-dboost ChargeJump Health=3
+		standard-abilities ChargeJump Dash Ability=3
 	pickup: LowerGinsoKeystone3
 		casual-core WallJump
 		casual-core Climb
@@ -1305,7 +1306,9 @@ home: UpperGinsoTree
 		standard-dboost Bash Health=3
 		standard-dboost DoubleJump Health=3
 		standard-dboost ChargeJump Health=3
+		standard-abilities ChargeJump Dash Ability=3
 		expert-dboost Health=5
+		expert-abilities Dash Ability=6
 	pickup: UpperGinsoRightKeystone
 		casual-core Bash DoubleJump
 		casual-core Bash Glide
@@ -1313,17 +1316,23 @@ home: UpperGinsoTree
 		standard-core ChargeJump DoubleJump
 		standard-core ChargeJump Glide
 		standard-dboost ChargeJump Health=3
+		standard-abilities ChargeJump Dash Ability=3
+		expert-abilities Dash Ability=6
+		Master-abilities DoubleJump Ability=12 Health=3
 	pickup: UpperGinsoUpperRightKeystone
 		casual-core Bash DoubleJump
 		standard-core Bash
 		standard-core ChargeJump DoubleJump
 		standard-dboost ChargeJump Health=3
+		Master-abilities DoubleJump Ability=12 Health=5
 	pickup: UpperGinsoUpperLeftKeystone
 		casual-core Bash DoubleJump
 		standard-core Bash
 		standard-core ChargeJump DoubleJump
 		standard-core ChargeJump Glide
 		standard-dboost ChargeJump Health=3
+		standard-abilities ChargeJump Dash Ability=3
+		Master-abilities DoubleJump Ability=12 Health=5
 	pickup: UpperGinsoEnergyCell
 		--with the exception of bash and cjump, all of these routes involve getting stuck in the energy cell area
 		casual-core Stomp
@@ -1350,7 +1359,7 @@ home: UpperGinsoDoorOpened
 		expert-dboost ChargeJump DoubleJump Health=3
 		--needs verification
 		--expert-dboost ChargeJump Health=5 or 7
-		master-core WallJump DoubleJump Health=7 Ability=12
+		master-abilities WallJump DoubleJump Health=7 Ability=12
 	conn: UpperGinsoTree
 		casual-core Open Bash
 		casual-core Open DoubleJump
@@ -1364,7 +1373,7 @@ home: GinsoTeleporter
 		casual-core ChargeJump WallJump
 		expert-dboost ChargeJump Health=5
 		expert-dboost ChargeJump DoubleJump Health=3
-		master-core WallJump DoubleJump Health=7 Ability=12
+		master-abilities WallJump DoubleJump Health=7 Ability=12
 	conn: UpperGinsoDoorClosed
 		--may have to add in dboost paths (need to check jump across spikes before door)
 		casual-core Free
