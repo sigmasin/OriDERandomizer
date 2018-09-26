@@ -1176,6 +1176,7 @@ home: LowerGinsoTree
 		casual-core Bash Grenade
 		casual-core WallJump DoubleJump
 		casual-core Climb DoubleJump
+		expert-core DoubleJump
 		master-abilities Dash Climb Ability=6
 		master-abilities Dash WallJump Ability=6
 	pickup: LowerGinsoPlant
@@ -1187,7 +1188,6 @@ home: LowerGinsoTree
 		casual-core Grenade
 		expert-abilities Dash Ability=6
 	conn: GinsoMiniBossDoor
-	-- TODO: single damage instance falls through the teleporter room (Completed)
 		casual-core WallJump DoubleJump
 		casual-core WallJump Glide
 		casual-core Climb DoubleJump
@@ -1201,7 +1201,6 @@ home: LowerGinsoTree
 		standard-dboost Climb
 		--A little more difficult for a 2 hp dboost here, maybe put in expert?
 		standard-dboost ChargeJump
-		--Added in paths to reach the miniboss area airdashing through teleporters
 		standard-abilities WallJump Dash Ability=3
 		standard-abilities Climb Dash Ability=3
 		standard-abilities ChargeJump Dash Ability=3
