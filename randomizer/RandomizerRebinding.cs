@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using Core;
 using UnityEngine;
@@ -31,52 +32,195 @@ public static class RandomizerRebinding
 		streamWriter.Flush();
 		streamWriter.Close();
 	}
-
 	// Token: 0x060037B5 RID: 14261
 	public static void ParseRebinding()
 	{
-		RandomizerRebinding.ActionMap = new Hashtable();
-		RandomizerRebinding.ActionMap.Add("Jump", Core.Input.Jump);
-		RandomizerRebinding.ActionMap.Add("SpiritFlame", Core.Input.SpiritFlame);
-		RandomizerRebinding.ActionMap.Add("Bash", Core.Input.Bash);
-		RandomizerRebinding.ActionMap.Add("SoulFlame", Core.Input.SoulFlame);
-		RandomizerRebinding.ActionMap.Add("ChargeJump", Core.Input.ChargeJump);
-		RandomizerRebinding.ActionMap.Add("Glide", Core.Input.Glide);
-		RandomizerRebinding.ActionMap.Add("Dash", Core.Input.RightShoulder);
-		RandomizerRebinding.ActionMap.Add("Grenade", Core.Input.LeftShoulder);
-		RandomizerRebinding.ActionMap.Add("Left", Core.Input.Left);
-		RandomizerRebinding.ActionMap.Add("Right", Core.Input.Right);
-		RandomizerRebinding.ActionMap.Add("Up", Core.Input.Up);
-		RandomizerRebinding.ActionMap.Add("Down", Core.Input.Down);
-		RandomizerRebinding.ActionMap.Add("LeftStick", Core.Input.LeftStick);
-		RandomizerRebinding.ActionMap.Add("RightStick", Core.Input.RightStick);
-		RandomizerRebinding.ActionMap.Add("Start", Core.Input.Start);
-		RandomizerRebinding.ActionMap.Add("Select", Core.Input.Select);
+	try 
+	{
+	ActionMap = new Hashtable(){
+		{"Jump", Core.Input.Jump},
+		{"SpiritFlame", Core.Input.SpiritFlame},
+		{"Bash", Core.Input.Bash},
+		{"SoulFlame", Core.Input.SoulFlame},
+		{"ChargeJump", Core.Input.ChargeJump},
+		{"Glide", Core.Input.Glide},
+		{"Dash", Core.Input.RightShoulder},
+		{"Grenade", Core.Input.LeftShoulder},
+		{"Left", Core.Input.Left},
+		{"Right", Core.Input.Right},
+		{"Up", Core.Input.Up},
+		{"Down", Core.Input.Down},
+		{"LeftStick", Core.Input.LeftStick},
+		{"RightStick", Core.Input.RightStick},
+		{"Start", Core.Input.Start},
+		{"Select", Core.Input.Select}
+	};
+
+	DefaultBinds = new Dictionary<string, BindSet>(){
+		{"Replay Message", RandomizerRebinding.ParseBinds("LeftAlt+T, RightAlt+T")},
+		{"Return to Start", RandomizerRebinding.ParseBinds("LeftAlt+R, RightAlt+R")},
+		{"Reload Seed", RandomizerRebinding.ParseBinds("LeftAlt+L, RightAlt+L")},
+		{"Toggle Chaos", RandomizerRebinding.ParseBinds("LeftAlt+K, RightAlt+K")},
+		{"Chaos Verbosity", RandomizerRebinding.ParseBinds("LeftAlt+V, RightAlt+V")},
+		{"Force Chaos Effect", RandomizerRebinding.ParseBinds("LeftAlt+F, RightAlt+F")},
+		{"Show Progress", RandomizerRebinding.ParseBinds("LeftAlt+P, RightAlt+P")},
+		{"Color Shift", RandomizerRebinding.ParseBinds("LeftAlt+C, RightAlt+C")},
+		{"Double Bash", RandomizerRebinding.ParseBinds("Grenade")},
+		{"Bonus Switch", RandomizerRebinding.ParseBinds("LeftAlt+Q, RightAlt+Q")},
+		{"Bonus Toggle", RandomizerRebinding.ParseBinds("LeftAlt+Mouse1, RightAlt+Mouse1")},
+		{"Reset Grenade Aim", RandomizerRebinding.ParseBinds("")}
+	};
 		if (!File.Exists("RandomizerRebinding.txt"))
 		{
 			RandomizerRebinding.WriteDefaultFile();
 		}
-		try
-		{
-			string[] array = File.ReadAllLines("RandomizerRebinding.txt");
-			RandomizerRebinding.ReplayMessage = RandomizerRebinding.ParseLine(array[5]);
-			RandomizerRebinding.ReturnToStart = RandomizerRebinding.ParseLine(array[6]);
-			RandomizerRebinding.ReloadSeed = RandomizerRebinding.ParseLine(array[7]);
-			RandomizerRebinding.ToggleChaos = RandomizerRebinding.ParseLine(array[8]);
-			RandomizerRebinding.ChaosVerbosity = RandomizerRebinding.ParseLine(array[9]);
-			RandomizerRebinding.ForceChaosEffect = RandomizerRebinding.ParseLine(array[10]);
-			RandomizerRebinding.ShowProgress = RandomizerRebinding.ParseLine(array[11]);
-			RandomizerRebinding.ColorShift = RandomizerRebinding.ParseLine(array[12]);
-			RandomizerRebinding.DoubleBash = RandomizerRebinding.ParseLine(array[13]);
-			RandomizerRebinding.BonusSwitch = RandomizerRebinding.ParseLine(array[14]);
-			RandomizerRebinding.BonusToggle = RandomizerRebinding.ParseLine(array[15]);
-			RandomizerRebinding.ResetGrenadeAim = RandomizerRebinding.ParseLine(array[16]);
+		string[] lines = File.ReadAllLines("RandomizerRebinding.txt");
+		ArrayList unseenBinds = new ArrayList(RandomizerRebinding.DefaultBinds.Keys);
+		Hashtable binds = new Hashtable();
+		foreach(string line in lines){
+			if(!line.Contains(":")) {
+				continue;
+			}
+			{
+				string[] parts = line.Split(':');
+				string key = parts[0].Trim();
+				string bind = parts[1].Trim();
+				if(key == "Replay Message") {
+					try {
+						RandomizerRebinding.ReplayMessage = RandomizerRebinding.ParseBinds(bind);
+					}
+					catch(Exception) {
+						Randomizer.showHint("Failed to load bind for Replay Message");
+						RandomizerRebinding.ReplayMessage = DefaultBinds["Replay Message"];
+					}
+				} else if(key == "Return to Start") {
+					try {
+						RandomizerRebinding.ReturnToStart = RandomizerRebinding.ParseBinds(bind);
+					}
+					catch(Exception) {
+						Randomizer.showHint("Failed to load bind for Return to Start");
+						RandomizerRebinding.ReturnToStart = DefaultBinds["Return to Start"];
+					}
+				} else if(key == "Reload Seed") {
+					try {
+						RandomizerRebinding.ReloadSeed = RandomizerRebinding.ParseBinds(bind);
+					}
+					catch(Exception) {
+						Randomizer.showHint("Failed to load bind for Reload Seed");
+						RandomizerRebinding.ReloadSeed = DefaultBinds["Reload Seed"];
+					}
+				} else if(key == "Toggle Chaos") {
+					try {
+						RandomizerRebinding.ToggleChaos = RandomizerRebinding.ParseBinds(bind);
+					}
+					catch(Exception) {
+						Randomizer.showHint("Failed to load bind for Toggle Chaos");
+						RandomizerRebinding.ToggleChaos = DefaultBinds["Toggle Chaos"];
+					}
+				} else if(key == "Chaos Verbosity") {
+					try {
+						RandomizerRebinding.ChaosVerbosity = RandomizerRebinding.ParseBinds(bind);
+					}
+					catch(Exception) {
+						Randomizer.showHint("Failed to load bind for Chaos Verbosity");
+						RandomizerRebinding.ChaosVerbosity = DefaultBinds["Chaos Verbosity"];
+					}
+				} else if(key == "Force Chaos Effect") {
+					try {
+						RandomizerRebinding.ForceChaosEffect = RandomizerRebinding.ParseBinds(bind);
+					}
+					catch(Exception) {
+						Randomizer.showHint("Failed to load bind for Force Chaos Effect");
+						RandomizerRebinding.ForceChaosEffect = DefaultBinds["Force Chaos Effect"];
+					}
+				} else if(key == "Show Progress") {
+					try {
+						RandomizerRebinding.ShowProgress = RandomizerRebinding.ParseBinds(bind);
+					}
+					catch(Exception) {
+						Randomizer.showHint("Failed to load bind for Show Progress");
+						RandomizerRebinding.ShowProgress = DefaultBinds["Show Progress"];
+					}
+				} else if(key == "Color Shift") {
+					try {
+						RandomizerRebinding.ColorShift = RandomizerRebinding.ParseBinds(bind);
+					}
+					catch(Exception) {
+						Randomizer.showHint("Failed to load bind for Color Shift");
+						RandomizerRebinding.ColorShift = DefaultBinds["Color Shift"];
+					}
+				} else if(key == "Double Bash") {
+					try {
+						RandomizerRebinding.DoubleBash = RandomizerRebinding.ParseBinds(bind);
+					}
+					catch(Exception) {
+						Randomizer.showHint("Failed to load bind for Double Bash");
+						RandomizerRebinding.DoubleBash = DefaultBinds["Double Bash"];
+					}
+				} else if(key == "Bonus Switch") {
+					try {
+						RandomizerRebinding.BonusSwitch = RandomizerRebinding.ParseBinds(bind);
+					}
+					catch(Exception) {
+						Randomizer.showHint("Failed to load bind for Bonus Switch");
+						RandomizerRebinding.BonusSwitch = DefaultBinds["Bonus Switch"];
+					}
+				} else if(key == "Bonus Toggle") {
+					try {
+						RandomizerRebinding.BonusToggle = RandomizerRebinding.ParseBinds(bind);
+					}
+					catch(Exception) {
+						Randomizer.showHint("Failed to load bind for Bonus Toggle");
+						RandomizerRebinding.BonusToggle = DefaultBinds["Bonus Toggle"];
+					}
+				} else if(key == "Reset Grenade Aim") {
+					try {
+						RandomizerRebinding.ResetGrenadeAim = RandomizerRebinding.ParseBinds(bind);
+					}
+					catch(Exception) {
+						Randomizer.showHint("Failed to load bind for Reset Grenade Aim");
+						RandomizerRebinding.ResetGrenadeAim = DefaultBinds["Reset Grenade Aim"];
+					}
+				} else {
+					continue;
+				}
+				// so now if we didn't return, we set the bind for that key one way or the other, so...
+				unseenBinds.Remove(key);
+			}
 		}
-		catch (Exception)
-		{
-			Randomizer.showHint("Syntax error, loading default binds");
-			RandomizerRebinding.LoadDefaultBinds();
+		foreach(string key in unseenBinds) {
+			Randomizer.showHint("Didn't find a bind for " + key + ", loading default");
+				if(key == "Replay Message") {
+					RandomizerRebinding.ReplayMessage = DefaultBinds[key];
+				} else if(key == "Return to Start") {
+					RandomizerRebinding.ReturnToStart = DefaultBinds[key];
+				} else if(key == "Reload Seed") {
+					RandomizerRebinding.ReloadSeed = DefaultBinds[key];
+				} else if(key == "Toggle Chaos") {
+					RandomizerRebinding.ToggleChaos = DefaultBinds[key];
+				} else if(key == "Chaos Verbosity") {
+					RandomizerRebinding.ChaosVerbosity = DefaultBinds[key];
+				} else if(key == "Force Chaos Effect") {
+					RandomizerRebinding.ForceChaosEffect = DefaultBinds[key];
+				} else if(key == "Show Progress") {
+					RandomizerRebinding.ShowProgress = DefaultBinds[key];
+				} else if(key == "Color Shift") {
+					RandomizerRebinding.ColorShift = DefaultBinds[key];
+				} else if(key == "Double Bash") {
+					RandomizerRebinding.DoubleBash = DefaultBinds[key];
+				} else if(key == "Bonus Switch") {
+					RandomizerRebinding.BonusSwitch = DefaultBinds[key];
+				} else if(key == "Bonus Toggle") {
+					RandomizerRebinding.BonusToggle = DefaultBinds[key];
+				} else if(key == "Reset Grenade Aim") {
+					RandomizerRebinding.ResetGrenadeAim = DefaultBinds[key];
+				}  
 		}
+	}
+	catch(Exception e) {
+		Randomizer.showHint(e.Message);
+	}
+
 	}
 
 	// Token: 0x060037B6 RID: 14262
@@ -89,30 +233,10 @@ public static class RandomizerRebinding
 		return KeyCode.None;
 	}
 
-	// Token: 0x060037B7 RID: 14263
-	public static void LoadDefaultBinds()
-	{
-		RandomizerRebinding.ReplayMessage = RandomizerRebinding.ParseLine("Replay Message: LeftAlt+T, RightAlt+T");
-		RandomizerRebinding.ReturnToStart = RandomizerRebinding.ParseLine("Return to Start: LeftAlt+R, RightAlt+R");
-		RandomizerRebinding.ReloadSeed = RandomizerRebinding.ParseLine("Reload Seed: LeftAlt+L, RightAlt+L");
-		RandomizerRebinding.ToggleChaos = RandomizerRebinding.ParseLine("Toggle Chaos: LeftAlt+K, RightAlt+K");
-		RandomizerRebinding.ChaosVerbosity = RandomizerRebinding.ParseLine("Chaos Verbosity: LeftAlt+V, RightAlt+V");
-		RandomizerRebinding.ForceChaosEffect = RandomizerRebinding.ParseLine("Force Chaos Effect: LeftAlt+F, RightAlt+F");
-		RandomizerRebinding.ShowProgress = RandomizerRebinding.ParseLine("Show Progress: LeftAlt+P, RightAlt+P");
-		RandomizerRebinding.ColorShift = RandomizerRebinding.ParseLine("Color Shift: LeftAlt+C, RightAlt+C");
-		RandomizerRebinding.DoubleBash = RandomizerRebinding.ParseLine("Double Bash: Grenade");
-		RandomizerRebinding.BonusSwitch = RandomizerRebinding.ParseLine("BonusSwitch: LeftAlt+Q, RightAlt+Q");
-		RandomizerRebinding.BonusToggle = RandomizerRebinding.ParseLine("BonusToggle: LeftAlt+Mouse1, RightAlt+Mouse1");
-		RandomizerRebinding.ResetGrenadeAim = RandomizerRebinding.ParseLine("Reset Grenade Aim: ");
-	}
-
 	// Token: 0x060037B8 RID: 14264
-	public static RandomizerRebinding.BindSet ParseLine(string line)
+	public static RandomizerRebinding.BindSet ParseBinds(string binds)
 	{
-		string[] array3 = line.Split(new char[]
-		{
-			':'
-		})[1].Split(new char[]
+		string[] array3 = binds.Split(new char[]
 		{
 			','
 		});
@@ -144,8 +268,10 @@ public static class RandomizerRebinding
 		return new RandomizerRebinding.BindSet(arrayList);
 	}
 
-	// Token: 0x0400327A RID: 12922
 	public static Hashtable ActionMap;
+	public static Dictionary<string, BindSet> DefaultBinds;
+
+
 
 	// Token: 0x0400327B RID: 12923
 	public static RandomizerRebinding.BindSet ReplayMessage;
