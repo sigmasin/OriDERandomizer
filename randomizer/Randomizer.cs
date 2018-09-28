@@ -217,6 +217,10 @@ public static class Randomizer
 					else
 					{
 						Randomizer.Table[num2] = new RandomizerAction(array2[1], num3);
+						if (Randomizer.CluesMode && array4[1] == "EV" && num2 % 2 == 0)
+						{
+							RandomizerClues.AddClue(array4[3], num2 / 2);
+						}
 					}
 				}
 			}
