@@ -373,7 +373,7 @@ home: SunkenGladesRunaway
 		casual-core WallJump
 		casual-core Climb
 		casual-core Grenade Bash
-	conn: HollowGrove
+	conn: SwampTeleporter
 		casual-core TPSwamp
 	conn: ValleyTeleporter
 		casual-core TPValley
@@ -475,13 +475,13 @@ home: DeathGauntletDoor
 		casual-core WallJump Water
 		casual-core Climb Water
 		casual-core Bash Water
-		standard-core WallJump Health=4
-		standard-core Climb Health=4
-		standard-core Bash Health=4
+		standard-dboost WallJump Health=4
+		standard-dboost Climb Health=4
+		standard-dboost Bash Health=4
 	conn: DeathGauntletMoat
 		casual-core Water
 		expert-dboost Health=5
-		master-core Health=4
+		master-dboost Health=4
 home: DeathGauntletMoat
 	-- anchor: in the death gauntlet water
 	pickup: DeathGauntletSwimEnergyDoor
@@ -500,6 +500,12 @@ home: DeathGauntlet
 		standard-lure Water
 		expert-dboost Stomp
 		expert-dboost Free
+	pickup: DeathGauntletEnergyCell
+		casual-core WallJump
+		casual-core Climb
+		casual-core Bash Grenade
+		casual-core ChargeJump
+		casual-core DoubleJump
 	conn: DeathGauntletMoat
 		casual-core Water
 		expert-dboost Health=4
@@ -510,23 +516,18 @@ home: DeathGauntlet
 	conn: DeathGauntletRoof
 		casual-core ChargeJump
 	conn: DeathGauntletRoofPlantAccess
-		ALL ChargeFlame
-		expert-core DoubleJump WallJump
-		expert-core Bash WallJump
-		expert-core DoubleJump Climb
-		expert-core Bash Climb
-		expert-core Bash Grenade
-		master-core
+		expert-core DoubleJump WallJump ChargeFlame
+		expert-core Bash WallJump ChargeFlame
+		expert-core DoubleJump Climb ChargeFlame
+		expert-core Bash Climb ChargeFlame
+		expert-core Bash Grenade ChargeFlame
+		master-abilities ChargeFlame Ability=3
 	conn: MoonGrotto
-		casual-dboost WallJump
-		casual-dboost Climb
-		casual-dboost ChargeJump Bash
-		casual-core Grenade Bash
-		casual-core Climb DoubleJump Glide
-		casual-core WallJump DoubleJump Glide
-		timed-level WallJump
-		timed-level Climb
-		timed-level ChargeJump Bash
+		casual-core WallJump
+		casual-core Climb
+		casual-core Bash Grenade
+		casual-core ChargeJump
+		casual-core DoubleJump
 home: DeathGauntletRoof
 	-- anchor: above death gauntlet, next to the health cell
 	pickup: DeathGauntletRoofHealthCell
@@ -839,6 +840,15 @@ home: SpiderWaterArea
 		casual-core Water
 		standard-core Bash
 		master-abilities Dash Ability=6
+	conn: DeathGauntletRoof
+		casual-core WallJump Stomp Water
+		casual-core Climb Stomp Water
+		casual-core Bash Stomp Water
+		expert-dboost Bash Stomp Health=4
+		expert-dboost WallJump Stomp Health=5
+		expert-dboost Climb Stomp Health=5
+		master-core WallJump Stomp Ability=12
+		master-core Climb Stomp Ability=12
 home: BlackrootDarknessRoom
 	-- anchor: just after watching/skipping the BRB entrance cutscene
 	pickup: DashAreaOrbRoomExp
@@ -1088,37 +1098,21 @@ home: LostGroveExit
 home: HollowGrove
 	-- anchor: in the kuro CS tree, below the plant and above iceless area
 	pickup: HollowGroveMapstone
-	pickup: SwampTeleporterAbilityCell
-		casual-core ChargeJump DoubleJump Glide
-		casual-core Wind Glide
-		expert-core Grenade Bash
-		expert-abilities Dash Ability=6
 	pickup: GroveWaterStompAbilityCell
 		casual-core Water Stomp
 		expert-dboost Stomp Health=5
 		master-lure Bash Water
 		master-lure Bash Health=5
-		master-core Stomp Ability=12
-		master-core Bash Ability=12
+		master-dboost Stomp Ability=12
+		master-dboost Bash Ability=12
 		glitched Bash
-	pickup: OuterSwampGrenadeExp
-		ALL Grenade
-		casual-core WallJump
-		casual-core Climb
-		casual-core ChargeJump
-		casual-core Bash
-	pickup: OuterSwampMortarAbilityCell
-		casual-core ChargeJump
-		casual-core Climb Bash
-		casual-core WallJump Bash
-		master-lure Bash
-		master-core WallJump DoubleJump Ability=12
-		glitched Free
 	pickup: HoruFieldsHealthCell
 		casual-core Stomp
 		standard-lure Free
-	pickup: HollowGroveMap
-		casual-core Mapstone
+	pickup: HollowGroveTreePlant
+		casual-core ChargeFlame
+		casual-core Grenade
+		expert-abilities Dash Ability=6
 	pickup: HollowGroveTreeAbilityCell
 		casual-core WallJump DoubleJump
 		casual-core Wind Glide
@@ -1128,6 +1122,28 @@ home: HollowGrove
 		standard-lure Bash Climb
 		dbash Bash
 		expert-abilities Dash Ability=6
+	pickup: HollowGroveMap
+		casual-core Mapstone
+	pickup: HollowGroveMapPlant
+		casual-core ChargeFlame
+		casual-core Grenade
+		expert-abilities Dash Ability=6
+	pickup: SwampTeleporterAbilityCell
+		casual-core Wind Glide
+		casual-core ChargeJump DoubleJump Glide WallJump
+		casual-core ChargeJump DoubleJump Glide Climb
+		casual-core Bash Grenade Glide DoubleJump
+		casual-core Bash Grenade Glide WallJump
+		casual-core Bash Grenade Glide Climb
+		standard-core Bash Grenade Glide
+		standard-core Bash Grenade DoubleJump
+		standard-abilities ChargeJump DoubleJump Glide Dash Ability=3
+		expert-core Bash Grenade
+		expert-abilities Dash Ability=6
+		master-core ChargeJump DoubleJump Glide
+		master-lure Bash
+		master-abilities ChargeJump DoubleJump Ability=12
+		gjump ChargeJump Climb Grenade
 	conn: SpiderWaterArea
 		casual-core WallJump
 		casual-core Climb
@@ -1136,50 +1152,139 @@ home: HollowGrove
 		casual-core Water
 		standard-core Bash
 		master-core Free
+	conn: SwampTeleporter
+		casual-core WallJump
+		casual-core Climb
+		casual-core ChargeJump
+		casual-core Bash Grenade
+		casual-core Wind Glide
+		master-core DoubleJump
+	conn: OuterSwampUpperArea
+		casual-core WallJump
+		casual-core Climb
+		casual-core ChargeJump
+		casual-core Bash Grenade
+		casual-core Wind Glide
+		master-core DoubleJump
+	conn: HoruFields
+		casual-core WallJump DoubleJump Bash
+		casual-core Climb DoubleJump Bash
+		casual-core WallJump DoubleJump Stomp
+		casual-core Climb DoubleJump Stomp
+		casual-core ChargeJump Bash
+		casual-core ChargeJump Stomp
+		standard-core Bash Grenade
+		expert-core WallJump Stomp
+		dbash Bash
+		master-core WallJump
+	conn: Iceless
+		casual-core WallJump DoubleJump
+		casual-core Climb DoubleJump
+		casual-core Bash Grenade
+		casual-core ChargeJump
+		standard-lure Bash
+		expert-abilities Dash Ability=6
+		master-core WallJump
+		master-core DoubleJump
+	-- to be deprecated
 	conn: MoonGrotto
 		casual-core WallJump
 		casual-core Climb
 		casual-core ChargeJump
 		casual-core Bash Grenade
 		casual-core Wind Glide
-	conn: DeathGauntlet
+home: SwampTeleporter
+	-- anchor: on the swamp teleporter
+	conn: HollowGrove
+	conn: OuterSwampMortarAbilityCellLedge
+		-- you can use this TP from the start of the game to WD to the ledge
+		glitched Free
+home: OuterSwampUpperArea
+	-- anchor: on the ledge near the grenade xp
+	pickup: OuterSwampGrenadeExp
+		ALL Grenade
 		casual-core WallJump
 		casual-core Climb
 		casual-core ChargeJump
-		casual-core Bash Grenade
-	conn: DeathGauntletRoof
-		casual-core ChargeJump
-		casual-core WallJump Stomp Water
-		casual-core Climb Stomp Water
-		casual-core Bash Stomp Water
-		expert-dboost Stomp Bash Health=4
-		expert-dboost WallJump Stomp Health=5
-		expert-dboost Climb Stomp Health=5
-		master-core WallJump Stomp Ability=12
-		master-core Climb Stomp Ability=12
-		master-core WallJump Bash
-		master-core Climb Bash
+		casual-core Bash
 	conn: GinsoOuterDoor
 		casual-core GinsoKey
-	conn: HoruFields
-		casual-core Bash DoubleJump
-		casual-core Bash Glide
-		casual-core Stomp ChargeJump Glide WallJump
-		casual-core Stomp ChargeJump Glide Climb
-		dbash Bash
-	conn: HollowGrovePlants
+	conn: OuterSwampAbilityCellNook
+		casual-core Glide
+		casual-core DoubleJump
+		standard-core Free
+	conn: OuterSwampLowerArea
+home: OuterSwampAbilityCellNook
+	-- anchor: on the ledge near the ability cell
+	pickup: OuterSwampAbilityCell
+	conn: InnerSwampSkyArea
+		glitched Dash
+home: OuterSwampLowerArea
+	-- anchor: on the ground among the mortar worms
+	pickup: OuterSwampStompExp
+		casual-core WallJump
+		casual-core Climb
+		casual-core Bash
+		casual-core ChargeJump
+		casual-core DoubleJump
+		expert-abilities Dash Ability=6
+	pickup: OuterSwampHealthCell
+		casual-core WallJump DoubleJump
+		casual-core ChargeJump
+		casual-core Bash Grenade
+		standard-core Climb DoubleJump
+		expert-abilities Dash Ability=6
+		master-core Bash
+		master-abilities DoubleJump Ability=12
+	conn: OuterSwampMortarAbilityCellLedge
+		casual-core Bash
+		expert-abilities Dash Ability=6
+		master-abilities WallJump DoubleJump Ability=12
+	conn: OuterSwampUpperArea
+		casual-core WallJump DoubleJump
+		casual-core Climb DoubleJump
+		casual-core ChargeJump
+		casual-core Bash Grenade
+		-- I still don't understand why people think this jump is hard
+		expert-core WallJump
+		expert-core Climb
+		expert-abilities Dash Ability=6
+	conn: OuterSwampAbilityCellNook
+		casual-core Bash Grenade
+		standard-core Bash
+		standard-core WallJump
+		standard-core Climb
+	conn: OuterSwampMortarPlantAccess
+		casual-core WallJump DoubleJump
+		casual-core Climb DoubleJump
+		casual-core Bash
+		casual-core ChargeJump
+	conn: SwampEntryArea
+		casual-core WallJump
+		casual-core Climb
+		casual-core Bash
+		casual-core ChargeJump
+	conn: UpperGrotto
+		casual-core WallJump
+		casual-core Climb
+		casual-core Bash
+		casual-core ChargeJump
+		casual-core Glide Wind
+		-- expert because if you get stuck on swamp side, you need to djump up
+		-- the wall to continue left (type A djump wall climb)
+		expert-core DoubleJump
+home: OuterSwampMortarAbilityCellLedge
+	pickup: OuterSwampMortarAbilityCell
+	conn: OuterSwampMortarPlantAccess
+		expert-core ChargeFlame
+	conn: UpperGrotto
+home: OuterSwampMortarPlantAccess
+	pickup: OuterSwampMortarPlant
 		casual-core ChargeFlame
 		casual-core Grenade
 		expert-abilities Dash Ability=6
-	conn: RightGinso
-		casual-core WallJump
-		casual-core Climb
-		casual-core Wind Glide
-		casual-core ChargeJump
-		casual-core Bash Grenade
-	conn: Iceless
-		master-core WallJump
 home: GinsoOuterDoor
+	-- anchor: just outside the ginso door, unlocked
 	conn: GinsoInnerDoor
 home: GinsoInnerDoor
 	-- anchor: Just inside the Ginso tree door after putting in the water vein
@@ -1342,28 +1447,47 @@ home: GinsoEscape
 	pickup: GinsoEscapeProjectileExp
 	pickup: GinsoEscapeHangingExp
 	pickup: GinsoEscapeExit
-home: RightGinso
-	pickup: OuterSwampAbilityCell
-	pickup: OuterSwampStompExp
-	pickup: OuterSwampHealthCell
-		casual-core WallJump DoubleJump
-		casual-core ChargeJump
-		casual-core Bash Grenade
-		master-core Bash
-home: MoonGrotto
-	pickup: DeathGauntletEnergyCell
-		casual-core WallJump
-		casual-core Climb
-		casual-core ChargeJump
-		casual-core Bash Grenade
+home: UpperGrotto
+	-- anchor: at the cutscene trigger to spawn the lasers
 	pickup: GrottoLasersRoofExp
 		casual-core WallJump DoubleJump
-		casual-core WallJump ChargeJump
-		casual-core Climb ChargeJump
+		casual-core ChargeJump
 		casual-core Bash Grenade
+		standard-core Climb DoubleJump
 		expert-abilities WallJump Dash Ability=6
 		expert-abilities Climb Dash Ability=6
 		master-core Bash
+	conn: OuterSwampMortarAbilityCellLedge
+		casual-core ChargeJump
+	conn: MoonGrottoStompPlantAccess
+		casual-core Stomp
+		standard-core Climb ChargeJump
+		master-core Bash
+	conn: OuterSwampLowerArea
+		casual-core WallJump
+		casual-core Climb
+		casual-core Bash Grenade
+		casual-core ChargeJump
+		expert-core DoubleJump
+	conn: Iceless
+		casual-core WallJump DoubleJump
+		casual-core Climb DoubleJump
+		casual-core WallJump Glide
+		standard-core Bash Grenade
+		standard-dboost WallJump ChargeJump Health=4
+		standard-dboost Climb ChargeJump Health=4
+		master-core ChargeJump DoubleJump
+		master-core Bash
+		gjump Climb ChargeJump Grenade
+	conn: MoonGrotto
+home: MoonGrottoStompPlantAccess
+	-- anchor: next to the plant or within cflame range
+	pickup: MoonGrottoStompPlant
+		casual-core ChargeFlame
+		casual-core Grenade
+		expert-abilities Dash Ability=6
+home: MoonGrotto
+	-- anchor: on the grotto teleporter
 	pickup: AboveGrottoTeleporterExp
 		casual-core DoubleJump
 		casual-core ChargeJump
@@ -1371,80 +1495,52 @@ home: MoonGrotto
 		casual-core Bash WallJump
 		casual-core Bash Climb
 		expert-abilities Dash Ability=6
-		master-core Bash
+		dbash Bash
 	pickup: LeftGrottoTeleporterExp
 		casual-core WallJump DoubleJump
 		casual-core Climb DoubleJump ChargeJump
 		expert-core Grenade Bash
+		expert-core Climb ChargeJump
 		expert-dboost ChargeJump Health=4
+		expert-dboost WallJump Glide Health=4
+		expert-dboost Climb Glide Health=4
+		expert-dboost DoubleJump Glide Health=4
+		expert-dboost WallJump Health=7
+		expert-dboost Climb Health=7
 		master-core Bash
-	pickup: SwampEntranceSwim
-		casual-core Water
-		expert-dboost Free
+		master-dboost DoubleJump Health=4
 	pickup: GrottoEnergyDoorSwim
-		ALL Energy=2
-		casual-core Water
-		expert-dboost Free
+		casual-core Water Energy=2
+		expert-dboost Energy=2
 	pickup: GrottoEnergyDoorHealthCell
 		ALL Energy=2
 		casual-core ChargeJump
-		casual-core WallJump DoubleJump
-		standard-core WallJump
-	pickup: SwampEntrancePlant
-		casual-core ChargeFlame WallJump
-		casual-core ChargeFlame Climb
-		casual-core Grenade WallJump
-		casual-core Grenade Climb
-		expert-abilities Dash WallJump Ability=6
-		expert-abilities Dash Climb Ability=6
-	pickup: MoonGrottoStompPlant
-		casual-core Stomp ChargeFlame
-		casual-core Stomp Grenade
-		expert-abilities Stomp Dash Ability=6
-		expert-core ChargeFlame
-		expert-core Climb ChargeJump Grenade
-		master-core Bash Grenade
-		master-core Bash Dash
-	pickup: OuterSwampMortarPlant
-		casual-core DoubleJump ChargeFlame
-		casual-core DoubleJump Grenade
-		casual-core ChargeJump ChargeFlame
-		casual-core ChargeJump Grenade
-		casual-core Bash ChargeFlame
 		casual-core Bash Grenade
-		casual-core Glide ChargeFlame
-		casual-core Glide Grenade
-		standard-core Dash ChargeFlame
-		standard-core Dash Grenade
-		expert-core Grenade
-		expert-abilities Dash Ability=6
-	conn: Iceless
-		casual-core ChargeJump WallJump
-		casual-core ChargeJump Climb
 		casual-core WallJump DoubleJump
-		casual-core Climb DoubleJump
-		casual-core Grenade Bash
-		casual-core WallJump Glide
-	conn: HollowGrove
-		casual-core ChargeJump WallJump
-		casual-core ChargeJump Climb
-		casual-core WallJump DoubleJump
-		casual-core Climb DoubleJump
-		casual-core Grenade Bash
-		casual-core WallJump Glide
-		expert-core WallJump
+		standard-dboost WallJump
+		standard-abilities Climb Dash Ability=3
 		expert-core Climb Glide
-	conn: RightGinso
+		expert-dboost Climb DoubleJump
+		expert-abilities Dash Ability=6
+	conn: MoonGrottoStompPlantAccess
+		expert-core WallJump ChargeFlame
+		expert-core Climb ChargeFlame
+		expert-core ChargeJump ChargeFlame
+		expert-core Bash Grenade ChargeFlame
+		master-core DoubleJump ChargeFlame
+	conn: UpperGrotto
 		casual-core WallJump
-		casual-core Climb Glide
+		casual-core Grenade Bash
 		casual-core Climb DoubleJump
 		casual-core Climb ChargeJump
-		casual-core Bash Grenade
+		expert-core Climb Glide
+		master-core DoubleJump
 	conn: DeathGauntlet
 		casual-core WallJump
 		casual-core Climb
 		casual-core ChargeJump
 		casual-core Bash Grenade
+		casual-core DoubleJump
 	conn: RightGrottoHealth
 		casual-core DoubleJump Bash WallJump
 		casual-core DoubleJump Bash Climb
@@ -1505,21 +1601,18 @@ home: MoonGrotto
 		expert-dboost ChargeFlame DoubleJump Climb
 		dbash ChargeFlame Bash WallJump
 		dbash ChargeFlame Bash Climb
-	conn: InnerSwampSkyArea
-		glitched Dash
 	conn: GumoHideout
-		casual-core WallJump
-		casual-core Climb
-		casual-core Bash Grenade
-		casual-core ChargeJump
 	conn: DeathGauntletRoof
 		master-core Bash
-home: HollowGrovePlants
-	pickup: HollowGroveMapPlant
-	pickup: HollowGroveTreePlant
 home: Iceless
 	pickup: IcelessExp
 	conn: HollowGrove
+	conn: UpperGrotto
+		casual-core DoubleJump
+		casual-core Glide
+		standard-core Bash Grenade
+		standard-dboost Health=4
+		gjump ChargeJump Climb Grenade
 home: RightGrottoHealth
 	pickup: BelowGrottoTeleporterHealthCell
 	pickup: BelowGrottoTeleporterPlant
@@ -1625,6 +1718,17 @@ home: MobileGumoHideoutPlants
 home: HideoutRedirect
 	pickup: GumoHideoutRedirectEnergyCell
 	pickup: GumoHideoutRedirectExp
+home: SwampEntryArea
+	pickup: SwampEntranceSwim
+		casual-core Water
+		expert-dboost Free
+	pickup: SwampEntrancePlant
+		casual-core ChargeFlame WallJump
+		casual-core ChargeFlame Climb
+		casual-core Grenade WallJump
+		casual-core Grenade Climb
+		expert-abilities Dash WallJump Ability=6
+		expert-abilities Dash Climb Ability=6
 home: Swamp
 	pickup: InnerSwampStompExp
 		ALL Stomp
