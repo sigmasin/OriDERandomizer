@@ -8,7 +8,9 @@ public class SeinInventory : SaveSerialize
 	public SeinInventory()
 	{
 		this.RandomizerItems = new Dictionary<int, int>();
-		this.ItemsToRevert = new Dictionary<int, int>();
+		this.ItemsAtLastSave = new Dictionary<int, int>();
+		this.ItemsAtLastCheckpoint = new Dictionary<int, int>();
+		this.CheckpointLatest = false;
 	}
 
 	// Token: 0x14000015 RID: 21
@@ -103,9 +105,13 @@ public class SeinInventory : SaveSerialize
 	// Token: 0x06001196 RID: 4502
 	public void SetRandomizerItem(int code, int value)
 	{
-		if (!this.ItemsToRevert.ContainsKey(code))
+		if (!this.ItemsAtLastSave.ContainsKey(code))
 		{
-			this.ItemsToRevert[code] = this.GetRandomizerItem(code);
+			this.ItemsAtLastSave[code] = this.GetRandomizerItem(code);
+		}
+		if (!this.ItemsAtLastCheckpoint.ContainsKey(code))
+		{
+			this.ItemsAtLastCheckpoint[code] = this.GetRandomizerItem(code);
 		}
 		this.RandomizerItems[code] = value;
 	}
@@ -123,25 +129,34 @@ public class SeinInventory : SaveSerialize
 	// Token: 0x06001198 RID: 4504
 	public void IncRandomizerItem(int code, int value)
 	{
-		if (!this.ItemsToRevert.ContainsKey(code))
-		{
-			this.ItemsToRevert[code] = this.GetRandomizerItem(code);
-		}
-		this.RandomizerItems[code] = this.GetRandomizerItem(code) + value;
+		this.SetRandomizerItem(code, this.GetRandomizerItem(code) + value);
 	}
 
 	// Token: 0x06001199 RID: 4505
 	public void OnSave()
 	{
-		this.ItemsToRevert.Clear();
+		this.ItemsAtLastSave.Clear();
+		this.ItemsAtLastCheckpoint.Clear();
+		this.CheckpointLatest = false;
+	}
+
+	public void OnCheckpoint()
+	{
+		this.ItemsAtLastCheckpoint.Clear();
+		this.CheckpointLatest = true;
 	}
 
 	// Token: 0x0600119A RID: 4506
 	public void OnDeath()
 	{
-		foreach (int code in this.ItemsToRevert.Keys)
+		Dictionary<int, int> RevertPoint = this.ItemsAtLastSave;
+		if(this.CheckpointLatest)
 		{
-			this.RandomizerItems[code] = this.ItemsToRevert[code];
+			RevertPoint = this.ItemsAtLastCheckpoint;
+		}
+		foreach (int code in RevertPoint.Keys)
+		{
+			this.RandomizerItems[code] = RevertPoint[code];
 		}
 	}
 
@@ -154,9 +169,13 @@ public class SeinInventory : SaveSerialize
 	// Token: 0x0400109A RID: 4250
 	public int SkillPointsCollected;
 
+	public bool CheckpointLatest;
+
 	// Token: 0x0400109D RID: 4253
 	public Dictionary<int, int> RandomizerItems;
 
 	// Token: 0x040032C1 RID: 12993
-	public Dictionary<int, int> ItemsToRevert;
+	public Dictionary<int, int> ItemsAtLastSave;
+
+	public Dictionary<int, int> ItemsAtLastCheckpoint;
 }

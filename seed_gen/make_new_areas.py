@@ -43,7 +43,8 @@ allowed_things = [
 	"Ability",
 	"Keystone",
 	"Mapstone",
-	"Free"
+	"Free",
+    "Open"
 ]
 
 allowed_paths = [

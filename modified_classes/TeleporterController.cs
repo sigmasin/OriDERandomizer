@@ -249,6 +249,7 @@ public class TeleporterController : SaveSerialize, ISuspendable
 		}
 		GameController.Instance.CreateCheckpoint();
 		GameController.Instance.PerformSaveGameSequence();
+		Characters.Sein.Inventory.OnCheckpoint();
 		LateStartHook.AddLateStartMethod(new Action(this.OnFinishedTeleporting));
 	}
 

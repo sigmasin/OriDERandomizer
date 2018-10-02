@@ -66,6 +66,7 @@ public static class Randomizer
 		Randomizer.fragsEnabled = false;
 		Randomizer.MoveNightBerry = false;
 		Randomizer.WarpCheckCounter = 60;
+		Randomizer.LockedCount = 0;
 		Randomizer.HoruScene = "";
 		Randomizer.HoruMap = new Hashtable();
 		Randomizer.HoruMap["mountHoruStomperSystemsR"] = 60;
@@ -216,6 +217,10 @@ public static class Randomizer
 					else
 					{
 						Randomizer.Table[num2] = new RandomizerAction(array2[1], num3);
+						if (Randomizer.CluesMode && array4[1] == "EV" && num2 % 2 == 0)
+						{
+							RandomizerClues.AddClue(array4[3], num2 / 2);
+						}
 					}
 				}
 			}
@@ -813,6 +818,18 @@ public static class Randomizer
 				}
 				Characters.Sein.Position = new Vector3(750f, -120f);
 			}
+			if (!Characters.Sein.Controller.CanMove && Scenes.Manager.CurrentScene.Scene == "moonGrottoGumosHideoutB")
+			{
+				Randomizer.LockedCount++;
+				if (Randomizer.LockedCount >= 3)
+				{
+					GameController.Instance.ResetInputLocks();
+				}
+			}
+			else
+			{
+				Randomizer.LockedCount = 0;
+			}
 			Randomizer.WarpCheckCounter = 60;
 		}
 	}
@@ -955,4 +972,7 @@ public static class Randomizer
 
 	// Token: 0x040032F7 RID: 13047
 	public static ArrayList GladesData;
+
+	// Token: 0x04003304 RID: 13060
+	public static int LockedCount;
 }
