@@ -247,8 +247,6 @@ loc: ValleyRightExp -418 67 EX100 1 Valley
 loc: ValleyRightBirdStompCell -292 20 AC 1 Valley
 loc: GlideSkillFeather -460 -20 SKGlide 1 Valley
 loc: KuroPerchExp -546 54 EX200 1 Sorrow
-loc: MistyEntranceStompExp -678 -29 EX100 1 Misty
-loc: MistyEntranceTreeExp -822 -9 EX100 1 Misty
 loc: ValleyMap -408 -170 MapStone 3 Valley
 loc: ValleyMainPlant -468 -67 Plant 1 Valley
 loc: WilhelmExp -572 157 EX200 1 Sorrow
@@ -298,19 +296,23 @@ loc: ChargeJumpSkillTree -696 408 SKChargeJump 2 Sorrow
 loc: AboveChargeJumpAbilityCell -646 473 AC 5 Sorrow
 loc: Sunstone 0 16 EVHoruKey 4 Sorrow
 loc: SunstonePlant -478 586 Plant 4 Sorrow
+loc: MistyEntranceStompExp -678 -29 EX100 1 Misty
+loc: MistyEntranceTreeExp -822 -9 EX100 1 Misty
 loc: MistyFrogNookExp -979 23 EX100 1 Misty
-loc: MistyAbilityCell -1075 -2 AC 1 Misty
+loc: MistyKeystone1 -1076 32 KS 1 Misty
 loc: MistyMortarCorridorUpperExp -1082 8 EX100 2 Misty
 loc: MistyMortarCorridorHiddenExp -1009 -35 EX100 1 Misty
-loc: MistyKeystone1 -1076 32 KS 1 Misty
-loc: ClimbSkillTree -1188 -100 SKClimb 1 Misty
 loc: MistyPlant -1102 -67 Plant 2 Misty
+loc: ClimbSkillTree -1188 -100 SKClimb 1 Misty
+loc: MistyKeystone3 -912 -36 KS 1 Misty
 loc: MistyPostClimbSpikeCave -837 -123 EX100 1 Misty
 loc: MistyPostClimbAboveSpikePit -796 -144 EX200 1 Misty
-loc: MistyKeystone3 -912 -36 KS 1 Misty
 loc: MistyKeystone4 -768 -144 KS 1 Misty
-loc: GumonSeal 0 8 EVForlornKey 3 Misty
 loc: MistyGrenade -671 -39 EX200 5 Misty
+loc: MistyKeystone2 -1043 -8 KS 1 Misty
+loc: MistyAbilityCell -1075 -2 AC 1 Misty
+loc: GumonSeal 0 8 EVForlornKey 3 Misty
+
 
 -- area definitions and connections
 home: SunkenGladesRunaway
@@ -2690,30 +2692,112 @@ home: SunstoneArea
 	conn: SorrowTeleporter
 		casual-core Climb ChargeJump DoubleJump
 		expert-dboost ChargeJump WallJump DoubleJump Health=5
-home: Misty
-	pickup: MistyFrogNookExp
-	pickup: MistyAbilityCell
-	pickup: MistyMortarCorridorUpperExp
-	pickup: MistyMortarCorridorHiddenExp
-	pickup: MistyKeystone1
-	pickup: ClimbSkillTree
+home: MistyEntrance
+    -- anchor point: shrouded lantern where gumon seal rests
+    -- no dboosts in misty in standard
+    pickup: MistyEntranceStompExp
+        casual-core Stomp
+        standard-lure Bash
+        expert-abilities ChargeJump Climb Dash Ability=6
+    pickup: MistyEntranceTreeExp
+        casual-core WallJump DoubleJump
+        casual-core DoubleJump Climb
+        casual-core ChargeJump
+        casual-core Bash Grenade
+        expert-core Bash
+		expert-core WallJump
+        expert-abilities Dash Ability=6
+        master-core DoubleJump
+    conn: MistyPostFeatherTutorial
+        casual-core WallJump Bash Glide 
+        casual-core Bash Glide Climb
+        casual-core DoubleJump Bash Glide
+        standard-core Bash Glide
+        standard-abilities DoubleJump Glide Climb ChargeJump Dash Ability=3
+        expert-core DoubleJump Glide Climb ChargeJump
+        expert-dboost WallJump ChargeJump Health=7
+        expert-dboost DoubleJump ChargeJump Health=4
+        expert-abilities DoubleJump Glide ChargeJump Dash Ability=3
+        expert-abilities Dash Ability=6 Energy=4
+        dbash Bash
+        gjump Climb ChargeJump Grenade
+home: MistyPostFeatherTutorial
+    -- anchor point: right of the first keystone before the scene transition
+    pickup: MistyFrogNookExp
+        casual-core WallJump DoubleJump Glide
+        casual-core DoubleJump Glide Climb
+        casual-core DoubleJump Bash Grenade
+        standard-core Bash
+        standard-core Climb ChargeJump
+        standard-core WallJump DoubleJump Dash Ability=3
+		expert-dboost WallJump Dash Ability=3
+        expert-dboost WallJump Dash Health=7
+        expert-abilities Dash Ability=6
+        master-dboost DoubleJump Health=4
+        master-abilities DoubleJump Ability=12
+    pickup: MistyKeystone1
+        Free
+    conn: MistyPostKeystone1
+        Free
+home: MistyPostKeystone1
+    -- anchor point: left of the bird post keystone1 scene transition
+	-- this home has no pickups
+home: MistyPreKeystone2
+    -- anchor point: before the slime and keystone2
+	-- this home has two pickups that come into the logic after going through all of misty
+    conn: MistyPostKeystone1
+        casual-core Bash Glide
+        expert-core Glide
+		expert-dboost Health=9
+		expert-dboost DoubleJump Health=4
+        expert-dboost Glide Health=3
+        expert-dboost Dash Ability=3 Health=4
+        master-abilities DoubleJump Ability=12
+        master-abilities Ability=12 Health=4
+        master-dboost Health=9
+        dbash
+home: MistyPreMortarCorridor
+    -- anchor point: right of the slime pre mortar corridor atop the wall
+    pickup: MistyMortarCorridorUpperExp
+        casual-core Bash Glide
+        standard-core Bash Grenade
+        expert-dboost Bash Health=4
+        expert-dboost ChargeJump Health=4
+        expert-abilities Dash Ability=6
+        master-abilities DoubleJump Ability=12
+        gjump Climb ChargeJump Grenade
+		dbash
+    pickup: MistyMortarCorridorHiddenExp
+        casual-core Glide
+		expert-core DoubleJump Bash
+        expert-core DoubleJump Dash Ability=6
+        expert-dboost DoubleJump ChargeJump Health=4
+        expert-dboost Bash Health=7
+        expert-dboost Dash Ability=3 Health=4
+        expert-dboost Bash Grenade Health=4
+        master-core Dash Ability=6
+		master-core Bash
+        master-abilities DoubleJump Ability=12
+        master-dboost DoubleJump Health=4
+		master-dboost Health=7 Ability=12
+		master-dboost health=10
+	conn: MistyPostMortarCorridor
+		casual-core Glide
+		expert-dboost DoubleJump Dash Ability=3 Health=4
+		expert-dboost DoubleJump ChargeJump Health=4
+		master-core DoubleJump Bash Grenade
+		master-core Dash Ability=6
+		master-abilities Health=9 Ability=12
+		master-dboost Health=10
+home: MistyPostMortarCorridor
+	--anchor point: before the green frog after the spikey mortar corridor	
 	pickup: MistyPlant
-		casual-core ChargeFlame
-		casual-core Grenade
-		expert-abilities Dash Ability=6
-	conn: MistyPostClimb
-		casual-core Climb DoubleJump
-		casual-core ChargeJump
-	conn: Forlorn
-		glitched Free
-	conn: RightForlorn
-		glitched Free
-home: MistyPostClimb
+	pickup: ClimbSkillTree
 	pickup: MistyPostClimbSpikeCave
 	pickup: MistyPostClimbAboveSpikePit
 	pickup: MistyKeystone3
 	pickup: MistyKeystone4
 	pickup: MistyGrenade
-		casual-core Grenade
+	pickup: MistyKeystone2
+	pickup: MistyAbilityCell
 	pickup: GumonSeal
-		casual-core Keystone=4
