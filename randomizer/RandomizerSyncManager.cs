@@ -12,7 +12,7 @@ public static class RandomizerSyncManager
 	// Token: 0x06003793 RID: 14227
 	public static void Initialize()
 	{
-		RandomizerSyncManager.Countdown = 60 * RandomizerSyncManager.PERIOD;
+		RandomizerSyncManager.Countdown = 60;
 		RandomizerSyncManager.webClient = new WebClient();
 		RandomizerSyncManager.webClient.DownloadStringCompleted += RandomizerSyncManager.RetryOnFail;
 		RandomizerSyncManager.getClient = new WebClient();
@@ -28,6 +28,7 @@ public static class RandomizerSyncManager
 		}
 		RandomizerSyncManager.flags = new Dictionary<string, bool>();
 		RandomizerSyncManager.flags.Add("seedSent", false);
+		RandomizerSyncManager.Hints = new Dictionary<int, int>();
 		RandomizerSyncManager.LoseOnDeath = new HashSet<string>();
 		RandomizerSyncManager.SkillInfos = new List<RandomizerSyncManager.SkillInfoLine>();
 		RandomizerSyncManager.EventInfos = new List<RandomizerSyncManager.EventInfoLine>();
@@ -102,6 +103,10 @@ public static class RandomizerSyncManager
 			}
 			return 1;
 		}));
+		if(Randomizer.SyncId != "") {
+			string[] parts = Randomizer.SyncId.Split('.');
+			RandomizerSyncManager.RootUrl = "http://orirandov3.appspot.com/netcode/game/" + parts[0] + "/player/" + parts[1]; 
+		}
 	}
 
 	// Token: 0x06003794 RID: 14228
@@ -117,7 +122,7 @@ public static class RandomizerSyncManager
 			string[] array = File.ReadAllLines("randomizer.dat");
 			array[0] = array[0].Replace(',', '|');
 			RandomizerSyncManager.flags["seedSent"] = true;
-			RandomizerSyncManager.UriQueue.Enqueue(new Uri(RandomizerSyncManager.SERVER_ROOT + Randomizer.SyncId + "/setSeed?seed=" + string.Join(",", array)));
+			RandomizerSyncManager.UriQueue.Enqueue(new Uri(RandomizerSyncManager.RootUrl + "/setSeed?seed=" + string.Join(",", array)));
 		}
 		RandomizerSyncManager.Countdown--;
 		RandomizerSyncManager.ChaosTimeoutCounter--;
@@ -129,17 +134,9 @@ public static class RandomizerSyncManager
 		if (RandomizerSyncManager.Countdown <= 0 && !RandomizerSyncManager.getClient.IsBusy)
 		{
 			RandomizerSyncManager.Countdown = 60 * RandomizerSyncManager.PERIOD;
-			WebClient webClient = RandomizerSyncManager.getClient;
-			string[] array2 = new string[7];
-			array2[0] = RandomizerSyncManager.SERVER_ROOT;
-			array2[1] = Randomizer.SyncId;
-			array2[2] = "/";
-			Vector3 position = Characters.Sein.Position;
-			array2[3] = position.x.ToString();
-			array2[4] = ",";
-			array2[5] = position.y.ToString();
-			array2[6] = "/";
-			webClient.DownloadStringAsync(new Uri(string.Concat(array2)));
+			Vector3 pos = Characters.Sein.Position;
+			Uri uri = new Uri(RandomizerSyncManager.RootUrl + "/tick/" + pos.x.ToString() + "," + pos.y.ToString()); 
+			RandomizerSyncManager.getClient.DownloadStringAsync(uri);
 		}
 	}
 
@@ -163,6 +160,10 @@ public static class RandomizerSyncManager
 	// Token: 0x06003798 RID: 14232
 	public static void CheckPickups(object sender, DownloadStringCompletedEventArgs e)
 	{
+		if (e.Error != null)
+		{
+			Randomizer.showHint("ERROR: " + e.Error.ToString());
+		}
 		if (!e.Cancelled && e.Error == null)
 		{
 			string[] array = e.Result.Split(new char[]
@@ -193,21 +194,35 @@ public static class RandomizerSyncManager
 					RandomizerSwitch.GivePickup(new RandomizerAction("TP", teleportInfoLine.id), 0, false);
 				}
 			}
-			string[] upgrades = array[3].Split(';');
-			foreach(string rawUpgrade in upgrades)
-			{
-				string[] splitpair = rawUpgrade.Split('x');
-				int id = int.Parse(splitpair[0]);
-				int cnt = int.Parse(splitpair[1]);
-				if(RandomizerBonus.UpgradeCount(id) < cnt) {
-					RandomizerBonus.UpgradeID(id);
-				} else if(RandomizerBonus.UpgradeCount(id) > cnt) {
-					RandomizerBonus.UpgradeID(-id);					
+			if(array[3] != "")
+				{
+				string[] upgrades = array[3].Split(';');
+				foreach(string rawUpgrade in upgrades)
+				{
+					string[] splitpair = rawUpgrade.Split('x');
+					int id = int.Parse(splitpair[0]);
+					int cnt = int.Parse(splitpair[1]);
+					if(RandomizerBonus.UpgradeCount(id) < cnt) {
+						RandomizerBonus.UpgradeID(id);
+					} else if(RandomizerBonus.UpgradeCount(id) > cnt) {
+						RandomizerBonus.UpgradeID(-id);					
+					}
 				}
 			}
-			if (array.Length > 4)
+			if(array[4] != "")
+				{
+				string[] hints = array[4].Split(';');
+				foreach(string rawHint in hints)
+				{
+					string[] splitpair = rawHint.Split(':');
+					int coords = int.Parse(splitpair[0]);
+					int player = int.Parse(splitpair[1]);
+					RandomizerSyncManager.Hints[coords] = player;
+				}
+			}
+			if (array.Length > 5)
 			{
-				foreach (string text in array[4].Split(new char[] { '|' }))
+				foreach (string text in array[5].Split(new char[] { '|' }))
 				{
 					if (text == "stop")
 					{
@@ -237,7 +252,7 @@ public static class RandomizerSyncManager
 						RandomizerChaosManager.SpawnEffect();
 						RandomizerSyncManager.ChaosTimeoutCounter = 3600;
 					}
-					RandomizerSyncManager.webClient.DownloadStringAsync(new Uri(RandomizerSyncManager.SERVER_ROOT + Randomizer.SyncId + "/signalCallback/" + text));
+					RandomizerSyncManager.webClient.DownloadStringAsync(new Uri(RandomizerSyncManager.RootUrl + "/signalCallback/" + text));
 				}
 			}
 			return;
@@ -303,10 +318,26 @@ public static class RandomizerSyncManager
 		RandomizerSyncManager.SendingUri = null;
 	}
 
+
 	// Token: 0x0600379C RID: 14236
 	public static void FoundPickup(RandomizerAction action, int coords)
 	{
 		RandomizerSyncManager.Pickup pickup = new RandomizerSyncManager.Pickup(action, coords);
+		if(pickup.type == "HN") {
+			string[] hintParts = pickup.id.Split('-');
+			string name = hintParts[0];
+			string type = hintParts[1];
+			string owner = hintParts[2];
+			string hintText = type + " for " + owner;
+			if(RandomizerSyncManager.Hints.ContainsKey(coords)) {
+				if(RandomizerSyncManager.Hints[coords] > 0) {
+					Randomizer.showHint("$" + owner + " found "+ name + " here$");
+				}
+				Randomizer.showHint(hintText);
+			} else {
+				Randomizer.showHint("@" + hintText + "@");
+			}
+		}
 		if (RandomizerSyncManager.LoseOnDeath.Contains(pickup.type + pickup.id))
 		{
 			RandomizerSyncManager.UnsavedPickups.Add(pickup);
@@ -328,6 +359,10 @@ public static class RandomizerSyncManager
 		return false;
 	}
 
+	public static Uri SendingUri;
+
+	public static string RootUrl;
+
 	// Token: 0x0400326A RID: 12906
 	public static int Countdown;
 
@@ -336,9 +371,6 @@ public static class RandomizerSyncManager
 
 	// Token: 0x0400326C RID: 12908
 	public static WebClient webClient;
-
-	// Token: 0x0400326D RID: 12909
-	public static string SERVER_ROOT = "http://orirandocoopserver.appspot.com/";
 
 	// Token: 0x0400326E RID: 12910
 	public static string lastRaw;
@@ -375,9 +407,9 @@ public static class RandomizerSyncManager
 
 	// Token: 0x04003279 RID: 12921
 	public static Dictionary<string, bool> flags;
+	// Token: 0x04003279 RID: 12921
 
-	// Token: 0x0400327A RID: 12922
-	public static Uri SendingUri;
+	public static Dictionary<int, int> Hints;
 
 	// Token: 0x02000A00 RID: 2560
 	public class Pickup
@@ -420,9 +452,8 @@ public static class RandomizerSyncManager
 		{
 			return new Uri(string.Concat(new object[]
 			{
-				RandomizerSyncManager.SERVER_ROOT,
-				Randomizer.SyncId,
-				"/",
+				RandomizerSyncManager.RootUrl,
+				"/found/",
 				this.coords,
 				"/",
 				this.type,

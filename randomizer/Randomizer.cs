@@ -30,7 +30,8 @@ public static class Randomizer
 			"SH",
 			"NO",
 			"WT",
-			"MU"
+			"MU",
+			"HN"
 		};
 		Randomizer.ShareParams = "";
 		RandomizerChaosManager.initialize();
