@@ -411,18 +411,6 @@ public static class RandomizerBonus
         RandomizerBonus.CollectPickup();
     }
 
-    // Token: 0x06003781 RID: 14209 RVA: 0x0002BB73 File Offset: 0x00029D73
-    public static bool GinsoEscapeDone()
-    {
-        return RandomizerBonus.UpgradeCount(300) > 0;
-    }
-
-    // Token: 0x06003782 RID: 14210 RVA: 0x0002BB82 File Offset: 0x00029D82
-    public static bool ForlornEscapeDone()
-    {
-        return RandomizerBonus.UpgradeCount(301) > 0;
-    }
-
     // Token: 0x06003783 RID: 14211 RVA: 0x000E3050 File Offset: 0x000E1250
     public static void Update()
     {
@@ -481,28 +469,6 @@ public static class RandomizerBonus
     public static int WarmthFrags()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(28);
-    }
-
-    // Token: 0x0600378A RID: 14218 RVA: 0x0002BBF0 File Offset: 0x00029DF0
-    public static void GrantDungeonKey(int dungeonId)
-    {
-        if (dungeonId == 0)
-        {
-            Keys.GinsoTree = true;
-            Randomizer.showHint("*Ginso Tree Unlocked*");
-            return;
-        }
-        if (dungeonId == 1)
-        {
-            Keys.ForlornRuins = true;
-            Randomizer.showHint("#Forlorn Ruins Unlocked#");
-            return;
-        }
-        if (dungeonId == 2)
-        {
-            Keys.MountHoru = true;
-            Randomizer.showHint("@Mount Horu Unlocked@");
-        }
     }
 
     // Token: 0x04003262 RID: 12898

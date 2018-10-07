@@ -21,8 +21,8 @@ public static class Randomizer
 		Randomizer.Returning = false;
 		Randomizer.Sync = false;
 		Randomizer.ForceMaps = false;
-		Randomizer.ForceRandomEscape = false;
-		Randomizer.WhichEscape = -1;
+		Randomizer.LastReturnPoint = null;
+		Randomizer.LastSoulLink = null;
 		Randomizer.SyncMode = 1;
 		Randomizer.StringKeyPickupTypes = new List<string>
 		{
@@ -85,6 +85,7 @@ public static class Randomizer
 		RandomizerDataMaps.LoadHoruData();
 		RandomizerRebinding.ParseRebinding();
 		RandomizerSettings.ParseSettings();
+		Randomizer.Warping = 0;
 		if (File.Exists("randomizer.dat"))
 		{
 			string[] array = File.ReadAllLines("randomizer.dat");
@@ -174,11 +175,6 @@ public static class Randomizer
 				{
 					Randomizer.ForceMaps = true;
 				}
-				if (text.ToLower() == "forcerandomescape")
-				{
-					Randomizer.ForceRandomEscape = true;
-					Randomizer.WhichEscape = Randomizer.ordHash(s) % 2;
-				}
 				if (text.ToLower() == "clues")
 				{
 					Randomizer.CluesMode = true;
@@ -248,6 +244,7 @@ public static class Randomizer
 		{
 			Items.NightBerry.transform.position = new Vector3(-755f, -400f);
 		}
+		Randomizer.LastReturnPoint = Characters.Sein.Position;
 		Randomizer.Returning = true;
 		Characters.Sein.Position = new Vector3(189f, -215f);
 		Characters.Sein.Speed = new Vector3(0f, 0f);
@@ -348,19 +345,6 @@ public static class Randomizer
 	public static void Update()
 	{
 		Randomizer.UpdateMessages();
-		if (Characters.Sein && Randomizer.ForceRandomEscape && Scenes.Manager.CurrentScene != null)
-		{
-			if (!RandomizerBonus.GinsoEscapeDone() && Scenes.Manager.CurrentScene.Scene == "kuroMomentTreeDuplicate")
-			{
-				Characters.Sein.Inventory.SetRandomizerItem(300, 1);
-				Randomizer.MessageQueue.Enqueue("*Ginso Escape Cleared*");
-			}
-			if (!RandomizerBonus.ForlornEscapeDone() && Scenes.Manager.CurrentScene.Scene == "forlornRuinsNestC")
-			{
-				Characters.Sein.Inventory.SetRandomizerItem(301, 1);
-				Randomizer.MessageQueue.Enqueue("#Forlorn Escape Cleared#");
-			}
-		}
 		if (Characters.Sein && SkillTreeManager.Instance != null && SkillTreeManager.Instance.NavigationManager.IsVisible)
 		{
 			if (Characters.Sein.IsSuspended)
@@ -390,7 +374,12 @@ public static class Randomizer
 			{
 				RandomizerSyncManager.Update();
 			}
-			if (Randomizer.Returning)
+			if (Randomizer.Warping > 0) {
+				Characters.Sein.Position = Randomizer.WarpTarget;
+				Characters.Ori.Position = Randomizer.WarpTarget;
+				Randomizer.Warping -= 1;
+			}
+			else if (Randomizer.Returning)
 			{
 				Characters.Sein.Position = new Vector3(189f, -215f);
 				if (Scenes.Manager.CurrentScene.Scene == "sunkenGladesRunaway")
@@ -530,35 +519,6 @@ public static class Randomizer
 				text += "$Relics (" + relics.ToString() + "/11)$ ";
 			}
 		}
-		if (Randomizer.ForceRandomEscape)
-		{
-			if (Randomizer.WhichEscape == 0)
-			{
-				if (RandomizerBonus.GinsoEscapeDone())
-				{
-					text += "$Escape: Ginso$ ";
-				}
-				else
-				{
-					text += "Escape: Ginso ";
-				}
-			}
-			else if (Randomizer.WhichEscape == 1)
-			{
-				if (RandomizerBonus.ForlornEscapeDone())
-				{
-					text += "$Escape: Forlorn$ ";
-				}
-				else
-				{
-					text += "Escape: Forlorn ";
-				}
-			}
-			else
-			{
-				text += "Escape: Horu ";
-			}
-		}
 		text = text + "Total (" + RandomizerBonus.GetPickupCount().ToString() + "/256)\n";
 		if (Randomizer.CluesMode)
 		{
@@ -685,19 +645,6 @@ public static class Randomizer
 		{
 			Randomizer.MessageQueue.Enqueue("Maps (" + RandomizerBonus.MapStoneProgression().ToString() + "/9)");
 			return false;
-		}
-		if (Randomizer.ForceRandomEscape)
-		{
-			if (Randomizer.WhichEscape == 0 && !RandomizerBonus.GinsoEscapeDone())
-			{
-				Randomizer.MessageQueue.Enqueue("*Do Ginso Escape*");
-				return false;
-			}
-			if (Randomizer.WhichEscape == 1 && !RandomizerBonus.ForlornEscapeDone())
-			{
-				Randomizer.MessageQueue.Enqueue("#Do Forlorn Escape#");
-				return false;
-			}
 		}
 		return true;
 	}
@@ -916,12 +863,6 @@ public static class Randomizer
 	// Token: 0x04003248 RID: 12872
 	public static bool ForceMaps;
 
-	// Token: 0x04003249 RID: 12873
-	public static bool ForceRandomEscape;
-
-	// Token: 0x0400324A RID: 12874
-	public static int WhichEscape;
-
 	// Token: 0x0400324B RID: 12875
 	public static bool Entrance;
 
@@ -976,4 +917,12 @@ public static class Randomizer
 
 	// Token: 0x04003304 RID: 13060
 	public static int LockedCount;
+
+	public static Vector3 LastReturnPoint;
+
+	public static Vector3 LastSoulLink;
+
+	public static Vector3 WarpTarget;
+
+	public static int Warping;
 }

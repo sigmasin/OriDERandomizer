@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Game;
+using UnityEngine;
 
 // Token: 0x02000A0F RID: 2575
 public static class RandomizerBonusSkill
@@ -10,11 +11,15 @@ public static class RandomizerBonusSkill
     {
         if (RandomizerBonusSkill.UnlockedBonusSkills.Count < 1)
         {
-            Randomizer.MessageQueue.Enqueue("No bonus skills unlocked!");
-            return;
+            RandomizerBonusSkill.Reset();
+            if (RandomizerBonusSkill.UnlockedBonusSkills.Count < 1)
+            {
+                Randomizer.MessageQueue.Enqueue("No bonus skills unlocked!");
+                return;                
+            }
         }
         RandomizerBonusSkill.ActiveBonus = (RandomizerBonusSkill.ActiveBonus + 1) % RandomizerBonusSkill.UnlockedBonusSkills.Count;
-        Randomizer.MessageQueue.Enqueue(RandomizerBonusSkill.CurrentBonusName());
+        Randomizer.MessageQueue.Enqueue("Active Bonus Skill: " + RandomizerBonusSkill.CurrentBonusName());
     }
 
     // Token: 0x060037F9 RID: 14329 RVA: 0x000E5A60 File Offset: 0x000E3C60
@@ -33,7 +38,9 @@ public static class RandomizerBonusSkill
                 float amount = Characters.Sein.Energy.Current * 4f;
                 Characters.Sein.Energy.SetCurrent(Characters.Sein.Mortality.Health.Amount / 4f);
                 Characters.Sein.Mortality.Health.SetAmount(amount);
-                return;
+            } else {
+                UI.SeinUI.ShakeEnergyOrbBar();
+                Characters.Sein.Energy.NotifyOutOfEnergy();
             }
             break;
         case 102:
@@ -43,13 +50,17 @@ public static class RandomizerBonusSkill
                 Randomizer.MessageQueue.Enqueue("Gravity Shift off");
                 Characters.Sein.PlatformBehaviour.Gravity.BaseSettings.GravityAngle = 0f;
                 RandomizerBonusSkill.EnergyDrainRate -= 0.001f;
-                return;
             }
-            RandomizerBonusSkill.ActiveDrainSkills.Add(item);
-            Randomizer.MessageQueue.Enqueue("Gravity Shift on");
-            Characters.Sein.PlatformBehaviour.Gravity.BaseSettings.GravityAngle = 180f;
-            RandomizerBonusSkill.EnergyDrainRate += 0.001f;
-            return;
+            else if(Characters.Sein.Energy.Current > 0f) {
+                RandomizerBonusSkill.ActiveDrainSkills.Add(item);
+                Randomizer.MessageQueue.Enqueue("Gravity Shift on");
+                Characters.Sein.PlatformBehaviour.Gravity.BaseSettings.GravityAngle = 180f;
+                RandomizerBonusSkill.EnergyDrainRate += 0.001f;
+            } else {
+                UI.SeinUI.ShakeEnergyOrbBar();
+                Characters.Sein.Energy.NotifyOutOfEnergy();
+            }
+            break;
         case 103:
             if (RandomizerBonusSkill.ActiveDrainSkills.Contains(item))
             {
@@ -58,20 +69,50 @@ public static class RandomizerBonusSkill
                 Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Ground.MaxSpeed = 11.6666f;
                 Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Air.MaxSpeed = 11.6666f;
                 RandomizerBonusSkill.EnergyDrainRate -= 0.001f;
-                return;
             }
-            RandomizerBonusSkill.ActiveDrainSkills.Add(item);
-            Randomizer.MessageQueue.Enqueue("ExtremeSpeed on");
-            Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Ground.MaxSpeed = 40f;
-            Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Air.MaxSpeed = 40f;
-            RandomizerBonusSkill.EnergyDrainRate += 0.001f;
-            return;
+            else if(Characters.Sein.Energy.Current > 0f) {
+                RandomizerBonusSkill.ActiveDrainSkills.Add(item);
+                Randomizer.MessageQueue.Enqueue("ExtremeSpeed on");
+                Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Ground.MaxSpeed = 40f;
+                Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Air.MaxSpeed = 40f;
+                RandomizerBonusSkill.EnergyDrainRate += 0.001f;
+            } else {
+                    UI.SeinUI.ShakeEnergyOrbBar();
+                    Characters.Sein.Energy.NotifyOutOfEnergy();
+            }
+            break;
         case 104:
-            if (Characters.Sein.Energy.Current >= 0.25f)
-            {
-                Characters.Sein.Energy.SetCurrent(Characters.Sein.Energy.Current - 0.25f);
-                Characters.Sein.PlatformBehaviour.PlatformMovement.LocalSpeedY = 8f;
+            if (Characters.Sein.Abilities.Carry.IsCarrying || !Characters.Sein.Controller.CanMove || !Characters.Sein.Active ||  (Randomizer.LastReturnPoint.x == 0 && Randomizer.LastReturnPoint.y == 0) )
                 return;
+            if (Characters.Sein.Energy.Current >= 0.5f)
+            {
+                Characters.Sein.Energy.SetCurrent(Characters.Sein.Energy.Current - 0.5f);
+                Randomizer.Warping = 5;
+                Randomizer.WarpTarget = Randomizer.LastReturnPoint;
+                Characters.Sein.Position = Randomizer.LastReturnPoint;
+                Characters.Sein.Speed = new Vector3(0, 0);
+                Characters.Ori.Position = Randomizer.LastReturnPoint;
+                return;
+            } else {
+                    UI.SeinUI.ShakeEnergyOrbBar();
+                    Characters.Sein.Energy.NotifyOutOfEnergy();
+            }
+            break;
+        case 105:
+            if (Characters.Sein.Abilities.Carry.IsCarrying || !Characters.Sein.Controller.CanMove || !Characters.Sein.Active ||  (Randomizer.LastSoulLink.x == 0 && Randomizer.LastSoulLink.y == 0))
+                return;
+            if (Characters.Sein.Energy.Current >= 0.5f)
+            {
+                Characters.Sein.Energy.SetCurrent(Characters.Sein.Energy.Current - 0.5f);
+                Randomizer.Warping = 5;
+                Randomizer.WarpTarget = Randomizer.LastSoulLink;
+                Characters.Sein.Position = Randomizer.LastSoulLink;
+                Characters.Sein.Speed = new Vector3(0, 0);
+                Characters.Ori.Position = Randomizer.LastSoulLink;
+                return;
+            } else {
+                    UI.SeinUI.ShakeEnergyOrbBar();
+                    Characters.Sein.Energy.NotifyOutOfEnergy();
             }
             break;
         default:
@@ -148,7 +189,7 @@ public static class RandomizerBonusSkill
     // Token: 0x06003801 RID: 14337 RVA: 0x000E5E48 File Offset: 0x000E4048
     public static void FoundBonusSkill(int ID)
     {
-        Randomizer.showHint(RandomizerBonusSkill.BonusSkillNames[ID]);
+        Randomizer.showHint("Unlocked Bonus Skill: " + RandomizerBonusSkill.BonusSkillNames[ID]);
         Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
         if (!RandomizerBonusSkill.UnlockedBonusSkills.Contains(ID))
         {
@@ -206,7 +247,12 @@ public static class RandomizerBonusSkill
         },
         {
             104,
-            "Energy Jump"
-        }
+            "Roose's Wind"
+        },
+        {
+            105,
+            "Respawn Without Dying"
+        },
+
     };
 }

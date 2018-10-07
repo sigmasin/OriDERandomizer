@@ -332,8 +332,9 @@ public static class RandomizerSyncManager
 			if(RandomizerSyncManager.Hints.ContainsKey(coords)) {
 				if(RandomizerSyncManager.Hints[coords] > 0) {
 					Randomizer.showHint("$" + owner + " found "+ name + " here$");
+				} else {
+					Randomizer.showHint(hintText);
 				}
-				Randomizer.showHint(hintText);
 			} else {
 				Randomizer.showHint("@" + hintText + "@");
 			}
