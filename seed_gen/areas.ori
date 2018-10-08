@@ -1955,10 +1955,10 @@ home: ValleyEntry
 		casual-core Stomp WallJump ChargeJump
 		casual-core Stomp Climb ChargeJump
 		casual-core Stomp Climb DoubleJump
-		expert-core Bash WallJump
-		expert-core Bash Climb ChargeJump
-		expert-core Bash Climb DoubleJump
-		expert-dboost Bash ChargeJump Health=4
+		expert-lure Bash WallJump
+		expert-lure Bash Climb ChargeJump
+		expert-lure Bash Climb DoubleJump
+		expert-lure Bash ChargeJump Health=4
 	conn: SpiritTreeRefined
 		casual-core ChargeFlame
 		casual-core Grenade
@@ -1970,7 +1970,7 @@ home: ValleyEntryTree
 		casual-core Grenade Water
 		master-dboost Grenade Health=14
 		master-dboost Grenade Bash Health=13
-		master-core Grenade Health=7 Ability=12
+		master-dboost Grenade Health=7 Ability=12
 	conn: ValleyEntryTreePlantAccess
 		casual-core ChargeJump Climb
 		casual-core ChargeJump DoubleJump
@@ -1993,17 +1993,23 @@ home: ValleyPostStompDoor
 		casual-core Bash Climb
 		casual-core Bash ChargeJump
 		casual-core Bash Grenade
-		expert-dboost Stomp ChargeJump DoubleJump WallJump Health=7
+		expert-dboost WallJump DoubleJump ChargeJump Health=7
 		dbash Bash
-		master-core Stomp WallJump DoubleJump ChargeJump Ability=12
-		master-core Stomp WallJump DoubleJump Health=11 Ability=12
+		gjump Climb ChargeJump Grenade Stomp DoubleJump Health=4
+		gjump Climb ChargeJump Grenade Stomp DoubleJump Ability=12
+		gjump Climb ChargeJump Grenade Dash Ability=6
+		gjump Climb ChargeJump Grenade Health=7
+		gjump Climb ChargeJump Grenade Health=5 Ability=12
+		master-dboost WallJump DoubleJump ChargeJump Ability=12 Health=3
+		master-dboost Climb DoubleJump ChargeJump Ability=12 Health=3
+		master-dboost WallJump DoubleJump Health=11 Ability=12
 home: ValleyTeleporter
 -- anchored on the valley TP, kill plane is active
 	conn: ValleyPostStompDoor
 		casual-core Bash
 		casual-core Glide
-		expert-abilities Dash Energy=3
-		expert-abilities Dash DoubleJump
+		expert-abilities Dash Energy=3 Ability=6
+		expert-abilities Dash DoubleJump Ability=6
 		master-core DoubleJump
 	conn: ValleyRight
 		casual-core Bash
@@ -2073,7 +2079,6 @@ home: ValleyStompless
 		expert-core Bash
 		master-core ChargeFlame
 		master-core Grenade
---TODO Valley from here on
 home: ValleyMain
 -- anchored at the fast stompless aim position, rocks destroyed
 	pickup: GlideSkillFeather
@@ -2092,70 +2097,130 @@ home: ValleyMain
 		casual-core Glide Bash
 		expert-dboost Bash DoubleJump Health=4
 		master-core DoubleJump Ability=12
-	conn: ForlornOuterDoor
-		casual-core ForlornKey
-	conn: RightForlorn
-		glitched Free
 	conn: LowerValley
 	conn: LowerValleyPlantApproach
-	conn: ValleyForlornApproach
 home: ValleyKuroPerch
+-- anchored where Kuro sits in valley
 	pickup: KuroPerchExp
 home: LowerValley
-	pickup: ValleyThreeBirdAbilityCell
+-- anchored on top of the stump in the middle of valley
 	pickup: LowerValleyMapstone
 	pickup: LowerValleyExp
-	pickup: ValleyMainFACS
-		casual-core Climb ChargeJump
-		expert-core Bash Glide
 	conn: LowerValleyPlantApproach
 		casual-core Bash DoubleJump
 		casual-core Bash Glide
+		casual-core Bash Grenade
 		casual-core ChargeJump DoubleJump
 		casual-core ChargeJump Glide
-	conn: ValleyEntry
-		casual-core Bash
+		casual-core Glide Wind
+		standard-lure Bash
+	conn: ValleyThreeBirdArea
+		casual-core Glide Wind
+		casual-core Glide DoubleJump
+		standard-core Dash DoubleJump
+		standard-core Dash Glide
+		standard-lure Bash Glide
+		standard-lure Bash DoubleJump
+		standard-dboost Health=4
+		expert-dboost Health=2
+		dbash Bash
 home: LowerValleyPlantApproach
+-- anchored next to the plant in lower valley
 	pickup: ValleyMainPlant
 		casual-core ChargeFlame
 		casual-core Grenade
 		expert-abilities Dash Ability=6
+home: ValleyThreeBirdArea
+-- anchored on the lever to return to valley entry
+	pickup: ValleyThreeBirdAbilityCell
+		casual-core Glide Wind
+		casual-core Bash
+		casual-core Climb ChargeJump Glide
+		casual-core Climb ChargeJump DoubleJump
+		standard-core Dash DoubleJump
+		gjump Climb ChargeJump Grenade
+		master-abilities DoubleJump Ability=12
+	pickup: ValleyMainFACS
+		casual-core Climb ChargeJump
+		dbash Bash
+	conn: ValleyEntry
+		casual-core Glide
+		casual-core DoubleJump
+		casual-core Bash
+		casual-core Climb ChargeJump
+		standard-abilities Dash Ability=3
+	conn: LowerValley
+		casual-core Glide Wind
+		casual-core Glide DoubleJump
+		standard-core Dash DoubleJump
+		standard-core Dash Glide
+		standard-abilities Dash Ability=3
+		standard-dboost Health=4
+		dbash Bash
+	conn: ValleyForlornApproach
+		casual-core Stomp
+		standard-core Climb ChargeJump
+		expert-lure Bash
+home: ValleyForlornApproach
+-- anchored below the floor leading to forlorn
+	pickup: ValleyForlornApproachMapstone
+	pickup: ValleyForlornApproachGrenade
+		casual-core Grenade
+	pickup: ValleyMap
+		casual-core Bash Mapstone
+		expert-core ChargeFlame ChargeJump Mapstone
+		expert-core ChargeFlame DoubleJump Mapstone
+		expert-abilities ChargeFlame Dash Ability=3 Mapstone
+	conn: OutsideForlornCliff
+		casual-core Stomp
+		casual-core ChargeJump
+		casual-core Bash
+	conn: ValleyThreeBirdArea
+		casual-core ChargeJump
+		master-core Bash
+home: OutsideForlornCliff
+-- anchored on the branch right of the cliff exp
+	pickup: OutsideForlornCliffExp
+		casual-core WallJump
+		casual-core Climb
+		casual-core DoubleJump
+		casual-core Glide
+		casual-core Dash
+		casual-core ChargeJump
+		casual-core Bash
+	conn: ValleyForlornApproach
+		casual-core Stomp WallJump
+		casual-core Stomp Climb DoubleJump
+		casual-core Stomp ChargeJump
+		casual-core Stomp Bash Grenade
+		master-core Bash
+	conn: OutsideForlorn
 home: OutsideForlorn
+-- anchored at the forlorn door
 	pickup: OutsideForlornTreeExp
 		casual-core WallJump
 		casual-core Climb
 		casual-core ChargeJump
 		casual-core Bash Grenade
+		master-core Bash
 	pickup: OutsideForlornWaterExp
 		casual-core Water
 		expert-dboost Health=4
-		expert-dboost Stomp
+		expert-dboost Stomp Health=2
+		master-dboost Ability=12 Health=2
 	conn: OutsideForlornCliff
 		casual-core WallJump ChargeJump
 		casual-core Climb ChargeJump
 		casual-core Bash Glide
 		casual-core Bash DoubleJump
 		casual-core Bash Grenade
-home: ValleyForlornApproach
-	pickup: ValleyForlornApproachGrenade
-		casual-core Grenade
-	pickup: ValleyMap
-		casual-core Bash Mapstone
-home: OutsideForlornCliff
-	pickup: OutsideForlornCliffExp
-	pickup: ValleyForlornApproachMapstone
-		ALL Bash
-		casual-core Stomp
-		master-core
-	conn: LowerValley
-		ALL Bash
-		casual-core ChargeJump Stomp
-		dbash Stomp
-		master-core
-	conn: ValleyForlornApproach
-		ALL Bash
-		casual-core Stomp
-		master-core
+		expert-abilities Dash Ability=6
+		dbash Bash
+		master-core ChargeJump DoubleJump
+	conn: ForlornOuterDoor
+		casual-core ForlornKey
+	conn: RightForlorn
+		glitched Free
 home: ForlornOuterDoor
 	conn: ForlornInnerDoor
 home: ForlornInnerDoor
@@ -2222,10 +2287,14 @@ home: WilhelmLedge
 		casual-core Stomp
 		standard-lure HoruKey
 		standard-core Climb ChargeJump
+		master-core Bash
+		glitched ChargeJump
 	conn: ValleyKuroPerch
 		casual-core Stomp
 		standard-lure HoruKey
 		standard-core Climb ChargeJump
+		master-core Bash
+		glitched ChargeJump
 home: SorrowBashLedge
 	conn: LowerSorrow
 		casual-core Wind Glide
