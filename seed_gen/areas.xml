@@ -3155,7 +3155,7 @@
       </Connection>
       <Connection>
         <Home name="SunkenGladesRunaway"/>
-        <Target name="HollowGrove"/>
+        <Target name="SwampTeleporter"/>
         <Requirements>
           <Requirement mode="casual-core">TPSwamp</Requirement>
         </Requirements>
@@ -3411,9 +3411,9 @@
           <Requirement mode="casual-core">WallJump+Water</Requirement>
           <Requirement mode="casual-core">Climb+Water</Requirement>
           <Requirement mode="casual-core">Bash+Water</Requirement>
-          <Requirement mode="standard-core">WallJump+HC+HC+HC+HC</Requirement>
-          <Requirement mode="standard-core">Climb+HC+HC+HC+HC</Requirement>
-          <Requirement mode="standard-core">Bash+HC+HC+HC+HC</Requirement>
+          <Requirement mode="standard-dboost">WallJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="standard-dboost">Climb+HC+HC+HC+HC</Requirement>
+          <Requirement mode="standard-dboost">Bash+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3422,7 +3422,7 @@
         <Requirements>
           <Requirement mode="casual-core">Water</Requirement>
           <Requirement mode="expert-dboost">HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="master-core">HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-dboost">HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -3466,6 +3466,17 @@
       </Connection>
       <Connection>
         <Home name="DeathGauntlet"/>
+        <Target name="DeathGauntletEnergyCell"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump</Requirement>
+          <Requirement mode="casual-core">Climb</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="DeathGauntlet"/>
         <Target name="DeathGauntletMoat"/>
         <Requirements>
           <Requirement mode="casual-core">Water</Requirement>
@@ -3492,27 +3503,23 @@
         <Home name="DeathGauntlet"/>
         <Target name="DeathGauntletRoofPlantAccess"/>
         <Requirements>
-          <Requirement mode="expert-core">ChargeFlame+DoubleJump+WallJump</Requirement>
-          <Requirement mode="expert-core">ChargeFlame+Bash+WallJump</Requirement>
-          <Requirement mode="expert-core">ChargeFlame+DoubleJump+Climb</Requirement>
-          <Requirement mode="expert-core">ChargeFlame+Bash+Climb</Requirement>
-          <Requirement mode="expert-core">ChargeFlame+Bash+Grenade</Requirement>
-          <Requirement mode="master-core">ChargeFlame+</Requirement>
+          <Requirement mode="expert-core">DoubleJump+WallJump+ChargeFlame</Requirement>
+          <Requirement mode="expert-core">Bash+WallJump+ChargeFlame</Requirement>
+          <Requirement mode="expert-core">DoubleJump+Climb+ChargeFlame</Requirement>
+          <Requirement mode="expert-core">Bash+Climb+ChargeFlame</Requirement>
+          <Requirement mode="expert-core">Bash+Grenade+ChargeFlame</Requirement>
+          <Requirement mode="master-abilities">ChargeFlame+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="DeathGauntlet"/>
         <Target name="MoonGrotto"/>
         <Requirements>
-          <Requirement mode="casual-dboost">WallJump</Requirement>
-          <Requirement mode="casual-dboost">Climb</Requirement>
-          <Requirement mode="casual-dboost">ChargeJump+Bash</Requirement>
-          <Requirement mode="casual-core">Grenade+Bash</Requirement>
-          <Requirement mode="casual-core">Climb+DoubleJump+Glide</Requirement>
-          <Requirement mode="casual-core">WallJump+DoubleJump+Glide</Requirement>
-          <Requirement mode="timed-level">WallJump</Requirement>
-          <Requirement mode="timed-level">Climb</Requirement>
-          <Requirement mode="timed-level">ChargeJump+Bash</Requirement>
+          <Requirement mode="casual-core">WallJump</Requirement>
+          <Requirement mode="casual-core">Climb</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">DoubleJump</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -3640,9 +3647,9 @@
           <Requirement mode="casual-core">WallJump</Requirement>
           <Requirement mode="casual-core">DoubleJump+Climb</Requirement>
           <Requirement mode="casual-core">Glide+Climb</Requirement>
-          <Requirement mode="casual-core">Bash+Grenade</Requirement>
           <Requirement mode="casual-dboost">ChargeJump</Requirement>
           <Requirement mode="casual-dboost">Bash+Climb</Requirement>
+          <Requirement mode="standard-core">Bash+Grenade</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
           <Requirement mode="master-core">Climb</Requirement>
         </Requirements>
@@ -3855,6 +3862,9 @@
           <Requirement mode="casual-core">Bash+Grenade</Requirement>
           <Requirement mode="standard-core">Dash+WallJump</Requirement>
           <Requirement mode="standard-core">Dash+Climb</Requirement>
+          <Requirement mode="standard-core">Bash+Glide+WallJump</Requirement>
+          <Requirement mode="standard-core">Bash+Glide+Climb</Requirement>
+          <Requirement mode="master-core">Bash+Glide+DoubleJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3952,6 +3962,7 @@
           <Requirement mode="casual-core">Bash+Grenade</Requirement>
           <Requirement mode="casual-core">DoubleJump+WallJump+Grenade</Requirement>
           <Requirement mode="casual-core">ChargeJump+Grenade</Requirement>
+          <Requirement mode="expert-core">DoubleJump+Climb+Grenade</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3986,6 +3997,9 @@
           <Requirement mode="expert-core">Stomp+WallJump+Glide</Requirement>
           <Requirement mode="expert-core">Stomp+Climb+Glide</Requirement>
           <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-core">ChargeFlame+DoubleJump</Requirement>
+          <Requirement mode="master-core">Grenade+DoubleJump</Requirement>
+          <Requirement mode="master-core">Stomp+DoubleJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -4056,18 +4070,20 @@
           <Requirement mode="casual-core">Water</Requirement>
           <Requirement mode="expert-dboost">HC+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="expert-dboost">Bash+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="master-core">HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Bash+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">Bash+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="SpiderWaterArea"/>
         <Target name="GroveAboveSpiderWaterExp"/>
         <Requirements>
-          <Requirement mode="casual-core">ChargeJump+WallJump</Requirement>
-          <Requirement mode="casual-core">ChargeJump+Climb</Requirement>
-          <Requirement mode="casual-core">Bash+WallJump</Requirement>
-          <Requirement mode="casual-core">Bash+Climb</Requirement>
+          <Requirement mode="casual-core">ChargeJump+DoubleJump+WallJump</Requirement>
+          <Requirement mode="casual-core">ChargeJump+DoubleJump+Climb</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+Climb</Requirement>
+          <Requirement mode="standard-core">ChargeJump+Bash+WallJump</Requirement>
+          <Requirement mode="standard-core">ChargeJump+Bash+Climb</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
           <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
@@ -4079,8 +4095,7 @@
           <Requirement mode="casual-core">ChargeJump+WallJump+DoubleJump</Requirement>
           <Requirement mode="casual-core">ChargeJump+Climb</Requirement>
           <Requirement mode="casual-core">Bash+WallJump</Requirement>
-          <Requirement mode="standard-core">Bash+Grenade</Requirement>
-          <Requirement mode="expert-core">ChargeJump+WallJump+Dash</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
           <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
@@ -4090,9 +4105,9 @@
         <Target name="GroveAboveSpiderWaterEnergyCell"/>
         <Requirements>
           <Requirement mode="casual-core">Grenade+ChargeJump+Climb+DoubleJump</Requirement>
+          <Requirement mode="standard-core">Grenade+ChargeJump+WallJump+DoubleJump+Glide</Requirement>
+          <Requirement mode="standard-core">Grenade+ChargeJump+WallJump+DoubleJump+Dash</Requirement>
           <Requirement mode="standard-core">Grenade+Bash</Requirement>
-          <Requirement mode="standard-core">Grenade+ChargeJump+WallJump</Requirement>
-          <Requirement mode="standard-core">Grenade+ChargeJump+Climb</Requirement>
           <Requirement mode="expert-abilities">Grenade+Dash+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
@@ -4130,10 +4145,25 @@
         <Requirements>
           <Requirement mode="casual-core">WallJump</Requirement>
           <Requirement mode="casual-core">Climb</Requirement>
-          <Requirement mode="casual-core">Bash</Requirement>
           <Requirement mode="casual-core">ChargeJump</Requirement>
           <Requirement mode="casual-core">DoubleJump</Requirement>
           <Requirement mode="casual-core">Water</Requirement>
+          <Requirement mode="standard-core">Bash</Requirement>
+          <Requirement mode="master-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SpiderWaterArea"/>
+        <Target name="DeathGauntletRoof"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump+Stomp+Water</Requirement>
+          <Requirement mode="casual-core">Climb+Stomp+Water</Requirement>
+          <Requirement mode="casual-core">Bash+Stomp+Water</Requirement>
+          <Requirement mode="expert-dboost">Bash+Stomp+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">WallJump+Stomp+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">Climb+Stomp+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-core">WallJump+Stomp+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-core">Climb+Stomp+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -4171,6 +4201,7 @@
           <Requirement mode="casual-core">Climb</Requirement>
           <Requirement mode="casual-core">Bash+Grenade</Requirement>
           <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="master-core">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -4182,6 +4213,7 @@
           <Requirement mode="casual-core">Bash+Grenade</Requirement>
           <Requirement mode="casual-core">ChargeJump</Requirement>
           <Requirement mode="expert-core">DoubleJump</Requirement>
+          <Requirement mode="master-core">Bash</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -4369,9 +4401,11 @@
         <Target name="LowerBlackroot"/>
         <Requirements>
           <Requirement mode="casual-core">DoubleJump</Requirement>
-          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
           <Requirement mode="casual-dboost">Free</Requirement>
+          <Requirement mode="standard-core">Bash+Grenade</Requirement>
           <Requirement mode="expert-abilities">Dash+AC+AC+AC</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -4582,47 +4616,15 @@
       </Connection>
       <Connection>
         <Home name="HollowGrove"/>
-        <Target name="SwampTeleporterAbilityCell"/>
-        <Requirements>
-          <Requirement mode="casual-core">ChargeJump+DoubleJump+Glide</Requirement>
-          <Requirement mode="casual-core">Wind+Glide</Requirement>
-          <Requirement mode="expert-core">Grenade+Bash</Requirement>
-          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="HollowGrove"/>
         <Target name="GroveWaterStompAbilityCell"/>
         <Requirements>
           <Requirement mode="casual-core">Water+Stomp</Requirement>
           <Requirement mode="expert-dboost">Stomp+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="master-lure">Bash+Water</Requirement>
           <Requirement mode="master-lure">Bash+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="master-core">Stomp+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Bash+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">Stomp+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">Bash+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="glitched">Bash</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="HollowGrove"/>
-        <Target name="OuterSwampGrenadeExp"/>
-        <Requirements>
-          <Requirement mode="casual-core">Grenade+WallJump</Requirement>
-          <Requirement mode="casual-core">Grenade+Climb</Requirement>
-          <Requirement mode="casual-core">Grenade+ChargeJump</Requirement>
-          <Requirement mode="casual-core">Grenade+Bash</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="HollowGrove"/>
-        <Target name="OuterSwampMortarAbilityCell"/>
-        <Requirements>
-          <Requirement mode="casual-core">ChargeJump</Requirement>
-          <Requirement mode="casual-core">Climb+Bash</Requirement>
-          <Requirement mode="casual-core">WallJump+Bash</Requirement>
-          <Requirement mode="master-lure">Bash</Requirement>
-          <Requirement mode="master-core">WallJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="glitched">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -4635,9 +4637,11 @@
       </Connection>
       <Connection>
         <Home name="HollowGrove"/>
-        <Target name="HollowGroveMap"/>
+        <Target name="HollowGroveTreePlant"/>
         <Requirements>
-          <Requirement mode="casual-core">MS</Requirement>
+          <Requirement mode="casual-core">ChargeFlame</Requirement>
+          <Requirement mode="casual-core">Grenade</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -4656,14 +4660,106 @@
       </Connection>
       <Connection>
         <Home name="HollowGrove"/>
+        <Target name="HollowGroveMap"/>
+        <Requirements>
+          <Requirement mode="casual-core">MS</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="HollowGroveMapPlant"/>
+        <Requirements>
+          <Requirement mode="casual-core">ChargeFlame</Requirement>
+          <Requirement mode="casual-core">Grenade</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="SwampTeleporterAbilityCell"/>
+        <Requirements>
+          <Requirement mode="casual-core">Wind+Glide</Requirement>
+          <Requirement mode="casual-core">ChargeJump+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="casual-core">ChargeJump+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade+Glide+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade+Glide+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade+Glide+Climb</Requirement>
+          <Requirement mode="standard-core">Bash+Grenade+Glide</Requirement>
+          <Requirement mode="standard-core">Bash+Grenade+DoubleJump</Requirement>
+          <Requirement mode="standard-abilities">ChargeJump+DoubleJump+Glide+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="expert-core">Bash+Grenade</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-core">ChargeJump+DoubleJump+Glide</Requirement>
+          <Requirement mode="master-lure">Bash</Requirement>
+          <Requirement mode="master-abilities">ChargeJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="gjump">ChargeJump+Climb+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
         <Target name="SpiderWaterArea"/>
         <Requirements>
           <Requirement mode="casual-core">WallJump</Requirement>
           <Requirement mode="casual-core">Climb</Requirement>
-          <Requirement mode="casual-core">Bash</Requirement>
           <Requirement mode="casual-core">ChargeJump</Requirement>
           <Requirement mode="casual-core">DoubleJump</Requirement>
           <Requirement mode="casual-core">Water</Requirement>
+          <Requirement mode="standard-core">Bash</Requirement>
+          <Requirement mode="master-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="SwampTeleporter"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump</Requirement>
+          <Requirement mode="casual-core">Climb</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">Wind+Glide</Requirement>
+          <Requirement mode="master-core">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="OuterSwampUpperArea"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump</Requirement>
+          <Requirement mode="casual-core">Climb</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">Wind+Glide</Requirement>
+          <Requirement mode="master-core">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="HoruFields"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump+DoubleJump+Bash</Requirement>
+          <Requirement mode="casual-core">Climb+DoubleJump+Bash</Requirement>
+          <Requirement mode="casual-core">WallJump+DoubleJump+Stomp</Requirement>
+          <Requirement mode="casual-core">Climb+DoubleJump+Stomp</Requirement>
+          <Requirement mode="casual-core">ChargeJump+Bash</Requirement>
+          <Requirement mode="casual-core">ChargeJump+Stomp</Requirement>
+          <Requirement mode="standard-core">Bash+Grenade</Requirement>
+          <Requirement mode="expert-core">WallJump+Stomp</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="master-core">WallJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HollowGrove"/>
+        <Target name="Iceless"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Climb+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="standard-lure">Bash</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-core">WallJump</Requirement>
+          <Requirement mode="master-core">DoubleJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -4677,76 +4773,214 @@
           <Requirement mode="casual-core">Wind+Glide</Requirement>
         </Requirements>
       </Connection>
+    </Connections>
+  </Area>
+  <Area name="SwampTeleporter">
+    <Locations/>
+    <Connections>
       <Connection>
-        <Home name="HollowGrove"/>
-        <Target name="DeathGauntlet"/>
+        <Home name="SwampTeleporter"/>
+        <Target name="HollowGrove"/>
         <Requirements>
-          <Requirement mode="casual-core">WallJump</Requirement>
-          <Requirement mode="casual-core">Climb</Requirement>
-          <Requirement mode="casual-core">ChargeJump</Requirement>
-          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="HollowGrove"/>
-        <Target name="DeathGauntletRoof"/>
+        <Home name="SwampTeleporter"/>
+        <Target name="OuterSwampMortarAbilityCellLedge"/>
         <Requirements>
-          <Requirement mode="casual-core">ChargeJump</Requirement>
-          <Requirement mode="casual-core">WallJump+Stomp+Water</Requirement>
-          <Requirement mode="casual-core">Climb+Stomp+Water</Requirement>
-          <Requirement mode="casual-core">Bash+Stomp+Water</Requirement>
-          <Requirement mode="expert-dboost">Stomp+Bash+HC+HC+HC+HC</Requirement>
-          <Requirement mode="expert-dboost">WallJump+Stomp+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="expert-dboost">Climb+Stomp+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="master-core">WallJump+Stomp+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Climb+Stomp+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">WallJump+Bash</Requirement>
-          <Requirement mode="master-core">Climb+Bash</Requirement>
+          <Requirement mode="glitched">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="OuterSwampUpperArea">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="OuterSwampUpperArea"/>
+        <Target name="OuterSwampGrenadeExp"/>
+        <Requirements>
+          <Requirement mode="casual-core">Grenade+WallJump</Requirement>
+          <Requirement mode="casual-core">Grenade+Climb</Requirement>
+          <Requirement mode="casual-core">Grenade+ChargeJump</Requirement>
+          <Requirement mode="casual-core">Grenade+Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="HollowGrove"/>
+        <Home name="OuterSwampUpperArea"/>
         <Target name="GinsoOuterDoor"/>
         <Requirements>
           <Requirement mode="casual-core">GinsoKey</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="HollowGrove"/>
-        <Target name="HoruFields"/>
+        <Home name="OuterSwampUpperArea"/>
+        <Target name="OuterSwampAbilityCellNook"/>
         <Requirements>
-          <Requirement mode="casual-core">Bash+DoubleJump</Requirement>
-          <Requirement mode="casual-core">Bash+Glide</Requirement>
-          <Requirement mode="casual-core">Stomp+ChargeJump+Glide+WallJump</Requirement>
-          <Requirement mode="casual-core">Stomp+ChargeJump+Glide+Climb</Requirement>
-          <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="casual-core">Glide</Requirement>
+          <Requirement mode="casual-core">DoubleJump</Requirement>
+          <Requirement mode="standard-core">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="HollowGrove"/>
-        <Target name="HollowGrovePlants"/>
+        <Home name="OuterSwampUpperArea"/>
+        <Target name="OuterSwampLowerArea"/>
         <Requirements>
-          <Requirement mode="casual-core">ChargeFlame</Requirement>
-          <Requirement mode="casual-core">Grenade</Requirement>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="OuterSwampAbilityCellNook">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="OuterSwampAbilityCellNook"/>
+        <Target name="OuterSwampAbilityCell"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="OuterSwampAbilityCellNook"/>
+        <Target name="InnerSwampSkyArea"/>
+        <Requirements>
+          <Requirement mode="glitched">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="OuterSwampLowerArea">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="OuterSwampLowerArea"/>
+        <Target name="OuterSwampStompExp"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump</Requirement>
+          <Requirement mode="casual-core">Climb</Requirement>
+          <Requirement mode="casual-core">Bash</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">DoubleJump</Requirement>
           <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="HollowGrove"/>
-        <Target name="RightGinso"/>
+        <Home name="OuterSwampLowerArea"/>
+        <Target name="OuterSwampHealthCell"/>
         <Requirements>
-          <Requirement mode="casual-core">WallJump</Requirement>
-          <Requirement mode="casual-core">Climb</Requirement>
-          <Requirement mode="casual-core">Wind+Glide</Requirement>
+          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
           <Requirement mode="casual-core">ChargeJump</Requirement>
           <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="standard-core">Climb+DoubleJump</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-core">Bash</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="HollowGrove"/>
-        <Target name="Iceless"/>
+        <Home name="OuterSwampLowerArea"/>
+        <Target name="OuterSwampMortarAbilityCellLedge"/>
         <Requirements>
-          <Requirement mode="master-core">WallJump</Requirement>
+          <Requirement mode="casual-core">Bash</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">WallJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="OuterSwampLowerArea"/>
+        <Target name="OuterSwampUpperArea"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Climb+DoubleJump</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="expert-core">WallJump</Requirement>
+          <Requirement mode="expert-core">Climb</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="OuterSwampLowerArea"/>
+        <Target name="OuterSwampAbilityCellNook"/>
+        <Requirements>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="standard-core">Bash</Requirement>
+          <Requirement mode="standard-core">WallJump</Requirement>
+          <Requirement mode="standard-core">Climb</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="OuterSwampLowerArea"/>
+        <Target name="OuterSwampMortarPlantAccess"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Climb+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Bash</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="OuterSwampLowerArea"/>
+        <Target name="SwampEntryArea"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump</Requirement>
+          <Requirement mode="casual-core">Climb</Requirement>
+          <Requirement mode="casual-core">Bash</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="OuterSwampLowerArea"/>
+        <Target name="UpperGrotto"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump</Requirement>
+          <Requirement mode="casual-core">Climb</Requirement>
+          <Requirement mode="casual-core">Bash</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">Glide+Wind</Requirement>
+          <Requirement mode="expert-core">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="OuterSwampMortarAbilityCellLedge">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="OuterSwampMortarAbilityCellLedge"/>
+        <Target name="OuterSwampMortarAbilityCell"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="OuterSwampMortarAbilityCellLedge"/>
+        <Target name="OuterSwampMortarPlantAccess"/>
+        <Requirements>
+          <Requirement mode="expert-core">ChargeFlame</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="OuterSwampMortarAbilityCellLedge"/>
+        <Target name="UpperGrotto"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="OuterSwampMortarPlantAccess">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="OuterSwampMortarPlantAccess"/>
+        <Target name="OuterSwampMortarPlant"/>
+        <Requirements>
+          <Requirement mode="casual-core">ChargeFlame</Requirement>
+          <Requirement mode="casual-core">Grenade</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -5109,31 +5343,86 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="RightGinso">
+  <Area name="UpperGrotto">
     <Locations/>
     <Connections>
       <Connection>
-        <Home name="RightGinso"/>
-        <Target name="OuterSwampAbilityCell"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="RightGinso"/>
-        <Target name="OuterSwampStompExp"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="RightGinso"/>
-        <Target name="OuterSwampHealthCell"/>
+        <Home name="UpperGrotto"/>
+        <Target name="GrottoLasersRoofExp"/>
         <Requirements>
           <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
           <Requirement mode="casual-core">ChargeJump</Requirement>
           <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="standard-core">Climb+DoubleJump</Requirement>
+          <Requirement mode="expert-abilities">WallJump+Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="expert-abilities">Climb+Dash+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="master-core">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperGrotto"/>
+        <Target name="OuterSwampMortarAbilityCellLedge"/>
+        <Requirements>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperGrotto"/>
+        <Target name="MoonGrottoStompPlantAccess"/>
+        <Requirements>
+          <Requirement mode="casual-core">Stomp</Requirement>
+          <Requirement mode="standard-core">Climb+ChargeJump</Requirement>
+          <Requirement mode="master-core">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperGrotto"/>
+        <Target name="OuterSwampLowerArea"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump</Requirement>
+          <Requirement mode="casual-core">Climb</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="expert-core">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperGrotto"/>
+        <Target name="Iceless"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Climb+DoubleJump</Requirement>
+          <Requirement mode="casual-core">WallJump+Glide</Requirement>
+          <Requirement mode="standard-core">Bash+Grenade</Requirement>
+          <Requirement mode="standard-dboost">WallJump+ChargeJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="standard-dboost">Climb+ChargeJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-core">ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="master-core">Bash</Requirement>
+          <Requirement mode="gjump">Climb+ChargeJump+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperGrotto"/>
+        <Target name="MoonGrotto"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump</Requirement>
+          <Requirement mode="casual-core">Climb</Requirement>
+          <Requirement mode="standard-core">Bash+Grenade</Requirement>
+          <Requirement mode="glitched">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="MoonGrottoStompPlantAccess">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="MoonGrottoStompPlantAccess"/>
+        <Target name="MoonGrottoStompPlant"/>
+        <Requirements>
+          <Requirement mode="casual-core">ChargeFlame</Requirement>
+          <Requirement mode="casual-core">Grenade</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -5141,29 +5430,6 @@
   <Area name="MoonGrotto">
     <Locations/>
     <Connections>
-      <Connection>
-        <Home name="MoonGrotto"/>
-        <Target name="DeathGauntletEnergyCell"/>
-        <Requirements>
-          <Requirement mode="casual-core">WallJump</Requirement>
-          <Requirement mode="casual-core">Climb</Requirement>
-          <Requirement mode="casual-core">ChargeJump</Requirement>
-          <Requirement mode="casual-core">Bash+Grenade</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="MoonGrotto"/>
-        <Target name="GrottoLasersRoofExp"/>
-        <Requirements>
-          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
-          <Requirement mode="casual-core">WallJump+ChargeJump</Requirement>
-          <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
-          <Requirement mode="casual-core">Bash+Grenade</Requirement>
-          <Requirement mode="expert-abilities">WallJump+Dash+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="expert-abilities">Climb+Dash+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Bash</Requirement>
-        </Requirements>
-      </Connection>
       <Connection>
         <Home name="MoonGrotto"/>
         <Target name="AboveGrottoTeleporterExp"/>
@@ -5174,7 +5440,7 @@
           <Requirement mode="casual-core">Bash+WallJump</Requirement>
           <Requirement mode="casual-core">Bash+Climb</Requirement>
           <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Bash</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -5184,24 +5450,23 @@
           <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
           <Requirement mode="casual-core">Climb+DoubleJump+ChargeJump</Requirement>
           <Requirement mode="expert-core">Grenade+Bash</Requirement>
+          <Requirement mode="expert-core">Climb+ChargeJump</Requirement>
           <Requirement mode="expert-dboost">ChargeJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">WallJump+Glide+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">Climb+Glide+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">DoubleJump+Glide+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">WallJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">Climb+HC+HC+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="master-core">Bash</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="MoonGrotto"/>
-        <Target name="SwampEntranceSwim"/>
-        <Requirements>
-          <Requirement mode="casual-core">Water</Requirement>
-          <Requirement mode="expert-dboost">Free</Requirement>
+          <Requirement mode="master-dboost">DoubleJump+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="MoonGrotto"/>
         <Target name="GrottoEnergyDoorSwim"/>
         <Requirements>
-          <Requirement mode="casual-core">EC+EC+Water</Requirement>
-          <Requirement mode="expert-dboost">EC+EC+Free</Requirement>
+          <Requirement mode="casual-core">Water+EC+EC</Requirement>
+          <Requirement mode="expert-dboost">EC+EC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -5209,88 +5474,36 @@
         <Target name="GrottoEnergyDoorHealthCell"/>
         <Requirements>
           <Requirement mode="casual-core">EC+EC+ChargeJump</Requirement>
+          <Requirement mode="casual-core">EC+EC+Bash+Grenade</Requirement>
           <Requirement mode="casual-core">EC+EC+WallJump+DoubleJump</Requirement>
-          <Requirement mode="standard-core">EC+EC+WallJump</Requirement>
+          <Requirement mode="standard-dboost">EC+EC+WallJump</Requirement>
+          <Requirement mode="standard-abilities">EC+EC+Climb+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="expert-core">EC+EC+Climb+Glide</Requirement>
+          <Requirement mode="expert-dboost">EC+EC+Climb+DoubleJump</Requirement>
+          <Requirement mode="expert-abilities">EC+EC+Dash+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="MoonGrotto"/>
-        <Target name="SwampEntrancePlant"/>
+        <Target name="MoonGrottoStompPlantAccess"/>
         <Requirements>
-          <Requirement mode="casual-core">ChargeFlame+WallJump</Requirement>
-          <Requirement mode="casual-core">ChargeFlame+Climb</Requirement>
-          <Requirement mode="casual-core">Grenade+WallJump</Requirement>
-          <Requirement mode="casual-core">Grenade+Climb</Requirement>
-          <Requirement mode="expert-abilities">Dash+WallJump+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="expert-abilities">Dash+Climb+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="expert-core">WallJump+ChargeFlame</Requirement>
+          <Requirement mode="expert-core">Climb+ChargeFlame</Requirement>
+          <Requirement mode="expert-core">ChargeJump+ChargeFlame</Requirement>
+          <Requirement mode="expert-core">Bash+Grenade+ChargeFlame</Requirement>
+          <Requirement mode="master-core">DoubleJump+ChargeFlame</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="MoonGrotto"/>
-        <Target name="MoonGrottoStompPlant"/>
-        <Requirements>
-          <Requirement mode="casual-core">Stomp+ChargeFlame</Requirement>
-          <Requirement mode="casual-core">Stomp+Grenade</Requirement>
-          <Requirement mode="expert-abilities">Stomp+Dash+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="expert-core">ChargeFlame</Requirement>
-          <Requirement mode="expert-core">Climb+ChargeJump+Grenade</Requirement>
-          <Requirement mode="master-core">Bash+Grenade</Requirement>
-          <Requirement mode="master-core">Bash+Dash</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="MoonGrotto"/>
-        <Target name="OuterSwampMortarPlant"/>
-        <Requirements>
-          <Requirement mode="casual-core">DoubleJump+ChargeFlame</Requirement>
-          <Requirement mode="casual-core">DoubleJump+Grenade</Requirement>
-          <Requirement mode="casual-core">ChargeJump+ChargeFlame</Requirement>
-          <Requirement mode="casual-core">ChargeJump+Grenade</Requirement>
-          <Requirement mode="casual-core">Bash+ChargeFlame</Requirement>
-          <Requirement mode="casual-core">Bash+Grenade</Requirement>
-          <Requirement mode="casual-core">Glide+ChargeFlame</Requirement>
-          <Requirement mode="casual-core">Glide+Grenade</Requirement>
-          <Requirement mode="standard-core">Dash+ChargeFlame</Requirement>
-          <Requirement mode="standard-core">Dash+Grenade</Requirement>
-          <Requirement mode="expert-core">Grenade</Requirement>
-          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="MoonGrotto"/>
-        <Target name="Iceless"/>
-        <Requirements>
-          <Requirement mode="casual-core">ChargeJump+WallJump</Requirement>
-          <Requirement mode="casual-core">ChargeJump+Climb</Requirement>
-          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
-          <Requirement mode="casual-core">Climb+DoubleJump</Requirement>
-          <Requirement mode="casual-core">Grenade+Bash</Requirement>
-          <Requirement mode="casual-core">WallJump+Glide</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="MoonGrotto"/>
-        <Target name="HollowGrove"/>
-        <Requirements>
-          <Requirement mode="casual-core">ChargeJump+WallJump</Requirement>
-          <Requirement mode="casual-core">ChargeJump+Climb</Requirement>
-          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
-          <Requirement mode="casual-core">Climb+DoubleJump</Requirement>
-          <Requirement mode="casual-core">Grenade+Bash</Requirement>
-          <Requirement mode="casual-core">WallJump+Glide</Requirement>
-          <Requirement mode="expert-core">WallJump</Requirement>
-          <Requirement mode="expert-core">Climb+Glide</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="MoonGrotto"/>
-        <Target name="RightGinso"/>
+        <Target name="UpperGrotto"/>
         <Requirements>
           <Requirement mode="casual-core">WallJump</Requirement>
-          <Requirement mode="casual-core">Climb+Glide</Requirement>
           <Requirement mode="casual-core">Climb+DoubleJump</Requirement>
           <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
-          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="standard-core">Bash+Grenade</Requirement>
+          <Requirement mode="expert-core">Climb+Glide</Requirement>
+          <Requirement mode="master-core">DoubleJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -5301,6 +5514,30 @@
           <Requirement mode="casual-core">Climb</Requirement>
           <Requirement mode="casual-core">ChargeJump</Requirement>
           <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="DeathGauntletRoof"/>
+        <Requirements>
+          <Requirement mode="master-core">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="GumoHideout"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MoonGrotto"/>
+        <Target name="WaterVeinArea"/>
+        <Requirements>
+          <Requirement mode="casual-core">DoubleJump</Requirement>
+          <Requirement mode="casual-core">Glide</Requirement>
+          <Requirement mode="standard-core">Dash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -5388,49 +5625,6 @@
           <Requirement mode="dbash">ChargeFlame+Bash+Climb</Requirement>
         </Requirements>
       </Connection>
-      <Connection>
-        <Home name="MoonGrotto"/>
-        <Target name="InnerSwampSkyArea"/>
-        <Requirements>
-          <Requirement mode="glitched">Dash</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="MoonGrotto"/>
-        <Target name="GumoHideout"/>
-        <Requirements>
-          <Requirement mode="casual-core">WallJump</Requirement>
-          <Requirement mode="casual-core">Climb</Requirement>
-          <Requirement mode="casual-core">Bash+Grenade</Requirement>
-          <Requirement mode="casual-core">ChargeJump</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="MoonGrotto"/>
-        <Target name="DeathGauntletRoof"/>
-        <Requirements>
-          <Requirement mode="master-core">Bash</Requirement>
-        </Requirements>
-      </Connection>
-    </Connections>
-  </Area>
-  <Area name="HollowGrovePlants">
-    <Locations/>
-    <Connections>
-      <Connection>
-        <Home name="HollowGrovePlants"/>
-        <Target name="HollowGroveMapPlant"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="HollowGrovePlants"/>
-        <Target name="HollowGroveTreePlant"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
     </Connections>
   </Area>
   <Area name="Iceless">
@@ -5448,6 +5642,17 @@
         <Target name="HollowGrove"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="Iceless"/>
+        <Target name="UpperGrotto"/>
+        <Requirements>
+          <Requirement mode="casual-core">DoubleJump</Requirement>
+          <Requirement mode="casual-core">Glide</Requirement>
+          <Requirement mode="standard-core">Bash+Grenade</Requirement>
+          <Requirement mode="standard-dboost">HC+HC+HC+HC</Requirement>
+          <Requirement mode="gjump">ChargeJump+Climb+Grenade</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -5515,14 +5720,14 @@
       </Connection>
       <Connection>
         <Home name="SideFallCell"/>
-        <Target name="GumoHideout"/>
+        <Target name="LeftGumoHideout"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="SideFallCell"/>
-        <Target name="GumoHideoutPartialMobile"/>
+        <Target name="GumoHideout"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
@@ -5534,55 +5739,6 @@
     <Connections>
       <Connection>
         <Home name="GumoHideout"/>
-        <Target name="GumoHideoutMapstone"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="GumoHideout"/>
-        <Target name="GumoHideoutMiniboss"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="GumoHideout"/>
-        <Target name="GumoHideoutCrusherExp"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="GumoHideout"/>
-        <Target name="GumoHideoutCrusherKeystone"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="GumoHideout"/>
-        <Target name="GumoHideoutRedirectAbilityCell"/>
-        <Requirements>
-          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
-          <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
-          <Requirement mode="casual-core">WallJump+ChargeJump</Requirement>
-          <Requirement mode="casual-core">Glide+Wind</Requirement>
-          <Requirement mode="master-core">WallJump+Bash</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="GumoHideout"/>
-        <Target name="FarLeftGumoHideoutExp"/>
-        <Requirements>
-          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
-          <Requirement mode="casual-core">Grenade+Bash+Climb</Requirement>
-          <Requirement mode="casual-core">WallJump+Glide+Wind</Requirement>
-          <Requirement mode="master-core">WallJump+Bash</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="GumoHideout"/>
         <Target name="GumoHideoutMap"/>
         <Requirements>
           <Requirement mode="casual-core">MS</Requirement>
@@ -5590,84 +5746,246 @@
       </Connection>
       <Connection>
         <Home name="GumoHideout"/>
-        <Target name="DoubleJumpArea"/>
+        <Target name="GumoHideoutMapstone"/>
         <Requirements>
-          <Requirement mode="casual-core">KS+KS+WallJump</Requirement>
-          <Requirement mode="casual-dboost">KS+KS+Climb</Requirement>
+          <Requirement mode="casual-core">WallJump</Requirement>
+          <Requirement mode="casual-core">DoubleJump</Requirement>
+          <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
+          <Requirement mode="casual-core">Climb+Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">Glide</Requirement>
+          <Requirement mode="standard-core">Bash+Grenade</Requirement>
+          <Requirement mode="standard-core">Climb</Requirement>
+          <Requirement mode="standard-dboost">ChargeJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="standard-abilities">Dash+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="GumoHideout"/>
-        <Target name="MobileGumoHideout"/>
+        <Target name="GumoHideoutMiniboss"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump</Requirement>
+          <Requirement mode="casual-core">Climb</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="expert-lure">Bash</Requirement>
+          <Requirement mode="master-core">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="GumoHideoutEnergyCell"/>
         <Requirements>
           <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
-          <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
+          <Requirement mode="casual-core">Climb+DoubleJump</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="master-core">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="GumoHideoutCrusherExp"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump</Requirement>
+          <Requirement mode="casual-core">Climb</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="expert-core">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="GumoHideoutCrusherKeystone"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump</Requirement>
+          <Requirement mode="casual-core">Climb</Requirement>
+          <Requirement mode="casual-dboost">ChargeJump</Requirement>
+          <Requirement mode="casual-dboost">Bash+Grenade</Requirement>
+          <Requirement mode="expert-core">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="DoubleJumpKeyDoor"/>
+        <Requirements>
+          <Requirement mode="casual-core">KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideout"/>
+        <Target name="LeftGumoHideout"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
           <Requirement mode="casual-core">WallJump+ChargeJump</Requirement>
+          <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
           <Requirement mode="casual-core">Grenade+Bash</Requirement>
+          <Requirement mode="expert-core">ChargeJump</Requirement>
           <Requirement mode="master-core">WallJump+Bash</Requirement>
+          <Requirement mode="master-core">Climb+Bash</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="GumoHideout"/>
-        <Target name="GumoHideoutPartialMobile"/>
+        <Target name="GumoHideoutFloatingOrbs"/>
         <Requirements>
-          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
-          <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
-          <Requirement mode="casual-core">WallJump+ChargeJump</Requirement>
-          <Requirement mode="casual-core">Glide+Wind</Requirement>
-          <Requirement mode="master-core">WallJump+Bash</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="GumoHideout"/>
-        <Target name="LowerBlackroot"/>
-        <Requirements>
-          <Requirement mode="glitched">Dash</Requirement>
+          <Requirement mode="master-core">DoubleJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="GumoHideout"/>
         <Target name="SideFallCell"/>
         <Requirements>
-          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">WallJump+Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">Climb+Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">WallJump+ChargeJump</Requirement>
+          <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
           <Requirement mode="casual-core">Glide+Wind</Requirement>
-          <Requirement mode="casual-core">ChargeJump</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
-  <Area name="GumoHideoutPartialMobile">
+  <Area name="DoubleJumpKeyDoor">
     <Locations/>
     <Connections>
       <Connection>
-        <Home name="GumoHideoutPartialMobile"/>
+        <Home name="DoubleJumpKeyDoor"/>
+        <Target name="DoubleJumpArea"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump</Requirement>
+          <Requirement mode="casual-dboost">Climb</Requirement>
+          <Requirement mode="casual-dboost">Bash+Grenade</Requirement>
+          <Requirement mode="casual-dboost">ChargeJump</Requirement>
+          <Requirement mode="expert-core">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="LeftGumoHideout">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="LeftGumoHideout"/>
+        <Target name="LeftGumoHideoutUpperPlant"/>
+        <Requirements>
+          <Requirement mode="casual-core">Grenade</Requirement>
+          <Requirement mode="casual-core">WallJump+ChargeFlame</Requirement>
+          <Requirement mode="casual-core">Climb+ChargeFlame</Requirement>
+          <Requirement mode="casual-core">ChargeJump+ChargeFlame</Requirement>
+          <Requirement mode="casual-core">DoubleJump+ChargeFlame</Requirement>
+          <Requirement mode="expert-core">ChargeFlame</Requirement>
+          <Requirement mode="expert-abilities">WallJump+Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="expert-abilities">Climb+Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="expert-abilities">ChargeJump+Dash+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftGumoHideout"/>
+        <Target name="LeftGumoHideoutLowerPlant"/>
+        <Requirements>
+          <Requirement mode="casual-core">Grenade</Requirement>
+          <Requirement mode="casual-core">ChargeFlame</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftGumoHideout"/>
+        <Target name="FarLeftGumoHideoutExp"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
+          <Requirement mode="casual-core">Climb+DoubleJump+Glide</Requirement>
+          <Requirement mode="standard-core">Climb+Bash+Grenade</Requirement>
+          <Requirement mode="master-core">Bash</Requirement>
+          <Requirement mode="master-abilities">Climb+Dash+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftGumoHideout"/>
+        <Target name="LeftGumoHideoutExp"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="expert-core">Climb+DoubleJump</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftGumoHideout"/>
+        <Target name="LeftGumoHideoutHealthCell"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
+          <Requirement mode="casual-core">WallJump+ChargeJump</Requirement>
+          <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftGumoHideout"/>
+        <Target name="LeftGumoHideoutSwim"/>
+        <Requirements>
+          <Requirement mode="casual-core">Water</Requirement>
+          <Requirement mode="expert-dboost">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftGumoHideout"/>
+        <Target name="GumoHideoutFloatingOrbs"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftGumoHideout"/>
+        <Target name="LowerBlackroot"/>
+        <Requirements>
+          <Requirement mode="glitched">Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftGumoHideout"/>
+        <Target name="GumoHideoutRedirectArea"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="LeftGumoHideout"/>
+        <Target name="WaterVeinArea"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
+          <Requirement mode="casual-core">WallJump+ChargeJump</Requirement>
+          <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="standard-core">Climb+DoubleJump</Requirement>
+          <Requirement mode="standard-abilities">WallJump+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="standard-abilities">Climb+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="master-core">DoubleJump</Requirement>
+          <Requirement mode="master-core">WallJump+Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="GumoHideoutFloatingOrbs">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="GumoHideoutFloatingOrbs"/>
         <Target name="GumoHideoutRightHangingExp"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="GumoHideoutPartialMobile"/>
+        <Home name="GumoHideoutFloatingOrbs"/>
         <Target name="GumoHideoutLeftHangingExp"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="GumoHideoutPartialMobile"/>
-        <Target name="MobileGumoHideoutPlants"/>
-        <Requirements>
-          <Requirement mode="casual-core">ChargeFlame</Requirement>
-          <Requirement mode="casual-core">Grenade</Requirement>
-          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="GumoHideoutPartialMobile"/>
-        <Target name="HideoutRedirect"/>
-        <Requirements>
-          <Requirement mode="casual-core">EC+EC+EC+EC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -5690,122 +6008,130 @@
           <Requirement mode="casual-core">ChargeJump</Requirement>
           <Requirement mode="casual-core">Bash</Requirement>
           <Requirement mode="casual-core">Climb+DoubleJump</Requirement>
+          <Requirement mode="master-core">DoubleJump</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
-  <Area name="MobileGumoHideout">
+  <Area name="WaterVeinArea">
     <Locations/>
     <Connections>
       <Connection>
-        <Home name="MobileGumoHideout"/>
-        <Target name="GumoHideoutEnergyCell"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="MobileGumoHideout"/>
+        <Home name="WaterVeinArea"/>
         <Target name="GumoHideoutRockfallExp"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="MobileGumoHideout"/>
+        <Home name="WaterVeinArea"/>
         <Target name="WaterVein"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="MobileGumoHideout"/>
-        <Target name="LeftGumoHideoutExp"/>
+        <Home name="WaterVeinArea"/>
+        <Target name="LeftGumoHideout"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">DoubleJump</Requirement>
+          <Requirement mode="standard-core">Dash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="GumoHideoutRedirectArea">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="GumoHideoutRedirectArea"/>
+        <Target name="GumoHideoutRedirectAbilityCell"/>
+        <Requirements>
+          <Requirement mode="casual-core">Glide</Requirement>
+          <Requirement mode="casual-core">DoubleJump</Requirement>
+          <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
+          <Requirement mode="casual-dboost">WallJump</Requirement>
+          <Requirement mode="casual-dboost">Climb</Requirement>
+          <Requirement mode="casual-dboost">ChargeJump</Requirement>
+          <Requirement mode="standard-core">Bash+Grenade</Requirement>
+          <Requirement mode="standard-abilities">Dash+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="MobileGumoHideout"/>
-        <Target name="LeftGumoHideoutHealthCell"/>
+        <Home name="GumoHideoutRedirectArea"/>
+        <Target name="GumoHideoutRedirectPlant"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">WallJump+ChargeFlame</Requirement>
+          <Requirement mode="casual-core">Climb+ChargeFlame</Requirement>
+          <Requirement mode="casual-core">ChargeJump+ChargeFlame</Requirement>
+          <Requirement mode="casual-core">WallJump+Grenade</Requirement>
+          <Requirement mode="casual-core">Climb+Grenade</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">ChargeJump+Grenade</Requirement>
+          <Requirement mode="expert-abilities">WallJump+Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="expert-abilities">Climb+Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="expert-abilities">ChargeJump+Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+Dash+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="MobileGumoHideout"/>
-        <Target name="LeftGumoHideoutSwim"/>
+        <Home name="GumoHideoutRedirectArea"/>
+        <Target name="GumoHideoutRedirectEnergyVault"/>
+        <Requirements>
+          <Requirement mode="casual-core">EC+EC+EC+EC</Requirement>
+          <Requirement mode="glitched">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="GumoHideoutRedirectEnergyVault">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="GumoHideoutRedirectEnergyVault"/>
+        <Target name="GumoHideoutRedirectEnergyCell"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump</Requirement>
+          <Requirement mode="casual-core">Climb+Glide</Requirement>
+          <Requirement mode="casual-core">Climb+DoubleJump</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GumoHideoutRedirectEnergyVault"/>
+        <Target name="GumoHideoutRedirectExp"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump</Requirement>
+          <Requirement mode="casual-core">Climb+Glide</Requirement>
+          <Requirement mode="casual-core">Climb+DoubleJump</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="SwampEntryArea">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="SwampEntryArea"/>
+        <Target name="SwampEntranceSwim"/>
         <Requirements>
           <Requirement mode="casual-core">Water</Requirement>
           <Requirement mode="expert-dboost">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="MobileGumoHideout"/>
-        <Target name="MoonGrotto"/>
+        <Home name="SwampEntryArea"/>
+        <Target name="SwampEntrancePlant"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="MobileGumoHideout"/>
-        <Target name="HideoutRedirect"/>
-        <Requirements>
-          <Requirement mode="casual-core">EC+EC+EC+EC</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="MobileGumoHideout"/>
-        <Target name="MobileGumoHideoutPlants"/>
-        <Requirements>
-          <Requirement mode="casual-core">ChargeFlame</Requirement>
-          <Requirement mode="casual-core">Grenade</Requirement>
-          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
-        </Requirements>
-      </Connection>
-    </Connections>
-  </Area>
-  <Area name="MobileGumoHideoutPlants">
-    <Locations/>
-    <Connections>
-      <Connection>
-        <Home name="MobileGumoHideoutPlants"/>
-        <Target name="LeftGumoHideoutLowerPlant"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="MobileGumoHideoutPlants"/>
-        <Target name="LeftGumoHideoutUpperPlant"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="MobileGumoHideoutPlants"/>
-        <Target name="GumoHideoutRedirectPlant"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-    </Connections>
-  </Area>
-  <Area name="HideoutRedirect">
-    <Locations/>
-    <Connections>
-      <Connection>
-        <Home name="HideoutRedirect"/>
-        <Target name="GumoHideoutRedirectEnergyCell"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="HideoutRedirect"/>
-        <Target name="GumoHideoutRedirectExp"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">ChargeFlame+WallJump</Requirement>
+          <Requirement mode="casual-core">ChargeFlame+Climb</Requirement>
+          <Requirement mode="casual-core">Grenade+WallJump</Requirement>
+          <Requirement mode="casual-core">Grenade+Climb</Requirement>
+          <Requirement mode="expert-abilities">Dash+WallJump+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="expert-abilities">Dash+Climb+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -6955,6 +7281,7 @@
           <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
           <Requirement mode="casual-core">Climb+DoubleJump+Bash</Requirement>
           <Requirement mode="casual-core">Bash+Grenade+Climb</Requirement>
+          <Requirement mode="casual-core">Glide+Wind</Requirement>
           <Requirement mode="expert-abilities">WallJump+Dash+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
@@ -7442,8 +7769,8 @@
           <Requirement mode="expert-core">Bash+Grenade</Requirement>
           <Requirement mode="expert-dboost">ChargeJump+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
-          <Requirement mode="master-core">ChargeJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">WallJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">WallJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -7458,8 +7785,8 @@
           <Requirement mode="standard-core">Dash+DoubleJump+Glide+Climb</Requirement>
           <Requirement mode="expert-abilities">Dash+WallJump+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="expert-abilities">Dash+Climb+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">WallJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Climb+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">WallJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">Climb+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -7495,8 +7822,9 @@
           <Requirement mode="dbash">Bash</Requirement>
           <Requirement mode="expert-dboost">ChargeJump+WallJump+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="expert-dboost">ChargeJump+Climb+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="master-core">ChargeJump+WallJump+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">ChargeJump+Climb+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+WallJump+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+Climb+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">WallJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -7531,10 +7859,10 @@
           <Requirement mode="expert-dboost">WallJump+ChargeJump+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
-          <Requirement mode="master-core">WallJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Climb+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="master-core">WallJump+ChargeJump</Requirement>
           <Requirement mode="master-core">Climb+ChargeJump</Requirement>
+          <Requirement mode="master-abilities">WallJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">Climb+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -7577,9 +7905,9 @@
           <Requirement mode="expert-abilities">Dash+DoubleJump+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="expert-abilities">Dash+EC+EC+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="gjump">Climb+ChargeJump+Grenade</Requirement>
-          <Requirement mode="master-core">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">ChargeJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="master-core">Bash</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -7596,8 +7924,8 @@
           <Requirement mode="expert-abilities">Dash+Bash+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="expert-abilities">Dash+DoubleJump+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
-          <Requirement mode="master-core">Glide+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">Glide+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -7645,8 +7973,8 @@
           <Requirement mode="expert-abilities">Dash+Stomp+ChargeJump+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="expert-abilities">Dash+DoubleJump+ChargeJump+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
-          <Requirement mode="master-core">ChargeJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">ChargeJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">ChargeJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -7752,10 +8080,10 @@
           <Requirement mode="casual-core">Bash+Grenade+Climb</Requirement>
           <Requirement mode="expert-dboost">ChargeJump+WallJump+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="expert-dboost">ChargeJump+Climb+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="master-core">ChargeJump+WallJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">ChargeJump+Climb+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">DoubleJump+WallJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">DoubleJump+Climb+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+WallJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+Climb+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+WallJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+Climb+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="master-core">Bash</Requirement>
         </Requirements>
       </Connection>
@@ -7791,9 +8119,9 @@
           <Requirement mode="casual-core">Bash+Grenade+WallJump</Requirement>
           <Requirement mode="casual-core">Bash+Grenade+Climb</Requirement>
           <Requirement mode="expert-dboost">ChargeJump+WallJump+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="master-core">ChargeJump+WallJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">DoubleJump+WallJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">DoubleJump+Climb+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+WallJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+WallJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+Climb+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="master-core">Bash</Requirement>
         </Requirements>
       </Connection>
@@ -7833,7 +8161,7 @@
           <Requirement mode="casual-core">Glide</Requirement>
           <Requirement mode="expert-dboost">ChargeJump+Climb+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="master-core">Bash</Requirement>
-          <Requirement mode="master-core">ChargeJump+DoubleJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+DoubleJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -7844,7 +8172,7 @@
           <Requirement mode="expert-dboost">ChargeJump+Climb+DoubleJump+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="expert-dboost">ChargeJump+Climb+Dash+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="master-core">Bash</Requirement>
-          <Requirement mode="master-core">ChargeJump+DoubleJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+DoubleJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -7854,7 +8182,7 @@
           <Requirement mode="casual-core">Glide</Requirement>
           <Requirement mode="expert-dboost">ChargeJump+Climb+DoubleJump+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="master-core">Bash</Requirement>
-          <Requirement mode="master-core">ChargeJump+DoubleJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+DoubleJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -7873,10 +8201,10 @@
           <Requirement mode="expert-abilities">Bash+Dash+Climb+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="expert-abilities">Bash+Dash+WallJump+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
-          <Requirement mode="master-core">ChargeJump+Stomp+Glide+DoubleJump+WallJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">ChargeJump+Stomp+Dash+Climb+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">ChargeJump+Stomp+Dash+WallJump+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">ChargeJump+Stomp+DoubleJump+Climb+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">ChargeJump+Stomp+Glide+DoubleJump+WallJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">ChargeJump+Stomp+Dash+Climb+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">ChargeJump+Stomp+Dash+WallJump+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">ChargeJump+Stomp+DoubleJump+Climb+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -7896,10 +8224,10 @@
           <Requirement mode="standard-core">Bash+Stomp+Climb</Requirement>
           <Requirement mode="standard-core">Bash+Stomp+DoubleJump</Requirement>
           <Requirement mode="expert-dboost">ChargeJump+Climb+DoubleJump+Bash+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="master-core">Bash+Dash+Stomp+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Bash+Dash+ChargeJump+Climb+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Bash+Climb+ChargeJump+DoubleJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Bash+Stomp+ChargeJump+DoubleJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">Bash+Dash+Stomp+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">Bash+Dash+ChargeJump+Climb+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">Bash+Climb+ChargeJump+DoubleJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">Bash+Stomp+ChargeJump+DoubleJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="glitched">Dash</Requirement>
         </Requirements>
       </Connection>
@@ -7918,8 +8246,8 @@
           <Requirement mode="gjump">ChargeJump+Climb+Grenade</Requirement>
           <Requirement mode="expert-dboost">ChargeJump+Climb+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="expert-dboost">ChargeJump+WallJump+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="master-core">ChargeJump+Climb+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">ChargeJump+WallJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+Climb+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+WallJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -7968,68 +8296,68 @@
     <Connections>
       <Connection>
         <Home name="UpperSorrow"/>
-        <Target name="UpperSorrowRightKeystone"/>
+        <Target name="UpperSorrowRightKeystoneArea"/>
         <Requirements>
           <Requirement mode="casual-core">Glide</Requirement>
           <Requirement mode="expert-abilities">ChargeJump+Dash+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">ChargeJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">ChargeJump+Dash+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Bash+Grenade+DoubleJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Bash+Grenade+DoubleJump+Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+Dash+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">Bash+Grenade+DoubleJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">Bash+Grenade+DoubleJump+Dash+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="UpperSorrow"/>
-        <Target name="UpperSorrowFarRightKeystone"/>
+        <Target name="UpperSorrowFarRightKeystoneArea"/>
         <Requirements>
           <Requirement mode="casual-core">Glide</Requirement>
-          <Requirement mode="master-core">ChargeJump+Dash+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Bash+Grenade+DoubleJump+Dash+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Bash+Grenade+DoubleJump+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+Dash+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">Bash+Grenade+DoubleJump+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">Bash+Grenade+DoubleJump+Dash+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="UpperSorrow"/>
-        <Target name="UpperSorrowLeftKeystone"/>
+        <Target name="UpperSorrowLeftKeystoneArea"/>
         <Requirements>
           <Requirement mode="casual-core">Glide</Requirement>
           <Requirement mode="expert-core">Bash+Grenade</Requirement>
           <Requirement mode="expert-dboost">ChargeJump+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="expert-abilities">Dash+EC+EC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Climb+ChargeJump+Grenade</Requirement>
-          <Requirement mode="master-core">ChargeJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="gjump">Climb+ChargeJump+Grenade</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="UpperSorrow"/>
-        <Target name="UpperSorrowSpikeExp"/>
+        <Target name="UpperSorrowSpikeExpArea"/>
         <Requirements>
           <Requirement mode="casual-core">Glide</Requirement>
           <Requirement mode="expert-dboost">Bash+Grenade+DoubleJump+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="expert-abilities">Bash+Grenade+Dash+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="expert-abilities">ChargeJump+Dash+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="expert-abilities">Dash+HC+HC+HC+HC+HC+EC+EC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">ChargeJump+Dash+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Dash+HC+HC+HC+HC+EC+EC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Bash+Grenade+Dash+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Bash+Grenade+DoubleJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+Dash+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">Dash+HC+HC+HC+HC+EC+EC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">Bash+Grenade+Dash+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">Bash+Grenade+DoubleJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="UpperSorrow"/>
-        <Target name="UpperSorrowFarLeftKeystone"/>
+        <Target name="UpperSorrowFarLeftKeystoneArea"/>
         <Requirements>
           <Requirement mode="casual-core">Glide</Requirement>
-          <Requirement mode="master-core">ChargeJump+DoubleJump+Dash+WallJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">ChargeJump+DoubleJump+Dash+Climb+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Bash+Grenade+DoubleJump+Dash+WallJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Bash+Grenade+DoubleJump+Dash+Climb+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Bash+Grenade+ChargeJump+DoubleJump+WallJump+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Bash+Grenade+ChargeJump+DoubleJump+Climb+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">ChargeJump+DoubleJump+WallJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">ChargeJump+DoubleJump+Climb+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+DoubleJump+Dash+WallJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+DoubleJump+Dash+Climb+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">Bash+Grenade+DoubleJump+Dash+WallJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">Bash+Grenade+DoubleJump+Dash+Climb+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">Bash+Grenade+ChargeJump+DoubleJump+WallJump+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">Bash+Grenade+ChargeJump+DoubleJump+Climb+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+DoubleJump+WallJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+DoubleJump+Climb+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -8057,7 +8385,67 @@
         <Home name="UpperSorrow"/>
         <Target name="ChargeJumpDoor"/>
         <Requirements>
-          <Requirement mode="casual-core">KS+KS+KS+KS</Requirement>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="UpperSorrowRightKeystoneArea">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="UpperSorrowRightKeystoneArea"/>
+        <Target name="UpperSorrowRightKeystone"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="UpperSorrowFarRightKeystoneArea">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="UpperSorrowFarRightKeystoneArea"/>
+        <Target name="UpperSorrowFarRightKeystone"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="UpperSorrowLeftKeystoneArea">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="UpperSorrowLeftKeystoneArea"/>
+        <Target name="UpperSorrowLeftKeystone"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="UpperSorrowSpikeExpArea">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="UpperSorrowSpikeExpArea"/>
+        <Target name="UpperSorrowSpikeExp"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="UpperSorrowFarLeftKeystoneArea">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="UpperSorrowFarLeftKeystoneArea"/>
+        <Target name="UpperSorrowFarLeftKeystone"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -8067,14 +8455,35 @@
     <Connections>
       <Connection>
         <Home name="ChargeJumpDoor"/>
+        <Target name="ChargeJumpDoorOpen"/>
+        <Requirements>
+          <Requirement mode="casual-core">KS+KS+KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="ChargeJumpDoorOpen">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="ChargeJumpDoorOpen"/>
         <Target name="ChargeJumpArea"/>
         <Requirements>
           <Requirement mode="casual-core">Glide</Requirement>
-          <Requirement mode="master-core">ChargeJump+DoubleJump+Dash+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Bash+Grenade+WallJump+DoubleJump+Dash+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Bash+Grenade+ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Bash+Grenade+WallJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+DoubleJump+Dash+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">Bash+Grenade+WallJump+DoubleJump+Dash+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">Bash+Grenade+ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">Bash+Grenade+WallJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ChargeJumpDoorOpen"/>
+        <Target name="ChargeJumpDoorOpenLeft"/>
+        <Requirements>
+          <Requirement mode="expert-dboost">ChargeJump+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-lure">Bash</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -8101,6 +8510,68 @@
           <Requirement mode="expert-abilities">ChargeJump+Dash+Climb+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="master-core">Bash+Climb</Requirement>
           <Requirement mode="master-core">Bash+WallJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ChargeJumpArea"/>
+        <Target name="ChargeJumpDoor"/>
+        <Requirements>
+          <Requirement mode="casual-core">Open</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="ChargeJumpDoorOpenLeft">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="ChargeJumpDoorOpenLeft"/>
+        <Target name="UpperSorrow"/>
+        <Requirements>
+          <Requirement mode="casual-core">Glide</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+Dash+HC+HC+HC+HC+HC+HC+HC+EC+EC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+Dash+HC+HC+HC+HC+HC+HC+HC+HC+HC+EC+EC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-lure">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ChargeJumpDoorOpenLeft"/>
+        <Target name="UpperSorrowSpikeExpArea"/>
+        <Requirements>
+          <Requirement mode="expert-dboost">ChargeJump+Dash+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-lure">Bash</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+DoubleJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+Dash+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ChargeJumpDoorOpenLeft"/>
+        <Target name="UpperSorrowFarLeftKeystoneArea"/>
+        <Requirements>
+          <Requirement mode="master-lure">Bash</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+DoubleJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ChargeJumpDoorOpenLeft"/>
+        <Target name="UpperSorrowRightKeystoneArea"/>
+        <Requirements>
+          <Requirement mode="master-lure">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ChargeJumpDoorOpenLeft"/>
+        <Target name="UpperSorrowFarRightKeystoneArea"/>
+        <Requirements>
+          <Requirement mode="master-lure">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ChargeJumpDoorOpenLeft"/>
+        <Target name="UpperSorrowLeftKeystoneArea"/>
+        <Requirements>
+          <Requirement mode="master-lure">Bash</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -8164,13 +8635,13 @@
           <Requirement mode="expert-dboost">Stomp+Bash+Grenade+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="expert-dboost">ChargeJump+WallJump+Glide+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="expert-dboost">ChargeJump+WallJump+Dash+HC+HC+HC+HC+HC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">ChargeJump+Climb+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">ChargeJump+WallJump+Glide+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">ChargeJump+WallJump+Dash+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="master-core">Stomp+Bash+Climb</Requirement>
           <Requirement mode="master-core">Stomp+Bash+WallJump</Requirement>
           <Requirement mode="master-core">ChargeJump+Bash</Requirement>
-          <Requirement mode="master-core">WallJump+DoubleJump+Stomp+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+Climb+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+WallJump+Glide+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+WallJump+Dash+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">WallJump+DoubleJump+Stomp+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -8197,8 +8668,8 @@
           <Requirement mode="casual-core">Stomp+Glide</Requirement>
           <Requirement mode="expert-core">ChargeJump+Climb+Glide</Requirement>
           <Requirement mode="gjump">ChargeJump+Climb+Grenade</Requirement>
-          <Requirement mode="master-core">ChargeJump+Climb+DoubleJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="master-core">Bash</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+Climb+DoubleJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
