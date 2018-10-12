@@ -140,7 +140,8 @@ public static class RandomizerBonusSkill
                     Characters.Sein.PlayerAbilities.Glide,
                     Characters.Sein.PlayerAbilities.ChargeJump,
                     Characters.Sein.PlayerAbilities.Dash,
-                    Characters.Sein.PlayerAbilities.Grenade
+                    Characters.Sein.PlayerAbilities.Grenade,
+                Characters.Sein.PlayerAbilities.SpiritFlame
                 };
                 for (int i = 0; i < abilities.Length; i++)
                 {
