@@ -1854,7 +1854,7 @@ home: R1
         expert-dboost Dash Health=5
         master-core WallJump Glide
         master-dboost ChargeJump Health=9
-        master-abilities ChargeJump Health=7 Abilities=12
+        master-abilities ChargeJump Health=7 Ability=12
     conn: HoruR1MapstoneSecret
         casual-core Glide
         standard-core Dash DoubleJump
@@ -1863,7 +1863,7 @@ home: R1
         expert-dboost Dash Health=5
         expert-abilities Dash Ability=6 Energy=1
         master-dboost Health=9
-        master-abilities Health=7
+        master-abilities Health=7 Ability=12
 home: HoruR1MapstoneSecret
     -- anchor: bottom left of the room, between the second crusher and the mapstone fragment
     pickup: HoruR1Mapstone
