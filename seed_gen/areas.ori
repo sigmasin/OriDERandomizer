@@ -2718,12 +2718,46 @@ home: R3InnerDoor
 		expert-core Grenade WallJump
 		expert-core Grenade Climb
 home: R3
-	pickup: HoruR3Plant
-		casual-core ChargeFlame
-		casual-core Grenade
-		expert-abilities Dash Ability=6
-	pickup: HoruR3
--- TODO
+    conn: HoruR3SpikeCaveEntrance
+        casual-core WallJump DoubleJump Glide
+        casual-core ChargeJump Climb Glide
+        casual-core Bash Grenade Climb Glide
+        standard-core WallJump DoubleJump
+        standard-core ChargeJump Climb
+        standard-core Bash Grenade Climb
+        expert-core ChargeJump Glide
+        expert-core Bash Grenade
+        master-core ChargeJump DoubleJump
+        master-core ChargeJump Dash Ability=6 Energy=1
+home: HoruR3SpikeCaveEntrance
+    -- anchor: before the horizontal spike cave, where the lava slime stands
+    conn: HoruR3ElevatorLever
+        casual-core DoubleJump
+        casual-core Bash Grenade
+        standard-abilities Dash Ability=3
+        expert-dboost Glide Health=5
+        master-dboost WallJump Health=9
+        master-dboost WallJump Health=7 Ability=12
+home: HoruR3ElevatorLever
+    -- anchor: at the evelator lever
+    conn: HoruR3CutsceneTrigger
+        casual-core Climb WallJump DoubleJump
+        casual-core Climb WallJump ChargeJump
+        standard-core WallJump DoubleJump
+        standard-core WallJump ChargeJump
+        standard-core WallJump Bash Grenade
+        standard-core WallJump Glide
+        standard-abilities WallJump Dash Ability=3
+        expert-core WallJump
+        master-core Bash Grenade
+        master-abilities DoubleJump Ability=12
+home: HoruR3CutsceneTrigger
+    -- anchor: at the top of the next before pushing the rock
+    pickup: HoruR3
+    pickup: HoruR3Plant
+        casual-core Grenade
+        standard-core ChargeFlame
+        expert-abilities Dash Ability=6
 home: R4OuterDoor
 	conn: R4InnerDoor
 	conn: HoruInnerDoor
