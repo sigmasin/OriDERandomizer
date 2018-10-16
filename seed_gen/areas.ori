@@ -366,6 +366,7 @@ home: SunkenGladesRunaway
 		timed-level ChargeJump Energy=2
 		timed-level Grenade Bash Energy=2
 		standard-lure Bash Energy=4
+		master-core DoubleJump Energy=4
 	conn: SpiritTreeRefined
 		casual-core TPGrove
 	conn: MoonGrotto
@@ -401,6 +402,8 @@ home: GladesMain
 		expert-core Climb DoubleJump
 		expert-core Bash
 		expert-abilities Dash Ability=6
+		master-core DoubleJump Glide
+		-- This can be done with DoubleJump only but I got it in once in 5 minutes, much easier with Glide
 	conn: LeftGlades
 	conn: SpiritCavernsDoor
 		casual-core Keystone=2
@@ -439,6 +442,7 @@ home: LeftGlades
 		casual-core ChargeJump
 		casual-core Climb
 		casual-core Bash Grenade
+		master-core DoubleJump
 		master-lure Bash
 	conn: GladesMain
 	conn: UpperLeftGlades
