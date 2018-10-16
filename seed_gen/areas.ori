@@ -324,6 +324,7 @@ home: SunkenGladesRunaway
 		casual-core Water
 		expert-dboost Health=6
 		expert-dboost Stomp Health=5
+		master-dboost Health=5
 	pickup: GladesGrenadeTree
 		ALL Grenade
 		casual-core ChargeJump
