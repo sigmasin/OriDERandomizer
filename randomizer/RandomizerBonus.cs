@@ -465,6 +465,17 @@ public static class RandomizerBonus
         return Characters.Sein.Inventory.GetRandomizerItem(33);
     }
 
+    public static void SpentAP(int numSpent)
+    {
+        Characters.Sein.Inventory.IncRandomizerItem(80, numSpent);
+    }
+
+    public static int ResetAP() {
+        int refund = Characters.Sein.Inventory.GetRandomizerItem(80);
+        Characters.Sein.Inventory.SetRandomizerItem(80, 0);
+        return refund;
+    }
+
     // Token: 0x06003789 RID: 14217 RVA: 0x0002BBDD File Offset: 0x00029DDD
     public static int WarmthFrags()
     {
