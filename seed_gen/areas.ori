@@ -993,6 +993,7 @@ home: GrenadeArea
 		expert-core DoubleJump WallJump
 		expert-core DoubleJump Climb
 		master-core ChargeJump
+		insane WallJump
 	pickup: GrenadeAreaExp
 		casual-core Dash WallJump Glide
 		casual-core Dash Climb Glide
@@ -2332,6 +2333,7 @@ home: ValleyStomplessApproach
 		standard-core Stomp WallJump
 		standard-core Stomp Climb
 		standard-core Stomp DoubleJump
+		insane Bash
 	pickup: ValleyRightFastStomplessCell
 		casual-core Glide Wind
 		standard-lure Bash
