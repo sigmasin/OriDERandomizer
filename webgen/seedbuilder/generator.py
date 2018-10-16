@@ -222,7 +222,7 @@ class SeedGenerator:
         self.connectionQueue = []
         self.assignQueue = []
 
-        self.itemCount = 252.0
+        self.itemCount = 253.0
 
     def reset(self):
         """A full reset. Resets internal state completely (besides pRNG
@@ -232,13 +232,13 @@ class SeedGenerator:
         self.forcedAssignments = self.preplaced
         self.forceAssignedLocs = set()
         self.itemPool = OrderedDict([
-            ("EX1", 1), ("EX*", 99), ("KS", 40), ("MS", 11), ("AC", 33),
+            ("EX1", 1), ("EX*", 101), ("KS", 40), ("MS", 11), ("AC", 33),
             ("EC", 14), ("HC", 12), ("WallJump", 1), ("ChargeFlame", 1),
             ("Dash", 1), ("Stomp", 1), ("DoubleJump", 1), ("Glide", 1),
             ("Bash", 1), ("Climb", 1), ("Grenade", 1), ("ChargeJump", 1),
             ("GinsoKey", 1), ("ForlornKey", 1), ("HoruKey", 1), ("Water", 1),
             ("Wind", 1), ("Warmth", 1), ("RB0", 3), ("RB1", 3), ("RB6", 3),
-            ("RB8", 1), ("RB9", 1), ("RB10", 1), ("RB11", 1), ("RB12", 1),
+            ("RB8", 0), ("RB9", 1), ("RB10", 1), ("RB11", 1), ("RB12", 1),
             ("RB13", 3), ("RB15", 3), ("WaterVeinShard", 0),
             ("GumonSealShard", 0), ("SunstoneShard", 0), ("TPForlorn", 1),
             ("TPGrotto", 1), ("TPSorrow", 1), ("TPGrove", 1), ("TPSwamp", 1),
@@ -257,7 +257,7 @@ class SeedGenerator:
             self.itemPool["AC"] = 0
             self.itemPool["HC"] = 0
             self.itemPool["EC"] = 3
-            self.itemPool["EX*"] = 175
+            self.itemPool["EX*"] = 176
             for bonus in [k for k in self.itemPool.keys() if k[:2] == "RB"]:
                 del self.itemPool[bonus]
 

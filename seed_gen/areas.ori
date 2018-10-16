@@ -2366,8 +2366,6 @@ home: ValleyStompless
 home: ValleyMain
 -- anchored at the fast stompless aim position, rocks destroyed
 	pickup: GlideSkillFeather
-	pickup: MistyEntranceStompExp
-	pickup: MistyEntranceTreeExp
 	conn: WilhelmLedge
 		casual-core Wind Glide
 		casual-core Bash
@@ -2377,7 +2375,7 @@ home: ValleyMain
 		casual-core Glide
 		casual-core Bash
 		expert-abilities Dash Ability=6
-	conn: Misty
+	conn: MistyEntrance
 		casual-core Glide Bash
 		expert-dboost Bash DoubleJump Health=4
 		master-core DoubleJump Ability=12
@@ -3272,12 +3270,15 @@ home: MistyPostFeatherTutorial
         master-dboost DoubleJump Health=4
         master-abilities DoubleJump Ability=12
     pickup: MistyKeystone1
-        Free
+        casual-core Free
     conn: MistyPostKeystone1
-        Free
+        casual-core Free
 home: MistyPostKeystone1
     -- anchor point: left of the bird post keystone1 scene transition
 	-- this home has no pickups
+	-- TODO: just making a free link to compile areas, for now
+	conn: MistyPreMortarCorridor
+		casual-core Free
 home: MistyPreKeystone2
     -- anchor point: before the slime and keystone2
 	-- this home has two pickups that come into the logic after going through all of misty
@@ -3291,7 +3292,7 @@ home: MistyPreKeystone2
         master-abilities DoubleJump Ability=12
         master-abilities Ability=12 Health=4
         master-dboost Health=9
-        dbash
+        dbash Bash
 home: MistyPreMortarCorridor
     -- anchor point: right of the slime pre mortar corridor atop the wall
     pickup: MistyMortarCorridorUpperExp
@@ -3302,7 +3303,7 @@ home: MistyPreMortarCorridor
         expert-abilities Dash Ability=6
         master-abilities DoubleJump Ability=12
         gjump Climb ChargeJump Grenade
-		dbash
+		dbash Bash
     pickup: MistyMortarCorridorHiddenExp
         casual-core Glide
 		expert-core DoubleJump Bash
@@ -3316,7 +3317,7 @@ home: MistyPreMortarCorridor
         master-abilities DoubleJump Ability=12
         master-dboost DoubleJump Health=4
 		master-dboost Health=7 Ability=12
-		master-dboost health=10
+		master-dboost Health=10
 	conn: MistyPostMortarCorridor
 		casual-core Glide
 		expert-dboost DoubleJump Dash Ability=3 Health=4
@@ -3349,3 +3350,4 @@ home: MistyPostClimb
 	pickup: MistyKeystone2
 	pickup: MistyAbilityCell
 	pickup: GumonSeal
+	conn: MistyPreKeystone2
