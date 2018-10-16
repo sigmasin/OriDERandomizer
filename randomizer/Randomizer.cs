@@ -21,8 +21,6 @@ public static class Randomizer
 		Randomizer.Returning = false;
 		Randomizer.Sync = false;
 		Randomizer.ForceMaps = false;
-		Randomizer.ForceRandomEscape = false;
-		Randomizer.WhichEscape = -1;
 		Randomizer.SyncMode = 1;
 		Randomizer.StringKeyPickupTypes = new List<string>
 		{
@@ -30,7 +28,8 @@ public static class Randomizer
 			"SH",
 			"NO",
 			"WT",
-			"MU"
+			"MU",
+			"HN"
 		};
 		Randomizer.ShareParams = "";
 		RandomizerChaosManager.initialize();
@@ -84,142 +83,131 @@ public static class Randomizer
 		RandomizerDataMaps.LoadHoruData();
 		RandomizerRebinding.ParseRebinding();
 		RandomizerSettings.ParseSettings();
+		Randomizer.Warping = 0;
 		if (File.Exists("randomizer.dat"))
 		{
-			string[] array = File.ReadAllLines("randomizer.dat");
-			string[] array3 = array[0].Split(new char[]
+			string[] allLines = File.ReadAllLines("randomizer.dat");
+			string[] flagLine = allLines[0].Split(new char[]
 			{
 				'|'
 			});
-			string s = array3[1];
-			string[] array4 = array3[0].Split(new char[]
+			string s = flagLine[1];
+			string[] flags = flagLine[0].Split(new char[]
 			{
 				','
 			});
-			Randomizer.SeedMeta = array[0];
-			foreach (string text in array4)
+			Randomizer.SeedMeta = allLines[0];
+			foreach (string flag in flags)
 			{
-				if (text.ToLower() == "ohko")
+				if (flag.ToLower() == "ohko")
 				{
 					Randomizer.OHKO = true;
 				}
-				if (text.ToLower() == "worldtour")
+				if (flag.ToLower() == "worldtour")
 				{
 					Randomizer.WorldTour = true;
 				}
-				if (text.ToLower().StartsWith("sync"))
+				if (flag.ToLower().StartsWith("sync"))
 				{
 					Randomizer.Sync = true;
-					Randomizer.SyncId = text.Substring(4);
+					Randomizer.SyncId = flag.Substring(4);
 					RandomizerSyncManager.Initialize();
 				}
-				if (text.ToLower().StartsWith("frags/"))
+				if (flag.ToLower().StartsWith("frags/"))
 				{
 					Randomizer.fragsEnabled = true;
-					string[] array6 = text.Split(new char[]
+					string[] fragParams = flag.Split(new char[]
 					{
 						'/'
 					});
-					Randomizer.maxFrags = int.Parse(array6[1]);
-					Randomizer.fragKeyFinish = Randomizer.maxFrags - int.Parse(array6[2]);
+					Randomizer.maxFrags = int.Parse(fragParams[1]);
+					Randomizer.fragKeyFinish = Randomizer.maxFrags - int.Parse(fragParams[2]);
 				}
-				if (text.ToLower().StartsWith("mode="))
+				if (flag.ToLower().StartsWith("mode="))
 				{
-					string text2 = text.Substring(5).ToLower();
+					string modeStr = flag.Substring(5).ToLower();
 					int syncMode;
-					if (text2 == "shared")
+					if (modeStr == "shared")
 					{
 						syncMode = 1;
 					}
-					else if (text2 == "swap")
-					{
-						syncMode = 2;
-					}
-					else if (text2 == "split")
-					{
-						syncMode = 3;
-					}
-					else if (text2 == "none")
+					else if (modeStr == "none")
 					{
 						syncMode = 4;
 					}
 					else
 					{
-						syncMode = int.Parse(text2);
+						syncMode = int.Parse(modeStr);
 					}
 					Randomizer.SyncMode = syncMode;
 				}
-				if (text.ToLower().StartsWith("shared="))
+				if (flag.ToLower().StartsWith("shared="))
 				{
-					Randomizer.ShareParams = text.Substring(7);
+					Randomizer.ShareParams = flag.Substring(7);
 				}
-				if (text.ToLower() == "0xp")
+				if (flag.ToLower() == "0xp")
 				{
 					Randomizer.ZeroXP = true;
 				}
-				if (text.ToLower() == "nobonus")
+				if (flag.ToLower() == "nobonus")
 				{
 					Randomizer.BonusActive = false;
 				}
-				if (text.ToLower() == "nonprogressivemapstones")
+				if (flag.ToLower() == "nonprogressivemapstones")
 				{
 					Randomizer.ProgressiveMapStones = false;
 				}
-				if (text.ToLower() == "forcetrees")
+				if (flag.ToLower() == "forcetrees")
 				{
 					Randomizer.ForceTrees = true;
 				}
-				if (text.ToLower() == "forcemaps")
+				if (flag.ToLower() == "forcemaps")
 				{
 					Randomizer.ForceMaps = true;
 				}
-				if (text.ToLower() == "forcerandomescape")
-				{
-					Randomizer.ForceRandomEscape = true;
-					Randomizer.WhichEscape = Randomizer.ordHash(s) % 2;
-				}
-				if (text.ToLower() == "clues")
+				if (flag.ToLower() == "clues")
 				{
 					Randomizer.CluesMode = true;
 					RandomizerClues.initialize();
 				}
-				if (text.ToLower() == "entrance")
+				if (flag.ToLower() == "entrance")
 				{
 					Randomizer.Entrance = true;
 				}
-				if (text.ToLower() == "open")
+				if (flag.ToLower() == "open")
 				{
 					Randomizer.OpenMode = true;
 				}
 			}
-			for (int i = 1; i < array.Length; i++)
+			for (int i = 1; i < allLines.Length; i++)
 			{
-				string[] array2 = array[i].Split(new char[]
+				string[] lineParts = allLines[i].Split(new char[]
 				{
 					'|'
 				});
-				int num2;
-				int.TryParse(array2[0], out num2);
-				if (Randomizer.StringKeyPickupTypes.Contains(array2[1]))
+				int coords;
+				int.TryParse(lineParts[0], out coords);
+				if (Randomizer.StringKeyPickupTypes.Contains(lineParts[1]))
 				{
-					Randomizer.Table[num2] = new RandomizerAction(array2[1], array2[2]);
+					Randomizer.Table[coords] = new RandomizerAction(lineParts[1], lineParts[2]);
 				}
 				else
 				{
-					int num3;
-					int.TryParse(array2[2], out num3);
-					if (array2[1] == "EN")
+					int id;
+					int.TryParse(lineParts[2], out id);
+					if (lineParts[1] == "EN")
 					{
-						int num4;
-						int.TryParse(array2[3], out num4);
-						Randomizer.DoorTable[num2] = new Vector3((float)num3, (float)num4);
+						// door entries are coord|EN|targetX|targetY
+						int doorY;
+						int.TryParse(lineParts[3], out doorY);
+						Randomizer.DoorTable[coords] = new Vector3((float)id, (float)doorY);
 					}
 					else
 					{
-						Randomizer.Table[num2] = new RandomizerAction(array2[1], num3);
-						if (Randomizer.CluesMode && array4[1] == "EV" && num2 % 2 == 0)
+						Randomizer.Table[coords] = new RandomizerAction(lineParts[1], id);
+						if (Randomizer.CluesMode && lineParts[1] == "EV" && id % 2 == 0)
 						{
-							RandomizerClues.AddClue(array4[3], num2 / 2);
+							RandomizerClues.AddClue(lineParts[3], id / 2);
 						}
 					}
 				}
@@ -247,6 +235,7 @@ public static class Randomizer
 		{
 			Items.NightBerry.transform.position = new Vector3(-755f, -400f);
 		}
+		Randomizer.LastReturnPoint = Characters.Sein.Position;
 		Randomizer.Returning = true;
 		Characters.Sein.Position = new Vector3(189f, -215f);
 		Characters.Sein.Speed = new Vector3(0f, 0f);
@@ -347,19 +336,6 @@ public static class Randomizer
 	public static void Update()
 	{
 		Randomizer.UpdateMessages();
-		if (Characters.Sein && Randomizer.ForceRandomEscape && Scenes.Manager.CurrentScene != null)
-		{
-			if (!RandomizerBonus.GinsoEscapeDone() && Scenes.Manager.CurrentScene.Scene == "kuroMomentTreeDuplicate")
-			{
-				Characters.Sein.Inventory.SetRandomizerItem(300, 1);
-				Randomizer.MessageQueue.Enqueue("*Ginso Escape Cleared*");
-			}
-			if (!RandomizerBonus.ForlornEscapeDone() && Scenes.Manager.CurrentScene.Scene == "forlornRuinsNestC")
-			{
-				Characters.Sein.Inventory.SetRandomizerItem(301, 1);
-				Randomizer.MessageQueue.Enqueue("#Forlorn Escape Cleared#");
-			}
-		}
 		if (Characters.Sein && SkillTreeManager.Instance != null && SkillTreeManager.Instance.NavigationManager.IsVisible)
 		{
 			if (Characters.Sein.IsSuspended)
@@ -389,7 +365,12 @@ public static class Randomizer
 			{
 				RandomizerSyncManager.Update();
 			}
-			if (Randomizer.Returning)
+			if (Randomizer.Warping > 0) {
+				Characters.Sein.Position = Randomizer.WarpTarget;
+				Characters.Ori.Position = Randomizer.WarpTarget;
+				Randomizer.Warping -= 1;
+			}
+			else if (Randomizer.Returning)
 			{
 				Characters.Sein.Position = new Vector3(189f, -215f);
 				if (Scenes.Manager.CurrentScene.Scene == "sunkenGladesRunaway")
@@ -529,35 +510,6 @@ public static class Randomizer
 				text += "$Relics (" + relics.ToString() + "/11)$ ";
 			}
 		}
-		if (Randomizer.ForceRandomEscape)
-		{
-			if (Randomizer.WhichEscape == 0)
-			{
-				if (RandomizerBonus.GinsoEscapeDone())
-				{
-					text += "$Escape: Ginso$ ";
-				}
-				else
-				{
-					text += "Escape: Ginso ";
-				}
-			}
-			else if (Randomizer.WhichEscape == 1)
-			{
-				if (RandomizerBonus.ForlornEscapeDone())
-				{
-					text += "$Escape: Forlorn$ ";
-				}
-				else
-				{
-					text += "Escape: Forlorn ";
-				}
-			}
-			else
-			{
-				text += "Escape: Horu ";
-			}
-		}
 		text = text + "Total (" + RandomizerBonus.GetPickupCount().ToString() + "/256)\n";
 		if (Randomizer.CluesMode)
 		{
@@ -684,19 +636,6 @@ public static class Randomizer
 		{
 			Randomizer.MessageQueue.Enqueue("Maps (" + RandomizerBonus.MapStoneProgression().ToString() + "/9)");
 			return false;
-		}
-		if (Randomizer.ForceRandomEscape)
-		{
-			if (Randomizer.WhichEscape == 0 && !RandomizerBonus.GinsoEscapeDone())
-			{
-				Randomizer.MessageQueue.Enqueue("*Do Ginso Escape*");
-				return false;
-			}
-			if (Randomizer.WhichEscape == 1 && !RandomizerBonus.ForlornEscapeDone())
-			{
-				Randomizer.MessageQueue.Enqueue("#Do Forlorn Escape#");
-				return false;
-			}
 		}
 		return true;
 	}
@@ -915,12 +854,6 @@ public static class Randomizer
 	// Token: 0x04003248 RID: 12872
 	public static bool ForceMaps;
 
-	// Token: 0x04003249 RID: 12873
-	public static bool ForceRandomEscape;
-
-	// Token: 0x0400324A RID: 12874
-	public static int WhichEscape;
-
 	// Token: 0x0400324B RID: 12875
 	public static bool Entrance;
 
@@ -975,4 +908,12 @@ public static class Randomizer
 
 	// Token: 0x04003304 RID: 13060
 	public static int LockedCount;
+
+	public static Vector3 LastReturnPoint;
+
+	public static Vector3 LastSoulLink;
+
+	public static Vector3 WarpTarget;
+
+	public static int Warping;
 }

@@ -3,6 +3,8 @@ from collections import OrderedDict
 _glades = [
 	("Unusually Sharp Spike", "Twice as deadly as the other spikes."),
 	("Discarded Leaf", "Seems to have three puncture holes in it."),
+	("Glades Relic 3", "Description of the relic."),
+	("Glades Relic 4", "Description of the relic."),
 ]
 
 _grove = [
@@ -20,9 +22,9 @@ _grotto = [
 ]
 
 _blackroot = [
-	("Blackroot Relic 1", "Description of the relic."),
-	("Blackroot Relic 2", "Description of the relic."),
-	("Blackroot Relic 3", "Description of the relic."),
+	("Sol's Defused Grenade", "Safe enough to use as a ball! ...right?"),
+	("Torn Friendship Bracelet", "A bond that was made would soon be dissolved."),
+	("Eki's Boots of Fleetness", "He moved swifter than the wind."),
 	("Blackroot Relic 4", "Description of the relic."),
 ]
 
@@ -55,7 +57,7 @@ _misty = [
 ]
 
 _forlorn = [
-	("Forlorn Relic 1", "Description of the relic."),
+	("Furtive Fritter", "A favorite snack of the Gumon."),
 	("Forlorn Relic 2", "Description of the relic."),
 	("Forlorn Relic 3", "Description of the relic."),
 	("Forlorn Relic 4", "Description of the relic."),
