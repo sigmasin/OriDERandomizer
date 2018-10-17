@@ -479,6 +479,7 @@ home: DeathGauntletDoor
 		standard-dboost WallJump Health=4
 		standard-dboost Climb Health=4
 		standard-dboost Bash Health=4
+		master-core DoubleJump
 	conn: DeathGauntletMoat
 		casual-core Water
 		expert-dboost Health=5
