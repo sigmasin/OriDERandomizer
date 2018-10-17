@@ -54,13 +54,13 @@ public static class RandomizerBonus
             if (!flag)
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
-                Randomizer.showHint("Spirit Flame Upgrade (" + RandomizerBonus.SpiritFlameLevel().ToString() + ")");
+                Randomizer.showHint("Damage Upgrade (" + RandomizerBonus.SpiritFlameLevel().ToString() + ")");
                 return;
             }
             if (RandomizerBonus.SpiritFlameLevel() > 0)
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, -1);
-                Randomizer.showHint("Spirit Flame Upgrade (" + RandomizerBonus.SpiritFlameLevel().ToString() + ")");
+                Randomizer.showHint("Damage Upgrade (" + RandomizerBonus.SpiritFlameLevel().ToString() + ")");
                 return;
             }
             break;

@@ -760,7 +760,7 @@ public static class Randomizer
 			if (!Characters.Sein.Controller.CanMove && Scenes.Manager.CurrentScene.Scene == "moonGrottoGumosHideoutB")
 			{
 				Randomizer.LockedCount++;
-				if (Randomizer.LockedCount >= 3)
+				if (Randomizer.LockedCount >= 4)
 				{
 					GameController.Instance.ResetInputLocks();
 				}
