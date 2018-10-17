@@ -523,6 +523,7 @@ home: DeathGauntlet
 		expert-core DoubleJump Climb ChargeFlame
 		expert-core Bash Climb ChargeFlame
 		expert-core Bash Grenade ChargeFlame
+		master-core DoubleJump ChargeFlame
 		master-abilities ChargeFlame Ability=3
 	conn: MoonGrotto
 		casual-core WallJump
@@ -570,6 +571,7 @@ home: SpiritCaverns
 		casual-core ChargeJump
 		casual-core Bash
 		standard-core WallJump DoubleJump
+		expert-core Climb DoubleJump
 	conn: UpperSpiritCaverns
 		casual-core WallJump
 		casual-core Climb
