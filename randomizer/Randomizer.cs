@@ -81,6 +81,7 @@ public static class Randomizer
 		RandomizerDataMaps.LoadGinsoData();
 		RandomizerDataMaps.LoadForlornData();
 		RandomizerDataMaps.LoadHoruData();
+		RandomizerPlantManager.Initialize();
 		RandomizerRebinding.ParseRebinding();
 		RandomizerSettings.ParseSettings();
 		Randomizer.Warping = 0;
