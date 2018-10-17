@@ -232,13 +232,13 @@ class SeedGenerator:
         self.forcedAssignments = self.preplaced
         self.forceAssignedLocs = set()
         self.itemPool = OrderedDict([
-            ("EX1", 1), ("EX*", 99), ("KS", 40), ("MS", 11), ("AC", 33),
+            ("EX1", 1), ("EX*", 101), ("KS", 40), ("MS", 11), ("AC", 33),
             ("EC", 14), ("HC", 12), ("WallJump", 1), ("ChargeFlame", 1),
             ("Dash", 1), ("Stomp", 1), ("DoubleJump", 1), ("Glide", 1),
             ("Bash", 1), ("Climb", 1), ("Grenade", 1), ("ChargeJump", 1),
             ("GinsoKey", 1), ("ForlornKey", 1), ("HoruKey", 1), ("Water", 1),
             ("Wind", 1), ("Warmth", 1), ("RB0", 3), ("RB1", 3), ("RB6", 3),
-            ("RB8", 1), ("RB9", 1), ("RB10", 1), ("RB11", 1), ("RB12", 1),
+            ("RB8", 0), ("RB9", 1), ("RB10", 1), ("RB11", 1), ("RB12", 1),
             ("RB13", 3), ("RB15", 3), ("WaterVeinShard", 0),
             ("GumonSealShard", 0), ("SunstoneShard", 0), ("TPForlorn", 1),
             ("TPGrotto", 1), ("TPSorrow", 1), ("TPGrove", 1), ("TPSwamp", 1),
@@ -257,7 +257,7 @@ class SeedGenerator:
             self.itemPool["AC"] = 0
             self.itemPool["HC"] = 0
             self.itemPool["EC"] = 3
-            self.itemPool["EX*"] = 175
+            self.itemPool["EX*"] = 176
             for bonus in [k for k in self.itemPool.keys() if k[:2] == "RB"]:
                 del self.itemPool[bonus]
 
@@ -664,6 +664,37 @@ class SeedGenerator:
                 break
         del locationsToAssign[i]
 
+    def form_areas(self):
+        tree = get_areas()
+        root = tree.getroot()
+        logic_paths = [lp.value for lp in self.params.logic_paths]
+        for child in root:
+            area = Area(child.attrib["name"])
+            self.areasRemaining.append(child.attrib["name"])
+            for location in child.find("Locations"):
+                loc = Location(
+                    int(location.find("X").text),
+                    int(location.find("Y").text),
+                    area.name,
+                    location.find("Item").text,
+                    int(location.find("Difficulty").text),
+                    location.find("Zone").text
+                )
+                area.add_location(loc)
+            if child.find("Connections") is None:
+                log.error("No connections found for child %s, (name %s)" % (child, child.attrib["name"]))
+            for conn in child.find("Connections"):
+                connection = Connection(conn.find("Home").attrib["name"], conn.find("Target").attrib["name"], self)
+                entranceConnection = conn.find("Entrance")
+                if self.var(Variation.ENTRANCE_SHUFFLE) and entranceConnection is not None:
+                    continue
+                for req in conn.find("Requirements"):
+                    if req.attrib["mode"] in logic_paths:
+                        connection.add_requirements(req.text.split('+'), self.difficultyMap[req.attrib["mode"]])
+                if connection.get_requirements():
+                    area.add_connection(connection)
+            self.areas[area.name] = area
+
     def connect_doors(self, door1, door2, requirements=["Free"]):
         connection1 = Connection(door1.name, door2.name, self)
         connection1.add_requirements(requirements, 1)
@@ -894,33 +925,7 @@ class SeedGenerator:
         mapstoneCount = 0
         plants = []
 
-        tree = get_areas()
-        root = tree.getroot()
-        logic_paths = [lp.value for lp in self.params.logic_paths]
-        for child in root:
-            area = Area(child.attrib["name"])
-            self.areasRemaining.append(child.attrib["name"])
-
-            for location in child.find("Locations"):
-                loc = Location(int(location.find("X").text), int(location.find("Y").text), area.name,
-                               location.find("Item").text, int(
-                                   location.find("Difficulty").text),
-                               location.find("Zone").text)
-                area.add_location(loc)
-            if child.find("Connections") is None:
-                log.error("No connections found for child %s, (name %s)" % (child, child.attrib["name"]))
-            for conn in child.find("Connections"):
-                connection = Connection(conn.find("Home").attrib["name"], conn.find("Target").attrib["name"], self)
-                entranceConnection = conn.find("Entrance")
-                if self.var(Variation.ENTRANCE_SHUFFLE) and entranceConnection is not None:
-                    continue
-                for req in conn.find("Requirements"):
-                    if req.attrib["mode"] in logic_paths:
-                        connection.add_requirements(req.text.split('+'), self.difficultyMap[req.attrib["mode"]])
-                if connection.get_requirements():
-                    area.add_connection(connection)
-            self.areas[area.name] = area
-
+        self.form_areas()
         # flags line
         self.outputStr += (self.params.flag_line(self.verbose_paths) + "\n")
 
@@ -1141,3 +1146,80 @@ class SeedGenerator:
             self.outputStr += event
 
         return (self.outputStr, spoilerStr)
+
+    def do_reachability_analysis(self, params):
+        self.params = params
+        self.preplaced = {}
+        self.playerID = 1
+        self.mapQueue = {}
+        self.reservedLocations = []
+        self.doorQueue = {}
+        self.random = random.Random()
+        # items = ["WallJump", "Dash", "ChargeFlame", "DoubleJump", "Bash", "Stomp", "Grenade", "Glide", "Climb", "ChargeJump"]
+        items = ["Glide", "Stomp", "DoubleJump", "ChargeFlame", "WallJump"]
+        # items = ["Climb", "WallJump"]
+        # items = ["Grenade", "ChargeFlame"]
+        # items = ["Bash", "ChargeJump", "Glide", "DoubleJump"]
+        # items = ["ChargeJump", "Stomp"]
+        fill_items = ["WallJump", "Dash", "TPGrove", "ChargeFlame", "TPSwamp", "TPGrotto", "DoubleJump", "GinsoKey", "Bash", "TPGinso", "Water", "Stomp", "Grenade", "Glide", "TPValley", "Climb", "ForlornKey", "TPForlorn", "Wind", "ChargeJump", "TPSorrow", "HoruKey", "TPHoru"]
+        for item in fill_items:
+            if item not in items:
+                items.append(item)
+        scores = []
+        for item in items:
+            self.reset()
+            score = 0
+            for item2 in items:
+                print(item + " " + item2)
+                self.inventory["KS"] = 40
+                self.inventory["MS"] = 11
+                self.inventory["AC"] = 33
+                self.inventory["EC"] = 15
+                self.inventory["HC"] = 15
+                self.costs["KS"] = 0
+                self.costs["MS"] = 0
+                self.costs["AC"] = 0
+                self.costs["EC"] = 0
+                self.costs["HC"] = 0
+                self.form_areas()
+                self.reservedLocations = []
+                self.inventory[item2] = 1
+                self.costs[item2] = 0
+                self.inventory[item] = 0
+                self.costs[item] = 1
+                self.reach_area("SunkenGladesRunaway")
+                if self.var(Variation.OPEN_MODE):
+                    self.reach_area("GladesMain")
+                    for connection in list(self.areas["SunkenGladesRunaway"].connections):
+                        if connection.target == "GladesMain":
+                            self.areas["SunkenGladesRunaway"].remove_connection(connection)
+                locations = 1
+                while locations > 0:
+                    opening = True
+                    while opening:
+                        (opening, keys, mapstones) = self.open_free_connections()
+                        for connection in self.connectionQueue:
+                            self.areas[connection[0]].remove_connection(connection[1])
+                        self.connectionQueue = []
+                    locationsToAssign, reset_loop = self.get_all_accessible_locations()
+                    locations = len(locationsToAssign)
+                self.inventory[item] = 1
+                self.costs[item] = 0
+                locations = 1
+                while locations > 0:
+                    opening = True
+                    while opening:
+                        (opening, keys, mapstones) = self.open_free_connections()
+                        for connection in self.connectionQueue:
+                            self.areas[connection[0]].remove_connection(connection[1])
+                        self.connectionQueue = []
+                    locationsToAssign, reset_loop = self.get_all_accessible_locations()
+                    string = ""
+                    for loc in locationsToAssign:
+                        string += loc.to_string() + " "
+                    print(string)
+                    locations = len(locationsToAssign)
+                    score += locations
+            scores.append(score)
+        for item, score in zip(items, scores):
+            print("%s %d" % (item, score))
