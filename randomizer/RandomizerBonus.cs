@@ -414,7 +414,7 @@ public static class RandomizerBonus
     // Token: 0x06003783 RID: 14211 RVA: 0x000E3050 File Offset: 0x000E1250
     public static void Update()
     {
-        Characters.Sein.Mortality.Health.GainHealth((float)RandomizerBonus.HealthRegeneration() * (Characters.Sein.PlayerAbilities.HealthEfficiency.HasAbility ? 0.00224f : 0.00112f));
+        Characters.Sein.Mortality.Health.GainHealth((float)(RandomizerBonus.HealthRegeneration() + ((!Characters.Sein.PlayerAbilities.HealthMarkers.HasAbility) ? 0 : 3)) * (Characters.Sein.PlayerAbilities.HealthEfficiency.HasAbility ? 0.00224f : 0.00112f));
         if (RandomizerBonus.Bleeding() > 0)
         {
             Characters.Sein.Mortality.Health.LoseHealth((float)RandomizerBonus.Bleeding() * 0.0008f);
@@ -423,7 +423,7 @@ public static class RandomizerBonus
         {
             Characters.Sein.Mortality.DamageReciever.OnRecieveDamage(new Damage(1f, default(Vector2), default(Vector3), DamageType.Water, null));
         }
-        Characters.Sein.Energy.Gain((float)RandomizerBonus.EnergyRegeneration() * (Characters.Sein.PlayerAbilities.EnergyEfficiency.HasAbility ? 0.00042f : 0.00028f));
+        Characters.Sein.Energy.Gain((float)(RandomizerBonus.EnergyRegeneration() + ((!Characters.Sein.PlayerAbilities.EnergyMarkers.HasAbility) ? 0 : 3)) * (Characters.Sein.PlayerAbilities.EnergyEfficiency.HasAbility ? 0.00042f : 0.00028f));
         RandomizerBonusSkill.Update();
     }
 

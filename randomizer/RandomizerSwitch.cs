@@ -37,7 +37,7 @@ public static class RandomizerSwitch
         {
             return;
         }
-        int num = Value * ((!Characters.Sein.PlayerAbilities.SoulEfficiency.HasAbility) ? 1 : 2);
+        int num = (int)((float)Value * ((!Characters.Sein.PlayerAbilities.SoulEfficiency.HasAbility) ? ((!Characters.Sein.PlayerAbilities.AbilityMarkers.HasAbility) ? 1f : 1.5f) : 2f));
         if (RandomizerBonus.ExpEfficiency())
         {
             num *= 2;
