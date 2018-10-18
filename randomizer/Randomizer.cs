@@ -66,6 +66,8 @@ public static class Randomizer
 		Randomizer.MoveNightBerry = false;
 		Randomizer.WarpCheckCounter = 60;
 		Randomizer.LockedCount = 0;
+		Randomizer.HotCold = false;
+		Randomizer.HotColdItems = new Dictionary<int, Vector3>();
 		Randomizer.HoruScene = "";
 		Randomizer.HoruMap = new Hashtable();
 		Randomizer.HoruMap["mountHoruStomperSystemsR"] = 60;
@@ -81,6 +83,7 @@ public static class Randomizer
 		RandomizerDataMaps.LoadGinsoData();
 		RandomizerDataMaps.LoadForlornData();
 		RandomizerDataMaps.LoadHoruData();
+		RandomizerColorManager.Initialize();
 		RandomizerPlantManager.Initialize();
 		RandomizerRebinding.ParseRebinding();
 		RandomizerSettings.ParseSettings();
@@ -179,6 +182,14 @@ public static class Randomizer
 				{
 					Randomizer.OpenMode = true;
 				}
+				if (flag.ToLower().StartsWith("hotcold="))
+				{
+					Randomizer.HotCold = true;
+					Randomizer.HotColdTypes = flag.Substring(8).Split(new char[]
+					{
+						'+'
+					});
+				}
 			}
 			for (int i = 1; i < allLines.Length; i++)
 			{
@@ -188,6 +199,10 @@ public static class Randomizer
 				});
 				int coords;
 				int.TryParse(lineParts[0], out coords);
+				if (Randomizer.HotCold && Math.Abs(coords) > 100 && Array.IndexOf<string>(Randomizer.HotColdTypes, lineParts[1]) >= 0)
+				{
+					Randomizer.HotColdItems.Add(coords, Randomizer.HashKeyToVector(coords));
+				}
 				if (Randomizer.StringKeyPickupTypes.Contains(lineParts[1]))
 				{
 					Randomizer.Table[coords] = new RandomizerAction(lineParts[1], lineParts[2]);
@@ -241,6 +256,10 @@ public static class Randomizer
 		Characters.Sein.Position = new Vector3(189f, -215f);
 		Characters.Sein.Speed = new Vector3(0f, 0f);
 		Characters.Ori.Position = new Vector3(190f, -210f);
+		Scenes.Manager.SetTargetPositions(Characters.Sein.Position);
+		Scenes.Manager.EnableDisabledScenesAtPosition(false);
+		UI.Cameras.Current.CameraTarget.SetTargetPosition(Characters.Sein.Position);
+		UI.Cameras.Current.MoveCameraToTargetInstantly(true);
 		int value = World.Events.Find(Randomizer.MistySim).Value;
 		if (value != 1 && value != 8)
 		{
@@ -307,6 +326,10 @@ public static class Randomizer
 		if (Randomizer.Table.ContainsKey(num))
 		{
 			RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num], num, true);
+			if (Randomizer.HotCold && Randomizer.HotColdItems.ContainsKey(num))
+			{
+				Randomizer.HotColdItems.Remove(num);
+			}
 			return;
 		}
 		for (int i = -1; i <= 1; i++)
@@ -316,6 +339,10 @@ public static class Randomizer
 				if (Randomizer.Table.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * i + j)))
 				{
 					RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num + (int)Randomizer.GridFactor * (10000 * i + j)], num + (int)Randomizer.GridFactor * (10000 * i + j), true);
+					if (Randomizer.HotCold && Randomizer.HotColdItems.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * i + j)))
+					{
+						Randomizer.HotColdItems.Remove(num + (int)Randomizer.GridFactor * (10000 * i + j));
+					}
 					return;
 				}
 			}
@@ -327,6 +354,10 @@ public static class Randomizer
 				if (Randomizer.Table.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * k + l)))
 				{
 					RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num + (int)Randomizer.GridFactor * (10000 * k + l)], num + (int)Randomizer.GridFactor * (10000 * k + l), true);
+					if (Randomizer.HotCold && Randomizer.HotColdItems.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * k + l)))
+					{
+						Randomizer.HotColdItems.Remove(num + (int)Randomizer.GridFactor * (10000 * k + l));
+					}
 					return;
 				}
 			}
@@ -351,6 +382,10 @@ public static class Randomizer
 		if (Characters.Sein && !Characters.Sein.IsSuspended)
 		{
 			RandomizerBonus.Update();
+			if (!Randomizer.ColorShift)
+			{
+				RandomizerColorManager.UpdateColors();
+			}
 			Randomizer.UpdateHoruCutsceneStatus();
 			Randomizer.WarpCheck();
 			if (Randomizer.MoveNightBerry && Items.NightBerry != null)
@@ -417,6 +452,10 @@ public static class Randomizer
 			if (Randomizer.ColorShift)
 			{
 				obj = "Color shift disabled";
+			}
+			else
+			{
+				Randomizer.changeColor();
 			}
 			Randomizer.ColorShift = !Randomizer.ColorShift;
 			Randomizer.MessageQueue.Enqueue(obj);
@@ -774,6 +813,26 @@ public static class Randomizer
 		}
 	}
 
+	public static Vector3 HashKeyToVector(int key)
+	{
+		if (key >= 0)
+		{
+			if (key % 10000 > 5000)
+			{
+				return new Vector3((float)key / 10000f, -(float)(10000 - key % 10000));
+			}
+			return new Vector3((float)key / 10000f, (float)(key % 10000));
+		}
+		else
+		{
+			if (-key % 10000 > 5000)
+			{
+				return new Vector3((float)key / 10000f, (float)(10000 - key % 10000));
+			}
+			return new Vector3((float)key / 10000f, -(float)(key % 10000));
+		}
+	}
+
 	// Token: 0x0400322E RID: 12846
 	public static Hashtable Table;
 
@@ -917,4 +976,10 @@ public static class Randomizer
 	public static Vector3 WarpTarget;
 
 	public static int Warping;
+
+	public static bool HotCold;
+
+	public static string[] HotColdTypes;
+
+	public static Dictionary<int, Vector3> HotColdItems;
 }
