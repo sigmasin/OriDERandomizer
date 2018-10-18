@@ -257,7 +257,6 @@ public static class Randomizer
 		Characters.Sein.Speed = new Vector3(0f, 0f);
 		Characters.Ori.Position = new Vector3(190f, -210f);
 		Scenes.Manager.SetTargetPositions(Characters.Sein.Position);
-		Scenes.Manager.EnableDisabledScenesAtPosition(false);
 		UI.Cameras.Current.CameraTarget.SetTargetPosition(Characters.Sein.Position);
 		UI.Cameras.Current.MoveCameraToTargetInstantly(true);
 		int value = World.Events.Find(Randomizer.MistySim).Value;
@@ -827,9 +826,9 @@ public static class Randomizer
 		{
 			if (-key % 10000 > 5000)
 			{
-				return new Vector3((float)key / 10000f, (float)(10000 - key % 10000));
+				return new Vector3((float)key / 10000f, (float)(10000 - -(float)key % 10000));
 			}
-			return new Vector3((float)key / 10000f, -(float)(key % 10000));
+			return new Vector3((float)key / 10000f, -(float)(-(float)key % 10000));
 		}
 	}
 

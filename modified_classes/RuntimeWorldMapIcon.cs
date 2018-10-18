@@ -18,7 +18,7 @@ public class RuntimeWorldMapIcon
 	// Token: 0x06002CD8 RID: 11480
 	public bool IsVisible(AreaMapUI areaMap)
 	{
-		return (!this.Area.IsHidden(this.Position) || GameWorld.Instance.IconRevealed(this.Guid) || areaMap.DebugNavigation.UndiscoveredMapVisible) && Characters.Sein.PlayerAbilities.MapMarkers.HasAbility;
+		return Characters.Sein.PlayerAbilities.MapMarkers.HasAbility;
 	}
 
 	// Token: 0x06002CD9 RID: 11481 RVA: 0x000C3830 File Offset: 0x000C1A30
