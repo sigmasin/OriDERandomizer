@@ -1238,8 +1238,8 @@
   <Area name="WaterVein">
     <Locations>
       <Location>
-        <X>0</X>
-        <Y>0</Y>
+        <X>500</X>
+        <Y>-248</Y>
         <Item>EVGinsoKey</Item>
         <Difficulty>1</Difficulty>
         <Zone>Grotto</Zone>
@@ -1658,8 +1658,8 @@
   <Area name="GinsoEscapeExit">
     <Locations>
       <Location>
-        <X>0</X>
-        <Y>4</Y>
+        <X>548</X>
+        <Y>952</Y>
         <Item>EVWater</Item>
         <Difficulty>2</Difficulty>
         <Zone>Ginso</Zone>
@@ -2042,8 +2042,8 @@
   <Area name="FinalEscape">
     <Locations>
       <Location>
-        <X>0</X>
-        <Y>20</Y>
+        <X>-240</X>
+        <Y>512</Y>
         <Item>EVWarmth</Item>
         <Difficulty>0</Difficulty>
         <Zone>Horu</Zone>
@@ -2054,8 +2054,8 @@
   <Area name="HoruR1">
     <Locations>
       <Location>
-        <X>0</X>
-        <Y>60</Y>
+        <X>264</X>
+        <Y>380</Y>
         <Item>CS</Item>
         <Difficulty>6</Difficulty>
         <Zone>Horu</Zone>
@@ -2066,8 +2066,8 @@
   <Area name="HoruR2">
     <Locations>
       <Location>
-        <X>0</X>
-        <Y>64</Y>
+        <X>172</X>
+        <Y>288</Y>
         <Item>CS</Item>
         <Difficulty>6</Difficulty>
         <Zone>Horu</Zone>
@@ -2078,8 +2078,8 @@
   <Area name="HoruR3">
     <Locations>
       <Location>
-        <X>0</X>
-        <Y>68</Y>
+        <X>304</X>
+        <Y>304</Y>
         <Item>CS</Item>
         <Difficulty>7</Difficulty>
         <Zone>Horu</Zone>
@@ -2090,8 +2090,8 @@
   <Area name="HoruR4">
     <Locations>
       <Location>
-        <X>0</X>
-        <Y>72</Y>
+        <X>216</X>
+        <Y>192</Y>
         <Item>CS</Item>
         <Difficulty>6</Difficulty>
         <Zone>Horu</Zone>
@@ -2102,8 +2102,8 @@
   <Area name="HoruL1">
     <Locations>
       <Location>
-        <X>0</X>
-        <Y>76</Y>
+        <X>-92</X>
+        <Y>376</Y>
         <Item>CS</Item>
         <Difficulty>6</Difficulty>
         <Zone>Horu</Zone>
@@ -2114,8 +2114,8 @@
   <Area name="HoruL2">
     <Locations>
       <Location>
-        <X>0</X>
-        <Y>80</Y>
+        <X>-20</X>
+        <Y>276</Y>
         <Item>CS</Item>
         <Difficulty>6</Difficulty>
         <Zone>Horu</Zone>
@@ -2126,8 +2126,8 @@
   <Area name="HoruL3">
     <Locations>
       <Location>
-        <X>0</X>
-        <Y>84</Y>
+        <X>-164</X>
+        <Y>336</Y>
         <Item>CS</Item>
         <Difficulty>7</Difficulty>
         <Zone>Horu</Zone>
@@ -2138,8 +2138,8 @@
   <Area name="HoruL4">
     <Locations>
       <Location>
-        <X>0</X>
-        <Y>88</Y>
+        <X>-96</X>
+        <Y>152</Y>
         <Item>CS</Item>
         <Difficulty>6</Difficulty>
         <Zone>Horu</Zone>
@@ -2251,30 +2251,6 @@
         <Item>EX200</Item>
         <Difficulty>1</Difficulty>
         <Zone>Sorrow</Zone>
-      </Location>
-    </Locations>
-    <Connections/>
-  </Area>
-  <Area name="MistyEntranceStompExp">
-    <Locations>
-      <Location>
-        <X>-678</X>
-        <Y>-29</Y>
-        <Item>EX100</Item>
-        <Difficulty>1</Difficulty>
-        <Zone>Misty</Zone>
-      </Location>
-    </Locations>
-    <Connections/>
-  </Area>
-  <Area name="MistyEntranceTreeExp">
-    <Locations>
-      <Location>
-        <X>-822</X>
-        <Y>-9</Y>
-        <Item>EX100</Item>
-        <Difficulty>1</Difficulty>
-        <Zone>Misty</Zone>
       </Location>
     </Locations>
     <Connections/>
@@ -2546,8 +2522,8 @@
   <Area name="ForlornEscape">
     <Locations>
       <Location>
-        <X>0</X>
-        <Y>12</Y>
+        <X>-732</X>
+        <Y>-236</Y>
         <Item>EVWind</Item>
         <Difficulty>6</Difficulty>
         <Zone>Forlorn</Zone>
@@ -2846,8 +2822,8 @@
   <Area name="Sunstone">
     <Locations>
       <Location>
-        <X>0</X>
-        <Y>16</Y>
+        <X>-560</X>
+        <Y>600</Y>
         <Item>EVHoruKey</Item>
         <Difficulty>4</Difficulty>
         <Zone>Sorrow</Zone>
@@ -2867,6 +2843,30 @@
     </Locations>
     <Connections/>
   </Area>
+  <Area name="MistyEntranceStompExp">
+    <Locations>
+      <Location>
+        <X>-678</X>
+        <Y>-29</Y>
+        <Item>EX100</Item>
+        <Difficulty>1</Difficulty>
+        <Zone>Misty</Zone>
+      </Location>
+    </Locations>
+    <Connections/>
+  </Area>
+  <Area name="MistyEntranceTreeExp">
+    <Locations>
+      <Location>
+        <X>-822</X>
+        <Y>-9</Y>
+        <Item>EX100</Item>
+        <Difficulty>1</Difficulty>
+        <Zone>Misty</Zone>
+      </Location>
+    </Locations>
+    <Connections/>
+  </Area>
   <Area name="MistyFrogNookExp">
     <Locations>
       <Location>
@@ -2879,12 +2879,12 @@
     </Locations>
     <Connections/>
   </Area>
-  <Area name="MistyAbilityCell">
+  <Area name="MistyKeystone1">
     <Locations>
       <Location>
-        <X>-1075</X>
-        <Y>-2</Y>
-        <Item>AC</Item>
+        <X>-1076</X>
+        <Y>32</Y>
+        <Item>KS</Item>
         <Difficulty>1</Difficulty>
         <Zone>Misty</Zone>
       </Location>
@@ -2915,13 +2915,13 @@
     </Locations>
     <Connections/>
   </Area>
-  <Area name="MistyKeystone1">
+  <Area name="MistyPlant">
     <Locations>
       <Location>
-        <X>-1076</X>
-        <Y>32</Y>
-        <Item>KS</Item>
-        <Difficulty>1</Difficulty>
+        <X>-1102</X>
+        <Y>-67</Y>
+        <Item>Plant</Item>
+        <Difficulty>2</Difficulty>
         <Zone>Misty</Zone>
       </Location>
     </Locations>
@@ -2939,13 +2939,13 @@
     </Locations>
     <Connections/>
   </Area>
-  <Area name="MistyPlant">
+  <Area name="MistyKeystone3">
     <Locations>
       <Location>
-        <X>-1102</X>
-        <Y>-67</Y>
-        <Item>Plant</Item>
-        <Difficulty>2</Difficulty>
+        <X>-912</X>
+        <Y>-36</Y>
+        <Item>KS</Item>
+        <Difficulty>1</Difficulty>
         <Zone>Misty</Zone>
       </Location>
     </Locations>
@@ -2975,18 +2975,6 @@
     </Locations>
     <Connections/>
   </Area>
-  <Area name="MistyKeystone3">
-    <Locations>
-      <Location>
-        <X>-912</X>
-        <Y>-36</Y>
-        <Item>KS</Item>
-        <Difficulty>1</Difficulty>
-        <Zone>Misty</Zone>
-      </Location>
-    </Locations>
-    <Connections/>
-  </Area>
   <Area name="MistyKeystone4">
     <Locations>
       <Location>
@@ -2999,18 +2987,6 @@
     </Locations>
     <Connections/>
   </Area>
-  <Area name="GumonSeal">
-    <Locations>
-      <Location>
-        <X>0</X>
-        <Y>8</Y>
-        <Item>EVForlornKey</Item>
-        <Difficulty>3</Difficulty>
-        <Zone>Misty</Zone>
-      </Location>
-    </Locations>
-    <Connections/>
-  </Area>
   <Area name="MistyGrenade">
     <Locations>
       <Location>
@@ -3018,6 +2994,42 @@
         <Y>-39</Y>
         <Item>EX200</Item>
         <Difficulty>5</Difficulty>
+        <Zone>Misty</Zone>
+      </Location>
+    </Locations>
+    <Connections/>
+  </Area>
+  <Area name="MistyKeystone2">
+    <Locations>
+      <Location>
+        <X>-1043</X>
+        <Y>-8</Y>
+        <Item>KS</Item>
+        <Difficulty>1</Difficulty>
+        <Zone>Misty</Zone>
+      </Location>
+    </Locations>
+    <Connections/>
+  </Area>
+  <Area name="MistyAbilityCell">
+    <Locations>
+      <Location>
+        <X>-1075</X>
+        <Y>-2</Y>
+        <Item>AC</Item>
+        <Difficulty>1</Difficulty>
+        <Zone>Misty</Zone>
+      </Location>
+    </Locations>
+    <Connections/>
+  </Area>
+  <Area name="GumonSeal">
+    <Locations>
+      <Location>
+        <X>-720</X>
+        <Y>-24</Y>
+        <Item>EVForlornKey</Item>
+        <Difficulty>3</Difficulty>
         <Zone>Misty</Zone>
       </Location>
     </Locations>
@@ -3169,13 +3181,9 @@
       </Connection>
       <Connection>
         <Home name="SunkenGladesRunaway"/>
-        <Target name="Forlorn"/>
+        <Target name="ForlornTeleporter"/>
         <Requirements>
-          <Requirement mode="casual-dboost">ForlornKey+TPForlorn+WallJump+DoubleJump+ChargeJump</Requirement>
-          <Requirement mode="casual-dboost">ForlornKey+TPForlorn+WallJump+DoubleJump+Bash</Requirement>
-          <Requirement mode="casual-dboost">ForlornKey+TPForlorn+Glide+ChargeJump</Requirement>
-          <Requirement mode="casual-dboost">ForlornKey+TPForlorn+Grenade+Bash</Requirement>
-          <Requirement mode="expert-dboost">ForlornKey+TPForlorn+Glide+Bash</Requirement>
+          <Requirement mode="casual-core">ForlornKey+TPForlorn</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -4431,6 +4439,7 @@
           <Requirement mode="expert-core">DoubleJump+WallJump</Requirement>
           <Requirement mode="expert-core">DoubleJump+Climb</Requirement>
           <Requirement mode="master-core">ChargeJump</Requirement>
+          <Requirement mode="insane">WallJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -6807,28 +6816,91 @@
         <Home name="R1"/>
         <Target name="HoruR1HangingExp"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">DoubleJump+Glide</Requirement>
+          <Requirement mode="standard-core">DoubleJump+WallJump</Requirement>
+          <Requirement mode="standard-core">DoubleJump+Climb</Requirement>
+          <Requirement mode="standard-core">ChargeJump+Climb+Glide</Requirement>
+          <Requirement mode="standard-core">Climb+Bash+Grenade</Requirement>
+          <Requirement mode="standard-abilities">Dash+WallJump+AC+AC+AC</Requirement>
+          <Requirement mode="standard-abilities">Dash+Climb+AC+AC+AC</Requirement>
+          <Requirement mode="expert-core">DoubleJump</Requirement>
+          <Requirement mode="expert-core">ChargeJump+Climb</Requirement>
+          <Requirement mode="expert-core">Bash+Grenade</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC</Requirement>
+          <Requirement mode="expert-dboost">ChargeJump+Glide+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">Dash+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-core">WallJump+Glide</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="R1"/>
+        <Target name="HoruR1MapstoneSecret"/>
+        <Requirements>
+          <Requirement mode="casual-core">Glide</Requirement>
+          <Requirement mode="standard-core">Dash+DoubleJump</Requirement>
+          <Requirement mode="expert-core">Bash+Grenade</Requirement>
+          <Requirement mode="expert-core">DoubleJump</Requirement>
+          <Requirement mode="expert-dboost">Dash+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC+EC</Requirement>
+          <Requirement mode="master-dboost">HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-dboost">HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HoruR1MapstoneSecret">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="HoruR1MapstoneSecret"/>
         <Target name="HoruR1Mapstone"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="R1"/>
-        <Target name="HoruR1EnergyCell"/>
+        <Home name="HoruR1MapstoneSecret"/>
+        <Target name="HoruR1CutsceneTrigger"/>
+        <Requirements>
+          <Requirement mode="casual-core">Bash+ChargeJump+Glide</Requirement>
+          <Requirement mode="casual-core">Bash+ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade+Glide</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade+DoubleJump</Requirement>
+          <Requirement mode="expert-core">Bash+DoubleJump+Glide</Requirement>
+          <Requirement mode="expert-dboost">ChargeJump+DoubleJump+Glide+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">ChargeJump+Dash+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+EC</Requirement>
+          <Requirement mode="dbash">Bash+Glide</Requirement>
+          <Requirement mode="dbash">Bash+DoubleJump</Requirement>
+          <Requirement mode="dbash">Bash+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="master-core">Bash+DoubleJump</Requirement>
+          <Requirement mode="master-dboost">DoubleJump+Dash+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+EC+EC+EC+EC</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HoruR1CutsceneTrigger">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="HoruR1CutsceneTrigger"/>
+        <Target name="HoruR1"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="R1"/>
-        <Target name="HoruR1"/>
+        <Home name="HoruR1CutsceneTrigger"/>
+        <Target name="HoruR1EnergyCell"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
+          <Requirement mode="casual-core">Climb+Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
+          <Requirement mode="casual-core">WallJump+Glide</Requirement>
+          <Requirement mode="standard-core">Bash+Grenade</Requirement>
+          <Requirement mode="expert-dboost">WallJump+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-core">DoubleJump</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -6878,7 +6950,21 @@
         <Home name="R2"/>
         <Target name="HoruR2"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+Glide+DoubleJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+Glide+DoubleJump+Climb</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+Glide+DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+Glide+DoubleJump+Grenade</Requirement>
+          <Requirement mode="standard-core">Stomp+Bash+Glide+WallJump</Requirement>
+          <Requirement mode="standard-core">Stomp+Bash+Glide+Climb</Requirement>
+          <Requirement mode="standard-core">Stomp+Bash+Glide+ChargeJump</Requirement>
+          <Requirement mode="standard-core">Stomp+Bash+Glide+Grenade</Requirement>
+          <Requirement mode="expert-abilities">Stomp+Bash+DoubleJump+WallJump</Requirement>
+          <Requirement mode="expert-abilities">Stomp+Bash+DoubleJump+Climb</Requirement>
+          <Requirement mode="expert-abilities">Stomp+Bash+DoubleJump+ChargeJump</Requirement>
+          <Requirement mode="expert-abilities">Stomp+Bash+DoubleJump+Grenade</Requirement>
+          <Requirement mode="master-core">Stomp+Bash</Requirement>
+          <Requirement mode="master-dboost">Stomp+DoubleJump+ChargeJump+Grenade+Dash+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+EC+EC+EC</Requirement>
+          <Requirement mode="master-dboost">Stomp+DoubleJump+ChargeJump+Grenade+Dash+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+EC+EC+EC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -7133,10 +7219,10 @@
           <Requirement mode="casual-core">Stomp+WallJump+ChargeJump</Requirement>
           <Requirement mode="casual-core">Stomp+Climb+ChargeJump</Requirement>
           <Requirement mode="casual-core">Stomp+Climb+DoubleJump</Requirement>
-          <Requirement mode="expert-core">Bash+WallJump</Requirement>
-          <Requirement mode="expert-core">Bash+Climb+ChargeJump</Requirement>
-          <Requirement mode="expert-core">Bash+Climb+DoubleJump</Requirement>
-          <Requirement mode="expert-dboost">Bash+ChargeJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-lure">Bash+WallJump</Requirement>
+          <Requirement mode="expert-lure">Bash+Climb+ChargeJump</Requirement>
+          <Requirement mode="expert-lure">Bash+Climb+DoubleJump</Requirement>
+          <Requirement mode="expert-lure">Bash+ChargeJump+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -7167,7 +7253,7 @@
           <Requirement mode="casual-core">Grenade+Water</Requirement>
           <Requirement mode="master-dboost">Grenade+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="master-dboost">Grenade+Bash+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="master-core">Grenade+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">Grenade+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -7217,10 +7303,16 @@
           <Requirement mode="casual-core">Bash+Climb</Requirement>
           <Requirement mode="casual-core">Bash+ChargeJump</Requirement>
           <Requirement mode="casual-core">Bash+Grenade</Requirement>
-          <Requirement mode="expert-dboost">Stomp+ChargeJump+DoubleJump+WallJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">WallJump+DoubleJump+ChargeJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
-          <Requirement mode="master-core">Stomp+WallJump+DoubleJump+ChargeJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Stomp+WallJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="gjump">Climb+ChargeJump+Grenade+Stomp+DoubleJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="gjump">Climb+ChargeJump+Grenade+Stomp+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="gjump">Climb+ChargeJump+Grenade+Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="gjump">Climb+ChargeJump+Grenade+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="gjump">Climb+ChargeJump+Grenade+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">WallJump+DoubleJump+ChargeJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC</Requirement>
+          <Requirement mode="master-dboost">Climb+DoubleJump+ChargeJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC</Requirement>
+          <Requirement mode="master-dboost">WallJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -7234,8 +7326,8 @@
         <Requirements>
           <Requirement mode="casual-core">Bash</Requirement>
           <Requirement mode="casual-core">Glide</Requirement>
-          <Requirement mode="expert-abilities">Dash+EC+EC+EC</Requirement>
-          <Requirement mode="expert-abilities">Dash+DoubleJump</Requirement>
+          <Requirement mode="expert-abilities">Dash+EC+EC+EC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="expert-abilities">Dash+DoubleJump+AC+AC+AC+AC+AC+AC</Requirement>
           <Requirement mode="master-core">DoubleJump</Requirement>
         </Requirements>
       </Connection>
@@ -7298,6 +7390,7 @@
           <Requirement mode="standard-core">Stomp+WallJump</Requirement>
           <Requirement mode="standard-core">Stomp+Climb</Requirement>
           <Requirement mode="standard-core">Stomp+DoubleJump</Requirement>
+          <Requirement mode="insane">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -7373,20 +7466,6 @@
       </Connection>
       <Connection>
         <Home name="ValleyMain"/>
-        <Target name="MistyEntranceStompExp"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="ValleyMain"/>
-        <Target name="MistyEntranceTreeExp"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="ValleyMain"/>
         <Target name="WilhelmLedge"/>
         <Requirements>
           <Requirement mode="casual-core">Wind+Glide</Requirement>
@@ -7406,25 +7485,11 @@
       </Connection>
       <Connection>
         <Home name="ValleyMain"/>
-        <Target name="Misty"/>
+        <Target name="MistyEntrance"/>
         <Requirements>
           <Requirement mode="casual-core">Glide+Bash</Requirement>
           <Requirement mode="expert-dboost">Bash+DoubleJump+HC+HC+HC+HC</Requirement>
           <Requirement mode="master-core">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="ValleyMain"/>
-        <Target name="ForlornOuterDoor"/>
-        <Requirements>
-          <Requirement mode="casual-core">ForlornKey</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="ValleyMain"/>
-        <Target name="RightForlorn"/>
-        <Requirements>
-          <Requirement mode="glitched">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -7437,13 +7502,6 @@
       <Connection>
         <Home name="ValleyMain"/>
         <Target name="LowerValleyPlantApproach"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="ValleyMain"/>
-        <Target name="ValleyForlornApproach"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
@@ -7467,13 +7525,6 @@
     <Connections>
       <Connection>
         <Home name="LowerValley"/>
-        <Target name="ValleyThreeBirdAbilityCell"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="LowerValley"/>
         <Target name="LowerValleyMapstone"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
@@ -7488,27 +7539,30 @@
       </Connection>
       <Connection>
         <Home name="LowerValley"/>
-        <Target name="ValleyMainFACS"/>
-        <Requirements>
-          <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
-          <Requirement mode="expert-core">Bash+Glide</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="LowerValley"/>
         <Target name="LowerValleyPlantApproach"/>
         <Requirements>
           <Requirement mode="casual-core">Bash+DoubleJump</Requirement>
           <Requirement mode="casual-core">Bash+Glide</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
           <Requirement mode="casual-core">ChargeJump+DoubleJump</Requirement>
           <Requirement mode="casual-core">ChargeJump+Glide</Requirement>
+          <Requirement mode="casual-core">Glide+Wind</Requirement>
+          <Requirement mode="standard-lure">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="LowerValley"/>
-        <Target name="ValleyEntry"/>
+        <Target name="ValleyThreeBirdArea"/>
         <Requirements>
-          <Requirement mode="casual-core">Bash</Requirement>
+          <Requirement mode="casual-core">Glide+Wind</Requirement>
+          <Requirement mode="casual-core">Glide+DoubleJump</Requirement>
+          <Requirement mode="standard-core">Dash+DoubleJump</Requirement>
+          <Requirement mode="standard-core">Dash+Glide</Requirement>
+          <Requirement mode="standard-lure">Bash+Glide</Requirement>
+          <Requirement mode="standard-lure">Bash+DoubleJump</Requirement>
+          <Requirement mode="standard-dboost">HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">HC+HC</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -7527,37 +7581,61 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="OutsideForlorn">
+  <Area name="ValleyThreeBirdArea">
     <Locations/>
     <Connections>
       <Connection>
-        <Home name="OutsideForlorn"/>
-        <Target name="OutsideForlornTreeExp"/>
+        <Home name="ValleyThreeBirdArea"/>
+        <Target name="ValleyThreeBirdAbilityCell"/>
         <Requirements>
-          <Requirement mode="casual-core">WallJump</Requirement>
-          <Requirement mode="casual-core">Climb</Requirement>
-          <Requirement mode="casual-core">ChargeJump</Requirement>
-          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">Glide+Wind</Requirement>
+          <Requirement mode="casual-core">Bash</Requirement>
+          <Requirement mode="casual-core">Climb+ChargeJump+Glide</Requirement>
+          <Requirement mode="casual-core">Climb+ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="standard-core">Dash+DoubleJump</Requirement>
+          <Requirement mode="gjump">Climb+ChargeJump+Grenade</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="OutsideForlorn"/>
-        <Target name="OutsideForlornWaterExp"/>
+        <Home name="ValleyThreeBirdArea"/>
+        <Target name="ValleyMainFACS"/>
         <Requirements>
-          <Requirement mode="casual-core">Water</Requirement>
-          <Requirement mode="expert-dboost">HC+HC+HC+HC</Requirement>
-          <Requirement mode="expert-dboost">Stomp</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="OutsideForlorn"/>
-        <Target name="OutsideForlornCliff"/>
-        <Requirements>
-          <Requirement mode="casual-core">WallJump+ChargeJump</Requirement>
           <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
-          <Requirement mode="casual-core">Bash+Glide</Requirement>
-          <Requirement mode="casual-core">Bash+DoubleJump</Requirement>
-          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyThreeBirdArea"/>
+        <Target name="ValleyEntry"/>
+        <Requirements>
+          <Requirement mode="casual-core">Glide</Requirement>
+          <Requirement mode="casual-core">DoubleJump</Requirement>
+          <Requirement mode="casual-core">Bash</Requirement>
+          <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
+          <Requirement mode="standard-abilities">Dash+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyThreeBirdArea"/>
+        <Target name="LowerValley"/>
+        <Requirements>
+          <Requirement mode="casual-core">Glide+Wind</Requirement>
+          <Requirement mode="casual-core">Glide+DoubleJump</Requirement>
+          <Requirement mode="standard-core">Dash+DoubleJump</Requirement>
+          <Requirement mode="standard-core">Dash+Glide</Requirement>
+          <Requirement mode="standard-abilities">Dash+AC+AC+AC</Requirement>
+          <Requirement mode="standard-dboost">HC+HC+HC+HC</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyThreeBirdArea"/>
+        <Target name="ValleyForlornApproach"/>
+        <Requirements>
+          <Requirement mode="casual-core">Stomp</Requirement>
+          <Requirement mode="standard-core">Climb+ChargeJump</Requirement>
+          <Requirement mode="expert-lure">Bash</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -7565,6 +7643,13 @@
   <Area name="ValleyForlornApproach">
     <Locations/>
     <Connections>
+      <Connection>
+        <Home name="ValleyForlornApproach"/>
+        <Target name="ValleyForlornApproachMapstone"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
       <Connection>
         <Home name="ValleyForlornApproach"/>
         <Target name="ValleyForlornApproachGrenade"/>
@@ -7577,6 +7662,26 @@
         <Target name="ValleyMap"/>
         <Requirements>
           <Requirement mode="casual-core">Bash+MS</Requirement>
+          <Requirement mode="expert-core">ChargeFlame+ChargeJump+MS</Requirement>
+          <Requirement mode="expert-core">ChargeFlame+DoubleJump+MS</Requirement>
+          <Requirement mode="expert-abilities">ChargeFlame+Dash+AC+AC+AC+MS</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyForlornApproach"/>
+        <Target name="OutsideForlornCliff"/>
+        <Requirements>
+          <Requirement mode="casual-core">Stomp</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyForlornApproach"/>
+        <Target name="ValleyThreeBirdArea"/>
+        <Requirements>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="master-core">Bash</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -7588,32 +7693,85 @@
         <Home name="OutsideForlornCliff"/>
         <Target name="OutsideForlornCliffExp"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="OutsideForlornCliff"/>
-        <Target name="ValleyForlornApproachMapstone"/>
-        <Requirements>
-          <Requirement mode="casual-core">Bash+Stomp</Requirement>
-          <Requirement mode="master-core">Bash+</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="OutsideForlornCliff"/>
-        <Target name="LowerValley"/>
-        <Requirements>
-          <Requirement mode="casual-core">Bash+ChargeJump+Stomp</Requirement>
-          <Requirement mode="dbash">Bash+Stomp</Requirement>
-          <Requirement mode="master-core">Bash+</Requirement>
+          <Requirement mode="casual-core">WallJump</Requirement>
+          <Requirement mode="casual-core">Climb</Requirement>
+          <Requirement mode="casual-core">DoubleJump</Requirement>
+          <Requirement mode="casual-core">Glide</Requirement>
+          <Requirement mode="casual-core">Dash</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="OutsideForlornCliff"/>
         <Target name="ValleyForlornApproach"/>
         <Requirements>
-          <Requirement mode="casual-core">Bash+Stomp</Requirement>
-          <Requirement mode="master-core">Bash+</Requirement>
+          <Requirement mode="casual-core">Stomp+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Climb+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Stomp+ChargeJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+Grenade</Requirement>
+          <Requirement mode="master-core">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="OutsideForlornCliff"/>
+        <Target name="OutsideForlorn"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="OutsideForlorn">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="OutsideForlorn"/>
+        <Target name="OutsideForlornTreeExp"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump</Requirement>
+          <Requirement mode="casual-core">Climb</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="master-core">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="OutsideForlorn"/>
+        <Target name="OutsideForlornWaterExp"/>
+        <Requirements>
+          <Requirement mode="casual-core">Water</Requirement>
+          <Requirement mode="expert-dboost">HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">Stomp+HC+HC</Requirement>
+          <Requirement mode="master-dboost">AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="OutsideForlorn"/>
+        <Target name="OutsideForlornCliff"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump+ChargeJump</Requirement>
+          <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
+          <Requirement mode="casual-core">Bash+Glide</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="master-core">ChargeJump+DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="OutsideForlorn"/>
+        <Target name="ForlornOuterDoor"/>
+        <Requirements>
+          <Requirement mode="casual-core">ForlornKey</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="OutsideForlorn"/>
+        <Target name="RightForlorn"/>
+        <Requirements>
+          <Requirement mode="glitched">Free</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -7628,6 +7786,13 @@
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="ForlornOuterDoor"/>
+        <Target name="OutsideForlorn"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="ForlornInnerDoor">
@@ -7635,63 +7800,401 @@
     <Connections>
       <Connection>
         <Home name="ForlornInnerDoor"/>
-        <Target name="Forlorn"/>
+        <Target name="ForlornOuterDoor"/>
         <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornInnerDoor"/>
+        <Target name="ForlornOrbPossession"/>
+        <Requirements>
+          <Requirement mode="casual-core">DoubleJump+Open</Requirement>
+          <Requirement mode="casual-core">Glide+Climb+Open</Requirement>
+          <Requirement mode="casual-core">Glide+WallJump+Open</Requirement>
+          <Requirement mode="casual-core">ChargeJump+Open</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade+Open</Requirement>
+          <Requirement mode="standard-core">Dash+Climb+Open</Requirement>
+          <Requirement mode="standard-core">Dash+WallJump+Open</Requirement>
+          <Requirement mode="expert-core">Open</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornInnerDoor"/>
+        <Target name="ForlornEntranceExpArea"/>
+        <Requirements>
+          <Requirement mode="casual-core">ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">ChargeJump+Climb</Requirement>
+          <Requirement mode="casual-core">ChargeJump+DoubleJump</Requirement>
           <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
-          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">Climb+DoubleJump</Requirement>
           <Requirement mode="casual-core">Bash+Grenade</Requirement>
-          <Requirement mode="expert-core">Free</Requirement>
+          <Requirement mode="expert-dboost">WallJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-dboost">WallJump+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornInnerDoor"/>
+        <Target name="ForlornGravityRoom"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump+DoubleJump+Glide</Requirement>
+          <Requirement mode="casual-core">Climb+DoubleJump+Glide</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">ChargeJump+Glide</Requirement>
+          <Requirement mode="casual-core">ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="standard-core">Dash+DoubleJump+WallJump</Requirement>
+          <Requirement mode="standard-core">Dash+DoubleJump+Climb</Requirement>
+          <Requirement mode="standard-dboost">ChargeJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="standard-dboost">WallJump+DoubleJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="standard-dboost">Climb+DoubleJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="standard-abilities">ChargeJump+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="expert-core">ChargeJump</Requirement>
+          <Requirement mode="expert-dboost">WallJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-dboost">WallJump+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
-  <Area name="Forlorn">
+  <Area name="ForlornOrbPossession">
     <Locations/>
     <Connections>
       <Connection>
-        <Home name="Forlorn"/>
+        <Home name="ForlornOrbPossession"/>
+        <Target name="ForlornEntranceExpArea"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornOrbPossession"/>
+        <Target name="ForlornHiddenSpiderExpArea"/>
+        <Requirements>
+          <Requirement mode="casual-core">Bash</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="expert-core">WallJump+DoubleJump</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornOrbPossession"/>
+        <Target name="ForlornKeystone1Area"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornOrbPossession"/>
+        <Target name="ForlornKeystone2Area"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornOrbPossession"/>
+        <Target name="ForlornKeystone3Area"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornOrbPossession"/>
+        <Target name="ForlornKeystone4Area"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornOrbPossession"/>
+        <Target name="ForlornPlantArea"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornOrbPossession"/>
+        <Target name="ForlornMapArea"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornOrbPossession"/>
+        <Target name="ForlornKeyDoor"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornOrbPossession"/>
+        <Target name="ForlornInnerDoor"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="ForlornGravityRoom">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="ForlornGravityRoom"/>
+        <Target name="ForlornHiddenSpiderExpArea"/>
+        <Requirements>
+          <Requirement mode="casual-core">Bash</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="standard-core">WallJump+DoubleJump</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornGravityRoom"/>
+        <Target name="ForlornKeystone1Area"/>
+        <Requirements>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">DoubleJump+Bash</Requirement>
+          <Requirement mode="expert-lure">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornGravityRoom"/>
+        <Target name="ForlornKeystone2Area"/>
+        <Requirements>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">WallJump+DoubleJump+Glide</Requirement>
+          <Requirement mode="casual-core">Climb+DoubleJump+Glide</Requirement>
+          <Requirement mode="standard-core">Dash+DoubleJump+WallJump</Requirement>
+          <Requirement mode="standard-core">Dash+DoubleJump+Climb</Requirement>
+          <Requirement mode="standard-core">Dash+Glide+WallJump</Requirement>
+          <Requirement mode="standard-core">Dash+Glide+Climb</Requirement>
+          <Requirement mode="master-lure">Bash</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornGravityRoom"/>
+        <Target name="ForlornMapArea"/>
+        <Requirements>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">Climb+DoubleJump</Requirement>
+          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
+          <Requirement mode="master-core">DoubleJump</Requirement>
+          <Requirement mode="master-lure">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornGravityRoom"/>
+        <Target name="ForlornInnerDoor"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump+DoubleJump+Glide</Requirement>
+          <Requirement mode="casual-core">Climb+DoubleJump+Glide</Requirement>
+          <Requirement mode="casual-core">Bash</Requirement>
+          <Requirement mode="casual-core">ChargeJump+Glide</Requirement>
+          <Requirement mode="casual-core">ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="standard-dboost">HC+HC+HC+HC</Requirement>
+          <Requirement mode="standard-core">Dash+DoubleJump</Requirement>
+          <Requirement mode="standard-abilities">ChargeJump+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="expert-core">ChargeJump</Requirement>
+          <Requirement mode="master-dboost">HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="ForlornMapArea">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="ForlornMapArea"/>
+        <Target name="ForlornMap"/>
+        <Requirements>
+          <Requirement mode="casual-core">MS</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornMapArea"/>
+        <Target name="ForlornTeleporter"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Climb+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">ChargeJump+Glide</Requirement>
+          <Requirement mode="casual-core">ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="standard-abilities">WallJump+Dash+Glide+AC+AC+AC</Requirement>
+          <Requirement mode="standard-abilities">Climb+Dash+Glide+AC+AC+AC</Requirement>
+          <Requirement mode="standard-abilities">ChargeJump+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="standard-dboost">ChargeJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-core">DoubleJump</Requirement>
+          <Requirement mode="master-lure">Bash</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornMapArea"/>
+        <Target name="ForlornKeystone4Area"/>
+        <Requirements>
+          <Requirement mode="casual-core">ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">ChargeJump+Climb</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade+Climb</Requirement>
+          <Requirement mode="master-core">ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="master-core">Bash+Grenade+DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornMapArea"/>
+        <Target name="ForlornPlantArea"/>
+        <Requirements>
+          <Requirement mode="casual-core">ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">ChargeJump+Climb</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade+Climb</Requirement>
+          <Requirement mode="master-core">ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="master-core">Bash+Grenade+DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornMapArea"/>
+        <Target name="ForlornKeyDoor"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornMapArea"/>
+        <Target name="ForlornGravityRoom"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="ForlornTeleporter">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="ForlornTeleporter"/>
+        <Target name="ForlornOrbPossession"/>
+        <Requirements>
+          <Requirement mode="casual-core">Open</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornTeleporter"/>
+        <Target name="ForlornMapArea"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump</Requirement>
+          <Requirement mode="casual-core">Climb</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">DoubleJump</Requirement>
+          <Requirement mode="casual-core">Glide</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornTeleporter"/>
+        <Target name="ForlornKeystone3Area"/>
+        <Requirements>
+          <Requirement mode="casual-core">ChargeJump+Glide</Requirement>
+          <Requirement mode="casual-core">ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade+Climb</Requirement>
+          <Requirement mode="standard-abilities">ChargeJump+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="standard-dboost">ChargeJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC+Climb</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC+WallJump</Requirement>
+          <Requirement mode="master-lure">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornTeleporter"/>
+        <Target name="ForlornGravityRoom"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="ForlornEntranceExpArea">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="ForlornEntranceExpArea"/>
         <Target name="ForlornEntranceExp"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
+    </Connections>
+  </Area>
+  <Area name="ForlornHiddenSpiderExpArea">
+    <Locations/>
+    <Connections>
       <Connection>
-        <Home name="Forlorn"/>
+        <Home name="ForlornHiddenSpiderExpArea"/>
         <Target name="ForlornHiddenSpiderExp"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
+    </Connections>
+  </Area>
+  <Area name="ForlornKeystone1Area">
+    <Locations/>
+    <Connections>
       <Connection>
-        <Home name="Forlorn"/>
+        <Home name="ForlornKeystone1Area"/>
         <Target name="ForlornKeystone1"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
+    </Connections>
+  </Area>
+  <Area name="ForlornKeystone2Area">
+    <Locations/>
+    <Connections>
       <Connection>
-        <Home name="Forlorn"/>
+        <Home name="ForlornKeystone2Area"/>
         <Target name="ForlornKeystone2"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
+    </Connections>
+  </Area>
+  <Area name="ForlornKeystone3Area">
+    <Locations/>
+    <Connections>
       <Connection>
-        <Home name="Forlorn"/>
+        <Home name="ForlornKeystone3Area"/>
         <Target name="ForlornKeystone3"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
+    </Connections>
+  </Area>
+  <Area name="ForlornKeystone4Area">
+    <Locations/>
+    <Connections>
       <Connection>
-        <Home name="Forlorn"/>
+        <Home name="ForlornKeystone4Area"/>
         <Target name="ForlornKeystone4"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
+    </Connections>
+  </Area>
+  <Area name="ForlornPlantArea">
+    <Locations/>
+    <Connections>
       <Connection>
-        <Home name="Forlorn"/>
+        <Home name="ForlornPlantArea"/>
         <Target name="ForlornPlant"/>
         <Requirements>
           <Requirement mode="casual-core">ChargeFlame</Requirement>
@@ -7699,28 +8202,78 @@
           <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
+    </Connections>
+  </Area>
+  <Area name="ForlornKeyDoor">
+    <Locations/>
+    <Connections>
       <Connection>
-        <Home name="Forlorn"/>
-        <Target name="ForlornMap"/>
+        <Home name="ForlornKeyDoor"/>
+        <Target name="ForlornLaserRoom"/>
         <Requirements>
-          <Requirement mode="casual-core">MS</Requirement>
+          <Requirement mode="casual-core">KS+KS+KS+KS</Requirement>
         </Requirements>
       </Connection>
+    </Connections>
+  </Area>
+  <Area name="ForlornLaserRoom">
+    <Locations/>
+    <Connections>
       <Connection>
-        <Home name="Forlorn"/>
-        <Target name="RightForlorn"/>
-        <Requirements>
-          <Requirement mode="casual-core">Glide+Stomp+Bash+KS+KS+KS+KS+WallJump</Requirement>
-          <Requirement mode="casual-core">Glide+Stomp+Bash+KS+KS+KS+KS+Climb</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="Forlorn"/>
-        <Target name="OutsideForlorn"/>
+        <Home name="ForlornLaserRoom"/>
+        <Target name="ForlornEscape"/>
         <Requirements>
           <Requirement mode="casual-core">WallJump</Requirement>
-          <Requirement mode="casual-core">Climb</Requirement>
-          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
+          <Requirement mode="casual-core">Climb+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="master-lure">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ForlornLaserRoom"/>
+        <Target name="ForlornStompDoor"/>
+        <Requirements>
+          <Requirement mode="casual-core">Stomp+ChargeJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">Stomp+WallJump+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Climb+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Stomp+WallJump+Glide</Requirement>
+          <Requirement mode="casual-core">Stomp+Climb+Glide</Requirement>
+          <Requirement mode="casual-core">Stomp+WallJump+Dash</Requirement>
+          <Requirement mode="casual-core">Stomp+Climb+Dash</Requirement>
+          <Requirement mode="expert-core">Stomp+WallJump</Requirement>
+          <Requirement mode="expert-core">Stomp+Climb</Requirement>
+          <Requirement mode="master-lure">Stomp+Bash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="ForlornStompDoor">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="ForlornStompDoor"/>
+        <Target name="RightForlorn"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump+Bash</Requirement>
+          <Requirement mode="casual-core">Climb+Bash</Requirement>
+          <Requirement mode="casual-core">ChargeJump+Bash</Requirement>
+          <Requirement mode="casual-core">DoubleJump+Bash</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">ChargeJump+Glide</Requirement>
+          <Requirement mode="casual-core">ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="standard-abilities">ChargeJump+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="standard-abilities">WallJump+DoubleJump+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="standard-abilities">Climb+DoubleJump+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="standard-dboost">WallJump+DoubleJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="standard-dboost">Climb+DoubleJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">WallJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">Climb+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-dboost">WallJump+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">Climb+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-lure">Bash</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -7731,13 +8284,6 @@
       <Connection>
         <Home name="RightForlorn"/>
         <Target name="RightForlornHealthCell"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="RightForlorn"/>
-        <Target name="ForlornEscape"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
@@ -7796,6 +8342,8 @@
           <Requirement mode="casual-core">Stomp</Requirement>
           <Requirement mode="standard-lure">HoruKey</Requirement>
           <Requirement mode="standard-core">Climb+ChargeJump</Requirement>
+          <Requirement mode="master-core">Bash</Requirement>
+          <Requirement mode="glitched">ChargeJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -7805,6 +8353,8 @@
           <Requirement mode="casual-core">Stomp</Requirement>
           <Requirement mode="standard-lure">HoruKey</Requirement>
           <Requirement mode="standard-core">Climb+ChargeJump</Requirement>
+          <Requirement mode="master-core">Bash</Requirement>
+          <Requirement mode="glitched">ChargeJump</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -8720,53 +9270,177 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="Misty">
+  <Area name="MistyEntrance">
     <Locations/>
     <Connections>
       <Connection>
-        <Home name="Misty"/>
+        <Home name="MistyEntrance"/>
+        <Target name="MistyEntranceStompExp"/>
+        <Requirements>
+          <Requirement mode="casual-core">Stomp</Requirement>
+          <Requirement mode="standard-lure">Bash</Requirement>
+          <Requirement mode="expert-abilities">ChargeJump+Climb+Dash+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MistyEntrance"/>
+        <Target name="MistyEntranceTreeExp"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
+          <Requirement mode="casual-core">DoubleJump+Climb</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="expert-core">Bash</Requirement>
+          <Requirement mode="expert-core">WallJump</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-core">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MistyEntrance"/>
+        <Target name="MistyPostFeatherTutorial"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump+Bash+Glide</Requirement>
+          <Requirement mode="casual-core">Bash+Glide+Climb</Requirement>
+          <Requirement mode="casual-core">DoubleJump+Bash+Glide</Requirement>
+          <Requirement mode="standard-core">Bash+Glide</Requirement>
+          <Requirement mode="standard-abilities">DoubleJump+Glide+Climb+ChargeJump+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="expert-core">DoubleJump+Glide+Climb+ChargeJump</Requirement>
+          <Requirement mode="expert-dboost">WallJump+ChargeJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">DoubleJump+ChargeJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-abilities">DoubleJump+Glide+ChargeJump+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC+EC+EC+EC+EC</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="gjump">Climb+ChargeJump+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="MistyPostFeatherTutorial">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="MistyPostFeatherTutorial"/>
         <Target name="MistyFrogNookExp"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">WallJump+DoubleJump+Glide</Requirement>
+          <Requirement mode="casual-core">DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="casual-core">DoubleJump+Bash+Grenade</Requirement>
+          <Requirement mode="standard-core">Bash</Requirement>
+          <Requirement mode="standard-core">Climb+ChargeJump</Requirement>
+          <Requirement mode="standard-core">WallJump+DoubleJump+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="expert-dboost">WallJump+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="expert-dboost">WallJump+Dash+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">DoubleJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="Misty"/>
-        <Target name="MistyAbilityCell"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="Misty"/>
-        <Target name="MistyMortarCorridorUpperExp"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="Misty"/>
-        <Target name="MistyMortarCorridorHiddenExp"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="Misty"/>
+        <Home name="MistyPostFeatherTutorial"/>
         <Target name="MistyKeystone1"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="Misty"/>
-        <Target name="ClimbSkillTree"/>
+        <Home name="MistyPostFeatherTutorial"/>
+        <Target name="MistyPostKeystone1"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
+    </Connections>
+  </Area>
+  <Area name="MistyPostKeystone1">
+    <Locations/>
+    <Connections>
       <Connection>
-        <Home name="Misty"/>
+        <Home name="MistyPostKeystone1"/>
+        <Target name="MistyPreMortarCorridor"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="MistyPreKeystone2">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="MistyPreKeystone2"/>
+        <Target name="MistyPostKeystone1"/>
+        <Requirements>
+          <Requirement mode="casual-core">Bash+Glide</Requirement>
+          <Requirement mode="expert-core">Glide</Requirement>
+          <Requirement mode="expert-dboost">HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">DoubleJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">Glide+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">Dash+AC+AC+AC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-dboost">HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="MistyPreMortarCorridor">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="MistyPreMortarCorridor"/>
+        <Target name="MistyMortarCorridorUpperExp"/>
+        <Requirements>
+          <Requirement mode="casual-core">Bash+Glide</Requirement>
+          <Requirement mode="standard-core">Bash+Grenade</Requirement>
+          <Requirement mode="expert-dboost">Bash+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">ChargeJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="gjump">Climb+ChargeJump+Grenade</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MistyPreMortarCorridor"/>
+        <Target name="MistyMortarCorridorHiddenExp"/>
+        <Requirements>
+          <Requirement mode="casual-core">Glide</Requirement>
+          <Requirement mode="expert-core">DoubleJump+Bash</Requirement>
+          <Requirement mode="expert-core">DoubleJump+Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="expert-dboost">DoubleJump+ChargeJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">Bash+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">Dash+AC+AC+AC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">Bash+Grenade+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-core">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-core">Bash</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">DoubleJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-dboost">HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MistyPreMortarCorridor"/>
+        <Target name="MistyPostMortarCorridor"/>
+        <Requirements>
+          <Requirement mode="casual-core">Glide</Requirement>
+          <Requirement mode="expert-dboost">DoubleJump+Dash+AC+AC+AC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">DoubleJump+ChargeJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-core">DoubleJump+Bash+Grenade</Requirement>
+          <Requirement mode="master-core">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">HC+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="MistyPostMortarCorridor">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="MistyPostMortarCorridor"/>
         <Target name="MistyPlant"/>
         <Requirements>
           <Requirement mode="casual-core">ChargeFlame</Requirement>
@@ -8775,7 +9449,7 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="Misty"/>
+        <Home name="MistyPostMortarCorridor"/>
         <Target name="MistyPostClimb"/>
         <Requirements>
           <Requirement mode="casual-core">Climb+DoubleJump</Requirement>
@@ -8783,14 +9457,14 @@
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="Misty"/>
-        <Target name="Forlorn"/>
+        <Home name="MistyPostMortarCorridor"/>
+        <Target name="ForlornTeleporter"/>
         <Requirements>
           <Requirement mode="glitched">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="Misty"/>
+        <Home name="MistyPostMortarCorridor"/>
         <Target name="RightForlorn"/>
         <Requirements>
           <Requirement mode="glitched">Free</Requirement>
@@ -8801,6 +9475,13 @@
   <Area name="MistyPostClimb">
     <Locations/>
     <Connections>
+      <Connection>
+        <Home name="MistyPostClimb"/>
+        <Target name="ClimbSkillTree"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
       <Connection>
         <Home name="MistyPostClimb"/>
         <Target name="MistyPostClimbSpikeCave"/>
@@ -8833,15 +9514,34 @@
         <Home name="MistyPostClimb"/>
         <Target name="MistyGrenade"/>
         <Requirements>
-          <Requirement mode="casual-core">Grenade</Requirement>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MistyPostClimb"/>
+        <Target name="MistyKeystone2"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MistyPostClimb"/>
+        <Target name="MistyAbilityCell"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="MistyPostClimb"/>
         <Target name="GumonSeal"/>
         <Requirements>
-          <Requirement mode="casual-core">KS+KS+KS+KS</Requirement>
+          <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="MistyPostClimb"/>
+        <Target name="MistyPreKeystone2"/>
+        <Requirements/>
       </Connection>
     </Connections>
   </Area>
