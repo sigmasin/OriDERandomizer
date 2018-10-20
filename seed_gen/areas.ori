@@ -1371,7 +1371,7 @@ home: GinsoTeleporter
 		casual-core Bash
 		casual-core ChargeJump WallJump
 		casual-core ChargeJump Climb
-		master-core ChargeJump DoubleJump
+		master-core ChargeJump
 		master-abilities DoubleJump Ability=12
 	conn: UpperGinsoDoorClosed
 		casual-core Free
