@@ -67,17 +67,20 @@ public static class Randomizer
 		Randomizer.WarpCheckCounter = 60;
 		Randomizer.LockedCount = 0;
 		Randomizer.HotCold = false;
-		Randomizer.HotColdItems = new Dictionary<int, Vector3>();
+		Randomizer.HotColdTypes = new string[] {"EV", "RB17", "RB19", "RB21", "SK", "WT"};
+		Randomizer.HotColdItems = new Dictionary<int, RandomizerHotColdItem>();
+		Randomizer.HotColdMaps = new List<int>();
+		int HotColdSaveId = 2000;
 		Randomizer.HoruScene = "";
 		Randomizer.HoruMap = new Hashtable();
-		Randomizer.HoruMap["mountHoruStomperSystemsR"] = 60;
-		Randomizer.HoruMap["mountHoruProjectileCorridor"] = 64;
-		Randomizer.HoruMap["mountHoruMovingPlatform"] = 68;
-		Randomizer.HoruMap["mountHoruLaserTurretsR"] = 72;
-		Randomizer.HoruMap["mountHoruBlockableLasers"] = 76;
-		Randomizer.HoruMap["mountHoruBigPushBlock"] = 80;
-		Randomizer.HoruMap["mountHoruBreakyPathTop"] = 84;
-		Randomizer.HoruMap["mountHoruFallingBlocks"] = 88;
+		Randomizer.HoruMap["mountHoruStomperSystemsR"] = 2640380;
+		Randomizer.HoruMap["mountHoruProjectileCorridor"] = 1720288;
+		Randomizer.HoruMap["mountHoruMovingPlatform"] = 3040304;
+		Randomizer.HoruMap["mountHoruLaserTurretsR"] = 2160192;
+		Randomizer.HoruMap["mountHoruBlockableLasers"] = -91624;
+		Randomizer.HoruMap["mountHoruBigPushBlock"] = -19724;
+		Randomizer.HoruMap["mountHoruBreakyPathTop"] = -1639664;
+		Randomizer.HoruMap["mountHoruFallingBlocks"] = -95848;
 		Randomizer.OpenMode = false;
 		RandomizerDataMaps.LoadGladesData();
 		RandomizerDataMaps.LoadGinsoData();
@@ -189,6 +192,7 @@ public static class Randomizer
 					{
 						'+'
 					});
+					Array.Sort(Randomizer.HotColdTypes);
 				}
 			}
 			for (int i = 1; i < allLines.Length; i++)
@@ -199,9 +203,26 @@ public static class Randomizer
 				});
 				int coords;
 				int.TryParse(lineParts[0], out coords);
-				if (Randomizer.HotCold && Math.Abs(coords) > 100 && Array.IndexOf<string>(Randomizer.HotColdTypes, lineParts[1]) >= 0)
+				int index = Array.BinarySearch<string>(Randomizer.HotColdTypes, lineParts[1]);
+				if (index < 0)
 				{
-					Randomizer.HotColdItems.Add(coords, Randomizer.HashKeyToVector(coords));
+					index = -index - 1;
+				}
+				while (index < Randomizer.HotColdTypes.Length && Randomizer.HotColdTypes[index].Substring(0, 2) == lineParts[1])
+				{
+					if (Randomizer.HotColdTypes[index] == lineParts[1] || Randomizer.HotColdTypes[index].Substring(2) == lineParts[2])
+					{
+						if (Math.Abs(coords) > 100)
+						{
+							Randomizer.HotColdItems.Add(coords, new RandomizerHotColdItem(Randomizer.HashKeyToVector(coords), HotColdSaveId));
+							HotColdSaveId++;
+						}
+						else
+						{
+							Randomizer.HotColdMaps.Add(coords);
+						}
+					}
+					index++;
 				}
 				if (Randomizer.StringKeyPickupTypes.Contains(lineParts[1]))
 				{
@@ -325,9 +346,10 @@ public static class Randomizer
 		if (Randomizer.Table.ContainsKey(num))
 		{
 			RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num], num, true);
-			if (Randomizer.HotCold && Randomizer.HotColdItems.ContainsKey(num))
+			if (Randomizer.HotColdItems.ContainsKey(num))
 			{
-				Randomizer.HotColdItems.Remove(num);
+				Characters.Sein.Inventory.SetRandomizerItem(Randomizer.HotColdItems[num].Id, 1);
+				RandomizerColorManager.UpdateHotColdTarget();
 			}
 			return;
 		}
@@ -338,9 +360,10 @@ public static class Randomizer
 				if (Randomizer.Table.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * i + j)))
 				{
 					RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num + (int)Randomizer.GridFactor * (10000 * i + j)], num + (int)Randomizer.GridFactor * (10000 * i + j), true);
-					if (Randomizer.HotCold && Randomizer.HotColdItems.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * i + j)))
+					if (Randomizer.HotColdItems.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * i + j)))
 					{
-						Randomizer.HotColdItems.Remove(num + (int)Randomizer.GridFactor * (10000 * i + j));
+						Characters.Sein.Inventory.SetRandomizerItem(Randomizer.HotColdItems[num + (int)Randomizer.GridFactor * (10000 * i + j)].Id, 1);
+						RandomizerColorManager.UpdateHotColdTarget();
 					}
 					return;
 				}
@@ -353,9 +376,10 @@ public static class Randomizer
 				if (Randomizer.Table.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * k + l)))
 				{
 					RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num + (int)Randomizer.GridFactor * (10000 * k + l)], num + (int)Randomizer.GridFactor * (10000 * k + l), true);
-					if (Randomizer.HotCold && Randomizer.HotColdItems.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * k + l)))
+					if (Randomizer.HotColdItems.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * k + l)))
 					{
-						Randomizer.HotColdItems.Remove(num + (int)Randomizer.GridFactor * (10000 * k + l));
+						Characters.Sein.Inventory.SetRandomizerItem(Randomizer.HotColdItems[num + (int)Randomizer.GridFactor * (10000 * k + l)].Id, 1);
+						RandomizerColorManager.UpdateHotColdTarget();
 					}
 					return;
 				}
@@ -808,6 +832,7 @@ public static class Randomizer
 			{
 				Randomizer.LockedCount = 0;
 			}
+			RandomizerColorManager.UpdateHotColdTarget();
 			Randomizer.WarpCheckCounter = 60;
 		}
 	}
@@ -980,5 +1005,7 @@ public static class Randomizer
 
 	public static string[] HotColdTypes;
 
-	public static Dictionary<int, Vector3> HotColdItems;
+	public static Dictionary<int, RandomizerHotColdItem> HotColdItems;
+
+	public static List<int> HotColdMaps;
 }

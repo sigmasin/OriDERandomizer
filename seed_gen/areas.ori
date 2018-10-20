@@ -162,7 +162,7 @@ loc: DoubleJumpSkillTree 784 -412 SKDoubleJump 0 Grotto
 loc: DoubleJumpAreaExp 759 -398 EX100 1 Grotto
 loc: GumoHideoutEnergyCell 545 -357 EC 1 Grotto
 loc: GumoHideoutRockfallExp 567 -246 EX100 1 Grotto
-loc: WaterVein 0 0 EVGinsoKey 1 Grotto
+loc: WaterVein 500 -248 EVGinsoKey 1 Grotto
 loc: LeftGumoHideoutExp 406 -386 EX100 1 Grotto
 loc: LeftGumoHideoutHealthCell 393 -375 HC 1 Grotto
 loc: LeftGumoHideoutLowerPlant 447 -368 Plant 1 Grotto
@@ -197,7 +197,7 @@ loc: GinsoEscapeSpiderExp 534 661 EX200 2 Ginso
 loc: GinsoEscapeJumpPadExp 537 733 EX100 2 Ginso
 loc: GinsoEscapeProjectileExp 533 827 EX100 2 Ginso
 loc: GinsoEscapeHangingExp 519 867 EX100 2 Ginso
-loc: GinsoEscapeExit 0 4 EVWater 2 Ginso
+loc: GinsoEscapeExit 548 952 EVWater 2 Ginso
 loc: SwampMap 677 -129 MapStone 2 Swamp
 loc: InnerSwampDrainExp 636 -162 EX100 2 Swamp
 loc: InnerSwampHiddenSwimExp 761 -173 EX100 2 Swamp
@@ -229,15 +229,15 @@ loc: HoruR4DrainedExp 163 136 EX200 7 Horu
 loc: HoruLavaDrainedRightExp 129 165 EX200 7 Horu
 loc: DoorWarpExp 106 112 EX200 5 Horu
 loc: HoruTeleporterExp 98 130 EX200 7 Horu
-loc: FinalEscape 0 20 EVWarmth 0 Horu
-loc: HoruR1 0 60 CS 6 Horu
-loc: HoruR2 0 64 CS 6 Horu
-loc: HoruR3 0 68 CS 7 Horu
-loc: HoruR4 0 72 CS 6 Horu
-loc: HoruL1 0 76 CS 6 Horu
-loc: HoruL2 0 80 CS 6 Horu
-loc: HoruL3 0 84 CS 7 Horu
-loc: HoruL4 0 88 CS 6 Horu
+loc: FinalEscape -240 512 EVWarmth 0 Horu
+loc: HoruR1 264 380 CS 6 Horu
+loc: HoruR2 172 288 CS 6 Horu
+loc: HoruR3 304 304 CS 7 Horu
+loc: HoruR4 216 192 CS 6 Horu
+loc: HoruL1 -92 376 CS 6 Horu
+loc: HoruL2 -20 276 CS 6 Horu
+loc: HoruL3 -164 336 CS 7 Horu
+loc: HoruL4 -96 152 CS 6 Horu
 loc: ValleyEntryAbilityCell -205 -113 AC 1 Valley
 loc: ValleyEntryTreeExp -221 -84 EX100 2 Valley
 loc: ValleyEntryTreePlant -179 -88 Plant 2 Valley
@@ -269,7 +269,7 @@ loc: ForlornKeystone4 -869 -255 KS 4 Forlorn
 loc: ForlornMap -843 -308 MapStone 5 Forlorn
 loc: ForlornPlant -815 -266 Plant 5 Forlorn
 loc: RightForlornHealthCell -625 -315 HC 5 Forlorn
-loc: ForlornEscape 0 12 EVWind 6 Forlorn
+loc: ForlornEscape -732 -236 EVWind 6 Forlorn
 loc: RightForlornPlant -607 -314 Plant 6 Forlorn
 loc: SorrowEntranceAbilityCell -510 204 AC 1 Sorrow
 loc: SorrowMainShaftKeystone -485 323 KS 1 Sorrow
@@ -294,7 +294,7 @@ loc: UpperSorrowSpikeExp -545 409 EX100 1 Sorrow
 loc: UpperSorrowFarLeftKeystone -592 445 KS 2 Sorrow
 loc: ChargeJumpSkillTree -696 408 SKChargeJump 2 Sorrow
 loc: AboveChargeJumpAbilityCell -646 473 AC 5 Sorrow
-loc: Sunstone 0 16 EVHoruKey 4 Sorrow
+loc: Sunstone -560 600 EVHoruKey 4 Sorrow
 loc: SunstonePlant -478 586 Plant 4 Sorrow
 loc: MistyEntranceStompExp -678 -29 EX100 1 Misty
 loc: MistyEntranceTreeExp -822 -9 EX100 1 Misty
@@ -311,7 +311,7 @@ loc: MistyKeystone4 -768 -144 KS 1 Misty
 loc: MistyGrenade -671 -39 EX200 5 Misty
 loc: MistyKeystone2 -1043 -8 KS 1 Misty
 loc: MistyAbilityCell -1075 -2 AC 1 Misty
-loc: GumonSeal 0 8 EVForlornKey 3 Misty
+loc: GumonSeal -720 -24 EVForlornKey 3 Misty
 
 
 -- area definitions and connections

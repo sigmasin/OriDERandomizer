@@ -59,8 +59,9 @@ public static class RandomizerColorManager
 						float.TryParse(components[2], out blue2);
 						float alpha2;
 						float.TryParse(components[3], out alpha2);
-						float frames;
-						float.TryParse(components[4], out frames);
+						int frames;
+						int.TryParse(components[4], out frames);
+						frames = Math.Min(frames, 36000);
 						red2 /= 511f;
 						green2 /= 511f;
 						blue2 /= 511f;
@@ -114,11 +115,36 @@ public static class RandomizerColorManager
 	// Token: 0x0600384D RID: 14413
 	public static void UpdateColors()
 	{
-		if (Randomizer.HotCold)
+		if (Randomizer.HotCold || Characters.Sein.PlayerAbilities.Sense.HasAbility)
 		{
-			float distance = Vector3.Distance(RandomizerColorManager.HotColdTarget, Characters.Sein.Position);
 			float scale = 100f;
-			Characters.Sein.PlatformBehaviour.Visuals.SpriteRenderer.material.color = new Color(Math.Max((scale - distance) / scale, 0f), Math.Min(0.1666f + distance / (scale * 1.5f), 0.5f), Math.Min(distance / scale, 0.5f), 0.5f);
+			float distance = 100f;
+			if (Characters.Ori.InsideMapstone)
+			{
+				int currentMap = 20 + RandomizerBonus.MapStoneProgression() * 4;
+				using (List<int>.Enumerator enumerator = Randomizer.HotColdMaps.GetEnumerator())
+				{
+					while (enumerator.MoveNext())
+					{
+						int map = enumerator.Current;
+						if (map > currentMap)
+						{
+							distance = (float)(map - currentMap - 4) * 2.5f;
+							break;
+						}
+					}
+				}
+			}
+			else
+			{
+				distance = Vector3.Distance(RandomizerColorManager.HotColdTarget, Characters.Sein.Position);
+			}
+			if (distance >= 100f)
+			{
+				Characters.Sein.PlatformBehaviour.Visuals.SpriteRenderer.material.color = RandomizerSettings.ColdColor;
+				return;
+			}
+			Characters.Sein.PlatformBehaviour.Visuals.SpriteRenderer.material.color = new Color(RandomizerSettings.HotColor.r + (RandomizerSettings.ColdColor.r - RandomizerSettings.HotColor.r) * (distance / scale), RandomizerSettings.HotColor.g + (RandomizerSettings.ColdColor.g - RandomizerSettings.HotColor.g) * (distance / scale), RandomizerSettings.HotColor.b + (RandomizerSettings.ColdColor.b - RandomizerSettings.HotColor.b) * (distance / scale), RandomizerSettings.HotColor.a + (RandomizerSettings.ColdColor.a - RandomizerSettings.HotColor.a) * (distance / scale));
 			return;
 		}
 		if (RandomizerColorManager.customRotation)
@@ -142,13 +168,16 @@ public static class RandomizerColorManager
 	public static void UpdateHotColdTarget()
 	{
 		float minimum = float.MaxValue;
-		foreach (Vector3 target in Randomizer.HotColdItems.Values)
+		foreach (RandomizerHotColdItem target in Randomizer.HotColdItems.Values)
 		{
-			float distance = Vector3.Distance(target, Characters.Sein.Position);
-			if (distance < minimum)
+			if (Characters.Sein.Inventory.GetRandomizerItem(target.Id) == 0)
 			{
-				minimum = distance;
-				RandomizerColorManager.HotColdTarget = target;
+				float distance = Vector3.Distance(target.Position, Characters.Sein.Position);
+				if (distance < minimum)
+				{
+					minimum = distance;
+					RandomizerColorManager.HotColdTarget = target.Position;
+				}
 			}
 		}
 	}
