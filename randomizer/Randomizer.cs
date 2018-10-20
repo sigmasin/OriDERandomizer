@@ -249,6 +249,7 @@ public static class Randomizer
 					}
 				}
 			}
+			Randomizer.HotColdMaps.Sort();
 			if (Randomizer.CluesMode)
 			{
 				RandomizerClues.FinishClues();
@@ -801,39 +802,40 @@ public static class Randomizer
 		Randomizer.WarpCheckCounter--;
 		if (Randomizer.WarpCheckCounter <= 0 && Scenes.Manager.CurrentScene != null)
 		{
-			if (Scenes.Manager.CurrentScene.Scene == "catAndMouseResurrectionRoom" && !Randomizer.canFinalEscape())
-			{
-				if (Randomizer.Entrance)
-				{
-					Randomizer.EnterDoor(new Vector3(-242f, 489f));
-				}
-				else
-				{
-					Characters.Sein.Position = new Vector3(20f, 105f);
-				}
-			}
-			if (Sein.World.Events.WarmthReturned && Scenes.Manager.CurrentScene.Scene == "ginsoTreeWaterRisingEnd" && Characters.Sein.Position.y > 937f)
+			RandomizerColorManager.UpdateHotColdTarget();
+			Randomizer.WarpCheckCounter = 60;
+			if (Characters.Sein.Position.y > 937f && Sein.World.Events.WarmthReturned && Scenes.Manager.CurrentScene.Scene == "ginsoTreeWaterRisingEnd")
 			{
 				if (Characters.Sein.Abilities.Bash.IsBashing)
 				{
 					Characters.Sein.Abilities.Bash.BashGameComplete(0f);
 				}
 				Characters.Sein.Position = new Vector3(750f, -120f);
+				return;
 			}
-			if (!Characters.Sein.Controller.CanMove && Scenes.Manager.CurrentScene.Scene == "moonGrottoGumosHideoutB")
+			if (Scenes.Manager.CurrentScene.Scene == "catAndMouseResurrectionRoom" && !Randomizer.canFinalEscape())
+			{
+				if (Randomizer.Entrance)
+				{
+					Randomizer.EnterDoor(new Vector3(-242f, 489f));
+					return;
+				}
+				Characters.Sein.Position = new Vector3(20f, 105f);
+				return;
+			}
+			else if (!Characters.Sein.Controller.CanMove && Scenes.Manager.CurrentScene.Scene == "moonGrottoGumosHideoutB")
 			{
 				Randomizer.LockedCount++;
 				if (Randomizer.LockedCount >= 4)
 				{
 					GameController.Instance.ResetInputLocks();
+					return;
 				}
 			}
 			else
 			{
 				Randomizer.LockedCount = 0;
 			}
-			RandomizerColorManager.UpdateHotColdTarget();
-			Randomizer.WarpCheckCounter = 60;
 		}
 	}
 
