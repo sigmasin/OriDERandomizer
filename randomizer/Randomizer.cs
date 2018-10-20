@@ -77,10 +77,10 @@ public static class Randomizer
 		Randomizer.HoruMap["mountHoruProjectileCorridor"] = 1720288;
 		Randomizer.HoruMap["mountHoruMovingPlatform"] = 3040304;
 		Randomizer.HoruMap["mountHoruLaserTurretsR"] = 2160192;
-		Randomizer.HoruMap["mountHoruBlockableLasers"] = -91624;
-		Randomizer.HoruMap["mountHoruBigPushBlock"] = -19724;
+		Randomizer.HoruMap["mountHoruBlockableLasers"] = -919624;
+		Randomizer.HoruMap["mountHoruBigPushBlock"] = -199724;
 		Randomizer.HoruMap["mountHoruBreakyPathTop"] = -1639664;
-		Randomizer.HoruMap["mountHoruFallingBlocks"] = -95848;
+		Randomizer.HoruMap["mountHoruFallingBlocks"] = -959848;
 		Randomizer.OpenMode = false;
 		RandomizerDataMaps.LoadGladesData();
 		RandomizerDataMaps.LoadGinsoData();
