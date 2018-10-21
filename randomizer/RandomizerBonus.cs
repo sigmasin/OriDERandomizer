@@ -6,7 +6,7 @@ using UnityEngine;
 // Token: 0x020009F7 RID: 2551
 public static class RandomizerBonus
 {
-    // Token: 0x0600376B RID: 14187
+    // Token: 0x0600376D RID: 14189 RVA: 0x000E2764 File Offset: 0x000E0964
     public static void UpgradeID(int ID)
     {
         bool flag = ID < 0;
@@ -54,13 +54,13 @@ public static class RandomizerBonus
             if (!flag)
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
-                Randomizer.showHint("Spirit Flame Upgrade (" + RandomizerBonus.SpiritFlameLevel().ToString() + ")");
+                Randomizer.showHint("Damage Upgrade (" + RandomizerBonus.SpiritFlameLevel().ToString() + ")");
                 return;
             }
             if (RandomizerBonus.SpiritFlameLevel() > 0)
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, -1);
-                Randomizer.showHint("Spirit Flame Upgrade (" + RandomizerBonus.SpiritFlameLevel().ToString() + ")");
+                Randomizer.showHint("Damage Upgrade (" + RandomizerBonus.SpiritFlameLevel().ToString() + ")");
                 return;
             }
             break;
@@ -224,45 +224,19 @@ public static class RandomizerBonus
             if (!flag)
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
-                int num = RandomizerBonus.WarmthFrags();
-                Randomizer.showHint(string.Concat(new object[]
-                {
-                    "Warmth Fragment (",
-                    num.ToString(),
-                    "/",
-                    Randomizer.fragKeyFinish,
-                    ")@"
-                }));
-                if (Randomizer.fragDungeon)
-                {
-                    if (num == Randomizer.fragKey1)
-                    {
-                        RandomizerBonus.GrantDungeonKey(Randomizer.fragDungeonOrder[0]);
-                    }
-                    if (num == Randomizer.fragKey2)
-                    {
-                        RandomizerBonus.GrantDungeonKey(Randomizer.fragDungeonOrder[1]);
-                    }
-                    if (num == Randomizer.fragKey3)
-                    {
-                        RandomizerBonus.GrantDungeonKey(Randomizer.fragDungeonOrder[2]);
-                    }
-                }
-                return;
-            }
-            if (RandomizerBonus.WarmthFrags() > 0)
+            }else if (RandomizerBonus.WarmthFrags() > 0)
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, -1);
-                Randomizer.showHint(string.Concat(new object[]
-                {
-                    "Warmth Fragment (",
-                    RandomizerBonus.WarmthFrags().ToString(),
-                    "/",
-                    Randomizer.fragKeyFinish,
-                    ")@"
-                }));
-                return;
             }
+            Randomizer.showHint(string.Concat(new object[]
+            {
+                "Warmth Fragment (",
+                RandomizerBonus.WarmthFrags().ToString(),
+                "/",
+                Randomizer.fragKeyFinish,
+                ")@"
+            }));
+            return;
             break;
         case 29:
             return;
@@ -327,114 +301,109 @@ public static class RandomizerBonus
         }
     }
 
-    // Token: 0x0600376C RID: 14188 RVA: 0x0002B9F1 File Offset: 0x00029BF1
+    // Token: 0x0600376E RID: 14190 RVA: 0x0002B9F1 File Offset: 0x00029BF1
     public static bool DoubleAirDash()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(10) > 0;
     }
 
-    // Token: 0x0600376D RID: 14189
+    // Token: 0x0600376F RID: 14191 RVA: 0x0002BA07 File Offset: 0x00029C07
     public static bool ChargeDashEfficiency()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(11) > 0;
     }
 
-    // Token: 0x0600376E RID: 14190 RVA: 0x0002BA1D File Offset: 0x00029C1D
+    // Token: 0x06003770 RID: 14192 RVA: 0x0002BA1D File Offset: 0x00029C1D
     public static bool DoubleJumpUpgrade()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(12) > 0;
     }
 
-    // Token: 0x0600376F RID: 14191 RVA: 0x0002BA33 File Offset: 0x00029C33
+    // Token: 0x06003771 RID: 14193 RVA: 0x0002BA33 File Offset: 0x00029C33
     public static int HealthRegeneration()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(13);
     }
 
-    // Token: 0x06003770 RID: 14192 RVA: 0x0002BA46 File Offset: 0x00029C46
+    // Token: 0x06003772 RID: 14194 RVA: 0x0002BA46 File Offset: 0x00029C46
     public static int EnergyRegeneration()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(15);
     }
 
-    // Token: 0x06003771 RID: 14193 RVA: 0x00002DE7 File Offset: 0x00000FE7
-    static RandomizerBonus()
-    {
-    }
-
-    // Token: 0x06003772 RID: 14194 RVA: 0x0002BA59 File Offset: 0x00029C59
+    // Token: 0x06003774 RID: 14196 RVA: 0x0002BA59 File Offset: 0x00029C59
     public static int WaterVeinShards()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(17);
     }
 
-    // Token: 0x06003773 RID: 14195 RVA: 0x0002BA6C File Offset: 0x00029C6C
+    // Token: 0x06003775 RID: 14197 RVA: 0x0002BA6C File Offset: 0x00029C6C
     public static int SunstoneShards()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(21);
     }
 
-    // Token: 0x06003774 RID: 14196 RVA: 0x0002BA7F File Offset: 0x00029C7F
+    // Token: 0x06003776 RID: 14198 RVA: 0x0002BA7F File Offset: 0x00029C7F
     public static int GumonSealShards()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(19);
     }
 
-    // Token: 0x06003775 RID: 14197 RVA: 0x0002BA92 File Offset: 0x00029C92
+    // Token: 0x06003777 RID: 14199 RVA: 0x0002BA92 File Offset: 0x00029C92
     public static int SpiritFlameLevel()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(6);
     }
 
-    // Token: 0x06003776 RID: 14198 RVA: 0x0002BAA4 File Offset: 0x00029CA4
+    // Token: 0x06003778 RID: 14200 RVA: 0x0002BAA4 File Offset: 0x00029CA4
     public static int MapStoneProgression()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(23);
     }
 
-    // Token: 0x06003777 RID: 14199 RVA: 0x0002BAB7 File Offset: 0x00029CB7
+    // Token: 0x06003779 RID: 14201 RVA: 0x0002BAB7 File Offset: 0x00029CB7
     public static int SkillTreeProgression()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(27);
     }
 
-    // Token: 0x06003778 RID: 14200 RVA: 0x0002BACA File Offset: 0x00029CCA
+    // Token: 0x0600377A RID: 14202 RVA: 0x0002BACA File Offset: 0x00029CCA
     public static bool ExplosionPower()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(8) > 0;
     }
 
-    // Token: 0x06003779 RID: 14201 RVA: 0x0002BADF File Offset: 0x00029CDF
+    // Token: 0x0600377B RID: 14203 RVA: 0x0002BADF File Offset: 0x00029CDF
     public static bool ExpEfficiency()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(9) > 0;
     }
 
-    // Token: 0x0600377A RID: 14202 RVA: 0x0002BAF5 File Offset: 0x00029CF5
+    // Token: 0x0600377C RID: 14204 RVA: 0x0002BAF5 File Offset: 0x00029CF5
     public static void CollectPickup()
     {
         Characters.Sein.Inventory.IncRandomizerItem(0, 1);
     }
 
-    // Token: 0x0600377B RID: 14203 RVA: 0x0002BB08 File Offset: 0x00029D08
+    // Token: 0x0600377D RID: 14205 RVA: 0x0002BB08 File Offset: 0x00029D08
     public static int GetPickupCount()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(0);
     }
 
-    // Token: 0x0600377C RID: 14204 RVA: 0x0002BB1A File Offset: 0x00029D1A
+    // Token: 0x0600377E RID: 14206 RVA: 0x0002BB1A File Offset: 0x00029D1A
     public static int DoubleJumpUpgrades()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(12);
     }
 
-    // Token: 0x0600377D RID: 14205 RVA: 0x0002BB2D File Offset: 0x00029D2D
+    // Token: 0x0600377F RID: 14207 RVA: 0x0002BB2D File Offset: 0x00029D2D
     public static int UpgradeCount(int ID)
     {
         return Characters.Sein.Inventory.GetRandomizerItem(ID);
     }
 
-    // Token: 0x0600377E RID: 14206 RVA: 0x0002BB3F File Offset: 0x00029D3F
+    // Token: 0x06003780 RID: 14208 RVA: 0x0002BB3F File Offset: 0x00029D3F
     public static void CollectMapstone()
     {
         Characters.Sein.Inventory.IncRandomizerItem(23, 1);
@@ -442,32 +411,23 @@ public static class RandomizerBonus
         RandomizerBonus.CollectPickup();
     }
 
-    // Token: 0x0600377F RID: 14207 RVA: 0x0002BB73 File Offset: 0x00029D73
-    public static bool GinsoEscapeDone()
-    {
-        return RandomizerBonus.UpgradeCount(300) > 0;
-    }
-
-    // Token: 0x06003780 RID: 14208 RVA: 0x0002BB82 File Offset: 0x00029D82
-    public static bool ForlornEscapeDone()
-    {
-        return RandomizerBonus.UpgradeCount(301) > 0;
-    }
-
-    // Token: 0x06003781 RID: 14209 RVA: 0x000E2DD0 File Offset: 0x000E0FD0
+    // Token: 0x06003783 RID: 14211 RVA: 0x000E3050 File Offset: 0x000E1250
     public static void Update()
     {
-        Characters.Sein.Mortality.Health.GainHealth((float)RandomizerBonus.HealthRegeneration() * (Characters.Sein.PlayerAbilities.HealthEfficiency.HasAbility ? 0.0016f : 0.0008f));
-        Characters.Sein.Mortality.Health.LoseHealth((float)RandomizerBonus.Bleeding() * 0.0008f);
+        Characters.Sein.Mortality.Health.GainHealth((float)(RandomizerBonus.HealthRegeneration() + ((!Characters.Sein.PlayerAbilities.HealthMarkers.HasAbility) ? 0 : 2)) * (Characters.Sein.PlayerAbilities.HealthEfficiency.HasAbility ? 0.00224f : 0.00112f));
+        if (RandomizerBonus.Bleeding() > 0)
+        {
+            Characters.Sein.Mortality.Health.LoseHealth((float)RandomizerBonus.Bleeding() * 0.0008f);
+        }
         if (RandomizerBonus.Bleeding() > 0 && Characters.Sein.Mortality.Health.Amount <= 0f)
         {
             Characters.Sein.Mortality.DamageReciever.OnRecieveDamage(new Damage(1f, default(Vector2), default(Vector3), DamageType.Water, null));
         }
-        Characters.Sein.Energy.Gain((float)RandomizerBonus.EnergyRegeneration() * (Characters.Sein.PlayerAbilities.EnergyEfficiency.HasAbility ? 0.0003f : 0.0002f));
+        Characters.Sein.Energy.Gain((float)(RandomizerBonus.EnergyRegeneration() + ((!Characters.Sein.PlayerAbilities.EnergyMarkers.HasAbility) ? 0 : 2)) * (Characters.Sein.PlayerAbilities.EnergyEfficiency.HasAbility ? 0.00042f : 0.00028f));
         RandomizerBonusSkill.Update();
     }
 
-    // Token: 0x06003782 RID: 14210 RVA: 0x000E2ECC File Offset: 0x000E10CC
+    // Token: 0x06003784 RID: 14212 RVA: 0x000E314C File Offset: 0x000E134C
     public static void DamageDealt(float damage)
     {
         if (Characters.Sein)
@@ -481,58 +441,47 @@ public static class RandomizerBonus
         }
     }
 
-    // Token: 0x06003783 RID: 14211 RVA: 0x0002BB91 File Offset: 0x00029D91
+    // Token: 0x06003785 RID: 14213 RVA: 0x0002BB91 File Offset: 0x00029D91
     public static int Bleeding()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(30);
     }
 
-    // Token: 0x06003784 RID: 14212 RVA: 0x0002BBA4 File Offset: 0x00029DA4
+    // Token: 0x06003786 RID: 14214 RVA: 0x0002BBA4 File Offset: 0x00029DA4
     public static int Lifesteal()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(31);
     }
 
-    // Token: 0x06003785 RID: 14213 RVA: 0x0002BBB7 File Offset: 0x00029DB7
+    // Token: 0x06003787 RID: 14215 RVA: 0x0002BBB7 File Offset: 0x00029DB7
     public static int Manavamp()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(32);
     }
 
-    // Token: 0x06003786 RID: 14214 RVA: 0x0002BBCA File Offset: 0x00029DCA
+    // Token: 0x06003788 RID: 14216 RVA: 0x0002BBCA File Offset: 0x00029DCA
     public static int Velocity()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(33);
     }
 
-    // Token: 0x06003787 RID: 14215 RVA: 0x0002BBDD File Offset: 0x00029DDD
+    public static void SpentAP(int numSpent)
+    {
+        Characters.Sein.Inventory.IncRandomizerItem(80, numSpent);
+    }
+
+    public static int ResetAP() {
+        int refund = Characters.Sein.Inventory.GetRandomizerItem(80);
+        Characters.Sein.Inventory.SetRandomizerItem(80, 0);
+        return refund;
+    }
+
+    // Token: 0x06003789 RID: 14217 RVA: 0x0002BBDD File Offset: 0x00029DDD
     public static int WarmthFrags()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(28);
     }
 
-    // Token: 0x06003788 RID: 14216 RVA: 0x0002BBF0 File Offset: 0x00029DF0
-    public static void GrantDungeonKey(int dungeonId)
-    {
-        if (dungeonId == 0)
-        {
-            Keys.GinsoTree = true;
-            Randomizer.showHint("*Ginso Tree Unlocked*");
-            return;
-        }
-        if (dungeonId == 1)
-        {
-            Keys.ForlornRuins = true;
-            Randomizer.showHint("#Forlorn Ruins Unlocked#");
-            return;
-        }
-        if (dungeonId == 2)
-        {
-            Keys.MountHoru = true;
-            Randomizer.showHint("@Mount Horu Unlocked@");
-        }
-    }
-
-    // Token: 0x0400325E RID: 12894
+    // Token: 0x04003262 RID: 12898
     public static bool DoubleAirDashUsed;
 }

@@ -71,15 +71,13 @@ public static class RandomizerClues
 			text3
 		});
 	}
-
-	// Token: 0x060037BF RID: 14271 RVA: 0x000E4870 File Offset: 0x000E2A70
 	public static void FinishClues()
 	{
 		for (int i = 0; i < 3; i++)
 		{
 			if (RandomizerClues.RevealOrder[i] == 0)
 			{
-				RandomizerClues.Clues.Add("The Void");
+				RandomizerClues.Clues.Add("Unknown");
 				RandomizerClues.RevealOrder[i] = RandomizerClues.Clues.Count;
 			}
 		}

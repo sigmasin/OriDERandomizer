@@ -37,7 +37,7 @@ public static class RandomizerSwitch
         {
             return;
         }
-        int num = Value * ((!Characters.Sein.PlayerAbilities.SoulEfficiency.HasAbility) ? 1 : 2);
+        int num = (int)((float)Value * ((!Characters.Sein.PlayerAbilities.SoulEfficiency.HasAbility) ? ((!Characters.Sein.PlayerAbilities.AbilityMarkers.HasAbility) ? 1f : 1.5f) : 2f));
         if (RandomizerBonus.ExpEfficiency())
         {
             num *= 2;
@@ -155,6 +155,20 @@ public static class RandomizerSwitch
         }
         
         switch (Action.Action) {
+            case "MU":
+                string[] pieces = ((string)Action.Value).Split('/');
+                for(int i = 0; i < pieces.Length; i+=2)
+                {
+                    string code = pieces[i];
+                    if(Randomizer.StringKeyPickupTypes.Contains(code)) {
+                        RandomizerSwitch.GivePickup(new RandomizerAction(code, pieces[i+1]), coords, found_locally);
+                    } else {
+                        int id;
+                        int.TryParse(pieces[i+1], out id);
+                        RandomizerSwitch.GivePickup(new RandomizerAction(code, id), coords, found_locally);
+                    }
+                }
+                break;
             case "AC":                
                 SkillPointPickup();
                 break;
@@ -187,6 +201,15 @@ public static class RandomizerSwitch
                 break;
             case "SH":
                 Randomizer.showHint((string)Action.Value);
+                break;
+            case "WT":
+                Characters.Sein.Inventory.IncRandomizerItem(302, 1);
+                int relics = Characters.Sein.Inventory.GetRandomizerItem(302);
+                string relicStr = "\n("+relics.ToString() + "/11)";
+                if(relics > 10) {
+                    relicStr = "$" + relicStr + "$";
+                }
+                Randomizer.showHint((string)Action.Value + relicStr);
                 break;
             case "NO":
                 Randomizer.showHint("Nothing");
