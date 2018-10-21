@@ -1503,7 +1503,7 @@ home: GinsoTeleporter
 		master-core GinsoKey ChargeJump
 		master-abilities GinsoKey DoubleJump Ability=12
 	conn: UpperGinsoDoorClosed
-		casual-core Free
+		casual-core GinsoKey
 home: TopGinsoTree
 	--anchor: Where Water Vein is inserted at the top of the Ginso Tree
 	-- TODO: recheck these dboost paths and their difficulties
