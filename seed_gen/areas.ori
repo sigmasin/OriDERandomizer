@@ -387,6 +387,9 @@ home: SunkenGladesRunaway
 	--conn: GumoHideoutMap
 	--	casual-core TPGrotto Mapstone
 	-- TODO: ginso and horu teleporter paths here
+	-- note: water vein requirement is shifted to inside Ginso for KS safety
+	conn: GinsoTeleporter
+		casual-core TPGinso
 home: GladesMain
 	-- anchor: just beyond the first keystone door in Glades
 	pickup: FourthHealthCell
@@ -1401,7 +1404,7 @@ home: BashTree
 		expert-abilities ChargeJump Dash Ability=6
 		master-abilities DoubleJump Ability=12
 home: UpperGinsoRedirectArea
-	-located at the first redirect area on top of where the UpperGinsoRedirectLowerExp is found
+	-- located at the first redirect area on top of where the UpperGinsoRedirectLowerExp is found
 	pickup: UpperGinsoRedirectLowerExp
 		casual-core Stomp
 		casual-core Bash
@@ -1443,13 +1446,13 @@ home: UpperGinsoTree
 		standard-dboost ChargeJump Health=3
 		standard-abilities ChargeJump Dash Ability=3
 		expert-abilities Dash Ability=6
-		Master-abilities DoubleJump Ability=12 Health=3
+		master-abilities DoubleJump Ability=12 Health=3
 	pickup: UpperGinsoUpperRightKeystone
 		casual-core Bash DoubleJump
 		standard-core Bash
 		standard-core ChargeJump DoubleJump
 		standard-dboost ChargeJump Health=3
-		Master-abilities DoubleJump Ability=12 Health=5
+		master-abilities DoubleJump Ability=12 Health=5
 	pickup: UpperGinsoUpperLeftKeystone
 		casual-core Bash DoubleJump
 		standard-core Bash
@@ -1457,7 +1460,7 @@ home: UpperGinsoTree
 		standard-core ChargeJump Glide
 		standard-dboost ChargeJump Health=3
 		standard-abilities ChargeJump Dash Ability=3
-		Master-abilities DoubleJump Ability=12 Health=5
+		master-abilities DoubleJump Ability=12 Health=5
 	pickup: UpperGinsoEnergyCell
 		--with the exception of bash and cjump, all of these routes involve getting stuck in the energy cell area
 		casual-core Stomp
@@ -1494,11 +1497,11 @@ home: UpperGinsoDoorOpened
 home: GinsoTeleporter
 	--anchor: Ginso Teleporter
 	conn: TopGinsoTree
-		casual-core Bash
-		casual-core ChargeJump WallJump
-		casual-core ChargeJump Climb
-		master-core ChargeJump
-		master-abilities DoubleJump Ability=12
+		casual-core GinsoKey Bash
+		casual-core GinsoKey ChargeJump WallJump
+		casual-core GinsoKey ChargeJump Climb
+		master-core GinsoKey ChargeJump
+		master-abilities GinsoKey DoubleJump Ability=12
 	conn: UpperGinsoDoorClosed
 		casual-core Free
 home: TopGinsoTree
