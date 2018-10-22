@@ -5,11 +5,9 @@ def get_areas():
     global area, area_name, conn, has_reqs, all_req
     
     response = urllib2.urlopen('https://raw.githubusercontent.com/sigmasin/OriDERandomizer/3.0/seed_gen/areas.ori')
-    
     meta = response.read().split("\n")
-
+    
     new_areas = XML.Element("Areas")
-
     area_name = None
     area = None
     conn = None
@@ -41,6 +39,8 @@ def get_areas():
         "TPValley",
         "TPForlorn",
         "TPSorrow",
+        "TPGinso",
+        "TPHoru",
         "Health",
         "Energy",
         "Ability",
@@ -235,5 +235,5 @@ def get_areas():
         if home != "SunkenGladesRunaway":
             assert linked == "LINKED", home
 
-    areas_tree = XML.ElementTree(new_areas)
-    return areas_tree
+    new_tree = XML.ElementTree(new_areas)
+    return new_tree
