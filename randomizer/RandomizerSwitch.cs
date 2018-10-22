@@ -37,7 +37,7 @@ public static class RandomizerSwitch
         {
             return;
         }
-        int num = Value * ((!Characters.Sein.PlayerAbilities.SoulEfficiency.HasAbility) ? 1 : 2);
+        int num = (int)((float)Value * ((!Characters.Sein.PlayerAbilities.SoulEfficiency.HasAbility) ? ((!Characters.Sein.PlayerAbilities.AbilityMarkers.HasAbility) ? 1f : 1.5f) : 2f));
         if (RandomizerBonus.ExpEfficiency())
         {
             num *= 2;
@@ -205,6 +205,7 @@ public static class RandomizerSwitch
             case "WT":
                 Characters.Sein.Inventory.IncRandomizerItem(302, 1);
                 int relics = Characters.Sein.Inventory.GetRandomizerItem(302);
+                RandomizerTrackedDataManager.SetRelic(Randomizer.RelicZoneLookup[(string)Action.Value]);
                 string relicStr = "\n("+relics.ToString() + "/11)";
                 if(relics > 10) {
                     relicStr = "$" + relicStr + "$";
@@ -215,5 +216,6 @@ public static class RandomizerSwitch
                 Randomizer.showHint("Nothing");
                 break;
         }
+        RandomizerTrackedDataManager.UpdateBitmaps();
     }
 }   

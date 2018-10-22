@@ -102,19 +102,6 @@ public class SeinInventory : SaveSerialize
 		ar.Serialize(ref this.RandomizerItems);
 	}
 
-	// Token: 0x06001196 RID: 4502
-	public void SetRandomizerItem(int code, int value)
-	{
-		if (!this.ItemsAtLastSave.ContainsKey(code))
-		{
-			this.ItemsAtLastSave[code] = this.GetRandomizerItem(code);
-		}
-		if (!this.ItemsAtLastCheckpoint.ContainsKey(code))
-		{
-			this.ItemsAtLastCheckpoint[code] = this.GetRandomizerItem(code);
-		}
-		this.RandomizerItems[code] = value;
-	}
 
 	// Token: 0x06001197 RID: 4503
 	public int GetRandomizerItem(int code)
@@ -126,11 +113,26 @@ public class SeinInventory : SaveSerialize
 		return 0;
 	}
 
-	// Token: 0x06001198 RID: 4504
-	public void IncRandomizerItem(int code, int value)
+	// Token: 0x06001196 RID: 4502
+	public int SetRandomizerItem(int code, int value)
 	{
-		this.SetRandomizerItem(code, this.GetRandomizerItem(code) + value);
+		if (!this.ItemsAtLastSave.ContainsKey(code))
+		{
+			this.ItemsAtLastSave[code] = this.GetRandomizerItem(code);
+		}
+		if (!this.ItemsAtLastCheckpoint.ContainsKey(code))
+		{
+			this.ItemsAtLastCheckpoint[code] = this.GetRandomizerItem(code);
+		}
+		this.RandomizerItems[code] = value;
+		return value;
 	}
+	// Token: 0x06001198 RID: 4504
+	public int IncRandomizerItem(int code, int value)
+	{
+		return this.SetRandomizerItem(code, this.GetRandomizerItem(code) + value);
+	}
+
 
 	// Token: 0x06001199 RID: 4505
 	public void OnSave()

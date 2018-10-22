@@ -150,6 +150,7 @@ public class MapStone : SaveSerialize
 						AchievementsLogic.Instance.OnMapStoneActivated();
 						this.CurrentState = MapStone.State.Activated;
 						Randomizer.getMapStone();
+						RandomizerTrackedDataManager.SetMapstone(this.WorldArea.LowerAreaName.ToString());
 						return;
 					}
 					UI.SeinUI.ShakeMapstones();

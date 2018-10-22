@@ -250,7 +250,7 @@ public class PlayerAbilities : SaveSerialize, ISeinReceiver
 			}
 			break;
 		case AbilityType.SpiritFlame:
-			Randomizer.setTree(0);
+			RandomizerTrackedDataManager.SetTree(0);
 			this.SpiritFlame.HasAbility = value;
 			Characters.Ori.MoveOriToPlayer();
 			break;
