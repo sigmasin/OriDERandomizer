@@ -407,7 +407,6 @@ public static class RandomizerBonus
     public static void CollectMapstone()
     {
         Characters.Sein.Inventory.IncRandomizerItem(23, 1);
-        Characters.Sein.Inventory.SkillPointsCollected += 8388608;
         RandomizerBonus.CollectPickup();
     }
 
