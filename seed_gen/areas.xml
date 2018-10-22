@@ -5078,7 +5078,7 @@
       </Connection>
       <Connection>
         <Home name="LowerGinsoTree"/>
-        <Target name="Horu"/>
+        <Target name="R4InnerDoor"/>
         <Requirements>
           <Requirement mode="glitched">Dash</Requirement>
         </Requirements>
@@ -6852,52 +6852,6 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="HoruOuterDoor">
-    <Locations/>
-    <Connections>
-      <Connection>
-        <Home name="HoruOuterDoor"/>
-        <Target name="HoruInnerDoor"/>
-        <Requirements>
-          <Requirement mode="casual-core">HoruKey</Requirement>
-        </Requirements>
-      </Connection>
-    </Connections>
-  </Area>
-  <Area name="HoruInnerDoor">
-    <Locations/>
-    <Connections>
-      <Connection>
-        <Home name="HoruInnerDoor"/>
-        <Target name="Horu"/>
-        <Requirements>
-          <Requirement mode="casual-core">Bash+DoubleJump+Glide+WallJump</Requirement>
-          <Requirement mode="casual-core">Bash+DoubleJump+ChargeJump+WallJump</Requirement>
-          <Requirement mode="casual-core">Bash+Glide+ChargeJump+WallJump</Requirement>
-          <Requirement mode="casual-core">Bash+DoubleJump+Glide+Climb</Requirement>
-          <Requirement mode="casual-core">Bash+DoubleJump+ChargeJump+Climb</Requirement>
-          <Requirement mode="casual-core">Bash+Glide+ChargeJump+Climb</Requirement>
-          <Requirement mode="expert-core">Bash+Grenade+WallJump</Requirement>
-          <Requirement mode="expert-core">Bash+Grenade+Climb</Requirement>
-          <Requirement mode="master-core">ChargeJump+WallJump+DoubleJump+Glide+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="HoruInnerDoor"/>
-        <Target name="HoruMapLedge"/>
-        <Requirements>
-          <Requirement mode="master-core">ChargeJump+WallJump+DoubleJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="HoruInnerDoor"/>
-        <Target name="HoruBasement"/>
-        <Requirements>
-          <Requirement mode="expert-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-    </Connections>
-  </Area>
   <Area name="HoruFieldsEnergy">
     <Locations/>
     <Connections>
@@ -6919,98 +6873,327 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="Horu">
+  <Area name="HoruOuterDoor">
     <Locations/>
     <Connections>
       <Connection>
-        <Home name="Horu"/>
+        <Home name="HoruOuterDoor"/>
+        <Target name="HoruInnerDoor"/>
+        <Requirements>
+          <Requirement mode="casual-core">HoruKey</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HoruInnerDoor">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="HoruInnerDoor"/>
+        <Target name="HoruOuterDoor"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HoruInnerDoor"/>
         <Target name="HoruMapLedge"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="casual-core">Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="expert-core">Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="expert-core">Bash+Grenade+Climb</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+WallJump+DoubleJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="Horu"/>
+        <Home name="HoruInnerDoor"/>
         <Target name="L1OuterDoor"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="casual-core">Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="expert-core">Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="expert-core">Bash+Grenade+Climb</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+WallJump+DoubleJump+Glide+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="Horu"/>
+        <Home name="HoruInnerDoor"/>
         <Target name="L2OuterDoor"/>
         <Requirements>
-          <Requirement mode="casual-core">Stomp</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="expert-core">Stomp+Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="expert-core">Stomp+Bash+Grenade+Climb</Requirement>
+          <Requirement mode="master-dboost">Stomp+ChargeJump+WallJump+DoubleJump+Glide+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="casual-core">Open+ChargeJump+WallJump+Climb</Requirement>
+          <Requirement mode="casual-core">Open+ChargeJump+WallJump+Glide</Requirement>
+          <Requirement mode="casual-core">Open+ChargeJump+WallJump+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Open+ChargeJump+Climb+Bash</Requirement>
+          <Requirement mode="casual-core">Open+Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">Open+Bash+DoubleJump+Glide</Requirement>
+          <Requirement mode="standard-core">Open+ChargeJump+WallJump</Requirement>
+          <Requirement mode="expert-abilities">Open+Dash+WallJump+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="expert-abilities">Open+Dash+Climb+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="dbash">Open+Bash</Requirement>
+          <Requirement mode="master-abilities">Open+ChargeJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="Horu"/>
+        <Home name="HoruInnerDoor"/>
         <Target name="L3OuterDoor"/>
         <Requirements>
-          <Requirement mode="casual-core">Stomp</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="expert-core">Stomp+Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="expert-core">Stomp+Bash+Grenade+Climb</Requirement>
+          <Requirement mode="master-dboost">Stomp+ChargeJump+WallJump+DoubleJump+Glide+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="casual-core">Open+ChargeJump+WallJump+Glide</Requirement>
+          <Requirement mode="casual-core">Open+ChargeJump+WallJump+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Open+ChargeJump+WallJump+Bash</Requirement>
+          <Requirement mode="casual-core">Open+ChargeJump+Climb+Bash</Requirement>
+          <Requirement mode="casual-core">Open+Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">Open+Bash+DoubleJump+Glide</Requirement>
+          <Requirement mode="expert-abilities">Open+Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="dbash">Open+Bash</Requirement>
+          <Requirement mode="master-abilities">Open+ChargeJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="Horu"/>
+        <Home name="HoruInnerDoor"/>
         <Target name="L4OuterDoor"/>
         <Requirements>
-          <Requirement mode="casual-core">Stomp</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="expert-core">Stomp+Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="expert-core">Stomp+Bash+Grenade+Climb</Requirement>
+          <Requirement mode="master-dboost">Stomp+ChargeJump+WallJump+DoubleJump+Glide+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="casual-core">Open+Bash</Requirement>
+          <Requirement mode="casual-core">Open+ChargeJump</Requirement>
+          <Requirement mode="expert-abilities">Open+Dash+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="Horu"/>
+        <Home name="HoruInnerDoor"/>
+        <Target name="L4Below"/>
+        <Requirements>
+          <Requirement mode="casual-core">Open+Bash</Requirement>
+          <Requirement mode="casual-core">Open+ChargeJump</Requirement>
+          <Requirement mode="casual-core">Open+DoubleJump+Glide</Requirement>
+          <Requirement mode="standard-core">Open+Dash+DoubleJump</Requirement>
+          <Requirement mode="standard-abilities">Open+Dash+Glide+AC+AC+AC</Requirement>
+          <Requirement mode="expert-abilities">Open+Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">Open+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HoruInnerDoor"/>
         <Target name="R1OuterDoor"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="casual-core">Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="expert-core">Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="expert-core">Bash+Grenade+Climb</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+WallJump+DoubleJump+Glide+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="Horu"/>
+        <Home name="HoruInnerDoor"/>
         <Target name="R2OuterDoor"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="casual-core">Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="expert-core">Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="expert-core">Bash+Grenade+Climb</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+WallJump+DoubleJump+Glide+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="casual-core">Open+Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">Open+Bash+DoubleJump+Glide</Requirement>
+          <Requirement mode="casual-core">Open+ChargeJump+Climb+Bash</Requirement>
+          <Requirement mode="casual-core">Open+ChargeJump+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="standard-core">Open+ChargeJump+Dash+DoubleJump+WallJump</Requirement>
+          <Requirement mode="standard-core">Open+ChargeJump+Dash+Glide+WallJump</Requirement>
+          <Requirement mode="expert-abilities">Open+Dash+WallJump+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="expert-abilities">Open+Dash+Climb+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="dbash">Open+Bash</Requirement>
+          <Requirement mode="master-abilities">Open+ChargeJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="Horu"/>
+        <Home name="HoruInnerDoor"/>
         <Target name="R3OuterDoor"/>
         <Requirements>
-          <Requirement mode="casual-core">Stomp</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="expert-core">Stomp+Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="expert-core">Stomp+Bash+Grenade+Climb</Requirement>
+          <Requirement mode="master-dboost">Stomp+ChargeJump+WallJump+DoubleJump+Glide+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="casual-core">Open+ChargeJump+WallJump+Glide</Requirement>
+          <Requirement mode="casual-core">Open+ChargeJump+WallJump+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Open+ChargeJump+WallJump+Bash</Requirement>
+          <Requirement mode="casual-core">Open+ChargeJump+Climb+Bash</Requirement>
+          <Requirement mode="casual-core">Open+Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="casual-core">Open+Bash+Grenade+Climb</Requirement>
+          <Requirement mode="casual-core">Open+Bash+Grenade+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Open+Bash+Grenade+Glide</Requirement>
+          <Requirement mode="casual-core">Open+Bash+DoubleJump+Glide</Requirement>
+          <Requirement mode="expert-abilities">Open+Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="dbash">Open+Bash</Requirement>
+          <Requirement mode="master-abilities">Open+ChargeJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="Horu"/>
+        <Home name="HoruInnerDoor"/>
         <Target name="R4OuterDoor"/>
         <Requirements>
-          <Requirement mode="casual-core">Stomp</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="expert-core">Stomp+Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="expert-core">Stomp+Bash+Grenade+Climb</Requirement>
+          <Requirement mode="master-dboost">Stomp+ChargeJump+WallJump+DoubleJump+Glide+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="casual-core">Open+Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">Open+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Open+ChargeJump+Climb</Requirement>
+          <Requirement mode="casual-core">Open+ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="expert-abilities">Open+Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="dbash">Open+Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="Horu"/>
-        <Target name="HoruEscapeOuterDoor"/>
+        <Home name="HoruInnerDoor"/>
+        <Target name="R4Below"/>
         <Requirements>
-          <Requirement mode="casual-core">Stomp</Requirement>
+          <Requirement mode="casual-core">Open+Glide+Bash</Requirement>
+          <Requirement mode="casual-core">Open+Grenade+Bash</Requirement>
+          <Requirement mode="casual-core">Open+ChargeJump+Glide</Requirement>
+          <Requirement mode="expert-abilities">Open+Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="dbash">Open+Bash</Requirement>
+          <Requirement mode="master-abilities">Open+ChargeJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">Open+Glide+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="Horu"/>
-        <Target name="HoruHub"/>
+        <Home name="HoruInnerDoor"/>
+        <Target name="HoruBasement"/>
         <Requirements>
-          <Requirement mode="casual-core">Stomp</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="expert-core">Free</Requirement>
+          <Requirement mode="master-dboost">Stomp+ChargeJump+WallJump+DoubleJump+Glide+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="casual-core">Open</Requirement>
         </Requirements>
       </Connection>
       <Connection>
-        <Home name="Horu"/>
-        <Target name="LowerGinsoTree"/>
+        <Home name="HoruInnerDoor"/>
+        <Target name="HoruTeleporter"/>
         <Requirements>
-          <Requirement mode="glitched">Dash</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="casual-core">Stomp+Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="expert-core">Stomp+Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="expert-core">Stomp+Bash+Grenade+Climb</Requirement>
+          <Requirement mode="master-dboost">Stomp+ChargeJump+WallJump+DoubleJump+Glide+HC+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="casual-core">Open</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
   <Area name="HoruTeleporter">
     <Locations/>
-    <Connections/>
+    <Connections>
+      <Connection>
+        <Home name="HoruTeleporter"/>
+        <Target name="HoruTeleporterExp"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HoruTeleporter"/>
+        <Target name="HoruInnerDoor"/>
+        <Requirements>
+          <Requirement mode="casual-core">Open+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Open+ChargeJump+Climb</Requirement>
+          <Requirement mode="casual-core">Open+Bash+Grenade</Requirement>
+          <Requirement mode="dbash">Open+Bash</Requirement>
+          <Requirement mode="master-core">Open+ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="master-abilities">Open+WallJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HoruBasement">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="HoruBasement"/>
+        <Target name="DoorWarpExp"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Climb+DoubleJump</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="master-core">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HoruBasement"/>
+        <Target name="HoruEscapeOuterDoor"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump</Requirement>
+          <Requirement mode="casual-core">Climb</Requirement>
+          <Requirement mode="casual-core">DoubleJump</Requirement>
+          <Requirement mode="casual-core">Dash</Requirement>
+          <Requirement mode="casual-core">ChargeJump+Glide</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
   </Area>
   <Area name="HoruMapLedge">
     <Locations/>
@@ -7191,6 +7374,13 @@
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="L4OuterDoor"/>
+        <Target name="L4Below"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="L4InnerDoor">
@@ -7231,14 +7421,19 @@
       </Connection>
       <Connection>
         <Home name="L4"/>
-        <Target name="HoruLavaDrainedLeftExp"/>
+        <Target name="HoruL4"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
+    </Connections>
+  </Area>
+  <Area name="L4Below">
+    <Locations/>
+    <Connections>
       <Connection>
-        <Home name="L4"/>
-        <Target name="HoruL4"/>
+        <Home name="L4Below"/>
+        <Target name="HoruLavaDrainedLeftExp"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
@@ -7371,6 +7566,13 @@
           <Requirement mode="master-core">DoubleJump</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="HoruR1CutsceneTrigger"/>
+        <Target name="LowerGinsoTree"/>
+        <Requirements>
+          <Requirement mode="glitched">Dash</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="R2OuterDoor">
@@ -7399,14 +7601,7 @@
         <Home name="R2InnerDoor"/>
         <Target name="R2"/>
         <Requirements>
-          <Requirement mode="casual-core">Bash+Stomp+DoubleJump+Glide+WallJump</Requirement>
-          <Requirement mode="casual-core">Bash+Stomp+DoubleJump+ChargeJump+WallJump</Requirement>
-          <Requirement mode="casual-core">Bash+Stomp+Glide+ChargeJump+WallJump</Requirement>
-          <Requirement mode="casual-core">Bash+Stomp+DoubleJump+Glide+Climb</Requirement>
-          <Requirement mode="casual-core">Bash+Stomp+DoubleJump+ChargeJump+Climb</Requirement>
-          <Requirement mode="casual-core">Bash+Stomp+Glide+ChargeJump+Climb</Requirement>
-          <Requirement mode="expert-core">Bash+Stomp+Grenade+WallJump</Requirement>
-          <Requirement mode="expert-core">Bash+Stomp+Grenade+Climb</Requirement>
+          <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -7513,6 +7708,17 @@
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="R4OuterDoor"/>
+        <Target name="R4Below"/>
+        <Requirements>
+          <Requirement mode="casual-core">DoubleJump</Requirement>
+          <Requirement mode="casual-core">Glide</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="standard-abilities">Dash+AC+AC+AC</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="R4InnerDoor">
@@ -7560,13 +7766,6 @@
       </Connection>
       <Connection>
         <Home name="R4"/>
-        <Target name="HoruLavaDrainedRightExp"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="R4"/>
         <Target name="HoruR4"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
@@ -7574,46 +7773,12 @@
       </Connection>
     </Connections>
   </Area>
-  <Area name="HoruHub">
+  <Area name="R4Below">
     <Locations/>
     <Connections>
       <Connection>
-        <Home name="HoruHub"/>
-        <Target name="HoruTeleporterExp"/>
-        <Requirements>
-          <Requirement mode="casual-core">GinsoKey+ForlornKey</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="HoruHub"/>
-        <Target name="HoruBasement"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-    </Connections>
-  </Area>
-  <Area name="HoruBasement">
-    <Locations/>
-    <Connections>
-      <Connection>
-        <Home name="HoruBasement"/>
-        <Target name="DoorWarpExp"/>
-        <Requirements>
-          <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
-          <Requirement mode="casual-core">Climb+DoubleJump</Requirement>
-          <Requirement mode="casual-core">WallJump+ChargeJump</Requirement>
-          <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
-          <Requirement mode="casual-core">Glide+ChargeJump</Requirement>
-          <Requirement mode="casual-core">DoubleJump+ChargeJump</Requirement>
-          <Requirement mode="casual-core">Bash+Grenade</Requirement>
-          <Requirement mode="expert-core">ChargeJump</Requirement>
-          <Requirement mode="expert-core">DoubleJump</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="HoruBasement"/>
-        <Target name="HoruEscapeOuterDoor"/>
+        <Home name="R4Below"/>
+        <Target name="HoruLavaDrainedRightExp"/>
         <Requirements>
           <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
@@ -9057,7 +9222,7 @@
       </Connection>
       <Connection>
         <Home name="SorrowMapstoneArea"/>
-        <Target name="Horu"/>
+        <Target name="HoruInnerDoor"/>
         <Requirements>
           <Requirement mode="glitched">Dash</Requirement>
         </Requirements>
