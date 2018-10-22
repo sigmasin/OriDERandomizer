@@ -34,15 +34,15 @@ public static class RandomizerTrackedDataManager
 		RelicBits.Add("Horu", 10);
 
 		MapstoneInfos = new Dictionary<string, MapstoneData>();
-		MapstoneInfos.Add("Sunken Glades", new MapstoneData("Sunken Glades", "Glades", 0));
-		MapstoneInfos.Add("Mangrove area", new MapstoneData("Mangrove area", "Blackroot", 1));
-		MapstoneInfos.Add("Hollow Grove", new MapstoneData("Hollow Grove", "Grove", 2));
-		MapstoneInfos.Add("Moon Grotto", new MapstoneData("Moon Grotto", "Grotto", 3));
-		MapstoneInfos.Add("Thornfelt Swamp", new MapstoneData("Thornfelt Swamp", "Swamp", 4));
-		MapstoneInfos.Add("Valley of the Wind", new MapstoneData("Valley of the Wind", "Valley", 5));
-		MapstoneInfos.Add("Forlorn Ruins", new MapstoneData("Forlorn Ruins", "Forlorn", 6));
-		MapstoneInfos.Add("Sorrow Pass", new MapstoneData("Sorrow Pass", "Sorrow", 7));
-		MapstoneInfos.Add("Mount Horu", new MapstoneData("Mount Horu", "Horu", 8));
+		MapstoneInfos.Add("sunkenGlades", new MapstoneData("Glades", 0));
+		MapstoneInfos.Add("mangrove", new MapstoneData("Blackroot", 1));
+		MapstoneInfos.Add("hollowGrove", new MapstoneData("Grove", 2));
+		MapstoneInfos.Add("moonGrotto", new MapstoneData("Grotto", 3));
+		MapstoneInfos.Add("thornfeltSwamp", new MapstoneData("Swamp", 4));
+		MapstoneInfos.Add("valleyOfTheWind", new MapstoneData("Valley", 5));
+		MapstoneInfos.Add("forlornRuins", new MapstoneData("Forlorn", 6));
+		MapstoneInfos.Add("sorrowPass", new MapstoneData("Sorrow", 7));
+		MapstoneInfos.Add("mountHoru", new MapstoneData("Horu", 8));
 
 		TeleporterBits = new Dictionary<string, int>();
 
@@ -170,15 +170,15 @@ public static class RandomizerTrackedDataManager
 		return (RelicBitmap >> RelicBits[zone]) % 2 == 1;
 	}
 
-	public static void SetMapstone(string areaName) {
+	public static void SetMapstone(string areaIdentifier) {
 		try {
-			MapstoneData data = MapstoneInfos[areaName];
+			MapstoneData data = MapstoneInfos[areaIdentifier];
 			if(!GetMapstone(data)) {
 				MapstoneBitmap = Characters.Sein.Inventory.IncRandomizerItem(1003, (1 << data.Bit));
 			} 
 		} 
 		catch(Exception e) {
-			Randomizer.showHint("SetMapstone: " + e.Message);
+			Randomizer.showHint("@SetMapstone:@ area " + areaIdentifier + ": " + e.Message);
 		}
 	}
 
@@ -207,15 +207,13 @@ public static class RandomizerTrackedDataManager
 	public class MapstoneData
 	{
 		// Token: 0x06003815 RID: 14357 RVA: 0x0002C10D File Offset: 0x0002A30D
-		public MapstoneData(string areaName, string zone, int bit)
+		public MapstoneData(string zone, int bit)
 		{
-			this.AreaName = areaName;
 			this.Bit = bit;
 			this.Zone = zone;
 		}
 
 		public int Bit;
-		public string AreaName;
 		public string Zone;
 	}
 }
