@@ -34,20 +34,20 @@ public class SeinChargeFlameAbility : CharacterState, ISeinReceiver
 	{
 		get
 		{
-			return this.m_sein.Energy.CanAfford(this.m_sein.PlayerAbilities.ChargeFlameEfficiency.HasAbility ? this.EnergyCost : 0f);
+			return this.m_sein.Energy.CanAfford(this.m_sein.PlayerAbilities.ChargeFlameEfficiency.HasAbility ? 0f : 0.5f);
 		}
 	}
 
 	// Token: 0x060000D0 RID: 208
 	public void SpendEnergy()
 	{
-		this.m_sein.Energy.Spend(this.m_sein.PlayerAbilities.ChargeFlameEfficiency.HasAbility ? this.EnergyCost : 0f);
+		this.m_sein.Energy.Spend(this.m_sein.PlayerAbilities.ChargeFlameEfficiency.HasAbility ? 0f : 0.5f);
 	}
 
 	// Token: 0x060000D1 RID: 209
 	public void RestoreEnergy()
 	{
-		this.m_sein.Energy.Gain(this.m_sein.PlayerAbilities.ChargeFlameEfficiency.HasAbility ? this.EnergyCost : 0f);
+		this.m_sein.Energy.Gain(this.m_sein.PlayerAbilities.ChargeFlameEfficiency.HasAbility ? 0f : 0.5f);
 	}
 
 	// Token: 0x060000D2 RID: 210
@@ -332,7 +332,7 @@ public class SeinChargeFlameAbility : CharacterState, ISeinReceiver
 	private GameObject m_chargeFlameChargeEffect;
 
 	// Token: 0x04000108 RID: 264
-	public float EnergyCost = 0.5f;
+	public float EnergyCost = 1f;
 
 	// Token: 0x04000109 RID: 265
 	private static readonly List<LegacyAnimator> s_legacyAnimatorList = new List<LegacyAnimator>();

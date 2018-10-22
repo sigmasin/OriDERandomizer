@@ -162,7 +162,7 @@ loc: DoubleJumpSkillTree 784 -412 SKDoubleJump 0 Grotto
 loc: DoubleJumpAreaExp 759 -398 EX100 1 Grotto
 loc: GumoHideoutEnergyCell 545 -357 EC 1 Grotto
 loc: GumoHideoutRockfallExp 567 -246 EX100 1 Grotto
-loc: WaterVein 0 0 EVGinsoKey 1 Grotto
+loc: WaterVein 500 -248 EVGinsoKey 1 Grotto
 loc: LeftGumoHideoutExp 406 -386 EX100 1 Grotto
 loc: LeftGumoHideoutHealthCell 393 -375 HC 1 Grotto
 loc: LeftGumoHideoutLowerPlant 447 -368 Plant 1 Grotto
@@ -197,7 +197,7 @@ loc: GinsoEscapeSpiderExp 534 661 EX200 2 Ginso
 loc: GinsoEscapeJumpPadExp 537 733 EX100 2 Ginso
 loc: GinsoEscapeProjectileExp 533 827 EX100 2 Ginso
 loc: GinsoEscapeHangingExp 519 867 EX100 2 Ginso
-loc: GinsoEscapeExit 0 4 EVWater 2 Ginso
+loc: GinsoEscapeExit 548 952 EVWater 2 Ginso
 loc: SwampMap 677 -129 MapStone 2 Swamp
 loc: InnerSwampDrainExp 636 -162 EX100 2 Swamp
 loc: InnerSwampHiddenSwimExp 761 -173 EX100 2 Swamp
@@ -229,15 +229,15 @@ loc: HoruR4DrainedExp 163 136 EX200 7 Horu
 loc: HoruLavaDrainedRightExp 129 165 EX200 7 Horu
 loc: DoorWarpExp 106 112 EX200 5 Horu
 loc: HoruTeleporterExp 98 130 EX200 7 Horu
-loc: FinalEscape 0 20 EVWarmth 0 Horu
-loc: HoruR1 0 60 CS 6 Horu
-loc: HoruR2 0 64 CS 6 Horu
-loc: HoruR3 0 68 CS 7 Horu
-loc: HoruR4 0 72 CS 6 Horu
-loc: HoruL1 0 76 CS 6 Horu
-loc: HoruL2 0 80 CS 6 Horu
-loc: HoruL3 0 84 CS 7 Horu
-loc: HoruL4 0 88 CS 6 Horu
+loc: FinalEscape -240 512 EVWarmth 0 Horu
+loc: HoruR1 264 380 CS 6 Horu
+loc: HoruR2 172 288 CS 6 Horu
+loc: HoruR3 304 304 CS 7 Horu
+loc: HoruR4 216 192 CS 6 Horu
+loc: HoruL1 -92 376 CS 6 Horu
+loc: HoruL2 -20 276 CS 6 Horu
+loc: HoruL3 -164 336 CS 7 Horu
+loc: HoruL4 -96 152 CS 6 Horu
 loc: ValleyEntryAbilityCell -205 -113 AC 1 Valley
 loc: ValleyEntryTreeExp -221 -84 EX100 2 Valley
 loc: ValleyEntryTreePlant -179 -88 Plant 2 Valley
@@ -269,7 +269,7 @@ loc: ForlornKeystone4 -869 -255 KS 4 Forlorn
 loc: ForlornMap -843 -308 MapStone 5 Forlorn
 loc: ForlornPlant -815 -266 Plant 5 Forlorn
 loc: RightForlornHealthCell -625 -315 HC 5 Forlorn
-loc: ForlornEscape 0 12 EVWind 6 Forlorn
+loc: ForlornEscape -732 -236 EVWind 6 Forlorn
 loc: RightForlornPlant -607 -314 Plant 6 Forlorn
 loc: SorrowEntranceAbilityCell -510 204 AC 1 Sorrow
 loc: SorrowMainShaftKeystone -485 323 KS 1 Sorrow
@@ -294,7 +294,7 @@ loc: UpperSorrowSpikeExp -545 409 EX100 1 Sorrow
 loc: UpperSorrowFarLeftKeystone -592 445 KS 2 Sorrow
 loc: ChargeJumpSkillTree -696 408 SKChargeJump 2 Sorrow
 loc: AboveChargeJumpAbilityCell -646 473 AC 5 Sorrow
-loc: Sunstone 0 16 EVHoruKey 4 Sorrow
+loc: Sunstone -560 600 EVHoruKey 4 Sorrow
 loc: SunstonePlant -478 586 Plant 4 Sorrow
 loc: MistyEntranceStompExp -678 -29 EX100 1 Misty
 loc: MistyEntranceTreeExp -822 -9 EX100 1 Misty
@@ -311,7 +311,7 @@ loc: MistyKeystone4 -768 -144 KS 1 Misty
 loc: MistyGrenade -671 -39 EX200 5 Misty
 loc: MistyKeystone2 -1043 -8 KS 1 Misty
 loc: MistyAbilityCell -1075 -2 AC 1 Misty
-loc: GumonSeal 0 8 EVForlornKey 3 Misty
+loc: GumonSeal -720 -24 EVForlornKey 3 Misty
 
 
 -- area definitions and connections
@@ -379,14 +379,18 @@ home: SunkenGladesRunaway
 		casual-core TPSwamp
 	conn: ValleyTeleporter
 		casual-core TPValley
-	conn: ForlornTeleporter
-		casual-core ForlornKey TPForlorn
 	conn: SorrowTeleporter
 		casual-core TPSorrow
 	-- This path temporarily removed until Grotto can be refactored
 	--conn: GumoHideoutMap
 	--	casual-core TPGrotto Mapstone
-	-- TODO: ginso and horu teleporter paths here
+	-- Ginso/Forlorn TP keys are shifted to avoid KS-lock situations
+	conn: GinsoTeleporter
+		casual-core TPGinso
+	conn: ForlornTeleporter
+		casual-core TPForlorn
+	conn: HoruTeleporter
+		casual-core TPHoru HoruKey
 home: GladesMain
 	-- anchor: just beyond the first keystone door in Glades
 	pickup: FourthHealthCell
@@ -1289,12 +1293,12 @@ home: GinsoInnerDoor
 	-- anchor: Just inside the Ginso tree door after putting in the water vein
 	conn: LowerGinsoTree
 		casual-core WallJump DoubleJump
+		casual-core Climb DoubleJump
 		casual-core ChargeJump
 		casual-core Bash Grenade
-		--need to verify
-		expert-core DoubleJump 
-		master-core Dash WallJump Ability=6
-		master-core Dash Climb Ability=6
+		master-core DoubleJump
+		master-abilities Dash WallJump Ability=6
+		master-abilities Dash Climb Ability=6
 home: LowerGinsoTree
 	-- anchor: At the top of the second room near the flower
 	pickup: LowerGinsoHiddenExp
@@ -1302,18 +1306,14 @@ home: LowerGinsoTree
 		casual-core Bash Grenade
 		casual-core WallJump DoubleJump
 		casual-core Climb DoubleJump
-		master-core Dash Climb Ability=6
-		master-core Dash WallJump Ability=6
+		master-core DoubleJump
+		master-abilities Dash Climb Ability=6
+		master-abilities Dash WallJump Ability=6
 	pickup: LowerGinsoPlant
-		casual-core ChargeFlame DoubleJump
-		casual-core ChargeFlame WallJump
-		casual-core ChargeFlame Climb
-		--can be gotten with a ChargeFlame only, but will fall down after
-		standard-core ChargeFlame
+		casual-core ChargeFlame
 		casual-core Grenade
 		expert-abilities Dash Ability=6
 	conn: GinsoMiniBossDoor
-	-- TODO: single damage instance falls through the teleporter room
 		casual-core WallJump DoubleJump
 		casual-core WallJump Glide
 		casual-core Climb DoubleJump
@@ -1322,130 +1322,283 @@ home: LowerGinsoTree
 		casual-core ChargeJump DoubleJump
 		casual-core Bash Grenade DoubleJump
 		casual-core Bash Grenade Glide
-		expert-core DoubleJump
+		standard-dboost WallJump Health=3
+		standard-dboost Climb Health=3
+		standard-dboost ChargeJump Health=3
+		standard-abilities WallJump Dash Ability=3
+		standard-abilities Climb Dash Ability=3
+		standard-abilities ChargeJump Dash Ability=3
+		expert-core WallJump
+		master-core DoubleJump
+		master-core Bash
 	conn: Horu
 		glitched Dash
 home: GinsoMiniBossDoor
 	-- anchor: Just past the Ginso Mini Boss Door which unlocks after mini boss defeat
-	pickup: LowerGinsoKeystone1 --can be gotten with no skills and a 2 hp dboost
+	pickup: LowerGinsoKeystone1 
+		casual-core DoubleJump
+		casual-core Glide
+		casual-core Bash Grenade
+		standard-abilities Dash Ability=3
+		standard-dboost Health=3
 	pickup: LowerGinsoKeystone2
 		casual-core DoubleJump
 		casual-core Glide
-		--involves 2 hp dboost
-		casual-dboost ChargeJump Health=3
 		casual-core Bash Grenade
+		standard-dboost ChargeJump Health=3
+		standard-abilities Dash Ability=3
 	pickup: LowerGinsoKeystone3
 		casual-core WallJump
 		casual-core Climb
 		casual-core ChargeJump
 		casual-core Bash Grenade
-		expert-core DoubleJump
+		master-core DoubleJump
 	pickup: LowerGinsoKeystone4
 		casual-core WallJump
 		casual-core Climb
 		casual-core ChargeJump
 		casual-core Bash Grenade
-		expert-core DoubleJump
-	conn: BashTreeDoor
-		casual-core Keystone=4
-home: BashTreeDoor
+		master-core DoubleJump
+	conn: BashTreeDoorClosed
+	    casual-core Free
+home: BashTreeDoorClosed
 	--anchor: Immediately adjacent to the first Ginso keystone door (unopened)
+	conn: BashTreeDoorOpened
+		casual-core Keystone=4
+home: BashTreeDoorOpened
+	--anchor: Immediately adjacent to the first Ginso keystone door (opened)
+	-- for KS-lock protection, the backtrack requires the ginso key
+   	conn: GinsoMiniBossDoor
+		casual-core Open GinsoKey
 	conn: BashTree
 		casual-core WallJump
 		casual-core Climb
 		casual-core ChargeJump
 		casual-core Bash Grenade
-		expert-core DoubleJump
+		master-core DoubleJump
 home: BashTree
 	--anchor: The Bash Tree Itself
+	-- for KS-lock protection, all pickups in this area require the ginso key
 	pickup: BashSkillTree
+		casual-core GinsoKey
 	pickup: BashAreaExp
-		casual-core Bash
-		casual-core ChargeJump
-	conn: UpperGinsoTree
+		casual-core GinsoKey Bash
+		casual-core GinsoKey ChargeJump
+		expert-abilities GinsoKey WallJump DoubleJump Dash Ability=6
+		master-abilities GinsoKey DoubleJump Ability=12
+	conn: BashTreeDoorClosed
+	    casual-core Open
+	conn: UpperGinsoRedirectArea
 		casual-core Bash
 		casual-core ChargeJump Dash DoubleJump
+		casual-core ChargeJump DoubleJump Glide
 		standard-dboost ChargeJump Health=4
 		expert-dboost ChargeJump Health=3
 		expert-abilities ChargeJump Dash Ability=6
-home: UpperGinsoTree
-	--anchor: Near the flower just before the Upper Ginso keystone area.
-	-- TODO: revisit these dboost paths. Classically, CJump and 3HP was sufficient in standard
-	-- Some implicit paths appear to be present here
-	pickup: UpperGinsoLowerKeystone
-		casual-core Bash
-		expert-dboost ChargeJump Health=5
-	pickup: UpperGinsoRightKeystone
-		casual-core Bash
-		expert-dboost ChargeJump Health=5
-	pickup: UpperGinsoUpperRightKeystone
-		casual-core Bash
-		expert-dboost ChargeJump Health=5
-	pickup: UpperGinsoUpperLeftKeystone
-		casual-core Bash
-		expert-dboost ChargeJump Health=5
+		master-core DoubleJump Dash
+		master-core DoubleJump WallJump
+		master-core DoubleJump Climb
+		master-abilities DoubleJump Ability=12
+home: UpperGinsoRedirectArea
+	-- located at the first redirect area on top of where the UpperGinsoRedirectLowerExp is found
+	-- for KS-lock protection, all pickups in this area require the ginso key
 	pickup: UpperGinsoRedirectLowerExp
-		casual-core Stomp
-		casual-core Bash
-		casual-core ChargeJump Climb
-		expert-core ChargeFlame
+		casual-core GinsoKey Stomp
+		casual-core GinsoKey Bash
+		standard-core GinsoKey ChargeJump Climb
+		expert-core GinsoKey ChargeFlame
+		expert-abilities GinsoKey ChargeJump Dash Ability=3
+		master-core GinsoKey Grenade
 	pickup: UpperGinsoRedirectUpperExp
-		casual-core Stomp
+		--no climb + Cjump here due to the possibility of destroying the only surface to break the floor here
+		casual-core GinsoKey Stomp
+		casual-core GinsoKey Bash
+		expert-core GinsoKey ChargeFlame
+		expert-abilities GinsoKey ChargeJump Dash Ability=3
+	conn: UpperGinsoTree
 		casual-core Bash
-		expert-core ChargeFlame
-	pickup: UpperGinsoEnergyCell
-		casual-core Stomp
+		casual-core ChargeJump
+		master-abilities DoubleJump Dash Ability=6
+		master-abilities DoubleJump Stomp WallJump Ability=12
+		master-abilities DoubleJump ChargeFlame WallJump Ability=12
+		master-abilities DoubleJump Grenade WallJump Ability=12
+		master-abilities DoubleJump Stomp Climb Ability=12
+		master-abilities DoubleJump ChargeFlame Climb Ability=12
+		master-abilities DoubleJump Grenade Climb Ability=12
+	conn: BashTree
 		casual-core Bash
-		casual-core ChargeJump Climb
-		expert-core ChargeFlame
-	conn: UpperGinsoDoor
-		casual-core Keystone=4
-home: UpperGinsoDoor
-	--anchor: Immediately adjacent to the upper ginso keystone door (unopened)
-	-- TODO: recheck these dboost paths, perhaps reconsider their difficult placement
-	conn: TopGinsoTree
-		casual-core Bash WallJump
-		casual-core Bash Climb
-		casual-core Bash ChargeJump
-		casual-core Bash Grenade
-		expert-dboost ChargeJump Health=5
-		expert-dboost ChargeJump DoubleJump Health=3
-		master-core WallJump DoubleJump Health=7 Ability=12
-home: TopGinsoTree
-	--anchor: Where Water Vein is inserted at the top of the Ginso Tree
-	-- TODO: recheck these dboost paths and their difficulties
-	-- (do these spikes actually do 3? What damage are we taking getting to the top left exp?)
-	pickup: TopGinsoLeftLowerExp
 		casual-core DoubleJump
-		casual-core Bash
+		standard-dboost Dash Health=4
+		standard-dboost WallJump Health=4
+		standard-dboost Climb Health=4
+		standard-dboost Glide Health=4
 		standard-dboost ChargeJump Health=4
+home: UpperGinsoTree
+	--anchor: Near the flower just before the Upper Ginso keystone area, this is the flower AFTER the keydupe flower
+	-- for KS-lock protection, all pickups in this area require the ginso key
+	pickup: UpperGinsoLowerKeystone
+		casual-core GinsoKey Bash DoubleJump
+		casual-core GinsoKey Bash Glide
+		standard-dboost GinsoKey Bash Health=3
+		standard-dboost GinsoKey DoubleJump Health=3
+		standard-dboost GinsoKey ChargeJump Health=3
+		standard-abilities GinsoKey ChargeJump Dash Ability=3
+		expert-dboost GinsoKey Health=5
+		expert-abilities GinsoKey Dash Ability=6
+	pickup: UpperGinsoRightKeystone
+		casual-core GinsoKey Bash DoubleJump
+		casual-core GinsoKey Bash Glide
+		standard-core GinsoKey Bash
+		standard-core GinsoKey ChargeJump DoubleJump
+		standard-core GinsoKey ChargeJump Glide
+		standard-dboost GinsoKey ChargeJump Health=3
+		standard-abilities GinsoKey ChargeJump Dash Ability=3
+		expert-dboost GinsoKey WallJump DoubleJump Health=5
+		master-abilities GinsoKey DoubleJump Ability=12 Health=3
+	pickup: UpperGinsoUpperRightKeystone
+		casual-core GinsoKey Bash DoubleJump
+		standard-core GinsoKey Bash
+		standard-core GinsoKey ChargeJump DoubleJump
+		standard-dboost GinsoKey ChargeJump Health=3
+		master-abilities GinsoKey DoubleJump Ability=12 Health=5
+	pickup: UpperGinsoUpperLeftKeystone
+		casual-core GinsoKey Bash DoubleJump
+		standard-core GinsoKey Bash
+		standard-core GinsoKey ChargeJump DoubleJump
+		standard-core GinsoKey ChargeJump Glide
+		standard-dboost GinsoKey ChargeJump Health=3
+		standard-abilities GinsoKey ChargeJump Dash Ability=3
+		master-abilities GinsoKey DoubleJump Ability=12 Health=5
+	pickup: UpperGinsoEnergyCell
+		--with the exception of bash and cjump, all of these routes involve getting stuck in the energy cell area
+		casual-core GinsoKey Stomp
+		casual-core GinsoKey Bash
+		standard-core GinsoKey ChargeJump Climb
+		expert-core GinsoKey ChargeJump Dash
+		expert-core GinsoKey ChargeFlame
+	conn: UpperGinsoDoorClosed
+		casual-core Free
+	conn: UpperGinsoRedirectArea
+		casual-core Stomp
+		casual-core ChargeJump Bash
+		standard-core Climb ChargeJump
+		expert-abilities Climb ChargeJump Dash
+		master-core Bash
+home: UpperGinsoDoorClosed
+	conn: UpperGinsoDoorOpened
+		casual-core Keystone=4
+home: UpperGinsoDoorOpened
+	--anchor: Immediately adjacent to the upper ginso keystone door (opened)
+	conn: GinsoTeleporter
+		-- paths from UpperGinsoTree to GinsoTeleporter, with the door open
+		casual-core Bash DoubleJump
+		casual-core Bash Glide
+		standard-core Bash
+		expert-dboost ChargeJump DoubleJump Health=3
+		expert-dboost ChargeJump Health=5
+		master-abilities WallJump DoubleJump Health=5 Ability=12
+	conn: UpperGinsoTree
+		casual-core Open Bash
+		casual-core Open DoubleJump
+		casual-core Open Glide
+		casual-dboost Open Health=3
+		standard-abilities Open Dash Ability=3
+home: GinsoTeleporter
+	--anchor: Ginso Teleporter
+	conn: TopGinsoTree
+		-- kill the elemental and progress up
+		-- GinsoKey required for KS lock protection
+		casual-core GinsoKey Bash WallJump DoubleJump
+		casual-core GinsoKey Bash Climb DoubleJump
+		casual-core GinsoKey ChargeJump WallJump
+		casual-core GinsoKey ChargeJump Climb
+		standard-core GinsoKey WallJump DoubleJump ChargeFlame
+		standard-core GinsoKey WallJump DoubleJump Grenade
+		expert-core GinsoKey WallJump DoubleJump Stomp
+		expert-core GinsoKey ChargeJump
+		master-abilities GinsoKey DoubleJump ChargeFlame Ability=12
+		master-abilities GinsoKey DoubleJump Grenade Ability=12
+		master-abilities GinsoKey DoubleJump Stomp Ability=12
+	conn: UpperGinsoDoorClosed
+		casual-core Open
+home: TopGinsoTree
+	-- anchor: in front of the core
+	pickup: TopGinsoLeftLowerExp
+		casual-core DoubleJump WallJump
+		casual-core DoubleJump Climb
+		casual-core Bash DoubleJump
+		casual-core Bash Glide
+		casual-core ChargeJump DoubleJump
+		casual-core ChargeJump Glide
+		standard-core Bash
+		standard-dboost ChargeJump Health=3
+		standard-dboost DoubleJump Health=3
 		expert-abilities Dash Ability=6
+		expert-dboost Health=5
+		master-core DoubleJump
 	pickup: TopGinsoLeftUpperExp
 		casual-core Bash
-		standard-dboost ChargeJump Health=4
-		standard-dboost Dash DoubleJump Health=4
+		casual-core ChargeJump
+		standard-dboost Dash WallJump DoubleJump Health=3
+		standard-dboost Dash Climb DoubleJump Health=3
+		standard-dboost WallJump DoubleJump Glide Health=3
+		standard-dboost Climb DoubleJump Glide Health=3
 		expert-abilities Dash Ability=6
+		master-abilities DoubleJump Ability=12
+		master-dboost DoubleJump Glide Health=3
+		master-dboost DoubleJump Dash Health=3
 	pickup: TopGinsoRightPlant
 		casual-core Bash ChargeFlame
-		--requires 2 grenades or an air throw
 		casual-core Bash Grenade 
 		casual-core ChargeJump ChargeFlame
 		casual-core ChargeJump Grenade
+		standard-dboost DoubleJump WallJump Grenade Health=3
+		standard-dboost DoubleJump Climb Grenade Health=3
+		expert-dboost DoubleJump WallJump ChargeFlame Health=3
+		expert-dboost DoubleJump Climb ChargeFlame Health=3
 		expert-abilities Dash Ability=6
+		master-abilities DoubleJump ChargeFlame Ability=12
+		master-abilities DoubleJump Grenade Ability=12
+		master-dboost DoubleJump ChargeFlame Health=3
+		master-dboost DoubleJump Grenade Health=3
 	conn: GinsoEscape
 		casual-core Bash Grenade
 		casual-core Bash ChargeJump
-		casual-core Bash WallJump DoubleJump
-		standard-core Bash Stomp DoubleJump
+		casual-core Bash DoubleJump
+		standard-core Bash
 		standard-core Stomp ChargeJump
+		standard-dboost Stomp Dash WallJump DoubleJump Health=3
+		standard-dboost Stomp Dash Climb DoubleJump Health=3
+		standard-dboost Stomp WallJump DoubleJump Glide Health=3
+		standard-dboost Stomp Climb DoubleJump Glide Health=3
 		expert-abilities Stomp Dash Ability=6
-		dbash Bash
+		master-abilities Stomp DoubleJump Ability=12
+		master-dboost Stomp DoubleJump Glide Health=3
+		master-dboost Stomp DoubleJump Dash Health=3
 home: GinsoEscape
+	--gonna need to go over a lot of these paths for binning into difficulties, some can be quite a pain
+	conn: GinsoEscapeComplete
+		casual-core Bash DoubleJump WallJump
+		casual-core Bash DoubleJump Climb
+		standard-core Bash Climb
+		standard-core Bash WallJump
+		expert-core ChargeJump Climb DoubleJump
+		expert-dboost ChargeJump WallJump Health=9
+		expert-dboost ChargeJump Climb Health=3
+		expert-abilities ChargeJump DoubleJump Dash Ability=6 Health=3
+		master-dboost ChargeJump DoubleJump Health=7
+		master-abilities WallJump DoubleJump Ability=12 Health=6
+		master-abilities Climb DoubleJump Ability=12 Health=10
+		insane DoubleJump Ability=12 Health=12
+		dbash Bash
+home: GinsoEscapeComplete
+-- this is a meta area to factor the ginso escape pickups which have identical requirements
 	pickup: GinsoEscapeSpiderExp
 	pickup: GinsoEscapeJumpPadExp
 	pickup: GinsoEscapeProjectileExp
 	pickup: GinsoEscapeHangingExp
 	pickup: GinsoEscapeExit
+	conn: Swamp
 home: UpperGrotto
 	-- anchor: at the cutscene trigger to spawn the lasers
 	pickup: GrottoLasersRoofExp
@@ -1984,6 +2137,7 @@ home: Horu
 		casual-core Stomp
 	conn: LowerGinsoTree
 		glitched Dash
+home: HoruTeleporter
 home: HoruMapLedge
 	pickup: HoruMap
 		casual-core Mapstone
@@ -2510,6 +2664,8 @@ home: ForlornOuterDoor
 	conn: OutsideForlorn
 home: ForlornInnerDoor
 	conn: ForlornOuterDoor
+		--ForlornKey required to avoid KS lock scenarios
+		casual-core ForlornKey
 	conn: ForlornOrbPossession
 		casual-core DoubleJump Open
 		casual-core Glide Climb Open
@@ -2605,8 +2761,9 @@ home: ForlornGravityRoom
 		master-dboost Health=3 Ability=12
 home: ForlornMapArea
 -- anchored in front of the map monument
+-- ForlornKey required to avoid KS lock scenarios
 	pickup: ForlornMap
-		casual-core Mapstone
+		casual-core ForlornKey Mapstone
 	conn: ForlornTeleporter
 		casual-core WallJump DoubleJump
 		casual-core Climb DoubleJump
@@ -2639,7 +2796,7 @@ home: ForlornMapArea
 home: ForlornTeleporter
 -- anchored on the Forlorn spirit well
 	conn: ForlornOrbPossession
-		casual-core Open
+		casual-core ForlornKey Open
 	conn: ForlornMapArea
 		casual-core WallJump
 		casual-core Climb
@@ -2658,26 +2815,33 @@ home: ForlornTeleporter
 		master-lure Bash
 	conn: ForlornGravityRoom
 -- the following Forlorn areas are anchored directly on their pickups
+-- ForlornKey required to avoid KS lock scenarios
 home: ForlornEntranceExpArea
 	pickup: ForlornEntranceExp
+		casual-core ForlornKey
 home: ForlornHiddenSpiderExpArea
 	pickup: ForlornHiddenSpiderExp
+		casual-core ForlornKey
 home: ForlornKeystone1Area
 	pickup: ForlornKeystone1
+		casual-core ForlornKey
 home: ForlornKeystone2Area
 	pickup: ForlornKeystone2
+		casual-core ForlornKey
 home: ForlornKeystone3Area
 	pickup: ForlornKeystone3
+		casual-core ForlornKey
 home: ForlornKeystone4Area
 	pickup: ForlornKeystone4
+		casual-core ForlornKey
 home: ForlornPlantArea
 	pickup: ForlornPlant
-		casual-core ChargeFlame
-		casual-core Grenade
-		expert-abilities Dash Ability=6
+		casual-core ForlornKey ChargeFlame
+		casual-core ForlornKey Grenade
+		expert-abilities ForlornKey Dash Ability=6
 home: ForlornKeyDoor
 	conn: ForlornLaserRoom
-		casual-core Keystone=4
+		casual-core ForlornKey Keystone=4
 home: ForlornLaserRoom
 -- anchored in the bottom left of the crossed lasers room
 	pickup: ForlornEscape
