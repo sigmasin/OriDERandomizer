@@ -3193,6 +3193,13 @@
           <Requirement mode="casual-core">TPSorrow</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="GinsoTeleporter"/>
+        <Requirements>
+          <Requirement mode="casual-core">TPGinso</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="GladesMain">
@@ -5016,9 +5023,9 @@
           <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
           <Requirement mode="casual-core">ChargeJump</Requirement>
           <Requirement mode="casual-core">Bash+Grenade</Requirement>
-          <Requirement mode="expert-core">DoubleJump</Requirement>
-          <Requirement mode="master-core">Dash+WallJump+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Dash+Climb+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-core">DoubleJump</Requirement>
+          <Requirement mode="master-abilities">Dash+WallJump+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">Dash+Climb+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -5034,8 +5041,9 @@
           <Requirement mode="casual-core">Bash+Grenade</Requirement>
           <Requirement mode="casual-core">WallJump+DoubleJump</Requirement>
           <Requirement mode="casual-core">Climb+DoubleJump</Requirement>
-          <Requirement mode="master-core">Dash+Climb+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="master-core">Dash+WallJump+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-core">DoubleJump</Requirement>
+          <Requirement mode="master-abilities">Dash+Climb+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">Dash+WallJump+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -5062,7 +5070,15 @@
           <Requirement mode="casual-core">ChargeJump+DoubleJump</Requirement>
           <Requirement mode="casual-core">Bash+Grenade+DoubleJump</Requirement>
           <Requirement mode="casual-core">Bash+Grenade+Glide</Requirement>
-          <Requirement mode="expert-core">DoubleJump</Requirement>
+          <Requirement mode="standard-dboost">WallJump</Requirement>
+          <Requirement mode="standard-dboost">Climb</Requirement>
+          <Requirement mode="standard-dboost">ChargeJump</Requirement>
+          <Requirement mode="standard-abilities">WallJump+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="standard-abilities">Climb+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="standard-abilities">ChargeJump+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="expert-core">WallJump</Requirement>
+          <Requirement mode="master-core">DoubleJump</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -5081,7 +5097,10 @@
         <Home name="GinsoMiniBossDoor"/>
         <Target name="LowerGinsoKeystone1"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">DoubleJump</Requirement>
+          <Requirement mode="standard-core">Glide</Requirement>
+          <Requirement mode="standard-abilities">Dash+AC+AC+AC</Requirement>
+          <Requirement mode="standard-dboost">HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -5090,8 +5109,9 @@
         <Requirements>
           <Requirement mode="casual-core">DoubleJump</Requirement>
           <Requirement mode="casual-core">Glide</Requirement>
-          <Requirement mode="casual-dboost">ChargeJump+HC+HC+HC</Requirement>
           <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="standard-dboost">ChargeJump+HC+HC+HC</Requirement>
+          <Requirement mode="standard-abilities">ChargeJump+Dash+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -5102,7 +5122,7 @@
           <Requirement mode="casual-core">Climb</Requirement>
           <Requirement mode="casual-core">ChargeJump</Requirement>
           <Requirement mode="casual-core">Bash+Grenade</Requirement>
-          <Requirement mode="expert-core">DoubleJump</Requirement>
+          <Requirement mode="master-core">DoubleJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -5113,30 +5133,49 @@
           <Requirement mode="casual-core">Climb</Requirement>
           <Requirement mode="casual-core">ChargeJump</Requirement>
           <Requirement mode="casual-core">Bash+Grenade</Requirement>
-          <Requirement mode="expert-core">DoubleJump</Requirement>
+          <Requirement mode="master-core">DoubleJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="GinsoMiniBossDoor"/>
-        <Target name="BashTreeDoor"/>
+        <Target name="BashTreeDoorClosed"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="BashTreeDoorClosed">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="BashTreeDoorClosed"/>
+        <Target name="BashTreeDoorOpened"/>
         <Requirements>
           <Requirement mode="casual-core">KS+KS+KS+KS</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
-  <Area name="BashTreeDoor">
+  <Area name="BashTreeDoorOpened">
     <Locations/>
     <Connections>
       <Connection>
-        <Home name="BashTreeDoor"/>
+        <Home name="BashTreeDoorOpened"/>
+        <Target name="GinsoMiniBossDoor"/>
+        <Requirements>
+          <Requirement mode="casual-core">Open+GinsoKey</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="BashTreeDoorOpened"/>
         <Target name="BashTree"/>
         <Requirements>
           <Requirement mode="casual-core">WallJump</Requirement>
           <Requirement mode="casual-core">Climb</Requirement>
           <Requirement mode="casual-core">ChargeJump</Requirement>
           <Requirement mode="casual-core">Bash+Grenade</Requirement>
-          <Requirement mode="expert-core">DoubleJump</Requirement>
+          <Requirement mode="master-core">DoubleJump</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -5148,26 +5187,87 @@
         <Home name="BashTree"/>
         <Target name="BashSkillTree"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">GinsoKey</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="BashTree"/>
         <Target name="BashAreaExp"/>
         <Requirements>
-          <Requirement mode="casual-core">Bash</Requirement>
-          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="casual-core">GinsoKey+Bash</Requirement>
+          <Requirement mode="casual-core">GinsoKey+ChargeJump</Requirement>
+          <Requirement mode="master-abilities">GinsoKey+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="BashTree"/>
-        <Target name="UpperGinsoTree"/>
+        <Target name="BashTreeDoorClosed"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="BashTree"/>
+        <Target name="UpperGinsoRedirectArea"/>
         <Requirements>
           <Requirement mode="casual-core">Bash</Requirement>
           <Requirement mode="casual-core">ChargeJump+Dash+DoubleJump</Requirement>
+          <Requirement mode="casual-core">ChargeJump+DoubleJump+Glide</Requirement>
           <Requirement mode="standard-dboost">ChargeJump+HC+HC+HC+HC</Requirement>
           <Requirement mode="expert-dboost">ChargeJump+HC+HC+HC</Requirement>
           <Requirement mode="expert-abilities">ChargeJump+Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="UpperGinsoRedirectArea">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="UpperGinsoRedirectArea"/>
+        <Target name="UpperGinsoRedirectLowerExp"/>
+        <Requirements>
+          <Requirement mode="casual-core">GinsoKey+Stomp</Requirement>
+          <Requirement mode="casual-core">GinsoKey+Bash</Requirement>
+          <Requirement mode="standard-core">GinsoKey+ChargeJump+Climb</Requirement>
+          <Requirement mode="expert-core">GinsoKey+ChargeFlame</Requirement>
+          <Requirement mode="expert-abilities">GinsoKey+ChargeJump+Dash+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperGinsoRedirectArea"/>
+        <Target name="UpperGinsoRedirectUpperExp"/>
+        <Requirements>
+          <Requirement mode="casual-core">GinsoKey+Stomp</Requirement>
+          <Requirement mode="casual-core">GinsoKey+Bash</Requirement>
+          <Requirement mode="expert-core">GinsoKey+ChargeFlame</Requirement>
+          <Requirement mode="expert-abilities">GinsoKey+ChargeJump+Dash+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperGinsoRedirectArea"/>
+        <Target name="UpperGinsoTree"/>
+        <Requirements>
+          <Requirement mode="casual-core">Bash</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+Stomp+WallJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+ChargeFlame+WallJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+Stomp+Climb+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+ChargeFlame+Climb+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperGinsoRedirectArea"/>
+        <Target name="BashTree"/>
+        <Requirements>
+          <Requirement mode="casual-core">Bash</Requirement>
+          <Requirement mode="casual-core">DoubleJump</Requirement>
+          <Requirement mode="standard-dboost">Dash+HC+HC+HC+HC</Requirement>
+          <Requirement mode="standard-dboost">WallJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="standard-dboost">Climb+HC+HC+HC+HC</Requirement>
+          <Requirement mode="standard-dboost">Glide+HC+HC+HC+HC</Requirement>
+          <Requirement mode="standard-dboost">ChargeJump+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -5179,86 +5279,150 @@
         <Home name="UpperGinsoTree"/>
         <Target name="UpperGinsoLowerKeystone"/>
         <Requirements>
-          <Requirement mode="casual-core">Bash</Requirement>
-          <Requirement mode="expert-dboost">ChargeJump+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="casual-core">GinsoKey+Bash+DoubleJump</Requirement>
+          <Requirement mode="casual-core">GinsoKey+Bash+Glide</Requirement>
+          <Requirement mode="standard-dboost">GinsoKey+Bash+HC+HC+HC</Requirement>
+          <Requirement mode="standard-dboost">GinsoKey+DoubleJump+HC+HC+HC</Requirement>
+          <Requirement mode="standard-dboost">GinsoKey+ChargeJump+HC+HC+HC</Requirement>
+          <Requirement mode="standard-abilities">GinsoKey+ChargeJump+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="expert-dboost">GinsoKey+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-abilities">GinsoKey+Dash+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="UpperGinsoTree"/>
         <Target name="UpperGinsoRightKeystone"/>
         <Requirements>
-          <Requirement mode="casual-core">Bash</Requirement>
-          <Requirement mode="expert-dboost">ChargeJump+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="casual-core">GinsoKey+Bash+DoubleJump</Requirement>
+          <Requirement mode="casual-core">GinsoKey+Bash+Glide</Requirement>
+          <Requirement mode="standard-core">GinsoKey+Bash</Requirement>
+          <Requirement mode="standard-core">GinsoKey+ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="standard-core">GinsoKey+ChargeJump+Glide</Requirement>
+          <Requirement mode="standard-dboost">GinsoKey+ChargeJump+HC+HC+HC</Requirement>
+          <Requirement mode="standard-abilities">GinsoKey+ChargeJump+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="expert-abilities">GinsoKey+Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">GinsoKey+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="UpperGinsoTree"/>
         <Target name="UpperGinsoUpperRightKeystone"/>
         <Requirements>
-          <Requirement mode="casual-core">Bash</Requirement>
-          <Requirement mode="expert-dboost">ChargeJump+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="casual-core">GinsoKey+Bash+DoubleJump</Requirement>
+          <Requirement mode="standard-core">GinsoKey+Bash</Requirement>
+          <Requirement mode="standard-core">GinsoKey+ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="standard-dboost">GinsoKey+ChargeJump+HC+HC+HC</Requirement>
+          <Requirement mode="master-abilities">GinsoKey+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="UpperGinsoTree"/>
         <Target name="UpperGinsoUpperLeftKeystone"/>
         <Requirements>
-          <Requirement mode="casual-core">Bash</Requirement>
-          <Requirement mode="expert-dboost">ChargeJump+HC+HC+HC+HC+HC</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="UpperGinsoTree"/>
-        <Target name="UpperGinsoRedirectLowerExp"/>
-        <Requirements>
-          <Requirement mode="casual-core">Stomp</Requirement>
-          <Requirement mode="casual-core">Bash</Requirement>
-          <Requirement mode="casual-core">ChargeJump+Climb</Requirement>
-          <Requirement mode="expert-core">ChargeFlame</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="UpperGinsoTree"/>
-        <Target name="UpperGinsoRedirectUpperExp"/>
-        <Requirements>
-          <Requirement mode="casual-core">Stomp</Requirement>
-          <Requirement mode="casual-core">Bash</Requirement>
-          <Requirement mode="expert-core">ChargeFlame</Requirement>
+          <Requirement mode="casual-core">GinsoKey+Bash+DoubleJump</Requirement>
+          <Requirement mode="standard-core">GinsoKey+Bash</Requirement>
+          <Requirement mode="standard-core">GinsoKey+ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="standard-core">GinsoKey+ChargeJump+Glide</Requirement>
+          <Requirement mode="standard-dboost">GinsoKey+ChargeJump+HC+HC+HC</Requirement>
+          <Requirement mode="standard-abilities">GinsoKey+ChargeJump+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">GinsoKey+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="UpperGinsoTree"/>
         <Target name="UpperGinsoEnergyCell"/>
         <Requirements>
-          <Requirement mode="casual-core">Stomp</Requirement>
-          <Requirement mode="casual-core">Bash</Requirement>
-          <Requirement mode="casual-core">ChargeJump+Climb</Requirement>
-          <Requirement mode="expert-core">ChargeFlame</Requirement>
+          <Requirement mode="casual-core">GinsoKey+Stomp</Requirement>
+          <Requirement mode="casual-core">GinsoKey+Bash</Requirement>
+          <Requirement mode="casual-core">GinsoKey+ChargeJump+Climb</Requirement>
+          <Requirement mode="expert-core">GinsoKey+ChargeFlame</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="UpperGinsoTree"/>
-        <Target name="UpperGinsoDoor"/>
+        <Target name="UpperGinsoDoorClosed"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperGinsoTree"/>
+        <Target name="UpperGinsoRedirectArea"/>
+        <Requirements>
+          <Requirement mode="casual-core">Stomp</Requirement>
+          <Requirement mode="casual-core">ChargeJump+Bash</Requirement>
+          <Requirement mode="standard-core">Climb+ChargeJump</Requirement>
+          <Requirement mode="expert-abilities">Climb+ChargeJump+Dash</Requirement>
+          <Requirement mode="master-core">Bash</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="UpperGinsoDoorClosed">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="UpperGinsoDoorClosed"/>
+        <Target name="UpperGinsoDoorOpened"/>
         <Requirements>
           <Requirement mode="casual-core">KS+KS+KS+KS</Requirement>
         </Requirements>
       </Connection>
     </Connections>
   </Area>
-  <Area name="UpperGinsoDoor">
+  <Area name="UpperGinsoDoorOpened">
     <Locations/>
     <Connections>
       <Connection>
-        <Home name="UpperGinsoDoor"/>
+        <Home name="UpperGinsoDoorOpened"/>
+        <Target name="GinsoTeleporter"/>
+        <Requirements>
+          <Requirement mode="casual-core">Bash+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Bash+Glide</Requirement>
+          <Requirement mode="standard-core">Bash</Requirement>
+          <Requirement mode="expert-dboost">ChargeJump+DoubleJump+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">ChargeJump+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-abilities">WallJump+DoubleJump+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="UpperGinsoDoorOpened"/>
+        <Target name="UpperGinsoTree"/>
+        <Requirements>
+          <Requirement mode="casual-core">Open+Bash</Requirement>
+          <Requirement mode="casual-core">Open+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Open+Glide</Requirement>
+          <Requirement mode="casual-dboost">Open+HC+HC+HC</Requirement>
+          <Requirement mode="standard-abilities">Open+Dash+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="GinsoTeleporter">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="GinsoTeleporter"/>
         <Target name="TopGinsoTree"/>
         <Requirements>
-          <Requirement mode="casual-core">Bash+WallJump</Requirement>
-          <Requirement mode="casual-core">Bash+Climb</Requirement>
-          <Requirement mode="casual-core">Bash+ChargeJump</Requirement>
-          <Requirement mode="casual-core">Bash+Grenade</Requirement>
-          <Requirement mode="expert-dboost">ChargeJump+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="expert-dboost">ChargeJump+DoubleJump+HC+HC+HC</Requirement>
-          <Requirement mode="master-core">WallJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="casual-core">GinsoKey+Bash+WallJump+DoubleJump</Requirement>
+          <Requirement mode="casual-core">GinsoKey+Bash+Climb+DoubleJump</Requirement>
+          <Requirement mode="casual-core">GinsoKey+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">GinsoKey+ChargeJump+Climb</Requirement>
+          <Requirement mode="standard-core">GinsoKey+WallJump+DoubleJump+ChargeFlame</Requirement>
+          <Requirement mode="standard-core">GinsoKey+WallJump+DoubleJump+Grenade</Requirement>
+          <Requirement mode="expert-core">GinsoKey+WallJump+DoubleJump+Stomp</Requirement>
+          <Requirement mode="expert-core">GinsoKey+ChargeJump</Requirement>
+          <Requirement mode="master-abilities">GinsoKey+DoubleJump+ChargeFlame+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">GinsoKey+DoubleJump+Grenade+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">GinsoKey+DoubleJump+Stomp+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GinsoTeleporter"/>
+        <Target name="UpperGinsoDoorClosed"/>
+        <Requirements>
+          <Requirement mode="casual-core">Open</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -5270,19 +5434,27 @@
         <Home name="TopGinsoTree"/>
         <Target name="TopGinsoLeftLowerExp"/>
         <Requirements>
-          <Requirement mode="casual-core">DoubleJump</Requirement>
-          <Requirement mode="casual-core">Bash</Requirement>
-          <Requirement mode="standard-dboost">ChargeJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="casual-core">DoubleJump+WallJump</Requirement>
+          <Requirement mode="casual-core">DoubleJump+Climb</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Bash+Glide</Requirement>
+          <Requirement mode="casual-core">ChargeJump+DoubleJump</Requirement>
+          <Requirement mode="casual-core">ChargeJump+Glide</Requirement>
+          <Requirement mode="standard-core">Bash+Grenade</Requirement>
+          <Requirement mode="standard-dboost">ChargeJump+HC+HC+HC</Requirement>
           <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-core">DoubleJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="TopGinsoTree"/>
         <Target name="TopGinsoLeftUpperExp"/>
         <Requirements>
-          <Requirement mode="casual-core">Bash</Requirement>
-          <Requirement mode="standard-dboost">ChargeJump+HC+HC+HC+HC</Requirement>
-          <Requirement mode="standard-dboost">Dash+DoubleJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="standard-core">Bash</Requirement>
+          <Requirement mode="standard-dboost">Dash+DoubleJump+HC+HC+HC</Requirement>
           <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
@@ -5304,10 +5476,16 @@
           <Requirement mode="casual-core">Bash+Grenade</Requirement>
           <Requirement mode="casual-core">Bash+ChargeJump</Requirement>
           <Requirement mode="casual-core">Bash+WallJump+DoubleJump</Requirement>
-          <Requirement mode="standard-core">Bash+Stomp+DoubleJump</Requirement>
+          <Requirement mode="standard-core">Bash</Requirement>
           <Requirement mode="standard-core">Stomp+ChargeJump</Requirement>
           <Requirement mode="expert-abilities">Stomp+Dash+AC+AC+AC+AC+AC+AC</Requirement>
-          <Requirement mode="dbash">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="TopGinsoTree"/>
+        <Target name="UpperGinsoDoorClosed"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -5319,35 +5497,114 @@
         <Home name="GinsoEscape"/>
         <Target name="GinsoEscapeSpiderExp"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+Climb</Requirement>
+          <Requirement mode="standard-core">Bash+Climb</Requirement>
+          <Requirement mode="standard-core">Bash+WallJump</Requirement>
+          <Requirement mode="expert-core">ChargeJump+Climb+DoubleJump</Requirement>
+          <Requirement mode="expert-dboost">ChargeJump+WallJump+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">ChargeJump+Climb+HC+HC+HC</Requirement>
+          <Requirement mode="expert-abilities">ChargeJump+DoubleJump+Dash+AC+AC+AC+AC+AC+AC+HC+HC+HC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-abilities">WallJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-abilities">Climb+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="insane">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="GinsoEscape"/>
         <Target name="GinsoEscapeJumpPadExp"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+Climb</Requirement>
+          <Requirement mode="standard-core">Bash+Climb</Requirement>
+          <Requirement mode="standard-core">Bash+WallJump</Requirement>
+          <Requirement mode="expert-core">ChargeJump+Climb+DoubleJump</Requirement>
+          <Requirement mode="expert-dboost">ChargeJump+WallJump+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">ChargeJump+Climb+HC+HC+HC</Requirement>
+          <Requirement mode="expert-abilities">ChargeJump+DoubleJump+Dash+AC+AC+AC+AC+AC+AC+HC+HC+HC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-abilities">WallJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-abilities">Climb+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="insane">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="GinsoEscape"/>
         <Target name="GinsoEscapeProjectileExp"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+Climb</Requirement>
+          <Requirement mode="standard-core">Bash+Climb</Requirement>
+          <Requirement mode="standard-core">Bash+WallJump</Requirement>
+          <Requirement mode="expert-core">ChargeJump+Climb+DoubleJump</Requirement>
+          <Requirement mode="expert-dboost">ChargeJump+WallJump+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">ChargeJump+Climb+HC+HC+HC</Requirement>
+          <Requirement mode="expert-abilities">ChargeJump+DoubleJump+Dash+AC+AC+AC+AC+AC+AC+HC+HC+HC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-abilities">WallJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-abilities">Climb+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="insane">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="GinsoEscape"/>
         <Target name="GinsoEscapeHangingExp"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+Climb</Requirement>
+          <Requirement mode="standard-core">Bash+Climb</Requirement>
+          <Requirement mode="standard-core">Bash+WallJump</Requirement>
+          <Requirement mode="expert-core">ChargeJump+Climb+DoubleJump</Requirement>
+          <Requirement mode="expert-dboost">ChargeJump+WallJump+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">ChargeJump+Climb+HC+HC+HC</Requirement>
+          <Requirement mode="expert-abilities">ChargeJump+DoubleJump+Dash+AC+AC+AC+AC+AC+AC+HC+HC+HC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-abilities">WallJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-abilities">Climb+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="insane">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="GinsoEscape"/>
         <Target name="GinsoEscapeExit"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+Climb</Requirement>
+          <Requirement mode="standard-core">Bash+Climb</Requirement>
+          <Requirement mode="standard-core">Bash+WallJump</Requirement>
+          <Requirement mode="expert-core">ChargeJump+Climb+DoubleJump</Requirement>
+          <Requirement mode="expert-dboost">ChargeJump+WallJump+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">ChargeJump+Climb+HC+HC+HC</Requirement>
+          <Requirement mode="expert-abilities">ChargeJump+DoubleJump+Dash+AC+AC+AC+AC+AC+AC+HC+HC+HC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-abilities">WallJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-abilities">Climb+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="insane">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="GinsoEscape"/>
+        <Target name="Swamp"/>
+        <Requirements>
+          <Requirement mode="casual-core">Bash+DoubleJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+Climb</Requirement>
+          <Requirement mode="standard-core">Bash+Climb</Requirement>
+          <Requirement mode="standard-core">Bash+WallJump</Requirement>
+          <Requirement mode="expert-core">ChargeJump+Climb+DoubleJump</Requirement>
+          <Requirement mode="expert-dboost">ChargeJump+WallJump+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">ChargeJump+Climb+HC+HC+HC</Requirement>
+          <Requirement mode="expert-abilities">ChargeJump+DoubleJump+Dash+AC+AC+AC+AC+AC+AC+HC+HC+HC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+DoubleJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-abilities">WallJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-abilities">Climb+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="insane">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>
     </Connections>

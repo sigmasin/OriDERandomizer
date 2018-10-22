@@ -1376,7 +1376,7 @@ home: BashTreeDoorClosed
 home: BashTreeDoorOpened
 	--anchor: Immediately adjacent to the first Ginso keystone door (opened)
    	conn: GinsoMiniBossDoor
-		casual-core Open Free
+		casual-core Open GinsoKey
 	conn: BashTree
 		casual-core WallJump
 		casual-core Climb
@@ -1386,13 +1386,13 @@ home: BashTreeDoorOpened
 home: BashTree
 	--anchor: The Bash Tree Itself
 	pickup: BashSkillTree
+		casual-core GinsoKey
 	pickup: BashAreaExp
-		casual-core Bash
-		casual-core ChargeJump
-		--Triple Jump path
-		master-abilities DoubleJump Ability=12
+		casual-core GinsoKey Bash
+		casual-core GinsoKey ChargeJump
+		master-abilities GinsoKey DoubleJump Ability=12
 	conn: BashTreeDoorClosed
-	        casual-core Open Free
+	    casual-core Free
 	conn: UpperGinsoRedirectArea
 		casual-core Bash
 		casual-core ChargeJump Dash DoubleJump
@@ -1405,16 +1405,19 @@ home: BashTree
 		master-abilities DoubleJump Ability=12
 home: UpperGinsoRedirectArea
 	-- located at the first redirect area on top of where the UpperGinsoRedirectLowerExp is found
+	-- for KS-lock protection, all pickups in this area require the ginso key
 	pickup: UpperGinsoRedirectLowerExp
-		casual-core Stomp
-		casual-core Bash
-		casual-core ChargeJump Climb
-		expert-core ChargeFlame
+		casual-core GinsoKey Stomp
+		casual-core GinsoKey Bash
+		standard-core GinsoKey ChargeJump Climb
+		expert-core GinsoKey ChargeFlame
+		expert-abilities GinsoKey ChargeJump Dash Ability=3
 	pickup: UpperGinsoRedirectUpperExp
 		--no climb + Cjump here due to the possibility of destroying the only surface to break the floor here
-		casual-core Stomp
-		casual-core Bash
-		expert-core ChargeFlame
+		casual-core GinsoKey Stomp
+		casual-core GinsoKey Bash
+		expert-core GinsoKey ChargeFlame
+		expert-abilities GinsoKey ChargeJump Dash Ability=3
 	conn: UpperGinsoTree
 		casual-core Bash
 		casual-core ChargeJump
@@ -1423,87 +1426,100 @@ home: UpperGinsoRedirectArea
 		master-abilities DoubleJump Stomp Climb Ability=12 Health=3
 		master-abilities DoubleJump ChargeFlame Climb Ability=12 Health=3
 	conn: BashTree
-		casual-core Open Free
+		casual-core Bash
+		casual-core DoubleJump
+		standard-dboost Dash Health=4
+		standard-dboost WallJump Health=4
+		standard-dboost Climb Health=4
+		standard-dboost Glide Health=4
+		standard-dboost ChargeJump Health=4
 home: UpperGinsoTree
 	--anchor: Near the flower just before the Upper Ginso keystone area, this is the flower AFTER the keydupe flower
+	-- for KS-lock protection, all pickups in this area require the ginso key
 	pickup: UpperGinsoLowerKeystone
-		casual-core Bash DoubleJump
-		--May be a little too difficult for casual?
-		casual-core Bash Glide
-		-- All dboosts are pickups over spikes
-		standard-dboost Bash Health=3
-		standard-dboost DoubleJump Health=3
-		standard-dboost ChargeJump Health=3
-		standard-abilities ChargeJump Dash Ability=3
-		expert-dboost Health=5
-		expert-abilities Dash Ability=6
+		casual-core GinsoKey Bash DoubleJump
+		casual-core GinsoKey Bash Glide
+		standard-dboost GinsoKey Bash Health=3
+		standard-dboost GinsoKey DoubleJump Health=3
+		standard-dboost GinsoKey ChargeJump Health=3
+		standard-abilities GinsoKey ChargeJump Dash Ability=3
+		expert-dboost GinsoKey Health=5
+		expert-abilities GinsoKey Dash Ability=6
 	pickup: UpperGinsoRightKeystone
-		casual-core Bash DoubleJump
-		casual-core Bash Glide
-		standard-core Bash
-		standard-core ChargeJump DoubleJump
-		standard-core ChargeJump Glide
-		standard-dboost ChargeJump Health=3
-		standard-abilities ChargeJump Dash Ability=3
-		expert-abilities Dash Ability=6
-		master-abilities DoubleJump Ability=12 Health=3
+		casual-core GinsoKey Bash DoubleJump
+		casual-core GinsoKey Bash Glide
+		standard-core GinsoKey Bash
+		standard-core GinsoKey ChargeJump DoubleJump
+		standard-core GinsoKey ChargeJump Glide
+		standard-dboost GinsoKey ChargeJump Health=3
+		standard-abilities GinsoKey ChargeJump Dash Ability=3
+		expert-abilities GinsoKey Dash Ability=6
+		master-abilities GinsoKey DoubleJump Ability=12 Health=3
 	pickup: UpperGinsoUpperRightKeystone
-		casual-core Bash DoubleJump
-		standard-core Bash
-		standard-core ChargeJump DoubleJump
-		standard-dboost ChargeJump Health=3
-		master-abilities DoubleJump Ability=12 Health=5
+		casual-core GinsoKey Bash DoubleJump
+		standard-core GinsoKey Bash
+		standard-core GinsoKey ChargeJump DoubleJump
+		standard-dboost GinsoKey ChargeJump Health=3
+		master-abilities GinsoKey DoubleJump Ability=12 Health=5
 	pickup: UpperGinsoUpperLeftKeystone
-		casual-core Bash DoubleJump
-		standard-core Bash
-		standard-core ChargeJump DoubleJump
-		standard-core ChargeJump Glide
-		standard-dboost ChargeJump Health=3
-		standard-abilities ChargeJump Dash Ability=3
-		master-abilities DoubleJump Ability=12 Health=5
+		casual-core GinsoKey Bash DoubleJump
+		standard-core GinsoKey Bash
+		standard-core GinsoKey ChargeJump DoubleJump
+		standard-core GinsoKey ChargeJump Glide
+		standard-dboost GinsoKey ChargeJump Health=3
+		standard-abilities GinsoKey ChargeJump Dash Ability=3
+		master-abilities GinsoKey DoubleJump Ability=12 Health=5
 	pickup: UpperGinsoEnergyCell
 		--with the exception of bash and cjump, all of these routes involve getting stuck in the energy cell area
-		casual-core Stomp
-		casual-core Bash
-		casual-core ChargeJump Climb
-		expert-core ChargeFlame
+		casual-core GinsoKey Stomp
+		casual-core GinsoKey Bash
+		casual-core GinsoKey ChargeJump Climb
+		expert-core GinsoKey ChargeFlame
 	conn: UpperGinsoDoorClosed
 		casual-core Free
+	conn: UpperGinsoRedirectArea
+		casual-core Stomp
+		casual-core ChargeJump Bash
+		standard-core Climb ChargeJump
+		expert-abilities Climb ChargeJump Dash
+		master-core Bash
 home: UpperGinsoDoorClosed
 	conn: UpperGinsoDoorOpened
 		casual-core Keystone=4
 home: UpperGinsoDoorOpened
-	--anchor: Immediately adjacent to the upper ginso keystone door (unopened)
-	conn: TopGinsoTree
-		--these paths assume you are starting at UpperGinsoTree and progressing to TopGinsoTree
-		casual-core Bash WallJump DoubleJump
-		casual-core Bash Climb DoubleJump
-		casual-core Bash WallJump Glide
-		casual-core Bash Climb Glide
-		standard-core Bash WallJump
-		standard-core Bash Climb
-		standard-core Bash Grenade
+	--anchor: Immediately adjacent to the upper ginso keystone door (opened)
+	conn: GinsoTeleporter
+		-- paths from UpperGinsoTree to GinsoTeleporter, with the door open
+		casual-core Bash DoubleJump
+		casual-core Bash Glide
+		standard-core Bash
 		expert-dboost ChargeJump DoubleJump Health=3
-		--needs verification
-		--expert-dboost ChargeJump Health=5 or 7
-		master-core Bash DoubleJump
-		master-abilities WallJump DoubleJump Health=7 Ability=12
+		expert-dboost ChargeJump Health=5
+		master-abilities WallJump DoubleJump Health=5 Ability=12
 	conn: UpperGinsoTree
 		casual-core Open Bash
 		casual-core Open DoubleJump
+		casual-core Open Glide
 		casual-dboost Open Health=3
-		standard-dboost Open ChargeJump Health=3
 		standard-abilities Open Dash Ability=3
 home: GinsoTeleporter
 	--anchor: Ginso Teleporter
 	conn: TopGinsoTree
-		casual-core GinsoKey Bash
+		-- kill the elemental and progress up
+		-- GinsoKey required for KS lock protection
+		casual-core GinsoKey Bash WallJump DoubleJump
+		casual-core GinsoKey Bash Climb DoubleJump
 		casual-core GinsoKey ChargeJump WallJump
 		casual-core GinsoKey ChargeJump Climb
-		master-core GinsoKey ChargeJump
-		master-abilities GinsoKey DoubleJump Ability=12
+		standard-core GinsoKey WallJump DoubleJump ChargeFlame
+		standard-core GinsoKey WallJump DoubleJump Grenade
+		expert-core GinsoKey WallJump DoubleJump Stomp
+		expert-core GinsoKey ChargeJump
+		master-abilities GinsoKey DoubleJump ChargeFlame Ability=12
+		master-abilities GinsoKey DoubleJump Grenade Ability=12
+		master-abilities GinsoKey DoubleJump Stomp Ability=12
 	conn: UpperGinsoDoorClosed
-		casual-core GinsoKey
+		casual-core Open
 home: TopGinsoTree
 	--anchor: Where Water Vein is inserted at the top of the Ginso Tree
 	-- TODO: recheck these dboost paths and their difficulties
