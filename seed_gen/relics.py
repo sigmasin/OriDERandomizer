@@ -8,7 +8,7 @@ _glades = [
 ]
 
 _grove = [
-	("Grove Relic 1", "Description of the relic."),
+	("Unhatched Spider Egg", "Hopefully it stays unhatched."),
 	("Grove Relic 2", "Description of the relic."),
 	("Grove Relic 3", "Description of the relic."),
 	("Grove Relic 4", "Description of the relic."),
@@ -29,7 +29,7 @@ _blackroot = [
 ]
 
 _swamp = [
-	("Swamp Relic 1", "Description of the relic."),
+	("Polluted Water Canteen", "Who would want to drink this?"),
 	("Swamp Relic 2", "Description of the relic."),
 	("Swamp Relic 3", "Description of the relic."),
 	("Swamp Relic 4", "Description of the relic."),
@@ -43,37 +43,37 @@ _ginso = [
 ]
 
 _valley = [
-	("Valley Relic 1", "Description of the relic."),
+	("Treasure Map", "A map depicting a treasure found after a long swim."),
 	("Valley Relic 2", "Description of the relic."),
 	("Valley Relic 3", "Description of the relic."),
 	("Valley Relic 4", "Description of the relic."),
 ]
 
 _misty = [
-	("Misty Relic 1", "Description of the relic."),
-	("Misty Relic 2", "Description of the relic."),
+	("Atsu's Candle", "Does little good in these heavy mists."),
+	("Map of Misty Woods", "A crudely-drawn jumble of crooked lines."),
 	("Misty Relic 3", "Description of the relic."),
 	("Misty Relic 4", "Description of the relic."),
 ]
 
 _forlorn = [
 	("Furtive Fritter", "A favorite snack of the Gumon."),
-	("Forlorn Relic 2", "Description of the relic."),
+	("Mathematical Reference", "Only used by the most cerebral forest denizens."),
 	("Forlorn Relic 3", "Description of the relic."),
 	("Forlorn Relic 4", "Description of the relic."),
 ]
 
 _sorrow = [
-	("Sorrow Relic 1", "Description of the relic."),
+	("Drained Light Vessel", "The light of the Spirit Tree once filled this orb."),
 	("Sorrow Relic 2", "Description of the relic."),
 	("Sorrow Relic 3", "Description of the relic."),
 	("Sorrow Relic 4", "Description of the relic."),
 ]
 
 _horu = [
-	("Horu Relic 1", "Description of the relic."),
-	("Horu Relic 2", "Description of the relic."),
-	("Horu Relic 3", "Description of the relic."),
+	("Obsidian Fragment", "Chipped off of an ancient lava flow."),
+	("Ancient Sketch", "A drawing of what appears to be the Water Vein."),
+	("\"The Fish Stratagem\"", "A record of many tasty recipes involving fish."),
 	("Horu Relic 4", "Description of the relic."),
 ]
 
