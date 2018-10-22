@@ -703,7 +703,7 @@ public static class Randomizer
 		}
 		Characters.Sein.Inventory.OnSave();
 		RandomizerBonusSkill.OnSave();
-		RandomizerTrackedDataManager.UpdateBitmaps();
+		RandomizerTrackedDataManager.UpdateBitfields();
 	}
 
 	public static bool canFinalEscape()

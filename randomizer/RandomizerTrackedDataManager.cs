@@ -2,69 +2,102 @@ using System;
 using System.Collections.Generic;
 using Game;
 using UnityEngine;
+using Sein.World;
 
 public static class RandomizerTrackedDataManager
 {
 	public static void Initialize()
 	{
-		TreeNames = new Dictionary<int, string>();
-		TreeNames.Add(0, "Spirit Flame");
-		TreeNames.Add(1, "Wall Jump");
-		TreeNames.Add(2, "Charge Flame");
-		TreeNames.Add(3, "Double Jump");
-		TreeNames.Add(4, "Bash");
-		TreeNames.Add(5, "Stomp");
-		TreeNames.Add(6, "Glide");
-		TreeNames.Add(7, "Climb");
-		TreeNames.Add(8, "Charge Jump");
-		TreeNames.Add(9, "Grenade");
-		TreeNames.Add(10, "Dash");
+		AllTrees = new Dictionary<int, string>();
+		AllTrees.Add(0, "Spirit Flame");
+		AllTrees.Add(1, "Wall Jump");
+		AllTrees.Add(2, "Charge Flame");
+		AllTrees.Add(3, "Double Jump");
+		AllTrees.Add(4, "Bash");
+		AllTrees.Add(5, "Stomp");
+		AllTrees.Add(6, "Glide");
+		AllTrees.Add(7, "Climb");
+		AllTrees.Add(8, "Charge Jump");
+		AllTrees.Add(9, "Grenade");
+		AllTrees.Add(10, "Dash");
 
-		RelicBits = new Dictionary<string, int>();
-		RelicBits.Add("Glades", 0);
-		RelicBits.Add("Grove", 1);
-		RelicBits.Add("Grotto", 2);
-		RelicBits.Add("Blackroot", 3);
-		RelicBits.Add("Swamp", 4);
-		RelicBits.Add("Ginso", 5);
-		RelicBits.Add("Valley", 6);
-		RelicBits.Add("Misty", 7);
-		RelicBits.Add("Forlorn", 8);
-		RelicBits.Add("Sorrow", 9);
-		RelicBits.Add("Horu", 10);
+		AllRelics = new Dictionary<string, int>();
+		AllRelics.Add("Glades", 0);
+		AllRelics.Add("Grove", 1);
+		AllRelics.Add("Grotto", 2);
+		AllRelics.Add("Blackroot", 3);
+		AllRelics.Add("Swamp", 4);
+		AllRelics.Add("Ginso", 5);
+		AllRelics.Add("Valley", 6);
+		AllRelics.Add("Misty", 7);
+		AllRelics.Add("Forlorn", 8);
+		AllRelics.Add("Sorrow", 9);
+		AllRelics.Add("Horu", 10);
 
-		MapstoneInfos = new Dictionary<string, MapstoneData>();
-		MapstoneInfos.Add("sunkenGlades", new MapstoneData("Glades", 0));
-		MapstoneInfos.Add("mangrove", new MapstoneData("Blackroot", 1));
-		MapstoneInfos.Add("hollowGrove", new MapstoneData("Grove", 2));
-		MapstoneInfos.Add("moonGrotto", new MapstoneData("Grotto", 3));
-		MapstoneInfos.Add("thornfeltSwamp", new MapstoneData("Swamp", 4));
-		MapstoneInfos.Add("valleyOfTheWind", new MapstoneData("Valley", 5));
-		MapstoneInfos.Add("forlornRuins", new MapstoneData("Forlorn", 6));
-		MapstoneInfos.Add("sorrowPass", new MapstoneData("Sorrow", 7));
-		MapstoneInfos.Add("mountHoru", new MapstoneData("Horu", 8));
+		AllPedistals = new Dictionary<string, MapstoneData>();
+		AllPedistals.Add("sunkenGlades", new MapstoneData("Glades", 0));
+		AllPedistals.Add("mangrove", new MapstoneData("Blackroot", 1));
+		AllPedistals.Add("hollowGrove", new MapstoneData("Grove", 2));
+		AllPedistals.Add("moonGrotto", new MapstoneData("Grotto", 3));
+		AllPedistals.Add("thornfeltSwamp", new MapstoneData("Swamp", 4));
+		AllPedistals.Add("valleyOfTheWind", new MapstoneData("Valley", 5));
+		AllPedistals.Add("forlornRuins", new MapstoneData("Forlorn", 6));
+		AllPedistals.Add("sorrowPass", new MapstoneData("Sorrow", 7));
+		AllPedistals.Add("mountHoru", new MapstoneData("Horu", 8));
 
-		TeleporterBits = new Dictionary<string, int>();
+		AllTeleporters = new Dictionary<string, int>();
 
-		TeleporterBits.Add("Grove", 0);
-		TeleporterBits.Add("Swamp", 1);
-		TeleporterBits.Add("Grotto", 2);
-		TeleporterBits.Add("Valley", 3);
-		TeleporterBits.Add("Forlorn", 4);
-		TeleporterBits.Add("Sorrow", 5);
-		TeleporterBits.Add("Ginso", 6);
-		TeleporterBits.Add("Horu", 7);
+		AllTeleporters.Add("Grove", 0);
+		AllTeleporters.Add("Swamp", 1);
+		AllTeleporters.Add("Grotto", 2);
+		AllTeleporters.Add("Valley", 3);
+		AllTeleporters.Add("Forlorn", 4);
+		AllTeleporters.Add("Sorrow", 5);
+		AllTeleporters.Add("Ginso", 6);
+		AllTeleporters.Add("Horu", 7);
 
 	}
 
-	public static void UpdateBitmaps() {
+	public static void UpdateBitfields() {
 		if(Characters.Sein)
 		{
-			TreeBitmap = Characters.Sein.Inventory.GetRandomizerItem(1001);
-			RelicBitmap = Characters.Sein.Inventory.GetRandomizerItem(1002);
-			MapstoneBitmap = Characters.Sein.Inventory.GetRandomizerItem(1003);
-			TeleporterBitmap = GetTeleporters();
+			TreeBitfield = Characters.Sein.Inventory.GetRandomizerItem(1001);
+			RelicBitfield = Characters.Sein.Inventory.GetRandomizerItem(1002);
+			MapstoneBitfield = Characters.Sein.Inventory.GetRandomizerItem(1003);
+			TeleporterBitfield = GetTeleporters();
+			KeyEventBitfield = GetKeyEvents();
 		}
+	}
+
+	public static int GetKeyEvents() {
+		int bf = 0;
+		int wvShards = RandomizerBonus.WaterVeinShards();
+		int gsShards = RandomizerBonus.GumonSealShards();
+		int ssShards = RandomizerBonus.SunstoneShards();
+		if(wvShards > 0)
+			bf += 1 << 0;
+		if(wvShards > 1)
+			bf += 1 << 1;
+		if(Keys.GinsoTree)
+			bf += 1 << 2;
+		if(gsShards > 0)
+			bf += 1 << 3;
+		if(gsShards > 1)
+			bf += 1 << 4;
+		if(Keys.ForlornRuins)
+			bf += 1 << 5;
+		if(ssShards > 0)
+			bf += 1 << 6;
+		if(ssShards > 1)
+			bf += 1 << 7;
+		if(Keys.MountHoru)
+			bf += 1 << 8;
+		if(Sein.World.Events.WaterPurified)
+			bf += 1 << 9;
+		if(Sein.World.Events.WindRestored)
+			bf += 1 << 10;
+		bf += RandomizerBonus.WarmthFrags() << 11;
+		return bf;
 	}
 
 	public static int GetTeleporters() {
@@ -74,7 +107,7 @@ public static class RandomizerTrackedDataManager
 		{
 			unlockedTPids.Add(gameMapTP.Identifier);
 		}
-		foreach(KeyValuePair<string, int> tp in TeleporterBits) {
+		foreach(KeyValuePair<string, int> tp in AllTeleporters) {
 			if(unlockedTPids.Contains(Randomizer.TeleportTable[tp.Key].ToString())) {
 				bf += 1 << tp.Value;
 			}
@@ -83,11 +116,11 @@ public static class RandomizerTrackedDataManager
 	}
 
 	public static void ListTeleporters() {
-		UpdateBitmaps();
+		UpdateBitfields();
 		List<string> owned = new List<string>();
 		List<string> unowned = new List<string>();
-		foreach(KeyValuePair<string, int> tp in TeleporterBits) {
-			if((TeleporterBitmap >> tp.Value) % 2 == 1) {
+		foreach(KeyValuePair<string, int> tp in AllTeleporters) {
+			if((TeleporterBitfield >> tp.Value) % 2 == 1) {
 				owned.Add(tp.Key);
 			} else {
 				unowned.Add(tp.Key);
@@ -99,14 +132,14 @@ public static class RandomizerTrackedDataManager
 	}
 
 	public static void ListTrees() {
-		UpdateBitmaps();
+		UpdateBitfields();
 		List<string> owned = new List<string>();
 		List<string> unowned = new List<string>();
-		foreach(KeyValuePair<int, string> tree in TreeNames) {
+		foreach(KeyValuePair<int, string> tree in AllTrees) {
 			if(tree.Key == 0) {
 				continue;
 			}
-			if((TreeBitmap >> tree.Key) % 2 == 1) {
+			if((TreeBitfield >> tree.Key) % 2 == 1) {
 				owned.Add(tree.Value);
 			} else {
 				unowned.Add(tree.Value);
@@ -118,11 +151,11 @@ public static class RandomizerTrackedDataManager
 	}
 
 	public static void ListRelics() {
-		UpdateBitmaps();
+		UpdateBitfields();
 		List<string> owned = new List<string>();
 		List<string> unowned = new List<string>();
-		foreach(KeyValuePair<string, int> relic in RelicBits) {
-			if((RelicBitmap >> relic.Value) % 2 == 1) {
+		foreach(KeyValuePair<string, int> relic in AllRelics) {
+			if((RelicBitfield >> relic.Value) % 2 == 1) {
 				owned.Add(relic.Key);
 			} else {
 				unowned.Add(relic.Key);
@@ -134,11 +167,11 @@ public static class RandomizerTrackedDataManager
 	}
 
 	public static void ListMapstones() {
-		UpdateBitmaps();
+		UpdateBitfields();
 		List<string> owned = new List<string>();
 		List<string> unowned = new List<string>();
-		foreach(MapstoneData data in MapstoneInfos.Values) {
-			if((MapstoneBitmap >> data.Bit) % 2 == 1) {
+		foreach(MapstoneData data in AllPedistals.Values) {
+			if((MapstoneBitfield >> data.Bit) % 2 == 1) {
 				owned.Add(data.Zone);
 			} else {
 				unowned.Add(data.Zone);
@@ -152,29 +185,29 @@ public static class RandomizerTrackedDataManager
 
 	public static void SetTree(int treeNum) {
 		if(!GetTree(treeNum)) {
-			TreeBitmap = Characters.Sein.Inventory.IncRandomizerItem(1001, 1 << treeNum);
+			TreeBitfield = Characters.Sein.Inventory.IncRandomizerItem(1001, 1 << treeNum);
 		}
 	}
 
 	public static bool GetTree(int treeNum) {
-		return (TreeBitmap >> treeNum) % 2 == 1;
+		return (TreeBitfield >> treeNum) % 2 == 1;
 	}
 
 	public static void SetRelic(string zone) {
 		if(!GetRelic(zone)) {
-			RelicBitmap = Characters.Sein.Inventory.IncRandomizerItem(1002, 1 << RelicBits[zone]);
+			RelicBitfield = Characters.Sein.Inventory.IncRandomizerItem(1002, 1 << AllRelics[zone]);
 		}
 	}
 
 	public static bool GetRelic(string zone) {
-		return (RelicBitmap >> RelicBits[zone]) % 2 == 1;
+		return (RelicBitfield >> AllRelics[zone]) % 2 == 1;
 	}
 
 	public static void SetMapstone(string areaIdentifier) {
 		try {
-			MapstoneData data = MapstoneInfos[areaIdentifier];
+			MapstoneData data = AllPedistals[areaIdentifier];
 			if(!GetMapstone(data)) {
-				MapstoneBitmap = Characters.Sein.Inventory.IncRandomizerItem(1003, (1 << data.Bit));
+				MapstoneBitfield = Characters.Sein.Inventory.IncRandomizerItem(1003, (1 << data.Bit));
 			} 
 		} 
 		catch(Exception e) {
@@ -183,26 +216,23 @@ public static class RandomizerTrackedDataManager
 	}
 
 	public static bool GetMapstone(MapstoneData data) {
-		return (MapstoneBitmap >> data.Bit) % 2 == 1;
+		return (MapstoneBitfield >> data.Bit) % 2 == 1;
 	}
 
-
-	public static int TreeBitmap;
-
-	public static int MapstoneBitmap;
-
-	public static int TeleporterBitmap;
-
-	public static int RelicBitmap;
+	public static int TreeBitfield;
+	public static int MapstoneBitfield;
+	public static int TeleporterBitfield;
+	public static int RelicBitfield;
+	public static int KeyEventBitfield;
 
 	// Token: 0x040032E2 RID: 13026
-	public static Dictionary<int, string> TreeNames;
+	public static Dictionary<int, string> AllTrees;
 
-	public static Dictionary<string, int> RelicBits;
+	public static Dictionary<string, int> AllRelics;
 
-	public static Dictionary<string, int> TeleporterBits;
+	public static Dictionary<string, int> AllTeleporters;
 
-	public static Dictionary<string, MapstoneData> MapstoneInfos;
+	public static Dictionary<string, MapstoneData> AllPedistals;
 	// Token: 0x02000A1B RID: 2587
 	public class MapstoneData
 	{
