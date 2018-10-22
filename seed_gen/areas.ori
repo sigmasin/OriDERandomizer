@@ -379,17 +379,18 @@ home: SunkenGladesRunaway
 		casual-core TPSwamp
 	conn: ValleyTeleporter
 		casual-core TPValley
-	conn: ForlornTeleporter
-		casual-core ForlornKey TPForlorn
 	conn: SorrowTeleporter
 		casual-core TPSorrow
 	-- This path temporarily removed until Grotto can be refactored
 	--conn: GumoHideoutMap
 	--	casual-core TPGrotto Mapstone
-	-- TODO: ginso and horu teleporter paths here
-	-- note: water vein requirement is shifted to inside Ginso for KS safety
+	-- Ginso/Forlorn TP keys are shifted to avoid KS-lock situations
 	conn: GinsoTeleporter
 		casual-core TPGinso
+	conn: ForlornTeleporter
+		casual-core TPForlorn
+	conn: HoruTeleporter
+		casual-core TPHoru HoruKey
 home: GladesMain
 	-- anchor: just beyond the first keystone door in Glades
 	pickup: FourthHealthCell
@@ -2136,6 +2137,7 @@ home: Horu
 		casual-core Stomp
 	conn: LowerGinsoTree
 		glitched Dash
+home: HoruTeleporter
 home: HoruMapLedge
 	pickup: HoruMap
 		casual-core Mapstone
@@ -2662,6 +2664,8 @@ home: ForlornOuterDoor
 	conn: OutsideForlorn
 home: ForlornInnerDoor
 	conn: ForlornOuterDoor
+		--ForlornKey required to avoid KS lock scenarios
+		casual-core ForlornKey
 	conn: ForlornOrbPossession
 		casual-core DoubleJump Open
 		casual-core Glide Climb Open
@@ -2757,8 +2761,9 @@ home: ForlornGravityRoom
 		master-dboost Health=3 Ability=12
 home: ForlornMapArea
 -- anchored in front of the map monument
+-- ForlornKey required to avoid KS lock scenarios
 	pickup: ForlornMap
-		casual-core Mapstone
+		casual-core ForlornKey Mapstone
 	conn: ForlornTeleporter
 		casual-core WallJump DoubleJump
 		casual-core Climb DoubleJump
@@ -2791,7 +2796,7 @@ home: ForlornMapArea
 home: ForlornTeleporter
 -- anchored on the Forlorn spirit well
 	conn: ForlornOrbPossession
-		casual-core Open
+		casual-core ForlornKey Open
 	conn: ForlornMapArea
 		casual-core WallJump
 		casual-core Climb
@@ -2810,26 +2815,33 @@ home: ForlornTeleporter
 		master-lure Bash
 	conn: ForlornGravityRoom
 -- the following Forlorn areas are anchored directly on their pickups
+-- ForlornKey required to avoid KS lock scenarios
 home: ForlornEntranceExpArea
 	pickup: ForlornEntranceExp
+		casual-core ForlornKey
 home: ForlornHiddenSpiderExpArea
 	pickup: ForlornHiddenSpiderExp
+		casual-core ForlornKey
 home: ForlornKeystone1Area
 	pickup: ForlornKeystone1
+		casual-core ForlornKey
 home: ForlornKeystone2Area
 	pickup: ForlornKeystone2
+		casual-core ForlornKey
 home: ForlornKeystone3Area
 	pickup: ForlornKeystone3
+		casual-core ForlornKey
 home: ForlornKeystone4Area
 	pickup: ForlornKeystone4
+		casual-core ForlornKey
 home: ForlornPlantArea
 	pickup: ForlornPlant
-		casual-core ChargeFlame
-		casual-core Grenade
-		expert-abilities Dash Ability=6
+		casual-core ForlornKey ChargeFlame
+		casual-core ForlornKey Grenade
+		expert-abilities ForlornKey Dash Ability=6
 home: ForlornKeyDoor
 	conn: ForlornLaserRoom
-		casual-core Keystone=4
+		casual-core ForlornKey Keystone=4
 home: ForlornLaserRoom
 -- anchored in the bottom left of the crossed lasers room
 	pickup: ForlornEscape

@@ -3181,13 +3181,6 @@
       </Connection>
       <Connection>
         <Home name="SunkenGladesRunaway"/>
-        <Target name="ForlornTeleporter"/>
-        <Requirements>
-          <Requirement mode="casual-core">ForlornKey+TPForlorn</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="SunkenGladesRunaway"/>
         <Target name="SorrowTeleporter"/>
         <Requirements>
           <Requirement mode="casual-core">TPSorrow</Requirement>
@@ -3198,6 +3191,20 @@
         <Target name="GinsoTeleporter"/>
         <Requirements>
           <Requirement mode="casual-core">TPGinso</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="ForlornTeleporter"/>
+        <Requirements>
+          <Requirement mode="casual-core">TPForlorn</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SunkenGladesRunaway"/>
+        <Target name="HoruTeleporter"/>
+        <Requirements>
+          <Requirement mode="casual-core">TPHoru+HoruKey</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -6775,6 +6782,10 @@
       </Connection>
     </Connections>
   </Area>
+  <Area name="HoruTeleporter">
+    <Locations/>
+    <Connections/>
+  </Area>
   <Area name="HoruMapLedge">
     <Locations/>
     <Connections>
@@ -8033,7 +8044,7 @@
         <Home name="ForlornInnerDoor"/>
         <Target name="ForlornOuterDoor"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">ForlornKey</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -8243,7 +8254,7 @@
         <Home name="ForlornMapArea"/>
         <Target name="ForlornMap"/>
         <Requirements>
-          <Requirement mode="casual-core">MS</Requirement>
+          <Requirement mode="casual-core">ForlornKey+MS</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -8311,7 +8322,7 @@
         <Home name="ForlornTeleporter"/>
         <Target name="ForlornOrbPossession"/>
         <Requirements>
-          <Requirement mode="casual-core">Open</Requirement>
+          <Requirement mode="casual-core">ForlornKey+Open</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -8356,7 +8367,7 @@
         <Home name="ForlornEntranceExpArea"/>
         <Target name="ForlornEntranceExp"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">ForlornKey</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -8368,7 +8379,7 @@
         <Home name="ForlornHiddenSpiderExpArea"/>
         <Target name="ForlornHiddenSpiderExp"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">ForlornKey</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -8380,7 +8391,7 @@
         <Home name="ForlornKeystone1Area"/>
         <Target name="ForlornKeystone1"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">ForlornKey</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -8392,7 +8403,7 @@
         <Home name="ForlornKeystone2Area"/>
         <Target name="ForlornKeystone2"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">ForlornKey</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -8404,7 +8415,7 @@
         <Home name="ForlornKeystone3Area"/>
         <Target name="ForlornKeystone3"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">ForlornKey</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -8416,7 +8427,7 @@
         <Home name="ForlornKeystone4Area"/>
         <Target name="ForlornKeystone4"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
+          <Requirement mode="casual-core">ForlornKey</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -8428,9 +8439,9 @@
         <Home name="ForlornPlantArea"/>
         <Target name="ForlornPlant"/>
         <Requirements>
-          <Requirement mode="casual-core">ChargeFlame</Requirement>
-          <Requirement mode="casual-core">Grenade</Requirement>
-          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="casual-core">ForlornKey+ChargeFlame</Requirement>
+          <Requirement mode="casual-core">ForlornKey+Grenade</Requirement>
+          <Requirement mode="expert-abilities">ForlornKey+Dash+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -8442,7 +8453,7 @@
         <Home name="ForlornKeyDoor"/>
         <Target name="ForlornLaserRoom"/>
         <Requirements>
-          <Requirement mode="casual-core">KS+KS+KS+KS</Requirement>
+          <Requirement mode="casual-core">ForlornKey+KS+KS+KS+KS</Requirement>
         </Requirements>
       </Connection>
     </Connections>
