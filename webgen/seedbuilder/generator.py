@@ -247,6 +247,7 @@ class SeedGenerator:
         ])
         if self.var(Variation.OPEN_MODE):
             self.inventory["Open"] = 1
+            self.costs["Open"] = 0
             self.itemPool["TPGinso"] = 1
             self.itemPool["TPHoru"] = 1
             self.itemPool["KS"] -= 2

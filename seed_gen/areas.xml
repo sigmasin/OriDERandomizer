@@ -8061,6 +8061,13 @@
           <Requirement mode="master-core">WallJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="ValleyStomplessApproach"/>
+        <Target name="ValleyRight"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="ValleyStompless">
@@ -8083,6 +8090,21 @@
           <Requirement mode="expert-core">Bash</Requirement>
           <Requirement mode="master-core">ChargeFlame</Requirement>
           <Requirement mode="master-core">Grenade</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="ValleyStompless"/>
+        <Target name="ValleyStomplessApproach"/>
+        <Requirements>
+          <Requirement mode="casual-core">Glide</Requirement>
+          <Requirement mode="casual-core">Bash</Requirement>
+          <Requirement mode="expert-dboost">DoubleJump+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-dboost">Dash+AC+AC+AC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC+EC+EC+EC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-dboost">ChargeJump+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-dboost">HC+HC+HC+HC+HC+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-dboost">HC+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -8970,6 +8992,17 @@
       </Connection>
       <Connection>
         <Home name="WilhelmLedge"/>
+        <Target name="ValleyStompless"/>
+        <Requirements>
+          <Requirement mode="casual-core">Glide</Requirement>
+          <Requirement mode="casual-core">Bash</Requirement>
+          <Requirement mode="standard-abilities">DoubleJump+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="WilhelmLedge"/>
         <Target name="ValleyMain"/>
         <Requirements>
           <Requirement mode="casual-core">Stomp</Requirement>
@@ -9455,6 +9488,8 @@
         <Requirements>
           <Requirement mode="casual-core">Stomp</Requirement>
           <Requirement mode="standard-core">Climb+ChargeJump</Requirement>
+          <Requirement mode="expert-core">ChargeJump+Bash+Grenade</Requirement>
+          <Requirement mode="expert-abilities">ChargeJump+Dash+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -9463,6 +9498,8 @@
         <Requirements>
           <Requirement mode="casual-core">Stomp</Requirement>
           <Requirement mode="standard-core">Climb+ChargeJump</Requirement>
+          <Requirement mode="expert-core">ChargeJump+Bash+Grenade</Requirement>
+          <Requirement mode="expert-abilities">ChargeJump+Dash+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -9791,11 +9828,16 @@
         <Requirements>
           <Requirement mode="standard-lure">Bash+Stomp+WallJump</Requirement>
           <Requirement mode="standard-lure">Bash+Stomp+Climb</Requirement>
-          <Requirement mode="expert-abilities">Dash+Stomp+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="expert-core">ChargeJump+Climb+Bash</Requirement>
+          <Requirement mode="expert-core">ChargeJump+Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="expert-abilities">ChargeJump+Bash+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="expert-abilities">ChargeJump+Climb+Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="expert-abilities">Dash+Stomp+WallJump+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="expert-abilities">Dash+Stomp+Climb+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="expert-dboost">ChargeJump+Dash+HC+HC+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="expert-dboost">ChargeJump+Bash+HC+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="gjump">ChargeJump+Climb+Grenade+Dash</Requirement>
-          <Requirement mode="gjump">ChargeJump+Climb+Grenade+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="expert-dboost">ChargeJump+Dash+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="expert-dboost">ChargeJump+Bash+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="gjump">ChargeJump+Climb+Grenade+HC+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="dbash">Bash+WallJump</Requirement>
           <Requirement mode="dbash">Bash+Climb</Requirement>
           <Requirement mode="master-core">Bash</Requirement>
@@ -9834,6 +9876,8 @@
           <Requirement mode="casual-core">ChargeJump+Climb+Stomp</Requirement>
           <Requirement mode="expert-core">Stomp+WallJump+DoubleJump+Glide</Requirement>
           <Requirement mode="expert-core">ChargeJump+Climb</Requirement>
+          <Requirement mode="expert-core">ChargeJump+WallJump+DoubleJump+Glide+Bash+Grenade</Requirement>
+          <Requirement mode="expert-abilities">ChargeJump+Dash+WallJump+DoubleJump+AC+AC+AC</Requirement>
           <Requirement mode="expert-dboost">ChargeJump+WallJump+DoubleJump+Glide+HC+HC+HC+HC+HC</Requirement>
           <Requirement mode="master-core">Stomp+Bash</Requirement>
           <Requirement mode="master-core">ChargeJump+Bash</Requirement>
@@ -9849,7 +9893,9 @@
         <Target name="SunstoneArea"/>
         <Requirements>
           <Requirement mode="casual-core">Stomp+Glide</Requirement>
-          <Requirement mode="expert-core">ChargeJump+Climb+Glide</Requirement>
+          <Requirement mode="standard-core">ChargeJump+Climb+Glide</Requirement>
+          <Requirement mode="expert-core">ChargeJump+Dash+Glide</Requirement>
+          <Requirement mode="expert-core">ChargeJump+Bash+Grenade+Glide</Requirement>
           <Requirement mode="gjump">ChargeJump+Climb+Grenade</Requirement>
           <Requirement mode="master-core">Bash</Requirement>
           <Requirement mode="master-dboost">ChargeJump+Climb+DoubleJump+HC+HC+HC+HC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
@@ -9861,6 +9907,8 @@
         <Requirements>
           <Requirement mode="casual-core">Stomp</Requirement>
           <Requirement mode="standard-core">ChargeJump+Climb</Requirement>
+          <Requirement mode="expert-core">ChargeJump+Bash+Grenade</Requirement>
+          <Requirement mode="expert-abilities">ChargeJump+Dash+AC+AC+AC</Requirement>
           <Requirement mode="master-core">Bash</Requirement>
         </Requirements>
       </Connection>

@@ -1063,6 +1063,7 @@ class Generator:
 
         if args.open:
             inventory["Open"] = 1
+            costs["Open"] = 0
 
         # paired setup for subsequent players
         if self.playerID > 1:
