@@ -91,171 +91,179 @@ public static class Randomizer
 		RandomizerRebinding.ParseRebinding();
 		RandomizerSettings.ParseSettings();
 		Randomizer.Warping = 0;
-		if (File.Exists("randomizer.dat"))
-		{
-			string[] allLines = File.ReadAllLines("randomizer.dat");
-			string[] flagLine = allLines[0].Split(new char[]
-			{
-				'|'
-			});
-			string s = flagLine[1];
-			string[] flags = flagLine[0].Split(new char[]
-			{
-				','
-			});
-			Randomizer.SeedMeta = allLines[0];
-			foreach (string flag in flags)
-			{
-				if (flag.ToLower() == "ohko")
-				{
-					Randomizer.OHKO = true;
-				}
-				if (flag.ToLower() == "worldtour")
-				{
-					Randomizer.WorldTour = true;
-				}
-				if (flag.ToLower().StartsWith("sync"))
-				{
-					Randomizer.Sync = true;
-					Randomizer.SyncId = flag.Substring(4);
-					RandomizerSyncManager.Initialize();
-				}
-				if (flag.ToLower().StartsWith("frags/"))
-				{
-					Randomizer.fragsEnabled = true;
-					string[] fragParams = flag.Split(new char[]
-					{
-						'/'
-					});
-					Randomizer.maxFrags = int.Parse(fragParams[1]);
-					Randomizer.fragKeyFinish = Randomizer.maxFrags - int.Parse(fragParams[2]);
-				}
-				if (flag.ToLower().StartsWith("mode="))
-				{
-					string modeStr = flag.Substring(5).ToLower();
-					int syncMode;
-					if (modeStr == "shared")
-					{
-						syncMode = 1;
-					}
-					else if (modeStr == "none")
-					{
-						syncMode = 4;
-					}
-					else
-					{
-						syncMode = int.Parse(modeStr);
-					}
-					Randomizer.SyncMode = syncMode;
-				}
-				if (flag.ToLower().StartsWith("shared="))
-				{
-					Randomizer.ShareParams = flag.Substring(7);
-				}
-				if (flag.ToLower() == "0xp")
-				{
-					Randomizer.ZeroXP = true;
-				}
-				if (flag.ToLower() == "nobonus")
-				{
-					Randomizer.BonusActive = false;
-				}
-				if (flag.ToLower() == "nonprogressivemapstones")
-				{
-					Randomizer.ProgressiveMapStones = false;
-				}
-				if (flag.ToLower() == "forcetrees")
-				{
-					Randomizer.ForceTrees = true;
-				}
-				if (flag.ToLower() == "forcemaps")
-				{
-					Randomizer.ForceMaps = true;
-				}
-				if (flag.ToLower() == "clues")
-				{
-					Randomizer.CluesMode = true;
-					RandomizerClues.initialize();
-				}
-				if (flag.ToLower() == "entrance")
-				{
-					Randomizer.Entrance = true;
-				}
-				if (flag.ToLower() == "open")
-				{
-					Randomizer.OpenMode = true;
-				}
-				if (flag.ToLower().StartsWith("hotcold="))
-				{
-					Randomizer.HotCold = true;
-					Randomizer.HotColdTypes = flag.Substring(8).Split(new char[]
-					{
-						'+'
-					});
-					Array.Sort(Randomizer.HotColdTypes);
-				}
-			}
-			for (int i = 1; i < allLines.Length; i++)
-			{
-				string[] lineParts = allLines[i].Split(new char[]
+		Randomizer.RelicZoneLookup = new Dictionary<string, string>();
+		RandomizerTrackedDataManager.Initialize();
+		try {
+			if(File.Exists("randomizer.dat")) {
+				string[] allLines = File.ReadAllLines("randomizer.dat");
+				string[] flagLine = allLines[0].Split(new char[]
 				{
 					'|'
 				});
-				int coords;
-				int.TryParse(lineParts[0], out coords);
-				int index = Array.BinarySearch<string>(Randomizer.HotColdTypes, lineParts[1]);
-				if (index < 0)
+				string s = flagLine[1];
+				string[] flags = flagLine[0].Split(new char[]
 				{
-					index = -index - 1;
-				}
-				while (index < Randomizer.HotColdTypes.Length && Randomizer.HotColdTypes[index].Substring(0, 2) == lineParts[1])
+					','
+				});
+				Randomizer.SeedMeta = allLines[0];
+				foreach (string flag in flags)
 				{
-					if (Randomizer.HotColdTypes[index] == lineParts[1] || Randomizer.HotColdTypes[index].Substring(2) == lineParts[2])
+					if (flag.ToLower() == "ohko")
 					{
-						if (Math.Abs(coords) > 100)
+						Randomizer.OHKO = true;
+					}
+					if (flag.ToLower() == "worldtour")
+					{
+						Randomizer.WorldTour = true;
+					}
+					if (flag.ToLower().StartsWith("sync"))
+					{
+						Randomizer.Sync = true;
+						Randomizer.SyncId = flag.Substring(4);
+						RandomizerSyncManager.Initialize();
+					}
+					if (flag.ToLower().StartsWith("frags/"))
+					{
+						Randomizer.fragsEnabled = true;
+						string[] fragParams = flag.Split(new char[]
 						{
-							Randomizer.HotColdItems.Add(coords, new RandomizerHotColdItem(Randomizer.HashKeyToVector(coords), HotColdSaveId));
-							HotColdSaveId++;
+							'/'
+						});
+						Randomizer.maxFrags = int.Parse(fragParams[1]);
+						Randomizer.fragKeyFinish = Randomizer.maxFrags - int.Parse(fragParams[2]);
+					}
+					if (flag.ToLower().StartsWith("mode="))
+					{
+						string modeStr = flag.Substring(5).ToLower();
+						int syncMode;
+						if (modeStr == "shared")
+						{
+							syncMode = 1;
+						}
+						else if (modeStr == "none")
+						{
+							syncMode = 4;
 						}
 						else
 						{
-							Randomizer.HotColdMaps.Add(coords);
+							syncMode = int.Parse(modeStr);
 						}
+						Randomizer.SyncMode = syncMode;
 					}
-					index++;
-				}
-				if (Randomizer.StringKeyPickupTypes.Contains(lineParts[1]))
-				{
-					Randomizer.Table[coords] = new RandomizerAction(lineParts[1], lineParts[2]);
-				}
-				else
-				{
-					int id;
-					int.TryParse(lineParts[2], out id);
-					if (lineParts[1] == "EN")
+					if (flag.ToLower().StartsWith("shared="))
 					{
-						// door entries are coord|EN|targetX|targetY
-						int doorY;
-						int.TryParse(lineParts[3], out doorY);
-						Randomizer.DoorTable[coords] = new Vector3((float)id, (float)doorY);
+						Randomizer.ShareParams = flag.Substring(7);
+					}
+					if (flag.ToLower() == "0xp")
+					{
+						Randomizer.ZeroXP = true;
+					}
+					if (flag.ToLower() == "nobonus")
+					{
+						Randomizer.BonusActive = false;
+					}
+					if (flag.ToLower() == "nonprogressivemapstones")
+					{
+						Randomizer.ProgressiveMapStones = false;
+					}
+					if (flag.ToLower() == "forcetrees")
+					{
+						Randomizer.ForceTrees = true;
+					}
+					if (flag.ToLower() == "forcemaps")
+					{
+						Randomizer.ForceMaps = true;
+					}
+					if (flag.ToLower() == "clues")
+					{
+						Randomizer.CluesMode = true;
+						RandomizerClues.initialize();
+					}
+					if (flag.ToLower() == "entrance")
+					{
+						Randomizer.Entrance = true;
+					}
+					if (flag.ToLower() == "open")
+					{
+						Randomizer.OpenMode = true;
+					}
+					if (flag.ToLower().StartsWith("hotcold="))
+					{
+						Randomizer.HotCold = true;
+						Randomizer.HotColdTypes = flag.Substring(8).Split(new char[]
+						{
+							'+'
+						});
+						Array.Sort(Randomizer.HotColdTypes);
+					}
+				}
+				for (int i = 1; i < allLines.Length; i++)
+				{
+					string[] lineParts = allLines[i].Split(new char[]
+					{
+						'|'
+					});
+					int coords;
+					int.TryParse(lineParts[0], out coords);
+					int index = Array.BinarySearch<string>(Randomizer.HotColdTypes, lineParts[1]);
+					if (index < 0)
+					{
+						index = -index - 1;
+					}
+					while (index < Randomizer.HotColdTypes.Length && Randomizer.HotColdTypes[index].Substring(0, 2) == lineParts[1])
+					{
+						if (Randomizer.HotColdTypes[index] == lineParts[1] || Randomizer.HotColdTypes[index].Substring(2) == lineParts[2])
+						{
+							if (Math.Abs(coords) > 100)
+							{
+								Randomizer.HotColdItems.Add(coords, new RandomizerHotColdItem(Randomizer.HashKeyToVector(coords), HotColdSaveId));
+								HotColdSaveId++;
+							}
+							else
+							{
+								Randomizer.HotColdMaps.Add(coords);
+							}
+						}
+						index++;
+					}
+					if (Randomizer.StringKeyPickupTypes.Contains(lineParts[1]))
+					{
+						Randomizer.Table[coords] = new RandomizerAction(lineParts[1], lineParts[2]);
+						if(lineParts[1] == "WT") {
+							Randomizer.RelicZoneLookup[lineParts[2]] = lineParts[3];
+						}
 					}
 					else
 					{
-						Randomizer.Table[coords] = new RandomizerAction(lineParts[1], id);
-						if (Randomizer.CluesMode && lineParts[1] == "EV" && id % 2 == 0)
+						int id;
+						int.TryParse(lineParts[2], out id);
+						if (lineParts[1] == "EN")
 						{
-							RandomizerClues.AddClue(lineParts[3], id / 2);
+							// door entries are coord|EN|targetX|targetY
+							int doorY;
+							int.TryParse(lineParts[3], out doorY);
+							Randomizer.DoorTable[coords] = new Vector3((float)id, (float)doorY);
+						}
+						else
+						{
+							Randomizer.Table[coords] = new RandomizerAction(lineParts[1], id);
+							if (Randomizer.CluesMode && lineParts[1] == "EV" && id % 2 == 0)
+							{
+								RandomizerClues.AddClue(lineParts[3], id / 2);
+							}
 						}
 					}
 				}
-			}
-			Randomizer.HotColdMaps.Sort();
-			if (Randomizer.CluesMode)
-			{
-				RandomizerClues.FinishClues();
+				Randomizer.HotColdMaps.Sort();
+				if (Randomizer.CluesMode) {
+					RandomizerClues.FinishClues();
+				}
 			}
 		}
-		RandomizerBonusSkill.Reset();
+		catch(Exception e) {
+			Randomizer.showHint("Error parsing randomizer.dat:" + e.Message);
+		}
+	RandomizerBonusSkill.Reset();
 	}
 
 	public static void getPickup()
@@ -439,6 +447,26 @@ public static class Randomizer
 				}
 			}
 		}
+		if (RandomizerRebinding.ListTrees.IsPressed() && Characters.Sein)
+		{
+			RandomizerTrackedDataManager.ListTrees();
+			return;
+		}
+		if (RandomizerRebinding.ListRelics.IsPressed() && Characters.Sein)
+		{
+			RandomizerTrackedDataManager.ListRelics();
+			return;
+		}
+		if (RandomizerRebinding.ListMapAltars.IsPressed() && Characters.Sein)
+		{
+			RandomizerTrackedDataManager.ListMapstones();
+			return;
+		}
+		if (RandomizerRebinding.ListTeleporters.IsPressed() && Characters.Sein)
+		{
+			RandomizerTrackedDataManager.ListTeleporters();
+			return;
+		}
 		if (RandomizerRebinding.BonusSwitch.IsPressed() && Characters.Sein)
 		{
 			RandomizerBonusSkill.SwitchBonusSkill();
@@ -447,6 +475,11 @@ public static class Randomizer
 		if (RandomizerRebinding.BonusToggle.IsPressed() && Characters.Sein)
 		{
 			RandomizerBonusSkill.ActivateBonusSkill();
+			return;
+		}
+		if (RandomizerRebinding.BonusSwitch.IsPressed() && Characters.Sein)
+		{
+			RandomizerBonusSkill.SwitchBonusSkill();
 			return;
 		}
 		if (RandomizerRebinding.ReplayMessage.IsPressed())
@@ -534,19 +567,21 @@ public static class Randomizer
 
 	public static void getMapStone()
 	{
-		if (!Randomizer.ProgressiveMapStones)
-		{
-			Randomizer.getPickup();
-			return;
+		try {
+			if (!Randomizer.ProgressiveMapStones) {
+				Randomizer.getPickup();
+				return;
+			}
+			RandomizerBonus.CollectMapstone();
+			if (Randomizer.ColorShift) {
+				Randomizer.changeColor();
+			}
+			RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[20 + RandomizerBonus.MapStoneProgression() * 4], 20 + RandomizerBonus.MapStoneProgression() * 4, true);
 		}
-		RandomizerBonus.CollectMapstone();
-		if (Randomizer.ColorShift)
-		{
-			Randomizer.changeColor();
+		catch(Exception e) {
+			Randomizer.showHint("getMapStone: " + e.Message + "\n" + e.StackTrace.ToString());
 		}
-		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[20 + RandomizerBonus.MapStoneProgression() * 4], 20 + RandomizerBonus.MapStoneProgression() * 4, true);
 	}
-
 	public static void showProgress()
 	{
 		string text = "";
@@ -668,6 +703,7 @@ public static class Randomizer
 		}
 		Characters.Sein.Inventory.OnSave();
 		RandomizerBonusSkill.OnSave();
+		RandomizerTrackedDataManager.UpdateBitmaps();
 	}
 
 	public static bool canFinalEscape()
@@ -741,22 +777,9 @@ public static class Randomizer
 		Randomizer.showHint("Error using door at " + ((int)position.x).ToString() + ", " + ((int)position.y).ToString());
 	}
 
-	public static void setTree(int tree)
-	{
-		int num = tree + 6;
-		if ((Characters.Sein.Inventory.SkillPointsCollected >> num) % 2 == 0)
-		{
-			int skillPointsCollected = Characters.Sein.Inventory.SkillPointsCollected + (1 << num);
-			while ((Characters.Sein.Inventory.SkillPointsCollected >> num) % 2 == 0)
-			{
-				Characters.Sein.Inventory.SkillPointsCollected = skillPointsCollected;
-			}
-		}
-	}
-
 	public static void getSkill(int tree)
 	{
-		Randomizer.setTree(tree);
+		RandomizerTrackedDataManager.SetTree(tree);
 		Randomizer.getSkill();
 	}
 
@@ -1010,4 +1033,6 @@ public static class Randomizer
 	public static Dictionary<int, RandomizerHotColdItem> HotColdItems;
 
 	public static List<int> HotColdMaps;
+
+	public static Dictionary<string, string> RelicZoneLookup;
 }

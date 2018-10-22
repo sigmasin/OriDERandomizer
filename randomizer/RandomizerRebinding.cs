@@ -54,7 +54,11 @@ public static class RandomizerRebinding {
 				{"Double Bash", "Grenade"},
 				{"Bonus Switch", "LeftAlt+Q, RightAlt+Q"},
 				{"Bonus Toggle", "LeftAlt+Mouse1, RightAlt+Mouse1"},
-				{"Reset Grenade Aim",""}
+				{"Reset Grenade Aim",""},
+				{"List Trees", "LeftAlt+Alpha1, RightAlt+Alpha1"},
+				{"List Relics", "LeftAlt+Alpha2, RightAlt+Alpha2"},
+				{"List Map Altars", "LeftAlt+Alpha3, RightAlt+Alpha3"},
+				{"List Teleporters", "LeftAlt+Alpha4, RightAlt+Alpha4"}
 			};
 			if (!File.Exists("RandomizerRebinding.txt"))
 			{
@@ -120,7 +124,15 @@ public static class RandomizerRebinding {
 				RandomizerRebinding.BonusToggle = ParseOrDefault(bind, key, writeList);
 		} else if(key == "Reset Grenade Aim") {
 				RandomizerRebinding.ResetGrenadeAim = ParseOrDefault(bind, key, writeList);
-		}		
+		} else if(key == "List Trees") {
+			RandomizerRebinding.ListTrees = ParseOrDefault(bind, key, writeList);
+		} else if(key == "List Relics") {
+			RandomizerRebinding.ListRelics = ParseOrDefault(bind, key, writeList);
+		} else if(key == "List Map Altars") {
+			RandomizerRebinding.ListMapAltars = ParseOrDefault(bind, key, writeList);
+		} else if(key == "List Teleporters") {
+			RandomizerRebinding.ListTeleporters = ParseOrDefault(bind, key, writeList);
+		}
 	}
 
 	public static BindSet ParseOrDefault(string bind, string key, List<string> writeList) {
@@ -225,6 +237,11 @@ public static class RandomizerRebinding {
 
 	// Token: 0x04003A1A RID: 14874
 	public static RandomizerRebinding.BindSet ResetGrenadeAim;
+
+	public static RandomizerRebinding.BindSet ListTrees;
+	public static RandomizerRebinding.BindSet ListRelics;
+	public static RandomizerRebinding.BindSet ListMapAltars;
+	public static RandomizerRebinding.BindSet ListTeleporters;
 
 	// Token: 0x02000A03 RID: 2563
 	public class Bind
