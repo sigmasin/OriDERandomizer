@@ -38,6 +38,8 @@ allowed_things = [
 	"TPValley",
 	"TPForlorn",
 	"TPSorrow",
+	"TPGinso",
+	"TPHoru",
 	"Health",
 	"Energy",
 	"Ability",
