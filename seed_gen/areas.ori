@@ -1322,7 +1322,7 @@ home: LowerGinsoTree
 		expert-core WallJump
 		master-core DoubleJump
 		master-core Bash
-	conn: Horu
+	conn: R4InnerDoor
 		glitched Dash
 home: GinsoMiniBossDoor
 	-- anchor: Just past the Ginso Mini Boss Door which unlocks after mini boss defeat
@@ -2297,8 +2297,11 @@ home: HoruFieldsPushBlock
 home: HoruOuterDoor
 	conn: HoruInnerDoor
 		casual-core HoruKey
+	--TODO: add connection to HoruFields once that gets refactored
 home: HoruInnerDoor
-	conn: Horu
+-- anchor: inside the main door of Horu
+	conn: HoruOuterDoor
+	conn: HoruMapLedge
 		casual-core Bash DoubleJump Glide WallJump
 		casual-core Bash DoubleJump ChargeJump WallJump
 		casual-core Bash Glide ChargeJump WallJump
@@ -2307,36 +2310,216 @@ home: HoruInnerDoor
 		casual-core Bash Glide ChargeJump Climb
 		expert-core Bash Grenade WallJump
 		expert-core Bash Grenade Climb
-		master-core ChargeJump WallJump DoubleJump Glide Health=8 Ability=12
-	conn: HoruMapLedge
-		master-core ChargeJump WallJump DoubleJump Health=4 Ability=12
-	conn: HoruBasement
-		expert-core Free
-home: Horu
-	conn: HoruMapLedge
+		dbash Bash
+		master-dboost ChargeJump WallJump DoubleJump Health=4 Ability=12
 	conn: L1OuterDoor
+		casual-core Bash DoubleJump Glide WallJump
+		casual-core Bash DoubleJump ChargeJump WallJump
+		casual-core Bash Glide ChargeJump WallJump
+		casual-core Bash DoubleJump Glide Climb
+		casual-core Bash DoubleJump ChargeJump Climb
+		casual-core Bash Glide ChargeJump Climb
+		expert-core Bash Grenade WallJump
+		expert-core Bash Grenade Climb
+		dbash Bash
+		master-dboost ChargeJump WallJump DoubleJump Glide Health=8 Ability=12
 	conn: L2OuterDoor
-		casual-core Stomp
+		casual-core Stomp Bash DoubleJump Glide WallJump
+		casual-core Stomp Bash DoubleJump ChargeJump WallJump
+		casual-core Stomp Bash Glide ChargeJump WallJump
+		casual-core Stomp Bash DoubleJump Glide Climb
+		casual-core Stomp Bash DoubleJump ChargeJump Climb
+		casual-core Stomp Bash Glide ChargeJump Climb
+		expert-core Stomp Bash Grenade WallJump
+		expert-core Stomp Bash Grenade Climb
+		master-dboost Stomp ChargeJump WallJump DoubleJump Glide Health=8 Ability=12
+		-- Open
+		casual-core Open ChargeJump WallJump Climb
+		casual-core Open ChargeJump WallJump Glide
+		casual-core Open ChargeJump WallJump DoubleJump
+		casual-core Open ChargeJump Climb Bash
+		casual-core Open Bash Grenade
+		casual-core Open Bash DoubleJump Glide
+		standard-core Open ChargeJump WallJump
+		expert-abilities Open Dash WallJump Ability=6
+		expert-abilities Open Dash Climb Ability=6
+		dbash Open Bash
+		master-abilities Open ChargeJump DoubleJump Ability=12
 	conn: L3OuterDoor
-		casual-core Stomp
+		casual-core Stomp Bash DoubleJump Glide WallJump
+		casual-core Stomp Bash DoubleJump ChargeJump WallJump
+		casual-core Stomp Bash Glide ChargeJump WallJump
+		casual-core Stomp Bash DoubleJump Glide Climb
+		casual-core Stomp Bash DoubleJump ChargeJump Climb
+		casual-core Stomp Bash Glide ChargeJump Climb
+		expert-core Stomp Bash Grenade WallJump
+		expert-core Stomp Bash Grenade Climb
+		master-dboost Stomp ChargeJump WallJump DoubleJump Glide Health=8 Ability=12
+		-- Open
+		casual-core Open ChargeJump WallJump Glide
+		casual-core Open ChargeJump WallJump DoubleJump
+		casual-core Open ChargeJump WallJump Bash
+		casual-core Open ChargeJump Climb Bash
+		casual-core Open Bash Grenade
+		casual-core Open Bash DoubleJump Glide
+		expert-abilities Open Dash Ability=6
+		dbash Open Bash
+		master-abilities Open ChargeJump DoubleJump Ability=12
 	conn: L4OuterDoor
-		casual-core Stomp
+		casual-core Stomp Bash DoubleJump Glide WallJump
+		casual-core Stomp Bash DoubleJump ChargeJump WallJump
+		casual-core Stomp Bash Glide ChargeJump WallJump
+		casual-core Stomp Bash DoubleJump Glide Climb
+		casual-core Stomp Bash DoubleJump ChargeJump Climb
+		casual-core Stomp Bash Glide ChargeJump Climb
+		expert-core Stomp Bash Grenade WallJump
+		expert-core Stomp Bash Grenade Climb
+		master-dboost Stomp ChargeJump WallJump DoubleJump Glide Health=8 Ability=12
+		-- Open
+		casual-core Open Bash
+		casual-core Open ChargeJump
+		expert-abilities Open Dash Ability=6
+	conn: L4Below
+		casual-core Open Bash
+		casual-core Open ChargeJump
+		casual-core Open DoubleJump Glide
+		standard-core Open Dash DoubleJump
+		standard-abilities Open Dash Glide Ability=3
+		expert-abilities Open Dash Ability=6
+		master-abilities Open DoubleJump Ability=12
 	conn: R1OuterDoor
+		casual-core Bash DoubleJump Glide WallJump
+		casual-core Bash DoubleJump ChargeJump WallJump
+		casual-core Bash Glide ChargeJump WallJump
+		casual-core Bash DoubleJump Glide Climb
+		casual-core Bash DoubleJump ChargeJump Climb
+		casual-core Bash Glide ChargeJump Climb
+		expert-core Bash Grenade WallJump
+		expert-core Bash Grenade Climb
+		dbash Bash
+		master-dboost ChargeJump WallJump DoubleJump Glide Health=8 Ability=12
 	conn: R2OuterDoor
+		casual-core Bash DoubleJump Glide WallJump
+		casual-core Bash DoubleJump ChargeJump WallJump
+		casual-core Bash Glide ChargeJump WallJump
+		casual-core Bash DoubleJump Glide Climb
+		casual-core Bash DoubleJump ChargeJump Climb
+		casual-core Bash Glide ChargeJump Climb
+		expert-core Bash Grenade WallJump
+		expert-core Bash Grenade Climb
+		master-dboost ChargeJump WallJump DoubleJump Glide Health=8 Ability=12
+		-- Open
+		casual-core Open Bash Grenade
+		casual-core Open Bash DoubleJump Glide
+		casual-core Open ChargeJump Climb Bash
+		casual-core Open ChargeJump DoubleJump Glide WallJump
+		standard-core Open ChargeJump Dash DoubleJump WallJump
+		standard-core Open ChargeJump Dash Glide WallJump
+		expert-abilities Open Dash WallJump Ability=6
+		expert-abilities Open Dash Climb Ability=6
+		dbash Open Bash
+		master-abilities Open ChargeJump DoubleJump Ability=12
 	conn: R3OuterDoor
-		casual-core Stomp
+		casual-core Stomp Bash DoubleJump Glide WallJump
+		casual-core Stomp Bash DoubleJump ChargeJump WallJump
+		casual-core Stomp Bash Glide ChargeJump WallJump
+		casual-core Stomp Bash DoubleJump Glide Climb
+		casual-core Stomp Bash DoubleJump ChargeJump Climb
+		casual-core Stomp Bash Glide ChargeJump Climb
+		expert-core Stomp Bash Grenade WallJump
+		expert-core Stomp Bash Grenade Climb
+		master-dboost Stomp ChargeJump WallJump DoubleJump Glide Health=8 Ability=12
+		-- Open
+		casual-core Open ChargeJump WallJump Glide
+		casual-core Open ChargeJump WallJump DoubleJump
+		casual-core Open ChargeJump WallJump Bash
+		casual-core Open ChargeJump Climb Bash
+		casual-core Open Bash Grenade WallJump
+		casual-core Open Bash Grenade Climb
+		casual-core Open Bash Grenade DoubleJump
+		casual-core Open Bash Grenade Glide
+		casual-core Open Bash DoubleJump Glide
+		expert-abilities Open Dash Ability=6
+		dbash Open Bash
+		master-abilities Open ChargeJump DoubleJump Ability=12
 	conn: R4OuterDoor
-		casual-core Stomp
-	conn: HoruEscapeOuterDoor
-		casual-core Stomp
-	conn: HoruHub
-		casual-core Stomp
-	conn: LowerGinsoTree
-		glitched Dash
+		casual-core Stomp Bash DoubleJump Glide WallJump
+		casual-core Stomp Bash DoubleJump ChargeJump WallJump
+		casual-core Stomp Bash Glide ChargeJump WallJump
+		casual-core Stomp Bash DoubleJump Glide Climb
+		casual-core Stomp Bash DoubleJump ChargeJump Climb
+		casual-core Stomp Bash Glide ChargeJump Climb
+		expert-core Stomp Bash Grenade WallJump
+		expert-core Stomp Bash Grenade Climb
+		master-dboost Stomp ChargeJump WallJump DoubleJump Glide Health=8 Ability=12
+		-- Open
+		casual-core Open Bash Grenade
+		casual-core Open ChargeJump WallJump
+		casual-core Open ChargeJump Climb
+		casual-core Open ChargeJump DoubleJump
+		expert-abilities Open Dash Ability=6
+		dbash Open Bash
+	conn: R4Below
+		casual-core Open Glide Bash
+		casual-core Open Grenade Bash
+		casual-core Open ChargeJump Glide
+		expert-abilities Open Dash Ability=6
+		dbash Open Bash
+		master-abilities Open ChargeJump DoubleJump Ability=12
+		master-abilities Open Glide DoubleJump Ability=12
+	conn: HoruBasement
+		casual-core Stomp Bash DoubleJump Glide WallJump
+		casual-core Stomp Bash DoubleJump ChargeJump WallJump
+		casual-core Stomp Bash Glide ChargeJump WallJump
+		casual-core Stomp Bash DoubleJump Glide Climb
+		casual-core Stomp Bash DoubleJump ChargeJump Climb
+		casual-core Stomp Bash Glide ChargeJump Climb
+		expert-core Free
+		master-dboost Stomp ChargeJump WallJump DoubleJump Glide Health=8 Ability=12
+		-- Open
+		casual-core Open
+	conn: HoruTeleporter
+		casual-core Stomp Bash DoubleJump Glide WallJump
+		casual-core Stomp Bash DoubleJump ChargeJump WallJump
+		casual-core Stomp Bash Glide ChargeJump WallJump
+		casual-core Stomp Bash DoubleJump Glide Climb
+		casual-core Stomp Bash DoubleJump ChargeJump Climb
+		casual-core Stomp Bash Glide ChargeJump Climb
+		expert-core Stomp Bash Grenade WallJump
+		expert-core Stomp Bash Grenade Climb
+		master-dboost Stomp ChargeJump WallJump DoubleJump Glide Health=8 Ability=12
+		-- Open
+		casual-core Open
 home: HoruTeleporter
+-- anchor: on the teleporter
+	pickup: HoruTeleporterExp
+	conn: HoruInnerDoor
+		casual-core Open ChargeJump WallJump
+		casual-core Open ChargeJump Climb
+		casual-core Open Bash Grenade
+		dbash Open Bash
+		master-core Open ChargeJump DoubleJump
+		master-abilities Open WallJump DoubleJump Ability=12
+home: HoruBasement
+-- anchor: in the post-door warp position
+	pickup: DoorWarpExp
+		casual-core WallJump DoubleJump
+		casual-core Climb DoubleJump
+		casual-core ChargeJump
+		casual-core Bash Grenade
+		master-core DoubleJump
+	conn: HoruEscapeOuterDoor
+		casual-core WallJump
+		casual-core Climb
+		casual-core DoubleJump
+		casual-core Dash
+		casual-core ChargeJump Glide
+		casual-core Bash Grenade
 home: HoruMapLedge
+-- anchor: in front of the mapstone
 	pickup: HoruMap
 		casual-core Mapstone
+-- TODO
 home: L1OuterDoor
 	conn: L1InnerDoor
 	conn: HoruInnerDoor
@@ -2353,6 +2536,7 @@ home: L1InnerDoor
 		expert-core Grenade Climb
 home: L1
 	pickup: HoruL1
+-- TODO
 home: L2OuterDoor
 	conn: L2InnerDoor
 	conn: HoruInnerDoor
@@ -2370,6 +2554,7 @@ home: L2InnerDoor
 		expert-core Grenade Climb
 home: L2
 	pickup: HoruL2
+-- TODO
 home: L3OuterDoor
 	conn: L3InnerDoor
 	conn: HoruInnerDoor
@@ -2387,9 +2572,11 @@ home: L3InnerDoor
 		expert-core Grenade Climb
 home: L3
 	pickup: HoruL3
+-- TODO
 home: L4OuterDoor
 	conn: L4InnerDoor
 	conn: HoruInnerDoor
+	conn: L4Below
 home: L4InnerDoor
 	conn: L4
 		ALL Bash Stomp
@@ -2404,8 +2591,9 @@ home: L4InnerDoor
 home: L4
 	pickup: HoruL4LowerExp
 	pickup: HoruL4ChaseExp
-	pickup: HoruLavaDrainedLeftExp
 	pickup: HoruL4
+home: L4Below
+	pickup: HoruLavaDrainedLeftExp
 home: R1OuterDoor
 	conn: R1InnerDoor
 home: R1InnerDoor
@@ -2473,20 +2661,13 @@ home: HoruR1CutsceneTrigger
         standard-core Bash Grenade
         expert-dboost WallJump Health=5
         master-core DoubleJump
+    conn: LowerGinsoTree
+    	glitched Dash
 home: R2OuterDoor
 	conn: R2InnerDoor
 	conn: HoruInnerDoor
 home: R2InnerDoor
 	conn: R2
-		ALL Bash Stomp
-		casual-core DoubleJump Glide WallJump
-		casual-core DoubleJump ChargeJump WallJump
-		casual-core Glide ChargeJump WallJump
-		casual-core DoubleJump Glide Climb
-		casual-core DoubleJump ChargeJump Climb
-		casual-core Glide ChargeJump Climb
-		expert-core Grenade WallJump
-		expert-core Grenade Climb
 home: R2
     pickup: HoruR2
         ALL Stomp
@@ -2505,6 +2686,7 @@ home: R2
         master-core Bash
         master-dboost DoubleJump ChargeJump Grenade Dash Ability=6 Health=13 Energy=3
         master-dboost DoubleJump ChargeJump Grenade Dash Ability=12 Health=10 Energy=3
+-- TODO
 home: R3OuterDoor
 	conn: R3InnerDoor
 	conn: HoruInnerDoor
@@ -2526,9 +2708,16 @@ home: R3
 		casual-core Grenade
 		expert-abilities Dash Ability=6
 	pickup: HoruR3
+-- TODO
 home: R4OuterDoor
 	conn: R4InnerDoor
 	conn: HoruInnerDoor
+	conn: R4Below
+		casual-core DoubleJump
+		casual-core Glide
+		casual-core Bash Grenade
+		standard-abilities Dash Ability=3
+		dbash Bash
 home: R4InnerDoor
 	conn: R4
 		ALL Bash
@@ -2544,24 +2733,9 @@ home: R4
 	pickup: HoruR4StompExp
 	pickup: HoruR4LaserExp
 	pickup: HoruR4DrainedExp
-	pickup: HoruLavaDrainedRightExp
 	pickup: HoruR4
-home: HoruHub
-	pickup: HoruTeleporterExp
-		casual-core GinsoKey ForlornKey
-	conn: HoruBasement
-home: HoruBasement
-	pickup: DoorWarpExp
-		casual-core WallJump DoubleJump
-		casual-core Climb DoubleJump
-		casual-core WallJump ChargeJump
-		casual-core Climb ChargeJump
-		casual-core Glide ChargeJump
-		casual-core DoubleJump ChargeJump
-		casual-core Bash Grenade
-		expert-core ChargeJump
-		expert-core DoubleJump
-	conn: HoruEscapeOuterDoor
+home: R4Below
+	pickup: HoruLavaDrainedRightExp
 home: HoruEscapeOuterDoor
 	conn: HoruEscapeInnerDoor
 home: HoruEscapeInnerDoor
@@ -2704,6 +2878,7 @@ home: ValleyStomplessApproach
 		expert-abilities Dash WallJump DoubleJump Energy=2
 		expert-abilities Dash Climb DoubleJump Energy=2
 		master-core WallJump DoubleJump Ability=12
+	conn: ValleyRight
 home: ValleyStompless
 -- anchored at the fast stompless aim position, rocks intact
 	conn: WilhelmLedge
@@ -2715,6 +2890,16 @@ home: ValleyStompless
 		expert-core Bash
 		master-core ChargeFlame
 		master-core Grenade
+	conn: ValleyStomplessApproach
+		casual-core Glide
+		casual-core Bash
+		expert-dboost DoubleJump Health=4
+		expert-dboost Dash Ability=3 Health=4
+		expert-abilities Dash Ability=6 Energy=3
+		master-dboost ChargeJump Health=7
+		master-dboost ChargeJump Health=5 Ability=12
+		master-dboost Health=10
+		master-dboost Health=7 Ability=12
 home: ValleyMain
 -- anchored at the fast stompless aim position, rocks destroyed
 	pickup: GlideSkillFeather
@@ -3112,6 +3297,12 @@ home: WilhelmLedge
 		expert-abilities Dash Climb Ability=6
 		master-abilities WallJump DoubleJump Ability=12
 		master-abilities Climb DoubleJump Ability=12
+	conn: ValleyStompless
+		casual-core Glide
+		casual-core Bash
+		standard-abilities DoubleJump Dash Ability=3
+		expert-abilities Dash Ability=6
+		master-abilities DoubleJump Ability=12
 	conn: ValleyMain
 		casual-core Stomp
 		standard-lure HoruKey
@@ -3125,6 +3316,7 @@ home: WilhelmLedge
 		master-core Bash
 		glitched ChargeJump
 home: SorrowBashLedge
+-- anchored on the 
 	conn: LowerSorrow
 		casual-core Wind Glide
 		expert-lure Glide DoubleJump Bash Dash WallJump
@@ -3256,7 +3448,7 @@ home: SorrowMapstoneArea
 		casual-core Stomp Mapstone
 		casual-core Bash Mapstone
 		standard-lure Mapstone
-	conn: Horu
+	conn: HoruInnerDoor
 		glitched Dash
 home: LeftSorrowLowerDoor
 -- anchored at LowerSorrow, after the door has been opened
@@ -3389,9 +3581,13 @@ home: MiddleSorrow
 	conn: SorrowMainShaftKeystoneArea
 		casual-core Stomp
 		standard-core Climb ChargeJump
+		expert-core ChargeJump Bash Grenade
+		expert-abilities ChargeJump Dash Ability=3
 	conn: LowerSorrow
 		casual-core Stomp
 		standard-core Climb ChargeJump
+		expert-core ChargeJump Bash Grenade
+		expert-abilities ChargeJump Dash Ability=3
 	-- frog juggle
 	conn: SunstoneArea
 		expert-core Bash Glide
@@ -3530,11 +3726,16 @@ home: AboveChargeJumpArea
 	conn: ChargeJumpArea
 		standard-lure Bash Stomp WallJump
 		standard-lure Bash Stomp Climb
-		expert-abilities Dash Stomp Ability=6
+		expert-core ChargeJump Climb Bash
+		expert-core ChargeJump Bash Grenade WallJump
+		expert-abilities ChargeJump Bash Dash Ability=3
+		expert-abilities ChargeJump Climb Dash Ability=6
+		expert-abilities Dash Stomp WallJump Ability=6
+		expert-abilities Dash Stomp Climb Ability=6
+		expert-dboost ChargeJump Dash Health=6 Ability=6
+		expert-dboost ChargeJump Bash Health=6
 		gjump ChargeJump Climb Grenade Dash
-		gjump ChargeJump Climb Grenade Health=5
-		expert-dboost ChargeJump Dash Health=5
-		expert-dboost ChargeJump Bash Health=5
+		gjump ChargeJump Climb Grenade Health=6
 		dbash Bash WallJump
 		dbash Bash Climb
 		master-core Bash
@@ -3560,6 +3761,8 @@ home: SorrowTeleporter
 		casual-core ChargeJump Climb Stomp
 		expert-core Stomp WallJump DoubleJump Glide
 		expert-core ChargeJump Climb
+		expert-core ChargeJump WallJump DoubleJump Glide Bash Grenade
+		expert-abilities ChargeJump Dash WallJump DoubleJump Ability=3
 		expert-dboost ChargeJump WallJump DoubleJump Glide Health=5
 		master-core Stomp Bash
 		master-core ChargeJump Bash
@@ -3567,13 +3770,17 @@ home: BelowSunstoneArea
 -- anchored above the 2 lasers in the main shaft, floor intact
 	conn: SunstoneArea
 		casual-core Stomp Glide
-		expert-core ChargeJump Climb Glide
+		standard-core ChargeJump Climb Glide
+		expert-core ChargeJump Dash Glide
+		expert-core ChargeJump Bash Grenade Glide
 		gjump ChargeJump Climb Grenade
 		master-core Bash
 		master-dboost ChargeJump Climb DoubleJump Health=4 Ability=12
 	conn: UpperSorrow
 		casual-core Stomp
 		standard-core ChargeJump Climb
+		expert-core ChargeJump Bash Grenade
+		expert-abilities ChargeJump Dash Ability=3
 		master-core Bash
 home: SunstoneArea
 -- anchored at the top of the main shaft

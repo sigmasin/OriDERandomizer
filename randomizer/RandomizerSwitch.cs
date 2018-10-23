@@ -216,6 +216,6 @@ public static class RandomizerSwitch
                 Randomizer.showHint("Nothing");
                 break;
         }
-        RandomizerTrackedDataManager.UpdateBitmaps();
+        RandomizerTrackedDataManager.UpdateBitfields();
     }
 }   

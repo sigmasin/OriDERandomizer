@@ -414,6 +414,8 @@ public static class Randomizer
 		if (Characters.Sein && !Characters.Sein.IsSuspended)
 		{
 			RandomizerBonus.Update();
+			if(RandomizerTrackedDataManager.TreeBitfield < 0)
+					RandomizerTrackedDataManager.UpdateBitfields();
 			if (!Randomizer.ColorShift)
 			{
 				RandomizerColorManager.UpdateColors();
@@ -703,7 +705,7 @@ public static class Randomizer
 		}
 		Characters.Sein.Inventory.OnSave();
 		RandomizerBonusSkill.OnSave();
-		RandomizerTrackedDataManager.UpdateBitmaps();
+		RandomizerTrackedDataManager.UpdateBitfields();
 	}
 
 	public static bool canFinalEscape()

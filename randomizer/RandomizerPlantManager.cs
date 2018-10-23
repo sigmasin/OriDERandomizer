@@ -54,9 +54,11 @@ public static class RandomizerPlantManager
 		{
 			return;
 		}
-		int bitmap = Characters.Sein.Inventory.GetRandomizerItem(1000);
-		bitmap += 1 << RandomizerPlantManager.Plants[guid].Id;
-		Characters.Sein.Inventory.SetRandomizerItem(1000, bitmap);
+		RandomizerPlantManager.PlantData plantData = RandomizerPlantManager.Plants[guid];
+		if (Display(plantData.Id))
+		{
+			Characters.Sein.Inventory.IncRandomizerItem(1000, 1 << plantData.Id);
+		}
 	}
 
 	// Token: 0x04003310 RID: 13072
