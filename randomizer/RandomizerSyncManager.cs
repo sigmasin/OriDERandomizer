@@ -121,8 +121,8 @@ public static class RandomizerSyncManager
 		{
 			string[] array = File.ReadAllLines("randomizer.dat");
 			array[0] = array[0].Replace(',', '|');
+			RandomizerSyncManager.UriQueue.Enqueue(new Uri(RandomizerSyncManager.RootUrl + "/setSeed?seed=" + string.Join(",", array).Replace("#","")));
 			RandomizerSyncManager.flags["seedSent"] = true;
-			RandomizerSyncManager.UriQueue.Enqueue(new Uri(RandomizerSyncManager.RootUrl + "/setSeed?seed=" + string.Join(",", array)));
 		}
 		RandomizerSyncManager.Countdown--;
 		RandomizerSyncManager.ChaosTimeoutCounter--;
