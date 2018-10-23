@@ -2779,10 +2779,55 @@ home: R4InnerDoor
 		expert-core Grenade WallJump
 		expert-core Grenade Climb
 home: R4
-	pickup: HoruR4StompExp
-	pickup: HoruR4LaserExp
+    conn: HoruR4LavaPool
+        master-core Bash
+        master-abilities DoubleJump Dash Ability=12
+        master-abilities ChargeJump DoubleJump Climb Glide  Ability=12
+    conn: HoruR4StompHideout
+        casual-core ChargeFlame ChargeJump
+        casual-core ChargeFlame Bash Grenade
+        casual-core Stomp ChargeJump
+        casual-core Stomp Bash Grenade
+        standard-core ChargeJump Climb
+        expert-core ChargeJump
+        expert-core Bash ChargeFlame
+        expert-core Bash Stomp
+        expert-abilities Bash Dash Ability=6
+        dbash Bash
+home: HoruR4LavaPool
+    --anchor: safe spot on the left of the lava pool, next to the exp orb
 	pickup: HoruR4DrainedExp
-	pickup: HoruR4
+home: HoruR4StompHideout
+    --anchor: under the breakable floor, next to the exp orb
+    pickup: HoruR4StompExp
+    conn: HoruR4PuzzleEntrance
+        casual-core ChargeJump Glide
+        casual-core ChargeJump DoubleJump
+        standard-abilities ChargeJump Dash Ability=3
+        expert-dboost ChargeJump Health=5
+        master-dboost DoubleJump Health=4 Ability=12
+        gjump ChargeJump Climb Grenade
+    conn: HoruR4CutsceneTrigger
+        expert-core Bash ChargeJump
+        expert-dboost ChargeJump DoubleJump Health=5
+        dbash Bash
+home: HoruR4PuzzleEntrance
+    -- anchor: before the puzzle entrance, passed the hot floor
+    pickup: HoruR4LaserExp
+        casual-core Bash Grenade
+        casual-core Bash ChargeJump
+        expert-abilities ChargeJump Dash Ability=6 Energy=2
+        dbash Bash
+        gjump ChargeJump Climb Grenade
+    conn: HoruR4CutsceneTrigger
+        casual-core Bash Grenade
+        casual-core Bash ChargeJump
+        expert-abilities ChargeJump Dash Ability=6 Energy=2
+        gjump ChargeJump Climb Grenade
+home: HoruR4CutsceneTrigger
+    -- anchor: at the end of the room, where Ori needs to stand to activate the cutscene
+    pickup: HoruR4
+    conn: HoruR4LavaPool
 home: R4Below
 	pickup: HoruLavaDrainedRightExp
 home: HoruEscapeOuterDoor
