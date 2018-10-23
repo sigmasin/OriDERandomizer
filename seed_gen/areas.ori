@@ -1163,16 +1163,15 @@ home: HollowGrove
 		casual-core Wind Glide
 		master-core DoubleJump
 	conn: HoruFields
-		casual-core WallJump DoubleJump Bash
-		casual-core Climb DoubleJump Bash
-		casual-core WallJump DoubleJump Stomp
+		casual-core Bash
+		casual-core WallJump Stomp
 		casual-core Climb DoubleJump Stomp
-		casual-core ChargeJump Bash
 		casual-core ChargeJump Stomp
-		standard-core Bash Grenade
-		expert-core WallJump Stomp
-		dbash Bash
-		master-core WallJump
+		standard-abilities Climb Stomp Dash Ability=3
+		expert-core WallJump
+		expert-core DoubleJump
+		expert-core ChargeJump
+		expert-abilities Climb Dash Ability=3
 	conn: Iceless
 		casual-core WallJump DoubleJump
 		casual-core Climb DoubleJump
@@ -2231,26 +2230,70 @@ home: RightSwamp
 		master-dboost DoubleJump Health=5
 		gjump Water Climb ChargeJump
 home: HoruFields
+	-- anchor: just left of the baneling wall
+	conn: HoruFieldsPushBlock
+		casual-core Bash DoubleJump
+		casual-core Bash Glide
+		expert-core ChargeJump DoubleJump Glide
+		expert-abilities ChargeJump Glide Dash Ability=6 Energy=3
+		expert-abilities ChargeJump Dash Ability=6 Energy=4
+		dbash Bash
+		master-abilities WallJump DoubleJump Dash Ability=12 Energy=5
+		master-abilities Climb DoubleJump Dash Ability=12 Energy=4
+		gjump Climb Grenade ChargeJump
+	conn: HoruOuterDoor
+		casual-core Bash DoubleJump Glide WallJump
+		casual-core Bash DoubleJump ChargeJump WallJump
+		casual-core Bash Glide ChargeJump WallJump
+		casual-core Bash DoubleJump Glide Climb
+		casual-core Bash DoubleJump ChargeJump Climb
+		casual-core Bash Glide ChargeJump Climb
+		expert-core Bash Grenade WallJump
+		expert-core Bash Grenade Climb
+		master-core Bash
+		master-abilities WallJump Stomp Glide DoubleJump Ability=12
+		master-abilities WallJump DoubleJump Dash Ability=12 Energy=3
+		master-abilities Climb DoubleJump Dash Ability=12
+		gjump Climb Grenade ChargeJump
+home: HoruFieldsPushBlock
+	-- anchor: in the sky above Horu Fields, next to the pushable block
+	pickup: HoruFieldsPlant
+		casual-core Bash ChargeFlame
+		casual-core Bash Grenade
+		casual-core ChargeJump Glide ChargeFlame
+		casual-core ChargeJump Glide Grenade
+		casual-core Climb ChargeJump ChargeFlame
+		casual-core Climb ChargeJump Grenade
+		standard-abilities ChargeJump DoubleJump ChargeFlame Dash Ability=3
+		standard-abilities ChargeJump DoubleJump Grenade Dash Ability=3
+		expert-abilities Dash Ability=6 Energy=3
+		-- throw a grenade from the platform then jump right to load the plant
+		-- you need the height/distance from dj/glide/dash for this
+		master-core Grenade DoubleJump
+		master-core Grenade Glide
+		master-core Grenade Dash
+	pickup: HoruFieldsEnergyCell
+		casual-core Bash DoubleJump
+		casual-core Bash Glide
+		casual-core ChargeJump DoubleJump Glide
+		standard-abilities ChargeJump Glide Dash Ability=3
+		standard-abilities ChargeJump DoubleJump Dash Ability=3
+		expert-abilities Dash Ability=6 Energy=2
+		dbash Bash
+		gjump Climb Grenade ChargeJump
 	pickup: HoruFieldsHiddenExp
+		casual-core Bash Grenade
+		casual-core ChargeJump
+		standard-core Bash
+		expert-abilities Dash Ability=6
 	pickup: HoruFieldsAbilityCell
+		casual-core WallJump DoubleJump Glide
 		casual-core WallJump DoubleJump Bash
 		casual-core Climb ChargeJump
 		expert-dboost WallJump Bash Health=5
-		expert-dboost DoubleJump Bash Health=5
-		dbash Bash
-	conn: HoruFieldsEnergy
-		casual-core Bash
-		casual-core DoubleJump
-	conn: HoruOuterDoor
-		ALL HoruKey Bash
-		casual-core DoubleJump Glide WallJump
-		casual-core DoubleJump ChargeJump WallJump
-		casual-core Glide ChargeJump WallJump
-		casual-core DoubleJump Glide Climb
-		casual-core DoubleJump ChargeJump Climb
-		casual-core Glide ChargeJump Climb
-		expert-core Grenade WallJump
-		expert-core Grenade Climb
+		master-core Bash
+		master-abilities Glide DoubleJump Ability=12
+		master-abilities WallJump DoubleJump Ability=12
 home: HoruOuterDoor
 	conn: HoruInnerDoor
 		casual-core HoruKey
@@ -2269,12 +2312,6 @@ home: HoruInnerDoor
 		master-core ChargeJump WallJump DoubleJump Health=4 Ability=12
 	conn: HoruBasement
 		expert-core Free
-home: HoruFieldsEnergy
-	pickup: HoruFieldsEnergyCell
-	pickup: HoruFieldsPlant
-		casual-core ChargeFlame
-		casual-core Grenade
-		expert-abilities Dash Ability=6
 home: Horu
 	conn: HoruMapLedge
 	conn: L1OuterDoor
