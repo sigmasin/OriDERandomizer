@@ -3120,6 +3120,7 @@
         <Target name="GladesMain"/>
         <Requirements>
           <Requirement mode="casual-core">KS+KS</Requirement>
+          <Requirement mode="casual-core">Open</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3141,11 +3142,11 @@
           <Requirement mode="casual-core">Grenade+Bash+EC+EC+EC+EC</Requirement>
           <Requirement mode="casual-dboost">WallJump+EC+EC+EC+EC</Requirement>
           <Requirement mode="casual-dboost">Climb+EC+EC+EC+EC</Requirement>
+          <Requirement mode="standard-lure">Bash+EC+EC+EC+EC</Requirement>
           <Requirement mode="timed-level">WallJump+EC+EC</Requirement>
           <Requirement mode="timed-level">Climb+EC+EC</Requirement>
           <Requirement mode="timed-level">ChargeJump+EC+EC</Requirement>
           <Requirement mode="timed-level">Grenade+Bash+EC+EC</Requirement>
-          <Requirement mode="standard-lure">Bash+EC+EC+EC+EC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3255,7 +3256,7 @@
         <Home name="GladesMain"/>
         <Target name="SpiritCavernsDoor"/>
         <Requirements>
-          <Requirement mode="casual-core">KS+KS</Requirement>
+          <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3271,8 +3272,8 @@
           <Requirement mode="casual-core">Bash+Grenade+WallJump</Requirement>
           <Requirement mode="expert-core">Bash+WallJump</Requirement>
           <Requirement mode="expert-core">Bash+Climb</Requirement>
-          <Requirement mode="dbash">Bash</Requirement>
           <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3500,7 +3501,7 @@
         <Requirements>
           <Requirement mode="casual-core">Water</Requirement>
           <Requirement mode="expert-dboost">HC+HC+HC+HC</Requirement>
-          <Requirement mode="master-core">Free</Requirement>
+          <Requirement mode="master-dboost">Free</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -3589,6 +3590,18 @@
     <Connections>
       <Connection>
         <Home name="SpiritCavernsDoor"/>
+        <Target name="SpiritCavernsDoorOpened"/>
+        <Requirements>
+          <Requirement mode="casual-core">KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="SpiritCavernsDoorOpened">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="SpiritCavernsDoorOpened"/>
         <Target name="SpiritCaverns"/>
         <Requirements>
           <Requirement mode="casual-core">Climb</Requirement>
@@ -3597,6 +3610,13 @@
           <Requirement mode="casual-core">Bash+Grenade</Requirement>
           <Requirement mode="standard-lure">Bash</Requirement>
           <Requirement mode="master-core">DoubleJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SpiritCavernsDoorOpened"/>
+        <Target name="GladesMain"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -3654,6 +3674,13 @@
           <Requirement mode="casual-core">Bash+EC+EC+EC+EC</Requirement>
         </Requirements>
       </Connection>
+      <Connection>
+        <Home name="SpiritCaverns"/>
+        <Target name="SpiritTreeDoor"/>
+        <Requirements>
+          <Requirement mode="casual-core">Open</Requirement>
+        </Requirements>
+      </Connection>
     </Connections>
   </Area>
   <Area name="UpperSpiritCaverns">
@@ -3703,7 +3730,7 @@
         <Home name="UpperSpiritCaverns"/>
         <Target name="SpiritTreeDoor"/>
         <Requirements>
-          <Requirement mode="casual-core">KS+KS+KS+KS</Requirement>
+          <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -3713,12 +3740,31 @@
     <Connections>
       <Connection>
         <Home name="SpiritTreeDoor"/>
+        <Target name="SpiritTreeDoorOpened"/>
+        <Requirements>
+          <Requirement mode="casual-core">KS+KS+KS+KS</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="SpiritTreeDoorOpened">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="SpiritTreeDoorOpened"/>
         <Target name="SpiritTreeRefined"/>
         <Requirements>
           <Requirement mode="casual-core">WallJump</Requirement>
           <Requirement mode="casual-core">Climb</Requirement>
           <Requirement mode="casual-core">Bash</Requirement>
           <Requirement mode="casual-dboost">ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="SpiritTreeDoorOpened"/>
+        <Target name="UpperSpiritCaverns"/>
+        <Requirements>
+          <Requirement mode="casual-core">Free</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -3868,6 +3914,13 @@
   <Area name="SpiritTreeRefined">
     <Locations/>
     <Connections>
+      <Connection>
+        <Home name="SpiritTreeRefined"/>
+        <Target name="SpiritTreeDoor"/>
+        <Requirements>
+          <Requirement mode="casual-core">Open</Requirement>
+        </Requirements>
+      </Connection>
       <Connection>
         <Home name="SpiritTreeRefined"/>
         <Target name="AboveChargeFlameTree"/>

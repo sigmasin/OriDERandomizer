@@ -351,6 +351,7 @@ home: SunkenGladesRunaway
 	-- to it or to get past it
 	conn: GladesMain
 		casual-core Keystone=2
+		casual-core Open
 	conn: BlackrootDarknessRoom
 		casual-core WallJump
 		casual-core Climb
@@ -362,11 +363,11 @@ home: SunkenGladesRunaway
 		casual-core Grenade Bash Energy=4
 		casual-dboost WallJump Energy=4
 		casual-dboost Climb Energy=4
+		standard-lure Bash Energy=4
 		timed-level WallJump Energy=2
 		timed-level Climb Energy=2
 		timed-level ChargeJump Energy=2
 		timed-level Grenade Bash Energy=2
-		standard-lure Bash Energy=4
 	conn: SpiritTreeRefined
 		casual-core TPGrove
 	conn: MoonGrotto
@@ -401,7 +402,7 @@ home: GladesMain
 		expert-abilities Dash Ability=6
 	conn: LeftGlades
 	conn: SpiritCavernsDoor
-		casual-core Keystone=2
+		casual-core Free
 	conn: GladesLaserArea
 		casual-core ChargeJump Climb
 		casual-core ChargeJump WallJump DoubleJump
@@ -412,8 +413,8 @@ home: GladesMain
 		casual-core Bash Grenade WallJump
 		expert-core Bash WallJump
 		expert-core Bash Climb
-		dbash Bash
 		expert-abilities Dash Ability=6
+		dbash Bash
 	conn: LowerChargeFlameArea
 		casual-core Grenade
 		casual-core ChargeFlame
@@ -504,7 +505,7 @@ home: DeathGauntlet
 	conn: DeathGauntletMoat
 		casual-core Water
 		expert-dboost Health=4
-		master-core Free
+		master-dboost Free
 	conn: DeathGauntletDoor
 		casual-core DoubleJump Energy=4
 		casual-core Glide Energy=4
@@ -537,7 +538,11 @@ home: DeathGauntletRoofPlantAccess
 		casual-core Grenade
 		expert-abilities Dash Ability=6
 home: SpiritCavernsDoor
-	-- anchor: just past the spirit caverns entrance door
+	-- anchor: logically within reach of the door from either adjacent area
+	conn: SpiritCavernsDoorOpened
+		casual-core Keystone=2
+home: SpiritCavernsDoorOpened
+	-- anchor: same as SpiritCavernsDoor, but the door is open
 	conn: SpiritCaverns
 		casual-core Climb
 		casual-core WallJump
@@ -545,6 +550,7 @@ home: SpiritCavernsDoor
 		casual-core Bash Grenade
 		standard-lure Bash
 		master-core DoubleJump
+	conn: GladesMain
 home: SpiritCaverns
 	-- anchor: on the ground just after the first wall in spirit caverns
 	pickup: SpiritCavernsKeystone1
@@ -572,6 +578,8 @@ home: SpiritCaverns
 		master-core DoubleJump
 	conn: GladesLaserArea
 		casual-core Bash Energy=4
+	conn: SpiritTreeDoor
+		casual-core Open
 home: UpperSpiritCaverns
 	-- anchor: on the ledge across from the 4-energy gladeser door
 	pickup: SpiritCavernsTopLeftKeystone
@@ -594,14 +602,19 @@ home: UpperSpiritCaverns
 		casual-core Energy=4
 		glitched Energy=3
 	conn: SpiritTreeDoor
-		casual-core Keystone=4
+		casual-core Free
 home: SpiritTreeDoor
-	-- anchor: logically, same as UpperSpiritCaverns, but the exit door is open
+	-- anchor: logically, in either adjacent area to the door
+	conn: SpiritTreeDoorOpened
+		casual-core Keystone=4
+home: SpiritTreeDoorOpened
+	-- anchor: same as SpiritTreeDoor, but the door is open
 	conn: SpiritTreeRefined
 		casual-core WallJump
 		casual-core Climb
 		casual-core Bash
 		casual-dboost ChargeJump
+	conn: UpperSpiritCaverns
 home: GladesLaserArea
 	-- anchor: just to the right of the 4-energy door
 	pickup: GladesLaser
@@ -666,6 +679,8 @@ home: LowerChargeFlameArea
 		master-lure Bash Dash Ability=6
 home: SpiritTreeRefined
 	-- anchor: the spirit tree spirit well (i.e. grove teleporter)
+	conn: SpiritTreeDoor
+		casual-core Open
 	conn: AboveChargeFlameTree
 		casual-core DoubleJump Climb
 		casual-core DoubleJump WallJump
