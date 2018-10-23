@@ -2694,10 +2694,10 @@ home: R2
         standard-core Bash Glide Climb
         standard-core Bash Glide ChargeJump
         standard-core Bash Glide Grenade
-        expert-abilities Bash DoubleJump WallJump
-        expert-abilities Bash DoubleJump Climb
-        expert-abilities Bash DoubleJump ChargeJump
-        expert-abilities Bash DoubleJump Grenade
+        expert-core Bash DoubleJump WallJump
+        expert-core Bash DoubleJump Climb
+        expert-core Bash DoubleJump ChargeJump
+        expert-core Bash DoubleJump Grenade
         master-core Bash
         master-dboost DoubleJump ChargeJump Grenade Dash Ability=6 Health=13 Energy=3
         master-dboost DoubleJump ChargeJump Grenade Dash Ability=12 Health=10 Energy=3
