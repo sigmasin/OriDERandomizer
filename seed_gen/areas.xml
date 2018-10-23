@@ -4756,16 +4756,15 @@
         <Home name="HollowGrove"/>
         <Target name="HoruFields"/>
         <Requirements>
-          <Requirement mode="casual-core">WallJump+DoubleJump+Bash</Requirement>
-          <Requirement mode="casual-core">Climb+DoubleJump+Bash</Requirement>
-          <Requirement mode="casual-core">WallJump+DoubleJump+Stomp</Requirement>
+          <Requirement mode="casual-core">Bash</Requirement>
+          <Requirement mode="casual-core">WallJump+Stomp</Requirement>
           <Requirement mode="casual-core">Climb+DoubleJump+Stomp</Requirement>
-          <Requirement mode="casual-core">ChargeJump+Bash</Requirement>
           <Requirement mode="casual-core">ChargeJump+Stomp</Requirement>
-          <Requirement mode="standard-core">Bash+Grenade</Requirement>
-          <Requirement mode="expert-core">WallJump+Stomp</Requirement>
-          <Requirement mode="dbash">Bash</Requirement>
-          <Requirement mode="master-core">WallJump</Requirement>
+          <Requirement mode="standard-abilities">Climb+Stomp+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="expert-core">WallJump</Requirement>
+          <Requirement mode="expert-core">DoubleJump</Requirement>
+          <Requirement mode="expert-core">ChargeJump</Requirement>
+          <Requirement mode="expert-abilities">Climb+Dash+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
       <Connection>
@@ -6812,42 +6811,96 @@
     <Connections>
       <Connection>
         <Home name="HoruFields"/>
-        <Target name="HoruFieldsHiddenExp"/>
+        <Target name="HoruFieldsPushBlock"/>
         <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="HoruFields"/>
-        <Target name="HoruFieldsAbilityCell"/>
-        <Requirements>
-          <Requirement mode="casual-core">WallJump+DoubleJump+Bash</Requirement>
-          <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
-          <Requirement mode="expert-dboost">WallJump+Bash+HC+HC+HC+HC+HC</Requirement>
-          <Requirement mode="expert-dboost">DoubleJump+Bash+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Bash+Glide</Requirement>
+          <Requirement mode="expert-core">ChargeJump+DoubleJump+Glide</Requirement>
+          <Requirement mode="expert-abilities">ChargeJump+Glide+Dash+AC+AC+AC+AC+AC+AC+EC+EC+EC</Requirement>
+          <Requirement mode="expert-abilities">ChargeJump+Dash+AC+AC+AC+AC+AC+AC+EC+EC+EC+EC</Requirement>
           <Requirement mode="dbash">Bash</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="HoruFields"/>
-        <Target name="HoruFieldsEnergy"/>
-        <Requirements>
-          <Requirement mode="casual-core">Bash</Requirement>
-          <Requirement mode="casual-core">DoubleJump</Requirement>
+          <Requirement mode="master-abilities">WallJump+DoubleJump+Dash+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+EC+EC+EC+EC+EC</Requirement>
+          <Requirement mode="master-abilities">Climb+DoubleJump+Dash+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+EC+EC+EC+EC</Requirement>
+          <Requirement mode="gjump">Climb+Grenade+ChargeJump</Requirement>
         </Requirements>
       </Connection>
       <Connection>
         <Home name="HoruFields"/>
         <Target name="HoruOuterDoor"/>
         <Requirements>
-          <Requirement mode="casual-core">HoruKey+Bash+DoubleJump+Glide+WallJump</Requirement>
-          <Requirement mode="casual-core">HoruKey+Bash+DoubleJump+ChargeJump+WallJump</Requirement>
-          <Requirement mode="casual-core">HoruKey+Bash+Glide+ChargeJump+WallJump</Requirement>
-          <Requirement mode="casual-core">HoruKey+Bash+DoubleJump+Glide+Climb</Requirement>
-          <Requirement mode="casual-core">HoruKey+Bash+DoubleJump+ChargeJump+Climb</Requirement>
-          <Requirement mode="casual-core">HoruKey+Bash+Glide+ChargeJump+Climb</Requirement>
-          <Requirement mode="expert-core">HoruKey+Bash+Grenade+WallJump</Requirement>
-          <Requirement mode="expert-core">HoruKey+Bash+Grenade+Climb</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+Glide+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+Glide+ChargeJump+WallJump</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+Glide+Climb</Requirement>
+          <Requirement mode="casual-core">Bash+DoubleJump+ChargeJump+Climb</Requirement>
+          <Requirement mode="casual-core">Bash+Glide+ChargeJump+Climb</Requirement>
+          <Requirement mode="expert-core">Bash+Grenade+WallJump</Requirement>
+          <Requirement mode="expert-core">Bash+Grenade+Climb</Requirement>
+          <Requirement mode="master-core">Bash</Requirement>
+          <Requirement mode="master-abilities">WallJump+Stomp+Glide+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">WallJump+DoubleJump+Dash+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+EC+EC+EC</Requirement>
+          <Requirement mode="master-abilities">Climb+DoubleJump+Dash+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="gjump">Climb+Grenade+ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+    </Connections>
+  </Area>
+  <Area name="HoruFieldsPushBlock">
+    <Locations/>
+    <Connections>
+      <Connection>
+        <Home name="HoruFieldsPushBlock"/>
+        <Target name="HoruFieldsPlant"/>
+        <Requirements>
+          <Requirement mode="casual-core">Bash+ChargeFlame</Requirement>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">ChargeJump+Glide+ChargeFlame</Requirement>
+          <Requirement mode="casual-core">ChargeJump+Glide+Grenade</Requirement>
+          <Requirement mode="casual-core">Climb+ChargeJump+ChargeFlame</Requirement>
+          <Requirement mode="casual-core">Climb+ChargeJump+Grenade</Requirement>
+          <Requirement mode="standard-abilities">ChargeJump+DoubleJump+ChargeFlame+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="standard-abilities">ChargeJump+DoubleJump+Grenade+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC+EC+EC+EC</Requirement>
+          <Requirement mode="master-core">Grenade+DoubleJump</Requirement>
+          <Requirement mode="master-core">Grenade+Glide</Requirement>
+          <Requirement mode="master-core">Grenade+Dash</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HoruFieldsPushBlock"/>
+        <Target name="HoruFieldsEnergyCell"/>
+        <Requirements>
+          <Requirement mode="casual-core">Bash+DoubleJump</Requirement>
+          <Requirement mode="casual-core">Bash+Glide</Requirement>
+          <Requirement mode="casual-core">ChargeJump+DoubleJump+Glide</Requirement>
+          <Requirement mode="standard-abilities">ChargeJump+Glide+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="standard-abilities">ChargeJump+DoubleJump+Dash+AC+AC+AC</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC+EC+EC</Requirement>
+          <Requirement mode="dbash">Bash</Requirement>
+          <Requirement mode="gjump">Climb+Grenade+ChargeJump</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HoruFieldsPushBlock"/>
+        <Target name="HoruFieldsHiddenExp"/>
+        <Requirements>
+          <Requirement mode="casual-core">Bash+Grenade</Requirement>
+          <Requirement mode="casual-core">ChargeJump</Requirement>
+          <Requirement mode="standard-core">Bash</Requirement>
+          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
+        </Requirements>
+      </Connection>
+      <Connection>
+        <Home name="HoruFieldsPushBlock"/>
+        <Target name="HoruFieldsAbilityCell"/>
+        <Requirements>
+          <Requirement mode="casual-core">WallJump+DoubleJump+Glide</Requirement>
+          <Requirement mode="casual-core">WallJump+DoubleJump+Bash</Requirement>
+          <Requirement mode="casual-core">Climb+ChargeJump</Requirement>
+          <Requirement mode="expert-dboost">WallJump+Bash+HC+HC+HC+HC+HC</Requirement>
+          <Requirement mode="master-core">Bash</Requirement>
+          <Requirement mode="master-abilities">Glide+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
+          <Requirement mode="master-abilities">WallJump+DoubleJump+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
@@ -6894,27 +6947,6 @@
         <Target name="HoruBasement"/>
         <Requirements>
           <Requirement mode="expert-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-    </Connections>
-  </Area>
-  <Area name="HoruFieldsEnergy">
-    <Locations/>
-    <Connections>
-      <Connection>
-        <Home name="HoruFieldsEnergy"/>
-        <Target name="HoruFieldsEnergyCell"/>
-        <Requirements>
-          <Requirement mode="casual-core">Free</Requirement>
-        </Requirements>
-      </Connection>
-      <Connection>
-        <Home name="HoruFieldsEnergy"/>
-        <Target name="HoruFieldsPlant"/>
-        <Requirements>
-          <Requirement mode="casual-core">ChargeFlame</Requirement>
-          <Requirement mode="casual-core">Grenade</Requirement>
-          <Requirement mode="expert-abilities">Dash+AC+AC+AC+AC+AC+AC</Requirement>
         </Requirements>
       </Connection>
     </Connections>
