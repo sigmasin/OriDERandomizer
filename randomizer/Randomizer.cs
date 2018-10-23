@@ -414,6 +414,8 @@ public static class Randomizer
 		if (Characters.Sein && !Characters.Sein.IsSuspended)
 		{
 			RandomizerBonus.Update();
+			if(RandomizerTrackedDataManager.TreeBitfield < 0)
+					RandomizerTrackedDataManager.UpdateBitfields();
 			if (!Randomizer.ColorShift)
 			{
 				RandomizerColorManager.UpdateColors();
