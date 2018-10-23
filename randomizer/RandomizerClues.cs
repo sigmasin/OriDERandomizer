@@ -56,17 +56,17 @@ public static class RandomizerClues
 		return string.Concat(new string[]
 		{
 			text,
-			"Water Vein: ",
+			"WV: ",
 			array[0],
 			text,
-			"\n",
+			" ",
 			text2,
-			"Gumon Seal: ",
+			"GS: ",
 			array[1],
 			text2,
 			"  ",
 			text3,
-			"Sunstone: ",
+			"SS: ",
 			array[2],
 			text3
 		});
