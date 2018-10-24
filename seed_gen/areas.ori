@@ -2611,6 +2611,8 @@ home: L4Below
 	pickup: HoruLavaDrainedLeftExp
 home: R1OuterDoor
 	conn: R1InnerDoor
+	conn: L1OuterDoor
+	    expert-core Free -- Doing a door warp on the R1 door puts you in front of L1
 home: R1InnerDoor
 	conn: R1
 		casual-core Bash DoubleJump Glide WallJump
