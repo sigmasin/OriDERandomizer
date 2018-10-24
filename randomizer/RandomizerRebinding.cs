@@ -56,9 +56,9 @@ public static class RandomizerRebinding {
 				{"Bonus Toggle", "LeftAlt+Mouse1, RightAlt+Mouse1"},
 				{"Reset Grenade Aim",""},
 				{"List Trees", "LeftAlt+Alpha1, RightAlt+Alpha1"},
-				{"List Relics", "LeftAlt+Alpha2, RightAlt+Alpha2"},
-				{"List Map Altars", "LeftAlt+Alpha3, RightAlt+Alpha3"},
-				{"List Teleporters", "LeftAlt+Alpha4, RightAlt+Alpha4"}
+				{"List Map Altars", "LeftAlt+Alpha2, RightAlt+Alpha2"},
+				{"List Teleporters", "LeftAlt+Alpha3, RightAlt+Alpha3"},
+				{"List Relics", "LeftAlt+Alpha4, RightAlt+Alpha4"}
 			};
 			if (!File.Exists("RandomizerRebinding.txt"))
 			{

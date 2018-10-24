@@ -141,8 +141,8 @@ public static class RandomizerTrackedDataManager
 				unowned.Add(tp.Key);
 			}
 		}
-		string ownedLine   = "TPs active: " + string.Join(",", owned.ToArray());
-		string unownedLine = "remaining: " + string.Join(",", unowned.ToArray());
+		string ownedLine   = "TPs active: " + string.Join(", ", owned.ToArray());
+		string unownedLine = "remaining: " + string.Join(", ", unowned.ToArray());
 		Randomizer.showHint(ownedLine + "\n" + unownedLine);
 	}
 
@@ -160,8 +160,8 @@ public static class RandomizerTrackedDataManager
 				unowned.Add(tree.Value);
 			}
 		}
-		string ownedLine = "Trees active: " + string.Join(",", owned.ToArray());
-		string unownedLine = "remaining: " + string.Join(",", unowned.ToArray());
+		string ownedLine = "Trees active: " + string.Join(", ", owned.ToArray());
+		string unownedLine = "remaining: " + string.Join(", ", unowned.ToArray());
 		Randomizer.showHint(ownedLine + "\n" + unownedLine);
 	}
 
@@ -176,8 +176,8 @@ public static class RandomizerTrackedDataManager
 				unowned.Add(relic.Key);
 			}
 		}
-		string ownedLine = "Relics collected: " + string.Join(",", owned.ToArray());
-		string unownedLine = "remaining: " + string.Join(",", unowned.ToArray());
+		string ownedLine = "Relics collected: " + string.Join(", ", owned.ToArray());
+		string unownedLine = "remaining: " + string.Join(", ", unowned.ToArray());
 		Randomizer.showHint(ownedLine + "\n" + unownedLine);
 	}
 
@@ -192,8 +192,8 @@ public static class RandomizerTrackedDataManager
 				unowned.Add(data.Zone);
 			}
 		}
-		string ownedLine = "Altars active: " + string.Join(",", owned.ToArray());
-		string unownedLine = "remaining: " + string.Join(",", unowned.ToArray());
+		string ownedLine = "Altars active: " + string.Join(", ", owned.ToArray());
+		string unownedLine = "remaining: " + string.Join(", ", unowned.ToArray());
 		Randomizer.showHint(ownedLine + "\n" + unownedLine);
 	}
 
