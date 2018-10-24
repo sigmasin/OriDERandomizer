@@ -3855,7 +3855,6 @@ home: MistyPostFeatherTutorial
         master-dboost DoubleJump Health=4
         master-abilities DoubleJump Ability=12
     pickup: MistyKeystone1
-        casual-core Free
     conn: MistyPostKeystone1
         casual-core Free
 home: MistyPostKeystone1
@@ -3938,7 +3937,6 @@ home: MistyPrePlantLedge
 home: MistyPreClimb
 	--anchor point: before the climb tree
 	pickup: ClimbSkillTree
-		casual-core Free
 	conn: MistyPostClimb
 		casual-core Climb DoubleJump Stomp
 		casual-core Climb ChargeJump
@@ -3974,7 +3972,6 @@ home: MistySpikeCave
 home: MistyKeystone3Ledge
 	--anchor point: on the keystone ledge
 	pickup: MistyKeystone3
-		casual-core Free
 	conn: MistyPreLasers
 		casual-core Glide
 		standard-abilities Dash Ability=6
@@ -4019,6 +4016,11 @@ home: MistyPostLasers
 		master-core Bash
 home: MistySpikeCave
 	--anchor point: on the left, after the spike tunnel fall
+	pickup: MistyPostClimbAboveSpikePit
+		casual-core WallJump Bash Glide
+		casual-core Climb Bash Glide
+		expert-core Bash DoubleJump
+		master-core Bash
 	conn: MistyKeystone4Ledge
 		casual-core WallJump Bash Glide
 		casual-core Climb Bash Glide
@@ -4028,15 +4030,9 @@ home: MistySpikeCave
 		master-core Bash
 		master-core ChargeJump DoubleJump Ability=12
 		master-abilities Dash Ability=6
-	pickup: MistyPostClimbAboveSpikePit
-		casual-core WallJump Bash Glide
-		casual-core Climb Bash Glide
-		expert-core Bash DoubleJump
-		master-core Bash
 home: MistyKeystone4Ledge
 	--anchor point: on the ledge with the 4th keystone
 	pickup: MistyKeystone4
-		casual-core Free
 	conn: MistyBeforeDocks
 		casual-core WallJump DoubleJump Bash Glide
 		casual-core Climb DoubleJump Bash Glide
@@ -4090,7 +4086,6 @@ home: MistyOrbRoom
 		master-core DoubleJump
 home: MistyPreKeystone2
 	pickup: MistyKeystone2
-		casual-core Free
 	pickup: MistyAbilityCell
 		casual-core ChargeJump
 		casual-core Bash Grenade
