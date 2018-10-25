@@ -194,7 +194,7 @@ public static class RandomizerTrackedDataManager
 				unowned.Add(data.Zone);
 			}
 		}
-		string ownedLine = "Altars active: " + string.Join(", ", owned.ToArray());
+		string ownedLine = "Maps active: " + string.Join(", ", owned.ToArray());
 		string unownedLine = "remaining: " + string.Join(", ", unowned.ToArray());
 		Randomizer.showHint(ownedLine + "\n" + unownedLine);
 	}

@@ -459,7 +459,7 @@ public static class RandomizerSyncManager
 				"/",
 				this.type,
 				"/",
-				this.id
+				this.id.Replace("#","")
 			}));
 		}
 
