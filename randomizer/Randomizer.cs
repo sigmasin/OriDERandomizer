@@ -93,6 +93,8 @@ public static class Randomizer
 		Randomizer.Warping = 0;
 		Randomizer.RelicZoneLookup = new Dictionary<string, string>();
 		RandomizerTrackedDataManager.Initialize();
+		Randomizer.RelicCount = 0;
+		bool relicCountOverride = false;
 		try {
 			if(File.Exists("randomizer.dat")) {
 				string[] allLines = File.ReadAllLines("randomizer.dat");
@@ -112,9 +114,13 @@ public static class Randomizer
 					{
 						Randomizer.OHKO = true;
 					}
-					if (flag.ToLower() == "worldtour")
+					if (flag.ToLower().StartsWith("worldtour"))
 					{
 						Randomizer.WorldTour = true;
+						if(flag.Contains("=")) {
+							relicCountOverride = true;
+							Randomizer.RelicCount = int.Parse(flag.Substring(10));
+						}
 					}
 					if (flag.ToLower().StartsWith("sync"))
 					{
@@ -231,6 +237,9 @@ public static class Randomizer
 						Randomizer.Table[coords] = new RandomizerAction(lineParts[1], lineParts[2]);
 						if(lineParts[1] == "WT") {
 							Randomizer.RelicZoneLookup[lineParts[2]] = lineParts[3];
+							if(!relicCountOverride) {
+								Randomizer.RelicCount++;
+							}
 						}
 					}
 					else
@@ -605,10 +614,10 @@ public static class Randomizer
 		}
 		if (Randomizer.WorldTour && Characters.Sein) {
 			int relics = Characters.Sein.Inventory.GetRandomizerItem(302);
-			if(relics < 11) {
-				text += "Relics (" + relics.ToString() + "/11) ";
+			if(relics < Randomizer.RelicCount) {
+				text += "Relics (" + relics.ToString() + "/"+Randomizer.RelicCount.ToString() + ") ";
 			} else {
-				text += "$Relics (" + relics.ToString() + "/11)$ ";
+				text += "$Relics (" + relics.ToString() + "/"+Randomizer.RelicCount.ToString() + ")$ ";
 			}
 		}
 		text = text + "Total (" + RandomizerBonus.GetPickupCount().ToString() + "/256)\n";
@@ -724,8 +733,8 @@ public static class Randomizer
 		}
 		if (Randomizer.WorldTour) {
 			int relics = Characters.Sein.Inventory.GetRandomizerItem(302);
-			if(relics < 11) {
-				Randomizer.MessageQueue.Enqueue("Relics (" + relics.ToString() + "/11) ");
+			if(relics < Randomizer.RelicCount) {
+				Randomizer.MessageQueue.Enqueue("Relics (" + relics.ToString() + "/" + Randomizer.RelicCount.ToString() + ")");
 				return false;
 			}
 		}
@@ -1037,4 +1046,6 @@ public static class Randomizer
 	public static List<int> HotColdMaps;
 
 	public static Dictionary<string, string> RelicZoneLookup;
+
+	public static int RelicCount;
 }

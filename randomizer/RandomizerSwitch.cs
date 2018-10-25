@@ -206,8 +206,8 @@ public static class RandomizerSwitch
                 Characters.Sein.Inventory.IncRandomizerItem(302, 1);
                 int relics = Characters.Sein.Inventory.GetRandomizerItem(302);
                 RandomizerTrackedDataManager.SetRelic(Randomizer.RelicZoneLookup[(string)Action.Value]);
-                string relicStr = "\n("+relics.ToString() + "/11)";
-                if(relics > 10) {
+                string relicStr = "\n("+relics.ToString() + "/" + Randomizer.RelicCount.ToString() + ")";
+                if(relics >= Randomizer.RelicCount) {
                     relicStr = "$" + relicStr + "$";
                 }
                 Randomizer.showHint((string)Action.Value + relicStr);

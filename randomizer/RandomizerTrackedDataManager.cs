@@ -169,12 +169,14 @@ public static class RandomizerTrackedDataManager
 		UpdateBitfields();
 		List<string> owned = new List<string>();
 		List<string> unowned = new List<string>();
+
 		foreach(KeyValuePair<string, int> relic in Relics) {
-			if((RelicBitfield >> relic.Value) % 2 == 1) {
-				owned.Add(relic.Key);
-			} else {
-				unowned.Add(relic.Key);
-			}
+			if(!Randomizer.RelicZoneLookup.ContainsValue(relic.Key))
+				if((RelicBitfield >> relic.Value) % 2 == 1) {
+					owned.Add(relic.Key);
+				} else {
+					unowned.Add(relic.Key);
+				}
 		}
 		string ownedLine = "Relics collected: " + string.Join(", ", owned.ToArray());
 		string unownedLine = "remaining: " + string.Join(", ", unowned.ToArray());
