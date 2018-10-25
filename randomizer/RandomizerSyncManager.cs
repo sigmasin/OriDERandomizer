@@ -451,6 +451,10 @@ public static class RandomizerSyncManager
 		// Token: 0x060037A2 RID: 14242
 		public Uri GetURL()
 		{
+			string cleaned_id = this.id.Replace("#","");
+			if(cleaned_id.Contains("\\"))
+				cleaned_id = cleaned_id.Split('\\')[0];
+			Randomizer.showHint(cleaned_id);
 			return new Uri(string.Concat(new object[]
 			{
 				RandomizerSyncManager.RootUrl,
@@ -459,7 +463,7 @@ public static class RandomizerSyncManager
 				"/",
 				this.type,
 				"/",
-				this.id.Replace("#","")
+				cleaned_id
 			}));
 		}
 
