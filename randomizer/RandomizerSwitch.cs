@@ -149,6 +149,7 @@ public static class RandomizerSwitch
     
     public static void GivePickup(RandomizerAction Action, int coords, bool found_locally=true)
     {
+        try {
         if (found_locally && Randomizer.Sync)
         {
             RandomizerSyncManager.FoundPickup(Action, coords);
@@ -194,7 +195,7 @@ public static class RandomizerSwitch
                 EventPickup((int)Action.Value);
                 break;
             case "RB":
-                RandomizerBonus.UpgradeID((int)Action.Value);
+                RandomizerBonus.UpgradeID((int)Action.Value);                    
                 break;
             case "TP":
                 TeleportPickup((string)Action.Value);
@@ -217,5 +218,9 @@ public static class RandomizerSwitch
                 break;
         }
         RandomizerTrackedDataManager.UpdateBitfields();
+        }
+        catch(Exception e) {
+            Randomizer.showHint(e.Message);
+        }
     }
 }   
