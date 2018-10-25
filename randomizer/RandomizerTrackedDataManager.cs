@@ -171,7 +171,7 @@ public static class RandomizerTrackedDataManager
 		List<string> unowned = new List<string>();
 
 		foreach(KeyValuePair<string, int> relic in Relics) {
-			if(!Randomizer.RelicZoneLookup.ContainsValue(relic.Key))
+			if(Randomizer.RelicZoneLookup.ContainsValue(relic.Key))
 				if((RelicBitfield >> relic.Value) % 2 == 1) {
 					owned.Add(relic.Key);
 				} else {
