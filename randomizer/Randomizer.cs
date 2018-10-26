@@ -708,7 +708,7 @@ public static class Randomizer
 				Randomizer.MessageQueueTime = 60;
 			}
 			Randomizer.MessageProvider.SetMessage(message);
-			UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, (float)Randomizer.MessageQueueTime / 60f);
+			UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, (float)Randomizer.MessageQueueTime / 30f + 1f);
 		}
 		Randomizer.MessageQueueTime--;
 	}
