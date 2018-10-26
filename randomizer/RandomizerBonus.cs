@@ -54,13 +54,13 @@ public static class RandomizerBonus
             if (!flag)
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
-                Randomizer.showHint("Damage Upgrade (" + RandomizerBonus.SpiritFlameLevel().ToString() + ")");
+                Randomizer.showHint("Attack Upgrade (" + RandomizerBonus.SpiritFlameLevel().ToString() + ")");
                 return;
             }
             if (RandomizerBonus.SpiritFlameLevel() > 0)
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, -1);
-                Randomizer.showHint("Damage Upgrade (" + RandomizerBonus.SpiritFlameLevel().ToString() + ")");
+                Randomizer.showHint("Attack Upgrade (" + RandomizerBonus.SpiritFlameLevel().ToString() + ")");
                 return;
             }
             break;
@@ -166,7 +166,7 @@ public static class RandomizerBonus
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
                 Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
-                Randomizer.showHint("*Water Vein Shard (" + RandomizerBonus.WaterVeinShards().ToString() + "/3)*");
+                Randomizer.showHint("*Water Vein Shard (" + RandomizerBonus.WaterVeinShards().ToString() + "/3)*", 300);
             }
             Keys.GinsoTree = (RandomizerBonus.WaterVeinShards() >= 3);
             return;
@@ -188,7 +188,7 @@ public static class RandomizerBonus
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
                 Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
-                Randomizer.showHint("#Gumon Seal Shard (" + RandomizerBonus.GumonSealShards().ToString() + "/3)#");
+                Randomizer.showHint("#Gumon Seal Shard (" + RandomizerBonus.GumonSealShards().ToString() + "/3)#", 300);
             }
             Keys.ForlornRuins = (RandomizerBonus.GumonSealShards() >= 3);
             return;
@@ -210,7 +210,7 @@ public static class RandomizerBonus
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
                 Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
-                Randomizer.showHint("@Sunstone Shard (" + RandomizerBonus.SunstoneShards().ToString() + "/3)@");
+                Randomizer.showHint("@Sunstone Shard (" + RandomizerBonus.SunstoneShards().ToString() + "/3)@", 300);
             }
             Keys.MountHoru = (RandomizerBonus.SunstoneShards() >= 3);
             return;
@@ -235,7 +235,7 @@ public static class RandomizerBonus
                 "/",
                 Randomizer.fragKeyFinish,
                 ")@"
-            }));
+            }), 300);
             return;
             break;
         case 29:

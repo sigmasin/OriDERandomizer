@@ -67,7 +67,7 @@ public static class Randomizer
 		Randomizer.WarpCheckCounter = 60;
 		Randomizer.LockedCount = 0;
 		Randomizer.HotCold = false;
-		Randomizer.HotColdTypes = new string[] {"EV", "RB17", "RB19", "RB21", "SK", "WT"};
+		Randomizer.HotColdTypes = new string[] {"EV", "RB17", "RB19", "RB21", "RB28", "SK", "WT"};
 		Randomizer.HotColdItems = new Dictionary<int, RandomizerHotColdItem>();
 		Randomizer.HotColdMaps = new List<int>();
 		int HotColdSaveId = 2000;
@@ -319,6 +319,12 @@ public static class Randomizer
 	{
 		Randomizer.Message = message;
 		Randomizer.MessageQueue.Enqueue(message);
+	}
+
+	public static void showHint(string message, int frames)
+	{
+		Randomizer.Message = message;
+		Randomizer.MessageQueue.Enqueue(new object[] {message, frames});
 	}
 
 	public static void playLastMessage()
@@ -689,9 +695,20 @@ public static class Randomizer
 			{
 				return;
 			}
-			Randomizer.MessageProvider.SetMessage((string)Randomizer.MessageQueue.Dequeue());
-			UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, 3f);
-			Randomizer.MessageQueueTime = 60;
+			object queueItem = Randomizer.MessageQueue.Dequeue();
+			string message;
+			if (queueItem is object[])
+			{
+				message = (string)((object[])queueItem)[0];
+				Randomizer.MessageQueueTime = (int)((object[])queueItem)[1] / 2;
+			}
+			else
+			{
+				message = (string)queueItem;
+				Randomizer.MessageQueueTime = 60;
+			}
+			Randomizer.MessageProvider.SetMessage(message);
+			UI.Hints.Show(Randomizer.MessageProvider, HintLayer.GameSaved, (float)Randomizer.MessageQueueTime / 60f);
 		}
 		Randomizer.MessageQueueTime--;
 	}
