@@ -4009,12 +4009,12 @@ home: MistyPostLasers
 		master-core Bash Health=4
 		master-dboost Bash Health=7
 		master-dboost DoubleJump Health=11
-	conn: MistySpikeCave
+	conn: MistyMortarSpikeCave
 		casual-core Bash Glide DoubleJump
 		standard-core Bash Glide
 		expert-core Glide
 		master-core Bash
-home: MistySpikeCave
+home: MistyMortarSpikeCave
 	--anchor point: on the left, after the spike tunnel fall
 	pickup: MistyPostClimbAboveSpikePit
 		casual-core WallJump Bash Glide
