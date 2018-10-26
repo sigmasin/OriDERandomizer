@@ -256,7 +256,7 @@ class SeedGenerator:
             self.itemPool["EX*"] -= 11
             self.itemPool["Relic"] += 11
 
-        if self.var(Variation.FREE_MAPSTONES):
+        if not self.var(Variation.STRICT_MAPSTONES):
             self.costs["MS"] = 11
 
         if self.var(Variation.HARDMODE):
@@ -375,7 +375,7 @@ class SeedGenerator:
                         if area not in self.doorQueue.keys():
                             self.doorQueue[area] = connection
                             keystoneCount += connection.keys
-                    elif connection.mapstone and not self.var(Variation.FREE_MAPSTONES):
+                    elif connection.mapstone and self.var(Variation.STRICT_MAPSTONES):
                         if not reached:
                             visitMap = True
                             for mp in self.mapQueue.keys():
@@ -388,7 +388,7 @@ class SeedGenerator:
                         if not reached:
                             self.seedDifficulty += cost[2] * cost[2]
                             self.reach_area(connection.target)
-                            if connection.mapstone and self.var(Variation.FREE_MAPSTONES):
+                            if connection.mapstone and not self.var(Variation.STRICT_MAPSTONES):
                                 self.mapstonesSeen += 1
                                 if self.mapstonesSeen >= 9:
                                     self.mapstonesSeen = 11

@@ -141,8 +141,8 @@ public static class RandomizerTrackedDataManager
 				unowned.Add(tp.Key);
 			}
 		}
-		string ownedLine   = "TPs active: " + string.Join(",", owned.ToArray());
-		string unownedLine = "remaining: " + string.Join(",", unowned.ToArray());
+		string ownedLine   = "TPs active: " + string.Join(", ", owned.ToArray());
+		string unownedLine = "remaining: " + string.Join(", ", unowned.ToArray());
 		Randomizer.showHint(ownedLine + "\n" + unownedLine);
 	}
 
@@ -160,8 +160,8 @@ public static class RandomizerTrackedDataManager
 				unowned.Add(tree.Value);
 			}
 		}
-		string ownedLine = "Trees active: " + string.Join(",", owned.ToArray());
-		string unownedLine = "remaining: " + string.Join(",", unowned.ToArray());
+		string ownedLine = "Trees active: " + string.Join(", ", owned.ToArray());
+		string unownedLine = "remaining: " + string.Join(", ", unowned.ToArray());
 		Randomizer.showHint(ownedLine + "\n" + unownedLine);
 	}
 
@@ -169,15 +169,17 @@ public static class RandomizerTrackedDataManager
 		UpdateBitfields();
 		List<string> owned = new List<string>();
 		List<string> unowned = new List<string>();
+
 		foreach(KeyValuePair<string, int> relic in Relics) {
-			if((RelicBitfield >> relic.Value) % 2 == 1) {
-				owned.Add(relic.Key);
-			} else {
-				unowned.Add(relic.Key);
-			}
+			if(Randomizer.RelicZoneLookup.ContainsValue(relic.Key))
+				if((RelicBitfield >> relic.Value) % 2 == 1) {
+					owned.Add(relic.Key);
+				} else {
+					unowned.Add(relic.Key);
+				}
 		}
-		string ownedLine = "Relics collected: " + string.Join(",", owned.ToArray());
-		string unownedLine = "remaining: " + string.Join(",", unowned.ToArray());
+		string ownedLine = "Relics collected: " + string.Join(", ", owned.ToArray());
+		string unownedLine = "remaining: " + string.Join(", ", unowned.ToArray());
 		Randomizer.showHint(ownedLine + "\n" + unownedLine);
 	}
 
@@ -192,8 +194,8 @@ public static class RandomizerTrackedDataManager
 				unowned.Add(data.Zone);
 			}
 		}
-		string ownedLine = "Altars active: " + string.Join(",", owned.ToArray());
-		string unownedLine = "remaining: " + string.Join(",", unowned.ToArray());
+		string ownedLine = "Maps active: " + string.Join(", ", owned.ToArray());
+		string unownedLine = "remaining: " + string.Join(", ", unowned.ToArray());
 		Randomizer.showHint(ownedLine + "\n" + unownedLine);
 	}
 
