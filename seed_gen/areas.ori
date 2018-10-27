@@ -2623,6 +2623,38 @@ home: L3InnerDoor
 		expert-core Grenade Climb
 home: L3
 	pickup: HoruL3
+		casual-core Stomp DoubleJump Glide Bash ChargeJump
+		standard-core Bash DoubleJump ChargeFlame Energy=1
+		standard-core Bash DoubleJump Stomp
+		standard-core Bash Glide WallJump ChargeFlame Energy=1
+		standard-core Bash Glide WallJump Stomp
+		standard-core Bash Glide Climb ChargeFlame Energy=1
+		standard-core Bash Glide Climb Stomp
+		standard-core Bash Climb ChargeJump 
+		standard-core Bash Grenade Stomp
+		standard-core Bash Grenade ChargeFlame Energy=1
+		standard-abilities Bash Dash Stomp Ability=3
+		standard-abilities Bash Dash ChargeFlame Ability=3 Energy=1
+		expert-core Bash Grenade ChargeJump
+		expert-abilities ChargeJump Dash Climb Ability=6 Energy=2
+		master-core Bash Stomp
+		master-core Bash ChargeFlame Energy=1
+		master-abilities ChargeJump Dash Climb DoubleJump Glide Ability=12
+		master-abilities Dash DoubleJump Stomp Ability=6 Energy=2
+		master-abilities Dash Ability=6 Energy=7
+		master-abilities Dash DoubleJump Glide Ability=6 Energy=4
+		master-abilities Dash Glide Ability=6 Energy=6
+		master-abilities Dash DoubleJump WallJump Ability=6 Energy=6
+		master-abilities Dash DoubleJump Climb Ability=6 Energy=6
+		master-abilities Dash Stomp Ability=6 Energy=3
+		master-abilities Bash Dash Ability=6 Energy=1
+		master-dboost ChargeJump Climb DoubleJump Glide Health=4
+		master-dboost Dash Climb DoubleJump Glide Ability=12 Energy=2 Health=6
+		master-dboost Dash Climb DoubleJump Glide Stomp Ability=12 Energy=1 Health=4
+		master-dboost ChargeJump Climb DoubleJump Ability=12 Health=3
+		master-dboost ChargeJump DoubleJump Stomp Ability=12 Health=3
+		master-dboost ChargeJump DoubleJump ChargeFlame Ability=12 Health=3 Energy=1
+		gjump ChargeJump Climb Grenade
 -- TODO
 home: L4OuterDoor
 	conn: L4InnerDoor
