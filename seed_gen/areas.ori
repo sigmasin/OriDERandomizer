@@ -2591,6 +2591,20 @@ home: L2InnerDoor
 		expert-core Grenade Climb
 home: L2
 	pickup: HoruL2
+		ALL Stomp
+		casual-core ChargeJump
+		casual-core WallJump DoubleJump Glide
+		standard-core Bash Grenade
+		standard-core DoubleJump WallJump
+		standard-lure Bash DoubleJump
+		standard-abilities WallJump Dash Ability=3
+		standard-abilities Climb Dash DoubleJump Ability=3
+		expert-core Climb DoubleJump Glide
+		expert-abilities Dash Ability=6 Energy=1
+		expert-abilities Climb Dash Ability=3
+		master-core DoubleJump Glide
+		master-abilities DoubleJump Dash Ability=3
+		master-abilities DoubleJump Ability=12
 -- TODO
 home: L3OuterDoor
 	conn: L3InnerDoor
