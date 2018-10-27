@@ -2672,9 +2672,41 @@ home: L4InnerDoor
 		expert-core Grenade WallJump
 		expert-core Grenade Climb
 home: L4
-	pickup: HoruL4LowerExp
-	pickup: HoruL4ChaseExp
-	pickup: HoruL4
+    conn: HoruL4LavaChasePeg
+		ALL Bash
+        casual-core DoubleJump
+		casual-core Glide
+		standard-core Free
+    conn: HoruL4CutscenePeg
+        expert-core Free
+home: HoruL4LavaChasePeg
+    pickup: HoruL4ChaseExp
+		casual-core Free
+    conn: HoruL4CutscenePeg
+		ALL Stomp Bash
+		casual-core DoubleJump ChargeJump 
+		casual-core Glide ChargeJump 
+		standard-core ChargeJump
+		standard-core Grenade
+		standard-core WallJump DoubleJump
+		standard-core Climb DoubleJump
+		expert-abilities Dash Ability=6 Energy=2
+		master-core DoubleJump
+home: HoruL4CutscenePeg
+    pickup: HoruL4
+        casual-core Stomp
+    pickup: HoruL4LowerExp
+    	casual-core WallJump Stomp
+		casual-core Bash Grenade Stomp
+		casual-core ChargeJump Stomp
+		standard-core Climb Stomp	
+		expert-core DoubleJump
+		expert-core Bash Grenade
+		expert-core ChargeJump Climb
+		expert-core Glide
+		expert-abilities Dash Stomp Ability=3
+		expert-abilities Dash Ability=6 Energy=2
+		master-core Dash Stomp
 home: L4Below
 	pickup: HoruLavaDrainedLeftExp
 home: R1OuterDoor
