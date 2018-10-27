@@ -401,7 +401,7 @@ class SeedGenerator:
         return (found, keystoneCount, mapstoneCount)
 
     def choose_relic_for_zone(self, zone):
-        random.shuffle(relics[zone])
+        self.random.shuffle(relics[zone])
         return relics[zone][0]
 
     def get_all_accessible_locations(self):
@@ -986,7 +986,7 @@ class SeedGenerator:
                     locations_by_zone[location.zone].append(location)
 
             for locations in locations_by_zone.values():
-                random.shuffle(locations)
+                self.random.shuffle(locations)
 
                 relic_loc = None
 
