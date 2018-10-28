@@ -1,3 +1,39 @@
+0 - Mega Health*
+1 - Mega Energy*
+2 - Forceably Alt+R*
+
+0 - Pickup Count
+
+6 - Attack Upgrade
+8 - Explosion Power Upgrade (deprecated)
+9 - Spirit Light Efficiency
+10 - Extra Air Dash
+11 - Charge Dash Efficiency
+12 - Extra Double Jump
+13 - Health Regeneration
+15 - Energy Regeneration
+17 - Water Vein Shard
+19 - Gumon Seal Shard
+21 - Sunstone Shard
+
+23 - Progressive Mapstone Count
+28 - Warmth Fragment
+
+30 - Bleeding
+31 - Lifesteal
+32 - Manavamp
+33 - Skill Velocity Upgrade
+
+80 - Spent AP Counter
+
+101 - Polarity Shift
+102 - Gravity Swap
+103 - Extreme Speed
+104 - Roose's Wind
+105 - Respawn Without Dying
+106 - Respec
+
+
 1000 - plant tracking for map markers
 1001 - tree field for tracker
 1002 - relic field for tracker
