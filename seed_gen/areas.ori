@@ -621,8 +621,8 @@ home: GladesLaserArea
 		casual-core DoubleJump
 		casual-core ChargeJump
 		casual-core Bash Grenade
-		expert-dboost WallJump Glide
 		standard-lure Bash
+		expert-dboost WallJump Glide
 		expert-abilities Dash Ability=6
 	pickup: GladesLaserGrenade
 		ALL Grenade
