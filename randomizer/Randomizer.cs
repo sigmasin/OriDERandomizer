@@ -41,6 +41,7 @@ public static class Randomizer
 		Randomizer.ProgressiveMapStones = true;
 		Randomizer.ForceTrees = false;
 		Randomizer.CluesMode = false;
+		Randomizer.Shards = false;
 		Randomizer.WorldTour = false;
 		Randomizer.SeedMeta = "";
 		Randomizer.MistySim = new WorldEvents();
@@ -184,6 +185,10 @@ public static class Randomizer
 					{
 						Randomizer.CluesMode = true;
 						RandomizerClues.initialize();
+					}
+					if (flag.ToLower() == "shards")
+					{
+						Randomizer.Shards = true;
 					}
 					if (flag.ToLower() == "entrance")
 					{
@@ -963,6 +968,8 @@ public static class Randomizer
 
 	// Token: 0x0400323F RID: 12863
 	public static bool CluesMode;
+
+	public static bool Shards;
 
 	// Token: 0x04003240 RID: 12864
 	public static bool ColorShift;
