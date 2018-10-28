@@ -223,7 +223,7 @@ class SeedGenerator:
         self.connectionQueue = []
         self.assignQueue = []
 
-        self.itemCount = 253.0
+        self.itemCount = 252.0
 
     def reset(self):
         """A full reset. Resets internal state completely (besides pRNG
@@ -401,7 +401,7 @@ class SeedGenerator:
         return (found, keystoneCount, mapstoneCount)
 
     def choose_relic_for_zone(self, zone):
-        random.shuffle(relics[zone])
+        self.random.shuffle(relics[zone])
         return relics[zone][0]
 
     def get_all_accessible_locations(self):
@@ -986,7 +986,7 @@ class SeedGenerator:
                     locations_by_zone[location.zone].append(location)
 
             for locations in locations_by_zone.values():
-                random.shuffle(locations)
+                self.random.shuffle(locations)
 
                 relic_loc = None
 
@@ -1222,6 +1222,15 @@ class SeedGenerator:
         self.random.shuffle(self.eventList)
         for event in self.eventList:
             self.outputStr += event
+
+        # place the last item on the final escape
+        balanced = self.params.balanced
+        self.params.balanced = False
+        for item in self.itemPool:
+            if self.itemPool[item] > 0:
+                self.assign_to_location(item, Location(-240, 512, 'FinalEscape', 'EVWarmth', 0, 'Horu'))
+                break
+        self.params.balanced = balanced
 
         return (self.outputStr, spoilerStr)
 

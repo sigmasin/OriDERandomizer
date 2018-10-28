@@ -229,7 +229,6 @@ loc: HoruR4DrainedExp 163 136 EX200 7 Horu
 loc: HoruLavaDrainedRightExp 129 165 EX200 7 Horu
 loc: DoorWarpExp 106 112 EX200 5 Horu
 loc: HoruTeleporterExp 98 130 EX200 7 Horu
-loc: FinalEscape -240 512 EVWarmth 0 Horu
 loc: HoruR1 264 380 CS 6 Horu
 loc: HoruR2 172 288 CS 6 Horu
 loc: HoruR3 304 304 CS 7 Horu
@@ -2754,9 +2753,6 @@ home: R4Below
 home: HoruEscapeOuterDoor
 	conn: HoruEscapeInnerDoor
 home: HoruEscapeInnerDoor
-	pickup: FinalEscape
-		casual-core Climb Dash Stomp Glide Bash ChargeJump Grenade Water GinsoKey ForlornKey HoruKey
-		expert-core Dash Stomp Glide Bash ChargeJump Grenade GinsoKey ForlornKey HoruKey
 home: ValleyEntry
 -- anchored just left of the charge flame wall to valley
 	pickup: ValleyEntryAbilityCell
