@@ -1,0 +1,10 @@
+1000 - plant tracking for map markers
+1001 - tree field for tracker
+1002 - relic field for tracker
+1003 - mapstone field for tracker
+
+1024 - shard ginso TP
+1025 - shard forlorn TP
+1026 - shard horu TP
+
+2000-2256 - reserved IDs for Sense pickups
