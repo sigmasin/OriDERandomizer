@@ -1,5 +1,4 @@
 import math
-from relics import relics
 import random
 import logging as log
 import xml.etree.ElementTree as XML
@@ -7,6 +6,7 @@ from collections import OrderedDict, defaultdict, Counter
 from operator import mul
 from enums import KeyMode, PathDifficulty, ShareType, Variation, MultiplayerGameType
 from seedbuilder.areas import get_areas
+from seedbuilder.relics import relics
 
 
 def ordhash(s):
@@ -253,8 +253,8 @@ class SeedGenerator:
             self.itemPool["KS"] -= 2
 
         if self.var(Variation.WORLD_TOUR):
-            self.itemPool["EX*"] -= 11
-            self.itemPool["Relic"] += 11
+            self.itemPool["EX*"] -= self.params.relic_count
+            self.itemPool["Relic"] += self.params.relic_count
 
         if not self.var(Variation.STRICT_MAPSTONES):
             self.costs["MS"] = 11
@@ -966,24 +966,18 @@ class SeedGenerator:
             self.outputStr += self.randomize_entrances()
 
         # handle the fixed pickups: first energy cell, the glitchy 100 orb at spirit tree, and the forlorn escape plant
-        if self.var(Variation.WORLD_TOUR):
-            locations_by_zone = OrderedDict([
-                ("Glades", []),
-                ("Grove", []),
-                ("Grotto", []),
-                ("Blackroot", []),
-                ("Swamp", []),
-                ("Ginso", []),
-                ("Valley", []),
-                ("Misty", []),
-                ("Forlorn", []),
-                ("Sorrow", []),
-                ("Horu", [])
-            ])
+        if self.params.relic_count > 0:
+            zones = ["Glades", "Grove", "Grotto", "Blackroot", "Swamp", "Ginso", "Valley", "Misty", "Forlorn", "Sorrow", "Horu"]
+            
+            for i in range(11 - self.params.relic_count):
+                zones.pop(self.random.randint(0, len(zones)-1))
+
+            locations_by_zone = OrderedDict([(zone, []) for zone in zones])
 
             for area in self.areas.values():
                 for location in area.locations:
-                    locations_by_zone[location.zone].append(location)
+                    if location.zone in locations_by_zone:
+                        locations_by_zone[location.zone].append(location)
 
             for locations in locations_by_zone.values():
                 self.random.shuffle(locations)
@@ -1006,6 +1000,8 @@ class SeedGenerator:
 
                 self.relic_assign(relic_loc)
                 self.itemCount -= 1
+
+            self.relicSpoiler = self.spoilerGroup
 
         for loc, item, zone in [(-280256, "EC1", "Glades"), (-1680104, "EX100", "Grove"), (-12320248, "Grenade", "Forlorn")]:
             if loc in self.forcedAssignments:
@@ -1207,10 +1203,10 @@ class SeedGenerator:
             self.mapQueue = OrderedDict()
             spoilerPath = ""
 
-        if self.var(Variation.WORLD_TOUR):
+        if self.params.relic_count > 0:
             spoilerStr += "Relics: {\n"
 
-            for instance in self.spoilerGroup["Relic"]:
+            for instance in self.relicSpoiler["Relic"]:
                 spoilerStr += "    " + instance
 
             spoilerStr += "}\n"
