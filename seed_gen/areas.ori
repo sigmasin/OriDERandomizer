@@ -578,7 +578,12 @@ home: SpiritCaverns
 	conn: GladesLaserArea
 		casual-core Bash Energy=4
 	conn: SpiritTreeDoor
-		casual-core Open
+		casual-core WallJump
+		casual-core Climb
+		casual-core Bash Grenade
+		dbash Bash
+		master-core DoubleJump
+		casual-dboost ChargeJump Health=2
 home: UpperSpiritCaverns
 	-- anchor: on the ledge across from the 4-energy gladeser door
 	pickup: SpiritCavernsTopLeftKeystone
@@ -600,8 +605,6 @@ home: UpperSpiritCaverns
 	conn: GladesLaserArea
 		casual-core Energy=4
 		glitched Energy=3
-	conn: SpiritTreeDoor
-		casual-core Free
 home: SpiritTreeDoor
 	-- anchor: logically, in either adjacent area to the door
 	conn: SpiritTreeDoorOpened
