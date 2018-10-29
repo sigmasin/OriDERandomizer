@@ -1687,6 +1687,8 @@ home: MoonGrottoAboveTeleporter
 		standard-core Bash Grenade
 		expert-core Climb Glide
 		master-core DoubleJump
+	conn: MoonGrottoStompPlantAccess
+		expert-core ChargeFlame
 	conn: MoonGrottoSwampAccessArea
 		casual-core ChargeJump DoubleJump
 		casual-core Bash
@@ -1721,8 +1723,6 @@ home: MoonGrotto
 		casual-core Bash Grenade
 		casual-core ChargeJump
 		master-core DoubleJump
-	conn: MoonGrottoStompPlantAccess
-		expert-core ChargeFlame
 	conn: DeathGauntlet
 		casual-core WallJump
 		casual-core Climb
