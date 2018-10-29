@@ -2837,6 +2837,20 @@ home: HoruR4CutsceneTrigger
     -- anchor: at the end of the room, where Ori needs to stand to activate the cutscene
     pickup: HoruR4
     conn: HoruR4LavaPool
+        casual-core DoubleJump Glide
+        casual-core ChargeJump Climb Glide
+        standard-core ChargeJump Climb
+        standard-core Bash Grenade Climb
+        standard-abilities Glide Dash Ability=3
+        standard-abilities DoubleJump Dash Ability=3
+        expert-core Bash Grenade
+        expert-dboost Glide Health=6
+        expert-dboost DoubleJump Health=6
+        expert-dboost Dash Ability=3 Health=6
+        expert-abilities Dash Ability=6 Energy=1
+        master-dboost Health=11
+        master-dboost Health=9 Ability=12
+        master-abilities DoubleJump Ability=12
 home: R4Below
 	pickup: HoruLavaDrainedRightExp
 home: HoruEscapeOuterDoor
