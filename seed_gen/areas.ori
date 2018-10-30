@@ -4000,15 +4000,15 @@ home: MistyEntrance
     pickup: MistyEntranceStompExp
         casual-core Stomp
         standard-lure Bash
-        expert-abilities ChargeJump Climb Dash Ability=6
+        expert-core ChargeJump Climb Dash
     pickup: MistyEntranceTreeExp
         casual-core WallJump DoubleJump
-        casual-core DoubleJump Climb
+        casual-core Climb DoubleJump
         casual-core ChargeJump
         casual-core Bash Grenade
         expert-core Bash
-		expert-core WallJump
         expert-abilities Dash Ability=6
+		master-core WallJump
         master-core DoubleJump
     conn: MistyPostFeatherTutorial
         casual-core WallJump Bash Glide 
@@ -4016,13 +4016,14 @@ home: MistyEntrance
         casual-core DoubleJump Bash Glide
         standard-core Bash Glide
         standard-abilities DoubleJump Glide Climb ChargeJump Dash Ability=3
+		standard-abilities DoubleJump Glide WallJump ChargeJump Dash Ability=3
         expert-core DoubleJump Glide Climb ChargeJump
         expert-dboost WallJump ChargeJump Health=7
         expert-dboost DoubleJump ChargeJump Health=4
         expert-abilities DoubleJump Glide ChargeJump Dash Ability=3
         expert-abilities Dash Ability=6 Energy=4
-        dbash Bash
-        gjump Climb ChargeJump Grenade
+        master-core Bash
+        gjump Climb ChargeJump Grenade Health=4
 home: MistyPostFeatherTutorial
     -- anchor point: right of the first keystone before the scene transition
     pickup: MistyFrogNookExp
@@ -4038,29 +4039,22 @@ home: MistyPostFeatherTutorial
         master-dboost DoubleJump Health=4
         master-abilities DoubleJump Ability=12
     pickup: MistyKeystone1
-        casual-core Free
     conn: MistyPostKeystone1
         casual-core Free
 home: MistyPostKeystone1
     -- anchor point: left of the bird post keystone1 scene transition
-	-- this home has no pickups
-	-- TODO: just making a free link to compile areas, for now
 	conn: MistyPreMortarCorridor
-		casual-core Free
-home: MistyPreKeystone2
-    -- anchor point: before the slime and keystone2
-	-- this home has two pickups that come into the logic after going through all of misty
-    conn: MistyPostKeystone1
-        casual-core Bash Glide
+	    casual-core Bash Glide
         expert-core Glide
 		expert-dboost Health=9
 		expert-dboost DoubleJump Health=4
-        expert-dboost Glide Health=3
         expert-dboost Dash Ability=3 Health=4
+		master-core Bash
+		master-abilities DoubleJump Dash Ability=6
         master-abilities DoubleJump Ability=12
         master-abilities Ability=12 Health=4
-        master-dboost Health=9
-        dbash Bash
+        master-dboost Health=6
+		-- 2hp from bird, 3hp from spikes, you can get around the last bend without damage
 home: MistyPreMortarCorridor
     -- anchor point: right of the slime pre mortar corridor atop the wall
     pickup: MistyMortarCorridorUpperExp
@@ -4069,9 +4063,9 @@ home: MistyPreMortarCorridor
         expert-dboost Bash Health=4
         expert-dboost ChargeJump Health=4
         expert-abilities Dash Ability=6
+		master-core Bash
         master-abilities DoubleJump Ability=12
         gjump Climb ChargeJump Grenade
-		dbash Bash
     pickup: MistyMortarCorridorHiddenExp
         casual-core Glide
 		expert-core DoubleJump Bash
@@ -4094,28 +4088,190 @@ home: MistyPreMortarCorridor
 		master-core Dash Ability=6
 		master-abilities Health=9 Ability=12
 		master-dboost Health=10
-home: MistyPostMortarCorridor
-	--anchor point: before the green frog after the spikey mortar corridor
-  -- TODO: misty in detail from here on
-	pickup: MistyPlant
-		casual-core ChargeFlame
-		casual-core Grenade
-		expert-abilities Dash Ability=6
-	conn: MistyPostClimb
-		casual-core Climb DoubleJump
-		casual-core ChargeJump
-	conn: ForlornTeleporter
-		glitched Free
 	conn: RightForlorn
 		glitched Free
+home: MistyPostMortarCorridor
+	--anchor point: before the green frog after the spikey mortar corridor
+	conn: MistyPrePlantLedge
+		casual-core Bash
+		standard-core WallJump DoubleJump
+		standard-core Climb DoubleJump
+		standard-core WallJump ChargeJump
+		standard-core Climb ChargeJump
+		expert-abilities Bash Dash Ability=6
+		master-core DoubleJump
+		master-abilities Dash Ability=6
+home: MistyPrePlantLedge
+	--anchor point: on the ledge next to the plant
+	pickup: MistyPlant
+		casual-core Grenade
+		casual-core ChargeFlame
+		expert-abilities Dash Ability=6
+	conn: MistyPreClimb
+		casual-core ChargeJump
+		casual-core WallJump Glide DoubleJump
+		casual-core Climb Glide DoubleJump
+		standard-core WallJump DoubleJump
+		standard-core Climb DoubleJump
+		expert-core WallJump Bash
+		expert-core Climb Bash
+		expert-dboost ChargeJump Health=7
+		master-core DoubleJump
+		master-core Bash
+home: MistyPreClimb
+	--anchor point: before the climb tree
+	pickup: ClimbSkillTree
+	conn: MistyPostClimb
+		casual-core Climb DoubleJump Stomp
+		casual-core Climb ChargeJump
+		casual-core Bash Grenade Stomp
+		expert-core Bash Grenade WallJump DoubleJump
+		expert-core Bash Grenade Climb DoubleJump
+		master-core DoubleJump Stomp
+		master-core Bash Grenade DoubleJump
+		gjump Grenade Climb ChargeJump
+	conn: ForlornTeleporter
+		glitched Dash
+	conn: RightForlorn
+		glitched Dash
 home: MistyPostClimb
-  pickup: ClimbSkillTree
-	pickup: MistyPostClimbSpikeCave
-	pickup: MistyPostClimbAboveSpikePit
+	--anchor point: after leaving the climb tree, and to the left of the baneline
+	conn: MistySpikeCave
+		casual-core WallJump Climb DoubleJump
+		standard-core Climb ChargeJump
+		expert-core ChargeJump
+		expert-abilities Bash Dash Ability=6
+		master-core DoubleJump
+		dbash Bash
+home: MistySpikeCave
+	--anchor point: in the spike cave, to the left of the fronkey
+	conn: MistyKeystone3Ledge
+		casual-core WallJump Climb DoubleJump
+		standard-core Bash Glide DoubleJump
+		expert-dboost ChargeJump Glide DoubleJump Health=4
+		expert-core DoubleJump
+		expert-dboost ChargeJump DoubleJump Health=4
+		master-core Bash
+		master-dboost ChargeJump Health=4
+home: MistyKeystone3Ledge
+	--anchor point: on the keystone ledge
 	pickup: MistyKeystone3
+	conn: MistyPreLasers
+		casual-core Glide
+		standard-abilities Dash Ability=6
+		standard-abilities DoubleJump Ability=12
+		expert-core Dash DoubleJump
+		expert-core Bash Grenade
+		expert-dboost DoubleJump Health=4
+		expert-dboost ChargeJump Health=4
+		master-dboost WallJump Health=7
+		gjump Grenade Climb ChargeJump
+home: MistyPreLasers
+	--anchor point: standing to the left of the happy laser room
+	conn: MistyPostLasers
+		casual-core WallJump Climb Glide
+		standard-core WallJump DoubleJump
+		standard-core Climb DoubleJump
+		standard-core ChargeJump Glide
+		standard-core ChargeJump DoubleJump
+		expert-core Dash WallJump
+		expert-core Dash Climb
+		expert-core Dash ChargeJump
+		expert-core Bash Grenade
+		master-core DoubleJump
+		master-core Bash
+		master-abilities WallJump Dash Ability=6
+		master-abilities Climb Dash Ability=6
+		--you know what these are oriLurk
+home: MistyPostLasers
+	--anchor point: on the ledge after the climb puzzle wall
+	pickup: MistyPostClimbSpikeCave
+		casual-core Bash Glide DoubleJump
+		standard-core Bash Glide
+		standard-abilities Bash Glide Dash Ability=3
+		expert-dboost Glide Health=4
+		master-core Bash Health=4
+		master-dboost Bash Health=7
+		master-dboost DoubleJump Health=11
+	conn: MistyMortarSpikeCave
+		casual-core Bash Glide DoubleJump
+		standard-core Bash Glide
+		expert-core Glide
+		master-core Bash
+home: MistyMortarSpikeCave
+	--anchor point: on the left, after the spike tunnel fall
+	pickup: MistyPostClimbAboveSpikePit
+		casual-core WallJump Bash Glide
+		casual-core Climb Bash Glide
+		expert-core Bash DoubleJump
+		master-core Bash
+	conn: MistyKeystone4Ledge
+		casual-core WallJump Bash Glide
+		casual-core Climb Bash Glide
+		standard-core Bash Glide DoubleJump
+		expert-core Bash Glide
+		expert-abilities Bash Dash Ability=6
+		master-core Bash
+		master-core ChargeJump DoubleJump Ability=12
+		master-abilities Dash Ability=6
+home: MistyKeystone4Ledge
+	--anchor point: on the ledge with the 4th keystone
 	pickup: MistyKeystone4
+	conn: MistyBeforeDocks
+		casual-core WallJump DoubleJump Bash Glide
+		casual-core Climb DoubleJump Bash Glide
+		casual-core Climb ChargeJump Bash Glide
+		standard-core WallJump Bash DoubleJump
+		standard-core Climb Bash DoubleJump
+		master-abilities Dash Ability=6
+		master-dboost ChargeJump DoubleJump Health=10
+home: MistyBeforeDocks
+	--anchor point: to the right of the sit shoot shark, on the docks
+	conn: MistyAbove200xp
+		casual-core ChargeJump Climb
+		casual-core ChargeJump WallJump
+		casual-core ChargeJump DoubleJump
+		casual-core Bash Glide Climb DoubleJump
+		standard-core ChargeJump Glide
+		standard-abilities ChargeJump Dash Ability=3
+		standard-abilities Bash Dash Ability=6
+		expert-abilities Dash Ability=6
+		master-core Bash
+home: MistyAbove200xp
+	--anchor point: above the 200xp, to the left of the baneling (dead), in the tree
 	pickup: MistyGrenade
+		casual-core Grenade
+	conn: MistyBeforeMiniBoss
+		casual-core Glide
+		casual-core ChargeJump DoubleJump
+		standard-core Dash DoubleJump
+		standard-core Bash Grenade
+		standard-abilities Dash Ability=6
+		standard-abilities DoubleJump Ability=12
+		master-core Bash
+home: MistyBeforeMiniBoss
+	--anchor point: before the bang zoom
+	conn: MistyOrbRoom
+		casual-core Keystone=4
+		--if the player is here, it's assumed they have a way to kill the 
+		--miniboss that isn't just spirit flame
+home: MistyOrbRoom
+	--anchor point: in the orb room after keydoor
+	pickup: GumonSeal
+		casual-core WallJump
+		casual-core Climb
+		casual-core DoubleJump
+		casual-core Bash
+	conn: MistyPreKeystone2
+		casual-core WallJump
+		casual-core Climb
+		casual-core Bash Grenade
+		casual-core ChargeJump
+		master-core DoubleJump
+home: MistyPreKeystone2
 	pickup: MistyKeystone2
 	pickup: MistyAbilityCell
-	pickup: GumonSeal
-	conn: MistyPreKeystone2
+		casual-core ChargeJump
+		casual-core Bash Grenade
+		standard-lure Bash
+		standard-dboost WallJump DoubleJump Health=4
