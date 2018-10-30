@@ -6,9 +6,10 @@ from util import enums_from_strlist
 from enums import (MultiplayerGameType, ShareType, Variation, LogicPath, KeyMode, PathDifficulty, presets)
 from seedbuilder.generator import SeedGenerator
 
+FLAGLESS_VARS = [Variation.WARMTH_FRAGMENTS, Variation.WORLD_TOUR]
+
 def vals(enumType):
     return [v.value for v in enumType.__members__.values()]
-
 
 class CLIMultiOptions(object):
     def __init__(self, mode=MultiplayerGameType.SIMUSOLO, shared=[], enabled=False, cloned=False, hints=False, teams={}):
@@ -99,7 +100,7 @@ class CLISeedParams(object):
         varMap = {
             "zeroxp": "0XP", "hard": "Hard", "non_progressive_mapstones": "NonProgressMapStones", "ohko": "OHKO", "force_trees": "ForceTrees", "starved": "Starved",
             "force_mapstones": "ForceMapStones", "entrance": "Entrance", "open": "Open", "easy": "DoubleSkills", "free_mapstones": "FreeMapstones", 
-            "warmth_frags": "WarmthFrags"
+            "warmth_frags": "WarmthFrags", "world_tour": "WorldTour"
             }
         self.variations = []
         for argName, flagStr in varMap.iteritems():
@@ -109,13 +110,11 @@ class CLISeedParams(object):
                     self.variations.append(v)
                 else:
                     log.warning("Failed to make a Variation from %s" % flagStr)
+        if Variation.WORLD_TOUR in self.variations:
+            self.relic_count = args.world_tour
         if Variation.WARMTH_FRAGMENTS in self.variations:
             self.frag_count = args.warmth_frags
             self.frag_extra = args.extra_frags
-        if args.world_tour:
-            self.relic_count = args.world_tour
-        else:
-            self.relic_count = 0
         #misc
         self.exp_pool = args.exp_pool
         if args.prefer_path_difficulty:
@@ -154,7 +153,7 @@ class CLISeedParams(object):
         sg = SeedGenerator()
 
         if args.do_reachability_analysis:
-            sg.do_reachability_analysis(params)
+            sg.do_reachability_analysis(self)
             return
 
         raw = sg.setSeedAndPlaceItems(self, preplaced={})
@@ -198,9 +197,9 @@ class CLISeedParams(object):
         flags.append(self.key_mode)
         if Variation.WARMTH_FRAGMENTS in self.variations:
             flags.append("Frags/%s/%s" % (self.frag_count, self.frag_extra))
-        if self.relic_count:
-            flags.append("WorldTour=%d" % self.relic_count)
-        flags += [v.value for v in self.variations]
+        if Variation.WORLD_TOUR in self.variations:
+            flags.append("WorldTour=%s" % self.relic_count)
+        flags += [v.value for v in self.variations if v not in FLAGLESS_VARS]
         if self.path_diff != PathDifficulty.NORMAL:
             flags.append("prefer_path_difficulty=%s" % self.path_diff.value)
         if self.sync.enabled:
