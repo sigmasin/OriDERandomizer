@@ -1679,6 +1679,8 @@ home: MoonGrottoAboveTeleporter
 		standard-core Bash Grenade
 		expert-core Climb Glide
 		master-core DoubleJump
+	conn: MoonGrottoStompPlantAccess
+		expert-core ChargeFlame
 	conn: MoonGrottoSwampAccessArea
 		casual-core ChargeJump DoubleJump
 		casual-core Bash
@@ -1713,8 +1715,6 @@ home: MoonGrotto
 		casual-core Bash Grenade
 		casual-core ChargeJump
 		master-core DoubleJump
-	conn: MoonGrottoStompPlantAccess
-		expert-core ChargeFlame
 	conn: DeathGauntlet
 		casual-core WallJump
 		casual-core Climb
@@ -2361,6 +2361,7 @@ home: HoruInnerDoor
 		expert-abilities Open Dash Climb Ability=6
 		dbash Open Bash
 		master-abilities Open ChargeJump DoubleJump Ability=12
+		gjump ChargeJump Climb Grenade
 	conn: L3OuterDoor
 		casual-core Stomp Bash DoubleJump Glide WallJump
 		casual-core Stomp Bash DoubleJump ChargeJump WallJump
@@ -2381,6 +2382,7 @@ home: HoruInnerDoor
 		expert-abilities Open Dash Ability=6
 		dbash Open Bash
 		master-abilities Open ChargeJump DoubleJump Ability=12
+		gjump ChargeJump Climb Grenade
 	conn: L4OuterDoor
 		casual-core Stomp Bash DoubleJump Glide WallJump
 		casual-core Stomp Bash DoubleJump ChargeJump WallJump
@@ -2435,6 +2437,7 @@ home: HoruInnerDoor
 		expert-abilities Open Dash Climb Ability=6
 		dbash Open Bash
 		master-abilities Open ChargeJump DoubleJump Ability=12
+		gjump ChargeJump Climb Grenade
 	conn: R3OuterDoor
 		casual-core Stomp Bash DoubleJump Glide WallJump
 		casual-core Stomp Bash DoubleJump ChargeJump WallJump
@@ -2458,6 +2461,7 @@ home: HoruInnerDoor
 		expert-abilities Open Dash Ability=6
 		dbash Open Bash
 		master-abilities Open ChargeJump DoubleJump Ability=12
+		gjump ChargeJump Climb Grenade
 	conn: R4OuterDoor
 		casual-core Stomp Bash DoubleJump Glide WallJump
 		casual-core Stomp Bash DoubleJump ChargeJump WallJump
@@ -2926,9 +2930,11 @@ home: ValleyMain
 		casual-core Bash
 		expert-abilities Dash Ability=6
 	conn: MistyEntrance
-		casual-core Glide Bash
-		expert-dboost Bash DoubleJump Health=4
-		master-core DoubleJump Ability=12
+		casual-core Glide
+		casual-core Bash
+		casual-core DoubleJump
+		casual-core Climb ChargeJump
+		casual-core Dash
 	conn: LowerValley
 	conn: LowerValleyPlantApproach
 home: ValleyKuroPerch
