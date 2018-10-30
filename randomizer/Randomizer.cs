@@ -606,13 +606,24 @@ public static class Randomizer
 	public static void showProgress()
 	{
 		string text = "";
-		if (RandomizerBonus.SkillTreeProgression() == 10 && Randomizer.ForceTrees)
+		if(Randomizer.ForceTrees)
 		{
-			text += "$Trees (10/10)$  ";
-		}
-		else
-		{
-			text = text + "Trees (" + RandomizerBonus.SkillTreeProgression().ToString() + "/10)  ";
+			if (RandomizerBonus.SkillTreeProgression() == 10)
+			{
+				text += "$Trees (10/10)$  ";
+			}
+			else
+			{
+				text = text + "Trees (" + RandomizerBonus.SkillTreeProgression().ToString() + "/10)  ";
+			}
+		}	
+		if (Randomizer.WorldTour && Characters.Sein) {
+			int relics = Characters.Sein.Inventory.GetRandomizerItem(302);
+			if(relics < Randomizer.RelicCount) {
+				text += "Relics (" + relics.ToString() + "/"+Randomizer.RelicCount.ToString() + ") ";
+			} else {
+				text += "$Relics (" + relics.ToString() + "/"+Randomizer.RelicCount.ToString() + ")$ ";
+			}
 		}
 		if (RandomizerBonus.MapStoneProgression() == 9 && Randomizer.ForceMaps)
 		{
@@ -621,14 +632,6 @@ public static class Randomizer
 		else
 		{
 			text = text + "Maps (" + RandomizerBonus.MapStoneProgression().ToString() + "/9)  ";
-		}
-		if (Randomizer.WorldTour && Characters.Sein) {
-			int relics = Characters.Sein.Inventory.GetRandomizerItem(302);
-			if(relics < Randomizer.RelicCount) {
-				text += "Relics (" + relics.ToString() + "/"+Randomizer.RelicCount.ToString() + ") ";
-			} else {
-				text += "$Relics (" + relics.ToString() + "/"+Randomizer.RelicCount.ToString() + ")$ ";
-			}
 		}
 		text = text + "Total (" + RandomizerBonus.GetPickupCount().ToString() + "/256)\n";
 		if (Randomizer.CluesMode)
