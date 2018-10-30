@@ -574,17 +574,14 @@ home: SpiritCaverns
 		casual-core Climb
 		casual-core ChargeJump
 		casual-core Bash Grenade
+		casual-core Bash DoubleJump
+		expert-core Bash Dash
 		dbash Bash
 		master-core DoubleJump
 	conn: GladesLaserArea
 		casual-core Bash Energy=4
-	conn: SpiritTreeDoor
-		casual-core WallJump
-		casual-core Climb
-		casual-core Bash Grenade
-		casual-dboost ChargeJump Health=2
-		dbash Bash
-		master-core DoubleJump
+	conn: SpiritCavernsDoor
+		casual-core Open
 home: UpperSpiritCaverns
 	-- anchor: on the ledge across from the 4-energy gladeser door
 	pickup: SpiritCavernsTopLeftKeystone
@@ -607,12 +604,7 @@ home: UpperSpiritCaverns
 		casual-core Energy=4
 		glitched Energy=3
 	conn: SpiritTreeDoor
-		casual-core WallJump
-		casual-core Climb
-		casual-core Bash Grenade
-		casual-dboost ChargeJump Health=2
-		dbash Bash
-		master-core DoubleJump
+		casual-core Free
 home: SpiritTreeDoor
 	-- anchor: logically, in either adjacent area to the door
 	conn: SpiritTreeDoorOpened
@@ -631,8 +623,8 @@ home: GladesLaserArea
 		casual-core DoubleJump
 		casual-core ChargeJump
 		casual-core Bash Grenade
-		expert-dboost WallJump Glide
 		standard-lure Bash
+		expert-dboost WallJump Glide
 		expert-abilities Dash Ability=6
 	pickup: GladesLaserGrenade
 		ALL Grenade
@@ -1716,6 +1708,8 @@ home: MoonGrottoAboveTeleporter
 		standard-core Bash Grenade
 		expert-core Climb Glide
 		master-core DoubleJump
+	conn: MoonGrottoStompPlantAccess
+		expert-core ChargeFlame
 	conn: MoonGrottoSwampAccessArea
 		casual-core ChargeJump DoubleJump
 		casual-core Bash
@@ -1750,8 +1744,6 @@ home: MoonGrotto
 		casual-core Bash Grenade
 		casual-core ChargeJump
 		master-core DoubleJump
-	conn: MoonGrottoStompPlantAccess
-		expert-core ChargeFlame
 	conn: DeathGauntlet
 		casual-core WallJump
 		casual-core Climb

@@ -65,8 +65,9 @@ public static class Randomizer
 		Randomizer.BashTap = false;
 		Randomizer.fragsEnabled = false;
 		Randomizer.MoveNightBerry = false;
-		Randomizer.WarpCheckCounter = 60;
+		Randomizer.TickCounter = 60;
 		Randomizer.LockedCount = 0;
+		Randomizer.ResetTrackerCount = 0;
 		Randomizer.HotCold = false;
 		Randomizer.HotColdTypes = new string[] {"EV", "RB17", "RB19", "RB21", "RB28", "SK", "WT"};
 		Randomizer.HotColdItems = new Dictionary<int, RandomizerHotColdItem>();
@@ -431,17 +432,15 @@ public static class Randomizer
 				SkillTreeManager.Instance.NavigationManager.FadeAnimator.SetParentOpacity(RandomizerSettings.AbilityMenuOpacity);
 			}
 		}
+		Randomizer.Tick();
 		if (Characters.Sein && !Characters.Sein.IsSuspended)
 		{
 			RandomizerBonus.Update();
-			if(RandomizerTrackedDataManager.TreeBitfield < 0)
-					RandomizerTrackedDataManager.UpdateBitfields();
 			if (!Randomizer.ColorShift)
 			{
 				RandomizerColorManager.UpdateColors();
 			}
 			Randomizer.UpdateHoruCutsceneStatus();
-			Randomizer.WarpCheck();
 			if (Randomizer.MoveNightBerry && Items.NightBerry != null)
 			{
 				Items.NightBerry.transform.position = new Vector3(-910f, -300f);
@@ -726,6 +725,7 @@ public static class Randomizer
 		}
 		Characters.Sein.Inventory.OnDeath();
 		RandomizerBonusSkill.OnDeath();
+		RandomizerTrackedDataManager.UpdateBitfields();
 	}
 
 	public static void OnSave()
@@ -736,7 +736,6 @@ public static class Randomizer
 		}
 		Characters.Sein.Inventory.OnSave();
 		RandomizerBonusSkill.OnSave();
-		RandomizerTrackedDataManager.UpdateBitfields();
 	}
 
 	public static bool canFinalEscape()
@@ -853,44 +852,58 @@ public static class Randomizer
 	}
 
 	// Token: 0x06003848 RID: 14408
-	public static void WarpCheck()
+	public static void Tick()
 	{
-		Randomizer.WarpCheckCounter--;
-		if (Randomizer.WarpCheckCounter <= 0 && Scenes.Manager.CurrentScene != null)
+		Randomizer.TickCounter--;
+		if (Randomizer.TickCounter <= 0)
 		{
-			RandomizerColorManager.UpdateHotColdTarget();
-			Randomizer.WarpCheckCounter = 60;
-			if (Characters.Sein.Position.y > 937f && Sein.World.Events.WarmthReturned && Scenes.Manager.CurrentScene.Scene == "ginsoTreeWaterRisingEnd")
+			Randomizer.TickCounter = 60;
+			if(Scenes.Manager.CurrentScene != null && Scenes.Manager.CurrentScene.Scene == "titleScreenSwallowsNest")
 			{
-				if (Characters.Sein.Abilities.Bash.IsBashing)
+				ResetTrackerCount++;
+				if(ResetTrackerCount > 10)
 				{
-					Characters.Sein.Abilities.Bash.BashGameComplete(0f);
+					RandomizerTrackedDataManager.Reset();
+					ResetTrackerCount = 0;
 				}
-				Characters.Sein.Position = new Vector3(750f, -120f);
-				return;
 			}
-			if (Scenes.Manager.CurrentScene.Scene == "catAndMouseResurrectionRoom" && !Randomizer.canFinalEscape())
+			if(Characters.Sein && !Characters.Sein.IsSuspended && Scenes.Manager.CurrentScene != null)
 			{
-				if (Randomizer.Entrance)
+				ResetTrackerCount = 0;
+				RandomizerTrackedDataManager.UpdateBitfields();
+				RandomizerColorManager.UpdateHotColdTarget();
+				if (Characters.Sein.Position.y > 937f && Sein.World.Events.WarmthReturned && Scenes.Manager.CurrentScene.Scene == "ginsoTreeWaterRisingEnd")
 				{
-					Randomizer.EnterDoor(new Vector3(-242f, 489f));
+					if (Characters.Sein.Abilities.Bash.IsBashing)
+					{
+						Characters.Sein.Abilities.Bash.BashGameComplete(0f);
+					}
+					Characters.Sein.Position = new Vector3(750f, -120f);
 					return;
 				}
-				Characters.Sein.Position = new Vector3(20f, 105f);
-				return;
-			}
-			else if (!Characters.Sein.Controller.CanMove && Scenes.Manager.CurrentScene.Scene == "moonGrottoGumosHideoutB")
-			{
-				Randomizer.LockedCount++;
-				if (Randomizer.LockedCount >= 4)
+				if (Scenes.Manager.CurrentScene.Scene == "catAndMouseResurrectionRoom" && !Randomizer.canFinalEscape())
 				{
-					GameController.Instance.ResetInputLocks();
+					if (Randomizer.Entrance)
+					{
+						Randomizer.EnterDoor(new Vector3(-242f, 489f));
+						return;
+					}
+					Characters.Sein.Position = new Vector3(20f, 105f);
 					return;
 				}
-			}
-			else
-			{
-				Randomizer.LockedCount = 0;
+				else if (!Characters.Sein.Controller.CanMove && Scenes.Manager.CurrentScene.Scene == "moonGrottoGumosHideoutB")
+				{
+					Randomizer.LockedCount++;
+					if (Randomizer.LockedCount >= 4)
+					{
+						GameController.Instance.ResetInputLocks();
+						return;
+					}
+				}
+				else
+				{
+					Randomizer.LockedCount = 0;
+				}
 			}
 		}
 	}
@@ -1042,7 +1055,7 @@ public static class Randomizer
 	public static Hashtable HoruMap;
 
 	// Token: 0x04003332 RID: 13106
-	public static int WarpCheckCounter;
+	public static int TickCounter;
 
 	// Token: 0x04003459 RID: 13401
 	public static bool MoveNightBerry;
@@ -1052,6 +1065,8 @@ public static class Randomizer
 
 	// Token: 0x04003304 RID: 13060
 	public static int LockedCount;
+
+	public static int ResetTrackerCount;
 
 	public static Vector3 LastReturnPoint;
 
