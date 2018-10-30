@@ -1697,7 +1697,7 @@ home: UpperGrotto
 		master-core ChargeJump DoubleJump
 		master-core Bash
 		gjump Climb ChargeJump Grenade
-	conn: MoonGrotto
+	conn: MoonGrottoAboveTeleporter
 		casual-core WallJump
 		casual-core Climb
 		casual-core Dash
