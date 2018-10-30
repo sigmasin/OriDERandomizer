@@ -82,6 +82,13 @@ public static class RandomizerTrackedDataManager
 			KeyEventBitfield = GetKeyEvents();
 		}
 	}
+	public static void Reset() {
+			TreeBitfield = 0;
+			RelicBitfield = 0;
+			MapstoneBitfield = 0;
+			TeleporterBitfield = 0;
+			KeyEventBitfield = 0;
+	}
 
 	public static int GetKeyEvents() {
 		int bf = 0;
