@@ -2618,7 +2618,6 @@ home: HoruMapLedge
 -- anchor: in front of the mapstone
 	pickup: HoruMap
 		casual-core Mapstone
--- TODO
 home: L1OuterDoor
 	conn: L1InnerDoor
 	conn: HoruInnerDoor
@@ -2656,7 +2655,6 @@ home: L1
 		master-dboost Climb DoubleJump Ability=12 Health=7
 		master-dboost Bash Health=5
 		master-dboost ChargeJump Health=5
--- TODO
 home: L2OuterDoor
 	conn: L2InnerDoor
 	conn: HoruInnerDoor
@@ -2688,7 +2686,6 @@ home: L2
 		master-core DoubleJump Glide
 		master-abilities DoubleJump Dash Ability=3
 		master-abilities DoubleJump Ability=12
--- TODO
 home: L3OuterDoor
 	conn: L3InnerDoor
 	conn: HoruInnerDoor
@@ -2738,7 +2735,6 @@ home: L3
 		master-dboost ChargeJump DoubleJump Stomp Ability=12 Health=3
 		master-dboost ChargeJump DoubleJump ChargeFlame Ability=12 Health=3 Energy=1
 		gjump ChargeJump Climb Grenade
--- TODO
 home: L4OuterDoor
 	conn: L4InnerDoor
 	conn: HoruInnerDoor
@@ -2886,7 +2882,6 @@ home: R2
         master-core Bash
         master-dboost DoubleJump ChargeJump Grenade Dash Ability=6 Health=13 Energy=3
         master-dboost DoubleJump ChargeJump Grenade Dash Ability=12 Health=10 Energy=3
--- TODO
 home: R3OuterDoor
 	conn: R3InnerDoor
 	conn: HoruInnerDoor
