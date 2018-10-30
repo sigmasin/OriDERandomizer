@@ -332,6 +332,7 @@ home: SunkenGladesRunaway
 		casual-core Bash
 		standard-core WallJump DoubleJump
 		expert-abilities Dash Ability=6
+		master-core Free
 	pickup: GladesMainPool
 		casual-core Water
 		expert-dboost Bash
@@ -757,6 +758,7 @@ home: SpiderSacTetherArea
 		casual-core Energy=4
 		timed-level Energy=2
 		glitched Energy=3
+		master-core Energy=2
 	pickup: SpiderSacGrenadeDoor
 		ALL Grenade
 		casual-core Bash
@@ -2793,7 +2795,7 @@ home: L4Below
 home: R1OuterDoor
 	conn: R1InnerDoor
 	conn: L1OuterDoor
-	    expert-core Free -- Doing a door warp on the R1 door puts you in front of L1
+	    expert-core Free 
 home: R1InnerDoor
 	conn: R1
 		casual-core Bash DoubleJump Glide WallJump
