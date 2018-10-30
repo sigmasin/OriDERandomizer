@@ -142,10 +142,35 @@ public static class RandomizerSwitch
     
     public static void TeleportPickup(string Value)
     {
-        TeleporterController.Activate(Randomizer.TeleportTable[Value].ToString());
-        Randomizer.showHint(Value + " teleporter activated");
-    }
+        int shardCount = -1;
+        char colorChar = ' ';
+        if(Value == "Ginso")
+        {
+            Characters.Sein.Inventory.SetRandomizerItem(1024, 1);
+            shardCount = RandomizerBonus.WaterVeinShards();
+            colorChar = '*';
+        }
+        if(Value == "Forlorn")
+        {
+            Characters.Sein.Inventory.SetRandomizerItem(1025, 1);
+            shardCount = RandomizerBonus.GumonSealShards();
+            colorChar = '#';
+        }
+        if(Value == "Horu")
+        {
+            Characters.Sein.Inventory.SetRandomizerItem(1026, 1);
+            shardCount = RandomizerBonus.SunstoneShards();
+            colorChar = '@';
+        }
 
+        if(Randomizer.Shards && shardCount >= 0 && shardCount < 2)
+        {
+            Randomizer.showHint(colorChar + "Broken " + Value + " teleporter (" + shardCount.ToString() + "/2)" + colorChar);
+            return;
+        }
+        TeleporterController.Activate(Randomizer.TeleportTable[Value].ToString());
+        Randomizer.showHint(colorChar + Value + " teleporter activated" + colorChar);
+    }
     
     public static void GivePickup(RandomizerAction Action, int coords, bool found_locally=true)
     {
