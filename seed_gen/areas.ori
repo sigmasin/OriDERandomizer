@@ -568,6 +568,7 @@ home: SpiritCaverns
 		casual-core ChargeJump
 		casual-core Bash
 		standard-core WallJump DoubleJump
+		expert-core Climb DoubleJump
 	conn: UpperSpiritCaverns
 		casual-core WallJump
 		casual-core Climb
@@ -824,6 +825,9 @@ home: SpiderWaterArea
 		casual-core ChargeJump Climb
 		casual-core Bash WallJump
 		casual-core Bash Grenade
+		casual-core Bash DoubleJump
+		casual-core Bash Glide
+		standard-core Bash ChargeJump
 		dbash Bash
 		expert-abilities Dash Ability=6
 	pickup: GroveAboveSpiderWaterEnergyCell
@@ -836,7 +840,10 @@ home: SpiderWaterArea
 	conn: SpiderSacEnergyNook
 		casual-core Glide
 		casual-core Bash Grenade
+		casual-core WallJump DoubleJump
+		casual-core Climb DoubleJump
 		standard-core Dash DoubleJump
+		standard-core Bash DoubleJump
 		expert-core DoubleJump
 		dbash Bash
 		expert-abilities Dash Ability=3
@@ -847,8 +854,8 @@ home: SpiderWaterArea
 		casual-core Bash Climb Glide
 		standard-core Dash WallJump Glide
 		standard-core Dash Climb Glide
-		expert-core Bash WallJump
-		expert-core Bash Climb
+		standard-core Bash WallJump
+		standard-core Bash Climb
 		dbash Bash
 		expert-abilities Dash Ability=6
 	conn: HollowGrove
@@ -910,15 +917,27 @@ home: DashArea
 		casual-core ChargeJump WallJump
 		casual-core Glide WallJump
 		casual-core Bash Grenade
+		standard-abilities WallJump DoubleJump Dash Ability=3
+		standard-abilities Climb DoubleJump Dash Ability=3
+		expert-abilities WallJump Dash Ability=6 Energy=2
+		expert-abilities Climb Dash Ability=6 Energy=2
+		expert-abilities WallJump ChargeFlame Dash Ability=6 
+		expert-abilities Climb ChargeFlame Dash Ability=6
 		-- these paths are special; you can't physically get to the plant but
 		-- you can throw a grenade at it
 		expert-core DoubleJump Grenade
 		expert-core ChargeJump Grenade
+		expert-core Glide Grenade
+		expert-abilities Grenade Dash Ability=3
 		-- hahaha enjoy your wasted ability points on cflame burn, sucker
-		master-core WallJump ChargeFlame
-		master-core Climb ChargeFlame
-		master-core ChargeJump ChargeFlame
-		master-core DoubleJump ChargeFlame
+		master-abilities WallJump ChargeFlame
+		master-abilities Climb ChargeFlame
+		master-abilities ChargeJump ChargeFlame
+		master-abilities DoubleJump ChargeFlame
+		master-core DoubleJump Glide
+		master-core Bash
+		master-abilities DoubleJump Dash Ability=3
+		master-abilities DoubleJump Ability=12
 	conn: GrenadeAreaAccess
 		casual-core Stomp ChargeJump
 		casual-core Stomp Grenade Bash
@@ -927,6 +946,7 @@ home: DashArea
 		expert-core ChargeJump Climb
 		master-core Bash
 		glitched Free
+		insane Free
 	conn: RazielNoArea
 		casual-core Dash WallJump
 		casual-core Dash ChargeJump
@@ -936,6 +956,7 @@ home: DashArea
 		standard-core ChargeJump
 		standard-core Bash Grenade
 		standard-core Climb DoubleJump
+		standard-abilities Climb Dash Ability=3
 		expert-core Climb
 		master-core DoubleJump
 home: DashPlantAccess
@@ -976,13 +997,15 @@ home: BlackrootGrottoConnection
 		casual-core Climb DoubleJump Mapstone
 		casual-core Bash Grenade Mapstone
 		casual-core ChargeJump Mapstone
-		expert-abilities Climb Dash Ability=3 Mapstone
+		standard-abilities Climb Dash Ability=3 Mapstone
+		expert-core Climb Mapstone
 	conn: SideFallCell
 		casual-core Stomp WallJump
 		casual-core Stomp Climb DoubleJump
 		casual-core Stomp Bash Grenade
 		casual-core Stomp ChargeJump
-		expert-abilities Stomp Climb Dash Ability=3
+		standard-abilities Stomp Climb Dash Ability=3
+		expert-core Stomp Climb
 home: GrenadeAreaAccess
 	-- anchor: on the raised platform between the fronkey and the spike pit
 	conn: GrenadeArea
@@ -990,6 +1013,8 @@ home: GrenadeAreaAccess
 		expert-core Bash Grenade
 		expert-core DoubleJump
 		gjump ChargeJump Climb Grenade
+		glitched Free
+		insane Free
 	conn: LowerBlackroot
 		casual-core DoubleJump
 		casual-core Climb ChargeJump
@@ -1120,9 +1145,9 @@ home: HollowGrove
 	pickup: HollowGroveMapstone
 	pickup: GroveWaterStompAbilityCell
 		casual-core Water Stomp
+		expert-lure Bash Water
+		expert-dboost Bash Health=5
 		expert-dboost Stomp Health=5
-		master-lure Bash Water
-		master-lure Bash Health=5
 		master-dboost Stomp Ability=12
 		master-dboost Bash Ability=12
 		glitched Bash
@@ -1497,7 +1522,8 @@ home: UpperGinsoTree
 		casual-core Stomp
 		casual-core ChargeJump Bash
 		standard-core Climb ChargeJump
-		expert-abilities Climb ChargeJump Dash
+		expert-core ChargeJump ChargeFlame
+		expert-abilities ChargeJump Dash Ability=3
 		master-core Bash
 home: UpperGinsoDoorClosed
 	conn: UpperGinsoDoorOpened
@@ -1649,6 +1675,9 @@ home: UpperGrotto
 	conn: MoonGrotto
 		casual-core WallJump
 		casual-core Climb
+		casual-core Dash
+		casual-core DoubleJump
+		casual-core Glide
 		standard-core Bash Grenade
 		glitched Free
 home: MoonGrottoStompPlantAccess
@@ -1862,6 +1891,8 @@ home: GumoHideout
 		master-abilities DoubleJump Ability=12
 	conn: GumoHideoutFloatingOrbs
 		master-core DoubleJump
+		master-core Dash WallJump
+		master-core Dash Climb
 	conn: SideFallCell
 		casual-core WallJump Bash Grenade
 		casual-core Climb Bash Grenade
@@ -2318,10 +2349,25 @@ home: HoruFieldsPushBlock
 		master-core Bash
 		master-abilities Glide DoubleJump Ability=12
 		master-abilities WallJump DoubleJump Ability=12
+	conn: HollowGrove
+		master-lure Bash
 home: HoruOuterDoor
 	conn: HoruInnerDoor
 		casual-core HoruKey
-	--TODO: add connection to HoruFields once that gets refactored
+	conn: HoruFieldsPushBlock
+		casual-core Bash Grenade
+		casual-core Bash Glide
+		casual-core Bash ChargeJump DoubleJump
+		casual-core ChargeJump DoubleJump Climb
+		casual-core ChargeJump DoubleJump WallJump
+		standard-core Dash Bash DoubleJump
+		standard-abilities ChargeJump Glide Climb Dash Ability=3
+		standard-abilities ChargeJump Glide WallJump Dash Ability=3
+		expert-core ChargeJump DoubleJump Glide
+		expert-abilities ChargeJump Dash Ability=6
+		master-core ChargeJump DoubleJump
+		master-abilities Bash DoubleJump Ability=12
+		gjump ChargeJump Climb Grenade
 home: HoruInnerDoor
 -- anchor: inside the main door of Horu
 	conn: HoruOuterDoor
@@ -2792,7 +2838,8 @@ home: ValleyEntry
 		expert-lure Bash WallJump
 		expert-lure Bash Climb ChargeJump
 		expert-lure Bash Climb DoubleJump
-		expert-lure Bash ChargeJump Health=4
+		expert-dboost Bash ChargeJump Health=4
+		expert-dboost Stomp ChargeJump Health=4
 	conn: SpiritTreeRefined
 		casual-core ChargeFlame
 		casual-core Grenade
@@ -3786,8 +3833,8 @@ home: SorrowTeleporter
 		master-dboost WallJump DoubleJump Stomp Health=4 Ability=12
 	conn: AboveChargeJumpArea
 		casual-core ChargeJump Climb Stomp
+		standard-core ChargeJump Climb
 		expert-core Stomp WallJump DoubleJump Glide
-		expert-core ChargeJump Climb
 		expert-core ChargeJump WallJump DoubleJump Glide Bash Grenade
 		expert-abilities ChargeJump Dash WallJump DoubleJump Ability=3
 		expert-dboost ChargeJump WallJump DoubleJump Glide Health=5
