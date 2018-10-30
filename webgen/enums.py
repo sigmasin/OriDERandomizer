@@ -56,7 +56,7 @@ class Variation(StrEnum):
     WORLD_TOUR = "WorldTour"
     WARMTH_FRAGMENTS = "WarmthFrags"
     DOUBLE_SKILL = "DoubleSkills"
-    FREE_MAPSTONES = "FreeMapstones"
+    STRICT_MAPSTONES = "StrictMapstones"
     @staticmethod
     def from_old(old):
         low = old.lower()

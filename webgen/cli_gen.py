@@ -49,7 +49,7 @@ class CLISeedParams(object):
         parser.add_argument("--bonus-pickups", help="Adds some extra bonus pickups not balanced for competitive play", action="store_true")
         parser.add_argument("--easy", help="Add an extra copy of double jump, bash, stomp, glide, charge jump, dash, grenade, water, and wind", action="store_true")
         parser.add_argument("--free-mapstones", help="Don't require a mapstone to be placed when a map monument becomes accessible", action="store_true")
-        parser.add_argument("--world-tour", help="Prevent Ori from entering the final escape until collecting one relic from each of the zones in the world", action="store_true")
+        parser.add_argument("--world-tour", help="Prevent Ori from entering the final escape until collecting one relic from each of the zones in the world. Recommended default: 8", type=int)
         parser.add_argument("--warmth-frags", help="Prevent Ori from entering the final escape until collecting some number of warmth fragments. Recommended default: 40", type=int)
 
         # misc
@@ -73,6 +73,7 @@ class CLISeedParams(object):
         parser.add_argument("--cloned", help="Make a split cloned seed instead of seperate seeds", action="store_true")
         parser.add_argument("--teams", help="Cloned seeds only: define teams. Format: 1|2,3,4|5,6. Each player must appear once", type=str)
         parser.add_argument("--hints", help="Cloned seeds only: display a hint with the item category on a shared location instead of 'Warmth Returned'", action="store_true")
+        parser.add_argument("--do-reachability-analysis", help="Analyze how many locations are opened by various progression items in various inventory states", action="store_true")
         args = parser.parse_args()
 
         """
@@ -98,7 +99,7 @@ class CLISeedParams(object):
         varMap = {
             "zeroxp": "0XP", "hard": "Hard", "non_progressive_mapstones": "NonProgressMapStones", "ohko": "OHKO", "force_trees": "ForceTrees", "starved": "Starved",
             "force_mapstones": "ForceMapStones", "entrance": "Entrance", "open": "Open", "easy": "DoubleSkills", "free_mapstones": "FreeMapstones", 
-            "warmth_frags": "WarmthFrags", "world_tour": "WorldTour"
+            "warmth_frags": "WarmthFrags"
             }
         self.variations = []
         for argName, flagStr in varMap.iteritems():
@@ -111,6 +112,10 @@ class CLISeedParams(object):
         if Variation.WARMTH_FRAGMENTS in self.variations:
             self.frag_count = args.warmth_frags
             self.frag_extra = args.extra_frags
+        if args.world_tour:
+            self.relic_count = args.world_tour
+        else:
+            self.relic_count = 0
         #misc
         self.exp_pool = args.exp_pool
         if args.prefer_path_difficulty:
@@ -147,6 +152,11 @@ class CLISeedParams(object):
         self.repeat_count = args.count
 
         sg = SeedGenerator()
+
+        if args.do_reachability_analysis:
+            sg.do_reachability_analysis(params)
+            return
+
         raw = sg.setSeedAndPlaceItems(self, preplaced={})
         seeds = []
         spoilers = []
@@ -188,6 +198,8 @@ class CLISeedParams(object):
         flags.append(self.key_mode)
         if Variation.WARMTH_FRAGMENTS in self.variations:
             flags.append("Frags/%s/%s" % (self.frag_count, self.frag_extra))
+        if self.relic_count:
+            flags.append("WorldTour=%d" % self.relic_count)
         flags += [v.value for v in self.variations]
         if self.path_diff != PathDifficulty.NORMAL:
             flags.append("prefer_path_difficulty=%s" % self.path_diff.value)

@@ -54,13 +54,13 @@ public static class RandomizerBonus
             if (!flag)
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
-                Randomizer.showHint("Spirit Flame Upgrade (" + RandomizerBonus.SpiritFlameLevel().ToString() + ")");
+                Randomizer.showHint("Attack Upgrade (" + RandomizerBonus.SpiritFlameLevel().ToString() + ")");
                 return;
             }
             if (RandomizerBonus.SpiritFlameLevel() > 0)
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, -1);
-                Randomizer.showHint("Spirit Flame Upgrade (" + RandomizerBonus.SpiritFlameLevel().ToString() + ")");
+                Randomizer.showHint("Attack Upgrade (" + RandomizerBonus.SpiritFlameLevel().ToString() + ")");
                 return;
             }
             break;
@@ -166,7 +166,12 @@ public static class RandomizerBonus
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
                 Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
-                Randomizer.showHint("*Water Vein Shard (" + RandomizerBonus.WaterVeinShards().ToString() + "/3)*");
+                Randomizer.showHint("*Water Vein Shard (" + RandomizerBonus.WaterVeinShards().ToString() + "/3)*", 300);
+                if (Characters.Sein.Inventory.GetRandomizerItem(1024) == 1 && RandomizerBonus.WaterVeinShards() == 2)
+                {
+                    TeleporterController.Activate(Randomizer.TeleportTable["Ginso"].ToString());
+                    Randomizer.MessageQueue.Enqueue("*Ginso teleporter activated*");
+                }
             }
             Keys.GinsoTree = (RandomizerBonus.WaterVeinShards() >= 3);
             return;
@@ -188,7 +193,12 @@ public static class RandomizerBonus
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
                 Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
-                Randomizer.showHint("#Gumon Seal Shard (" + RandomizerBonus.GumonSealShards().ToString() + "/3)#");
+                Randomizer.showHint("#Gumon Seal Shard (" + RandomizerBonus.GumonSealShards().ToString() + "/3)#", 300);
+                if (Characters.Sein.Inventory.GetRandomizerItem(1025) == 1 && RandomizerBonus.GumonSealShards() == 2)
+                {
+                    TeleporterController.Activate(Randomizer.TeleportTable["Forlorn"].ToString());
+                    Randomizer.MessageQueue.Enqueue("#Forlorn teleporter activated#");
+                }
             }
             Keys.ForlornRuins = (RandomizerBonus.GumonSealShards() >= 3);
             return;
@@ -210,7 +220,12 @@ public static class RandomizerBonus
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
                 Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
-                Randomizer.showHint("@Sunstone Shard (" + RandomizerBonus.SunstoneShards().ToString() + "/3)@");
+                Randomizer.showHint("@Sunstone Shard (" + RandomizerBonus.SunstoneShards().ToString() + "/3)@", 300);
+                if (Characters.Sein.Inventory.GetRandomizerItem(1026) == 1 && RandomizerBonus.SunstoneShards() == 2)
+                {
+                    TeleporterController.Activate(Randomizer.TeleportTable["Horu"].ToString());
+                    Randomizer.MessageQueue.Enqueue("@Horu teleporter activated@");
+                }
             }
             Keys.MountHoru = (RandomizerBonus.SunstoneShards() >= 3);
             return;
@@ -235,7 +250,7 @@ public static class RandomizerBonus
                 "/",
                 Randomizer.fragKeyFinish,
                 ")@"
-            }));
+            }), 300);
             return;
             break;
         case 29:
@@ -407,14 +422,13 @@ public static class RandomizerBonus
     public static void CollectMapstone()
     {
         Characters.Sein.Inventory.IncRandomizerItem(23, 1);
-        Characters.Sein.Inventory.SkillPointsCollected += 8388608;
         RandomizerBonus.CollectPickup();
     }
 
     // Token: 0x06003783 RID: 14211 RVA: 0x000E3050 File Offset: 0x000E1250
     public static void Update()
     {
-        Characters.Sein.Mortality.Health.GainHealth((float)RandomizerBonus.HealthRegeneration() * (Characters.Sein.PlayerAbilities.HealthEfficiency.HasAbility ? 0.00224f : 0.00112f));
+        Characters.Sein.Mortality.Health.GainHealth((float)(RandomizerBonus.HealthRegeneration() + ((!Characters.Sein.PlayerAbilities.HealthMarkers.HasAbility) ? 0 : 2)) * (Characters.Sein.PlayerAbilities.HealthEfficiency.HasAbility ? 0.00224f : 0.00112f));
         if (RandomizerBonus.Bleeding() > 0)
         {
             Characters.Sein.Mortality.Health.LoseHealth((float)RandomizerBonus.Bleeding() * 0.0008f);
@@ -423,7 +437,7 @@ public static class RandomizerBonus
         {
             Characters.Sein.Mortality.DamageReciever.OnRecieveDamage(new Damage(1f, default(Vector2), default(Vector3), DamageType.Water, null));
         }
-        Characters.Sein.Energy.Gain((float)RandomizerBonus.EnergyRegeneration() * (Characters.Sein.PlayerAbilities.EnergyEfficiency.HasAbility ? 0.00042f : 0.00028f));
+        Characters.Sein.Energy.Gain((float)(RandomizerBonus.EnergyRegeneration() + ((!Characters.Sein.PlayerAbilities.EnergyMarkers.HasAbility) ? 0 : 2)) * (Characters.Sein.PlayerAbilities.EnergyEfficiency.HasAbility ? 0.00042f : 0.00028f));
         RandomizerBonusSkill.Update();
     }
 

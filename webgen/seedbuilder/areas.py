@@ -1,15 +1,22 @@
 import xml.etree.ElementTree as XML
-import urllib2
+
+areas_dot_ori = 'http://raw.githubusercontent.com/sigmasin/OriDERandomizer/3.0/seed_gen/areas.ori'
 
 def get_areas():
     global area, area_name, conn, has_reqs, all_req
+    meta = None
+    try:
+        # use urlfetch if we have it to avoid webgen warning spam
+        from google.appengine.api import urlfetch
+        result = urlfetch.fetch(areas_dot_ori)
+        meta = result.content.split("\n")
+    except ImportError:
+        # cli_gen uses urllib2 instead
+        import urllib2
+        response = urllib2.urlopen(areas_dot_ori)
+        meta = response.read().split("\n")
     
-    response = urllib2.urlopen('https://raw.githubusercontent.com/sigmasin/OriDERandomizer/3.0/seed_gen/areas.ori')
-    
-    meta = response.read().split("\n")
-
     new_areas = XML.Element("Areas")
-
     area_name = None
     area = None
     conn = None
@@ -41,6 +48,8 @@ def get_areas():
         "TPValley",
         "TPForlorn",
         "TPSorrow",
+        "TPGinso",
+        "TPHoru",
         "Health",
         "Energy",
         "Ability",
@@ -235,5 +244,5 @@ def get_areas():
         if home != "SunkenGladesRunaway":
             assert linked == "LINKED", home
 
-    areas_tree = XML.ElementTree(new_areas)
-    return areas_tree
+    new_tree = XML.ElementTree(new_areas)
+    return new_tree

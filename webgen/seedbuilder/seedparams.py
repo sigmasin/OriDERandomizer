@@ -165,7 +165,7 @@ class SeedGenParams(ndb.Model):
         return {pid: tid for tid, pids in self.sync.teams.iteritems() for pid in pids}
 
     def team_pid(self, pid):  # given pid, get team or return pid if no teams exist
-        return self.teams_inv()[pid] if self.sync.teams else pid
+        return int(self.teams_inv()[pid]) if self.sync.teams else pid
 
     def get_seed(self, player=1, game_id=None, verbose_paths= False):
         flags = self.flag_line(verbose_paths)
@@ -173,6 +173,7 @@ class SeedGenParams(ndb.Model):
             flags = "Sync%s.%s," % (game_id, player) + flags
         outlines = [flags]
         outlines += ["|".join((str(p.location), s.code, s.id, p.zone)) for p in self.placements for s in p.stuff if int(s.player) == self.team_pid(player)]
+        assert len(outlines) > 1
         return "\n".join(outlines)+"\n"
 
     def get_spoiler(self, player=1):

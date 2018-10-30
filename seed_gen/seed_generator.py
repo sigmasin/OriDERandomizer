@@ -854,7 +854,7 @@ class Generator:
         self.connectionQueue = []
         self.assignQueue = []
 
-        self.itemCount = 252.0
+        self.itemCount = 253.0
         self.expRemaining = args.exp_pool
         keystoneCount = 0
         mapstoneCount = 0
@@ -862,7 +862,7 @@ class Generator:
         if not args.hard:
             self.itemPool = OrderedDict([
                 ("EX1", 1),
-                ("EX*", 99),
+                ("EX*", 101),
                 ("KS", 40),
                 ("MS", 11),
                 ("AC", 33),
@@ -887,7 +887,7 @@ class Generator:
                 ("RB0", 3),
                 ("RB1", 3),
                 ("RB6", 3),
-                ("RB8", 1),
+                ("RB8", 0),
                 ("RB9", 1),
                 ("RB10", 1),
                 ("RB11", 1),
@@ -911,7 +911,7 @@ class Generator:
         else:
             self.itemPool = OrderedDict([
                 ("EX1", 1),
-                ("EX*", 175),
+                ("EX*", 176),
                 ("KS", 40),
                 ("MS", 11),
                 ("AC", 0),
@@ -1063,6 +1063,7 @@ class Generator:
 
         if args.open:
             inventory["Open"] = 1
+            costs["Open"] = 0
 
         # paired setup for subsequent players
         if self.playerID > 1:

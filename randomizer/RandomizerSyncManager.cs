@@ -121,8 +121,8 @@ public static class RandomizerSyncManager
 		{
 			string[] array = File.ReadAllLines("randomizer.dat");
 			array[0] = array[0].Replace(',', '|');
+			RandomizerSyncManager.UriQueue.Enqueue(new Uri(RandomizerSyncManager.RootUrl + "/setSeed?seed=" + string.Join(",", array).Replace("#","")));
 			RandomizerSyncManager.flags["seedSent"] = true;
-			RandomizerSyncManager.UriQueue.Enqueue(new Uri(RandomizerSyncManager.RootUrl + "/setSeed?seed=" + string.Join(",", array)));
 		}
 		RandomizerSyncManager.Countdown--;
 		RandomizerSyncManager.ChaosTimeoutCounter--;
@@ -451,6 +451,10 @@ public static class RandomizerSyncManager
 		// Token: 0x060037A2 RID: 14242
 		public Uri GetURL()
 		{
+			string cleaned_id = this.id.Replace("#","");
+			if(cleaned_id.Contains("\\"))
+				cleaned_id = cleaned_id.Split('\\')[0];
+			Randomizer.showHint(cleaned_id);
 			return new Uri(string.Concat(new object[]
 			{
 				RandomizerSyncManager.RootUrl,
@@ -459,7 +463,7 @@ public static class RandomizerSyncManager
 				"/",
 				this.type,
 				"/",
-				this.id
+				cleaned_id
 			}));
 		}
 

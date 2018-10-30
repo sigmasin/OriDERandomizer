@@ -6,6 +6,7 @@ from collections import OrderedDict, defaultdict, Counter
 from operator import mul
 from enums import KeyMode, PathDifficulty, ShareType, Variation, MultiplayerGameType
 from seedbuilder.areas import get_areas
+from seedbuilder.relics import relics
 
 
 def ordhash(s):
@@ -190,7 +191,7 @@ class SeedGenerator:
             "Water": 80, "Wind": 80, "WaterVeinShard": 5, "GumonSealShard": 5,
             "SunstoneShard": 5, "TPForlorn": 120, "TPGrotto": 60,
             "TPSorrow": 90, "TPGrove": 60, "TPSwamp": 60, "TPValley": 90,
-            "TPGinso": 150, "TPHoru": 180, "Open": 1
+            "TPGinso": 150, "TPHoru": 180, "Open": 1, "Relic": 1
         })
         self.inventory = OrderedDict([
             ("EX1", 0), ("EX*", 0), ("KS", 0), ("MS", 0), ("AC", 0), ("EC", 1),
@@ -203,7 +204,7 @@ class SeedGenerator:
             ("RB15", 0), ("WaterVeinShard", 0), ("GumonSealShard", 0),
             ("SunstoneShard", 0), ("TPForlorn", 0), ("TPGrotto", 0),
             ("TPSorrow", 0), ("TPGrove", 0), ("TPSwamp", 0), ("TPValley", 0),
-            ("TPGinso", 0), ("TPHoru", 0), ("Open", 0)
+            ("TPGinso", 0), ("TPHoru", 0), ("Open", 0), ("Relic", 0)
         ])
 
         self.mapstonesSeen = 1
@@ -232,32 +233,37 @@ class SeedGenerator:
         self.forcedAssignments = self.preplaced
         self.forceAssignedLocs = set()
         self.itemPool = OrderedDict([
-            ("EX1", 1), ("EX*", 99), ("KS", 40), ("MS", 11), ("AC", 33),
+            ("EX1", 1), ("EX*", 101), ("KS", 40), ("MS", 11), ("AC", 33),
             ("EC", 14), ("HC", 12), ("WallJump", 1), ("ChargeFlame", 1),
             ("Dash", 1), ("Stomp", 1), ("DoubleJump", 1), ("Glide", 1),
             ("Bash", 1), ("Climb", 1), ("Grenade", 1), ("ChargeJump", 1),
             ("GinsoKey", 1), ("ForlornKey", 1), ("HoruKey", 1), ("Water", 1),
             ("Wind", 1), ("Warmth", 1), ("RB0", 3), ("RB1", 3), ("RB6", 3),
-            ("RB8", 1), ("RB9", 1), ("RB10", 1), ("RB11", 1), ("RB12", 1),
+            ("RB8", 0), ("RB9", 1), ("RB10", 1), ("RB11", 1), ("RB12", 1),
             ("RB13", 3), ("RB15", 3), ("WaterVeinShard", 0),
             ("GumonSealShard", 0), ("SunstoneShard", 0), ("TPForlorn", 1),
             ("TPGrotto", 1), ("TPSorrow", 1), ("TPGrove", 1), ("TPSwamp", 1),
-            ("TPValley", 1), ("TPGinso", 0), ("TPHoru", 0), ("Open", 0)
+            ("TPValley", 1), ("TPGinso", 0), ("TPHoru", 0), ("Open", 0), ("Relic", 0)
         ])
         if self.var(Variation.OPEN_MODE):
             self.inventory["Open"] = 1
+            self.costs["Open"] = 0
             self.itemPool["TPGinso"] = 1
             self.itemPool["TPHoru"] = 1
             self.itemPool["KS"] -= 2
 
-        if self.var(Variation.FREE_MAPSTONES):
+        if self.var(Variation.WORLD_TOUR):
+            self.itemPool["EX*"] -= self.params.relic_count
+            self.itemPool["Relic"] += self.params.relic_count
+
+        if not self.var(Variation.STRICT_MAPSTONES):
             self.costs["MS"] = 11
 
         if self.var(Variation.HARDMODE):
             self.itemPool["AC"] = 0
             self.itemPool["HC"] = 0
             self.itemPool["EC"] = 3
-            self.itemPool["EX*"] = 175
+            self.itemPool["EX*"] = 176
             for bonus in [k for k in self.itemPool.keys() if k[:2] == "RB"]:
                 del self.itemPool[bonus]
 
@@ -280,8 +286,20 @@ class SeedGenerator:
             self.itemPool["ForlornKey"] = 0
             self.itemPool["HoruKey"] = 0
             self.itemPool["EX*"] -= 12
-
-        if Variation.WARMTH_FRAGMENTS in self.params.variations:
+            
+        if self.var(Variation.DOUBLE_SKILL):
+            self.itemPool["EX*"] -= 9
+            self.itemPool["DoubleJump"] += 1
+            self.itemPool["Bash"] += 1
+            self.itemPool["Stomp"] += 1
+            self.itemPool["Glide"] += 1
+            self.itemPool["ChargeJump"] += 1
+            self.itemPool["Dash"] += 1
+            self.itemPool["Grenade"] += 1
+            self.itemPool["Water"] += 1
+            self.itemPool["Wind"] += 1
+            
+        if self.var(Variation.WARMTH_FRAGMENTS):
             self.costs["RB28"] = 3 * self.params.frag_count
             self.inventory["RB28"] = 0
             self.itemPool["RB28"] = self.params.frag_count
@@ -357,7 +375,7 @@ class SeedGenerator:
                         if area not in self.doorQueue.keys():
                             self.doorQueue[area] = connection
                             keystoneCount += connection.keys
-                    elif connection.mapstone and not self.var(Variation.FREE_MAPSTONES):
+                    elif connection.mapstone and self.var(Variation.STRICT_MAPSTONES):
                         if not reached:
                             visitMap = True
                             for mp in self.mapQueue.keys():
@@ -370,7 +388,7 @@ class SeedGenerator:
                         if not reached:
                             self.seedDifficulty += cost[2] * cost[2]
                             self.reach_area(connection.target)
-                            if connection.mapstone and self.var(Variation.FREE_MAPSTONES):
+                            if connection.mapstone and not self.var(Variation.STRICT_MAPSTONES):
                                 self.mapstonesSeen += 1
                                 if self.mapstonesSeen >= 9:
                                     self.mapstonesSeen = 11
@@ -381,6 +399,10 @@ class SeedGenerator:
                         self.connectionQueue.append((area, connection))
                         found = True
         return (found, keystoneCount, mapstoneCount)
+
+    def choose_relic_for_zone(self, zone):
+        self.random.shuffle(relics[zone])
+        return relics[zone][0]
 
     def get_all_accessible_locations(self):
         locations = []
@@ -519,7 +541,7 @@ class SeedGenerator:
             hint_text = "Relic"
 
         owner = ("Team " if self.params.sync.teams else "Player ") + str(player)
-        msg = "HN%s/%s/%s" % (name, hint_text, owner)
+        msg = "HN%s-%s-%s" % (name, hint_text, owner)
         return msg
 
     def assign_random(self, recurseCount=0):
@@ -560,12 +582,16 @@ class SeedGenerator:
         self.assign(item)
         self.assign_to_location(item, location)
 
+    # for use in world tour mode
+    # TODO: replace both this and limitkeys with generalized preplacement
+    def relic_assign(self, location):
+        self.force_assign("Relic", location)
+        self.areas[location.area].remove_location(location)
+
     def assign_to_location(self, item, location):
         zone = location.zone
-#        value = 0
         hist_written = False
-        at_mapstone = not self.var(
-            Variation.DISCRETE_MAPSTONES) and location.orig == "MapStone"
+        at_mapstone = not self.var(Variation.DISCRETE_MAPSTONES) and location.orig == "MapStone"
         has_cost = item in self.costs.keys()
 
         loc = location.get_key()
@@ -580,7 +606,7 @@ class SeedGenerator:
             player = self.random.randint(1, self.playerCount)
             if self.params.sync.cloned:
                 # handle cloned seed placement
-                adjusted_item = self.adjust_item(item)
+                adjusted_item = self.adjust_item(item, zone)
                 self.split_locs[loc] = (player, adjusted_item)
 
                 self.spoilerGroup[item].append("%s from Player %s at %s\n" % (item, player, location.to_string()))
@@ -606,7 +632,7 @@ class SeedGenerator:
             else:
                 self.spoilerGroup[item].append(item + " from " + location.to_string() + "\n")
 
-        fixed_item = self.adjust_item(item)
+        fixed_item = self.adjust_item(item, zone)
         assignment = self.get_assignment(loc, fixed_item, zone)
 
         if item in self.eventsOutput:
@@ -616,11 +642,14 @@ class SeedGenerator:
         else:
             self.outputStr += assignment
 
-    def adjust_item(self, item):
+    def adjust_item(self, item, zone):
         if item in self.skillsOutput:
             item = self.skillsOutput[item]
         elif item in self.eventsOutput:
             item = self.eventsOutput[item]
+        elif item == "Relic":
+            relic = self.choose_relic_for_zone(zone)
+            item = "WT#" + relic[0] + "#\\n" + relic[1]
         elif item == "EX*":
             value = self.get_random_exp_value()
             self.expRemaining -= value
@@ -665,6 +694,37 @@ class SeedGenerator:
                 self.assign_to_location(item, locationsToAssign[i])
                 break
         del locationsToAssign[i]
+
+    def form_areas(self):
+        tree = get_areas()
+        root = tree.getroot()
+        logic_paths = [lp.value for lp in self.params.logic_paths]
+        for child in root:
+            area = Area(child.attrib["name"])
+            self.areasRemaining.append(child.attrib["name"])
+            for location in child.find("Locations"):
+                loc = Location(
+                    int(location.find("X").text),
+                    int(location.find("Y").text),
+                    area.name,
+                    location.find("Item").text,
+                    int(location.find("Difficulty").text),
+                    location.find("Zone").text
+                )
+                area.add_location(loc)
+            if child.find("Connections") is None:
+                log.error("No connections found for child %s, (name %s)" % (child, child.attrib["name"]))
+            for conn in child.find("Connections"):
+                connection = Connection(conn.find("Home").attrib["name"], conn.find("Target").attrib["name"], self)
+                entranceConnection = conn.find("Entrance")
+                if self.var(Variation.ENTRANCE_SHUFFLE) and entranceConnection is not None:
+                    continue
+                for req in conn.find("Requirements"):
+                    if req.attrib["mode"] in logic_paths:
+                        connection.add_requirements(req.text.split('+'), self.difficultyMap[req.attrib["mode"]])
+                if connection.get_requirements():
+                    area.add_connection(connection)
+            self.areas[area.name] = area
 
     def connect_doors(self, door1, door2, requirements=["Free"]):
         connection1 = Connection(door1.name, door2.name, self)
@@ -896,46 +956,58 @@ class SeedGenerator:
         mapstoneCount = 0
         plants = []
 
-        tree = get_areas()
-        root = tree.getroot()
-        logic_paths = [lp.value for lp in self.params.logic_paths]
-        for child in root:
-            area = Area(child.attrib["name"])
-            self.areasRemaining.append(child.attrib["name"])
-
-            for location in child.find("Locations"):
-                loc = Location(int(location.find("X").text), int(location.find("Y").text), area.name,
-                               location.find("Item").text, int(
-                                   location.find("Difficulty").text),
-                               location.find("Zone").text)
-                area.add_location(loc)
-            if child.find("Connections") is None:
-                log.error("No connections found for child %s, (name %s)" % (child, child.attrib["name"]))
-            for conn in child.find("Connections"):
-                connection = Connection(conn.find("Home").attrib["name"], conn.find("Target").attrib["name"], self)
-                entranceConnection = conn.find("Entrance")
-                if self.var(Variation.ENTRANCE_SHUFFLE) and entranceConnection is not None:
-                    continue
-                for req in conn.find("Requirements"):
-                    if req.attrib["mode"] in logic_paths:
-                        connection.add_requirements(req.text.split('+'), self.difficultyMap[req.attrib["mode"]])
-                if connection.get_requirements():
-                    area.add_connection(connection)
-            self.areas[area.name] = area
-
+        self.form_areas()
         # flags line
         self.outputStr += (self.params.flag_line(self.verbose_paths) + "\n")
+
+        self.spoilerGroup = defaultdict(list)
 
         if self.var(Variation.ENTRANCE_SHUFFLE):
             self.outputStr += self.randomize_entrances()
 
-        # handle the fixed pickups: first energy cell, the glitchy 100 orb at spirit tree, the forlorn escape plant, and the 2nd keystone in misty
+        # handle the fixed pickups: first energy cell, the glitchy 100 orb at spirit tree, and the forlorn escape plant
+        if self.params.relic_count > 0:
+            zones = ["Glades", "Grove", "Grotto", "Blackroot", "Swamp", "Ginso", "Valley", "Misty", "Forlorn", "Sorrow", "Horu"]
+            
+            for i in range(11 - self.params.relic_count):
+                zones.pop(self.random.randint(0, len(zones)-1))
 
-        for loc, item, zone in [(-280256, "EC1", "Glades"), (-1680104, "EX100", "Grove"), (-12320248, "Grenade", "Forlorn"), (-10440008, "EX100", "Misty")]:
+            locations_by_zone = OrderedDict([(zone, []) for zone in zones])
+
+            for area in self.areas.values():
+                for location in area.locations:
+                    if location.zone in locations_by_zone:
+                        locations_by_zone[location.zone].append(location)
+
+            for locations in locations_by_zone.values():
+                self.random.shuffle(locations)
+
+                relic_loc = None
+
+                while not relic_loc and len(locations):
+                    next_loc = locations.pop()
+                    # Can't put a relic on a map turn-in
+                    if next_loc.orig == "MapStone":
+                        continue
+                    # Can't put a relic on a reserved limitkeys location
+                    if self.params.key_mode == KeyMode.LIMITKEYS and next_loc.orig in self.keySpots:
+                        continue
+                    # Can't put a relic on a reserved preplacement location
+                    # TODO: re-impl relics via preplacement
+                    if next_loc.get_key() in self.forcedAssignments:
+                        continue
+                    relic_loc = next_loc
+
+                self.relic_assign(relic_loc)
+                self.itemCount -= 1
+
+            self.relicSpoiler = self.spoilerGroup
+
+        for loc, item, zone in [(-280256, "EC1", "Glades"), (-1680104, "EX100", "Grove"), (-12320248, "Grenade", "Forlorn")]:
             if loc in self.forcedAssignments:
                 item = self.forcedAssignments[loc]
                 del self.forcedAssignments[loc]  # don't count these ones
-            ass = self.get_assignment(loc, self.adjust_item(item), zone)
+            ass = self.get_assignment(loc, self.adjust_item(item, zone), zone)
             if loc == -280256 and self.params.key_mode == KeyMode.FREE:
                 splitAss = ass.split("|")
                 splitAss[2] = "EV/0/EV/2/EV/4/%s/%s" % (splitAss[1], splitAss[2])
@@ -946,8 +1018,9 @@ class SeedGenerator:
         for v in self.forcedAssignments.values():
             if v in self.itemPool:
                 self.itemPool[v] -= 1
-        self.itemCount -= len(self.forcedAssignments)
-
+            else:
+                self.itemPool["EX*"] -= 1
+            self.itemCount -= 1
 
         locationsToAssign = []
         self.connectionQueue = []
@@ -957,8 +1030,6 @@ class SeedGenerator:
         self.mapstonesAssigned = 0
         self.expSlots = self.itemPool["EX*"]
 
-        self.spoilerGroup = defaultdict(
-            list, {"MS": [], "KS": [], "EC": [], "HC": []})
 
         self.doorQueue = OrderedDict()
         self.mapQueue = OrderedDict()
@@ -1132,6 +1203,13 @@ class SeedGenerator:
             self.mapQueue = OrderedDict()
             spoilerPath = ""
 
+        if self.params.relic_count > 0:
+            spoilerStr += "Relics: {\n"
+
+            for instance in self.relicSpoiler["Relic"]:
+                spoilerStr += "    " + instance
+
+            spoilerStr += "}\n"
         if self.params.balanced:
             for item in self.balanceList:
                 self.outputStr += item[2]
@@ -1141,4 +1219,90 @@ class SeedGenerator:
         for event in self.eventList:
             self.outputStr += event
 
+        # place the last item on the final escape
+        balanced = self.params.balanced
+        self.params.balanced = False
+        for item in self.itemPool:
+            if self.itemPool[item] > 0:
+                self.assign_to_location(item, Location(-240, 512, 'FinalEscape', 'EVWarmth', 0, 'Horu'))
+                break
+        self.params.balanced = balanced
+
         return (self.outputStr, spoilerStr)
+
+    def do_reachability_analysis(self, params):
+        self.params = params
+        self.preplaced = {}
+        self.playerID = 1
+        self.mapQueue = {}
+        self.reservedLocations = []
+        self.doorQueue = {}
+        self.random = random.Random()
+        # items = ["WallJump", "Dash", "ChargeFlame", "DoubleJump", "Bash", "Stomp", "Grenade", "Glide", "Climb", "ChargeJump"]
+        items = ["Glide", "Stomp", "DoubleJump", "ChargeFlame", "WallJump"]
+        # items = ["Climb", "WallJump"]
+        # items = ["Grenade", "ChargeFlame"]
+        # items = ["Bash", "ChargeJump", "Glide", "DoubleJump"]
+        # items = ["ChargeJump", "Stomp"]
+        fill_items = ["WallJump", "Dash", "TPGrove", "ChargeFlame", "TPSwamp", "TPGrotto", "DoubleJump", "GinsoKey", "Bash", "TPGinso", "Water", "Stomp", "Grenade", "Glide", "TPValley", "Climb", "ForlornKey", "TPForlorn", "Wind", "ChargeJump", "TPSorrow", "HoruKey", "TPHoru"]
+        for item in fill_items:
+            if item not in items:
+                items.append(item)
+        scores = []
+        for item in items:
+            self.reset()
+            score = 0
+            for item2 in items:
+                print(item + " " + item2)
+                self.inventory["KS"] = 40
+                self.inventory["MS"] = 11
+                self.inventory["AC"] = 33
+                self.inventory["EC"] = 15
+                self.inventory["HC"] = 15
+                self.costs["KS"] = 0
+                self.costs["MS"] = 0
+                self.costs["AC"] = 0
+                self.costs["EC"] = 0
+                self.costs["HC"] = 0
+                self.form_areas()
+                self.reservedLocations = []
+                self.inventory[item2] = 1
+                self.costs[item2] = 0
+                self.inventory[item] = 0
+                self.costs[item] = 1
+                self.reach_area("SunkenGladesRunaway")
+                if self.var(Variation.OPEN_MODE):
+                    self.reach_area("GladesMain")
+                    for connection in list(self.areas["SunkenGladesRunaway"].connections):
+                        if connection.target == "GladesMain":
+                            self.areas["SunkenGladesRunaway"].remove_connection(connection)
+                locations = 1
+                while locations > 0:
+                    opening = True
+                    while opening:
+                        (opening, keys, mapstones) = self.open_free_connections()
+                        for connection in self.connectionQueue:
+                            self.areas[connection[0]].remove_connection(connection[1])
+                        self.connectionQueue = []
+                    locationsToAssign, reset_loop = self.get_all_accessible_locations()
+                    locations = len(locationsToAssign)
+                self.inventory[item] = 1
+                self.costs[item] = 0
+                locations = 1
+                while locations > 0:
+                    opening = True
+                    while opening:
+                        (opening, keys, mapstones) = self.open_free_connections()
+                        for connection in self.connectionQueue:
+                            self.areas[connection[0]].remove_connection(connection[1])
+                        self.connectionQueue = []
+                    locationsToAssign, reset_loop = self.get_all_accessible_locations()
+                    string = ""
+                    for loc in locationsToAssign:
+                        string += loc.to_string() + " "
+                    print(string)
+                    locations = len(locationsToAssign)
+                    score += locations
+            scores.append(score)
+        for item, score in zip(items, scores):
+            print("%s %d" % (item, score))
