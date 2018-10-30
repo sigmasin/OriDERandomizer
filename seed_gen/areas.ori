@@ -2551,7 +2551,6 @@ home: L1InnerDoor
 		expert-core Grenade Climb
 home: L1
 	pickup: HoruL1
-		ALL Bash
 		casual-core Bash DoubleJump Glide
 		standard-core DoubleJump Bash
 		standard-core Glide Bash WallJump
