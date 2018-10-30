@@ -2693,6 +2693,8 @@ home: L4Below
 	pickup: HoruLavaDrainedLeftExp
 home: R1OuterDoor
 	conn: R1InnerDoor
+	conn: L1OuterDoor
+	    expert-core Free -- Doing a door warp on the R1 door puts you in front of L1
 home: R1InnerDoor
 	conn: R1
 		casual-core Bash DoubleJump Glide WallJump
@@ -2776,10 +2778,10 @@ home: R2
         standard-core Bash Glide Climb
         standard-core Bash Glide ChargeJump
         standard-core Bash Glide Grenade
-        expert-abilities Bash DoubleJump WallJump
-        expert-abilities Bash DoubleJump Climb
-        expert-abilities Bash DoubleJump ChargeJump
-        expert-abilities Bash DoubleJump Grenade
+        expert-core Bash DoubleJump WallJump
+        expert-core Bash DoubleJump Climb
+        expert-core Bash DoubleJump ChargeJump
+        expert-core Bash DoubleJump Grenade
         master-core Bash
         master-dboost DoubleJump ChargeJump Grenade Dash Ability=6 Health=13 Energy=3
         master-dboost DoubleJump ChargeJump Grenade Dash Ability=12 Health=10 Energy=3
@@ -2800,12 +2802,53 @@ home: R3InnerDoor
 		expert-core Grenade WallJump
 		expert-core Grenade Climb
 home: R3
-	pickup: HoruR3Plant
-		casual-core ChargeFlame
-		casual-core Grenade
-		expert-abilities Dash Ability=6
-	pickup: HoruR3
--- TODO
+    conn: HoruR3SpikeCaveEntrance
+        casual-core WallJump DoubleJump Glide
+        casual-core ChargeJump Climb Glide
+        casual-core Bash Grenade Climb Glide
+        standard-core WallJump DoubleJump
+        standard-core ChargeJump Climb
+        standard-core Bash Grenade Climb
+        expert-core ChargeJump Glide
+        expert-core Bash Grenade
+        master-core ChargeJump DoubleJump
+        master-abilities ChargeJump Dash Ability=6 Energy=1
+home: HoruR3SpikeCaveEntrance
+    -- anchor: before the horizontal spike cave, where the lava slime stands
+    conn: HoruR3ElevatorLever
+        casual-core DoubleJump
+        casual-core Bash Grenade
+        standard-abilities Dash Ability=3
+        expert-dboost Glide Health=5
+        master-dboost WallJump Health=9
+        master-dboost WallJump Health=7 Ability=12
+home: HoruR3ElevatorLever
+    -- anchor: at the evelator lever
+    conn: HoruR3CutsceneTrigger
+        casual-core Climb WallJump DoubleJump
+        casual-core Climb WallJump ChargeJump
+        standard-core WallJump DoubleJump
+        standard-core WallJump ChargeJump
+        standard-core WallJump Bash Grenade
+        standard-core WallJump Glide
+        standard-abilities WallJump Dash Ability=3
+        expert-core WallJump
+        master-core Bash Grenade
+        master-abilities DoubleJump Ability=12
+    conn: HoruR3PlantCove
+        master-abilities Glide Dash Ability=6 Energy=1
+        master-abilities DoubleJump Dash Ability=6 Energy=1
+        master-abilities ChargeJump Dash Ability=6 Energy=1
+        master-abilities Dash Ability=6 Energy=2
+home: HoruR3PlantCove
+    pickup: HoruR3Plant
+        casual-core Grenade
+        standard-core ChargeFlame
+        expert-abilities Dash Ability=6
+home: HoruR3CutsceneTrigger
+    -- anchor: at the top of the next before pushing the rock
+    pickup: HoruR3
+    conn: HoruR3PlantCove
 home: R4OuterDoor
 	conn: R4InnerDoor
 	conn: HoruInnerDoor
@@ -2827,10 +2870,69 @@ home: R4InnerDoor
 		expert-core Grenade WallJump
 		expert-core Grenade Climb
 home: R4
-	pickup: HoruR4StompExp
-	pickup: HoruR4LaserExp
+    conn: HoruR4LavaPool
+        master-core Bash
+        master-abilities DoubleJump Dash Ability=12
+        master-abilities ChargeJump DoubleJump Climb Glide  Ability=12
+    conn: HoruR4StompHideout
+        casual-core ChargeFlame ChargeJump
+        casual-core ChargeFlame Bash Grenade
+        casual-core Stomp ChargeJump
+        casual-core Stomp Bash Grenade
+        standard-core ChargeJump Climb
+        expert-core ChargeJump
+        expert-core Bash ChargeFlame
+        expert-core Bash Stomp
+        expert-abilities Bash Dash Ability=6
+        dbash Bash
+home: HoruR4LavaPool
+    --anchor: safe spot on the left of the lava pool, next to the exp orb
 	pickup: HoruR4DrainedExp
-	pickup: HoruR4
+home: HoruR4StompHideout
+    --anchor: under the breakable floor, next to the exp orb
+    pickup: HoruR4StompExp
+    conn: HoruR4PuzzleEntrance
+        casual-core ChargeJump Glide
+        casual-core ChargeJump DoubleJump
+        standard-abilities ChargeJump Dash Ability=3
+        expert-dboost ChargeJump Health=5
+        master-dboost DoubleJump Health=4 Ability=12
+        gjump ChargeJump Climb Grenade
+    conn: HoruR4CutsceneTrigger
+        expert-core Bash ChargeJump
+        expert-dboost ChargeJump DoubleJump Health=5
+        dbash Bash
+home: HoruR4PuzzleEntrance
+    -- anchor: before the puzzle entrance, passed the hot floor
+    pickup: HoruR4LaserExp
+        casual-core Bash Grenade
+        casual-core Bash ChargeJump
+        expert-abilities ChargeJump Dash Ability=6 Energy=2
+        dbash Bash
+        gjump ChargeJump Climb Grenade
+    conn: HoruR4CutsceneTrigger
+        casual-core Bash Grenade
+        casual-core Bash ChargeJump
+        expert-abilities ChargeJump Dash Ability=6 Energy=2
+        gjump ChargeJump Climb Grenade
+home: HoruR4CutsceneTrigger
+    -- anchor: at the end of the room, where Ori needs to stand to activate the cutscene
+    pickup: HoruR4
+    conn: HoruR4LavaPool
+        casual-core DoubleJump Glide
+        casual-core ChargeJump Climb Glide
+        standard-core ChargeJump Climb
+        standard-core Bash Grenade Climb
+        standard-abilities Glide Dash Ability=3
+        standard-abilities DoubleJump Dash Ability=3
+        expert-core Bash Grenade
+        expert-dboost Glide Health=6
+        expert-dboost DoubleJump Health=6
+        expert-dboost Dash Ability=3 Health=6
+        expert-abilities Dash Ability=6 Energy=1
+        master-dboost Health=11
+        master-dboost Health=9 Ability=12
+        master-abilities DoubleJump Ability=12
 home: R4Below
 	pickup: HoruLavaDrainedRightExp
 home: HoruEscapeOuterDoor
