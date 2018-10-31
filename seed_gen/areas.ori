@@ -480,6 +480,9 @@ home: DeathGauntletDoor
 		standard-dboost WallJump Health=4
 		standard-dboost Climb Health=4
 		standard-dboost Bash Health=4
+		expert-dboost WallJump
+		expert-dboost Climb
+		expert-dboost Bash
 		master-core DoubleJump
 	conn: DeathGauntletMoat
 		casual-core Water
@@ -1175,10 +1178,10 @@ home: HollowGrove
 	pickup: GroveWaterStompAbilityCell
 		casual-core Water Stomp
 		expert-lure Bash Water
-		expert-dboost Bash Health=5
+		expert-dboost Bash Health=6
 		expert-dboost Stomp Health=5
-		master-dboost Stomp Ability=12
-		master-dboost Bash Ability=12
+		master-lure Health=5
+		master-lure Ability=12
 		glitched Bash
 	pickup: HoruFieldsHealthCell
 		casual-core Stomp
@@ -1259,6 +1262,12 @@ home: HollowGrove
 		expert-abilities Dash Ability=6
 		master-core WallJump
 		master-core DoubleJump
+	conn: MoonGrottoStompPlantAccess
+		master-lure WallJump Health=4
+		master-lure ChargeJump Health=4
+		master-lure DoubleJump
+		master-lure WallJump Glide
+		master-lure Dash Ability=6
 home: SwampTeleporter
 	-- anchor: on the swamp teleporter
 	conn: HollowGrove
