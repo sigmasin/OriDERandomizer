@@ -3450,22 +3450,16 @@ home: ForlornGravityRoom
 		master-core DoubleJump
 		master-lure Bash
 	conn: ForlornInnerDoor
-		standard-dboost ChargeJump DoubleJump
-		standard-dboost ChargeJump Glide
-		standard-dboost Bash DoubleJump
-		standard-dboost Bash Glide
-		standard-dboost Bash Grenade
-		expert-dboost Dash Ability=6
-		expert-dboost Bash Health=5
-		expert-dboost ChargeJump Health=5
-		expert-dboost DoubleJump Health=5
-		expert-dboost Glide Health=5
-		expert-dboost Health=7
-		master-dboost DoubleJump Ability=12
-		master-dboost Bash Health=4 Ability=12
-		master-dboost ChargeJump Health=4 Ability=12
-		master-dboost Glide Health=4 Ability=12
-		master-dboost Health=5 Ability=12
+		casual-core WallJump DoubleJump Glide
+		casual-core Climb DoubleJump Glide
+		casual-core Bash
+		casual-core ChargeJump Glide
+		casual-core ChargeJump DoubleJump
+		standard-dboost Health=4
+		standard-core Dash DoubleJump
+		standard-abilities ChargeJump Dash Ability=3
+		expert-core ChargeJump
+		master-dboost Health=3 Ability=12
 home: ForlornMapArea
 -- anchored in front of the map monument
 -- ForlornKey required to avoid KS lock scenarios
