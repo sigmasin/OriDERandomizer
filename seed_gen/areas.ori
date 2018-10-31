@@ -3370,6 +3370,13 @@ home: ForlornInnerDoor
 		expert-dboost WallJump Health=4
 		master-dboost WallJump Health=3 Ability=12
 		master-abilities DoubleJump Ability=12
+		casual-core DoubleJump Open
+		casual-core Glide Climb Open
+		casual-core Glide WallJump Open
+		casual-core ChargeJump Open
+		standard-core Dash Climb Open
+		standard-core Dash WallJump Open
+		expert-core Open
 	conn: ForlornGravityRoom
 		casual-core WallJump DoubleJump Glide
 		casual-core Climb DoubleJump Glide
@@ -3387,7 +3394,6 @@ home: ForlornInnerDoor
 		master-dboost WallJump Health=3 Ability=12
 home: ForlornOrbPossession
 -- anchored anywhere in left forlorn, in possesion of the orb (open only)
-	conn: ForlornEntranceExpArea
 	conn: ForlornHiddenSpiderExpArea
 		casual-core Bash
 		casual-core ChargeJump
@@ -3402,6 +3408,16 @@ home: ForlornOrbPossession
 	conn: ForlornMapArea
 	conn: ForlornKeyDoor
 	conn: ForlornInnerDoor
+		casual-core WallJump DoubleJump Glide
+		casual-core Climb DoubleJump Glide
+		casual-core Bash
+		casual-core ChargeJump Glide
+		casual-core ChargeJump DoubleJump
+		standard-dboost Health=4
+		standard-core Dash DoubleJump
+		standard-abilities ChargeJump Dash Ability=3
+		expert-core ChargeJump
+		master-dboost Health=3 Ability=12
 home: ForlornGravityRoom
 -- anchored directly below the first keystone
 	conn: ForlornHiddenSpiderExpArea
@@ -3434,16 +3450,22 @@ home: ForlornGravityRoom
 		master-core DoubleJump
 		master-lure Bash
 	conn: ForlornInnerDoor
-		casual-core WallJump DoubleJump Glide
-		casual-core Climb DoubleJump Glide
-		casual-core Bash
-		casual-core ChargeJump Glide
-		casual-core ChargeJump DoubleJump
-		standard-dboost Health=4
-		standard-core Dash DoubleJump
-		standard-abilities ChargeJump Dash Ability=3
-		expert-core ChargeJump
-		master-dboost Health=3 Ability=12
+		standard-dboost ChargeJump DoubleJump
+		standard-dboost ChargeJump Glide
+		standard-dboost Bash DoubleJump
+		standard-dboost Bash Glide
+		standard-dboost Bash Grenade
+		expert-dboost Dash Ability=6
+		expert-dboost Bash Health=5
+		expert-dboost ChargeJump Health=5
+		expert-dboost DoubleJump Health=5
+		expert-dboost Glide Health=5
+		expert-dboost Health=7
+		master-dboost DoubleJump Ability=12
+		master-dboost Bash Health=4 Ability=12
+		master-dboost ChargeJump Health=4 Ability=12
+		master-dboost Glide Health=4 Ability=12
+		master-dboost Health=5 Ability=12
 home: ForlornMapArea
 -- anchored in front of the map monument
 -- ForlornKey required to avoid KS lock scenarios
