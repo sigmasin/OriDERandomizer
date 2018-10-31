@@ -628,7 +628,7 @@ home: SpiritTreeDoorOpened
 		casual-core Bash
 		casual-dboost ChargeJump
 		master-core DoubleJump
-	conn: TopSpiritCaverns
+	conn: UpperSpiritCaverns
 home: GladesLaserArea
 	-- anchor: just to the right of the 4-energy door
 	pickup: GladesLaser
