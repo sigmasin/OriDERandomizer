@@ -551,7 +551,7 @@ home: SpiritCavernsDoor
 		casual-core Keystone=2
 home: SpiritCavernsDoorOpened
 	-- anchor: same as SpiritCavernsDoor, but the door is open
-	conn: SpiritCaverns
+	conn: LowerSpiritCaverns
 		casual-core Climb
 		casual-core WallJump
 		casual-core ChargeJump
@@ -559,26 +559,23 @@ home: SpiritCavernsDoorOpened
 		standard-lure Bash
 		master-core DoubleJump
 	conn: GladesMain
-home: SpiritCaverns
-	-- anchor: on the ground just after the first wall in spirit caverns
+home: LowerSpiritCaverns
+	-- anchor: next to the 3rd shooter, on the wooden beam
 	pickup: SpiritCavernsKeystone1
-		casual-core WallJump
-		casual-core Climb
-		casual-core ChargeJump
-		casual-core Bash
-		master-core DoubleJump
 	pickup: SpiritCavernsKeystone2
 		casual-core WallJump
 		casual-core Climb
 		casual-core ChargeJump
 		casual-core Bash
-		master-core DoubleJump
+		casual-core DoubleJump
+		expert-abilities Dash Ability=6
 	pickup: SpiritCavernsAbilityCell
 		casual-core ChargeJump
 		casual-core Bash
 		standard-core WallJump DoubleJump
 		expert-core Climb DoubleJump
-	conn: UpperSpiritCaverns
+		master-abilities DoubleJump Ability=12
+	conn: MidSpiritCaverns
 		casual-core WallJump
 		casual-core Climb
 		casual-core ChargeJump
@@ -591,27 +588,32 @@ home: SpiritCaverns
 		casual-core Bash Energy=4
 	conn: SpiritCavernsDoor
 		casual-core Open
-home: UpperSpiritCaverns
+home: MidSpiritCaverns
 	-- anchor: on the ledge across from the 4-energy gladeser door
+	conn: LowerSpiritCaverns
+	conn: GladesLaserArea
+		casual-core Energy=4
+		glitched Energy=3
+	conn: UpperSpiritCaverns
+		casual-core WallJump
+		casual-core Climb
+		casual-core Bash Grenade
+		casual-core ChargeJump
+		casual-dboost DoubleJump
+		expert-core Dash Bash
+		dbash Bash
+home: UpperSpiritCaverns
+	-- anchor: on the platform above the top right keystone
 	pickup: SpiritCavernsTopLeftKeystone
 		casual-core WallJump
 		casual-core DoubleJump Climb
 		casual-core Glide Climb
 		casual-dboost ChargeJump
-		casual-dboost Bash Climb
-		standard-core Bash Grenade
-		dbash Bash
+		standard-core Bash
 		master-core Climb
+		master-core DoubleJump
 	pickup: SpiritCavernsTopRightKeystone
-		casual-core WallJump
-		casual-core Climb
-		casual-core ChargeJump
-		casual-core Bash
-		casual-dboost DoubleJump
-	conn: SpiritCaverns
-	conn: GladesLaserArea
-		casual-core Energy=4
-		glitched Energy=3
+	conn: MidSpiritCaverns
 	conn: SpiritTreeDoor
 		casual-core Free
 home: SpiritTreeDoor
@@ -625,7 +627,8 @@ home: SpiritTreeDoorOpened
 		casual-core Climb
 		casual-core Bash
 		casual-dboost ChargeJump
-	conn: UpperSpiritCaverns
+		master-core DoubleJump
+	conn: TopSpiritCaverns
 home: GladesLaserArea
 	-- anchor: just to the right of the 4-energy door
 	pickup: GladesLaser
@@ -644,7 +647,7 @@ home: GladesLaserArea
 		expert-abilities Dash Ability=6 Energy=2
 		expert-abilities Dash DoubleJump Ability=6
 	conn: GladesMain
-	conn: SpiritCaverns
+	conn: MidSpiritCaverns
 		casual-core Energy=4
 		timed-level Energy=2
 home: ChargeFlameSkillTreeChamber
@@ -3047,6 +3050,8 @@ home: ValleyEntry
 		expert-abilities Dash Ability=6
 	conn: ValleyEntryTreePlantAccess
 		casual-core ChargeJump ChargeFlame
+		casual-core ChargeJump Grenade
+		casual-core Bash Grenade
 		expert-core WallJump ChargeFlame
 		expert-core Grenade
 		expert-abilities Dash Energy=2 Ability=6
