@@ -1407,13 +1407,13 @@ home: GinsoMiniBossDoor
 	pickup: LowerGinsoKeystone1 
 		casual-core DoubleJump
 		casual-core Glide
-		casual-core Bash Grenade
+		standard-core Bash Grenade
 		standard-abilities Dash Ability=3
 		standard-dboost Health=3
 	pickup: LowerGinsoKeystone2
 		casual-core DoubleJump
 		casual-core Glide
-		casual-core Bash Grenade
+		standard-core Bash Grenade
 		standard-dboost ChargeJump Health=3
 		standard-abilities Dash Ability=3
 	pickup: LowerGinsoKeystone3
@@ -2318,6 +2318,11 @@ home: HoruFields
 	conn: HoruFieldsPushBlock
 		casual-core Bash DoubleJump
 		casual-core Bash Glide
+		standard-core Bash Grenade
+		standard-core ChargeJump DoubleJump Glide Climb
+		standard-core ChargeJump DoubleJump Glide WallJump
+		standard-abilities ChargeJump Glide Climb Dash Ability=3
+		standard-abilities ChargeJump Glide WallJump Dash Ability=3
 		expert-core ChargeJump DoubleJump Glide
 		expert-abilities ChargeJump Glide Dash Ability=6 Energy=3
 		expert-abilities ChargeJump Dash Ability=6 Energy=4
@@ -2326,14 +2331,12 @@ home: HoruFields
 		master-abilities Climb DoubleJump Dash Ability=12 Energy=4
 		gjump Climb Grenade ChargeJump
 	conn: HoruOuterDoor
-		casual-core Bash DoubleJump Glide WallJump
-		casual-core Bash DoubleJump ChargeJump WallJump
-		casual-core Bash Glide ChargeJump WallJump
-		casual-core Bash DoubleJump Glide Climb
-		casual-core Bash DoubleJump ChargeJump Climb
-		casual-core Bash Glide ChargeJump Climb
-		expert-core Bash Grenade WallJump
-		expert-core Bash Grenade Climb
+		casual-core Bash DoubleJump WallJump
+		casual-core Bash DoubleJump Climb
+		casual-core Bash Glide WallJump
+		casual-core Bash Glide Climb
+		standard-core Bash Grenade
+		standard-core ChargeJump Glide
 		master-core Bash
 		master-abilities WallJump Stomp Glide DoubleJump Ability=12
 		master-abilities WallJump DoubleJump Dash Ability=12 Energy=3
