@@ -273,10 +273,12 @@ public static class Randomizer
 				if (Randomizer.CluesMode) {
 					RandomizerClues.FinishClues();
 				}
+			} else {
+				Randomizer.printInfo("Error: randomizer.dat not found");
 			}
 		}
 		catch(Exception e) {
-			Randomizer.showHint("Error parsing randomizer.dat:" + e.Message);
+			Randomizer.printInfo("Error parsing randomizer.dat:" + e.Message, 300);
 		}
 	RandomizerBonusSkill.Reset();
 	}
@@ -330,6 +332,16 @@ public static class Randomizer
 	public static void showHint(string message, int frames)
 	{
 		Randomizer.Message = message;
+		Randomizer.MessageQueue.Enqueue(new object[] {message, frames});
+	}
+
+	public static void printInfo(string message)
+	{
+		Randomizer.MessageQueue.Enqueue(message);
+	}
+
+	public static void printInfo(string message, int frames)
+	{
 		Randomizer.MessageQueue.Enqueue(new object[] {message, frames});
 	}
 
@@ -536,7 +548,7 @@ public static class Randomizer
 				Randomizer.changeColor();
 			}
 			Randomizer.ColorShift = !Randomizer.ColorShift;
-			Randomizer.MessageQueue.Enqueue(obj);
+			Randomizer.printInfo(obj);
 		}
 		if (RandomizerRebinding.ToggleChaos.IsPressed() && Characters.Sein)
 		{
@@ -577,36 +589,32 @@ public static class Randomizer
 	{
 		if (Randomizer.ChaosVerbose)
 		{
-			Randomizer.MessageQueue.Enqueue(message);
+			Randomizer.printInfo(message);
 		}
 	}
 
 	public static void showChaosMessage(string message)
 	{
-		Randomizer.MessageQueue.Enqueue(message);
+		Randomizer.printInfo(message);
 	}
 
 	public static void getMapStone()
 	{
-		try {
-			if (!Randomizer.ProgressiveMapStones) {
-				Randomizer.getPickup();
-				return;
-			}
-			RandomizerBonus.CollectMapstone();
-			if (Randomizer.ColorShift) {
-				Randomizer.changeColor();
-			}
-			RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[20 + RandomizerBonus.MapStoneProgression() * 4], 20 + RandomizerBonus.MapStoneProgression() * 4, true);
+		if (!Randomizer.ProgressiveMapStones) {
+			Randomizer.getPickup();
+			return;
 		}
-		catch(Exception e) {
-			Randomizer.showHint("getMapStone: " + e.Message + "\n" + e.StackTrace.ToString());
+		RandomizerBonus.CollectMapstone();
+		if (Randomizer.ColorShift) {
+			Randomizer.changeColor();
 		}
+		RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[20 + RandomizerBonus.MapStoneProgression() * 4], 20 + RandomizerBonus.MapStoneProgression() * 4, true);
 	}
+
 	public static void showProgress()
 	{
 		string text = "";
-		if(Randomizer.ForceTrees)
+		if(Randomizer.ForceTrees || Randomizer.CluesMode)
 		{
 			if (RandomizerBonus.SkillTreeProgression() == 10)
 			{
@@ -677,13 +685,13 @@ public static class Randomizer
 				});
 			}
 		}
-		Randomizer.MessageQueue.Enqueue(text);
+		Randomizer.printInfo(text);
 	}
 
 	public static void showSeedInfo()
 	{
 		string obj = "v3.0b - seed loaded: " + Randomizer.SeedMeta;
-		Randomizer.MessageQueue.Enqueue(obj);
+		Randomizer.printInfo(obj);
 	}
 
 	public static void changeColor()
@@ -745,7 +753,7 @@ public static class Randomizer
 	{
 		if (Randomizer.fragsEnabled && RandomizerBonus.WarmthFrags() < Randomizer.fragKeyFinish)
 		{
-			Randomizer.MessageQueue.Enqueue(string.Concat(new string[]
+			Randomizer.printInfo(string.Concat(new string[]
 			{
 				"Frags: (",
 				RandomizerBonus.WarmthFrags().ToString(),
@@ -758,18 +766,18 @@ public static class Randomizer
 		if (Randomizer.WorldTour) {
 			int relics = Characters.Sein.Inventory.GetRandomizerItem(302);
 			if(relics < Randomizer.RelicCount) {
-				Randomizer.MessageQueue.Enqueue("Relics (" + relics.ToString() + "/" + Randomizer.RelicCount.ToString() + ")");
+				Randomizer.printInfo("Relics (" + relics.ToString() + "/" + Randomizer.RelicCount.ToString() + ")");
 				return false;
 			}
 		}
 		if (Randomizer.ForceTrees && RandomizerBonus.SkillTreeProgression() < 10)
 		{
-			Randomizer.MessageQueue.Enqueue("Trees (" + RandomizerBonus.SkillTreeProgression().ToString() + "/10)");
+			Randomizer.printInfo("Trees (" + RandomizerBonus.SkillTreeProgression().ToString() + "/10)");
 			return false;
 		}
 		if (Randomizer.ForceMaps && RandomizerBonus.MapStoneProgression() < 9)
 		{
-			Randomizer.MessageQueue.Enqueue("Maps (" + RandomizerBonus.MapStoneProgression().ToString() + "/9)");
+			Randomizer.printInfo("Maps (" + RandomizerBonus.MapStoneProgression().ToString() + "/9)");
 			return false;
 		}
 		return true;
@@ -852,7 +860,7 @@ public static class Randomizer
 		{
 			Randomizer.HoruScene = "";
 		}
-	}
+	} 
 
 	// Token: 0x06003848 RID: 14408
 	public static void Tick()
