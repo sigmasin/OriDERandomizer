@@ -14,12 +14,12 @@ public static class RandomizerBonusSkill
             RandomizerBonusSkill.Reset();
             if (RandomizerBonusSkill.UnlockedBonusSkills.Count < 1)
             {
-                Randomizer.MessageQueue.Enqueue("No bonus skills unlocked!");
+                Randomizer.printInfo("No bonus skills unlocked!");
                 return;
             }
         }
         RandomizerBonusSkill.ActiveBonus = (RandomizerBonusSkill.ActiveBonus + 1) % RandomizerBonusSkill.UnlockedBonusSkills.Count;
-        Randomizer.MessageQueue.Enqueue("Active Bonus Skill: " + RandomizerBonusSkill.CurrentBonusName());
+        Randomizer.printInfo("Active Bonus Skill: " + RandomizerBonusSkill.CurrentBonusName());
     }
 
     // Token: 0x060037F9 RID: 14329
@@ -47,7 +47,7 @@ public static class RandomizerBonusSkill
             if (RandomizerBonusSkill.ActiveDrainSkills.Contains(item))
             {
                 RandomizerBonusSkill.ActiveDrainSkills.Remove(item);
-                Randomizer.MessageQueue.Enqueue("Gravity Shift off");
+                Randomizer.printInfo("Gravity Shift off");
                 Characters.Sein.PlatformBehaviour.Gravity.BaseSettings.GravityAngle = 0f;
                 RandomizerBonusSkill.EnergyDrainRate -= 0.001f;
                 return;
@@ -55,7 +55,7 @@ public static class RandomizerBonusSkill
             if (Characters.Sein.Energy.Current > 0f)
             {
                 RandomizerBonusSkill.ActiveDrainSkills.Add(item);
-                Randomizer.MessageQueue.Enqueue("Gravity Shift on");
+                Randomizer.printInfo("Gravity Shift on");
                 Characters.Sein.PlatformBehaviour.Gravity.BaseSettings.GravityAngle = 180f;
                 RandomizerBonusSkill.EnergyDrainRate += 0.001f;
                 return;
@@ -67,7 +67,7 @@ public static class RandomizerBonusSkill
             if (RandomizerBonusSkill.ActiveDrainSkills.Contains(item))
             {
                 RandomizerBonusSkill.ActiveDrainSkills.Remove(item);
-                Randomizer.MessageQueue.Enqueue("ExtremeSpeed off");
+                Randomizer.printInfo("ExtremeSpeed off");
                 Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Ground.MaxSpeed = 11.6666f;
                 Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Air.MaxSpeed = 11.6666f;
                 RandomizerBonusSkill.EnergyDrainRate -= 0.001f;
@@ -76,7 +76,7 @@ public static class RandomizerBonusSkill
             if (Characters.Sein.Energy.Current > 0f)
             {
                 RandomizerBonusSkill.ActiveDrainSkills.Add(item);
-                Randomizer.MessageQueue.Enqueue("ExtremeSpeed on");
+                Randomizer.printInfo("ExtremeSpeed on");
                 Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Ground.MaxSpeed = 40f;
                 Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Air.MaxSpeed = 40f;
                 RandomizerBonusSkill.EnergyDrainRate += 0.001f;
@@ -124,7 +124,7 @@ public static class RandomizerBonusSkill
         case 106:
             if (!Characters.Sein.SoulFlame.AllowedToAccessSkillTree)
             {
-                Randomizer.showHint("You can only Respec at a Soul Link!");
+                Randomizer.printInfo("You can only Respec at a Soul Link!");
                 return;
             }
             {

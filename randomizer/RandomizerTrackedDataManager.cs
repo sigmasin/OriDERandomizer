@@ -150,7 +150,7 @@ public static class RandomizerTrackedDataManager
 		}
 		string ownedLine   = "TPs active: " + string.Join(", ", owned.ToArray());
 		string unownedLine = "remaining: " + string.Join(", ", unowned.ToArray());
-		Randomizer.showHint(ownedLine + "\n" + unownedLine);
+		Randomizer.printInfo(ownedLine + "\n" + unownedLine);
 	}
 
 	public static void ListTrees() {
@@ -169,7 +169,7 @@ public static class RandomizerTrackedDataManager
 		}
 		string ownedLine = "Trees active: " + string.Join(", ", owned.ToArray());
 		string unownedLine = "remaining: " + string.Join(", ", unowned.ToArray());
-		Randomizer.showHint(ownedLine + "\n" + unownedLine);
+		Randomizer.printInfo(ownedLine + "\n" + unownedLine);
 	}
 
 	public static void ListRelics() {
@@ -187,7 +187,7 @@ public static class RandomizerTrackedDataManager
 		}
 		string ownedLine = "Relics collected: " + string.Join(", ", owned.ToArray());
 		string unownedLine = "remaining: " + string.Join(", ", unowned.ToArray());
-		Randomizer.showHint(ownedLine + "\n" + unownedLine);
+		Randomizer.printInfo(ownedLine + "\n" + unownedLine);
 	}
 
 	public static void ListMapstones() {
@@ -203,7 +203,7 @@ public static class RandomizerTrackedDataManager
 		}
 		string ownedLine = "Maps active: " + string.Join(", ", owned.ToArray());
 		string unownedLine = "remaining: " + string.Join(", ", unowned.ToArray());
-		Randomizer.showHint(ownedLine + "\n" + unownedLine);
+		Randomizer.printInfo(ownedLine + "\n" + unownedLine);
 	}
 
 
@@ -235,7 +235,7 @@ public static class RandomizerTrackedDataManager
 			} 
 		} 
 		catch(Exception e) {
-			Randomizer.showHint("@SetMapstone:@ area " + areaIdentifier + ": " + e.Message);
+			Randomizer.printInfo("@SetMapstone:@ area " + areaIdentifier + ": " + e.Message);
 		}
 	}
 

@@ -87,7 +87,7 @@ public static class RandomizerRebinding {
 				AssignBind(missingKey, null, writeList);
 			}
 			if(writeList.Count > 0) {
-				Randomizer.showHint("No binds found for " + String.Join(", ", writeList.ToArray()) + ". Defaults added to rebinding file.");
+				Randomizer.printInfo("Default Binds written for these missing binds: " + String.Join(", ", writeList.ToArray()) + ".", 480);
 				string writeText = "";
 				foreach(string writeKey in writeList) {
 					writeText += Environment.NewLine + writeKey+ ": " + DefaultBinds[writeKey];
@@ -96,7 +96,7 @@ public static class RandomizerRebinding {
 			}
 		}
 		catch(Exception e) {
-			Randomizer.showHint(e.Message);
+			Randomizer.printInfo("Error parsing bindings: " + e.Message, 180);
 		}
 	}
 	public static void AssignBind(string key, string bind, List<string> writeList) {
@@ -146,7 +146,7 @@ public static class RandomizerRebinding {
 		}
 		catch (Exception)
 		{
-			Randomizer.showHint("@"+key+ ": failed to parse '" + bind + "'. Using default value: '"+defaultBind+"'@");
+			Randomizer.printInfo("@"+key+ ": failed to parse '" + bind + "'. Using default value: '"+defaultBind+"'@", 180);
 			bind = defaultBind;
 		}
 		return ParseBinds(bind);

@@ -245,7 +245,7 @@ public static class RandomizerBonus
             }
             Randomizer.showHint(string.Concat(new object[]
             {
-                "Warmth Fragment (",
+                "@Warmth Fragment (",
                 RandomizerBonus.WarmthFrags().ToString(),
                 "/",
                 Randomizer.fragKeyFinish,
