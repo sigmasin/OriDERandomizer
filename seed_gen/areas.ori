@@ -569,6 +569,7 @@ home: LowerSpiritCaverns
 		casual-core Bash
 		casual-core DoubleJump
 		expert-abilities Dash Ability=6
+		master-core Free
 	pickup: SpiritCavernsAbilityCell
 		casual-core ChargeJump
 		casual-core Bash
