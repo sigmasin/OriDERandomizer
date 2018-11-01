@@ -1803,10 +1803,8 @@ home: MoonGrotto
 		standard-core Dash
 	conn: MoonGrottoBelowTeleporter
 		casual-core DoubleJump
-		casual-core Glide ChargeJump
+		casual-core ChargeJump Glide
 		standard-dboost Glide Health=4
-		standard-dboost ChargeJump Health=4
-		standard-dboost WallJump Health=4
 		standard-abilities Dash Ability=3
 home: Iceless
 	-- anchor: at the iceless xp
@@ -1823,11 +1821,12 @@ home: MoonGrottoBelowTeleporter
 	pickup: BelowGrottoTeleporterHealthCell
 		casual-core DoubleJump Bash WallJump
 		casual-core DoubleJump Bash Climb
-		casual-core DoubleJump ChargeJump
-		casual-core ChargeJump Glide WallJump
-		casual-core ChargeJump Glide Climb
-		standard-dboost ChargeJump Health=4
-		standard-dboost DoubleJump Bash Health=4
+		casual-core ChargeJump DoubleJump
+		casual-core ChargeJump Glide
+		standard-dboost ChargeJump Health=3
+		standard-dboost DoubleJump Bash Health=3
+		standard-dboost WallJump Bash Health=3
+		expert-dboost Bash Health=5
 		expert-abilities WallJump Dash Ability=6
 		expert-abilities Climb Dash Ability=6
 		expert-abilities ChargeJump Dash Ability=6
