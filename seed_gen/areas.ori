@@ -3079,6 +3079,21 @@ home: ValleyEntry
 		expert-lure Bash Climb DoubleJump
 		expert-dboost Bash ChargeJump Health=4
 		expert-dboost Stomp ChargeJump Health=4
+		-- testing paths with door removed
+		casual-core WallJump DoubleJump Open
+		casual-core WallJump Bash Open
+		casual-core WallJump ChargeJump Open
+		casual-core Climb ChargeJump Open
+		casual-core Climb DoubleJump Open
+		expert-dboost ChargeJump Health=4 Open
+	-- test connection with door removed
+	conn: ValleyThreeBirdArea
+		casual-core Glide Wind Open
+		casual-core Bash Open
+		casual-core Climb ChargeJump Glide Open
+		casual-core Climb ChargeJump DoubleJump Open
+		standard-core Dash DoubleJump ChargeJump Open
+		gjump Climb ChargeJump Grenade Open
 	conn: SpiritTreeRefined
 		casual-core ChargeFlame
 		casual-core Grenade
@@ -4321,7 +4336,6 @@ home: MistyPostLasers
 		standard-abilities Bash Glide Dash Ability=3
 		expert-dboost Glide Health=4
 		master-core Bash Health=4
-		master-dboost Bash Health=7
 		master-dboost DoubleJump Health=11
 	conn: MistyMortarSpikeCave
 		casual-core Bash Glide DoubleJump
@@ -4355,6 +4369,7 @@ home: MistyKeystone4Ledge
 		standard-core Climb Bash DoubleJump
 		master-abilities Dash Ability=6
 		master-dboost ChargeJump DoubleJump Health=10
+		master-lure Bash
 home: MistyBeforeDocks
 	--anchor point: to the right of the sit shoot shark, on the docks
 	conn: MistyAbove200xp
