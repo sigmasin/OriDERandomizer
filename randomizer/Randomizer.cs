@@ -97,6 +97,8 @@ public static class Randomizer
 		Randomizer.RelicZoneLookup = new Dictionary<string, string>();
 		RandomizerTrackedDataManager.Initialize();
 		Randomizer.RelicCount = 0;
+		GrenadeZone = "MIA";
+		StompZone = "MIA";
 		bool relicCountOverride = false;
 		try {
 			if(File.Exists("randomizer.dat")) {
@@ -260,9 +262,16 @@ public static class Randomizer
 							int.TryParse(lineParts[3], out doorY);
 							Randomizer.DoorTable[coords] = new Vector3((float)id, (float)doorY);
 						}
-						else
+						else 
 						{
 							Randomizer.Table[coords] = new RandomizerAction(lineParts[1], id);
+							if (lineParts[1] == "SK") {
+								if(id == 51) {
+									GrenadeZone = lineParts[3];
+								} else if(id == 4) {
+									StompZone = lineParts[3];
+								}
+							}
 							if (Randomizer.CluesMode && lineParts[1] == "EV" && id % 2 == 0)
 							{
 								RandomizerClues.AddClue(lineParts[3], id / 2);
@@ -686,6 +695,10 @@ public static class Randomizer
 				});
 			}
 		}
+		if(RandomizerBonus.ForlornEscapeHint())
+		{
+			text += "\nStomp: " + StompZone + "\t Grenade: " + GrenadeZone;
+		}
 		Randomizer.printInfo(text);
 	}
 
@@ -1105,4 +1118,8 @@ public static class Randomizer
 
 	// Token: 0x0400337B RID: 13179
 	public static ArrayList ValleyLeverDoorData;
+
+	public static string GrenadeZone;
+	// welcome to the...
+	public static string StompZone;
 }

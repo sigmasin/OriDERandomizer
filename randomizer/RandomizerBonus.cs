@@ -311,9 +311,18 @@ public static class RandomizerBonus
                 return;
             }
             break;
+        case 81:
+            Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
+            Randomizer.showHint("Stomp: " + Randomizer.StompZone + "\t Grenade: "+ Randomizer.GrenadeZone, 480);
+            break;
         default:
             return;
         }
+    }
+
+    public static bool ForlornEscapeHint()
+    {
+        return Characters.Sein.Inventory.GetRandomizerItem(81) > 0;
     }
 
     // Token: 0x0600376E RID: 14190 RVA: 0x0002B9F1 File Offset: 0x00029BF1

@@ -25,6 +25,7 @@
 33 - Skill Velocity Upgrade
 
 80 - Spent AP Counter
+81 - Stomp/Grenade Hint
 
 101 - Polarity Shift
 102 - Gravity Swap
