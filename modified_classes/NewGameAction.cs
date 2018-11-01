@@ -19,6 +19,8 @@ public class NewGameAction : ActionMethod
 			Game.Checkpoint.SaveGameData.LoadCustomData(Randomizer.GinsoData);
 			Game.Checkpoint.SaveGameData.LoadCustomData(Randomizer.ForlornData);
 			Game.Checkpoint.SaveGameData.LoadCustomData(Randomizer.HoruData);
+			Game.Checkpoint.SaveGameData.LoadCustomData(Randomizer.ValleyLeverDoorData);
+			Game.Checkpoint.SaveGameData.LoadCustomData(Randomizer.ValleyStompDoorData);
 		}
 		GameController.Instance.RequireInitialValues = true;
 		GameStateMachine.Instance.SetToGame();

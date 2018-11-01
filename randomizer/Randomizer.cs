@@ -88,6 +88,7 @@ public static class Randomizer
 		RandomizerDataMaps.LoadGinsoData();
 		RandomizerDataMaps.LoadForlornData();
 		RandomizerDataMaps.LoadHoruData();
+		RandomizerDataMaps.LoadValleyData();
 		RandomizerColorManager.Initialize();
 		RandomizerPlantManager.Initialize();
 		RandomizerRebinding.ParseRebinding();
@@ -1098,4 +1099,10 @@ public static class Randomizer
 	public static Dictionary<string, string> RelicZoneLookup;
 
 	public static int RelicCount;
+
+	// Token: 0x0400337A RID: 13178
+	public static ArrayList ValleyStompDoorData;
+
+	// Token: 0x0400337B RID: 13179
+	public static ArrayList ValleyLeverDoorData;
 }
