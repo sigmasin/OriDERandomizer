@@ -865,6 +865,9 @@ class SeedGenerator:
             self.codeToName[v] if v in self.codeToName else v) for k, v in preplaced.iteritems()}
         self.do_multi = self.params.sync.enabled and self.params.sync.mode == MultiplayerGameType.SHARED
 
+        if self.var(Variation.WORLD_TOUR):
+            self.relicZones = self.random.sample(["Glades", "Grove", "Grotto", "Blackroot", "Swamp", "Ginso", "Valley", "Misty", "Forlorn", "Sorrow", "Horu"], self.params.relic_count)
+
         self.playerCount = 1
         if self.do_multi:
             if self.params.sync.teams:
@@ -988,11 +991,8 @@ class SeedGenerator:
 
         # handle the fixed pickups: first energy cell, the glitchy 100 orb at spirit tree, and the forlorn escape plant
         if self.var(Variation.WORLD_TOUR):
-            zones = ["Glades", "Grove", "Grotto", "Blackroot", "Swamp", "Ginso", "Valley", "Misty", "Forlorn", "Sorrow", "Horu"]
-            for i in range(11 - self.params.relic_count):
-                zones.pop(self.random.randint(0, len(zones)-1))
 
-            locations_by_zone = OrderedDict({zone: [] for zone in zones})
+            locations_by_zone = OrderedDict({zone: [] for zone in self.relicZones})
 
             for area in self.areas.values():
                 for location in area.locations:
