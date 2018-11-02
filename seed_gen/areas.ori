@@ -3288,6 +3288,9 @@ home: ValleyThreeBirdArea
 		master-abilities DoubleJump Ability=12
 	pickup: ValleyMainFACS
 		casual-core Climb ChargeJump
+		expert-abilities WallJump DoubleJump ChargeJump Dash Ability=3
+		expert-abilities WallJump Glide Wind ChargeJump Dash Ability=3
+		expert-dboost WallJump ChargeJump Dash Ability=3 Health=4
 		dbash Bash
 	conn: ValleyEntry
 		casual-core Glide
@@ -3650,12 +3653,26 @@ home: WilhelmLedge
 		casual-core Stomp
 		standard-lure HoruKey
 		standard-core Climb ChargeJump
+		expert-core ChargeJump WallJump Glide
+		expert-core ChargeJump WallJump DoubleJump
+		expert-core ChargeJump Bash
+		expert-abilities ChargeJump WallJump Dash Ability=3
+		master-core ChargeJump Glide
+		master-core ChargeJump DoubleJump
+		master-abilities ChargeJump Dash Ability=3
 		master-core Bash
 		glitched ChargeJump
 	conn: ValleyKuroPerch
 		casual-core Stomp
 		standard-lure HoruKey
 		standard-core Climb ChargeJump
+		expert-core ChargeJump WallJump Glide
+		expert-core ChargeJump WallJump DoubleJump
+		expert-core ChargeJump Bash
+		expert-abilities ChargeJump WallJump Dash Ability=3
+		master-core ChargeJump Glide
+		master-core ChargeJump DoubleJump
+		master-abilities ChargeJump Dash Ability=3
 		master-core Bash
 		glitched ChargeJump
 home: SorrowBashLedge
