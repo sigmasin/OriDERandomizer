@@ -178,14 +178,14 @@ class SeedGenerator:
         """Part one of a reset. All initialization that doesn't
         require reading from params goes here."""
         self.costs = OrderedDict({
-            "Free": 0, "MS": 0, "KS": 4, "AC": 12, "EC": 6, "HC": 12, "WallJump": 13,
-            "ChargeFlame": 13, "DoubleJump": 13, "Bash": 41, "Stomp": 29,
-            "Glide": 17, "Climb": 41, "ChargeJump": 59, "Dash": 13,
-            "Grenade": 29, "GinsoKey": 12, "ForlornKey": 12, "HoruKey": 12,
-            "Water": 80, "Wind": 80, "WaterVeinShard": 5, "GumonSealShard": 5,
-            "SunstoneShard": 5, "TPForlorn": 120, "TPGrotto": 60,
-            "TPSorrow": 90, "TPGrove": 60, "TPSwamp": 60, "TPValley": 90,
-            "TPGinso": 150, "TPHoru": 180, "Open": 1, "Relic": 1
+            "Free": 0, "MS": 0, "KS": 8, "AC": 12, "EC": 6, "HC": 12, "WallJump": 13,
+            "ChargeFlame": 13, "DoubleJump": 13, "Bash": 55, "Stomp": 32,
+            "Glide": 17, "Climb": 33, "ChargeJump": 55, "Dash": 13,
+            "Grenade": 25, "GinsoKey": 12, "ForlornKey": 12, "HoruKey": 12,
+            "Water": 78, "Wind": 90, "WaterVeinShard": 5, "GumonSealShard": 5,
+            "SunstoneShard": 5, "TPForlorn": 135, "TPGrotto": 60,
+            "TPSorrow": 105, "TPGrove": 60, "TPSwamp": 60, "TPValley": 90,
+            "TPGinso": 120, "TPHoru": 150, "Open": 1, "Relic": 1
         })
         self.inventory = OrderedDict([
             ("EX1", 0), ("EX*", 0), ("KS", 0), ("MS", 0), ("AC", 0), ("EC", 1),
@@ -559,7 +559,7 @@ class SeedGenerator:
             self.itemPool[item] - 1, 0) if item in self.itemPool else 0
         if item == "KS":
             if self.costs[item] > 0:
-                self.costs[item] -= 2
+                self.costs[item] -= 4
         elif item in ["EC", "HC", "AC", "WaterVeinShard", "GumonSealShard", "SunstoneShard"]:
             if self.costs[item] > 0:
                 self.costs[item] -= 1
@@ -636,6 +636,14 @@ class SeedGenerator:
         else:
             self.outputStr += assignment
 
+        if self.params.do_loc_analysis:
+            key = location.to_string()
+            if location.orig == "MapStone":
+                key = "MapStone " + str(self.mapstonesAssigned)
+            if item in self.params.locationAnalysisCopy[key]:
+                self.params.locationAnalysisCopy[key][item] += 1
+                self.params.locationAnalysisCopy[location.zone][item] += 1
+
     def adjust_item(self, item, zone):
         if item in self.skillsOutput:
             item = self.skillsOutput[item]
@@ -690,6 +698,9 @@ class SeedGenerator:
         del locationsToAssign[i]
 
     def form_areas(self):
+        if self.params.do_loc_analysis:
+            self.params.locationAnalysis["FinalEscape EVWarmth (-240 512)"] = self.params.itemsToAnalyze.copy()
+            self.params.locationAnalysis["FinalEscape EVWarmth (-240 512)"]["Zone"] = "Horu"
         tree = get_areas()
         root = tree.getroot()
         logic_paths = [lp.value for lp in self.params.logic_paths]
@@ -706,6 +717,15 @@ class SeedGenerator:
                     location.find("Zone").text
                 )
                 area.add_location(loc)
+                if self.params.do_loc_analysis:
+                    key = loc.to_string()
+                    if key not in self.params.locationAnalysis.keys():
+                        self.params.locationAnalysis[key] = self.params.itemsToAnalyze.copy()
+                        self.params.locationAnalysis[key]["Zone"] = loc.zone
+                    zoneKey = loc.zone
+                    if zoneKey not in self.params.locationAnalysis.keys():
+                        self.params.locationAnalysis[zoneKey] = self.params.itemsToAnalyze.copy()
+                        self.params.locationAnalysis[zoneKey]["Zone"] = loc.zone
             if child.find("Connections") is None:
                 log.error("No connections found for child %s, (name %s)" % (child, child.attrib["name"]))
             for conn in child.find("Connections"):
@@ -950,6 +970,14 @@ class SeedGenerator:
         plants = []
 
         self.form_areas()
+
+        if self.params.do_loc_analysis:
+            self.params.locationAnalysisCopy = {}
+            for location in self.params.locationAnalysis:
+                self.params.locationAnalysisCopy[location] = {}
+                for item in self.params.locationAnalysis[location]:
+                    self.params.locationAnalysisCopy[location][item] = self.params.locationAnalysis[location][item]
+
         # flags line
         self.outputStr += (self.params.flag_line(self.verbose_paths) + "\n")
 
@@ -1056,7 +1084,7 @@ class SeedGenerator:
             # consider -- work on stronger anti-key-lock logic so that we don't
             # have to give keys out right away (this opens up the potential of
             # using keys in the wrong place, will need to be careful)
-            if not self.doorQueue and not self.mapQueue and not reset_loop:
+            if not (self.doorQueue and self.inventory["KS"] >= keystoneCount) and not (self.mapQueue and self.inventory["MS"] >= mapstoneCount) and not reset_loop:
                 spoilerPath = self.prepare_path(len(locationsToAssign))
                 if not self.assignQueue:
                     # we've painted ourselves into a corner, try again
@@ -1167,23 +1195,25 @@ class SeedGenerator:
             self.currentAreas = []
 
             # open all reachable doors (for the next iteration)
-            for area in self.doorQueue.keys():
-                if self.doorQueue[area].target not in self.areasReached:
-                    difficulty = self.doorQueue[area].cost()[2]
-                    self.seedDifficulty += difficulty * difficulty
-                self.reach_area(self.doorQueue[area].target)
-                if self.doorQueue[area].target in self.areasRemaining:
-                    self.areasRemaining.remove(self.doorQueue[area].target)
-                self.areas[area].remove_connection(self.doorQueue[area])
+            if self.inventory["KS"] >= keystoneCount:
+                for area in self.doorQueue.keys():
+                    if self.doorQueue[area].target not in self.areasReached:
+                        difficulty = self.doorQueue[area].cost()[2]
+                        self.seedDifficulty += difficulty * difficulty
+                    self.reach_area(self.doorQueue[area].target)
+                    if self.doorQueue[area].target in self.areasRemaining:
+                        self.areasRemaining.remove(self.doorQueue[area].target)
+                    self.areas[area].remove_connection(self.doorQueue[area])
 
-            for area in self.mapQueue.keys():
-                if self.mapQueue[area].target not in self.areasReached:
-                    difficulty = self.mapQueue[area].cost()[2]
-                    self.seedDifficulty += difficulty * difficulty
-                self.reach_area(self.mapQueue[area].target)
-                if self.mapQueue[area].target in self.areasRemaining:
-                    self.areasRemaining.remove(self.mapQueue[area].target)
-                self.areas[area].remove_connection(self.mapQueue[area])
+            if self.inventory["MS"] >= mapstoneCount:
+                for area in self.mapQueue.keys():
+                    if self.mapQueue[area].target not in self.areasReached:
+                        difficulty = self.mapQueue[area].cost()[2]
+                        self.seedDifficulty += difficulty * difficulty
+                    self.reach_area(self.mapQueue[area].target)
+                    if self.mapQueue[area].target in self.areasRemaining:
+                        self.areasRemaining.remove(self.mapQueue[area].target)
+                    self.areas[area].remove_connection(self.mapQueue[area])
 
             locationsToAssign = []
             self.spoilerGroup = defaultdict(list)
@@ -1216,6 +1246,9 @@ class SeedGenerator:
                 break
         self.params.balanced = balanced
 
+        if self.params.do_loc_analysis:
+            self.params.locationAnalysis = self.params.locationAnalysisCopy
+
         return (self.outputStr, spoilerStr)
 
     def do_reachability_analysis(self, params):
@@ -1226,19 +1259,26 @@ class SeedGenerator:
         self.reservedLocations = []
         self.doorQueue = {}
         self.random = random.Random()
-        # items = ["WallJump", "Dash", "ChargeFlame", "DoubleJump", "Bash", "Stomp", "Grenade", "Glide", "Climb", "ChargeJump"]
+        #items = ["WallJump", "Dash", "ChargeFlame", "DoubleJump", "Bash", "Stomp", "Grenade", "Glide", "Climb", "ChargeJump"]
         items = ["Glide", "Stomp", "DoubleJump", "ChargeFlame", "WallJump"]
-        # items = ["Climb", "WallJump"]
-        # items = ["Grenade", "ChargeFlame"]
-        # items = ["Bash", "ChargeJump", "Glide", "DoubleJump"]
-        # items = ["ChargeJump", "Stomp"]
+        #items = ["Climb", "WallJump"]
+        #items = ["Grenade", "ChargeFlame"]
+        #items = ["Bash", "ChargeJump", "Glide", "DoubleJump"]
+        #items = ["ChargeJump", "Stomp"]
+        #items = ["TPHoru"]
         fill_items = ["WallJump", "Dash", "TPGrove", "ChargeFlame", "TPSwamp", "TPGrotto", "DoubleJump", "GinsoKey", "Bash", "TPGinso", "Water", "Stomp", "Grenade", "Glide", "TPValley", "Climb", "ForlornKey", "TPForlorn", "Wind", "ChargeJump", "TPSorrow", "HoruKey", "TPHoru"]
-        for item in fill_items:
-            if item not in items:
-                items.append(item)
+        overlap_items = []
+        for item in overlap_items:
+            fill_items.remove(item)
+        #fill_items = ["TPGrove", "TPSwamp", "TPGrotto", "GinsoKey", "TPGinso", "Water", "TPValley", "ForlornKey", "TPForlorn", "Wind", "TPSorrow", "HoruKey", "TPHoru"]
+        #fill_items = ["ForlornKey"]
         scores = []
         for item in items:
             self.reset()
+            for item2 in fill_items:
+                if item2 not in items:
+                    self.inventory[item2] = 1
+                    self.costs[item2] = 0
             score = 0
             for item2 in items:
                 print(item + " " + item2)

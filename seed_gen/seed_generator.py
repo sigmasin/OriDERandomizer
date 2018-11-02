@@ -1575,7 +1575,7 @@ def main():
 
     if args.loc_analysis:
         output = open("analysis.csv", 'w')
-        output.write("Location,Zone,WallJump,ChargeFlame,DoubleJump,Bash,Stomp,Glide,Climb,ChargeJump,Dash,Grenade,GinsoKey,ForlornKey,HoruKey,Water,Wind,WaterVeinShard,GumonSealShard,SunstoneShard,TPForlorn,TPGrotto,TPSorrow,TPGrove,TPSwamp,TPValley,TPGinso,TPHoru\n")
+        output.write("Location,Zone,WallJump,ChargeFlame,DoubleJump,Bash,Stomp,Glide,Climb,ChargeJump,Dash,Grenade,GinsoKey,ForlornKey,HoruKey,Water,Wind,WaterVeinShard,GumonSealShard,SunstoneShard,TPGrove,TPGrotto,TPSwamp,TPValley,TPSorrow,TPGinso,TPForlorn,TPHoru\n")
         for key in locationAnalysis.keys():
             line = key + ","
             line += str(locationAnalysis[key]["Zone"]) + ","
@@ -1597,13 +1597,13 @@ def main():
             line += str(locationAnalysis[key]["WaterVeinShard"]) + ","
             line += str(locationAnalysis[key]["GumonSealShard"]) + ","
             line += str(locationAnalysis[key]["SunstoneShard"]) + ","
-            line += str(locationAnalysis[key]["TPForlorn"]) + ","
-            line += str(locationAnalysis[key]["TPGrotto"]) + ","
-            line += str(locationAnalysis[key]["TPSorrow"]) + ","
             line += str(locationAnalysis[key]["TPGrove"]) + ","
+            line += str(locationAnalysis[key]["TPGrotto"]) + ","
             line += str(locationAnalysis[key]["TPSwamp"]) + ","
             line += str(locationAnalysis[key]["TPValley"]) + ","
+            line += str(locationAnalysis[key]["TPSorrow"]) + ","
             line += str(locationAnalysis[key]["TPGinso"]) + ","
+            line += str(locationAnalysis[key]["TPForlorn"]) + ","
             line += str(locationAnalysis[key]["TPHoru"])
 
             output.write(line + "\n")

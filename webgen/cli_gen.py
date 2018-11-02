@@ -147,37 +147,123 @@ class CLISeedParams(object):
 
         # todo: respect these LMAO
         self.do_analysis = args.analysis
-        self.do_log_analysis = args.loc_analysis
+        self.do_loc_analysis = args.loc_analysis
         self.repeat_count = args.count
 
-        sg = SeedGenerator()
+        base_seed = 0
+        if self.repeat_count > 1:
+            base_seed = hash(self.seed)
 
-        if args.do_reachability_analysis:
-            sg.do_reachability_analysis(self)
-            return
+        if self.do_loc_analysis:
+            self.locationAnalysis = {}
+            self.itemsToAnalyze = {
+                "WallJump": 0,
+                "ChargeFlame": 0,
+                "DoubleJump": 0,
+                "Bash": 0,
+                "Stomp": 0,
+                "Glide": 0,
+                "Climb": 0,
+                "ChargeJump": 0,
+                "Dash": 0,
+                "Grenade": 0,
+                "GinsoKey": 0,
+                "ForlornKey": 0,
+                "HoruKey": 0,
+                "Water": 0,
+                "Wind": 0,
+                "WaterVeinShard": 0,
+                "GumonSealShard": 0,
+                "SunstoneShard": 0,
+                "TPForlorn": 0,
+                "TPGrotto": 0,
+                "TPSorrow": 0,
+                "TPGrove": 0,
+                "TPSwamp": 0,
+                "TPValley": 0,
+                "TPGinso": 0,
+                "TPHoru": 0,
+                "Relic": 0
+            }
+            for i in range(1,10):
+                self.locationAnalysis["MapStone " + str(i)] = self.itemsToAnalyze.copy()
+                self.locationAnalysis["MapStone " + str(i)]["Zone"] = "MapStone"
 
-        raw = sg.setSeedAndPlaceItems(self, preplaced={})
-        seeds = []
-        spoilers = []
-        if not raw:
-                log.error("Couldn't build seed!")
+        for count in range(0, args.count):
+
+            if self.repeat_count > 1:
+                self.seed = base_seed + count
+
+            if self.do_loc_analysis:
+                print(self.seed)
+
+            sg = SeedGenerator()
+
+            if args.do_reachability_analysis:
+                sg.do_reachability_analysis(self)
                 return
-        player = 0
-        for player_raw in raw:
-            player += 1
-            seed, spoiler = tuple(player_raw)
-            if self.tracking:
-                seed = "Sync%s.%s," % (self.sync_id, player) + seed
-            seedfile = "randomizer_%s.dat" % player
-            spoilerfile = "spoiler_%s.txt" % player
-            if self.players == 1:
-                seedfile = "randomizer.dat"
-                spoilerfile = "spoiler.txt"
 
-            with open(args.output_dir+"/"+seedfile, 'w') as f:
-                f.write(seed)
-            with open(args.output_dir+"/"+spoilerfile, 'w') as f:
-                f.write(spoiler)
+            raw = sg.setSeedAndPlaceItems(self, preplaced={})
+            seeds = []
+            spoilers = []
+            if not raw:
+                    log.error("Couldn't build seed!")
+                    if self.do_loc_analysis:
+                        continue
+                    return
+            player = 0
+            for player_raw in raw:
+                player += 1
+                seed, spoiler = tuple(player_raw)
+                if self.tracking:
+                    seed = "Sync%s.%s," % (self.sync_id, player) + seed
+                seedfile = "randomizer_%s.dat" % player
+                spoilerfile = "spoiler_%s.txt" % player
+                if self.players == 1:
+                    seedfile = "randomizer" + str(count) + ".dat"
+                    spoilerfile = "spoiler" + str(count) + ".txt"
+
+                if not self.do_analysis and not self.do_loc_analysis:
+                    with open(args.output_dir+"/"+seedfile, 'w') as f:
+                        f.write(seed)
+                    with open(args.output_dir+"/"+spoilerfile, 'w') as f:
+                        f.write(spoiler)
+
+        if self.do_loc_analysis:
+            output = open("analysis.csv", 'w')
+            output.write("Location,Zone,WallJump,ChargeFlame,DoubleJump,Bash,Stomp,Glide,Climb,ChargeJump,Dash,Grenade,GinsoKey,ForlornKey,HoruKey,Water,Wind,WaterVeinShard,GumonSealShard,SunstoneShard,TPGrove,TPGrotto,TPSwamp,TPValley,TPSorrow,TPGinso,TPForlorn,TPHoru,Relic\n")
+            for key in self.locationAnalysis.keys():
+                line = key + ","
+                line += str(self.locationAnalysis[key]["Zone"]) + ","
+                line += str(self.locationAnalysis[key]["WallJump"]) + ","
+                line += str(self.locationAnalysis[key]["ChargeFlame"]) + ","
+                line += str(self.locationAnalysis[key]["DoubleJump"]) + ","
+                line += str(self.locationAnalysis[key]["Bash"]) + ","
+                line += str(self.locationAnalysis[key]["Stomp"]) + ","
+                line += str(self.locationAnalysis[key]["Glide"]) + ","
+                line += str(self.locationAnalysis[key]["Climb"]) + ","
+                line += str(self.locationAnalysis[key]["ChargeJump"]) + ","
+                line += str(self.locationAnalysis[key]["Dash"]) + ","
+                line += str(self.locationAnalysis[key]["Grenade"]) + ","
+                line += str(self.locationAnalysis[key]["GinsoKey"]) + ","
+                line += str(self.locationAnalysis[key]["ForlornKey"]) + ","
+                line += str(self.locationAnalysis[key]["HoruKey"]) + ","
+                line += str(self.locationAnalysis[key]["Water"]) + ","
+                line += str(self.locationAnalysis[key]["Wind"]) + ","
+                line += str(self.locationAnalysis[key]["WaterVeinShard"]) + ","
+                line += str(self.locationAnalysis[key]["GumonSealShard"]) + ","
+                line += str(self.locationAnalysis[key]["SunstoneShard"]) + ","
+                line += str(self.locationAnalysis[key]["TPGrove"]) + ","
+                line += str(self.locationAnalysis[key]["TPGrotto"]) + ","
+                line += str(self.locationAnalysis[key]["TPSwamp"]) + ","
+                line += str(self.locationAnalysis[key]["TPValley"]) + ","
+                line += str(self.locationAnalysis[key]["TPSorrow"]) + ","
+                line += str(self.locationAnalysis[key]["TPGinso"]) + ","
+                line += str(self.locationAnalysis[key]["TPForlorn"]) + ","
+                line += str(self.locationAnalysis[key]["TPHoru"]) + ","
+                line += str(self.locationAnalysis[key]["Relic"])
+
+                output.write(line + "\n")
 
     def get_preset(self):
         pathset = set(self.logic_paths)
