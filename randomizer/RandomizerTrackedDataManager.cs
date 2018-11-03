@@ -91,8 +91,8 @@ public static class RandomizerTrackedDataManager
 		{
 			TreeBitfield = Characters.Sein.Inventory.GetRandomizerItem(1001) + GetSkillBitfield();
 			RelicBitfield = Characters.Sein.Inventory.GetRandomizerItem(1002) + GetRelicExistsBitfield();
-			MapstoneBitfield = Characters.Sein.Inventory.GetRandomizerItem(1003) +  RandomizerBonus.WarmthFrags() << 9;
-			TeleporterBitfield = GetTeleporters() + Randomizer.fragKeyFinish << 8;
+			MapstoneBitfield = Characters.Sein.Inventory.GetRandomizerItem(1003) + (RandomizerBonus.WarmthFrags() << 9);
+			TeleporterBitfield = GetTeleporters() + (Randomizer.fragKeyFinish << 8);
 			KeyEventBitfield = GetKeyEvents();
 		}
 	}
