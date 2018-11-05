@@ -1800,7 +1800,11 @@ home: MoonGrotto
 	conn: WaterVeinArea
 		casual-core DoubleJump
 		casual-core Glide
+		casual-core Climb ChargeJump
+		casual-core Bash Grenade
 		standard-core Dash
+		expert-core WallJump
+		master-lure Bash
 	conn: MoonGrottoBelowTeleporter
 		casual-core DoubleJump
 		casual-core ChargeJump Glide
@@ -1926,7 +1930,7 @@ home: GumoHideout
 		master-core WallJump Bash
 		master-core Climb Bash
 		master-abilities DoubleJump Ability=12
-	conn: GumoHideoutFloatingOrbs
+	conn: LowerLeftGumoHideout
 		master-core DoubleJump
 		master-core Dash WallJump
 		master-core Dash Climb
@@ -1969,10 +1973,6 @@ home: LeftGumoHideout
 		expert-abilities WallJump Dash Ability=6
 		expert-abilities Climb Dash Ability=6
 		expert-abilities ChargeJump Dash Ability=6
-	pickup: LeftGumoHideoutLowerPlant
-		casual-core Grenade
-		casual-core ChargeFlame
-		expert-abilities Dash Ability=6
 	pickup: FarLeftGumoHideoutExp
 		casual-core WallJump DoubleJump
 		casual-core Climb ChargeJump
@@ -1980,6 +1980,43 @@ home: LeftGumoHideout
 		standard-core Climb Bash Grenade
 		master-core Bash
 		master-abilities Climb Dash Ability=3
+	conn: LowerLeftGumoHideout
+	conn: WaterVeinArea
+		casual-core WallJump DoubleJump
+		casual-core WallJump ChargeJump
+		casual-core Climb ChargeJump
+		casual-core Bash Grenade
+		casual-core Glide Wind
+		standard-core Climb DoubleJump
+		standard-abilities WallJump Dash Ability=3
+		standard-abilities Climb Dash Ability=3
+		master-core DoubleJump
+		master-core WallJump Dash
+home: LowerLeftGumoHideout
+	-- anchor: at the plant below the lever
+	pickup: LeftGumoHideoutLowerPlant
+		casual-core Grenade
+		casual-core ChargeFlame
+		expert-abilities Dash Ability=6
+	pickup: GumoHideoutLeftHangingExp
+		casual-core WallJump
+		casual-core Climb
+		casual-core DoubleJump
+		casual-core Bash Grenade
+		standard-abilities Dash Ability=3
+		dbash Bash
+	pickup: GumoHideoutRightHangingExp
+		casual-core WallJump Glide
+		casual-core Climb Glide
+		casual-core WallJump DoubleJump
+		casual-core Climb DoubleJump
+		casual-core Bash Grenade
+		casual-core WallJump ChargeJump
+		casual-core Climb ChargeJump
+		standard-core WallJump Dash
+		standard-core Climb Dash
+		expert-core DoubleJump
+		dbash Bash
 	pickup: LeftGumoHideoutExp
 		casual-core WallJump DoubleJump
 		casual-core ChargeJump
@@ -1997,24 +2034,9 @@ home: LeftGumoHideout
 	pickup: LeftGumoHideoutSwim
 		casual-core Water
 		expert-dboost Free
-	conn: GumoHideoutFloatingOrbs
 	conn: LowerBlackroot
 		glitched Dash
 	conn: GumoHideoutRedirectArea
-	conn: WaterVeinArea
-		casual-core WallJump DoubleJump
-		casual-core WallJump ChargeJump
-		casual-core Climb ChargeJump
-		casual-core Bash Grenade
-		standard-core Climb DoubleJump
-		standard-abilities WallJump Dash Ability=3
-		standard-abilities Climb Dash Ability=3
-		master-core DoubleJump
-		master-core WallJump Dash
-home: GumoHideoutFloatingOrbs
-	-- anchor: within logical reach of the floating xp
-	pickup: GumoHideoutRightHangingExp
-	pickup: GumoHideoutLeftHangingExp
 home: DoubleJumpArea
 	-- anchor: at the skill tree
 	pickup: DoubleJumpSkillTree
@@ -2030,6 +2052,15 @@ home: WaterVeinArea
 	pickup: WaterVein
 	conn: LeftGumoHideout
 		casual-core DoubleJump
+		casual-core ChargeJump
+		casual-core Bash Grenade
+		casual-core Glide Wind
+		standard-core Dash
+	conn: LowerLeftGumoHideout
+		casual-core DoubleJump
+		casual-core Glide
+		casual-core ChargeJump
+		casual-core Bash Grenade
 		standard-core Dash
 	conn: MoonGrotto
 		casual-core WallJump DoubleJump
