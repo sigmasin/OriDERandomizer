@@ -3147,6 +3147,7 @@ home: ValleyEntry
 		standard-core Dash Glide Open
 		standard-core Dash DoubleJump Open
 		standard-abilities ChargeJump Dash Ability=3 Open
+		standard-dboost Health=4 Open
 		expert-abilities Dash Ability=6
 	conn: SpiritTreeRefined
 		casual-core ChargeFlame
@@ -3366,6 +3367,7 @@ home: ValleyThreeBirdLever
 		casual-core Bash
 		casual-core Climb ChargeJump
 		standard-abilities Dash Ability=3
+		standard-dboost Health=4
 	conn: LowerValley
 		casual-core Glide Wind
 		casual-core Glide DoubleJump
@@ -3384,6 +3386,18 @@ home: ValleyStompFloor
 		casual-core Stomp
 		standard-core Climb ChargeJump
 		expert-lure Bash
+	conn: ValleyThreeBirdLever
+		casual-core Bash
+		casual-core ChargeJump Climb
+		casual-core ChargeJump WallJump DoubleJump
+	conn: ValleyEntry
+		casual-core Bash Open
+		casual-core ChargeJump DoubleJump Open
+		casual-core ChargeJump Glide Open
+		standard-dboost ChargeJump Health=4 Open
+		expert-dboost ChargeJump Health=3 Open
+		expert-dboost DoubleJump Health=3 Open
+		expert-abilities Dash Ability=6 Open
 home: ValleyForlornApproach
 -- anchored below the floor leading to forlorn
 	pickup: ValleyForlornApproachMapstone
@@ -3398,7 +3412,7 @@ home: ValleyForlornApproach
 		casual-core Stomp
 		casual-core ChargeJump
 		casual-core Bash
-	conn: ValleyThreeBirdLever
+	conn: ValleyStompFloor
 		casual-core ChargeJump
 		master-core Bash
 home: OutsideForlornCliff
