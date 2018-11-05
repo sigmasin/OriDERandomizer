@@ -1985,7 +1985,6 @@ home: LeftGumoHideout
 		standard-abilities WallJump Dash Ability=3
 		standard-abilities Climb Dash Ability=3
 		master-core Bash
-		master-abilities Climb Dash Ability=3
 	conn: LowerLeftGumoHideout
 	conn: WaterVeinArea
 		casual-core WallJump DoubleJump
@@ -3124,14 +3123,31 @@ home: ValleyEntry
 		casual-core Climb ChargeJump Open
 		casual-core Climb DoubleJump Open
 		expert-dboost ChargeJump Health=4 Open
-	-- test connection with door removed
-	conn: ValleyThreeBirdArea
+	-- test connections with door removed
+	conn: ValleyThreeBirdLever
 		casual-core Glide Wind Open
 		casual-core Bash Open
 		casual-core Climb ChargeJump Glide Open
 		casual-core Climb ChargeJump DoubleJump Open
 		standard-core Dash DoubleJump ChargeJump Open
+		expert-abilities Dash Ability=6 Open
 		gjump Climb ChargeJump Grenade Open
+	conn: ValleyThreeBirdCell
+		casual-core ChargeJump Open
+		casual-core Glide Wind Open
+		casual-core Bash Open
+		expert-abilities Dash Ability=6 Open
+	conn: ValleyStompFloor
+		casual-core Bash Open
+		casual-core Glide Wind Open
+		casual-core Glide DoubleJump Open
+		casual-core ChargeJump DoubleJump Open
+		casual-core ChargeJump Glide Open
+		casual-core ChargeJump Climb Open
+		standard-core Dash Glide Open
+		standard-core Dash DoubleJump Open
+		standard-abilities ChargeJump Dash Ability=3 Open
+		expert-abilities Dash Ability=6
 	conn: SpiritTreeRefined
 		casual-core ChargeFlame
 		casual-core Grenade
@@ -3151,6 +3167,9 @@ home: ValleyEntryTree
 		casual-core Glide
 		expert-core Grenade
 		expert-abilities Dash Ability=6
+	-- test connection with door removed
+	conn: ValleyPostStompDoor
+		casual-core Open
 home: ValleyEntryTreePlantAccess
 	pickup: ValleyEntryTreePlant
 		casual-core ChargeFlame
@@ -3176,6 +3195,15 @@ home: ValleyPostStompDoor
 		master-dboost WallJump DoubleJump ChargeJump Ability=12 Health=3
 		master-dboost Climb DoubleJump ChargeJump Ability=12 Health=3
 		master-dboost WallJump DoubleJump Health=11 Ability=12
+	conn: ValleyEntry
+		casual-core Open
+	conn: ValleyEntryTree
+		casual-core Open WallJump
+		casual-core Open Climb
+		casual-core Open DoubleJump
+		casual-core Open ChargeJump
+		casual-core Open Bash
+		standard-core Open Dash
 home: ValleyTeleporter
 -- anchored on the valley TP, kill plane is active
 	conn: ValleyPostStompDoor
@@ -3299,7 +3327,7 @@ home: LowerValley
 		casual-core ChargeJump Glide
 		casual-core Glide Wind
 		standard-lure Bash
-	conn: ValleyThreeBirdArea
+	conn: ValleyThreeBirdLever
 		casual-core Glide Wind
 		casual-core Glide DoubleJump
 		standard-core Dash DoubleJump
@@ -3315,22 +3343,23 @@ home: LowerValleyPlantApproach
 		casual-core ChargeFlame
 		casual-core Grenade
 		expert-abilities Dash Ability=6
-home: ValleyThreeBirdArea
+home: ValleyThreeBirdLever
 -- anchored on the lever to return to valley entry
-	pickup: ValleyThreeBirdAbilityCell
-		casual-core Glide Wind
-		casual-core Bash
-		casual-core Climb ChargeJump Glide
-		casual-core Climb ChargeJump DoubleJump
-		standard-core Dash DoubleJump
-		gjump Climb ChargeJump Grenade
-		master-abilities DoubleJump Ability=12
 	pickup: ValleyMainFACS
 		casual-core Climb ChargeJump
 		expert-abilities WallJump DoubleJump ChargeJump Dash Ability=3
 		expert-abilities WallJump Glide Wind ChargeJump Dash Ability=3
 		expert-dboost WallJump ChargeJump Dash Ability=3 Health=4
 		dbash Bash
+	conn: ValleyThreeBirdCell
+		casual-core Glide Wind
+		casual-core Bash
+		casual-core Climb ChargeJump Glide
+		casual-core Climb ChargeJump DoubleJump
+		standard-core Dash DoubleJump
+		expert-abilities Dash Ability=6
+		gjump Climb ChargeJump Grenade
+		master-abilities DoubleJump Ability=12
 	conn: ValleyEntry
 		casual-core Glide
 		casual-core DoubleJump
@@ -3345,6 +3374,12 @@ home: ValleyThreeBirdArea
 		standard-abilities Dash Ability=3
 		standard-dboost Health=4
 		dbash Bash
+	conn: ValleyStompFloor
+home: ValleyThreeBirdCell
+-- anchored next to the ability cell above the three birds
+	pickup: ValleyThreeBirdAbilityCell
+home: ValleyStompFloor
+-- anchored above the floor leading to forlorn
 	conn: ValleyForlornApproach
 		casual-core Stomp
 		standard-core Climb ChargeJump
@@ -3363,7 +3398,7 @@ home: ValleyForlornApproach
 		casual-core Stomp
 		casual-core ChargeJump
 		casual-core Bash
-	conn: ValleyThreeBirdArea
+	conn: ValleyThreeBirdLever
 		casual-core ChargeJump
 		master-core Bash
 home: OutsideForlornCliff
