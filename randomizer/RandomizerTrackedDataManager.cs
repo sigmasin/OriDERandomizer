@@ -22,18 +22,32 @@ public static class RandomizerTrackedDataManager
 		Trees.Add(9, "Grenade");
 		Trees.Add(10, "Dash");
 
-		Relics = new Dictionary<string, int>();
-		Relics.Add("Glades", 0);
-		Relics.Add("Grove", 1);
-		Relics.Add("Grotto", 2);
-		Relics.Add("Blackroot", 3);
-		Relics.Add("Swamp", 4);
-		Relics.Add("Ginso", 5);
-		Relics.Add("Valley", 6);
-		Relics.Add("Misty", 7);
-		Relics.Add("Forlorn", 8);
-		Relics.Add("Sorrow", 9);
-		Relics.Add("Horu", 10);
+		RelicFound = new Dictionary<string, int>();
+		RelicFound.Add("Glades", 0);
+		RelicFound.Add("Grove", 1);
+		RelicFound.Add("Grotto", 2);
+		RelicFound.Add("Blackroot", 3);
+		RelicFound.Add("Swamp", 4);
+		RelicFound.Add("Ginso", 5);
+		RelicFound.Add("Valley", 6);
+		RelicFound.Add("Misty", 7);
+		RelicFound.Add("Forlorn", 8);
+		RelicFound.Add("Sorrow", 9);
+		RelicFound.Add("Horu", 10);
+
+		RelicExists = new Dictionary<string, int>();
+		RelicExists.Add("Glades", 11);
+		RelicExists.Add("Grove", 12);
+		RelicExists.Add("Grotto", 13);
+		RelicExists.Add("Blackroot", 14);
+		RelicExists.Add("Swamp", 15);
+		RelicExists.Add("Ginso", 16);
+		RelicExists.Add("Valley", 17);
+		RelicExists.Add("Misty", 18);
+		RelicExists.Add("Forlorn", 19);
+		RelicExists.Add("Sorrow", 20);
+		RelicExists.Add("Horu", 21);
+
 
 		Pedistals = new Dictionary<string, MapstoneData>();
 		Pedistals.Add("sunkenGlades", new MapstoneData("Glades", 0));
@@ -76,9 +90,9 @@ public static class RandomizerTrackedDataManager
 		if(Characters.Sein)
 		{
 			TreeBitfield = Characters.Sein.Inventory.GetRandomizerItem(1001) + GetSkillBitfield();
-			RelicBitfield = Characters.Sein.Inventory.GetRandomizerItem(1002);
-			MapstoneBitfield = Characters.Sein.Inventory.GetRandomizerItem(1003);
-			TeleporterBitfield = GetTeleporters();
+			RelicBitfield = Characters.Sein.Inventory.GetRandomizerItem(1002) + GetRelicExistsBitfield();
+			MapstoneBitfield = Characters.Sein.Inventory.GetRandomizerItem(1003) + (RandomizerBonus.WarmthFrags() << 9);
+			TeleporterBitfield = GetTeleporters() + (Randomizer.fragKeyFinish << 8);
 			KeyEventBitfield = GetKeyEvents();
 		}
 	}
@@ -88,6 +102,14 @@ public static class RandomizerTrackedDataManager
 			MapstoneBitfield = 0;
 			TeleporterBitfield = 0;
 			KeyEventBitfield = 0;
+	}
+
+	public static int GetRelicExistsBitfield() {
+		int bf = 0;
+		foreach(string zone in Randomizer.RelicZoneLookup.Values) {
+			bf += (1 << RelicExists[zone]);
+		}
+		return bf;
 	}
 
 	public static int GetKeyEvents() {
@@ -117,7 +139,14 @@ public static class RandomizerTrackedDataManager
 			bf += 1 << 9;
 		if(Sein.World.Events.WindRestored)
 			bf += 1 << 10;
-		bf += RandomizerBonus.WarmthFrags() << 11;
+		if(Randomizer.ForceTrees)
+			bf += 1 << 11;
+		if(Randomizer.Shards)
+			bf += 1 << 12;
+		if(Randomizer.fragsEnabled)
+			bf += 1 << 13;
+		if(Randomizer.WorldTour)
+			bf += 1 << 14;
 		return bf;
 	}
 
@@ -177,7 +206,7 @@ public static class RandomizerTrackedDataManager
 		List<string> owned = new List<string>();
 		List<string> unowned = new List<string>();
 
-		foreach(KeyValuePair<string, int> relic in Relics) {
+		foreach(KeyValuePair<string, int> relic in RelicFound) {
 			if(Randomizer.RelicZoneLookup.ContainsValue(relic.Key))
 				if((RelicBitfield >> relic.Value) % 2 == 1) {
 					owned.Add(relic.Key);
@@ -219,12 +248,12 @@ public static class RandomizerTrackedDataManager
 
 	public static void SetRelic(string zone) {
 		if(!GetRelic(zone)) {
-			RelicBitfield = Characters.Sein.Inventory.IncRandomizerItem(1002, 1 << Relics[zone]);
+			RelicBitfield = Characters.Sein.Inventory.IncRandomizerItem(1002, 1 << RelicFound[zone]);
 		}
 	}
 
 	public static bool GetRelic(string zone) {
-		return (RelicBitfield >> Relics[zone]) % 2 == 1;
+		return (RelicBitfield >> RelicFound[zone]) % 2 == 1;
 	}
 
 	public static void SetMapstone(string areaIdentifier) {
@@ -261,7 +290,9 @@ public static class RandomizerTrackedDataManager
 	// Token: 0x040032E2 RID: 13026
 	public static Dictionary<int, string> Trees;
 
-	public static Dictionary<string, int> Relics;
+	public static Dictionary<string, int> RelicFound;
+
+	public static Dictionary<string, int> RelicExists;
 
 	public static Dictionary<string, int> Teleporters;
 
