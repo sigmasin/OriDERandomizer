@@ -269,8 +269,6 @@ class CLISeedParams(object):
         pathset = set(self.logic_paths)
         for name, lps in presets.iteritems():
             if lps == pathset:
-                if name == "Standard" and Variation.ZERO_EXP in self.variations:
-                    return "0xp"
                 return name
         return "Custom"
 

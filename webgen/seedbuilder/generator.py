@@ -8,7 +8,6 @@ from enums import KeyMode, PathDifficulty, ShareType, Variation, MultiplayerGame
 from seedbuilder.areas import get_areas
 from seedbuilder.relics import relics
 
-
 def ordhash(s):
     return reduce(mul, [ord(c) for c in s])
 
@@ -161,7 +160,7 @@ class SeedGenerator:
         'casual-core': 1, 'casual-dboost': 1,
         'standard-core': 2, 'standard-dboost': 2, 'standard-lure': 2, 'standard-abilities': 2,
         'expert-core': 3, 'expert-dboost': 3, 'expert-lure': 3, 'expert-abilities': 3, 'dbash': 3,
-        'master-core': 4, 'master-dboost': 4, 'master-lure': 4, 'master-abilities': 4, 'gjump': 4, 
+        'master-core': 4, 'master-dboost': 4, 'master-lure': 4, 'master-abilities': 4, 'gjump': 4,
         'glitched': 5, 'timed-level': 5, 'insane': 7
     })
     skillsOutput = OrderedDict({
@@ -227,7 +226,7 @@ class SeedGenerator:
         advancement), then sets initial values according to params."""
         self.init_fields()
         self.expRemaining = self.params.exp_pool
-        self.forcedAssignments = self.preplaced
+        self.forcedAssignments = self.preplaced.copy()
         self.forceAssignedLocs = set()
         self.itemPool = OrderedDict([
             ("EX1", 1), ("EX*", 101), ("KS", 40), ("MS", 11), ("AC", 33),
@@ -320,8 +319,7 @@ class SeedGenerator:
                 horu = self.random.randint(0, 14)
                 if ginso != forlorn and ginso != horu and forlorn != horu and ginso + forlorn < 26:
                     satisfied = True
-            self.keySpots = {self.limitKeysPool[ginso]: "GinsoKey", self.limitKeysPool[forlorn]: "ForlornKey",
-                             self.limitKeysPool[horu]: "HoruKey"}
+            self.keySpots = {self.limitKeysPool[ginso]: "GinsoKey", self.limitKeysPool[forlorn]: "ForlornKey", self.limitKeysPool[horu]: "HoruKey"}
             self.itemPool["GinsoKey"] = 0
             self.itemPool["ForlornKey"] = 0
             self.itemPool["HoruKey"] = 0
@@ -455,7 +453,8 @@ class SeedGenerator:
                     continue
                 for req_set in req_sets:
                     # any([v > 0 for v in preplaced_reduced_counts-Counter(req_set)])
-                    if not set(req_set).isdisjoint(modified_counts_keyset) and any([log.warning("Not enough free %s left in itemCount after adjusting for preplacements! Can't open path to %s", k, connection.target) and False for k, v in (preplaced_reduced_counts-Counter(req_set)).iteritems() if v < 0]):
+                    if not set(req_set).isdisjoint(modified_counts_keyset) and any([log.warning("Not enough free %s left in itemCount after adjusting for preplacements! Can't open path to %s", k,
+                                                                                    connection.target) and False for k, v in (preplaced_reduced_counts - Counter(req_set)).iteritems() if v < 0]):
                         continue
                     requirements = []
                     cost = 0
@@ -514,8 +513,7 @@ class SeedGenerator:
         return None
 
     def get_location_from_balance_list(self):
-        target = int(pow(self.random.random(), 1.0 /
-                         self.balanceLevel) * len(self.balanceList))
+        target = int(pow(self.random.random(), 1.0 / self.balanceLevel) * len(self.balanceList))
         location = self.balanceList.pop(target)
         self.balanceListLeftovers.append(location[0])
         return location[1]
@@ -530,12 +528,12 @@ class SeedGenerator:
             return "EV5"
         hint_text = {"SK": "Skill", "TP": "Teleporter", "RB": "Upgrade", "EV": "World Event"}.get(item[:2], "?Unknown?")
         if item in ["RB17", "RB19", "RB21"]:
-            name = "a " + name  # grammar lol
+            name = "a " + name  # grammar
             hint_text = "Shard"
         elif item == "RB28":
             name = "a Warmth Fragment"
             hint_text = "Warmth Fragment"
-        elif item[:2] == "WT":
+        elif item == "Relic":
             name = "a Relic"
             hint_text = "Relic"
 
@@ -548,8 +546,7 @@ class SeedGenerator:
         position = 0.0
         denom = float(sum(self.itemPool.values()))
         if denom == 0.0:
-            log.warning("itemPool was empty! itemSum: %s itemPool: %s itemCount %s", denom, {
-                        k: v for k, v in self.itemPool.iteritems() if v > 0}, self.itemCount)
+            log.warning("%s: itemPool was empty! itemPool: %s itemCount %s", self.params.flag_line(), {k: v for k, v in self.itemPool.iteritems() if v > 0}, self.itemCount)
             return self.assign("EX*")
         for key in self.itemPool.keys():
             position += self.itemPool[key] / denom
@@ -673,12 +670,9 @@ class SeedGenerator:
 
     def get_random_exp_value(self):
         minExp = self.random.randint(2, 9)
-
         if self.expSlots <= 1:
             return max(self.expRemaining, minExp)
-
-        return int(max(self.expRemaining * (self.inventory["EX*"] + self.expSlots / 4) * self.random.uniform(0.0, 2.0) / (
-            self.expSlots * (self.expSlots + self.inventory["EX*"])), minExp))
+        return int(max(self.expRemaining * (self.inventory["EX*"] + self.expSlots / 4) * self.random.uniform(0.0, 2.0) / (self.expSlots * (self.expSlots + self.inventory["EX*"])), minExp))
 
     def preferred_difficulty_assign(self, item, locationsToAssign):
         total = 0.0
@@ -691,11 +685,9 @@ class SeedGenerator:
         position = 0.0
         for i in range(0, len(locationsToAssign)):
             if self.params.path_diff == PathDifficulty.EASY:
-                position += (20 - locationsToAssign[i].difficulty) * (
-                    20 - locationsToAssign[i].difficulty) / total
+                position += (20 - locationsToAssign[i].difficulty) * (20 - locationsToAssign[i].difficulty) / total
             else:
-                position += locationsToAssign[i].difficulty * \
-                    locationsToAssign[i].difficulty / total
+                position += locationsToAssign[i].difficulty * locationsToAssign[i].difficulty / total
             if value <= position:
                 self.assign_to_location(item, locationsToAssign[i])
                 break
@@ -712,14 +704,7 @@ class SeedGenerator:
             area = Area(child.attrib["name"])
             self.areasRemaining.append(child.attrib["name"])
             for location in child.find("Locations"):
-                loc = Location(
-                    int(location.find("X").text),
-                    int(location.find("Y").text),
-                    area.name,
-                    location.find("Item").text,
-                    int(location.find("Difficulty").text),
-                    location.find("Zone").text
-                )
+                loc = Location(int(location.find("X").text), int(location.find("Y").text), area.name, location.find("Item").text, int(location.find("Difficulty").text), location.find("Zone").text)
                 area.add_location(loc)
                 if self.params.do_loc_analysis:
                     key = loc.to_string()
@@ -751,8 +736,7 @@ class SeedGenerator:
         connection2 = Connection(door2.name, door1.name, self)
         connection2.add_requirements(requirements, 1)
         self.areas[door2.name].add_connection(connection2)
-        return str(door1.get_key()) + "|EN|" + str(door2.x) + "|" + str(door2.y) + "\n" + str(
-            door2.get_key()) + "|EN|" + str(door1.x) + "|" + str(door1.y) + "\n"
+        return str(door1.get_key()) + "|EN|" + str(door2.x) + "|" + str(door2.y) + "\n" + str(door2.get_key()) + "|EN|" + str(door1.x) + "|" + str(door1.y) + "\n"
 
     def randomize_entrances(self):
         tree = XML.parse("seedbuilder/doors.xml")
@@ -763,12 +747,10 @@ class SeedGenerator:
 
         for child in root:
             inner = child.find("Inner")
-            innerDoors[int(inner.find("Group").text)].append(
-                Door(child.attrib["name"] + "InnerDoor", int(inner.find("X").text), int(inner.find("Y").text)))
+            innerDoors[int(inner.find("Group").text)].append(Door(child.attrib["name"] + "InnerDoor", int(inner.find("X").text), int(inner.find("Y").text)))
 
             outer = child.find("Outer")
-            outerDoors[int(outer.find("Group").text)].append(
-                Door(child.attrib["name"] + "OuterDoor", int(outer.find("X").text), int(outer.find("Y").text)))
+            outerDoors[int(outer.find("Group").text)].append(Door(child.attrib["name"] + "OuterDoor", int(outer.find("X").text), int(outer.find("Y").text)))
 
         self.random.shuffle(outerDoors[0])
         self.random.shuffle(innerDoors[12])
@@ -788,8 +770,7 @@ class SeedGenerator:
         # targets = [3, 4, 5, 6, 7, 8, 9, 10, 12]
         # for now, make R1 vanilla
 
-        doorStr += self.connect_doors(outerDoors[2].pop(0),
-                                      innerDoors[7].pop(0))
+        doorStr += self.connect_doors(outerDoors[2].pop(0), innerDoors[7].pop(0))
 
         activeGroups = [0, 1, 8]
         targets = [3, 4, 5, 6, 8, 9, 10, 12]
@@ -818,8 +799,7 @@ class SeedGenerator:
                 requirements = ["ForlornKey"]
             doorStr += self.connect_doors(
                 firstDoors[0], outerDoors[horuEntryGroup].pop(0), requirements)
-            doorStr += self.connect_doors(firstDoors[1],
-                                          innerDoors[horuEntryGroup - 1].pop(0))
+            doorStr += self.connect_doors(firstDoors[1], innerDoors[horuEntryGroup - 1].pop(0))
             targets.remove(horuEntryGroup - 1)
 
         while len(targets) > 0:
@@ -865,8 +845,7 @@ class SeedGenerator:
         self.sharedList = []
         self.random = random.Random()
         self.random.seed(self.params.seed)
-        self.preplaced = {k: (
-            self.codeToName[v] if v in self.codeToName else v) for k, v in preplaced.iteritems()}
+        self.preplaced = {k: (self.codeToName[v] if v in self.codeToName else v) for k, v in preplaced.iteritems()}
         self.do_multi = self.params.sync.enabled and self.params.sync.mode == MultiplayerGameType.SHARED
 
         if self.var(Variation.WORLD_TOUR):
@@ -898,8 +877,9 @@ class SeedGenerator:
             if ShareType.MISC in shared:
                 if self.var(Variation.WARMTH_FRAGMENTS):
                     self.sharedList.append("RB28")
-                if self.var(Variation.WORLD_TOUR):
-                    self.sharedList.append("Relic")
+#              TODO: figure out relic sharing
+#              if self.var(Variation.WORLD_TOUR):
+#                    self.sharedList.append("Relic")
         return self.placeItemsMulti(retries)
 
     def placeItemsMulti(self, retries=5):
@@ -929,8 +909,7 @@ class SeedGenerator:
                             {k: v for k, v in self.inventory.iteritems() if v != 0},
                             self.forcedAssignments,
                             {k: v for k, v in self.costs.iteritems() if v != 0},
-                            self.outputStr
-                        )
+                            self.outputStr)
                 return None
             return self.placeItemsMulti(retries)
         placements.append(placement)
@@ -952,7 +931,7 @@ class SeedGenerator:
                             outlines.append("|".join([loc, split_item[:2], split_item[2:], zone]))
                     else:
                         outlines.append(line)
-                placements.append(("\n".join(outlines)+"\n", spoiler))
+                placements.append(("\n".join(outlines) + "\n", spoiler))
             else:
                 placement = self.placeItems(0)
                 if not placement:
@@ -972,7 +951,6 @@ class SeedGenerator:
 
         keystoneCount = 0
         mapstoneCount = 0
-        plants = []
 
         self.form_areas()
 
@@ -1025,10 +1003,12 @@ class SeedGenerator:
             # Capture relic spoilers before the spoiler group is overwritten
             relicSpoiler = self.spoilerGroup["Relic"]
 
-        for loc, item, zone in [(-280256, "EC1", "Glades"), (-1680104, "EX100", "Grove"), (-12320248, "Grenade", "Forlorn")]:
+        for loc, item, zone in [(-280256, "EC1", "Glades"), (-1680104, "EX100", "Grove"), (-12320248, "RB81", "Forlorn")]:
             if loc in self.forcedAssignments:
                 item = self.forcedAssignments[loc]
                 del self.forcedAssignments[loc]  # don't count these ones
+            if item not in self.itemPool:
+                    log.warning("Preplaced item %s was not in pool. Translation may be necessary." % item)
             ass = self.get_assignment(loc, self.adjust_item(item, zone), zone)
             if loc == -280256 and self.params.key_mode == KeyMode.FREE:
                 splitAss = ass.split("|")
@@ -1051,11 +1031,11 @@ class SeedGenerator:
         self.skillCount = 10
         self.mapstonesAssigned = 0
         self.expSlots = self.itemPool["EX*"]
-        
+
         self.doorQueue = OrderedDict()
         self.mapQueue = OrderedDict()
         spoilerPath = []
-        
+
         self.reach_area("SunkenGladesRunaway")
         if self.var(Variation.OPEN_MODE):
             self.reach_area("GladesMain")
@@ -1081,7 +1061,7 @@ class SeedGenerator:
                 self.connectionQueue = []
             reset_loop = False
             locationsToAssign, reset_loop = self.get_all_accessible_locations()
-            
+
             # if there aren't any doors to open, it's time to get a new skill
             # consider -- work on stronger anti-key-lock logic so that we don't
             # have to give keys out right away (this opens up the potential of
@@ -1103,12 +1083,11 @@ class SeedGenerator:
                         self.sharedMap = {}
                     if depth > self.playerCount * self.playerCount:
                         return
-                    return self.placeItems(depth + 1)   
-                        
+                    return self.placeItems(depth + 1)
+
             # pick what we're going to put in our accessible space
             itemsToAssign = []
-            if len(locationsToAssign) < len(self.assignQueue) + max(keystoneCount - self.inventory["KS"], 0) + max(
-                    mapstoneCount - self.inventory["MS"], 0):
+            if len(locationsToAssign) < len(self.assignQueue) + max(keystoneCount - self.inventory["KS"], 0) + max(mapstoneCount - self.inventory["MS"], 0):
                 # we've painted ourselves into a corner, try again
                 if not self.reservedLocations:
                     if self.playerID == 1:
@@ -1224,18 +1203,17 @@ class SeedGenerator:
             self.currentAreas = self.spoiler[i][0]
             spoilerPath = self.spoiler[i][1]
             self.spoilerGroup = self.spoiler[i][2]
-            while i + 1 < len(self.spoiler) and len(self.spoiler[i+1][0]) == 0:
-                spoilerPath += self.spoiler[i+1][1]
-                sets_forced += 1 if self.spoiler[i+1][1] else 0
-                for item in self.spoiler[i+1][2]:
-                    self.spoilerGroup[item] += self.spoiler[i+1][2][item]
+            while i + 1 < len(self.spoiler) and len(self.spoiler[i + 1][0]) == 0:
+                spoilerPath += self.spoiler[i + 1][1]
+                sets_forced += 1 if self.spoiler[i + 1][1] else 0
+                for item in self.spoiler[i + 1][2]:
+                    self.spoilerGroup[item] += self.spoiler[i + 1][2][item]
                 i += 1
             i += 1
             currentGroupSpoiler = ""
 
             if spoilerPath:
                 currentGroupSpoiler += ("    " + str(sets_forced) + " forced pickup set" + ("" if sets_forced == 1 else "s") + ": " + str(spoilerPath) + "\n")
-
 
             for skill in self.skillsOutput:
                 if skill in self.spoilerGroup:
