@@ -18,6 +18,7 @@ class Area:
         self.connections = []
         self.locations = []
         self.difficulty = 1
+        self.has_location = False
 
     def add_connection(self, connection):
         self.connections.append(connection)
@@ -30,6 +31,7 @@ class Area:
 
     def add_location(self, location):
         self.locations.append(location)
+        self.has_location = True
 
     def get_locations(self):
         return self.locations
@@ -349,7 +351,7 @@ class SeedGenerator:
                 else:
                     self.assign(sharedItem[0])
                     self.spoilerGroup[sharedItem[0]].append(sharedItem[0] + " from Player " + str(sharedItem[1]) + "\n")
-        if self.areas[target].locations:
+        if self.areas[target].has_location:
             self.currentAreas.append(target)
         self.areasReached[target] = True
 
@@ -1214,7 +1216,7 @@ class SeedGenerator:
         i = 0
         groupDepth = 0
         spoilerStr = ""
-        #self.spoiler.append((self.currentAreas, spoilerPath, self.spoilerGroup))
+
         while i < len(self.spoiler):
 
             sets_forced = 1 if self.spoiler[i][1] else 0
