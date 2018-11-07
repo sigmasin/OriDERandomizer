@@ -216,6 +216,7 @@ class SeedGenerator:
         self.areasRemaining = []
         self.connectionQueue = []
         self.assignQueue = []
+        self.spoiler = []
 
         self.itemCount = 252.0
 
@@ -348,7 +349,8 @@ class SeedGenerator:
                 else:
                     self.assign(sharedItem[0])
                     self.spoilerGroup[sharedItem[0]].append(sharedItem[0] + " from Player " + str(sharedItem[1]) + "\n")
-        self.currentAreas.append(target)
+        if self.areas[target].locations:
+            self.currentAreas.append(target)
         self.areasReached[target] = True
 
     def open_free_connections(self):
@@ -966,8 +968,6 @@ class SeedGenerator:
     def placeItems(self, depth=0):
         self.reset()
 
-        spoilerStr = ""
-        groupDepth = 0
         keystoneCount = 0
         mapstoneCount = 0
         plants = []
@@ -1052,7 +1052,7 @@ class SeedGenerator:
         
         self.doorQueue = OrderedDict()
         self.mapQueue = OrderedDict()
-        spoilerPath = ""
+        spoilerPath = []
         
         self.reach_area("SunkenGladesRunaway")
         if self.var(Variation.OPEN_MODE):
@@ -1084,25 +1084,24 @@ class SeedGenerator:
             # consider -- work on stronger anti-key-lock logic so that we don't
             # have to give keys out right away (this opens up the potential of
             # using keys in the wrong place, will need to be careful)
-            if not (self.doorQueue and self.inventory["KS"] >= keystoneCount) and not (self.mapQueue and self.inventory["MS"] >= mapstoneCount) and not reset_loop:
-                spoilerPath = self.prepare_path(len(locationsToAssign))
-                if not self.assignQueue:
-                    # we've painted ourselves into a corner, try again
-                    if not self.reservedLocations:
-                        if self.playerID == 1:
-                            self.split_locs = {}
-                            self.sharedMap = {}
-                        if depth > self.playerCount * self.playerCount:
-                            return
-                        return self.placeItems(depth + 1)
+            if not (self.doorQueue and self.inventory["KS"] >= keystoneCount) and not (self.mapQueue and self.inventory["MS"] >= mapstoneCount) and not reset_loop and len(locationsToAssign) == 0:
+                if self.reservedLocations:
                     locationsToAssign.append(self.reservedLocations.pop(0))
                     locationsToAssign.append(self.reservedLocations.pop(0))
-                    spoilerPath = self.prepare_path(len(locationsToAssign))
+                spoilerPath = self.prepare_path(len(locationsToAssign) + len(self.balanceList))
                 if self.params.balanced:
                     for item in self.assignQueue:
                         if len(self.balanceList) == 0:
                             break
                         locationsToAssign.append(self.get_location_from_balance_list())
+                if not self.assignQueue:
+                    # we've painted ourselves into a corner, try again
+                    if self.playerID == 1:
+                        self.split_locs = {}
+                        self.sharedMap = {}
+                    if depth > self.playerCount * self.playerCount:
+                        return
+                    return self.placeItems(depth + 1)   
                         
             # pick what we're going to put in our accessible space
             itemsToAssign = []
@@ -1148,51 +1147,7 @@ class SeedGenerator:
             for i in range(0, len(locationsToAssign)):
                 self.assign_to_location(itemsToAssign[i], locationsToAssign[i])
 
-            currentGroupSpoiler = ""
-
-            if spoilerPath:
-                currentGroupSpoiler += ("	Forced pickups: " + str(spoilerPath) + "\n")
-
-            for skill in self.skillsOutput:
-                if skill in self.spoilerGroup:
-                    for instance in self.spoilerGroup[skill]:
-                        currentGroupSpoiler += "	" + instance
-                    if skill in self.seedDifficultyMap:
-                        self.seedDifficulty += groupDepth * self.seedDifficultyMap[skill]
-
-            for event in self.eventsOutput:
-                if event in self.spoilerGroup:
-                    for instance in self.spoilerGroup[event]:
-                        currentGroupSpoiler += "	" + instance
-
-            for key in self.spoilerGroup:
-                if key[:2] == "TP":
-                    for instance in self.spoilerGroup[key]:
-                        currentGroupSpoiler += "	" + instance
-
-            for instance in self.spoilerGroup["MS"]:
-                currentGroupSpoiler += "	" + instance
-
-            for instance in self.spoilerGroup["KS"]:
-                currentGroupSpoiler += "	" + instance
-
-            for instance in self.spoilerGroup["HC"]:
-                currentGroupSpoiler += "	" + instance
-
-            for instance in self.spoilerGroup["EC"]:
-                currentGroupSpoiler += "	" + instance
-
-            if currentGroupSpoiler:
-                groupDepth += 1
-                self.currentAreas.sort()
-
-                spoilerStr += str(groupDepth) + ": " + str(self.currentAreas) + " {\n"
-
-                spoilerStr += currentGroupSpoiler
-
-                spoilerStr += "}\n"
-
-            self.currentAreas = []
+            self.spoiler.append((self.currentAreas, spoilerPath, self.spoilerGroup))
 
             # open all reachable doors (for the next iteration)
             if self.inventory["KS"] >= keystoneCount:
@@ -1217,10 +1172,13 @@ class SeedGenerator:
 
             locationsToAssign = []
             self.spoilerGroup = defaultdict(list)
+            self.currentAreas = []
 
             self.doorQueue = OrderedDict()
             self.mapQueue = OrderedDict()
-            spoilerPath = ""
+            spoilerPath = []
+
+        spoilerStr = self.form_spoiler()
 
         if self.var(Variation.WORLD_TOUR):
             spoilerStr += "Relics: {\n"
@@ -1250,6 +1208,71 @@ class SeedGenerator:
             self.params.locationAnalysis = self.params.locationAnalysisCopy
 
         return (self.outputStr, spoilerStr)
+
+    def form_spoiler(self):
+
+        i = 0
+        groupDepth = 0
+        spoilerStr = ""
+        #self.spoiler.append((self.currentAreas, spoilerPath, self.spoilerGroup))
+        while i < len(self.spoiler):
+
+            sets_forced = 1 if self.spoiler[i][1] else 0
+            groupDepth += 1
+            self.currentAreas = self.spoiler[i][0]
+            spoilerPath = self.spoiler[i][1]
+            self.spoilerGroup = self.spoiler[i][2]
+            while i + 1 < len(self.spoiler) and len(self.spoiler[i+1][0]) == 0:
+                spoilerPath += self.spoiler[i+1][1]
+                sets_forced += 1 if self.spoiler[i+1][1] else 0
+                for item in self.spoiler[i+1][2]:
+                    self.spoilerGroup[item] += self.spoiler[i+1][2][item]
+                i += 1
+            i += 1
+            currentGroupSpoiler = ""
+
+            if spoilerPath:
+                currentGroupSpoiler += ("    " + str(sets_forced) + " forced pickup set" + ("" if sets_forced == 1 else "s") + ": " + str(spoilerPath) + "\n")
+
+
+            for skill in self.skillsOutput:
+                if skill in self.spoilerGroup:
+                    for instance in self.spoilerGroup[skill]:
+                        currentGroupSpoiler += "    " + instance
+                    if skill in self.seedDifficultyMap:
+                        self.seedDifficulty += groupDepth * self.seedDifficultyMap[skill]
+
+            for event in self.eventsOutput:
+                if event in self.spoilerGroup:
+                    for instance in self.spoilerGroup[event]:
+                        currentGroupSpoiler += "    " + instance
+
+            for key in self.spoilerGroup:
+                if key[:2] == "TP":
+                    for instance in self.spoilerGroup[key]:
+                        currentGroupSpoiler += "    " + instance
+
+            for instance in self.spoilerGroup["MS"]:
+                currentGroupSpoiler += "    " + instance
+
+            for instance in self.spoilerGroup["KS"]:
+                currentGroupSpoiler += "    " + instance
+
+            for instance in self.spoilerGroup["HC"]:
+                currentGroupSpoiler += "    " + instance
+
+            for instance in self.spoilerGroup["EC"]:
+                currentGroupSpoiler += "    " + instance
+
+            self.currentAreas.sort()
+
+            spoilerStr += str(groupDepth) + ": " + str(self.currentAreas) + " {\n"
+
+            spoilerStr += currentGroupSpoiler
+
+            spoilerStr += "}\n"
+
+        return spoilerStr
 
     def do_reachability_analysis(self, params):
         self.params = params
