@@ -1252,6 +1252,9 @@ class SeedGenerator:
             for instance in self.spoilerGroup["EC"]:
                 currentGroupSpoiler += "    " + instance
 
+            for instance in self.spoilerGroup["AC"]:
+                currentGroupSpoiler += "    " + instance
+
             self.currentAreas.sort()
 
             spoilerStr += str(groupDepth) + ": " + str(self.currentAreas) + " {\n"
