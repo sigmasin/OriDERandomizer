@@ -321,24 +321,22 @@ home: SunkenGladesRunaway
 	pickup: GladesKeystone1
 	pickup: GladesKeystone2
 	pickup: GladesGrenadePool
-		ALL Grenade
-		casual-core Water
-		expert-dboost Health=6
-		expert-dboost Stomp Health=5
-		master-dboost Health=5
+		casual-core Grenade Water
+		expert-dboost Grenade Health=6
+		expert-dboost Grenade Stomp Health=5
+		master-dboost Grenade Health=5
 	pickup: GladesGrenadeTree
-		ALL Grenade
-		casual-core ChargeJump
-		casual-core Bash
-		standard-core WallJump DoubleJump
-		expert-abilities Dash Ability=6
-		master-core Free
+		casual-core Grenade ChargeJump
+		casual-core Grenade Bash
+		standard-core Grenade WallJump DoubleJump
+		expert-abilities Grenade Dash Ability=6
+		master-core Grenade
 	pickup: GladesMainPool
 		casual-core Water
 		expert-dboost Bash
 		expert-dboost Stomp
 		expert-dboost Health=4
-		master-core Free
+		master-dboost Health=3
 	pickup: GladesMainPoolDeep
 		casual-core Water
 		expert-dboost Health=7
@@ -348,8 +346,6 @@ home: SunkenGladesRunaway
 		casual-core Bash Grenade
 		standard-lure Bash
 		expert-abilities Dash Ability=6
-	-- no need to isolate this key door because there's no requirements to get
-	-- to it or to get past it
 	conn: GladesMain
 		casual-core Keystone=2
 		casual-core Open
@@ -365,13 +361,13 @@ home: SunkenGladesRunaway
 		casual-dboost WallJump Energy=4
 		casual-dboost Climb Energy=4
 		standard-lure Bash Energy=4
-    master-core DoubleJump Energy=4
+		master-core DoubleJump Energy=4
 		timed-level WallJump Energy=2
 		timed-level Climb Energy=2
 		timed-level ChargeJump Energy=2
 		timed-level Grenade Bash Energy=2
-    timed-level Bash Energy=2
-    timed-level DoubleJump Energy=2
+		timed-level Bash Energy=2
+		timed-level DoubleJump Energy=2
 	conn: SpiritTreeRefined
 		casual-core TPGrove
 	conn: MoonGrotto
@@ -407,7 +403,6 @@ home: GladesMain
 		master-core DoubleJump
 	conn: LeftGlades
 	conn: SpiritCavernsDoor
-		casual-core Free
 	conn: GladesLaserArea
 		casual-core ChargeJump Climb
 		casual-core ChargeJump WallJump DoubleJump
@@ -643,13 +638,12 @@ home: GladesLaserArea
 		expert-dboost WallJump Glide
 		expert-abilities Dash Ability=6
 	pickup: GladesLaserGrenade
-		ALL Grenade
-		casual-core Bash WallJump
-		casual-core Bash Climb
-		expert-core ChargeJump Water
-		expert-dboost ChargeJump
-		expert-abilities Dash Ability=6 Energy=2
-		expert-abilities Dash DoubleJump Ability=6
+		casual-core Grenade Bash WallJump
+		casual-core Grenade Bash Climb
+		expert-core Grenade ChargeJump Water
+		expert-dboost Grenade ChargeJump
+		expert-abilities Grenade Dash Ability=6 Energy=2
+		expert-abilities Grenade Dash DoubleJump Ability=6
 	conn: GladesMain
 	conn: MidSpiritCaverns
 		casual-core Energy=4
@@ -769,12 +763,11 @@ home: SpiderSacTetherArea
 		glitched Energy=3
 		master-core Energy=2
 	pickup: SpiderSacGrenadeDoor
-		ALL Grenade
-		casual-core Bash
-		casual-core DoubleJump WallJump
-		casual-core ChargeJump
-		expert-core DoubleJump Climb
-		expert-abilities Dash Ability=6
+		casual-core Grenade Bash
+		casual-core Grenade DoubleJump WallJump
+		casual-core Grenade ChargeJump
+		expert-core Grenade DoubleJump Climb
+		expert-abilities Grenade Dash Ability=6
 	conn: SpiderWaterArea
 		casual-core ChargeFlame
 		casual-core Grenade
@@ -863,12 +856,11 @@ home: SpiderWaterArea
 		expert-abilities Dash Ability=6
 		gjump ChargeJump Climb Grenade
 	pickup: GroveAboveSpiderWaterEnergyCell
-		ALL Grenade
-		casual-core ChargeJump Climb DoubleJump
-		standard-core ChargeJump WallJump DoubleJump Glide
-		standard-core ChargeJump WallJump DoubleJump Dash
-		standard-core Bash
-		expert-abilities Dash Ability=6
+		casual-core Grenade ChargeJump Climb DoubleJump
+		standard-core Grenade ChargeJump WallJump DoubleJump Glide
+		standard-core Grenade ChargeJump WallJump DoubleJump Dash
+		standard-core Grenade Bash
+		expert-abilities Grenade Dash Ability=6
 	conn: SpiderSacEnergyNook
 		casual-core Glide
 		casual-core Bash Grenade
@@ -1146,22 +1138,21 @@ home: LostGrove
 		master-dboost Health=12
 		master-core Health=6 Ability=12
 	conn: LostGroveExit
-		ALL Grenade
-		casual-core Bash DoubleJump WallJump
-		casual-core Bash DoubleJump Climb
-		casual-dboost ChargeJump DoubleJump WallJump
-		casual-dboost ChargeJump DoubleJump Climb
-		expert-dboost ChargeJump WallJump Health=7
-		expert-dboost ChargeJump Climb Health=7
-		expert-core Bash WallJump
-		expert-core Bash Climb
-		expert-core Glide ChargeJump Climb
-		expert-dboost Dash ChargeJump WallJump
-		expert-dboost Glide ChargeJump WallJump
-		expert-abilities Dash ChargeJump Climb Ability=3
-		master-core DoubleJump WallJump Ability=12
-		master-core DoubleJump Climb Ability=12
-		gjump ChargeJump Climb
+		casual-core Grenade Bash DoubleJump WallJump
+		casual-core Grenade Bash DoubleJump Climb
+		casual-dboost Grenade ChargeJump DoubleJump WallJump
+		casual-dboost Grenade ChargeJump DoubleJump Climb
+		expert-dboost Grenade ChargeJump WallJump Health=7
+		expert-dboost Grenade ChargeJump Climb Health=7
+		expert-core Grenade Bash WallJump
+		expert-core Grenade Bash Climb
+		expert-core Grenade Glide ChargeJump Climb
+		expert-dboost Grenade Dash ChargeJump WallJump
+		expert-dboost Grenade Glide ChargeJump WallJump
+		expert-abilities Grenade Dash ChargeJump Climb Ability=3
+		master-core Grenade DoubleJump WallJump Ability=12
+		master-core Grenade DoubleJump Climb Ability=12
+		gjump Grenade ChargeJump Climb
 home: LostGroveExit
 	-- anchor: on the lever to open the door to the teleporter
 	pickup: LostGroveAbilityCell
@@ -1254,9 +1245,9 @@ home: HollowGrove
 		casual-core ChargeJump Stomp
 		standard-abilities Climb Stomp Dash Ability=3
 		expert-core WallJump
-		expert-core DoubleJump
 		expert-core ChargeJump
 		expert-abilities Climb Dash Ability=3
+		master-core DoubleJump
 	conn: Iceless
 		casual-core WallJump DoubleJump
 		casual-core Climb DoubleJump
@@ -1281,11 +1272,10 @@ home: SwampTeleporter
 home: OuterSwampUpperArea
 	-- anchor: on the ledge near the grenade xp
 	pickup: OuterSwampGrenadeExp
-		ALL Grenade
-		casual-core WallJump
-		casual-core Climb
-		casual-core ChargeJump
-		casual-core Bash
+		casual-core Grenade WallJump
+		casual-core Grenade Climb
+		casual-core Grenade ChargeJump
+		casual-core Grenade Bash
 	conn: GinsoOuterDoor
 		casual-core GinsoKey
 	conn: OuterSwampAbilityCellNook
@@ -1776,18 +1766,17 @@ home: MoonGrottoAboveTeleporter
 home: MoonGrotto
 	-- anchor: on the teleporter
 	pickup: GrottoEnergyDoorSwim
-		casual-core Water Energy=2
+		casual-core Energy=2 Water
 		expert-dboost Energy=2
 	pickup: GrottoEnergyDoorHealthCell
-		ALL Energy=2
-		casual-core ChargeJump
-		casual-core Bash Grenade
-		casual-core WallJump DoubleJump
-		standard-dboost WallJump
-		standard-abilities Climb Dash Ability=3
-		expert-core Climb Glide
-		expert-dboost Climb DoubleJump
-		expert-abilities Dash Ability=6
+		casual-core Energy=2 ChargeJump
+		casual-core Energy=2 Bash Grenade
+		casual-core Energy=2 WallJump DoubleJump
+		standard-dboost Energy=2 WallJump
+		standard-abilities Energy=2 Climb Dash Ability=3
+		expert-core Energy=2 Climb Glide
+		expert-dboost Energy=2 Climb DoubleJump
+		expert-abilities Energy=2 Dash Ability=6
 	conn: MoonGrottoAboveTeleporter
 		casual-core WallJump
 		casual-core Climb
@@ -2336,29 +2325,28 @@ home: RightSwamp
 		casual-core ChargeJump
 		dbash Bash
 	pickup: StompAreaGrenadeExp
-		ALL Grenade
-		casual-core Water Bash Stomp
-		casual-core Water Bash Glide
-		casual-core Water ChargeJump Stomp
-		casual-core Water ChargeJump Climb Glide
-		casual-dboost Water ChargeJump
-		standard-core Water Bash DoubleJump
-		standard-dboost Water Bash Health=3
-		expert-abilities Water Dash Ability=6 Energy=3
-		expert-abilities Water Stomp Dash Ability=6
-		expert-dboost Water Climb DoubleJump Stomp Dash Ability=3 Health=3
-		expert-dboost Water WallJump DoubleJump Stomp Health=3
-		expert-dboost Bash Health=3
-		expert-dboost ChargeJump Health=4
-		expert-dboost Dash Ability=6 Health=4 Energy=3
-		expert-dboost Climb DoubleJump Stomp Dash Ability=3 Health=4
-		expert-dboost WallJump DoubleJump Stomp Health=4
-		dbash Water Bash
-		master-dboost Water DoubleJump Stomp Health=5
-		master-dboost Water DoubleJump Ability=12 Health=5
-		master-dboost DoubleJump Stomp Health=4
-		master-dboost DoubleJump Health=5
-		gjump Water Climb ChargeJump
+		casual-core Grenade Water Bash Stomp
+		casual-core Grenade Water Bash Glide
+		casual-core Grenade Water ChargeJump Stomp
+		casual-core Grenade Water ChargeJump Climb Glide
+		casual-dboost Grenade Water ChargeJump
+		standard-core Grenade Water Bash DoubleJump
+		standard-dboost Grenade Water Bash Health=3
+		expert-abilities Grenade Water Dash Ability=6 Energy=3
+		expert-abilities Grenade Water Stomp Dash Ability=6
+		expert-dboost Grenade Water Climb DoubleJump Stomp Dash Ability=3 Health=3
+		expert-dboost Grenade Water WallJump DoubleJump Stomp Health=3
+		expert-dboost Grenade Bash Health=3
+		expert-dboost Grenade ChargeJump Health=4
+		expert-dboost Grenade Dash Ability=6 Health=4 Energy=3
+		expert-dboost Grenade Climb DoubleJump Stomp Dash Ability=3 Health=4
+		expert-dboost Grenade WallJump DoubleJump Stomp Health=4
+		dbash Grenade Water Bash
+		master-dboost Grenade Water DoubleJump Stomp Health=5
+		master-dboost Grenade Water DoubleJump Ability=12 Health=5
+		master-dboost Grenade DoubleJump Stomp Health=4
+		master-dboost Grenade DoubleJump Health=5
+		gjump Grenade Water Climb ChargeJump
 home: HoruFields
 	-- anchor: just left of the baneling wall
 	conn: HoruFieldsPushBlock
@@ -2676,15 +2664,14 @@ home: L1OuterDoor
 	conn: HoruInnerDoor
 home: L1InnerDoor
 	conn: L1
-		ALL Bash Stomp
-		casual-core DoubleJump Glide WallJump
-		casual-core DoubleJump ChargeJump WallJump
-		casual-core Glide ChargeJump WallJump
-		casual-core DoubleJump Glide Climb
-		casual-core DoubleJump ChargeJump Climb
-		casual-core Glide ChargeJump Climb
-		expert-core Grenade WallJump
-		expert-core Grenade Climb
+		casual-core Bash Stomp DoubleJump Glide WallJump
+		casual-core Bash Stomp DoubleJump ChargeJump WallJump
+		casual-core Bash Stomp Glide ChargeJump WallJump
+		casual-core Bash Stomp DoubleJump Glide Climb
+		casual-core Bash Stomp DoubleJump ChargeJump Climb
+		casual-core Bash Stomp Glide ChargeJump Climb
+		expert-core Bash Stomp Grenade WallJump
+		expert-core Bash Stomp Grenade Climb
 home: L1
 	pickup: HoruL1
 		casual-core Bash DoubleJump Glide
@@ -2714,46 +2701,43 @@ home: L2OuterDoor
 		casual-core Stomp
 home: L2InnerDoor
 	conn: L2
-		ALL Bash Stomp
-		casual-core DoubleJump Glide WallJump
-		casual-core DoubleJump ChargeJump WallJump
-		casual-core Glide ChargeJump WallJump
-		casual-core DoubleJump Glide Climb
-		casual-core DoubleJump ChargeJump Climb
-		casual-core Glide ChargeJump Climb
-		expert-core Grenade WallJump
-		expert-core Grenade Climb
+		casual-core Bash Stomp DoubleJump Glide WallJump
+		casual-core Bash Stomp DoubleJump ChargeJump WallJump
+		casual-core Bash Stomp Glide ChargeJump WallJump
+		casual-core Bash Stomp DoubleJump Glide Climb
+		casual-core Bash Stomp DoubleJump ChargeJump Climb
+		casual-core Bash Stomp Glide ChargeJump Climb
+		expert-core Bash Stomp Grenade WallJump
+		expert-core Bash Stomp Grenade Climb
 home: L2
 	pickup: HoruL2
-		ALL Stomp
-		casual-core ChargeJump
-		casual-core WallJump DoubleJump Glide
-		standard-core Bash Grenade
-		standard-core DoubleJump WallJump
-		standard-lure Bash DoubleJump
-		standard-abilities WallJump Dash Ability=3
-		standard-abilities Climb Dash DoubleJump Ability=3
-		expert-core Climb DoubleJump Glide
-		expert-abilities Dash Ability=6 Energy=1
-		expert-abilities Climb Dash Ability=3
-		master-core DoubleJump Glide
-		master-abilities DoubleJump Dash Ability=3
-		master-abilities DoubleJump Ability=12
+		casual-core Stomp ChargeJump
+		casual-core Stomp WallJump DoubleJump Glide
+		standard-core Stomp Bash Grenade
+		standard-core Stomp DoubleJump WallJump
+		standard-lure Stomp Bash DoubleJump
+		standard-abilities Stomp WallJump Dash Ability=3
+		standard-abilities Stomp Climb Dash DoubleJump Ability=3
+		expert-core Stomp Climb DoubleJump Glide
+		expert-abilities Stomp Dash Ability=6 Energy=1
+		expert-abilities Stomp Climb Dash Ability=3
+		master-core Stomp DoubleJump Glide
+		master-abilities Stomp DoubleJump Dash Ability=3
+		master-abilities Stomp DoubleJump Ability=12
 home: L3OuterDoor
 	conn: L3InnerDoor
 	conn: HoruInnerDoor
 		casual-core Stomp
 home: L3InnerDoor
 	conn: L3
-		ALL Bash
-		casual-core DoubleJump Glide WallJump
-		casual-core DoubleJump ChargeJump WallJump
-		casual-core Glide ChargeJump WallJump
-		casual-core DoubleJump Glide Climb
-		casual-core DoubleJump ChargeJump Climb
-		casual-core Glide ChargeJump Climb
-		expert-core Grenade WallJump
-		expert-core Grenade Climb
+		casual-core Bash DoubleJump Glide WallJump
+		casual-core Bash DoubleJump ChargeJump WallJump
+		casual-core Bash Glide ChargeJump WallJump
+		casual-core Bash DoubleJump Glide Climb
+		casual-core Bash DoubleJump ChargeJump Climb
+		casual-core Bash Glide ChargeJump Climb
+		expert-core Bash Grenade WallJump
+		expert-core Bash Grenade Climb
 home: L3
 	pickup: HoruL3
 		casual-core Stomp DoubleJump Glide Bash ChargeJump
@@ -2794,36 +2778,33 @@ home: L4OuterDoor
 	conn: L4Below
 home: L4InnerDoor
 	conn: L4
-		ALL Bash Stomp
-		casual-core DoubleJump Glide WallJump
-		casual-core DoubleJump ChargeJump WallJump
-		casual-core Glide ChargeJump WallJump
-		casual-core DoubleJump Glide Climb
-		casual-core DoubleJump ChargeJump Climb
-		casual-core Glide ChargeJump Climb
-		expert-core Grenade WallJump
-		expert-core Grenade Climb
+		casual-core Bash Stomp DoubleJump Glide WallJump
+		casual-core Bash Stomp DoubleJump ChargeJump WallJump
+		casual-core Bash Stomp Glide ChargeJump WallJump
+		casual-core Bash Stomp DoubleJump Glide Climb
+		casual-core Bash Stomp DoubleJump ChargeJump Climb
+		casual-core Bash Stomp Glide ChargeJump Climb
+		expert-core Bash Stomp Grenade WallJump
+		expert-core Bash Stomp Grenade Climb
 home: L4
     conn: HoruL4LavaChasePeg
-		ALL Bash
-        casual-core DoubleJump
-		casual-core Glide
-		standard-core Free
+        casual-core Bash DoubleJump
+		casual-core Bash Glide
+		standard-core Bash
     conn: HoruL4CutscenePeg
         expert-core Free
 home: HoruL4LavaChasePeg
     pickup: HoruL4ChaseExp
 		casual-core Free
     conn: HoruL4CutscenePeg
-		ALL Stomp Bash
-		casual-core DoubleJump ChargeJump 
-		casual-core Glide ChargeJump 
-		standard-core ChargeJump
-		standard-core Grenade
-		standard-core WallJump DoubleJump
-		standard-core Climb DoubleJump
-		expert-abilities Dash Ability=6 Energy=2
-		master-core DoubleJump
+		casual-core Bash Stomp DoubleJump ChargeJump 
+		casual-core Bash Stomp Glide ChargeJump 
+		standard-core Bash Stomp ChargeJump
+		standard-core Bash Stomp Grenade
+		standard-core Bash Stomp WallJump DoubleJump
+		standard-core Bash Stomp Climb DoubleJump
+		expert-abilities Bash Stomp Dash Ability=6 Energy=2
+		master-core Bash Stomp DoubleJump
 home: HoruL4CutscenePeg
     pickup: HoruL4
         casual-core Stomp
@@ -2919,37 +2900,35 @@ home: R2InnerDoor
 	conn: R2
 home: R2
     pickup: HoruR2
-        ALL Stomp
-        casual-core Bash Glide DoubleJump WallJump
-        casual-core Bash Glide DoubleJump Climb
-        casual-core Bash Glide DoubleJump ChargeJump
-        casual-core Bash Glide DoubleJump Grenade
-        standard-core Bash Glide WallJump
-        standard-core Bash Glide Climb
-        standard-core Bash Glide ChargeJump
-        standard-core Bash Glide Grenade
-        expert-core Bash DoubleJump WallJump
-        expert-core Bash DoubleJump Climb
-        expert-core Bash DoubleJump ChargeJump
-        expert-core Bash DoubleJump Grenade
-        master-core Bash
-        master-dboost DoubleJump ChargeJump Grenade Dash Ability=6 Health=13 Energy=3
-        master-dboost DoubleJump ChargeJump Grenade Dash Ability=12 Health=10 Energy=3
+        casual-core Stomp Bash Glide DoubleJump WallJump
+        casual-core Stomp Bash Glide DoubleJump Climb
+        casual-core Stomp Bash Glide DoubleJump ChargeJump
+        casual-core Stomp Bash Glide DoubleJump Grenade
+        standard-core Stomp Bash Glide WallJump
+        standard-core Stomp Bash Glide Climb
+        standard-core Stomp Bash Glide ChargeJump
+        standard-core Stomp Bash Glide Grenade
+        expert-core Stomp Bash DoubleJump WallJump
+        expert-core Stomp Bash DoubleJump Climb
+        expert-core Stomp Bash DoubleJump ChargeJump
+        expert-core Stomp Bash DoubleJump Grenade
+        master-core Stomp Bash
+        master-dboost Stomp DoubleJump ChargeJump Grenade Dash Ability=6 Health=13 Energy=3
+        master-dboost Stomp DoubleJump ChargeJump Grenade Dash Ability=12 Health=10 Energy=3
 home: R3OuterDoor
 	conn: R3InnerDoor
 	conn: HoruInnerDoor
 		casual-core Stomp
 home: R3InnerDoor
 	conn: R3
-		ALL Bash
-		casual-core DoubleJump Glide WallJump
-		casual-core DoubleJump ChargeJump WallJump
-		casual-core Glide ChargeJump WallJump
-		casual-core DoubleJump Glide Climb
-		casual-core DoubleJump ChargeJump Climb
-		casual-core Glide ChargeJump Climb
-		expert-core Grenade WallJump
-		expert-core Grenade Climb
+		casual-core Bash DoubleJump Glide WallJump
+		casual-core Bash DoubleJump ChargeJump WallJump
+		casual-core Bash Glide ChargeJump WallJump
+		casual-core Bash DoubleJump Glide Climb
+		casual-core Bash DoubleJump ChargeJump Climb
+		casual-core Bash Glide ChargeJump Climb
+		expert-core Bash Grenade WallJump
+		expert-core Bash Grenade Climb
 home: R3
     conn: HoruR3SpikeCaveEntrance
         casual-core WallJump DoubleJump Glide
@@ -3009,15 +2988,14 @@ home: R4OuterDoor
 		dbash Bash
 home: R4InnerDoor
 	conn: R4
-		ALL Bash
-		casual-core DoubleJump Glide WallJump
-		casual-core DoubleJump ChargeJump WallJump
-		casual-core Glide ChargeJump WallJump
-		casual-core DoubleJump Glide Climb
-		casual-core DoubleJump ChargeJump Climb
-		casual-core Glide ChargeJump Climb
-		expert-core Grenade WallJump
-		expert-core Grenade Climb
+		casual-core Bash DoubleJump Glide WallJump
+		casual-core Bash DoubleJump ChargeJump WallJump
+		casual-core Bash Glide ChargeJump WallJump
+		casual-core Bash DoubleJump Glide Climb
+		casual-core Bash DoubleJump ChargeJump Climb
+		casual-core Bash Glide ChargeJump Climb
+		expert-core Bash Grenade WallJump
+		expert-core Bash Grenade Climb
 home: R4
     conn: HoruR4LavaPool
         master-core Bash
