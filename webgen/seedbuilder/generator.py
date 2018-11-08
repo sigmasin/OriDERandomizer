@@ -71,14 +71,15 @@ class Connection:
             if item in longform_to_code:
                 return count * longform_to_code[item]
             return count * [item]
-        # the double list comprehension below is equivilent to flatten([translate(part) for part in req])
-        # (or, more accurately, it would be equivilent to that if flatten was a thing in python)
-        req = [translated_part for part in req for translated_part in translate(part)]
-        self.requirements.append(req)
+        translated_req = []
+        for part in req:
+            translated_req += translate(part)
+
+        self.requirements.append(translated_req)
         self.difficulties.append(difficulty)
         if not self.keys:
             self.keys = req.count("KS")
-        self.mapstone = "MS" in req
+        self.mapstone = "MS" in translated_req
 
     def get_requirements(self):
         return self.requirements
