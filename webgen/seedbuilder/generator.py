@@ -95,8 +95,9 @@ class Connection:
                     items[req_part] += 1
                     if self.sg.inventory[req_part] < items[req_part]:
                         score += self.sg.costs[req_part]
-                elif req_part == "MS" and self.sg.inventory["MS"] < self.sg.mapstonesSeen:
-                    score += self.sg.costs["MS"]
+                elif req_part == "MS":
+                    if self.sg.inventory["MS"] < self.sg.mapstonesSeen:
+                        score += self.sg.costs["MS"]
                 else:
                     score += self.sg.costs.get(req_part, 0)
             if score < minReqScore:
