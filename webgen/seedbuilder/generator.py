@@ -5,9 +5,8 @@ import xml.etree.ElementTree as XML
 from collections import OrderedDict, defaultdict, Counter
 from operator import mul
 from enums import KeyMode, PathDifficulty, ShareType, Variation, MultiplayerGameType
-from seedbuilder.areas import get_areas
+from seedbuilder.oriparse import ori_load_url
 from seedbuilder.relics import relics
-
 
 def ordhash(s):
     return reduce(mul, [ord(c) for c in s])
@@ -66,6 +65,27 @@ class Connection:
                 if "HoruKey" in req:
                     req.remove("HoruKey")
                     req += ["SunstoneShard"] * 5
+
+        for i in range(len(req), 0, -1):
+            if '=' not in req[i-1]:
+                continue
+
+            part = req.pop(i-1)
+            item, _, count = part.partition('=')
+            count = int(count)
+
+            if item == "Health":
+                req += ["HC"] * count
+            elif item == "Energy":
+                req += ["EC"] * count
+            elif item == "Ability":
+                req += ["AC"] * count
+            elif item == "Keystone":
+                req += ["KS"] * count
+
+        if "Mapstone" in req:
+            req.remove("Mapstone")
+            req.append("MS")
 
         if "Free" in req:
             req.remove("Free")
@@ -705,44 +725,57 @@ class SeedGenerator:
         if self.params.do_loc_analysis:
             self.params.locationAnalysis["FinalEscape EVWarmth (-240 512)"] = self.params.itemsToAnalyze.copy()
             self.params.locationAnalysis["FinalEscape EVWarmth (-240 512)"]["Zone"] = "Horu"
-        tree = get_areas()
-        root = tree.getroot()
+
+        # sorry for this - only intended to last as long as 3.0 beta lasts
+        areas_dot_ori = 'http://raw.githubusercontent.com/sigmasin/OriDERandomizer/3.0/seed_gen/areas.ori'
+        meta = ori_load_url(areas_dot_ori)
         logic_paths = [lp.value for lp in self.params.logic_paths]
-        for child in root:
-            area = Area(child.attrib["name"])
-            self.areasRemaining.append(child.attrib["name"])
-            for location in child.find("Locations"):
-                loc = Location(
-                    int(location.find("X").text),
-                    int(location.find("Y").text),
-                    area.name,
-                    location.find("Item").text,
-                    int(location.find("Difficulty").text),
-                    location.find("Zone").text
-                )
-                area.add_location(loc)
-                if self.params.do_loc_analysis:
-                    key = loc.to_string()
-                    if key not in self.params.locationAnalysis.keys():
-                        self.params.locationAnalysis[key] = self.params.itemsToAnalyze.copy()
-                        self.params.locationAnalysis[key]["Zone"] = loc.zone
-                    zoneKey = loc.zone
-                    if zoneKey not in self.params.locationAnalysis.keys():
-                        self.params.locationAnalysis[zoneKey] = self.params.itemsToAnalyze.copy()
-                        self.params.locationAnalysis[zoneKey]["Zone"] = loc.zone
-            if child.find("Connections") is None:
-                log.error("No connections found for child %s, (name %s)" % (child, child.attrib["name"]))
-            for conn in child.find("Connections"):
-                connection = Connection(conn.find("Home").attrib["name"], conn.find("Target").attrib["name"], self)
-                entranceConnection = conn.find("Entrance")
-                if self.var(Variation.ENTRANCE_SHUFFLE) and entranceConnection is not None:
-                    continue
-                for req in conn.find("Requirements"):
-                    if req.attrib["mode"] in logic_paths:
-                        connection.add_requirements(req.text.split('+'), self.difficultyMap[req.attrib["mode"]])
+
+        for loc_name, loc_info in meta["locs"].iteritems():
+            area = Area(loc_name)
+            self.areasRemaining.append(loc_name)
+            self.areas[loc_name] = area
+            
+            loc = Location(
+                int(loc_info["x"]),
+                int(loc_info["y"]),
+                loc_name,
+                loc_info["item"],
+                int(loc_info["difficulty"]),
+                loc_info["zone"]
+            )
+            area.add_location(loc)
+
+            if self.params.do_loc_analysis:
+                key = loc.to_string()
+                if key not in self.params.locationAnalysis:
+                    self.params.locationAnalysis[key] = self.params.itemsToAnalyze.copy()
+                    self.params.locationAnalysis[key]["Zone"] = loc.zone
+                zoneKey = loc.zone
+                if zoneKey not in self.params.locationAnalysis:
+                    self.params.locationAnalysis[zoneKey] = self.params.itemsToAnalyze.copy()
+                    self.params.locationAnalysis[zoneKey]["Zone"] = loc.zone
+
+        for home_name, home_info in meta["homes"].iteritems():
+            area = Area(home_name)
+            self.areasRemaining.append(home_name)
+            self.areas[home_name] = area
+
+            for conn_target_name, conn_info in home_info["conns"].iteritems():
+                connection = Connection(home_name, conn_target_name, self)
+
+                # can't actually be used yet but this is roughly how this will be implemented
+                # entranceConnection = True if "entrance" in conn_info else False
+                # if self.var(Variation.ENTRANCE_SHUFFLE) and entranceConnection:
+                #   continue
+
+                if not conn_info["paths"]:
+                    connection.add_requirements(["Free"], 1)
+                for path in conn_info["paths"]:
+                    if path[0] in logic_paths:
+                        connection.add_requirements(list(path[1:]), self.difficultyMap[path[0]])
                 if connection.get_requirements():
                     area.add_connection(connection)
-            self.areas[area.name] = area
 
     def connect_doors(self, door1, door2, requirements=["Free"]):
         connection1 = Connection(door1.name, door2.name, self)
