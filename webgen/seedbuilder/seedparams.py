@@ -7,11 +7,12 @@ from enums import (MultiplayerGameType, ShareType, Variation, LogicPath, KeyMode
 from collections import OrderedDict
 from seedbuilder.generator import SeedGenerator
 
+FLAGLESS_VARS = [Variation.WARMTH_FRAGMENTS, Variation.WORLD_TOUR]
+
 class Stuff(ndb.Model):
     code = ndb.StringProperty()
     id = ndb.StringProperty()
     player = ndb.StringProperty()
-
 
 class Placement(ndb.Model):
     location = ndb.StringProperty()
@@ -46,7 +47,6 @@ class MultiplayerOptions(ndb.Model):
             opts.cloned = qparams.get("sync_gen") != "disjoint"
             opts.hints = bool(opts.cloned and qparams.get("sync_hints"))
             opts.shared = enums_from_strlist(ShareType, qparams.getall("sync_shared"))
-
             teamsRaw = qparams.get("teams")
             if teamsRaw and opts.mode == MultiplayerGameType.SHARED and opts.cloned:
                 cnt = 1
@@ -93,9 +93,11 @@ class SeedGenParams(ndb.Model):
     sync = ndb.LocalStructuredProperty(MultiplayerOptions)
     frag_count = ndb.IntegerProperty(default=40)
     frag_extra = ndb.IntegerProperty(default=10)
+    relic_count = ndb.IntegerProperty(default=8)
     cell_freq = ndb.IntegerProperty(default=256)
     placements = ndb.LocalStructuredProperty(Placement, repeated=True, compressed=True)
     spoilers = ndb.TextProperty(repeated=True, compressed=True)
+    do_loc_analysis = False
 
     @staticmethod
     def from_url(qparams):
@@ -117,6 +119,7 @@ class SeedGenParams(ndb.Model):
         params.tracking = qparams.get("tracking") != "Disabled"
         params.frag_count = int(qparams.get("frags", 40))
         params.frag_extra = int(qparams.get("extra_frags", 10))
+        params.relic_count = int(qparams.get("relics", 8))
         params.cell_freq = int(qparams.get("cell_freq", 256))
         params.sync = MultiplayerOptions.from_url(qparams)
         raw_fass = qparams.get("fass")
@@ -153,8 +156,12 @@ class SeedGenParams(ndb.Model):
                     placemap[loc] = Placement(location=loc, zone=zone, stuff=[stuff])
                 else:
                     placemap[loc].stuff.append(stuff)
-        if player != self.players and player != len(self.sync.teams):
-            log.error("seed count mismatch!, %s != %s or %s", player, self.players, len(self.teams))
+        if self.sync.mode == MultiplayerGameType.SIMUSOLO:
+            if player != 1:
+                log.error("seed count mismatch! Should only be 1 simusolo seed and instead found  %s", player)
+                return False
+        elif player != self.players and player != len(self.sync.teams):
+            log.error("seed count mismatch!, %s != %s or %s", player, self.players, len(self.sync.teams))
             return False
         self.spoilers = spoilers
         self.placements = placemap.values()
@@ -171,12 +178,22 @@ class SeedGenParams(ndb.Model):
         flags = self.flag_line(verbose_paths)
         if self.tracking:
             flags = "Sync%s.%s," % (game_id, player) + flags
+        if self.sync.mode == MultiplayerGameType.SIMUSOLO:
+            player = 1  # look, it's probably fine
         outlines = [flags]
-        outlines += ["|".join((str(p.location), s.code, s.id, p.zone)) for p in self.placements for s in p.stuff if int(s.player) == self.team_pid(player)]
+        outlines += ["|".join(line) for line in self.get_seed_data(player)]
         assert len(outlines) > 1
         return "\n".join(outlines)+"\n"
 
+    def get_seed_data(self, player=1):
+        player = int(player)
+        if self.sync.mode == MultiplayerGameType.SIMUSOLO:
+            player = 1
+        return [(str(p.location), s.code, s.id, p.zone) for p in self.placements for s in p.stuff if int(s.player) == self.team_pid(player)]
+
     def get_spoiler(self, player=1):
+        if self.sync.mode == MultiplayerGameType.SIMUSOLO:
+            player = 1
         return self.spoilers[self.team_pid(player)-1]
 
     def get_preset(self):
@@ -197,7 +214,9 @@ class SeedGenParams(ndb.Model):
         flags.append(self.key_mode)
         if Variation.WARMTH_FRAGMENTS in self.variations:
             flags.append("Frags/%s/%s" % (self.frag_count, self.frag_extra))
-        flags += [v.value for v in self.variations]
+        if Variation.WORLD_TOUR in self.variations:
+            flags.append("WorldTour=%s" % self.relic_count)
+        flags += [v.value for v in self.variations if v not in FLAGLESS_VARS]
         if self.path_diff != PathDifficulty.NORMAL:
             flags.append("prefer_path_difficulty=%s" % self.path_diff.value)
         if self.sync.enabled:

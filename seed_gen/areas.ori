@@ -1861,8 +1861,12 @@ home: MoonGrottoSwampAccessArea
 		expert-abilities Dash Ability=6
 	conn: InnerSwampAboveDrainArea
 		casual-core ChargeJump
-		standard-core Bash
-		expert-core ChargeFlame
+		standard-lure Bash
+		expert-lure WallJump DoubleJump Stomp
+		expert-lure Climb DoubleJump Stomp
+		expert-lure WallJump ChargeFlame
+		expert-lure Climb ChargeFlame
+		master-lure DoubleJump Grenade
 home: SideFallCell
 	-- anchor: at the ability cell midway down the fall
 	pickup: GrottoHideoutFallAbilityCell
@@ -2022,6 +2026,7 @@ home: LowerLeftGumoHideout
 		casual-core Bash Grenade
 		dbash Bash
 		expert-abilities Dash Ability=6
+		master-abilities DoubleJump Ability=12
 	pickup: LeftGumoHideoutSwim
 		casual-core Water
 		expert-dboost Free
