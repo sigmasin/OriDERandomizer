@@ -206,7 +206,7 @@ def ori_load(lines, verbose=False):
                 context_conn = name
         else:
             # If there's no type marker, it's a logic path
-            if tokens[0] != "ALL" and tokens[0] not in _PATHSETS:
+            if tokens[0] not in _PATHSETS:
                 _parseerror(i, "ignoring logic path with unknown pathset %s" % tokens[0])
                 continue
 

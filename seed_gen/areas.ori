@@ -517,12 +517,12 @@ home: DeathGauntlet
 	conn: DeathGauntletRoof
 		casual-core ChargeJump
 	conn: DeathGauntletRoofPlantAccess
-		expert-core DoubleJump WallJump ChargeFlame
-		expert-core Bash WallJump ChargeFlame
-		expert-core DoubleJump Climb ChargeFlame
-		expert-core Bash Climb ChargeFlame
-		expert-core Bash Grenade ChargeFlame
-		master-core DoubleJump ChargeFlame
+		expert-core ChargeFlame DoubleJump WallJump
+		expert-core ChargeFlame Bash WallJump
+		expert-core ChargeFlame DoubleJump Climb
+		expert-core ChargeFlame Bash Climb
+		expert-core ChargeFlame Bash Grenade
+		master-core ChargeFlame DoubleJump
 		master-abilities ChargeFlame Ability=3
 	conn: MoonGrotto
 		casual-core WallJump
@@ -697,7 +697,7 @@ home: SpiritTreeRefined
 	-- anchor: the spirit tree spirit well (i.e. grove teleporter)
 	conn: SpiritTreeDoor
 		casual-core Open
-	conn: AboveChargeFlameTree
+	pickup: AboveChargeFlameTreeExp
 		casual-core DoubleJump Climb
 		casual-core DoubleJump WallJump
 		casual-core ChargeJump Climb
@@ -739,9 +739,6 @@ home: SpiritTreeRefined
 		master-core ChargeFlame DoubleJump
 		master-core Grenade DoubleJump
 		master-abilities Dash DoubleJump Ability=6
-home: AboveChargeFlameTree
-	-- anchor: the exp in the tree above charge flame
-	pickup: AboveChargeFlameTreeExp
 home: SpiderSacTetherArea
 	-- anchor: on the rock just below where the spider sac is attached
 	pickup: SpiderSacHealthCell
@@ -780,7 +777,7 @@ home: SpiderSacTetherArea
 		expert-abilities Dash Bash Grenade Ability=6
 home: SpiderSacArea
 	-- anchor: just to the right of the blue wall
-	conn: AboveChargeFlameTree
+	pickup: AboveChargeFlameTreeExp
 		-- these paths are a bit funky; basically, if you get here from the
 		-- left with the platform down, you can go get swamp TP, go back and
 		-- raise the platform up, then come back through here from swamp TP and
@@ -947,24 +944,24 @@ home: DashArea
 		casual-core Bash Grenade
 		standard-abilities WallJump DoubleJump Dash Ability=3
 		standard-abilities Climb DoubleJump Dash Ability=3
+		-- these expert-core paths allow you to throw a grenade or cflame the
+		-- plant from a distance
+		expert-core DoubleJump Grenade
+		expert-core ChargeJump Grenade
+		expert-core Glide Grenade
+		expert-core ChargeJump ChargeFlame
 		expert-abilities WallJump Dash Ability=6 Energy=2
 		expert-abilities Climb Dash Ability=6 Energy=2
 		expert-abilities WallJump ChargeFlame Dash Ability=6 
 		expert-abilities Climb ChargeFlame Dash Ability=6
-		-- these paths are special; you can't physically get to the plant but
-		-- you can throw a grenade at it
-		expert-core DoubleJump Grenade
-		expert-core ChargeJump Grenade
-		expert-core Glide Grenade
 		expert-abilities Grenade Dash Ability=3
-		-- hahaha enjoy your wasted ability points on cflame burn, sucker
+		master-core DoubleJump Glide
+		master-core DoubleJump Dash
+		master-core Bash
+		-- these paths require charge flame burn
 		master-abilities WallJump ChargeFlame Ability=3
 		master-abilities Climb ChargeFlame Ability=3
-		master-abilities ChargeJump ChargeFlame Ability=3
 		master-abilities DoubleJump ChargeFlame Ability=3
-		master-core DoubleJump Glide
-		master-core Bash
-		master-abilities DoubleJump Dash Ability=3
 		master-abilities DoubleJump Ability=12
 	conn: GrenadeAreaAccess
 		casual-core Stomp ChargeJump
@@ -1021,12 +1018,12 @@ home: BlackrootGrottoConnection
 		casual-core Stomp
 		glitched Free
 	pickup: BlackrootMap
-		casual-core WallJump Mapstone
-		casual-core Climb DoubleJump Mapstone
-		casual-core Bash Grenade Mapstone
-		casual-core ChargeJump Mapstone
-		standard-abilities Climb Dash Ability=3 Mapstone
-		expert-core Climb Mapstone
+		casual-core Mapstone WallJump
+		casual-core Mapstone Climb DoubleJump
+		casual-core Mapstone Bash Grenade
+		casual-core Mapstone ChargeJump
+		standard-abilities Mapstone Climb Dash Ability=3
+		expert-core Mapstone Climb
 	conn: SideFallCell
 		casual-core Stomp WallJump
 		casual-core Stomp Climb DoubleJump
@@ -1059,13 +1056,13 @@ home: GrenadeArea
 		casual-core Dash Bash Grenade
 		standard-core Bash Grenade
 		expert-core Dash Bash
+		expert-core DoubleJump WallJump
+		expert-core DoubleJump Climb
+		expert-abilities Dash Ability=6
 		dbash Bash WallJump
 		dbash Bash Climb
 		dbash Bash DoubleJump
 		dbash Bash ChargeJump
-		expert-abilities Dash Ability=6
-		expert-core DoubleJump WallJump
-		expert-core DoubleJump Climb
 		master-core ChargeJump
 		insane WallJump
 	pickup: GrenadeAreaExp
@@ -1076,11 +1073,11 @@ home: GrenadeArea
 		casual-core Bash Grenade
 		casual-dboost ChargeJump
 		standard-core Dash DoubleJump
+		expert-abilities Dash Ability=6
 		dbash Bash WallJump
 		dbash Bash Climb
 		dbash Bash DoubleJump
 		dbash Bash ChargeJump
-		expert-abilities Dash Ability=6
 	pickup: GrenadeAreaAbilityCell
 		casual-core Dash Bash Grenade
 		casual-core Dash ChargeJump Grenade
@@ -1098,9 +1095,9 @@ home: LowerBlackroot
 	pickup: LowerBlackrootLaserAbilityCell
 		casual-core Dash Bash Grenade
 		standard-core Dash DoubleJump
-		expert-dboost Dash ChargeJump Health=4
 		expert-core DoubleJump Glide
 		expert-core Bash Grenade
+		expert-dboost Dash ChargeJump Health=4
 		expert-dboost WallJump Glide Health=4
 		expert-dboost Stomp Glide Health=4
 		expert-dboost DoubleJump Health=4
@@ -1135,18 +1132,18 @@ home: LostGrove
 	-- anchor: on the ground just right of the lake, door is closed
 	pickup: LostGroveLongSwim
 		casual-core Water
-		master-dboost Health=12
 		master-core Health=6 Ability=12
+		master-dboost Health=12
 	conn: LostGroveExit
 		casual-core Grenade Bash DoubleJump WallJump
 		casual-core Grenade Bash DoubleJump Climb
 		casual-dboost Grenade ChargeJump DoubleJump WallJump
 		casual-dboost Grenade ChargeJump DoubleJump Climb
-		expert-dboost Grenade ChargeJump WallJump Health=7
-		expert-dboost Grenade ChargeJump Climb Health=7
 		expert-core Grenade Bash WallJump
 		expert-core Grenade Bash Climb
 		expert-core Grenade Glide ChargeJump Climb
+		expert-dboost Grenade ChargeJump WallJump Health=7
+		expert-dboost Grenade ChargeJump Climb Health=7
 		expert-dboost Grenade Dash ChargeJump WallJump
 		expert-dboost Grenade Glide ChargeJump WallJump
 		expert-abilities Grenade Dash ChargeJump Climb Ability=3
@@ -1192,8 +1189,8 @@ home: HollowGrove
 		casual-core Bash Grenade
 		standard-lure Bash WallJump
 		standard-lure Bash Climb
-		dbash Bash
 		expert-abilities Dash Ability=6
+		dbash Bash
 	pickup: HollowGroveMap
 		casual-core Mapstone
 	pickup: HollowGroveMapPlant
@@ -1411,8 +1408,8 @@ home: GinsoMiniBossDoor
 		casual-core DoubleJump
 		casual-core Glide
 		standard-core Bash Grenade
-		standard-abilities Dash Ability=3
 		standard-dboost Health=3
+		standard-abilities Dash Ability=3
 	pickup: LowerGinsoKeystone2
 		casual-core DoubleJump
 		casual-core Glide
@@ -1659,11 +1656,11 @@ home: GinsoEscape
 		expert-dboost ChargeJump WallJump Health=9
 		expert-dboost ChargeJump Climb Health=3
 		expert-abilities ChargeJump DoubleJump Dash Ability=6 Health=3
+		dbash Bash
 		master-dboost ChargeJump DoubleJump Health=7
 		master-abilities WallJump DoubleJump Ability=12 Health=6
 		master-abilities Climb DoubleJump Ability=12 Health=10
 		insane DoubleJump Ability=12 Health=12
-		dbash Bash
 home: GinsoEscapeComplete
 -- this is a meta area to factor the ginso escape pickups which have identical requirements
 	pickup: GinsoEscapeSpiderExp
@@ -2151,18 +2148,7 @@ home: Swamp
 	-- anchor: where Gumo is standing around with Ori's corpse (on the log)
 	pickup: SwampMap
 		casual-core Mapstone
-	conn: SwampDrainlessArea
-		casual-core Stomp
-		expert-core ChargeJump Climb
-	conn: SwampKeyDoorPlatform
-		casual-core Water
-		casual-core DoubleJump
-		casual-core Glide
-		casual-core Bash Grenade
-		casual-core ChargeJump
-		casual-dboost Free
-		standard-core Dash
-	conn: InnerSwampDrainExpLedge
+	pickup: InnerSwampDrainExp
 		casual-core Water Climb ChargeJump
 		casual-core Water WallJump DoubleJump
 		casual-core Water Climb DoubleJump
@@ -2190,6 +2176,17 @@ home: Swamp
 		master-dboost WallJump Glide Stomp Grenade Health=7 Ability=12
 		master-dboost WallJump Dash Health=7 Ability=12
 		master-dboost Climb Dash Health=7 Ability=12
+	conn: SwampDrainlessArea
+		casual-core Stomp
+		expert-core ChargeJump Climb
+	conn: SwampKeyDoorPlatform
+		casual-core Water
+		casual-core DoubleJump
+		casual-core Glide
+		casual-core Bash Grenade
+		casual-core ChargeJump
+		casual-dboost Free
+		standard-core Dash
 	conn: SwampWater
 		casual-core Water
 		master-dboost Health=15
@@ -2257,6 +2254,11 @@ home: InnerSwampAboveDrainArea
 		casual-dboost ChargeFlame
 home: InnerSwampDrainBroken
 	-- anchor: in the drain room, on the spike ledge, with the drain broken
+	pickup: InnerSwampDrainExp
+		casual-core ChargeJump Climb
+		casual-core DoubleJump
+		casual-core Glide
+		standard-abilities Dash Ability=3
 	conn: Swamp
 		-- connections through the breakable ceiling
 		casual-core ChargeJump WallJump DoubleJump
@@ -2286,14 +2288,6 @@ home: InnerSwampDrainBroken
 		master-dboost WallJump Health=7 Ability=12
 		master-dboost Climb Health=7 Ability=12
 		master-dboost DoubleJump Health=7 Ability=12
-	conn: InnerSwampDrainExpLedge
-		casual-core ChargeJump Climb
-		casual-core DoubleJump
-		casual-core Glide
-		standard-abilities Dash Ability=3
-home: InnerSwampDrainExpLedge
-	-- anchor: on the ledge with the drain xp
-	pickup: InnerSwampDrainExp
 home: InnerSwampSkyArea
 	-- anchor: on the ledge with the EC
 	pickup: InnerSwampEnergyCell
@@ -2441,6 +2435,22 @@ home: HoruOuterDoor
 		gjump ChargeJump Climb Grenade
 home: HoruInnerDoor
 -- anchor: inside the main door of Horu
+	pickup: HoruLavaDrainedLeftExp
+		casual-core Open Bash
+		casual-core Open ChargeJump
+		casual-core Open DoubleJump Glide
+		standard-core Open Dash DoubleJump
+		standard-abilities Open Dash Glide Ability=3
+		expert-abilities Open Dash Ability=6
+		master-abilities Open DoubleJump Ability=12
+	pickup: HoruLavaDrainedRightExp
+		casual-core Open Glide Bash
+		casual-core Open Grenade Bash
+		casual-core Open ChargeJump Glide
+		expert-abilities Open Dash Ability=6
+		dbash Open Bash
+		master-abilities Open ChargeJump DoubleJump Ability=12
+		master-abilities Open Glide DoubleJump Ability=12
 	conn: HoruOuterDoor
 	conn: HoruMapLedge
 		casual-core Bash DoubleJump Glide WallJump
@@ -2522,14 +2532,6 @@ home: HoruInnerDoor
 		casual-core Open Bash
 		casual-core Open ChargeJump
 		expert-abilities Open Dash Ability=6
-	conn: L4Below
-		casual-core Open Bash
-		casual-core Open ChargeJump
-		casual-core Open DoubleJump Glide
-		standard-core Open Dash DoubleJump
-		standard-abilities Open Dash Glide Ability=3
-		expert-abilities Open Dash Ability=6
-		master-abilities Open DoubleJump Ability=12
 	conn: R1OuterDoor
 		casual-core Bash DoubleJump Glide WallJump
 		casual-core Bash DoubleJump ChargeJump WallJump
@@ -2604,14 +2606,6 @@ home: HoruInnerDoor
 		casual-core Open ChargeJump DoubleJump
 		expert-abilities Open Dash Ability=6
 		dbash Open Bash
-	conn: R4Below
-		casual-core Open Glide Bash
-		casual-core Open Grenade Bash
-		casual-core Open ChargeJump Glide
-		expert-abilities Open Dash Ability=6
-		dbash Open Bash
-		master-abilities Open ChargeJump DoubleJump Ability=12
-		master-abilities Open Glide DoubleJump Ability=12
 	conn: HoruBasement
 		casual-core Stomp Bash DoubleJump Glide WallJump
 		casual-core Stomp Bash DoubleJump ChargeJump WallJump
@@ -2778,9 +2772,9 @@ home: L3
 		master-dboost ChargeJump DoubleJump ChargeFlame Ability=12 Health=3 Energy=1
 		gjump ChargeJump Climb Grenade
 home: L4OuterDoor
+	pickup: HoruLavaDrainedLeftExp
 	conn: L4InnerDoor
 	conn: HoruInnerDoor
-	conn: L4Below
 home: L4InnerDoor
 	conn: L4
 		casual-core Bash Stomp DoubleJump Glide WallJump
@@ -2825,8 +2819,6 @@ home: HoruL4CutscenePeg
 		expert-abilities Dash Stomp Ability=3
 		expert-abilities Dash Ability=6 Energy=2
 		master-core Dash Stomp
-home: L4Below
-	pickup: HoruLavaDrainedLeftExp
 home: R1OuterDoor
 	conn: R1InnerDoor
 	conn: L1OuterDoor
@@ -2983,14 +2975,14 @@ home: HoruR3CutsceneTrigger
     pickup: HoruR3
     conn: HoruR3PlantCove
 home: R4OuterDoor
-	conn: R4InnerDoor
-	conn: HoruInnerDoor
-	conn: R4Below
+	pickup: HoruLavaDrainedRightExp
 		casual-core DoubleJump
 		casual-core Glide
 		casual-core Bash Grenade
 		standard-abilities Dash Ability=3
 		dbash Bash
+	conn: R4InnerDoor
+	conn: HoruInnerDoor
 home: R4InnerDoor
 	conn: R4
 		casual-core Bash DoubleJump Glide WallJump
@@ -3002,7 +2994,7 @@ home: R4InnerDoor
 		expert-core Bash Grenade WallJump
 		expert-core Bash Grenade Climb
 home: R4
-    conn: HoruR4LavaPool
+    pickup: HoruR4DrainedExp
         master-core Bash
         master-abilities DoubleJump Dash Ability=12
         master-abilities ChargeJump DoubleJump Climb Glide  Ability=12
@@ -3017,9 +3009,6 @@ home: R4
         expert-core Bash Stomp
         expert-abilities Bash Dash Ability=6
         dbash Bash
-home: HoruR4LavaPool
-    --anchor: safe spot on the left of the lava pool, next to the exp orb
-	pickup: HoruR4DrainedExp
 home: HoruR4StompHideout
     --anchor: under the breakable floor, next to the exp orb
     pickup: HoruR4StompExp
@@ -3050,7 +3039,7 @@ home: HoruR4PuzzleEntrance
 home: HoruR4CutsceneTrigger
     -- anchor: at the end of the room, where Ori needs to stand to activate the cutscene
     pickup: HoruR4
-    conn: HoruR4LavaPool
+    pickup: HoruR4DrainedExp
         casual-core DoubleJump Glide
         casual-core ChargeJump Climb Glide
         standard-core ChargeJump Climb
@@ -3065,14 +3054,17 @@ home: HoruR4CutsceneTrigger
         master-dboost Health=11
         master-dboost Health=9 Ability=12
         master-abilities DoubleJump Ability=12
-home: R4Below
-	pickup: HoruLavaDrainedRightExp
 home: HoruEscapeOuterDoor
 	conn: HoruEscapeInnerDoor
 home: HoruEscapeInnerDoor
 home: ValleyEntry
 -- anchored just left of the charge flame wall to valley
 	pickup: ValleyEntryAbilityCell
+	pickup: ValleyThreeBirdAbilityCell
+		casual-core ChargeJump Open
+		casual-core Glide Wind Open
+		casual-core Bash Open
+		expert-abilities Dash Ability=6 Open
 	conn: ValleyEntryTree
 		casual-core WallJump
 		casual-core Bash Climb
@@ -3115,11 +3107,6 @@ home: ValleyEntry
 		standard-core Dash DoubleJump ChargeJump Open
 		expert-abilities Dash Ability=6 Open
 		gjump Climb ChargeJump Grenade Open
-	conn: ValleyThreeBirdCell
-		casual-core ChargeJump Open
-		casual-core Glide Wind Open
-		casual-core Bash Open
-		expert-abilities Dash Ability=6 Open
 	conn: ValleyStompFloor
 		casual-core Bash Open
 		casual-core Glide Wind Open
@@ -3171,14 +3158,14 @@ home: ValleyPostStompDoor
 		casual-core Bash Grenade
 		expert-dboost WallJump DoubleJump ChargeJump Health=7
 		dbash Bash
+		master-dboost WallJump DoubleJump ChargeJump Ability=12 Health=3
+		master-dboost Climb DoubleJump ChargeJump Ability=12 Health=3
+		master-dboost WallJump DoubleJump Health=11 Ability=12
 		gjump Climb ChargeJump Grenade Stomp DoubleJump Health=4
 		gjump Climb ChargeJump Grenade Stomp DoubleJump Ability=12
 		gjump Climb ChargeJump Grenade Dash Ability=6
 		gjump Climb ChargeJump Grenade Health=7
 		gjump Climb ChargeJump Grenade Health=5 Ability=12
-		master-dboost WallJump DoubleJump ChargeJump Ability=12 Health=3
-		master-dboost Climb DoubleJump ChargeJump Ability=12 Health=3
-		master-dboost WallJump DoubleJump Health=11 Ability=12
 	conn: ValleyEntry
 		casual-core Open
 	conn: ValleyEntryTree
@@ -3279,15 +3266,15 @@ home: ValleyStompless
 home: ValleyMain
 -- anchored at the fast stompless aim position, rocks destroyed
 	pickup: GlideSkillFeather
+	pickup: KuroPerchExp
+		casual-core Glide
+		casual-core Bash
+		expert-abilities Dash Ability=6
 	conn: WilhelmLedge
 		casual-core Wind Glide
 		casual-core Bash
 		expert-abilities Dash Energy=2 Ability=6
 		gjump ChargeJump Climb Grenade
-	conn: ValleyKuroPerch
-		casual-core Glide
-		casual-core Bash
-		expert-abilities Dash Ability=6
 	conn: MistyEntrance
 		casual-core Glide
 		casual-core Bash
@@ -3296,9 +3283,6 @@ home: ValleyMain
 		casual-core Dash
 	conn: LowerValley
 	conn: LowerValleyPlantApproach
-home: ValleyKuroPerch
--- anchored where Kuro sits in valley
-	pickup: KuroPerchExp
 home: LowerValley
 -- anchored on top of the stump in the middle of valley
 	pickup: LowerValleyMapstone
@@ -3335,7 +3319,7 @@ home: ValleyThreeBirdLever
 		expert-abilities WallJump Glide Wind ChargeJump Dash Ability=3
 		expert-dboost WallJump ChargeJump Dash Ability=3 Health=4
 		dbash Bash
-	conn: ValleyThreeBirdCell
+	pickup: ValleyThreeBirdAbilityCell
 		casual-core Glide Wind
 		casual-core Bash
 		casual-core Climb ChargeJump Glide
@@ -3360,9 +3344,6 @@ home: ValleyThreeBirdLever
 		standard-dboost Health=4
 		dbash Bash
 	conn: ValleyStompFloor
-home: ValleyThreeBirdCell
--- anchored next to the ability cell above the three birds
-	pickup: ValleyThreeBirdAbilityCell
 home: ValleyStompFloor
 -- anchored above the floor leading to forlorn
 	conn: ValleyForlornApproach
@@ -3445,6 +3426,23 @@ home: ForlornOuterDoor
 	conn: ForlornInnerDoor
 	conn: OutsideForlorn
 home: ForlornInnerDoor
+	pickup: ForlornEntranceExp
+		casual-core ForlornKey ChargeJump WallJump
+		casual-core ForlornKey ChargeJump Climb
+		casual-core ForlornKey ChargeJump DoubleJump
+		casual-core ForlornKey WallJump DoubleJump
+		casual-core ForlornKey Climb DoubleJump
+		casual-core ForlornKey Bash Grenade
+		expert-dboost ForlornKey WallJump Health=4
+		master-dboost ForlornKey WallJump Health=3 Ability=12
+		master-abilities ForlornKey DoubleJump Ability=12
+		casual-core ForlornKey DoubleJump Open
+		casual-core ForlornKey Glide Climb Open
+		casual-core ForlornKey Glide WallJump Open
+		casual-core ForlornKey ChargeJump Open
+		standard-core ForlornKey Dash Climb Open
+		standard-core ForlornKey Dash WallJump Open
+		expert-core ForlornKey Open
 	conn: ForlornOuterDoor
 		--ForlornKey required to avoid KS lock scenarios
 		casual-core ForlornKey
@@ -3454,23 +3452,6 @@ home: ForlornInnerDoor
 		casual-core Glide WallJump Open
 		casual-core ChargeJump Open
 		casual-core Bash Grenade Open
-		standard-core Dash Climb Open
-		standard-core Dash WallJump Open
-		expert-core Open
-	conn: ForlornEntranceExpArea
-		casual-core ChargeJump WallJump
-		casual-core ChargeJump Climb
-		casual-core ChargeJump DoubleJump
-		casual-core WallJump DoubleJump
-		casual-core Climb DoubleJump
-		casual-core Bash Grenade
-		expert-dboost WallJump Health=4
-		master-dboost WallJump Health=3 Ability=12
-		master-abilities DoubleJump Ability=12
-		casual-core DoubleJump Open
-		casual-core Glide Climb Open
-		casual-core Glide WallJump Open
-		casual-core ChargeJump Open
 		standard-core Dash Climb Open
 		standard-core Dash WallJump Open
 		expert-core Open
@@ -3491,17 +3472,22 @@ home: ForlornInnerDoor
 		master-dboost WallJump Health=3 Ability=12
 home: ForlornOrbPossession
 -- anchored anywhere in left forlorn, in possesion of the orb (open only)
-	conn: ForlornHiddenSpiderExpArea
-		casual-core Bash
-		casual-core ChargeJump
-		expert-core WallJump DoubleJump
-		expert-abilities Dash Ability=6
-		master-abilities DoubleJump Ability=12
-	conn: ForlornKeystone1Area
-	conn: ForlornKeystone2Area
-	conn: ForlornKeystone3Area
-	conn: ForlornKeystone4Area
-	conn: ForlornPlantArea
+	pickup: ForlornKeystone1
+		casual-core ForlornKey
+	pickup: ForlornKeystone2
+		casual-core ForlornKey
+	pickup: ForlornKeystone3
+		casual-core ForlornKey
+	pickup: ForlornKeystone4
+		casual-core ForlornKey
+	pickup: ForlornHiddenSpiderExp
+		casual-core ForlornKey Bash
+		casual-core ForlornKey ChargeJump
+		expert-core ForlornKey WallJump DoubleJump
+		expert-abilities ForlornKey Dash Ability=6
+		master-abilities ForlornKey DoubleJump Ability=12
+	conn: ForlornPlantAccess
+		casual-core ForlornKey
 	conn: ForlornMapArea
 	conn: ForlornKeyDoor
 	conn: ForlornInnerDoor
@@ -3517,28 +3503,28 @@ home: ForlornOrbPossession
 		master-dboost Health=3 Ability=12
 home: ForlornGravityRoom
 -- anchored directly below the first keystone
-	conn: ForlornHiddenSpiderExpArea
-		casual-core Bash
-		casual-core ChargeJump
-		standard-core WallJump DoubleJump
-		expert-abilities Dash Ability=6
-		master-abilities DoubleJump Ability=12
-	conn: ForlornKeystone1Area
-		casual-core Bash Grenade
-		casual-core ChargeJump
-		casual-core DoubleJump Bash
-		expert-lure Bash
-	conn: ForlornKeystone2Area
-		casual-core Bash Grenade
-		casual-core ChargeJump
-		casual-core WallJump DoubleJump Glide
-		casual-core Climb DoubleJump Glide
-		standard-core Dash DoubleJump WallJump
-		standard-core Dash DoubleJump Climb
-		standard-core Dash Glide WallJump
-		standard-core Dash Glide Climb
-		master-lure Bash
-		master-abilities DoubleJump Ability=12
+	pickup: ForlornHiddenSpiderExp
+		casual-core ForlornKey Bash
+		casual-core ForlornKey ChargeJump
+		standard-core ForlornKey WallJump DoubleJump
+		expert-abilities ForlornKey Dash Ability=6
+		master-abilities ForlornKey DoubleJump Ability=12
+	pickup: ForlornKeystone1
+		casual-core ForlornKey Bash Grenade
+		casual-core ForlornKey ChargeJump
+		casual-core ForlornKey DoubleJump Bash
+		expert-lure ForlornKey Bash
+	pickup: ForlornKeystone2
+		casual-core ForlornKey Bash Grenade
+		casual-core ForlornKey ChargeJump
+		casual-core ForlornKey WallJump DoubleJump Glide
+		casual-core ForlornKey Climb DoubleJump Glide
+		standard-core ForlornKey Dash DoubleJump WallJump
+		standard-core ForlornKey Dash DoubleJump Climb
+		standard-core ForlornKey Dash Glide WallJump
+		standard-core ForlornKey Dash Glide Climb
+		master-lure ForlornKey Bash
+		master-abilities ForlornKey DoubleJump Ability=12
 	conn: ForlornMapArea
 		casual-core Bash Grenade
 		casual-core ChargeJump
@@ -3562,6 +3548,13 @@ home: ForlornMapArea
 -- ForlornKey required to avoid KS lock scenarios
 	pickup: ForlornMap
 		casual-core ForlornKey Mapstone
+	pickup: ForlornKeystone4
+		casual-core ForlornKey ChargeJump WallJump
+		casual-core ForlornKey ChargeJump Climb
+		casual-core ForlornKey Bash Grenade WallJump
+		casual-core ForlornKey Bash Grenade Climb
+		master-core ForlornKey ChargeJump DoubleJump
+		master-core ForlornKey Bash Grenade DoubleJump
 	conn: ForlornTeleporter
 		casual-core WallJump DoubleJump
 		casual-core Climb DoubleJump
@@ -3575,24 +3568,26 @@ home: ForlornMapArea
 		master-core DoubleJump
 		master-lure Bash
 		master-dboost ChargeJump Health=3 Ability=12
-	conn: ForlornKeystone4Area
-		casual-core ChargeJump WallJump
-		casual-core ChargeJump Climb
-		casual-core Bash Grenade WallJump
-		casual-core Bash Grenade Climb
-		master-core ChargeJump DoubleJump
-		master-core Bash Grenade DoubleJump
-	conn: ForlornPlantArea
-		casual-core ChargeJump WallJump
-		casual-core ChargeJump Climb
-		casual-core Bash Grenade WallJump
-		casual-core Bash Grenade Climb
-		master-core ChargeJump DoubleJump
-		master-core Bash Grenade DoubleJump
+	conn: ForlornPlantAccess
+		casual-core ForlornKey ChargeJump WallJump
+		casual-core ForlornKey ChargeJump Climb
+		casual-core ForlornKey Bash Grenade WallJump
+		casual-core ForlornKey Bash Grenade Climb
+		master-core ForlornKey ChargeJump DoubleJump
+		master-core ForlornKey Bash Grenade DoubleJump
 	conn: ForlornKeyDoor
 	conn: ForlornGravityRoom
 home: ForlornTeleporter
 -- anchored on the Forlorn spirit well
+	pickup: ForlornKeystone3
+		casual-core ForlornKey ChargeJump Glide
+		casual-core ForlornKey ChargeJump DoubleJump
+		casual-core ForlornKey Bash Grenade Climb
+		standard-abilities ForlornKey ChargeJump Dash Ability=3
+		standard-dboost ForlornKey ChargeJump Health=4
+		expert-abilities ForlornKey Dash Ability=6 Climb
+		expert-abilities ForlornKey Dash Ability=6 WallJump
+		master-lure ForlornKey Bash
 	conn: ForlornOrbPossession
 		casual-core ForlornKey Open
 	conn: ForlornMapArea
@@ -3602,41 +3597,12 @@ home: ForlornTeleporter
 		casual-core Bash Grenade
 		casual-core DoubleJump
 		casual-core Glide
-	conn: ForlornKeystone3Area
-		casual-core ChargeJump Glide
-		casual-core ChargeJump DoubleJump
-		casual-core Bash Grenade Climb
-		standard-abilities ChargeJump Dash Ability=3
-		standard-dboost ChargeJump Health=4
-		expert-abilities Dash Ability=6 Climb
-		expert-abilities Dash Ability=6 WallJump
-		master-lure Bash
 	conn: ForlornGravityRoom
--- the following Forlorn areas are anchored directly on their pickups
--- ForlornKey required to avoid KS lock scenarios
-home: ForlornEntranceExpArea
-	pickup: ForlornEntranceExp
-		casual-core ForlornKey
-home: ForlornHiddenSpiderExpArea
-	pickup: ForlornHiddenSpiderExp
-		casual-core ForlornKey
-home: ForlornKeystone1Area
-	pickup: ForlornKeystone1
-		casual-core ForlornKey
-home: ForlornKeystone2Area
-	pickup: ForlornKeystone2
-		casual-core ForlornKey
-home: ForlornKeystone3Area
-	pickup: ForlornKeystone3
-		casual-core ForlornKey
-home: ForlornKeystone4Area
-	pickup: ForlornKeystone4
-		casual-core ForlornKey
-home: ForlornPlantArea
+home: ForlornPlantAccess
 	pickup: ForlornPlant
-		casual-core ForlornKey ChargeFlame
-		casual-core ForlornKey Grenade
-		expert-abilities ForlornKey Dash Ability=6
+		casual-core ChargeFlame
+		casual-core Grenade
+		expert-abilities Dash Ability=6
 home: ForlornKeyDoor
 	conn: ForlornLaserRoom
 		casual-core ForlornKey Keystone=4
@@ -3703,6 +3669,19 @@ home: WilhelmLedge
 		dbash Bash
 		master-dboost ChargeJump Health=4 Ability=12
 		master-abilities WallJump DoubleJump Ability=12
+	pickup: KuroPerchExp
+		casual-core Stomp
+		standard-core Climb ChargeJump
+		standard-lure HoruKey
+		expert-core ChargeJump WallJump Glide
+		expert-core ChargeJump WallJump DoubleJump
+		expert-core ChargeJump Bash
+		expert-abilities ChargeJump WallJump Dash Ability=3
+		master-core ChargeJump Glide
+		master-core ChargeJump DoubleJump
+		master-abilities ChargeJump Dash Ability=3
+		master-core Bash
+		glitched ChargeJump
 	conn: SorrowBashLedge
 		casual-core Bash
 		casual-core Wind Glide
@@ -3721,19 +3700,6 @@ home: WilhelmLedge
 		expert-abilities Dash Ability=6
 		master-abilities DoubleJump Ability=12
 	conn: ValleyMain
-		casual-core Stomp
-		standard-lure HoruKey
-		standard-core Climb ChargeJump
-		expert-core ChargeJump WallJump Glide
-		expert-core ChargeJump WallJump DoubleJump
-		expert-core ChargeJump Bash
-		expert-abilities ChargeJump WallJump Dash Ability=3
-		master-core ChargeJump Glide
-		master-core ChargeJump DoubleJump
-		master-abilities ChargeJump Dash Ability=3
-		master-core Bash
-		glitched ChargeJump
-	conn: ValleyKuroPerch
 		casual-core Stomp
 		standard-lure HoruKey
 		standard-core Climb ChargeJump
@@ -3873,8 +3839,8 @@ home: SorrowMapstoneArea
 -- anchored on the level of breakable floors above the mapstone
 	pickup: SorrowMapstone
 		casual-core Bash
-		gjump Climb ChargeJump Grenade
 		expert-abilities Dash Ability=6
+		gjump Climb ChargeJump Grenade
 	pickup: SorrowMap
 		casual-core Stomp Mapstone
 		casual-core Bash Mapstone
@@ -4025,7 +3991,7 @@ home: MiddleSorrow
 home: UpperSorrow
 -- anchored at the start of the spike cave (if coming from TP, set above)
 -- dbash paths for the tumbleweed not included since you can lose it
-	conn: UpperSorrowRightKeystoneArea
+	pickup: UpperSorrowRightKeystone
 		casual-core Glide
 		expert-abilities ChargeJump Dash Health=5 Ability=6
 		master-dboost ChargeJump Health=10 Ability=12
@@ -4033,20 +3999,20 @@ home: UpperSorrow
 		master-dboost ChargeJump Dash Health=4 Ability=12
 		master-dboost Bash Grenade DoubleJump Health=4 Ability=12
 		master-abilities Bash Grenade DoubleJump Dash Ability=6
-	conn: UpperSorrowFarRightKeystoneArea
+	pickup: UpperSorrowFarRightKeystone
 		casual-core Glide
 		master-dboost ChargeJump Dash Health=7 Ability=12
 		master-dboost ChargeJump DoubleJump Health=10 Ability=12
 		master-dboost Bash Grenade DoubleJump Health=7 Ability=12
 		master-abilities Bash Grenade DoubleJump Dash Ability=12
-	conn: UpperSorrowLeftKeystoneArea
+	pickup: UpperSorrowLeftKeystone
 		casual-core Glide
 		expert-core Bash Grenade
 		expert-dboost ChargeJump Health=5
 		expert-abilities Dash Energy=2 Ability=6
 		gjump Climb ChargeJump Grenade
 		master-dboost ChargeJump Health=4 Ability=12
-	conn: UpperSorrowSpikeExpArea
+	pickup: UpperSorrowSpikeExp
 		casual-core Glide
 		expert-dboost Bash Grenade DoubleJump Health=5
 		expert-abilities Bash Grenade Dash Health=5 Ability=6
@@ -4056,7 +4022,7 @@ home: UpperSorrow
 		master-dboost Dash Health=4 Energy=2 Ability=12
 		master-dboost Bash Grenade Dash Health=4 Ability=12
 		master-dboost Bash Grenade DoubleJump Health=4 Ability=12
-	conn: UpperSorrowFarLeftKeystoneArea
+	pickup: UpperSorrowFarLeftKeystone
 		casual-core Glide
 		master-dboost ChargeJump DoubleJump Dash WallJump Health=4 Ability=12
 		master-dboost ChargeJump DoubleJump Dash Climb Health=4 Ability=12
@@ -4073,16 +4039,6 @@ home: UpperSorrow
 		glitched Glide ChargeJump Climb
 	conn: ChargeJumpDoor
 		casual-core Free
-home: UpperSorrowRightKeystoneArea
-	pickup: UpperSorrowRightKeystone
-home: UpperSorrowFarRightKeystoneArea
-	pickup: UpperSorrowFarRightKeystone
-home: UpperSorrowLeftKeystoneArea
-	pickup: UpperSorrowLeftKeystone
-home: UpperSorrowSpikeExpArea
-	pickup: UpperSorrowSpikeExp
-home: UpperSorrowFarLeftKeystoneArea
-	pickup: UpperSorrowFarLeftKeystone
 home: ChargeJumpDoor
 -- anchored on either side of the door
 	conn: ChargeJumpDoorOpen
@@ -4117,27 +4073,27 @@ home: ChargeJumpArea
 		casual-core Open
 home: ChargeJumpDoorOpenLeft
 -- anchored at the keystone door after having approached cjump from above
+	-- bash-only connections reflect bringing a spider shot from above the cjump tree
+	pickup: UpperSorrowSpikeExp
+		expert-dboost ChargeJump Dash Health=5 Ability=6
+		master-lure Bash
+		master-dboost ChargeJump DoubleJump Health=4 Ability=12
+		master-dboost ChargeJump Dash Health=4 Ability=12
+	pickup: UpperSorrowFarLeftKeystone
+		master-lure Bash
+		master-dboost ChargeJump DoubleJump Health=4 Ability=12
+	-- right side connections not fleshed out since you get to UpperSorrow first
+	pickup: UpperSorrowRightKeystone
+		master-lure Bash
+	pickup: UpperSorrowFarRightKeystone
+		master-lure Bash
+	pickup: UpperSorrowLeftKeystone
+		master-lure Bash
 	conn: UpperSorrow
 		casual-core Glide
 		master-dboost ChargeJump DoubleJump Health=10 Ability=12
 		master-dboost ChargeJump Dash Health=7 Energy=2 Ability=12
 		master-dboost ChargeJump Dash Health=9 Energy=2 Ability=6
-		master-lure Bash
-	-- bash-only connections reflect bringing a spider shot from above the cjump tree
-	conn: UpperSorrowSpikeExpArea
-		expert-dboost ChargeJump Dash Health=5 Ability=6
-		master-lure Bash
-		master-dboost ChargeJump DoubleJump Health=4 Ability=12
-		master-dboost ChargeJump Dash Health=4 Ability=12
-	conn: UpperSorrowFarLeftKeystoneArea
-		master-lure Bash
-		master-dboost ChargeJump DoubleJump Health=4 Ability=12
-	-- right side connections not fleshed out since you get to UpperSorrow first
-	conn: UpperSorrowRightKeystoneArea
-		master-lure Bash
-	conn: UpperSorrowFarRightKeystoneArea
-		master-lure Bash
-	conn: UpperSorrowLeftKeystoneArea
 		master-lure Bash
 home: AboveChargeJumpArea
 -- anchored below the ability cell
@@ -4373,8 +4329,8 @@ home: MistyPostClimb
 		standard-core Climb ChargeJump
 		expert-core ChargeJump
 		expert-abilities Bash Dash Ability=6
-		master-core DoubleJump
 		dbash Bash
+		master-core DoubleJump
 home: MistySpikeCave
 	--anchor point: in the spike cave, to the left of the fronkey
 	conn: MistyKeystone3Ledge
