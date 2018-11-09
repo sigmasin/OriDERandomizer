@@ -2987,7 +2987,7 @@ home: HoruR4StompHideout
         casual-core Bash Glide WallJump
         casual-core Bash Glide Climb
         standard-abilities ChargeJump Dash Ability=3
-        standard-abilites Bash Dash Ability=3
+        standard-abilities Bash Dash Ability=3
         expert-dboost ChargeJump Health=5
         expert-dboost Bash Health=5
         dbash Bash
