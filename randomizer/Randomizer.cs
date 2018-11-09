@@ -492,21 +492,25 @@ public static class Randomizer
 		}
 		if (RandomizerRebinding.ListTrees.IsPressed() && Characters.Sein)
 		{
+			Randomizer.MessageQueueTime = 0;
 			RandomizerTrackedDataManager.ListTrees();
 			return;
 		}
 		if (RandomizerRebinding.ListRelics.IsPressed() && Characters.Sein)
 		{
+			Randomizer.MessageQueueTime = 0;
 			RandomizerTrackedDataManager.ListRelics();
 			return;
 		}
 		if (RandomizerRebinding.ListMapAltars.IsPressed() && Characters.Sein)
 		{
+			Randomizer.MessageQueueTime = 0;
 			RandomizerTrackedDataManager.ListMapstones();
 			return;
 		}
 		if (RandomizerRebinding.ListTeleporters.IsPressed() && Characters.Sein)
 		{
+			Randomizer.MessageQueueTime = 0;
 			RandomizerTrackedDataManager.ListTeleporters();
 			return;
 		}
@@ -543,6 +547,7 @@ public static class Randomizer
 		}
 		if (RandomizerRebinding.ShowProgress.IsPressed() && Characters.Sein)
 		{
+			Randomizer.MessageQueueTime = 0;
 			Randomizer.showProgress();
 			return;
 		}
