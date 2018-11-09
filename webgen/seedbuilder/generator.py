@@ -78,7 +78,7 @@ class Connection:
         self.requirements.append(translated_req)
         self.difficulties.append(difficulty)
         if not self.keys:
-            self.keys = req.count("KS")
+            self.keys = translated_req.count("KS")
         self.mapstone = "MS" in translated_req
 
     def get_requirements(self):
