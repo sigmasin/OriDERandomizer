@@ -117,7 +117,7 @@ public static class RandomizerColorManager
 	{
 		if (Randomizer.HotCold || Characters.Sein.PlayerAbilities.Sense.HasAbility)
 		{
-			float scale = 100f;
+			float scale = 64f;
 			float distance = 100f;
 			if (Characters.Ori.InsideMapstone)
 			{
@@ -129,7 +129,7 @@ public static class RandomizerColorManager
 						int map = enumerator.Current;
 						if (map > currentMap)
 						{
-							distance = (float)(map - currentMap - 4) * 2.5f;
+							distance = (float)(map - currentMap - 4) * 2f;
 							break;
 						}
 					}
@@ -139,7 +139,7 @@ public static class RandomizerColorManager
 			{
 				distance = Vector3.Distance(RandomizerColorManager.HotColdTarget, Characters.Sein.Position);
 			}
-			if (distance >= 100f)
+			if (distance >= scale)
 			{
 				Characters.Sein.PlatformBehaviour.Visuals.SpriteRenderer.material.color = RandomizerSettings.ColdColor;
 				return;
