@@ -24,6 +24,17 @@
 32 - Manavamp
 33 - Skill Velocity Upgrade
 
+40 - Lose Wall Jump
+41 - Lose Charge Flame
+42 - Lose Double Jump
+43 - Lose Bash
+44 - Lose Stomp
+45 - Lose Glide
+46 - Lose Climb
+47 - Lose Charge Jump
+48 - Lose Dash
+49 - Lose Grenade
+q
 80 - Spent AP Counter
 81 - Stomp/Grenade Hint
 
@@ -43,5 +54,81 @@
 1024 - shard ginso TP
 1025 - shard forlorn TP
 1026 - shard horu TP
+
+
+==== Begin Persists Through Death Zone ===
+1500 - Deaths
+1501 - Deaths in Glades
+1502 - Deaths in Grove
+1503 - Deaths in Grotto
+1504 - Deaths in Blackroot
+1505 - Deaths in Swamp
+1506 - Deaths in Ginso
+1507 - Deaths in Valley
+1508 - Deaths in Misty
+1509 - Deaths in Forlorn
+1510 - Deaths in Sorrow
+1511 - Deaths in Horu
+1512 - Deaths in Final Escape
+
+1515 - Deaths since last save
+1516 - Time since last death
+1517 - Time since last death or save
+1518 - Pickups since last death or save
+
+1520 - Time spent everywhere
+1521 - Time spent in Glades
+1522 - Time spent in Grove
+1523 - Time spent in Grotto
+1524 - Time spent in Blackroot
+1525 - Time spent in Swamp
+1526 - Time spent in Ginso
+1527 - Time spent in Valley
+1528 - Time spent in Misty
+1529 - Time spent in Forlorn
+1530 - Time spent in Sorrow
+1531 - Time spent in Horu
+1532 - Time spent in Final Escape
+1533 - Time spent (misc)
+
+1535 - Most deaths at one save
+1536 - Longest time between deaths 
+1537 - Most time lost to death
+1538 - Most pickups lost to death
+
+
+
+
+
+1570 - Saves
+1575 - Max PPM
+1576 - Time of Max PMM
+1577 - Count at Max PPM
+1578 - Reloads
+1579 - Alt+R Count
+1580 - Teleporter Count
+1581 - Found WI Time
+1582 - Found Bash Time
+1583 - Found Dash Time
+1575 - Alt+R count
+
+==== End Persists Through Death Zone ===
+
+1600 - Pickups found everywhere
+1601 - Pickups found in Glades
+1602 - Pickups found in Grove
+1603 - Pickups found in Grotto
+1604 - Pickups found in Blackroot
+1605 - Pickups found in Swamp
+1606 - Pickups found in Ginso
+1607 - Pickups found in Valley
+1608 - Pickups found in Misty
+1609 - Pickups found in Forlorn
+1610 - Pickups found in Sorrow
+1611 - Pickups found in Horu
+1612 - Mapstones
+
+
+
 
 2000-2256 - reserved IDs for Sense pickups

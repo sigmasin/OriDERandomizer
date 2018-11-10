@@ -13,6 +13,8 @@ public class NewGameAction : ActionMethod
 	public override void Perform(IContext context)
 	{
 		Game.Checkpoint.SaveGameData = new SaveGameData();
+		RandomizerStatsManager.Active = true;
+		RandomizerStatsManager.CachedTime = true;
 		if (Randomizer.OpenMode)
 		{
 			Game.Checkpoint.SaveGameData.LoadCustomData(Randomizer.GladesData);

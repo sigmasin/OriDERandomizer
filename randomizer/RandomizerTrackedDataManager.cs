@@ -264,7 +264,7 @@ public static class RandomizerTrackedDataManager
 			} 
 		} 
 		catch(Exception e) {
-			Randomizer.printInfo("@SetMapstone:@ area " + areaIdentifier + ": " + e.Message);
+			Randomizer.LogError("@SetMapstone:@ area " + areaIdentifier + ": " + e.Message);
 		}
 	}
 

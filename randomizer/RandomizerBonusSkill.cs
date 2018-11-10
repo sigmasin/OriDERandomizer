@@ -47,7 +47,7 @@ public static class RandomizerBonusSkill
             if (RandomizerBonusSkill.ActiveDrainSkills.Contains(item))
             {
                 RandomizerBonusSkill.ActiveDrainSkills.Remove(item);
-                Randomizer.printInfo("Gravity Shift off");
+                Randomizer.printInfo(CurrentBonusName() + " off");
                 Characters.Sein.PlatformBehaviour.Gravity.BaseSettings.GravityAngle = 0f;
                 RandomizerBonusSkill.EnergyDrainRate -= 0.001f;
                 return;
@@ -55,7 +55,7 @@ public static class RandomizerBonusSkill
             if (Characters.Sein.Energy.Current > 0f)
             {
                 RandomizerBonusSkill.ActiveDrainSkills.Add(item);
-                Randomizer.printInfo("Gravity Shift on");
+                Randomizer.printInfo(CurrentBonusName() + " on");
                 Characters.Sein.PlatformBehaviour.Gravity.BaseSettings.GravityAngle = 180f;
                 RandomizerBonusSkill.EnergyDrainRate += 0.001f;
                 return;
@@ -67,7 +67,7 @@ public static class RandomizerBonusSkill
             if (RandomizerBonusSkill.ActiveDrainSkills.Contains(item))
             {
                 RandomizerBonusSkill.ActiveDrainSkills.Remove(item);
-                Randomizer.printInfo("ExtremeSpeed off");
+                Randomizer.printInfo(CurrentBonusName() + " off");
                 Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Ground.MaxSpeed = 11.6666f;
                 Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Air.MaxSpeed = 11.6666f;
                 RandomizerBonusSkill.EnergyDrainRate -= 0.001f;
@@ -76,7 +76,7 @@ public static class RandomizerBonusSkill
             if (Characters.Sein.Energy.Current > 0f)
             {
                 RandomizerBonusSkill.ActiveDrainSkills.Add(item);
-                Randomizer.printInfo("ExtremeSpeed on");
+                Randomizer.printInfo(CurrentBonusName() + " on");
                 Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Ground.MaxSpeed = 40f;
                 Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Air.MaxSpeed = 40f;
                 RandomizerBonusSkill.EnergyDrainRate += 0.001f;

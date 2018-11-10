@@ -108,7 +108,7 @@ public static class RandomizerSwitch
             break;
         }
         Randomizer.GiveAbility = false;
-
+        RandomizerStatsManager.FoundSkill(Ability);
     }
     public static void EventPickup(int Value) 
     {
@@ -238,6 +238,12 @@ public static class RandomizerSwitch
                 }
                 Randomizer.showHint((string)Action.Value + relicStr, 480);
                 break;
+            case "WP":
+                string rawTarget = (string)Action.Value;
+                string[] xy = rawTarget.Split(',');
+                Randomizer.WarpTarget = new UnityEngine.Vector3(float.Parse(xy[0]), float.Parse(xy[1]));
+                Randomizer.Warping = 8;
+                break;
             case "NO":
                 Randomizer.showHint("Nothing");
                 break;
@@ -245,7 +251,7 @@ public static class RandomizerSwitch
         RandomizerTrackedDataManager.UpdateBitfields();
         }
         catch(Exception e) {
-            Randomizer.showHint(e.Message);
+            Randomizer.LogError("Give Pickup: " + e.Message);
         }
     }
 }   

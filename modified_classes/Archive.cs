@@ -221,11 +221,12 @@
 				foreach(int key in value.Keys) {
 					pairs += key.ToString() + ":"+value[key].ToString()+",";	
 				}
-				pairs.TrimEnd(',');
+				pairs = pairs.TrimEnd(',');
 
 				this.m_binaryWriter.Write(pairs);
 				return value;
 			}
+			value.Clear();
 			pairs = this.m_binaryReader.ReadString();
 			foreach(string pair in pairs.Split(',')) {
 				string[] kandv = pair.Split(':');

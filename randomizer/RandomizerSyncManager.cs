@@ -162,7 +162,7 @@ public static class RandomizerSyncManager
 	{
 		if (e.Error != null)
 		{
-			Randomizer.showHint("ERROR: " + e.Error.ToString());
+			Randomizer.LogError("CheckPickups: " + e.Error.ToString());
 		}
 		if (!e.Cancelled && e.Error == null)
 		{
@@ -230,7 +230,7 @@ public static class RandomizerSyncManager
 					}
 					else if (text.StartsWith("msg:"))
 					{
-						Randomizer.showHint(text.Substring(4));
+						Randomizer.printInfo(text.Substring(4), 360);
 					}
 					else if (text.StartsWith("pickup:"))
 					{
@@ -259,7 +259,10 @@ public static class RandomizerSyncManager
 		}
 		if (e.Error.GetType().Name == "WebException" && ((HttpWebResponse)((WebException)e.Error).Response).StatusCode == HttpStatusCode.PreconditionFailed)
 		{
-			Randomizer.showHint("Co-op server error, try reloading the seed (Alt+L)");
+			if(Randomizer.SyncMode == 1)
+				Randomizer.printInfo("Co-op server error, try reloading the seed (Alt+L)");
+			else
+				Randomizer.LogError("Co-op server error, try reloading the seed (Alt+L)");
 			return;
 		}
 	}
@@ -350,6 +353,14 @@ public static class RandomizerSyncManager
 	// Token: 0x0600379D RID: 14237
 	public static bool isTeleporterActivated(string identifier)
 	{
+        if(identifier == "Ginso" && Characters.Sein.Inventory.GetRandomizerItem(1024) == 1)
+        	return true;
+        if(identifier == "Forlorn" && Characters.Sein.Inventory.GetRandomizerItem(1025) == 1)
+        	return true;
+        if(identifier == "Horu" && Characters.Sein.Inventory.GetRandomizerItem(1026) == 1)
+        	return true;
+
+
 		foreach (GameMapTeleporter gameMapTeleporter in TeleporterController.Instance.Teleporters)
 		{
 			if (gameMapTeleporter.Identifier == Randomizer.TeleportTable[identifier].ToString())
@@ -454,7 +465,6 @@ public static class RandomizerSyncManager
 			string cleaned_id = this.id.Replace("#","");
 			if(cleaned_id.Contains("\\"))
 				cleaned_id = cleaned_id.Split('\\')[0];
-			Randomizer.showHint(cleaned_id);
 			return new Uri(string.Concat(new object[]
 			{
 				RandomizerSyncManager.RootUrl,

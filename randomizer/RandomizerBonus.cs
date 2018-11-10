@@ -243,6 +243,11 @@ public static class RandomizerBonus
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, -1);
             }
+            if(Randomizer.fragKeyFinish < RandomizerBonus.WarmthFrags())
+            {
+                Randomizer.showHint("@Warmth Fragment (extra)@", 300);
+                return;
+            }
             Randomizer.showHint(string.Concat(new object[]
             {
                 "@Warmth Fragment (",
@@ -311,9 +316,75 @@ public static class RandomizerBonus
                 return;
             }
             break;
+        case 40:
+            if (!Characters.Sein || flag)
+                return;
+            Randomizer.showHint("@Wall Jump Lost!!@", 240);
+            Characters.Sein.PlayerAbilities.WallJump.HasAbility = false;
+            return;
+        case 41:
+            if (!Characters.Sein || flag)
+                return;
+            Randomizer.showHint("@ChargeFlame Lost!!@", 240);
+            Characters.Sein.PlayerAbilities.ChargeFlame.HasAbility = false;
+            return;
+        case 42:
+            if (!Characters.Sein || flag)
+                return;
+            Randomizer.showHint("@DoubleJump Lost!!@", 240);
+            Characters.Sein.PlayerAbilities.DoubleJump.HasAbility = false;
+            return;
+        case 43:
+            if (!Characters.Sein || flag)
+                return;
+            Randomizer.showHint("@Bash Lost!!@", 240);
+            Characters.Sein.PlayerAbilities.Bash.HasAbility = false;
+            return;
+        case 44:
+            if (!Characters.Sein || flag)
+                return;
+            Randomizer.showHint("@Stomp Lost!!@", 240);
+            Characters.Sein.PlayerAbilities.Stomp.HasAbility = false;
+            return;
+        case 45:
+            if (!Characters.Sein || flag)
+                return;
+            Randomizer.showHint("@Glide Lost!!@", 240);
+            Characters.Sein.PlayerAbilities.Glide.HasAbility = false;
+            return;
+        case 46:
+            if (!Characters.Sein || flag)
+                return;
+            Randomizer.showHint("@Climb Lost!!@", 240);
+            Characters.Sein.PlayerAbilities.Climb.HasAbility = false;
+            return;
+        case 47:
+            if (!Characters.Sein || flag)
+                return;
+            Randomizer.showHint("@Charge Jump Lost!!@", 240);
+            Characters.Sein.PlayerAbilities.ChargeJump.HasAbility = false;
+            return;
+        case 48:
+            if (!Characters.Sein || flag)
+                return;
+            Randomizer.showHint("@Dash Lost!!@", 240);
+            Characters.Sein.PlayerAbilities.Dash.HasAbility = false;
+            return;
+        case 49:
+            if (!Characters.Sein || flag)
+                return;
+            Randomizer.showHint("@Grenade Lost!!@", 240);
+            Characters.Sein.PlayerAbilities.Grenade.HasAbility = false;
+            return;
         case 81:
             Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
-            Randomizer.showHint("Stomp: " + Randomizer.StompZone + "\t Grenade: "+ Randomizer.GrenadeZone, 480);
+            string s_color = "";
+            string g_color = "";
+            if(Characters.Sein.PlayerAbilities.HasAbility(AbilityType.Stomp))
+                s_color = "$";
+            if(Characters.Sein.PlayerAbilities.HasAbility(AbilityType.Grenade))
+                g_color = "$";
+            Randomizer.showHint(s_color + "Stomp: " + Randomizer.StompZone + s_color + g_color+ "    Grenade: "+ Randomizer.GrenadeZone + g_color, 480);
             break;
         default:
             return;
@@ -437,16 +508,16 @@ public static class RandomizerBonus
     // Token: 0x06003783 RID: 14211 RVA: 0x000E3050 File Offset: 0x000E1250
     public static void Update()
     {
-        Characters.Sein.Mortality.Health.GainHealth((float)(RandomizerBonus.HealthRegeneration() + ((!Characters.Sein.PlayerAbilities.HealthMarkers.HasAbility) ? 0 : 2)) * (Characters.Sein.PlayerAbilities.HealthEfficiency.HasAbility ? 0.00224f : 0.00112f));
+        Characters.Sein.Mortality.Health.GainHealth((float)(RandomizerBonus.HealthRegeneration() + ((!Characters.Sein.PlayerAbilities.HealthMarkers.HasAbility) ? 0 : 2)) * 0.00112f);
         if (RandomizerBonus.Bleeding() > 0)
         {
-            Characters.Sein.Mortality.Health.LoseHealth((float)RandomizerBonus.Bleeding() * 0.0008f);
+            Characters.Sein.Mortality.Health.LoseHealth((float)RandomizerBonus.Bleeding() * 0.00112f);
         }
         if (RandomizerBonus.Bleeding() > 0 && Characters.Sein.Mortality.Health.Amount <= 0f)
         {
             Characters.Sein.Mortality.DamageReciever.OnRecieveDamage(new Damage(1f, default(Vector2), default(Vector3), DamageType.Water, null));
         }
-        Characters.Sein.Energy.Gain((float)(RandomizerBonus.EnergyRegeneration() + ((!Characters.Sein.PlayerAbilities.EnergyMarkers.HasAbility) ? 0 : 2)) * (Characters.Sein.PlayerAbilities.EnergyEfficiency.HasAbility ? 0.00042f : 0.00028f));
+        Characters.Sein.Energy.Gain((float)(RandomizerBonus.EnergyRegeneration() + ((!Characters.Sein.PlayerAbilities.EnergyMarkers.HasAbility) ? 0 : 2)) *  0.00028f);
         RandomizerBonusSkill.Update();
     }
 

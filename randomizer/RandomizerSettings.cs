@@ -15,6 +15,7 @@ public static class RandomizerSettings
 		streamWriter.WriteLine("Grenade Aim Speed: 1.0");
 		streamWriter.WriteLine("Cold Color: 0, 255, 255, 255");
 		streamWriter.WriteLine("Hot Color: 255, 85, 0, 255");
+		streamWriter.WriteLine("Dev: False");
 		streamWriter.Flush();
 		streamWriter.Close();
 	}
@@ -53,6 +54,15 @@ public static class RandomizerSettings
 			{
 				':'
 			})[1]);
+			try {
+				RandomizerSettings.Dev = (array[6].Split(new char[]
+				{
+					':'
+				})[1].Trim().ToLower() == "true");
+			}
+			catch(Exception) {
+				RandomizerSettings.Dev = false;
+			}
 			RandomizerSettings.BashDeadzone = Math.Max(0f, Math.Min(1f, RandomizerSettings.BashDeadzone));
 			RandomizerSettings.AbilityMenuOpacity = Math.Max(0f, Math.Min(1f, RandomizerSettings.AbilityMenuOpacity));
 		}
@@ -100,4 +110,6 @@ public static class RandomizerSettings
 
 	// Token: 0x040033A7 RID: 13223
 	public static Color HotColor;
+
+	public static bool Dev;
 }

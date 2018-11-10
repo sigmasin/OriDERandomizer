@@ -58,7 +58,8 @@ public static class RandomizerRebinding {
 				{"List Trees", "LeftAlt+Alpha1, RightAlt+Alpha1"},
 				{"List Map Altars", "LeftAlt+Alpha2, RightAlt+Alpha2"},
 				{"List Teleporters", "LeftAlt+Alpha3, RightAlt+Alpha3"},
-				{"List Relics", "LeftAlt+Alpha4, RightAlt+Alpha4"}
+				{"List Relics", "LeftAlt+Alpha4, RightAlt+Alpha4"},
+				{"Show Stats", "LeftAlt+Alpha5, RightAlt+Alpha5"}
 			};
 			if (!File.Exists("RandomizerRebinding.txt"))
 			{
@@ -132,6 +133,8 @@ public static class RandomizerRebinding {
 			RandomizerRebinding.ListMapAltars = ParseOrDefault(bind, key, writeList);
 		} else if(key == "List Teleporters") {
 			RandomizerRebinding.ListTeleporters = ParseOrDefault(bind, key, writeList);
+		} else if(key == "Show Stats") {
+			RandomizerRebinding.ShowStats = ParseOrDefault(bind, key, writeList);
 		}
 	}
 
@@ -200,48 +203,23 @@ public static class RandomizerRebinding {
 	public static Hashtable ActionMap;
 	public static Dictionary<string, string> DefaultBinds;
 
-
-
-	// Token: 0x0400327B RID: 12923
 	public static RandomizerRebinding.BindSet ReplayMessage;
-
-	// Token: 0x0400327C RID: 12924
 	public static RandomizerRebinding.BindSet ReturnToStart;
-
-	// Token: 0x0400327D RID: 12925
 	public static RandomizerRebinding.BindSet ReloadSeed;
-
-	// Token: 0x0400327E RID: 12926
 	public static RandomizerRebinding.BindSet ToggleChaos;
-
-	// Token: 0x0400327F RID: 12927
 	public static RandomizerRebinding.BindSet ChaosVerbosity;
-
-	// Token: 0x04003280 RID: 12928
 	public static RandomizerRebinding.BindSet ForceChaosEffect;
-
-	// Token: 0x04003281 RID: 12929
 	public static RandomizerRebinding.BindSet ShowProgress;
-
-	// Token: 0x04003282 RID: 12930
 	public static RandomizerRebinding.BindSet ColorShift;
-
-	// Token: 0x04003283 RID: 12931
 	public static RandomizerRebinding.BindSet DoubleBash;
-
-	// Token: 0x04003284 RID: 12932
 	public static RandomizerRebinding.BindSet BonusSwitch;
-
-	// Token: 0x04003285 RID: 12933
 	public static RandomizerRebinding.BindSet BonusToggle;
-
-	// Token: 0x04003A1A RID: 14874
 	public static RandomizerRebinding.BindSet ResetGrenadeAim;
-
 	public static RandomizerRebinding.BindSet ListTrees;
 	public static RandomizerRebinding.BindSet ListRelics;
 	public static RandomizerRebinding.BindSet ListMapAltars;
 	public static RandomizerRebinding.BindSet ListTeleporters;
+	public static RandomizerRebinding.BindSet ShowStats;
 
 	// Token: 0x02000A03 RID: 2563
 	public class Bind
