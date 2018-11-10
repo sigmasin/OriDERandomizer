@@ -14,39 +14,40 @@ public static class RandomizerCreditsManager {
 
 Developed by:
 Sigmasin
-*Eiko*  #Meldon#  @Vulajin@", 15));
+*Eiko*  #Meldon#  @Vulajin@", 14));
 		Credits.Add(new KeyValuePair<string, int>(
 @"ANCHORTOPPARAMS_20_7.5_2_Major contributions by:
 DevilSquirrel
 
 Community Contributions by:
 GreeZ  Hydra  Jitaenow  LusTher
-Phant  Skulblaka  Terra  xaviershay", 15));
+Phant  Skulblaka  Terra  xaviershay", 14));
 		Credits.Add(new KeyValuePair<string, int>(
-@"ANCHORTOPPARAMS_20_9_2_Additional community contributions by:
-Athos213    AvengedRuler    Cereberon
+@"ANCHORTOPPARAMS_20_10_2_Additional community contributions by:
+Athos213    AvengedRuler    Cereberon    Cleanfel
 CovertMuffin    Grimelios    iRobin    JHobz
 Jitaenow    Kirefel    madinsane    Mattermonkey
-RainbowPoogle    Roryrai    UncleRonny
+RainbowPoogle    Roryrai    UncleRonny Wingheart
 
 Ori DE Randomizer inspired by:
-Chicken_Supreme's 'remix' system
-Link to the Past Randomizer", 15));
+Chicken_Supreme's Ori 'remix'
+Link to the Past Randomizer", 14));
 		Credits.Add(new KeyValuePair<string, int>(
 @"ALIGNLEFTANCHORTOPPARAMS_20_10_2_        Ori Randomizer Tournament Champions
 
 		2017
-Singles:	CovertMuffin
-Doubles:	That Is Faster (Sigma and Raziel)
+Singles:	Covert_Muffin
+Doubles:	That Is Faster (Sigmasin and IMRaziel)
 
 		2018
 Singles:	Test
-Doubles:	That Is Still Faster (Sigma and Raziel)
-", 15));
+Doubles:	That Is Still Faster (Sigmasin and IMRaziel)
+", 14));
 
 		Credits.Add(new KeyValuePair<string, int>(
-@"ANCHORTOPPARAMS_20_10_2_Thanks for playing! 
-find us at orirando.com/discord", 15));
+@"ANCHORTOPPARAMS_20_12_2_Thanks for playing!
+Website: orirando.com
+Join the Ori community: orirando.com/discord", 14));
 
 		// Credits.Add(new KeyValuePair<string, int>("In memory of Grandma", 5));
 		Credits.Add(new KeyValuePair<string, int>(RandomizerStatsManager.GetStatsPage(0), 60));

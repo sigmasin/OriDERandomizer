@@ -83,6 +83,10 @@ public static class RandomizerStatsManager {
 		SceneToZone.Add("mountHoruMovingPlatform", "mountHoru");
 		SceneToZone.Add("mountHoruStomperSystemsL", "mountHoru");
 		SceneToZone.Add("mountHoruStomperSystemsR", "mountHoru");
+		SceneToZone.Add("catAndMouseRight", "mountHoru");
+		SceneToZone.Add("catAndMouseMid", "mountHoru");
+		SceneToZone.Add("catAndMouseLeft", "mountHoru");
+		SceneToZone.Add("catAndMouseResurrectionRoom", "mountHoru");
 		SceneToZone.Add("mountHoruHubBottom", "mountHoru");
 
 	}
@@ -97,8 +101,6 @@ public static class RandomizerStatsManager {
 		if(Scenes.Manager.CurrentScene != null)
 		{
 			string scene = Scenes.Manager.CurrentScene.Scene;
-			if(scene.StartsWith("catAndMouse"))
-				return "mountHoru";
 			if(SceneToZone.ContainsKey(scene))
 				return SceneToZone[scene];
 		}
@@ -128,13 +130,25 @@ public static class RandomizerStatsManager {
 		{
 			Randomizer.LogError("OnDeath: " + e.Message);
 		}
+	}
 
+	public static void OnReturnToMenu() {
+		inc(Reloads, 1);
+		MenuCache = new Dictionary<int, int>();
+		foreach(int single in new int[] {DSLS, TSLD, Reloads, AltRCount, PPM_max, PPM_max_time, PPM_max_count, Saves})
+			MenuCache[single] = get(single);
+
+		foreach(int group in new int[] {Time, Deaths}) 
+			foreach(int offset in Offsets.Values)
+				MenuCache[group + offset] = get(group + offset);
+		WriteFromCache = true;
 	}
 
 	public static void OnSave() {
 		if(!Active)
 			return;
 		set(TSLDOS, 0);
+
 		set(PSLDOS, 0);
 		UpdateAndReset(DSLS, DSLS_max);
 		inc(Saves, 1);
@@ -147,17 +161,16 @@ public static class RandomizerStatsManager {
 		if(Characters.Sein)
 		{
 			try {
+				if(WriteFromCache) {
+					WriteFromCache = false;
+					foreach(int key in MenuCache.Keys)
+						set(key, MenuCache[key]);
+				}
 				inc(TSLDOS, CachedTime);
 				inc(TSLD, CachedTime);
 				inc(Time, CachedTime);
 				inc(Time + Offsets[CurrentZone()], CachedTime);
 				CachedTime = 0;
-				bool menu = (Scenes.Manager.CurrentScene != null && Scenes.Manager.CurrentScene.Scene == "titleScreenSwallowsNest");
-				if(menu != OnMenu) {
-					OnMenu = menu;
-					if(!menu)
-						inc(Reloads, 1);
-				}
 			}
 			catch(Exception e)
 			{
@@ -231,20 +244,19 @@ public static class RandomizerStatsManager {
 				}
 			break;
 				case 1:
-					statsPage = "ALIGNLEFTANCHORTOPPADDING_0_4_0_0_PARAMS_12_12_1_Saves: " + get(Saves).ToString();
-					statsPage += "\nMost time lost on death: " + FormatTime(get(TSLDOS_max));
-					statsPage += "\nMost pickups lost on death: " + get(PSLDOS_max).ToString();
-					statsPage += "\nMost deaths on a single save: " + Math.Max(get(DSLS_max), get(DSLS)).ToString();
-					statsPage += "\nLongest time without dying: " + FormatTime(Math.Max(get(TSLD_max), get(TSLD)));
 					float ppm_max = (float)get(PPM_max) / 100f;
-					statsPage += "\nPeak PPM: " + ppm_max.ToString() + " ("+get(PPM_max_count).ToString() +" pickups at " + FormatTime(get(PPM_max_time))+")";
-					if(RandomizerSettings.Dev) // Broken, we think?
-						statsPage += "\nReloads: " + get(Reloads).ToString();
-					statsPage += "\nTeleporters Used: " + get(TeleporterCount).ToString();
-					statsPage += "\nAlt+R Used: " + get(AltRCount).ToString();
-					statsPage += "\nFound Wall Interaction at: " + FormatTime(get(FoundWITime));
-					statsPage += "\nFound Bash at: " + FormatTime(get(FoundBashTime));
-					statsPage += "\nFound Dash at: " + FormatTime(get(FoundDashTime));
+					statsPage = "ALIGNLEFTANCHORTOPPADDING_0_2_0_0_PARAMS_12_12_1_\nSaves:					" + get(Saves).ToString();
+					statsPage += "\nReloads:					" + (get(Reloads)).ToString();
+					statsPage += "\nAlt+Rs Used:				" + get(AltRCount).ToString();
+					statsPage += "\nTeleporters Used:			" + get(TeleporterCount).ToString();
+					statsPage += "\nPeak Pickups Per Minute:		" + ppm_max.ToString() + " ("+get(PPM_max_count).ToString() +" / " + FormatTime(get(PPM_max_time), false)+")";
+					statsPage += "\nWorst death (time lost):		" + FormatTime(get(TSLDOS_max), false);
+					statsPage += "\nWorst death (pickups lost):	" + get(PSLDOS_max).ToString();
+					statsPage += "\nMost deaths at one save:		" + Math.Max(get(DSLS_max), get(DSLS)).ToString();
+					statsPage += "\nLongest time without dying:	" + FormatTime(Math.Max(get(TSLD_max), get(TSLD)), false);
+					statsPage += "\nFound Wall Interaction at:		" + FormatTime(get(FoundWITime), false);
+					statsPage += "\nFound Bash at:				" + FormatTime(get(FoundBashTime), false);
+					statsPage += "\nFound Dash at:				" + FormatTime(get(FoundDashTime), false);
 				break;
 			default:
 			break;
@@ -255,6 +267,14 @@ public static class RandomizerStatsManager {
 	private static int get(int item) { return Characters.Sein.Inventory.GetRandomizerItem(item); }
 	private static int set(int item, int value) { return Characters.Sein.Inventory.SetRandomizerItem(item, value); }
 	private static int inc(int item, int value) { return Characters.Sein.Inventory.IncRandomizerItem(item, value); }
+	
+	public static string FormatTime(int seconds, bool padding)
+	{
+		if(padding)
+			return FormatTime(seconds);
+		else
+			return FormatTime(seconds).Trim();
+	}
 
 	public static string FormatTime(int seconds)
 	{
@@ -328,14 +348,15 @@ public static class RandomizerStatsManager {
 	public static int FoundBashTime = 1582;
 	public static int FoundDashTime = 1583;
 
-
 	public static bool OnMenu;
 	public static int CurrentPage;
 	public static int PageCount = 2;
 	public static int CachedTime;
 	public static bool Active;
+	public static bool WriteFromCache;
 	public static Dictionary<string, int> Offsets;
 	public static Dictionary<string, int> PickupCounts;
 	public static Dictionary<string, string> ZonePrettyNames;
 	public static Dictionary<string, string> SceneToZone;
+	public static Dictionary<int, int> MenuCache;
 }
