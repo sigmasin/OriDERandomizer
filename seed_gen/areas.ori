@@ -2666,26 +2666,26 @@ home: L1InnerDoor
 	conn: L1
 home: L1
 	pickup: HoruL1
-		casual-core Bash DoubleJump
-		casual-core Glide Bash WallJump
-		casual-core Glide Bash Climb
-		casual-core Glide Bash Grenade
-		standard-core Glide Bash ChargeJump
-		standard-abilities Dash Bash WallJump Ability=3
-		standard-abilities Dash Bash Climb Ability=3
-		standard-abilities Dash Bash ChargeJump Ability=3
-		standard-abilities Dash Bash Grenade Ability=3
-		expert-core Glide Bash
-		expert-abilities Dash Bash Ability=3
-		expert-abilities Dash Energy=3 Ability=6
-		expert-abilities Dash DoubleJump Energy=2 Ability=6		
-		master-abilities Dash DoubleJump Energy=1 Ability=6
-		master-dboost WallJump DoubleJump Ability=12 Health=4
-		master-dboost Climb DoubleJump Ability=12 Health=4 Energy=2
-		master-dboost Climb DoubleJump Ability=12 Health=5 Energy=1
-		master-dboost Climb DoubleJump Ability=12 Health=7
-		master-dboost Bash Health=5
-		master-dboost ChargeJump Health=5
+		casual-core Bash DoubleJump Stomp
+		casual-core Glide Bash WallJump Stomp
+		casual-core Glide Bash Climb Stomp
+		casual-core Glide Bash Grenade Stomp
+		standard-core Glide Bash ChargeJump Stomp
+		standard-abilities Dash Bash WallJump Stomp Ability=3
+		standard-abilities Dash Bash Climb Stomp Ability=3
+		standard-abilities Dash Bash ChargeJump Stomp Ability=3
+		standard-abilities Dash Bash Grenade Stomp Ability=3
+		expert-core Glide Bash Stomp
+		expert-abilities Dash Bash Stomp Ability=3
+		expert-abilities Dash Stomp Energy=3 Ability=6
+		expert-abilities Dash Stomp DoubleJump Energy=2 Ability=6		
+		master-abilities Dash Stomp DoubleJump Energy=1 Ability=6
+		master-dboost WallJump DoubleJump Stomp Ability=12 Health=4
+		master-dboost Climb DoubleJump Stomp Ability=12 Health=4 Energy=2
+		master-dboost Climb DoubleJump Stomp Ability=12 Health=5 Energy=1
+		master-dboost Climb DoubleJump Stomp Ability=12 Health=7
+		master-dboost Bash Stomp Health=5
+		master-dboost ChargeJump Stomp Health=5
 home: L2OuterDoor
 	conn: L2InnerDoor
 	-- TODO: fix this connection for entrance
