@@ -705,18 +705,10 @@ public static class Randomizer
 			{
 				text = text + " @SS@ (" + RandomizerBonus.SunstoneShards().ToString() + "/3)";
 			}
-			if (Randomizer.fragsEnabled)
-			{
-				text = string.Concat(new string[]
-				{
-					text,
-					" Frags: (",
-					RandomizerBonus.WarmthFrags().ToString(),
-					"/",
-					Randomizer.fragKeyFinish.ToString(),
-					")"
-				});
-			}
+		}
+		if (Randomizer.fragsEnabled)
+		{
+			text = string.Concat(new string[] { text, " Frags: (", RandomizerBonus.WarmthFrags().ToString(), "/", Randomizer.fragKeyFinish.ToString(), ")" });
 		}
 		if(RandomizerBonus.ForlornEscapeHint())
 		{
