@@ -144,10 +144,12 @@ public static class RandomizerSwitch
     {
         int shardCount = -1;
         char colorChar = ' ';
+        string shardPart = "";
         if(Value == "Ginso")
         {
             Characters.Sein.Inventory.SetRandomizerItem(1024, 1);
             shardCount = RandomizerBonus.WaterVeinShards();
+            shardPart = "Water Vein";
             colorChar = '*';
         }
         if(Value == "Forlorn")
@@ -165,7 +167,13 @@ public static class RandomizerSwitch
 
         if(Randomizer.Shards && shardCount >= 0 && shardCount < 2)
         {
-            Randomizer.showHint(colorChar + "Broken " + Value + " teleporter (" + shardCount.ToString() + "/2)" + colorChar);
+            if(shardCount == 1){
+                shardPart = "1 more " + shardPart + " shard to activate";
+            }
+            else{
+                shardPart = "2 " + shardPart + " shards to activate";  
+            }
+            Randomizer.showHint(colorChar + "Inactive " + Value + " teleporter\nCollect " + shardPart + colorChar, 240);
             return;
         }
         TeleporterController.Activate(Randomizer.TeleportTable[Value].ToString());
