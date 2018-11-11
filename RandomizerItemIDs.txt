@@ -102,7 +102,7 @@ q
 
 1570 - Saves
 1575 - Max PPM
-1576 - Time of Max PMM
+1576 - Time of Max PPM
 1577 - Count at Max PPM
 1578 - Reloads
 1579 - Alt+R Count
@@ -110,7 +110,6 @@ q
 1581 - Found WI Time
 1582 - Found Bash Time
 1583 - Found Dash Time
-1575 - Alt+R count
 
 ==== End Persists Through Death Zone ===
 

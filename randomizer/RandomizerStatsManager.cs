@@ -133,15 +133,20 @@ public static class RandomizerStatsManager {
 	}
 
 	public static void OnReturnToMenu() {
-		inc(Reloads, 1);
-		MenuCache = new Dictionary<int, int>();
-		foreach(int single in new int[] {DSLS, TSLD, Reloads, AltRCount, PPM_max, PPM_max_time, PPM_max_count, Saves})
-			MenuCache[single] = get(single);
+		try {
+			inc(Reloads, 1);
+			MenuCache = new Dictionary<int, int>();
+			foreach(int single in new int[] {DSLS, TSLD, Reloads, AltRCount, PPM_max, PPM_max_time, PPM_max_count, Saves})
+				MenuCache[single] = get(single);
 
-		foreach(int group in new int[] {Time, Deaths}) 
-			foreach(int offset in Offsets.Values)
-				MenuCache[group + offset] = get(group + offset);
-		WriteFromCache = true;
+			foreach(int group in new int[] {Time, Deaths}) 
+				foreach(int offset in Offsets.Values)
+					MenuCache[group + offset] = get(group + offset);
+			WriteFromCache = true;			
+		}
+		catch(Exception e) {
+//			Randomizer.LogError("OnReturnToMenu:" e.Message);
+		}
 	}
 
 	public static void OnSave() {
@@ -267,6 +272,14 @@ public static class RandomizerStatsManager {
 	private static int get(int item) { return Characters.Sein.Inventory.GetRandomizerItem(item); }
 	private static int set(int item, int value) { return Characters.Sein.Inventory.SetRandomizerItem(item, value); }
 	private static int inc(int item, int value) { return Characters.Sein.Inventory.IncRandomizerItem(item, value); }
+
+	public static void Activate() {
+		Active = true;
+		MenuCache = new Dictionary<int, int>();
+		CachedTime = 0;
+		WriteFromCache = false;
+	}
+
 	
 	public static string FormatTime(int seconds, bool padding)
 	{
@@ -348,7 +361,6 @@ public static class RandomizerStatsManager {
 	public static int FoundBashTime = 1582;
 	public static int FoundDashTime = 1583;
 
-	public static bool OnMenu;
 	public static int CurrentPage;
 	public static int PageCount = 2;
 	public static int CachedTime;

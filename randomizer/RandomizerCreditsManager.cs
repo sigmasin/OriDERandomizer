@@ -44,14 +44,15 @@ Singles:	Sigmasin
 Doubles:	That Is Still Faster (Sigmasin and IMRaziel)
 ", 14));
 
-		Credits.Add(new KeyValuePair<string, int>(
-@"ANCHORTOPPARAMS_20_12_2_Thanks for playing!
-Website: orirando.com
-Join the Ori community: orirando.com/discord", 14));
 
 		// Credits.Add(new KeyValuePair<string, int>("In memory of Grandma", 5));
 		Credits.Add(new KeyValuePair<string, int>(RandomizerStatsManager.GetStatsPage(0), 60));
 		Credits.Add(new KeyValuePair<string, int>(RandomizerStatsManager.GetStatsPage(1), 60));
+
+		Credits.Add(new KeyValuePair<string, int>(
+@"ANCHORTOPPARAMS_20_12_2_Thanks for playing!
+Website: orirando.com
+Join the Ori community: orirando.com/discord", 14));
 
 		NextCreditCountdown = 0;
 	}

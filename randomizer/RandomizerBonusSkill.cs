@@ -70,6 +70,7 @@ public static class RandomizerBonusSkill
                 Randomizer.printInfo(CurrentBonusName() + " off");
                 Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Ground.MaxSpeed = 11.6666f;
                 Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Air.MaxSpeed = 11.6666f;
+                Characters.Sein.Abilities.Swimming.SwimSpeed = 6f;
                 RandomizerBonusSkill.EnergyDrainRate -= 0.001f;
                 return;
             }
@@ -79,6 +80,7 @@ public static class RandomizerBonusSkill
                 Randomizer.printInfo(CurrentBonusName() + " on");
                 Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Ground.MaxSpeed = 40f;
                 Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Air.MaxSpeed = 40f;
+                Characters.Sein.Abilities.Swimming.SwimSpeed = 20f;
                 RandomizerBonusSkill.EnergyDrainRate += 0.001f;
                 return;
             }
@@ -188,6 +190,7 @@ public static class RandomizerBonusSkill
         RandomizerBonusSkill.EnergyDrainRate = 0f;
         Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Ground.MaxSpeed = 11.6666f;
         Characters.Sein.PlatformBehaviour.LeftRightMovement.Settings.Air.MaxSpeed = 11.6666f;
+        Characters.Sein.Abilities.Swimming.SwimSpeed = 6f;
         Characters.Sein.PlatformBehaviour.Gravity.BaseSettings.GravityAngle = 0f;
     }
 
