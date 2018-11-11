@@ -40,7 +40,7 @@ Singles:	Covert_Muffin
 Doubles:	That Is Faster (Sigmasin and IMRaziel)
 
 		2018
-Singles:	Test
+Singles:	Sigmasin
 Doubles:	That Is Still Faster (Sigmasin and IMRaziel)
 ", 14));
 
