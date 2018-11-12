@@ -111,7 +111,6 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		if(repeatable > 0)
 			return;
 		keystonePickup.Collected();
-		Randomizer.getPickup(keystonePickup.Bounds.center);
 		if (GameWorld.Instance.CurrentArea != null)
 		{
 			GameWorld.Instance.CurrentArea.DirtyCompletionAmount();
@@ -127,7 +126,6 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		if(repeatable > 0)
 			return;
 		maxHealthContainerPickup.Collected();
-		Randomizer.getPickup(maxHealthContainerPickup.Bounds.center);
 		if (GameWorld.Instance.CurrentArea != null)
 		{
 			GameWorld.Instance.CurrentArea.DirtyCompletionAmount();
@@ -156,7 +154,6 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 		if(repeatable > 0)
 			return;
 		mapStonePickup.Collected();
-		Randomizer.getPickup(mapStonePickup.Bounds.center);
 		if (GameWorld.Instance.CurrentArea != null)
 		{
 			GameWorld.Instance.CurrentArea.DirtyCompletionAmount();

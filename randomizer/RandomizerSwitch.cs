@@ -251,7 +251,7 @@ public static class RandomizerSwitch
                 string rawTarget = (string)Action.Value;
                 string[] xy = rawTarget.Split(',');
                 Randomizer.WarpTarget = new UnityEngine.Vector3(float.Parse(xy[0]), float.Parse(xy[1]));
-                Randomizer.Warping = 8;
+                Randomizer.Warping = 120;
                 break;
             case "NO":
                 Randomizer.showHint("Nothing");

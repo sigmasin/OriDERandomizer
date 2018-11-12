@@ -52,7 +52,7 @@ Doubles:	That Is Still Faster (Sigmasin and IMRaziel)
 		Credits.Add(new KeyValuePair<string, int>(
 @"ANCHORTOPPARAMS_20_12_2_Thanks for playing!
 Website: orirando.com
-Join the Ori community: orirando.com/discord", 14));
+Join the Ori community: orirando.com/discord", 60));
 
 		NextCreditCountdown = 0;
 	}

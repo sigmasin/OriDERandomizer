@@ -547,7 +547,7 @@ public static class Randomizer
 		}
 		if (RandomizerRebinding.ReturnToStart.IsPressed() && Characters.Sein)
 		{
-			if(Randomizer.AltRDisabled)
+			if(Randomizer.AltRDisabled || RandomizerBonus.AltRDisabled())
 			{
 				Randomizer.printInfo("Return to start is disabled!");
 				return;
