@@ -91,8 +91,8 @@ class SeedGenParams(ndb.Model):
     players = ndb.IntegerProperty(default=1)
     created_on = ndb.DateTimeProperty(auto_now_add=True)
     sync = ndb.LocalStructuredProperty(MultiplayerOptions)
-    frag_count = ndb.IntegerProperty(default=40)
-    frag_extra = ndb.IntegerProperty(default=10)
+    frag_count = ndb.IntegerProperty(default=30)
+    frag_req = ndb.IntegerProperty(default=20)
     relic_count = ndb.IntegerProperty(default=8)
     cell_freq = ndb.IntegerProperty(default=256)
     placements = ndb.LocalStructuredProperty(Placement, repeated=True, compressed=True)
@@ -117,8 +117,8 @@ class SeedGenParams(ndb.Model):
         params.balanced = qparams.get("gen_mode") != "Classic"
         params.players = int(qparams.get("players", 1))
         params.tracking = qparams.get("tracking") != "Disabled"
-        params.frag_count = int(qparams.get("frags", 40))
-        params.frag_extra = int(qparams.get("extra_frags", 10))
+        params.frag_count = int(qparams.get("frags", 30))
+        params.frag_req = int(qparams.get("frags_req", 20))
         params.relic_count = int(qparams.get("relics", 8))
         params.cell_freq = int(qparams.get("cell_freq", 256))
         params.sync = MultiplayerOptions.from_url(qparams)
@@ -183,7 +183,7 @@ class SeedGenParams(ndb.Model):
         outlines = [flags]
         outlines += ["|".join(line) for line in self.get_seed_data(player)]
         assert len(outlines) > 1
-        return "\n".join(outlines)+"\n"
+        return "\n".join(outlines) + "\n"
 
     def get_seed_data(self, player=1):
         player = int(player)
@@ -194,7 +194,7 @@ class SeedGenParams(ndb.Model):
     def get_spoiler(self, player=1):
         if self.sync.mode == MultiplayerGameType.SIMUSOLO:
             player = 1
-        return self.spoilers[self.team_pid(player)-1]
+        return self.spoilers[self.team_pid(player) - 1]
 
     def get_preset(self):
         pathset = set(self.logic_paths)
@@ -213,7 +213,7 @@ class SeedGenParams(ndb.Model):
             flags.append(self.get_preset())
         flags.append(self.key_mode)
         if Variation.WARMTH_FRAGMENTS in self.variations:
-            flags.append("Frags/%s/%s" % (self.frag_count, self.frag_extra))
+            flags.append("Frags/%s/%s" % (self.frag_req, self.frag_count))
         if Variation.WORLD_TOUR in self.variations:
             flags.append("WorldTour=%s" % self.relic_count)
         flags += [v.value for v in self.variations if v not in FLAGLESS_VARS]
