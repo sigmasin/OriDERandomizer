@@ -1,9 +1,8 @@
-import sys,os
+import sys, os
 import logging as log
 LIBS = os.path.join(os.path.dirname(os.path.realpath(__file__)), "lib")
 if LIBS not in sys.path:
     sys.path.insert(0, LIBS)
-
 from enum import Enum
 
 class StrEnum(str, Enum):
@@ -30,8 +29,6 @@ class MultiplayerGameType(StrEnum):
 
     def is_dedup(self): return self in [MultiplayerGameType.SHARED]
 
-
-
 class ShareType(StrEnum):
     NOT_SHARED = "Unshareable"
     UPGRADE = "Upgrades"
@@ -39,8 +36,6 @@ class ShareType(StrEnum):
     EVENT = "WorldEvents"
     TELEPORTER = "Teleporters"
     MISC = "Misc"
-
-oldFlags = {"starved": "Starved", "hardmode": "Hard", "ohko": "OHKO", "0xp": "0XP",  "noplants": "NoPlants", "forcetrees": "ForceTrees", "discmaps": "NonProgressMapStones", "notp": "NoTeleporters", "entshuf": "Entrance", "wild": "BonusPickups", "forcemapstones": "ForceMapStones", "forcerandomescape": "ForceRandomEscape"}
 
 class Variation(StrEnum):
     ZERO_EXP = "0XP"
@@ -57,12 +52,6 @@ class Variation(StrEnum):
     WARMTH_FRAGMENTS = "WarmthFrags"
     DOUBLE_SKILL = "DoubleSkills"
     STRICT_MAPSTONES = "StrictMapstones"
-    @staticmethod
-    def from_old(old):
-        low = old.lower()
-        if low not in oldFlags:
-            return None
-        return Variation(oldFlags[old])
 
 class LogicPath(StrEnum):
     CASUAL_CORE = 'casual-core'
@@ -97,29 +86,28 @@ class PathDifficulty(StrEnum):
     NORMAL = "Normal"
     HARD = "Hard"
 
+
 presets = {
     "Casual": {LogicPath.CASUAL_CORE, LogicPath.CASUAL_DBOOST},
     "Standard": {
-        LogicPath.CASUAL_CORE, LogicPath.CASUAL_DBOOST, 
+        LogicPath.CASUAL_CORE, LogicPath.CASUAL_DBOOST,
         LogicPath.STANDARD_CORE, LogicPath.STANDARD_DBOOST, LogicPath.STANDARD_LURE, LogicPath.STANDARD_ABILITIES
         },
     "Expert": {
-        LogicPath.CASUAL_CORE, LogicPath.CASUAL_DBOOST, 
+        LogicPath.CASUAL_CORE, LogicPath.CASUAL_DBOOST,
         LogicPath.STANDARD_CORE, LogicPath.STANDARD_DBOOST, LogicPath.STANDARD_LURE, LogicPath.STANDARD_ABILITIES,
         LogicPath.EXPERT_CORE, LogicPath.EXPERT_DBOOST, LogicPath.EXPERT_LURE, LogicPath.EXPERT_ABILITIES, LogicPath.DBASH
         },
     "Master": {
-            LogicPath.CASUAL_CORE, LogicPath.CASUAL_DBOOST, 
+            LogicPath.CASUAL_CORE, LogicPath.CASUAL_DBOOST,
             LogicPath.STANDARD_CORE, LogicPath.STANDARD_DBOOST, LogicPath.STANDARD_LURE, LogicPath.STANDARD_ABILITIES,
             LogicPath.EXPERT_CORE, LogicPath.EXPERT_DBOOST, LogicPath.EXPERT_LURE, LogicPath.EXPERT_ABILITIES, LogicPath.DBASH,
             LogicPath.MASTER_CORE, LogicPath.MASTER_DBOOST, LogicPath.MASTER_LURE, LogicPath.MASTER_ABILITIES, LogicPath.GJUMP
         },
     "Glitched": {
-            LogicPath.CASUAL_CORE, LogicPath.CASUAL_DBOOST, 
+            LogicPath.CASUAL_CORE, LogicPath.CASUAL_DBOOST,
             LogicPath.STANDARD_CORE, LogicPath.STANDARD_DBOOST, LogicPath.STANDARD_LURE, LogicPath.STANDARD_ABILITIES,
             LogicPath.EXPERT_CORE, LogicPath.EXPERT_DBOOST, LogicPath.EXPERT_LURE, LogicPath.EXPERT_ABILITIES, LogicPath.DBASH,
-            LogicPath.MASTER_CORE, LogicPath.MASTER_DBOOST, LogicPath.MASTER_LURE, LogicPath.MASTER_ABILITIES, LogicPath.GJUMP,
             LogicPath.GLITCHED, LogicPath.TIMED_LEVEL
         }
     }
-
