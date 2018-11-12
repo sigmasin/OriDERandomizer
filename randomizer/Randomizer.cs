@@ -204,6 +204,14 @@ public static class Randomizer
 						});
 						Array.Sort(Randomizer.HotColdTypes);
 					}
+					if (flag.ToLower().StartsWith("sense="))
+					{
+						Randomizer.HotColdTypes = flag.Substring(6).Split(new char[]
+						{
+							'+'
+						});
+						Array.Sort(Randomizer.HotColdTypes);
+					}
 					if (flag.ToLower() == "noaltr")
 					{
 						Randomizer.AltRDisabled = true;
