@@ -316,6 +316,14 @@ public static class RandomizerBonus
                 return;
             }
             break;
+        case 34:
+            Randomizer.AltRDisabled = true;
+            Randomizer.showHint("Return to start disabled!");
+        break;
+        case 35:
+            Randomizer.AltRDisabled = false;
+            Randomizer.showHint("Return to start enabled!");
+        break;
         case 40:
             if (!Characters.Sein || flag)
                 return;

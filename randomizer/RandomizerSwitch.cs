@@ -189,6 +189,7 @@ public static class RandomizerSwitch
         }
         
         switch (Action.Action) {
+            case "RP":
             case "MU":
                 string[] pieces = ((string)Action.Value).Split('/');
                 for(int i = 0; i < pieces.Length; i+=2)
@@ -203,19 +204,19 @@ public static class RandomizerSwitch
                     }
                 }
                 break;
-            case "AC":                
+            case "AC":
                 SkillPointPickup();
                 break;
-            case "EC":                
+            case "EC":
                 MaxEnergyContainerPickup();
                 break;
-            case "EX":                
+            case "EX":
                 ExpOrbPickup((int)Action.Value);
                 break;
-            case "KS":                
+            case "KS":
                 KeystonePickup();
                 break;
-            case "HC":                
+            case "HC":
                 MaxHealthContainerPickup();
                 break;
             case "MS":

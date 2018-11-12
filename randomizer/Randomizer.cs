@@ -22,7 +22,7 @@ public static class Randomizer
 		Randomizer.Sync = false;
 		Randomizer.ForceMaps = false;
 		Randomizer.SyncMode = 4;
-		Randomizer.StringKeyPickupTypes = new List<string> {"TP", "SH", "NO", "WT", "MU", "HN", "WP"};
+		Randomizer.StringKeyPickupTypes = new List<string> {"TP", "SH", "NO", "WT", "MU", "HN", "WP", "RP"};
 		Randomizer.ShareParams = "";
 		RandomizerChaosManager.initialize();
 		Randomizer.DamageModifier = 1f;
@@ -90,21 +90,16 @@ public static class Randomizer
 		RandomizerTrackedDataManager.Initialize();
 		RandomizerStatsManager.Initialize();
 		Randomizer.RelicCount = 0;
-		GrenadeZone = "MIA";
-		StompZone = "MIA";
+		Randomizer.GrenadeZone = "MIA";
+		Randomizer.StompZone = "MIA";
+		Randomizer.RepeatablePickups = new HashSet<int>();
 		bool relicCountOverride = false;
 		try {
 			if(File.Exists("randomizer.dat")) {
 				string[] allLines = File.ReadAllLines("randomizer.dat");
-				string[] flagLine = allLines[0].Split(new char[]
-				{
-					'|'
-				});
+				string[] flagLine = allLines[0].Split(new char[] { '|' });
 				string s = flagLine[1];
-				string[] flags = flagLine[0].Split(new char[]
-				{
-					','
-				});
+				string[] flags = flagLine[0].Split(new char[] { ',' });
 				Randomizer.SeedMeta = allLines[0];
 				foreach (string flag in flags)
 				{
@@ -143,13 +138,9 @@ public static class Randomizer
 						if (modeStr == "shared")
 						{
 							syncMode = 1;
-						}
-						else if (modeStr == "none")
-						{
+						} else if (modeStr == "none") {
 							syncMode = 4;
-						}
-						else
-						{
+						} else {
 							syncMode = int.Parse(modeStr);
 						}
 						Randomizer.SyncMode = syncMode;
@@ -198,10 +189,7 @@ public static class Randomizer
 					if (flag.ToLower().StartsWith("hotcold="))
 					{
 						Randomizer.HotCold = true;
-						Randomizer.HotColdTypes = flag.Substring(8).Split(new char[]
-						{
-							'+'
-						});
+						Randomizer.HotColdTypes = flag.Substring(8).Split(new char[]{ '+' });
 						Array.Sort(Randomizer.HotColdTypes);
 					}
 					if (flag.ToLower() == "noaltr")
@@ -211,10 +199,7 @@ public static class Randomizer
 				}
 				for (int i = 1; i < allLines.Length; i++)
 				{
-					string[] lineParts = allLines[i].Split(new char[]
-					{
-						'|'
-					});
+					string[] lineParts = allLines[i].Split(new char[] { '|' });
 					int coords;
 					int.TryParse(lineParts[0], out coords);
 					int index = Array.BinarySearch<string>(Randomizer.HotColdTypes, lineParts[1]);
@@ -246,6 +231,9 @@ public static class Randomizer
 							if(!relicCountOverride) {
 								Randomizer.RelicCount++;
 							}
+						}
+						if(lineParts[1] == "RP") {
+							Randomizer.RepeatablePickups.Add(coords);
 						}
 					}
 					else
@@ -390,58 +378,59 @@ public static class Randomizer
 		Randomizer.log(message);
 	}
 
+	public static int GetHashKey(Vector3 position)
+	{
+		int baseId = (int)(Math.Floor((double)((int)position.x) / Randomizer.GridFactor) * Randomizer.GridFactor) * 10000 + (int)(Math.Floor((double)((int)position.y) / Randomizer.GridFactor) * Randomizer.GridFactor);
+		if(Randomizer.Table.ContainsKey(baseId)) 
+			return baseId;
+		
+		for (int x = -1; x <= 1; x++)
+		{
+			for (int y = -1; y <= 1; y++)
+			{
+				int offsetCoord = baseId + (int)Randomizer.GridFactor * (10000 * x + y);
+				if (Randomizer.Table.ContainsKey(offsetCoord))
+					return offsetCoord;
+			}
+		}
+		for (int x = -2; x <= 2; x += 4)
+		{
+			for (int y = -1; y <= 1; y++)
+			{
+				int offsetCoord = baseId + (int)Randomizer.GridFactor * (10000 * x + y);
+				if (Randomizer.Table.ContainsKey(offsetCoord))
+					return offsetCoord;
+			}
+		}
+		Randomizer.printInfo("Error finding pickup at " + ((int)position.x).ToString() + ", " + ((int)position.y).ToString());
+		return -1;
+
+	}
+
 	public static void getPickup(Vector3 position)
 	{
-		RandomizerBonus.CollectPickup();
-		RandomizerStatsManager.IncPickup();
-		if (Randomizer.ColorShift)
-		{
-			Randomizer.changeColor();
-		}
-		int num = (int)(Math.Floor((double)((int)position.x) / Randomizer.GridFactor) * Randomizer.GridFactor) * 10000 + (int)(Math.Floor((double)((int)position.y) / Randomizer.GridFactor) * Randomizer.GridFactor);
-		if (Randomizer.Table.ContainsKey(num))
-		{
-			RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num], num, true);
-			if (Randomizer.HotColdItems.ContainsKey(num))
+		try {
+			RandomizerBonus.CollectPickup();
+			RandomizerStatsManager.IncPickup();
+			if (Randomizer.ColorShift)
 			{
-				Characters.Sein.Inventory.SetRandomizerItem(Randomizer.HotColdItems[num].Id, 1);
-				RandomizerColorManager.UpdateHotColdTarget();
+				Randomizer.changeColor();
 			}
-			return;
-		}
-		for (int i = -1; i <= 1; i++)
-		{
-			for (int j = -1; j <= 1; j++)
+			int hashKey = GetHashKey(position);
+			if (hashKey != -1)
 			{
-				if (Randomizer.Table.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * i + j)))
+				RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[hashKey], hashKey, true);
+				if (Randomizer.HotColdItems.ContainsKey(hashKey))
 				{
-					RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num + (int)Randomizer.GridFactor * (10000 * i + j)], num + (int)Randomizer.GridFactor * (10000 * i + j), true);
-					if (Randomizer.HotColdItems.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * i + j)))
-					{
-						Characters.Sein.Inventory.SetRandomizerItem(Randomizer.HotColdItems[num + (int)Randomizer.GridFactor * (10000 * i + j)].Id, 1);
-						RandomizerColorManager.UpdateHotColdTarget();
-					}
-					return;
+					Characters.Sein.Inventory.SetRandomizerItem(Randomizer.HotColdItems[hashKey].Id, 1);
+					RandomizerColorManager.UpdateHotColdTarget();
 				}
-			}
+				return;
+			}			
 		}
-		for (int k = -2; k <= 2; k += 4)
-		{
-			for (int l = -1; l <= 1; l++)
-			{
-				if (Randomizer.Table.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * k + l)))
-				{
-					RandomizerSwitch.GivePickup((RandomizerAction)Randomizer.Table[num + (int)Randomizer.GridFactor * (10000 * k + l)], num + (int)Randomizer.GridFactor * (10000 * k + l), true);
-					if (Randomizer.HotColdItems.ContainsKey(num + (int)Randomizer.GridFactor * (10000 * k + l)))
-					{
-						Characters.Sein.Inventory.SetRandomizerItem(Randomizer.HotColdItems[num + (int)Randomizer.GridFactor * (10000 * k + l)].Id, 1);
-						RandomizerColorManager.UpdateHotColdTarget();
-					}
-					return;
-				}
-			}
+		catch(Exception e) {
+			Randomizer.LogError("GetPickup: " + e.Message);
 		}
-		Randomizer.showHint("Error finding pickup at " + ((int)position.x).ToString() + ", " + ((int)position.y).ToString());
 	}
 
 	public static void Update()
@@ -944,6 +933,10 @@ public static class Randomizer
 			} else if(ResetVolume > 1) {
 				ResetVolume--;
 			}
+
+			if(RepeatableCooldown > 0)
+				RepeatableCooldown--;
+
 			RandomizerStatsManager.IncTime();
 			if(Scenes.Manager.CurrentScene != null)
 			{
@@ -1043,6 +1036,26 @@ public static class Randomizer
 			}
 			return new Vector3((float)key / 10000f, -(float)(-(float)key % 10000));
 		}
+	}
+
+	public static int RepeatableCheck(Vector3 position){
+		// 2: grabbable, 1: cooldown, 0: not repeatable
+		try{
+			if(RepeatablePickups.Contains(GetHashKey(position)))
+			{
+				if(RepeatableCooldown <= 0)
+				{
+					RepeatableCooldown = 2;
+					return 2;
+				} else {
+					return 1;
+				}
+			} 			
+		}
+		catch(Exception e) {
+			Randomizer.LogError("RepeatableCheck: " + e.Message);
+		}
+		return 0;
 	}
 
 	// Token: 0x0400322E RID: 12846
@@ -1226,4 +1239,8 @@ public static class Randomizer
 	public static bool sacrificeStarted;
 
 	public static bool AltRDisabled;
+
+	public static HashSet<int> RepeatablePickups;
+
+	public static int RepeatableCooldown;
 }
