@@ -118,6 +118,7 @@ class Location:
         self.area = area
         self.difficulty = difficulty
         self.zone = zone
+        self.repeatable = orig[0:2] in ["EX", "EC", "HC", "AC", "MS"] or (orig.startswith("KS") and zone != "Misty")
 
     def get_key(self):
         return self.x * 10000 + self.y
@@ -256,14 +257,15 @@ class SeedGenerator:
 
         if self.var(Variation.EXTRA_BONUS_PICKUPS):
             self.itemPool["RB6"] += 2
-            self.itemPool["RB31"] = 3
-            self.itemPool["RB32"] = 3
+            self.itemPool["RB31"] = 1
+            self.itemPool["RB32"] = 1
             self.itemPool["RB33"] = 3
-            self.itemPool["RB12"] += 6
+            self.itemPool["RB12"] += 5
             self.itemPool["RB101"] = 1
             self.itemPool["RB102"] = 1
             self.itemPool["RB103"] = 1
-            self.itemPool["EX*"] -= 20
+            self.itemPool["RB106"] = 1
+            self.itemPool["EX*"] -= 16
 
         if self.params.key_mode == KeyMode.SHARDS:
             self.itemPool["WaterVeinShard"] = 5
@@ -740,12 +742,6 @@ class SeedGenerator:
                         connection.add_requirements(list(path[1:]), self.difficultyMap[path[0]])
                 if connection.get_requirements():
                     area.add_connection(connection)
-        if self.var(Variation.WARMTH_FRAGMENTS):
-            self.areasRemaining.append("End")
-            conn = Connection("HoruEscapeInnerDoor", "End", self)
-            conn.add_requirements(["RB28=%s" % self.params.frag_count], 1)
-            self.areas["HoruEscapeInnerDoor"].add_connection(conn)
-            self.areas["End"] = Area("End")
 
     def connect_doors(self, door1, door2, requirements=["Free"]):
         connection1 = Connection(door1.name, door2.name, self)
@@ -987,11 +983,8 @@ class SeedGenerator:
         if self.var(Variation.ENTRANCE_SHUFFLE):
             self.outputStr += self.randomize_entrances()
 
-        # handle the fixed pickups: first energy cell, the glitchy 100 orb at spirit tree, and the forlorn escape plant
         if self.var(Variation.WORLD_TOUR):
-
             locations_by_zone = OrderedDict({zone: [] for zone in self.relicZones})
-
             for area in self.areas.values():
                 for location in area.locations:
                     if location.zone in locations_by_zone:
@@ -1020,6 +1013,34 @@ class SeedGenerator:
             # Capture relic spoilers before the spoiler group is overwritten
             relicSpoiler = self.spoilerGroup["Relic"]
 
+        if self.var(Variation.EXTRA_BONUS_PICKUPS):
+            warps = 4
+            warp_locs = []
+            for area in self.areas.values():
+                for loc in area.locations:
+                    if loc.repeatable:
+                        warp_locs.append(loc.get_key())
+            warp_targets = [
+                (920, -80),    # stomp miniboss
+                (775, -180),   # below swamp swim
+                (590, -400),   # grotto miniboss
+                (585, -60),    # outer swamp health cell
+                (500, -500),   # lost grove laser lever
+                (480, -256),   # moon grotto, just below the bridge
+                (417, -422),   # lower blackroot right lasers
+                (330, -45),    # Hollow Grove main AC
+                (120, 35),     # Horu Fields Plant
+                (-12, -92),    # Above cflame tree exp
+                (-220, -70),   # Valley entry (upper)
+                (-365, 73),    # Stompless AC
+                (-500, 600),   # Top of sorrow
+                (-570, 162),   # Wilhelm exp
+                (-600, -210),  # Forlorn enterance
+            ]
+            for loc, target in zip(self.random.sample(warp_locs, warps), self.random.sample(warp_targets, warps)):
+                self.forcedAssignments[loc] = "RPSH/Warp/WP/%s,%s" % target
+
+        # handle the fixed pickups: first energy cell, the glitchy 100 orb at spirit tree, and the forlorn escape plant
         for loc, item, zone in [(-280256, "EC1", "Glades"), (-1680104, "EX100", "Grove"), (-12320248, "RB81", "Forlorn")]:
             if loc in self.forcedAssignments:
                 item = self.forcedAssignments[loc]
@@ -1131,6 +1152,8 @@ class SeedGenerator:
                     itemsToAssign.append(self.assign("HC"))
                 elif self.inventory["EC"] * self.params.cell_freq < (252 - self.itemCount) and self.itemPool["EC"] > 0:
                     itemsToAssign.append(self.assign("EC"))
+                elif self.itemPool.get("RB28", 0) > self.itemCount + 2:
+                    itemsToAssign.append(self.assign("RB28"))
                 elif self.params.balanced and self.itemCount == 0:
                     itemsToAssign.append(self.balanceListLeftovers.pop(0))
                     self.itemCount += 1
