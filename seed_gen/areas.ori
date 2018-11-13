@@ -350,6 +350,7 @@ home: SunkenGladesRunaway
 		expert-abilities Dash Ability=6
 	conn: GladesMain
 		casual-core Keystone=2
+        casual-core Open
 	conn: LowerChargeFlameArea
 		glitched Grenade
 	conn: BlackrootDarknessRoom
