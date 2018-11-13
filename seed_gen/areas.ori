@@ -329,12 +329,14 @@ home: SunkenGladesRunaway
 		casual-core Grenade ChargeJump
 		casual-core Grenade Bash
 		standard-core Grenade WallJump DoubleJump
+		standard-core Grenade Glide Wind WallJump
+		standard-core Grenade Glide Wind Climb
 		expert-abilities Grenade Dash Ability=6
-		master-core Grenade
+		glitched Grenade
 	pickup: GladesMainPool
 		casual-core Water
-		expert-dboost Bash
-		expert-dboost Stomp
+		expert-dboost Bash Health=3
+		expert-dboost Stomp Health=3
 		expert-dboost Health=4
 		master-dboost Health=3
 	pickup: GladesMainPoolDeep
@@ -348,7 +350,8 @@ home: SunkenGladesRunaway
 		expert-abilities Dash Ability=6
 	conn: GladesMain
 		casual-core Keystone=2
-		casual-core Open
+	conn: LowerChargeFlameArea
+		glitched Grenade
 	conn: BlackrootDarknessRoom
 		casual-core WallJump
 		casual-core Climb
@@ -356,18 +359,12 @@ home: SunkenGladesRunaway
 		casual-core Bash Grenade
 		master-core DoubleJump
 	conn: DeathGauntletDoor
-		casual-core ChargeJump Energy=4
-		casual-core Grenade Bash Energy=4
-		casual-dboost WallJump Energy=4
-		casual-dboost Climb Energy=4
-		standard-lure Bash Energy=4
-		master-core DoubleJump Energy=4
-		timed-level WallJump Energy=2
-		timed-level Climb Energy=2
-		timed-level ChargeJump Energy=2
-		timed-level Grenade Bash Energy=2
-		timed-level Bash Energy=2
-		timed-level DoubleJump Energy=2
+		casual-core ChargeJump
+		casual-core Grenade Bash
+		casual-dboost WallJump
+		casual-dboost Climb
+		standard-lure Bash
+		master-core DoubleJump
 	conn: SpiritTreeRefined
 		casual-core TPGrove
 	conn: MoonGrotto
@@ -400,6 +397,7 @@ home: GladesMain
 		expert-core Climb DoubleJump
 		expert-core Bash
 		expert-abilities Dash Ability=6
+		dbash Bash
 		master-core DoubleJump
 	conn: LeftGlades
 	conn: SpiritCavernsDoor
@@ -461,6 +459,12 @@ home: UpperLeftGlades
 	pickup: LeftGladesMapstone
 	conn: LeftGlades
 home: DeathGauntletDoor
+	-- anchor: on the ledge with the 4-energy door closed (either side)
+	conn: DeathGauntletDoorOpened
+		casual-core Energy=4
+		glitched Energy=3
+		timed-level Energy=2
+home: DeathGauntletDoorOpened
 	-- anchor: on the ledge with the 4-energy door opened
 	conn: SunkenGladesRunaway
 	conn: DeathGauntlet
@@ -475,9 +479,9 @@ home: DeathGauntletDoor
 		standard-dboost WallJump Health=4
 		standard-dboost Climb Health=4
 		standard-dboost Bash Health=4
-		expert-dboost WallJump
-		expert-dboost Climb
-		expert-dboost Bash
+		expert-dboost WallJump Health=3
+		expert-dboost Climb Health=3
+		expert-dboost Bash Health=3
 		master-core DoubleJump
 	conn: DeathGauntletMoat
 		casual-core Water
@@ -499,8 +503,7 @@ home: DeathGauntlet
 	pickup: DeathGauntletStompSwim
 		casual-core Stomp Water
 		standard-lure Water
-		expert-dboost Stomp
-		expert-dboost Free
+		expert-dboost Health=3
 	pickup: DeathGauntletEnergyCell
 		casual-core WallJump
 		casual-core Climb
@@ -510,10 +513,11 @@ home: DeathGauntlet
 	conn: DeathGauntletMoat
 		casual-core Water
 		expert-dboost Health=4
-		master-dboost Free
+		master-dboost Health=3
 	conn: DeathGauntletDoor
-		casual-core DoubleJump Energy=4
-		casual-core Glide Energy=4
+		casual-core DoubleJump
+		casual-core Glide
+		casual-core Climb ChargeJump
 	conn: DeathGauntletRoof
 		casual-core ChargeJump
 	conn: DeathGauntletRoofPlantAccess
@@ -599,8 +603,7 @@ home: MidSpiritCaverns
 		casual-core Bash Grenade
 		casual-core ChargeJump
 		casual-dboost DoubleJump
-		expert-core Dash Bash
-		dbash Bash
+		standard-core Bash
 home: UpperSpiritCaverns
 	-- anchor: on the platform above the top right keystone
 	pickup: SpiritCavernsTopLeftKeystone
@@ -608,6 +611,8 @@ home: UpperSpiritCaverns
 		casual-core DoubleJump Climb
 		casual-core Glide Climb
 		casual-dboost ChargeJump
+		casual-dboost Bash
+		standard-core ChargeJump
 		standard-core Bash
 		master-core Climb
 		master-core DoubleJump
@@ -646,8 +651,19 @@ home: GladesLaserArea
 		expert-abilities Grenade Dash DoubleJump Ability=6
 	conn: GladesMain
 	conn: MidSpiritCaverns
-		casual-core Energy=4
-		timed-level Energy=2
+		casual-core WallJump Energy=4
+		casual-core Climb Energy=4
+		casual-core ChargeJump Energy=4
+		casual-core Bash Grenade Energy=4
+		casual-core DoubleJump Energy=4
+		expert-core Dash Energy=4
+		dbash Bash Energy=4
+		timed-level WallJump Energy=2
+		timed-level Climb Energy=2
+		timed-level ChargeJump Energy=2
+		timed-level Bash Energy=2
+		timed-level DoubleJump Energy=2
+		timed-level Dash Energy=2
 home: ChargeFlameSkillTreeChamber
 	-- anchor: at the cflame skill tree
 	pickup: ChargeFlameSkillTree
