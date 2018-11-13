@@ -144,10 +144,12 @@ public static class RandomizerSwitch
     {
         int shardCount = -1;
         char colorChar = ' ';
+        string shardPart = "";
         if(Value == "Ginso")
         {
             Characters.Sein.Inventory.SetRandomizerItem(1024, 1);
             shardCount = RandomizerBonus.WaterVeinShards();
+            shardPart = "Water Vein";
             colorChar = '*';
         }
         if(Value == "Forlorn")
@@ -165,7 +167,13 @@ public static class RandomizerSwitch
 
         if(Randomizer.Shards && shardCount >= 0 && shardCount < 2)
         {
-            Randomizer.showHint(colorChar + "Broken " + Value + " teleporter (" + shardCount.ToString() + "/2)" + colorChar);
+            if(shardCount == 1){
+                shardPart = "1 more " + shardPart + " shard to activate";
+            }
+            else{
+                shardPart = "2 " + shardPart + " shards to activate";  
+            }
+            Randomizer.showHint(colorChar + "Inactive " + Value + " teleporter\nCollect " + shardPart + colorChar, 240);
             return;
         }
         TeleporterController.Activate(Randomizer.TeleportTable[Value].ToString());
@@ -181,6 +189,7 @@ public static class RandomizerSwitch
         }
         
         switch (Action.Action) {
+            case "RP":
             case "MU":
                 string[] pieces = ((string)Action.Value).Split('/');
                 for(int i = 0; i < pieces.Length; i+=2)
@@ -195,19 +204,19 @@ public static class RandomizerSwitch
                     }
                 }
                 break;
-            case "AC":                
+            case "AC":
                 SkillPointPickup();
                 break;
-            case "EC":                
+            case "EC":
                 MaxEnergyContainerPickup();
                 break;
-            case "EX":                
+            case "EX":
                 ExpOrbPickup((int)Action.Value);
                 break;
-            case "KS":                
+            case "KS":
                 KeystonePickup();
                 break;
-            case "HC":                
+            case "HC":
                 MaxHealthContainerPickup();
                 break;
             case "MS":
@@ -242,7 +251,7 @@ public static class RandomizerSwitch
                 string rawTarget = (string)Action.Value;
                 string[] xy = rawTarget.Split(',');
                 Randomizer.WarpTarget = new UnityEngine.Vector3(float.Parse(xy[0]), float.Parse(xy[1]));
-                Randomizer.Warping = 8;
+                Randomizer.Warping = 120;
                 break;
             case "NO":
                 Randomizer.showHint("Nothing");

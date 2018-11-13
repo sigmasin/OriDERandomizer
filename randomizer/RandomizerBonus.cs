@@ -316,6 +316,15 @@ public static class RandomizerBonus
                 return;
             }
             break;
+        case 34:
+            Characters.Sein.Inventory.SetRandomizerItem(34, 1);
+            Randomizer.showHint("Return to start disabled!");
+        break;
+        case 35:
+            Characters.Sein.Inventory.SetRandomizerItem(34, 0);
+            Randomizer.showHint("Return to start enabled!");
+        break;
+
         case 40:
             if (!Characters.Sein || flag)
                 return;
@@ -574,6 +583,10 @@ public static class RandomizerBonus
     public static int WarmthFrags()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(28);
+    }
+    public static bool AltRDisabled()
+    {
+        return Characters.Sein.Inventory.GetRandomizerItem(34) == 1;
     }
 
     // Token: 0x04003262 RID: 12898

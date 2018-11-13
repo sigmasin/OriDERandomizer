@@ -118,6 +118,7 @@ class Location:
         self.area = area
         self.difficulty = difficulty
         self.zone = zone
+        self.repeatable = orig[0:2] in ["EX", "EC", "HC", "AC", "MS"] or (orig.startswith("KS") and zone != "Misty")
 
     def get_key(self):
         return self.x * 10000 + self.y
@@ -242,7 +243,6 @@ class SeedGenerator:
 
         if self.var(Variation.WORLD_TOUR):
             self.itemPool["EX*"] -= self.params.relic_count
-            self.itemPool["Relic"] += self.params.relic_count
 
         if not self.var(Variation.STRICT_MAPSTONES):
             self.costs["MS"] = 11
@@ -257,14 +257,15 @@ class SeedGenerator:
 
         if self.var(Variation.EXTRA_BONUS_PICKUPS):
             self.itemPool["RB6"] += 2
-            self.itemPool["RB31"] = 3
-            self.itemPool["RB32"] = 3
+            self.itemPool["RB31"] = 1
+            self.itemPool["RB32"] = 1
             self.itemPool["RB33"] = 3
-            self.itemPool["RB12"] += 6
+            self.itemPool["RB12"] += 5
             self.itemPool["RB101"] = 1
             self.itemPool["RB102"] = 1
             self.itemPool["RB103"] = 1
-            self.itemPool["EX*"] -= 20
+            self.itemPool["RB106"] = 1
+            self.itemPool["EX*"] -= 16
 
         if self.params.key_mode == KeyMode.SHARDS:
             self.itemPool["WaterVeinShard"] = 5
@@ -329,8 +330,7 @@ class SeedGenerator:
 
     def __init__(self):
         self.init_fields()
-        self.codeToName = OrderedDict(
-            [(v, k) for k, v in self.skillsOutput.items() + self.eventsOutput.items()])
+        self.codeToName = OrderedDict([(v, k) for k, v in self.skillsOutput.items() + self.eventsOutput.items()])
 
     def reach_area(self, target):
         if self.playerID > 1 and target in self.sharedMap:
@@ -547,26 +547,30 @@ class SeedGenerator:
                     return self.assign_random(recurseCount=recurseCount + 1)
                 return self.assign(key)
 
-    def assign(self, item):
-        self.itemPool[item] = max(self.itemPool[item] - 1, 0) if item in self.itemPool else 0
-        if item == "KS":
-            if self.costs[item] > 0:
-                self.costs[item] -= 4
-        elif item in ["EC", "HC", "AC", "WaterVeinShard", "GumonSealShard", "SunstoneShard"]:
-            if self.costs[item] > 0:
-                self.costs[item] -= 1
-        elif item == "RB28":
-            if self.costs[item] > 0:
-                self.costs[item] -= min(3, self.costs[item])
-        elif item in self.costs and self.itemPool[item] == 0:
-            self.costs[item] = 0
-        self.inventory[item] = 1 + (self.inventory[item] if item in self.inventory else 0)
-
+    def assign(self, item, preplaced=False):
+        if item[0:2]  in ["MU", "RP"]:
+            for multi_item in self.get_multi_items(item):
+                self.assign(multi_item, preplaced)
+        else:
+            if not preplaced:
+                self.itemPool[item] = max(self.itemPool[item] - 1, 0) if item in self.itemPool else 0
+            if item == "KS":
+                if self.costs[item] > 0:
+                    self.costs[item] -= 4
+            elif item in ["EC", "HC", "AC", "WaterVeinShard", "GumonSealShard", "SunstoneShard"]:
+                if self.costs[item] > 0:
+                    self.costs[item] -= 1
+            elif item == "RB28":
+                if self.costs[item] > 0:
+                    self.costs[item] -= min(3, self.costs[item])
+            elif item in self.costs and self.itemPool[item] == 0:
+                self.costs[item] = 0
+            self.inventory[item] = 1 + self.inventory.get(item, 0)
         return item
 
     # for use in limitkeys mode
     def force_assign(self, item, location):
-        self.assign(item)
+        self.assign(item, True)
         self.assign_to_location(item, location)
 
     # for use in world tour mode
@@ -855,7 +859,7 @@ class SeedGenerator:
         self.sharedList = []
         self.random = random.Random()
         self.random.seed(self.params.seed)
-        self.preplaced = {k: (self.codeToName[v] if v in self.codeToName else v) for k, v in preplaced.iteritems()}
+        self.preplaced = {k: self.codeToName.get(v, v) for k, v in preplaced.iteritems()}
         self.do_multi = self.params.sync.enabled and self.params.sync.mode == MultiplayerGameType.SHARED
 
         if self.var(Variation.WORLD_TOUR):
@@ -887,9 +891,9 @@ class SeedGenerator:
             if ShareType.MISC in shared:
                 if self.var(Variation.WARMTH_FRAGMENTS):
                     self.sharedList.append("RB28")
-#              TODO: figure out relic sharing
-#              if self.var(Variation.WORLD_TOUR):
-#                    self.sharedList.append("Relic")
+                # TODO: figure out relic sharing
+                # if self.var(Variation.WORLD_TOUR):
+                #      self.sharedList.append("Relic")
         return self.placeItemsMulti(retries)
 
     def placeItemsMulti(self, retries=5):
@@ -979,11 +983,8 @@ class SeedGenerator:
         if self.var(Variation.ENTRANCE_SHUFFLE):
             self.outputStr += self.randomize_entrances()
 
-        # handle the fixed pickups: first energy cell, the glitchy 100 orb at spirit tree, and the forlorn escape plant
         if self.var(Variation.WORLD_TOUR):
-
             locations_by_zone = OrderedDict({zone: [] for zone in self.relicZones})
-
             for area in self.areas.values():
                 for location in area.locations:
                     if location.zone in locations_by_zone:
@@ -1007,12 +1008,39 @@ class SeedGenerator:
                     if next_loc.get_key() in self.forcedAssignments:
                         continue
                     relic_loc = next_loc
-
                 self.relic_assign(relic_loc)
                 self.itemCount -= 1
             # Capture relic spoilers before the spoiler group is overwritten
             relicSpoiler = self.spoilerGroup["Relic"]
 
+        if self.var(Variation.EXTRA_BONUS_PICKUPS):
+            warps = 4
+            warp_locs = []
+            for area in self.areas.values():
+                for loc in area.locations:
+                    if loc.repeatable:
+                        warp_locs.append(loc.get_key())
+            warp_targets = [
+                (920, -80),    # stomp miniboss
+                (775, -180),   # below swamp swim
+                (590, -400),   # grotto miniboss
+                (585, -60),    # outer swamp health cell
+                (500, -500),   # lost grove laser lever
+                (480, -256),   # moon grotto, just below the bridge
+                (417, -422),   # lower blackroot right lasers
+                (330, -45),    # Hollow Grove main AC
+                (120, 35),     # Horu Fields Plant
+                (-12, -92),    # Above cflame tree exp
+                (-220, -70),   # Valley entry (upper)
+                (-365, 73),    # Stompless AC
+                (-500, 600),   # Top of sorrow
+                (-570, 162),   # Wilhelm exp
+                (-600, -210),  # Forlorn enterance
+            ]
+            for loc, target in zip(self.random.sample(warp_locs, warps), self.random.sample(warp_targets, warps)):
+                self.forcedAssignments[loc] = "RPSH/Warp/WP/%s,%s" % target
+
+        # handle the fixed pickups: first energy cell, the glitchy 100 orb at spirit tree, and the forlorn escape plant
         for loc, item, zone in [(-280256, "EC1", "Glades"), (-1680104, "EX100", "Grove"), (-12320248, "RB81", "Forlorn")]:
             if loc in self.forcedAssignments:
                 item = self.forcedAssignments[loc]
@@ -1028,6 +1056,11 @@ class SeedGenerator:
             self.outputStr += ass
 
         for v in self.forcedAssignments.values():
+            if v[0:2] in ["MU", "RP"]:
+                for item in self.get_multi_items(v):
+                    if item in self.itemPool:
+                        self.itemPool[item] -= 1
+                        self.itemPool["EX*"] += 1
             if v in self.itemPool:
                 self.itemPool[v] -= 1
             else:
@@ -1119,6 +1152,8 @@ class SeedGenerator:
                     itemsToAssign.append(self.assign("HC"))
                 elif self.inventory["EC"] * self.params.cell_freq < (252 - self.itemCount) and self.itemPool["EC"] > 0:
                     itemsToAssign.append(self.assign("EC"))
+                elif self.itemPool.get("RB28", 0) > self.itemCount + 2:
+                    itemsToAssign.append(self.assign("RB28"))
                 elif self.params.balanced and self.itemCount == 0:
                     itemsToAssign.append(self.balanceListLeftovers.pop(0))
                     self.itemCount += 1
@@ -1200,8 +1235,17 @@ class SeedGenerator:
 
         return (self.outputStr, spoilerStr)
 
-    def form_spoiler(self):
+    def get_multi_items(self, multi_item):
+        multi_parts = multi_item[2:].split("/")
+        multi_items = []
+        while len(multi_parts) > 1:
+            item = multi_parts.pop(0) + multi_parts.pop(0)
+            if item[0:2] in ["AC", "EC", "KS", "MS", "HC"]:
+                item = item[0:2]
+            multi_items.append(self.codeToName.get(item, item))
+        return multi_items
 
+    def form_spoiler(self):
         i = 0
         groupDepth = 0
         spoilerStr = ""
