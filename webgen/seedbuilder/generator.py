@@ -1152,7 +1152,7 @@ class SeedGenerator:
                     itemsToAssign.append(self.assign("HC"))
                 elif self.inventory["EC"] * self.params.cell_freq < (252 - self.itemCount) and self.itemPool["EC"] > 0:
                     itemsToAssign.append(self.assign("EC"))
-                elif self.itemPool.get("RB28", 0) > self.itemCount + 2:
+                elif self.itemPool.get("RB28", 0) > max(self.itemCount - 2, 0):
                     itemsToAssign.append(self.assign("RB28"))
                 elif self.params.balanced and self.itemCount == 0:
                     itemsToAssign.append(self.balanceListLeftovers.pop(0))

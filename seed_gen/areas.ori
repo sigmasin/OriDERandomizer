@@ -1500,7 +1500,10 @@ home: UpperGinsoRedirectArea
 		casual-core GinsoKey Stomp
 		casual-core GinsoKey Bash
 		expert-core GinsoKey ChargeFlame
+		expert-core GinsoKey Climb ChargeJump
 		expert-abilities GinsoKey ChargeJump Dash Ability=3
+	pickup: BashAreaExp
+		expert-abilities GinsoKey Dash Ability=6
 	conn: UpperGinsoTree
 		casual-core Bash
 		casual-core ChargeJump
@@ -1514,6 +1517,7 @@ home: UpperGinsoRedirectArea
 	conn: BashTree
 		casual-core Bash
 		casual-core DoubleJump
+		standard-abilities Dash Ability=3
 		standard-dboost Dash Health=4
 		standard-dboost WallJump Health=4
 		standard-dboost Climb Health=4
