@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using Game;
 using Core;
@@ -119,6 +120,7 @@ public static class RandomizerStatsManager {
 		if(!Active)
 			return;
 		try {
+			inc(shoof_sum, get(TSLDOS));
 			UpdateAndReset(TSLDOS, TSLDOS_max);
 			UpdateAndReset(PSLDOS, PSLDOS_max);
 			UpdateAndReset(TSLD, TSLD_max);
@@ -136,7 +138,7 @@ public static class RandomizerStatsManager {
 		try {
 			inc(Reloads, 1);
 			MenuCache = new Dictionary<int, int>();
-			foreach(int single in new int[] {DSLS, TSLD, Reloads, AltRCount, PPM_max, PPM_max_time, PPM_max_count, Saves})
+			foreach(int single in new int[] {DSLS, TSLD, Reloads, AltRCount, shoof_sum, PPM_max, PPM_max_time, PPM_max_count, Saves})
 				MenuCache[single] = get(single);
 
 			foreach(int group in new int[] {Time, Deaths}) 
@@ -192,12 +194,14 @@ public static class RandomizerStatsManager {
 			int count = inc(Pickups, 1);
 
 			int time  = get(Time);
-			int ppm = (int)(Math.Round((float)count / ((float)time / 60f), 2) * 100);
-			if(ppm > get(PPM_max))
-			{
-				set(PPM_max, ppm);
-				set(PPM_max_time, time);
-				set(PPM_max_count, count);
+			if(count >= 10) {			
+				int ppm = (int)(Math.Round((float)count / ((float)time / 60f), 2) * 100);
+				if(ppm > get(PPM_max))
+				{
+					set(PPM_max, ppm);
+					set(PPM_max_time, time);
+					set(PPM_max_count, count);
+				}
 			}
 
 			inc(Pickups + Offsets[CurrentZone()], 1);
@@ -250,7 +254,7 @@ public static class RandomizerStatsManager {
 			break;
 				case 1:
 					float ppm_max = (float)get(PPM_max) / 100f;
-					statsPage = "ALIGNLEFTANCHORTOPPADDING_0_2_0_0_PARAMS_12_12_1_\nSaves:					" + get(Saves).ToString();
+					statsPage = "ALIGNLEFTANCHORTOPPADDING_0_2_0_0_PARAMS_16_12_1_\nSaves:					" + get(Saves).ToString();
 					statsPage += "\nReloads:					" + (get(Reloads)).ToString();
 					statsPage += "\nAlt+Rs Used:				" + get(AltRCount).ToString();
 					statsPage += "\nTeleporters Used:			" + get(TeleporterCount).ToString();
@@ -258,6 +262,7 @@ public static class RandomizerStatsManager {
 					statsPage += "\nWorst death (time lost):		" + FormatTime(get(TSLDOS_max), false);
 					statsPage += "\nWorst death (pickups lost):	" + get(PSLDOS_max).ToString();
 					statsPage += "\nMost deaths at one save:		" + Math.Max(get(DSLS_max), get(DSLS)).ToString();
+					statsPage += "\nTotal time lost to deaths:		" + FormatTime(get(shoof_sum), false);
 					statsPage += "\nLongest time without dying:	" + FormatTime(Math.Max(get(TSLD_max), get(TSLD)), false);
 					statsPage += "\nFound Wall Interaction at:		" + FormatTime(get(FoundWITime), false);
 					statsPage += "\nFound Bash at:				" + FormatTime(get(FoundBashTime), false);
@@ -280,6 +285,15 @@ public static class RandomizerStatsManager {
 		WriteFromCache = false;
 	}
 
+	public static void Finish() {
+		Active = false;
+		string statsFile = File.ReadAllLines("randomizer.txt")[0] + "\n";
+		statsFile += GetStatsPage(0).Substring(33);
+		// clever readers might notice the lack of newline above. However,
+		// GetStatsPage(1) starts with a newline for shitty padding reasons.
+		statsFile += GetStatsPage(1).Substring(49);
+		File.WriteAllText("stats.txt", statsFile);
+	}
 	
 	public static string FormatTime(int seconds, bool padding)
 	{
@@ -351,6 +365,7 @@ public static class RandomizerStatsManager {
 	public static int Pickups = 1600;
 
 	public static int Saves = 1570;
+	public static int shoof_sum = 1571;
 	public static int PPM_max = 1575;
 	public static int PPM_max_time = 1576;
 	public static int PPM_max_count = 1577;

@@ -96,11 +96,8 @@ q
 1537 - Most time lost to death
 1538 - Most pickups lost to death
 
-
-
-
-
 1570 - Saves
+1571 - sum(shoof)
 1575 - Max PPM
 1576 - Time of Max PPM
 1577 - Count at Max PPM

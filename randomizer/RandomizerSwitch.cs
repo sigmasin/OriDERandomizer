@@ -156,12 +156,14 @@ public static class RandomizerSwitch
         {
             Characters.Sein.Inventory.SetRandomizerItem(1025, 1);
             shardCount = RandomizerBonus.GumonSealShards();
+            shardPart = "Gumon Seal";
             colorChar = '#';
         }
         if(Value == "Horu")
         {
             Characters.Sein.Inventory.SetRandomizerItem(1026, 1);
             shardCount = RandomizerBonus.SunstoneShards();
+            shardPart = "Sunstone";
             colorChar = '@';
         }
 
@@ -173,7 +175,7 @@ public static class RandomizerSwitch
             else{
                 shardPart = "2 " + shardPart + " shards to activate";  
             }
-            Randomizer.showHint(colorChar + "Inactive " + Value + " teleporter\nCollect " + shardPart + colorChar, 240);
+            Randomizer.showHint(colorChar + "Broken " + Value + " teleporter"+colorChar+"\nCollect " + shardPart, 240);
             return;
         }
         TeleporterController.Activate(Randomizer.TeleportTable[Value].ToString());

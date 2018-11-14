@@ -967,13 +967,13 @@ public static class Randomizer
 						RandomizerCreditsManager.Initialize();
 					}
 				}
-				else if (scene == "theSacrifice")
+				else if (scene == "theSacrifice" && RandomizerStatsManager.Active)
 				{
 					foreach (SceneManagerScene sms in Scenes.Manager.ActiveScenes)
 					{
 						if (sms.MetaData.Scene == "creditsScreen" && sms.CurrentState == SceneManagerScene.State.Loading)
 						{
-							RandomizerStatsManager.Active = false;
+							RandomizerStatsManager.Finish();
 						}
 					}
 				}
