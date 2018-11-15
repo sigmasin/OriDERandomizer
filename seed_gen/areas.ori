@@ -3055,10 +3055,10 @@ home: ValleyEntry
 -- anchored just left of the charge flame wall to valley
 	pickup: ValleyEntryAbilityCell
 	pickup: ValleyThreeBirdAbilityCell
-		casual-core ChargeJump Open
-		casual-core Glide Wind Open
-		casual-core Bash Open
-		expert-abilities Dash Ability=6 Open
+		casual-core ChargeJump OpenWorld
+		casual-core Glide Wind OpenWorld
+		casual-core Bash OpenWorld
+		expert-abilities Dash Ability=6 OpenWorld
 	conn: ValleyEntryTree
 		casual-core WallJump
 		casual-core Bash Climb
@@ -3132,7 +3132,7 @@ home: ValleyEntryTree
 		expert-abilities Dash Ability=6
 	-- test connection with door removed
 	conn: ValleyPostStompDoor
-		casual-core Open
+		casual-core OpenWorld
 home: ValleyEntryTreePlantAccess
 	pickup: ValleyEntryTreePlant
 		casual-core ChargeFlame
