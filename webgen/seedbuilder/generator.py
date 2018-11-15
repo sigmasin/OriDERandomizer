@@ -172,14 +172,14 @@ class SeedGenerator:
         """Part one of a reset. All initialization that doesn't
         require reading from params goes here."""
         self.costs = OrderedDict({
-            "Free": 0, "MS": 0, "KS": 8, "AC": 12, "EC": 6, "HC": 12, "WallJump": 13,
+            "Free": 0, "MS": 0, "KS": 6, "AC": 12, "EC": 6, "HC": 12, "WallJump": 13,
             "ChargeFlame": 13, "DoubleJump": 13, "Bash": 55, "Stomp": 32,
             "Glide": 17, "Climb": 33, "ChargeJump": 55, "Dash": 13,
             "Grenade": 25, "GinsoKey": 12, "ForlornKey": 12, "HoruKey": 12,
             "Water": 78, "Wind": 90, "WaterVeinShard": 5, "GumonSealShard": 5,
             "SunstoneShard": 5, "TPForlorn": 135, "TPGrotto": 60,
             "TPSorrow": 105, "TPGrove": 60, "TPSwamp": 60, "TPValley": 90,
-            "TPGinso": 120, "TPHoru": 150, "Open": 1, "Relic": 1
+            "TPGinso": 120, "TPHoru": 150, "Open": 1, "OpenWorld": 1, "Relic": 1
         })
         self.inventory = OrderedDict([
             ("EX1", 0), ("EX*", 0), ("KS", 0), ("MS", 0), ("AC", 0), ("EC", 1),
@@ -192,7 +192,7 @@ class SeedGenerator:
             ("RB15", 0), ("WaterVeinShard", 0), ("GumonSealShard", 0),
             ("SunstoneShard", 0), ("TPForlorn", 0), ("TPGrotto", 0),
             ("TPSorrow", 0), ("TPGrove", 0), ("TPSwamp", 0), ("TPValley", 0),
-            ("TPGinso", 0), ("TPHoru", 0), ("Open", 0), ("Relic", 0)
+            ("TPGinso", 0), ("TPHoru", 0), ("Open", 0), ("OpenWorld", 0), ("Relic", 0)
         ])
 
         self.mapstonesSeen = 1
@@ -227,19 +227,26 @@ class SeedGenerator:
             ("Dash", 1), ("Stomp", 1), ("DoubleJump", 1), ("Glide", 1),
             ("Bash", 1), ("Climb", 1), ("Grenade", 1), ("ChargeJump", 1),
             ("GinsoKey", 1), ("ForlornKey", 1), ("HoruKey", 1), ("Water", 1),
-            ("Wind", 1), ("Warmth", 1), ("RB0", 3), ("RB1", 3), ("RB6", 3),
-            ("RB8", 0), ("RB9", 1), ("RB10", 1), ("RB11", 1), ("RB12", 1),
-            ("RB13", 3), ("RB15", 3), ("WaterVeinShard", 0),
-            ("GumonSealShard", 0), ("SunstoneShard", 0), ("TPForlorn", 1),
-            ("TPGrotto", 1), ("TPSorrow", 1), ("TPGrove", 1), ("TPSwamp", 1),
-            ("TPValley", 1), ("TPGinso", 0), ("TPHoru", 0), ("Open", 0), ("Relic", 0)
+            ("Wind", 1), ("Warmth", 1), 
+            ("RB0", 3), ("RB1", 3), ("RB6", 3), ("RB8", 0), ("RB9", 1),
+            ("RB10", 1), ("RB11", 1), ("RB12", 1), ("RB13", 3), ("RB15", 3), 
+            ("WaterVeinShard", 0), ("GumonSealShard", 0), ("SunstoneShard", 0),
+            ("TPForlorn", 1), ("TPGrotto", 1), ("TPSorrow", 1), ("TPGrove", 1),
+            ("TPSwamp", 1), ("TPValley", 1), ("TPGinso", 0), ("TPHoru", 0),
+            ("Open", 0), ("OpenWorld", 0), ("Relic", 0)
         ])
         if self.var(Variation.OPEN_MODE):
             self.inventory["Open"] = 1
             self.costs["Open"] = 0
             self.itemPool["TPGinso"] = 1
             self.itemPool["TPHoru"] = 1
+            self.itemPool["EX*"] -= 2
+
+        if self.var(Variation.OPEN_WORLD):
+            self.inventory["OpenWorld"] = 1
+            self.costs["OpenWorld"] = 0
             self.itemPool["KS"] -= 2
+            self.itemPool["EX*"] += 2
 
         if self.var(Variation.WORLD_TOUR):
             self.itemPool["EX*"] -= self.params.relic_count
@@ -488,7 +495,9 @@ class SeedGenerator:
                 path_selected = abilities_to_open[path]
                 break
         # if a connection will open with a subset of skills in the selected path, use that instead
-        for path in abilities_to_open:
+        subsetCheck = abilities_to_open.keys()
+        random.shuffle(subsetCheck)
+        for path in subsetCheck:
             isSubset = abilities_to_open[path][0] < path_selected[0]
             if isSubset:
                 for req in abilities_to_open[path][1]:
@@ -556,7 +565,7 @@ class SeedGenerator:
                 self.itemPool[item] = max(self.itemPool[item] - 1, 0) if item in self.itemPool else 0
             if item == "KS":
                 if self.costs[item] > 0:
-                    self.costs[item] -= 4
+                    self.costs[item] -= 3
             elif item in ["EC", "HC", "AC", "WaterVeinShard", "GumonSealShard", "SunstoneShard"]:
                 if self.costs[item] > 0:
                     self.costs[item] -= 1
@@ -1080,7 +1089,7 @@ class SeedGenerator:
         spoilerPath = []
 
         self.reach_area("SunkenGladesRunaway")
-        if self.var(Variation.OPEN_MODE):
+        if self.var(Variation.OPEN_WORLD):
             self.reach_area("GladesMain")
             for connection in list(self.areas["SunkenGladesRunaway"].connections):
                 if connection.target == "GladesMain":
@@ -1359,7 +1368,7 @@ class SeedGenerator:
                 self.inventory[item] = 0
                 self.costs[item] = 1
                 self.reach_area("SunkenGladesRunaway")
-                if self.var(Variation.OPEN_MODE):
+                if self.var(Variation.OPEN_WORLD):
                     self.reach_area("GladesMain")
                     for connection in list(self.areas["SunkenGladesRunaway"].connections):
                         if connection.target == "GladesMain":

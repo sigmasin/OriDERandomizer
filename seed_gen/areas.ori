@@ -350,7 +350,7 @@ home: SunkenGladesRunaway
 		expert-abilities Dash Ability=6
 	conn: GladesMain
 		casual-core Keystone=2
-        casual-core Open
+        casual-core OpenWorld
 	conn: LowerChargeFlameArea
 		glitched Grenade
 	conn: BlackrootDarknessRoom
@@ -1496,7 +1496,6 @@ home: UpperGinsoRedirectArea
 		expert-abilities GinsoKey ChargeJump Dash Ability=3
 		master-core GinsoKey Grenade
 	pickup: UpperGinsoRedirectUpperExp
-		--no climb + Cjump here due to the possibility of destroying the only surface to break the floor here
 		casual-core GinsoKey Stomp
 		casual-core GinsoKey Bash
 		expert-core GinsoKey ChargeFlame
@@ -3086,34 +3085,32 @@ home: ValleyEntry
 		expert-lure Bash Climb DoubleJump
 		expert-dboost Bash ChargeJump Health=4
 		expert-dboost Stomp ChargeJump Health=4
-		-- testing paths with door removed
-		casual-core WallJump DoubleJump Open
-		casual-core WallJump Bash Open
-		casual-core WallJump ChargeJump Open
-		casual-core Climb ChargeJump Open
-		casual-core Climb DoubleJump Open
-		expert-dboost ChargeJump Health=4 Open
-	-- test connections with door removed
+		casual-core WallJump DoubleJump OpenWorld
+		casual-core WallJump Bash OpenWorld
+		casual-core WallJump ChargeJump OpenWorld
+		casual-core Climb ChargeJump OpenWorld
+		casual-core Climb DoubleJump OpenWorld
+		expert-dboost ChargeJump Health=4 OpenWorld
 	conn: ValleyThreeBirdLever
-		casual-core Glide Wind Open
-		casual-core Bash Open
-		casual-core Climb ChargeJump Glide Open
-		casual-core Climb ChargeJump DoubleJump Open
-		standard-core Dash DoubleJump ChargeJump Open
-		expert-abilities Dash Ability=6 Open
-		gjump Climb ChargeJump Grenade Open
+		casual-core Glide Wind OpenWorld
+		casual-core Bash OpenWorld
+		casual-core Climb ChargeJump Glide OpenWorld
+		casual-core Climb ChargeJump DoubleJump OpenWorld
+		standard-core Dash DoubleJump ChargeJump OpenWorld
+		expert-abilities Dash Ability=6 OpenWorld
+		gjump Climb ChargeJump Grenade OpenWorld
 	conn: ValleyStompFloor
-		casual-core Bash Open
-		casual-core Glide Wind Open
-		casual-core Glide DoubleJump Open
-		casual-core ChargeJump DoubleJump Open
-		casual-core ChargeJump Glide Open
-		casual-core ChargeJump Climb Open
-		standard-core Dash Glide Open
-		standard-core Dash DoubleJump Open
-		standard-abilities ChargeJump Dash Ability=3 Open
-		standard-dboost Health=4 Open
-		expert-abilities Dash Ability=6
+		casual-core Bash OpenWorld
+		casual-core Glide Wind OpenWorld
+		casual-core Glide DoubleJump OpenWorld
+		casual-core ChargeJump DoubleJump OpenWorld
+		casual-core ChargeJump Glide OpenWorld
+		casual-core ChargeJump Climb OpenWorld
+		standard-core Dash Glide OpenWorld
+		standard-core Dash DoubleJump OpenWorld
+		standard-abilities ChargeJump Dash Ability=3 OpenWorld
+		standard-dboost Health=4 OpenWorld
+		expert-abilities Dash Ability=6 OpenWorld
 	conn: SpiritTreeRefined
 		casual-core ChargeFlame
 		casual-core Grenade
@@ -3162,14 +3159,14 @@ home: ValleyPostStompDoor
 		gjump Climb ChargeJump Grenade Health=7
 		gjump Climb ChargeJump Grenade Health=5 Ability=12
 	conn: ValleyEntry
-		casual-core Open
+		casual-core OpenWorld
 	conn: ValleyEntryTree
-		casual-core Open WallJump
-		casual-core Open Climb
-		casual-core Open DoubleJump
-		casual-core Open ChargeJump
-		casual-core Open Bash
-		standard-core Open Dash
+		casual-core OpenWorld WallJump
+		casual-core OpenWorld Climb
+		casual-core OpenWorld DoubleJump
+		casual-core OpenWorld ChargeJump
+		casual-core OpenWorld Bash
+		standard-core OpenWorld Dash
 home: ValleyTeleporter
 -- anchored on the valley TP, kill plane is active
 	conn: ValleyPostStompDoor
@@ -3282,6 +3279,12 @@ home: LowerValley
 -- anchored on top of the stump in the middle of valley
 	pickup: LowerValleyMapstone
 	pickup: LowerValleyExp
+	pickup: KuroPerchExp
+		casual-core Glide Wind
+		expert-abilities Dash Ability=6
+		expert-core Climb ChargeJump DoubleJump
+		master-lure Bash
+		gjump ChargeJump Climb Grenade
 	conn: LowerValleyPlantApproach
 		casual-core Bash DoubleJump
 		casual-core Bash Glide
@@ -3300,6 +3303,13 @@ home: LowerValley
 		standard-dboost Health=4
 		expert-dboost Health=2
 		dbash Bash
+	conn: MistyEntrance
+		casual-core Glide Wind
+		casual-core Climb ChargeJump
+		expert-abilities Dash Ability=6
+		dbash Bash WallJump
+		dbash Bash Climb
+		master-lure Bash
 home: LowerValleyPlantApproach
 -- anchored next to the plant in lower valley
 	pickup: ValleyMainPlant
@@ -3330,6 +3340,7 @@ home: ValleyThreeBirdLever
 		casual-core Climb ChargeJump
 		standard-abilities Dash Ability=3
 		standard-dboost Health=4
+		expert-dboost ChargeJump Health=3
 	conn: LowerValley
 		casual-core Glide Wind
 		casual-core Glide DoubleJump
@@ -3350,13 +3361,13 @@ home: ValleyStompFloor
 		casual-core ChargeJump Climb
 		casual-core ChargeJump WallJump DoubleJump
 	conn: ValleyEntry
-		casual-core Bash Open
-		casual-core ChargeJump DoubleJump Open
-		casual-core ChargeJump Glide Open
-		standard-dboost ChargeJump Health=4 Open
-		expert-dboost ChargeJump Health=3 Open
-		expert-dboost DoubleJump Health=3 Open
-		expert-abilities Dash Ability=6 Open
+		casual-core Bash OpenWorld
+		casual-core ChargeJump DoubleJump OpenWorld
+		casual-core ChargeJump Glide OpenWorld
+		standard-dboost ChargeJump Health=4 OpenWorld
+		expert-dboost ChargeJump Health=3 OpenWorld
+		expert-dboost DoubleJump Health=3 OpenWorld
+		expert-abilities Dash Ability=6 OpenWorld
 home: ValleyForlornApproach
 -- anchored below the floor leading to forlorn
 	pickup: ValleyForlornApproachMapstone
@@ -3698,12 +3709,14 @@ home: WilhelmLedge
 		casual-core Stomp
 		standard-lure HoruKey
 		standard-core Climb ChargeJump
-		expert-core ChargeJump WallJump Glide
-		expert-core ChargeJump WallJump DoubleJump
-		expert-core ChargeJump Bash
-		expert-abilities ChargeJump WallJump Dash Ability=3
-		master-core ChargeJump Glide
-		master-core ChargeJump DoubleJump
+		expert-core ChargeJump Bash Grenade
+		-- these commented paths hinge on the kill plane not existing
+		-- expert-core ChargeJump WallJump Glide
+		-- expert-core ChargeJump WallJump DoubleJump
+		-- expert-core ChargeJump Bash
+		-- expert-abilities ChargeJump WallJump Dash Ability=3
+		-- master-core ChargeJump Glide
+		-- master-core ChargeJump DoubleJump
 		master-abilities ChargeJump Dash Ability=3
 		master-core Bash
 		glitched ChargeJump

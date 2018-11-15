@@ -46,7 +46,8 @@ class CLISeedParams(object):
         parser.add_argument("--force-trees", help="Prevent Ori from entering the final escape room until all skill trees have been visited", action="store_true")
         parser.add_argument("--force-mapstones", help="Prevent Ori from entering the final escape room until all mapstone altars have been activated", action="store_true")
         parser.add_argument("--entrance", help="Randomize entrances", action="store_true")
-        parser.add_argument("--open", help="Activate open mode", action="store_true")
+        parser.add_argument("--open", help="Activate open mode within dungeons", action="store_true")
+        parser.add_argument("--open-world", help="Activate open mode on the world map", action="store_true")
         parser.add_argument("--bonus-pickups", help="Adds some extra bonus pickups not balanced for competitive play", action="store_true")
         parser.add_argument("--easy", help="Add an extra copy of double jump, bash, stomp, glide, charge jump, dash, grenade, water, and wind", action="store_true")
         parser.add_argument("--free-mapstones", help="Don't require a mapstone to be placed when a map monument becomes accessible", action="store_true")
@@ -99,7 +100,7 @@ class CLISeedParams(object):
         # variations (help)
         varMap = {
             "zeroxp": "0XP", "hard": "Hard", "non_progressive_mapstones": "NonProgressMapStones", "ohko": "OHKO", "force_trees": "ForceTrees", "starved": "Starved",
-            "force_mapstones": "ForceMapStones", "entrance": "Entrance", "open": "Open", "easy": "DoubleSkills", "free_mapstones": "FreeMapstones", 
+            "force_mapstones": "ForceMapStones", "entrance": "Entrance", "open": "Open", "open_world": "OpenWorld", "easy": "DoubleSkills", "free_mapstones": "FreeMapstones", 
             "warmth_frags": "WarmthFrags", "world_tour": "WorldTour"
             }
         self.variations = []

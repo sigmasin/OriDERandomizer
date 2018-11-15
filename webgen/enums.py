@@ -48,6 +48,7 @@ class Variation(StrEnum):
     STARVED = "Starved"
     EXTRA_BONUS_PICKUPS = "BonusPickups"
     OPEN_MODE = "Open"
+    OPEN_WORLD = "OpenWorld"
     WORLD_TOUR = "WorldTour"
     WARMTH_FRAGMENTS = "WarmthFrags"
     DOUBLE_SKILL = "DoubleSkills"
