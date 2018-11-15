@@ -37,8 +37,6 @@ def enums_from_strlist(enum, strlist):
         maybe_enum = enum.mk(elem)
         if maybe_enum:
             enums.append(maybe_enum)
-        else:
-            log.warning("%s is not a valid %s! Skipping param." % (elem, enum))
     return enums
 
 

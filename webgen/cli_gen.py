@@ -46,7 +46,7 @@ class CLISeedParams(object):
         parser.add_argument("--force-trees", help="Prevent Ori from entering the final escape room until all skill trees have been visited", action="store_true")
         parser.add_argument("--force-mapstones", help="Prevent Ori from entering the final escape room until all mapstone altars have been activated", action="store_true")
         parser.add_argument("--entrance", help="Randomize entrances", action="store_true")
-        parser.add_argument("--open", help="Activate open mode within dungeons", action="store_true")
+        parser.add_argument("--closed-dungeons", help="deactivate open mode within dungeons", action="store_true")
         parser.add_argument("--open-world", help="Activate open mode on the world map", action="store_true")
         parser.add_argument("--bonus-pickups", help="Adds some extra bonus pickups not balanced for competitive play", action="store_true")
         parser.add_argument("--easy", help="Add an extra copy of double jump, bash, stomp, glide, charge jump, dash, grenade, water, and wind", action="store_true")
@@ -70,7 +70,7 @@ class CLISeedParams(object):
         parser.add_argument("--players", help="Player count for paired randomizer", type=int, default=1)
         parser.add_argument("--tracking", help="Place a sync ID in a seed for tracking purposes", action="store_true")
         parser.add_argument("--sync-id", help="Team identifier number for paired randomizer", type=int)
-        parser.add_argument("--shared-items", help="What will be shared by sync, comma-separated: skills,keys,events,teleporters,upgrades", default="skills,keys")
+        parser.add_argument("--shared-items", help="What will be shared by sync, comma-separated: skills,worldevents,misc,teleporters,upgrades", default="skills,worldevents")
         parser.add_argument("--share-mode", help="How the server will handle shared pickups, one of: shared,swap,split,none", default="shared")
         parser.add_argument("--cloned", help="Make a split cloned seed instead of seperate seeds", action="store_true")
         parser.add_argument("--teams", help="Cloned seeds only: define teams. Format: 1|2,3,4|5,6. Each player must appear once", type=str)
@@ -100,9 +100,9 @@ class CLISeedParams(object):
         # variations (help)
         varMap = {
             "zeroxp": "0XP", "hard": "Hard", "non_progressive_mapstones": "NonProgressMapStones", "ohko": "OHKO", "force_trees": "ForceTrees", "starved": "Starved",
-            "force_mapstones": "ForceMapStones", "entrance": "Entrance", "open": "Open", "open_world": "OpenWorld", "easy": "DoubleSkills", "free_mapstones": "FreeMapstones", 
-            "warmth_frags": "WarmthFrags", "world_tour": "WorldTour"
-            }
+            "force_mapstones": "ForceMapStones", "entrance": "Entrance", "open_world": "OpenWorld", "easy": "DoubleSkills", "free_mapstones": "FreeMapstones", 
+            "warmth_frags": "WarmthFrags", "world_tour": "WorldTour", "closed_dungeons": "ClosedDungeons"
+        }
         self.variations = []
         for argName, flagStr in varMap.iteritems():
             if getattr(args, argName, False):

@@ -7,20 +7,21 @@ from enum import Enum
 
 class StrEnum(str, Enum):
     @classmethod
-    def mk(cls, val, try_others=True):
+    def mk(cls, val, fuzzycase=True):
         if val is None:
             log.warning("None is not a valid %s, returning None" % cls)
             return None
         try:
             return cls(val)
         except ValueError:
-            if try_others:
-                for other in [val.lower(), val.capitalize(), val.upper()]:
-                    res = cls.mk(other, False)
-                    if res:
-                        return res
-            log.warning("%s is not a valid %s, returning None" % (val, cls))
-            return None
+            if fuzzycase:
+                for possible_match in cls.__members__.values():
+                    if possible_match._value_.lower() == val.lower():
+                        return possible_match
+                log.warning("%s could not be parsed into to any valid %s, returning None" % (val, cls))
+            else:
+                log.warning("%s is not a valid %s, returning None" % (val, cls))
+                return None
 
 class MultiplayerGameType(StrEnum):
     SHARED = "Shared"
@@ -47,7 +48,7 @@ class Variation(StrEnum):
     ONE_HIT_KO = "OHKO"
     STARVED = "Starved"
     EXTRA_BONUS_PICKUPS = "BonusPickups"
-    OPEN_MODE = "Open"
+    CLOSED_DUNGEONS = "ClosedDungeons"
     OPEN_WORLD = "OpenWorld"
     WORLD_TOUR = "WorldTour"
     WARMTH_FRAGMENTS = "WarmthFrags"
