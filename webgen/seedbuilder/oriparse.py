@@ -67,7 +67,8 @@ _REQS = [
     "Keystone",
     "Mapstone",
     "Free",
-    "Open"
+    "Open",
+    "OpenWorld"
 ]
 
 def ori_load_file(fn, verbose=False):
