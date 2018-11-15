@@ -97,6 +97,7 @@ class SeedGenParams(ndb.Model):
     cell_freq = ndb.IntegerProperty(default=256)
     placements = ndb.LocalStructuredProperty(Placement, repeated=True, compressed=True)
     spoilers = ndb.TextProperty(repeated=True, compressed=True)
+    sense = ndb.StringProperty()
     do_loc_analysis = False
 
     @staticmethod
@@ -122,6 +123,7 @@ class SeedGenParams(ndb.Model):
         params.relic_count = int(qparams.get("relics", 8))
         params.cell_freq = int(qparams.get("cell_freq", 256))
         params.sync = MultiplayerOptions.from_url(qparams)
+        params.sense = qparams.get("sense").replace(" ","+")
         raw_fass = qparams.get("fass")
         if raw_fass:
             params.placements = []
@@ -225,6 +227,8 @@ class SeedGenParams(ndb.Model):
                 flags.append("shared=%s" % "+".join(self.sync.shared))
         if self.balanced:
             flags.append("balanced")
+        if self.sense:
+            flags.append("sense=%s" % self.sense)
         return "%s|%s" % (",".join(flags), self.seed)
 
     @staticmethod
