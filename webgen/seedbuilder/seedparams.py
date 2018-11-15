@@ -123,7 +123,7 @@ class SeedGenParams(ndb.Model):
         params.relic_count = int(qparams.get("relics", 8))
         params.cell_freq = int(qparams.get("cell_freq", 256))
         params.sync = MultiplayerOptions.from_url(qparams)
-        params.sense = qparams.get("sense").replace(" ","+")
+        params.sense = qparams.get("sense")
         raw_fass = qparams.get("fass")
         if raw_fass:
             params.placements = []
@@ -176,7 +176,7 @@ class SeedGenParams(ndb.Model):
     def team_pid(self, pid):  # given pid, get team or return pid if no teams exist
         return int(self.teams_inv()[pid]) if self.sync.teams else pid
 
-    def get_seed(self, player=1, game_id=None, verbose_paths= False):
+    def get_seed(self, player=1, game_id=None, verbose_paths=False):
         flags = self.flag_line(verbose_paths)
         if self.tracking:
             flags = "Sync%s.%s," % (game_id, player) + flags
@@ -202,8 +202,6 @@ class SeedGenParams(ndb.Model):
         pathset = set(self.logic_paths)
         for name, lps in presets.iteritems():
             if lps == pathset:
-                if name == "Standard" and Variation.ZERO_EXP in self.variations:
-                    return "0xp"
                 return name
         return "Custom"
 
@@ -228,7 +226,7 @@ class SeedGenParams(ndb.Model):
         if self.balanced:
             flags.append("balanced")
         if self.sense:
-            flags.append("sense=%s" % self.sense)
+            flags.append("sense=%s" % self.sense).replace(" ", "+")
         return "%s|%s" % (",".join(flags), self.seed)
 
     @staticmethod
