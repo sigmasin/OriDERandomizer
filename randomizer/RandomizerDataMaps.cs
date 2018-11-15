@@ -1990,6 +1990,11 @@ public static class RandomizerDataMaps
 		array14[4] = 64;
 		array13[num7] = array14;
 		horuData7.Add(array13);
+		Randomizer.HoruData.Add(new object[]
+		{
+			new MoonGuid(-320508598, 1300452088, 1447769233, 145768534),
+			new byte[256]
+		});
 	}
 
 	// Token: 0x06003812 RID: 14354

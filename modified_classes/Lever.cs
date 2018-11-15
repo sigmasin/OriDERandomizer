@@ -274,7 +274,7 @@ public class Lever : SaveSerialize, ISuspendable, IDynamicGraphicHierarchy
 	{
 		get
 		{
-			return (!Randomizer.OpenMode || !(Scenes.Manager.CurrentScene.Scene == "westGladesFireflyAreaA")) && (this.CanGrabCondition == null || this.CanGrabCondition.Validate(null));
+			return (!Randomizer.OpenWorld || !(Scenes.Manager.CurrentScene.Scene == "westGladesFireflyAreaA")) && (this.CanGrabCondition == null || this.CanGrabCondition.Validate(null));
 		}
 	}
 

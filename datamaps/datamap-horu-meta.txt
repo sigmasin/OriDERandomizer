@@ -45,3 +45,6 @@ R3 damage
 
 -1986835227 1148497250 1774981778 -341693584
 R2 damage
+
+-320508598 1300452088 1447769233 145768534
+foreground objects (only functions after 1 reload in horu)

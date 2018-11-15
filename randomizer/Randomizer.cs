@@ -75,7 +75,8 @@ public static class Randomizer
 		Randomizer.HoruMap["mountHoruBigPushBlock"] = -199724;
 		Randomizer.HoruMap["mountHoruBreakyPathTop"] = -1639664;
 		Randomizer.HoruMap["mountHoruFallingBlocks"] = -959848;
-		Randomizer.OpenMode = false;
+		Randomizer.OpenMode = true;
+		Randomizer.OpenWorld = false;
 		RandomizerDataMaps.LoadGladesData();
 		RandomizerDataMaps.LoadGinsoData();
 		RandomizerDataMaps.LoadForlornData();
@@ -182,9 +183,13 @@ public static class Randomizer
 					{
 						Randomizer.Entrance = true;
 					}
-					if (flag.ToLower() == "open")
+					if (flag.ToLower() == "closeddungeons")
 					{
-						Randomizer.OpenMode = true;
+						Randomizer.OpenMode = false;
+					}
+					if (flag.ToLower() == "openworld")
+					{
+						Randomizer.OpenWorld = true;
 					}
 					if (flag.ToLower().StartsWith("hotcold="))
 					{
@@ -1248,4 +1253,6 @@ public static class Randomizer
 	public static HashSet<int> RepeatablePickups;
 
 	public static int RepeatableCooldown;
+
+	public static bool OpenWorld;
 }
