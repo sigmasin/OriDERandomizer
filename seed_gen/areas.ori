@@ -3189,6 +3189,26 @@ home: ValleyTeleporter
 		gjump Climb ChargeJump Grenade
 		expert-abilities Dash Ability=6
 		master-core DoubleJump Ability=12
+	-- no killplane paths
+	conn: MistyEntrance
+		casual-core Glide OpenWorld
+		casual-core Bash OpenWorld
+		casual-core DoubleJump OpenWorld
+		casual-core Climb ChargeJump OpenWorld
+		casual-core Dash OpenWorld
+	conn: LowerValley
+		casual-core OpenWorld
+	conn: LowerValleyPlantApproach
+		casual-core OpenWorld
+	conn: ValleyStompless
+		casual-core Glide Wind OpenWorld
+		casual-core Climb ChargeJump OpenWorld
+		standard-core Climb ChargeJump OpenWorld
+		expert-core Climb Bash Grenade OpenWorld
+		expert-core WallJump Bash Grenade OpenWorld
+		expert-abilities Dash Ability=6 OpenWorld
+		master-abilities WallJump DoubleJump Ability=12 OpenWorld
+		master-lure Bash WallJump OpenWorld
 home: ValleyRight
 -- anchored below the bird stomp cell
 -- no point in connecting to ValleyTeleporter, it's a dead end
@@ -3236,6 +3256,11 @@ home: ValleyStomplessApproach
 	conn: ValleyRight
 home: ValleyStompless
 -- anchored at the fast stompless aim position, rocks intact
+	-- no killplane path
+	pickup: KuroPerchExp
+		casual-core Glide OpenWorld
+		casual-core Bash OpenWorld
+		expert-abilities Dash Ability=6 OpenWorld
 	conn: WilhelmLedge
 		casual-core Wind Glide
 		casual-core Bash
@@ -3255,6 +3280,17 @@ home: ValleyStompless
 		master-dboost ChargeJump Health=5 Ability=12
 		master-dboost Health=10
 		master-dboost Health=7 Ability=12
+	-- no killplane paths
+	conn: MistyEntrance
+		casual-core Glide OpenWorld
+		casual-core Bash OpenWorld
+		casual-core DoubleJump OpenWorld
+		casual-core Climb ChargeJump OpenWorld
+		casual-core Dash OpenWorld
+	conn: LowerValley
+		casual-core OpenWorld
+	conn: LowerValleyPlantApproach
+		casual-core OpenWorld
 home: ValleyMain
 -- anchored at the fast stompless aim position, rocks destroyed
 	pickup: GlideSkillFeather
@@ -3275,6 +3311,7 @@ home: ValleyMain
 		casual-core Dash
 	conn: LowerValley
 	conn: LowerValleyPlantApproach
+	conn: ValleyStompless
 home: LowerValley
 -- anchored on top of the stump in the middle of valley
 	pickup: LowerValleyMapstone
@@ -3306,10 +3343,22 @@ home: LowerValley
 	conn: MistyEntrance
 		casual-core Glide Wind
 		casual-core Climb ChargeJump
+		standard-core Climb Bash Grenade
 		expert-abilities Dash Ability=6
 		dbash Bash WallJump
 		dbash Bash Climb
 		master-lure Bash
+	-- no killplane path
+	conn: ValleyTeleporter
+		casual-core Glide Wind OpenWorld
+		casual-core Climb ChargeJump Glide OpenWorld
+		casual-core Climb ChargeJump DoubleJump OpenWorld
+		casual-core Climb ChargeJump Bash OpenWorld
+		standard-core Climb Bash Grenade OpenWorld
+		standard-core Bash Grenade WallJump DoubleJump OpenWorld
+		standard-core ChargeJump WallJump DoubleJump OpenWorld
+		expert-abilities Dash Ability=6 OpenWorld
+		master-lure Bash OpenWorld
 home: LowerValleyPlantApproach
 -- anchored next to the plant in lower valley
 	pickup: ValleyMainPlant
