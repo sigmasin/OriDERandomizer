@@ -1057,7 +1057,8 @@ class SeedGenerator:
         self.expSlots = self.itemPool["EX*"]
 
         while self.locations() > 0:
-            assert self.locations() == self.items()
+            if self.locations() != self.items():
+                log.warning("Item (%) /Location (%) desync!", self.items(), self.locations())
             self.balanceLevel += 1
             # open all paths that we can already access
             opening = True
@@ -1114,17 +1115,18 @@ class SeedGenerator:
                 locationsToAssign.append(self.reservedLocations.pop(0))
                 locationsToAssign.append(self.reservedLocations.pop(0))
             for i in range(0, len(locationsToAssign)):
+                locationCount = self.locations()
                 if self.assignQueue:
                     itemsToAssign.append(self.assign(self.assignQueue.pop(0)))
                 elif self.inventory["KS"] < keystoneCount:
                     itemsToAssign.append(self.assign("KS"))
                 elif self.inventory["MS"] < mapstoneCount:
                     itemsToAssign.append(self.assign("MS"))
-                elif self.inventory["HC"] * self.params.cell_freq < (252 - self.locations()) and self.itemPool["HC"] > 0:
+                elif self.inventory["HC"] * self.params.cell_freq < (252 - locationCount) and self.itemPool["HC"] > 0:
                     itemsToAssign.append(self.assign("HC"))
-                elif self.inventory["EC"] * self.params.cell_freq < (252 - self.locations()) and self.itemPool["EC"] > 0:
+                elif self.inventory["EC"] * self.params.cell_freq < (252 - locationCount) and self.itemPool["EC"] > 0:
                     itemsToAssign.append(self.assign("EC"))
-                elif self.itemPool.get("RB28", -99) > self.locations() + 1:
+                elif self.itemPool.get("RB28", -99) > locationCount + 1:
                     itemsToAssign.append(self.assign("RB28"))
                 elif self.balanceListLeftovers and not self.items(include_balanced=False):
                     itemsToAssign.append(self.balanceListLeftovers.pop(0))
@@ -1173,8 +1175,6 @@ class SeedGenerator:
             self.doorQueue = OrderedDict()
             self.mapQueue = OrderedDict()
             spoilerPath = []
-            print "d:", depth, "p:", self.playerID, "blevel:", self.balanceLevel, "items:", self.items(), "locations:", self.locations(), "itemPool:", sum([v for v in self.itemPool.values()]),
-            print "area locations", sum([len(area.locations) for area in self.areas.values()]), "reserved locations:", len(self.reservedLocations), "balance leftovers:", len(self.balanceListLeftovers), "shared items:", self.unplaced_shared
 
         spoilerStr = self.form_spoiler()
 
