@@ -3192,10 +3192,13 @@ home: ValleyTeleporter
 	-- no killplane paths
 	conn: MistyEntrance
 		casual-core Glide OpenWorld
-		casual-core Bash OpenWorld
-		casual-core DoubleJump OpenWorld
-		casual-core Climb ChargeJump OpenWorld
-		casual-core Dash OpenWorld
+		standard-core Bash Grenade DoubleJump OpenWorld
+		standard-abilities ChargeJump DoubleJump Dash Ability=3 OpenWorld
+		expert-core Bash Grenade OpenWorld
+		expert-core Bash ChargeJump DoubleJump OpenWorld
+		expert-core Dash ChargeJump DoubleJump OpenWorld
+		expert-abilities Dash DoubleJump Ability=3 OpenWorld
+		expert-abilities Dash Ability=6 OpenWorld
 	conn: LowerValley
 		casual-core OpenWorld
 	conn: LowerValleyPlantApproach
