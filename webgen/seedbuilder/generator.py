@@ -1053,11 +1053,11 @@ class SeedGenerator:
                 if connection.target == "GladesMain":
                     self.areas["SunkenGladesRunaway"].remove_connection(connection)
 
-        self.itemPool["EX*"] = self.locations() - sum([v for v in self.itemPool.values()]) - self.unplaced_shared
+        self.itemPool["EX*"] = self.locations() - sum([v for v in self.itemPool.values()]) - self.unplaced_shared + 1  # add 1 for warmth returned (:
         self.expSlots = self.itemPool["EX*"]
 
         while self.locations() > 0:
-            if self.locations() != self.items():
+            if self.locations() != self.items() - 1:
                 log.warning("Item (%) /Location (%) desync!", self.items(), self.locations())
             self.balanceLevel += 1
             # open all paths that we can already access
@@ -1128,7 +1128,7 @@ class SeedGenerator:
                     itemsToAssign.append(self.assign("EC"))
                 elif self.itemPool.get("RB28", -99) > locationCount + 1:
                     itemsToAssign.append(self.assign("RB28"))
-                elif self.balanceListLeftovers and not self.items(include_balanced=False):
+                elif self.balanceListLeftovers and self.items(include_balanced=False) == 1:
                     itemsToAssign.append(self.balanceListLeftovers.pop(0))
                 else:
                     itemsToAssign.append(self.assign_random())

@@ -54,6 +54,7 @@ class Variation(StrEnum):
     WARMTH_FRAGMENTS = "WarmthFrags"
     DOUBLE_SKILL = "DoubleSkills"
     STRICT_MAPSTONES = "StrictMapstones"
+    STOMP_TRIGGERS = "StompTriggers"
 
 class LogicPath(StrEnum):
     CASUAL_CORE = 'casual-core'
