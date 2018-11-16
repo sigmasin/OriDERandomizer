@@ -997,6 +997,7 @@ class SeedGenerator:
                 (775, -180),   # below swamp swim
                 (590, -400),   # grotto miniboss
                 (585, -60),    # outer swamp health cell
+                (516, 924),    # top of ginso escape
                 (500, -500),   # lost grove laser lever
                 (480, -256),   # moon grotto, just below the bridge
                 (417, -422),   # lower blackroot right lasers
@@ -1004,7 +1005,7 @@ class SeedGenerator:
                 (120, 35),     # Horu Fields Plant
                 (-12, -92),    # Above cflame tree exp
                 (-220, -70),   # Valley entry (upper)
-                (-365, 73),    # Stompless AC
+                (-358, 73),    # Stompless AC
                 (-500, 600),   # Top of sorrow
                 (-570, 162),   # Wilhelm exp
                 (-595, -210),  # Forlorn enterance

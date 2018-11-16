@@ -27,7 +27,7 @@ class MultiplayerOptions(ndb.Model):
 
     def set_mode(self, mode):         self.str_mode = mode.value
 
-    def get_shared(self): return [ShareType.mk(st) for st in self.str_shared if ShareType.mk(st)]
+    def get_shared(self): return enums_from_strlist(ShareType, self.str_shared)
 
     def set_shared(self, shared):    self.str_shared = [s.value for s in shared]
 
@@ -68,11 +68,11 @@ class SeedGenParams(ndb.Model):
 
     def set_pathdiff(self, pathdiff): self.str_pathdiff = pathdiff.value
 
-    def get_vars(self): return [Variation(var) for var in self.str_vars]
+    def get_vars(self): return enums_from_strlist(Variation, self.str_vars)
 
     def set_vars(self, vars): self.str_vars = [v.value for v in vars]
 
-    def get_paths(self): return [LogicPath(path) for path in self.str_paths]
+    def get_paths(self): return enums_from_strlist(LogicPath, self.str_paths)
 
     def set_paths(self, paths): self.str_paths = [p.value for p in paths]
 
