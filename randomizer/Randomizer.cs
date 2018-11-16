@@ -94,6 +94,7 @@ public static class Randomizer
 		Randomizer.GrenadeZone = "MIA";
 		Randomizer.StompZone = "MIA";
 		Randomizer.RepeatablePickups = new HashSet<int>();
+		Randomizer.StompTriggers = false;
 		bool relicCountOverride = false;
 		try {
 			if(File.Exists("randomizer.dat")) {
@@ -205,6 +206,10 @@ public static class Randomizer
 					if (flag.ToLower() == "noaltr")
 					{
 						Randomizer.AltRDisabled = true;
+					}
+					if (flag.ToLower() == "stomptriggers")
+					{
+						Randomizer.StompTriggers = true;
 					}
 				}
 				for (int i = 1; i < allLines.Length; i++)
@@ -1255,4 +1260,6 @@ public static class Randomizer
 	public static int RepeatableCooldown;
 
 	public static bool OpenWorld;
+
+	public static bool StompTriggers;
 }
