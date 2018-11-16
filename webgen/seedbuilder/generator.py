@@ -171,14 +171,14 @@ class SeedGenerator:
         self.limitKeysPool = [-3160308, -560160, 2919744, 719620, 7839588, 5320328, 8599904, -4600020, -6959592, -11880100, 5480952, 4999752, -7320236, -7200024, -5599400]
 
         self.costs = OrderedDict({
-            "Free": 0, "MS": 0, "KS": 6, "AC": 12, "EC": 6, "HC": 12, "WallJump": 13,
-            "ChargeFlame": 13, "DoubleJump": 13, "Bash": 55, "Stomp": 32,
-            "Glide": 17, "Climb": 33, "ChargeJump": 55, "Dash": 13,
-            "Grenade": 25, "GinsoKey": 12, "ForlornKey": 12, "HoruKey": 12,
-            "Water": 78, "Wind": 90, "WaterVeinShard": 5, "GumonSealShard": 5,
-            "SunstoneShard": 5, "TPForlorn": 135, "TPGrotto": 60,
-            "TPSorrow": 105, "TPGrove": 60, "TPSwamp": 60, "TPValley": 90,
-            "TPGinso": 120, "TPHoru": 150, "Open": 1, "OpenWorld": 1, "Relic": 1
+            "Free": 0, "MS": 0, "KS": 4, "AC": 12, "EC": 6, "HC": 12, "WallJump": 13,
+            "ChargeFlame": 13, "DoubleJump": 13, "Bash": 31, "Stomp": 13,
+            "Glide": 13, "Climb": 13, "ChargeJump": 13, "Dash": 13,
+            "Grenade": 13, "GinsoKey": 12, "ForlornKey": 12, "HoruKey": 12,
+            "Water": 31, "Wind": 31, "WaterVeinShard": 5, "GumonSealShard": 5,
+            "SunstoneShard": 5, "TPForlorn": 67, "TPGrotto": 41,
+            "TPSorrow": 59, "TPGrove": 41, "TPSwamp": 41, "TPValley": 53,
+            "TPGinso": 61, "TPHoru": 71, "Open": 1, "OpenWorld": 1, "Relic": 1
         })
         self.inventory = OrderedDict([
             ("EX1", 0), ("EX*", 0), ("KS", 0), ("MS", 0), ("AC", 0), ("EC", 1),
@@ -526,7 +526,7 @@ class SeedGenerator:
                 self.itemPool[item] = max(self.itemPool[item] - 1, 0) if item in self.itemPool else 0
             if item == "KS":
                 if self.costs[item] > 0:
-                    self.costs[item] -= 3
+                    self.costs[item] -= 2
             elif item in ["EC", "HC", "AC", "WaterVeinShard", "GumonSealShard", "SunstoneShard"]:
                 if self.costs[item] > 0:
                     self.costs[item] -= 1
