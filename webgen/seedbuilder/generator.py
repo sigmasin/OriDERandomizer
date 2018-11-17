@@ -481,7 +481,7 @@ class SeedGenerator:
         return location[1]
 
     def cloned_item(self, item, player):
-        name = item  # TODO: get upgrade names lol
+        name = self.codeToName.get(item, item)  # TODO: get upgrade names lol
         if item in self.skillsOutput:
             item = self.skillsOutput[item]
         if item in self.eventsOutput:
@@ -508,7 +508,7 @@ class SeedGenerator:
         position = 0.0
         denom = float(sum(self.itemPool.values()))
         if denom == 0.0:
-            log.warning("%s: itemPool was empty! itemPool: %s itemCount %s", self.params.flag_line(), {k: v for k, v in self.itemPool.iteritems() if v > 0}, self.locations())
+            log.warning("%s: itemPool was empty! locations: %s", self.params.flag_line(), self.locations())
             return self.assign("EX*")
         for key in self.itemPool.keys():
             position += self.itemPool[key] / denom
@@ -1201,6 +1201,9 @@ class SeedGenerator:
             if self.itemPool[item] > 0:
                 self.assign_to_location(item, Location(-240, 512, 'FinalEscape', 'EVWarmth', 0, 'Horu'))
                 break
+        else:
+            log.warning("%s: No item found for warmth returned! Placing EXP", self.params.flag_line())
+            self.assign_to_location("EX*", Location(-240, 512, 'FinalEscape', 'EVWarmth', 0, 'Horu'))
         self.params.balanced = balanced
 
         if self.params.do_loc_analysis:
