@@ -171,9 +171,9 @@ class SeedGenerator:
         self.limitKeysPool = [-3160308, -560160, 2919744, 719620, 7839588, 5320328, 8599904, -4600020, -6959592, -11880100, 5480952, 4999752, -7320236, -7200024, -5599400]
 
         self.costs = OrderedDict({
-            "Free": 0, "MS": 0, "KS": 4, "AC": 12, "EC": 6, "HC": 12, "WallJump": 13,
+            "Free": 0, "MS": 0, "KS": 2, "AC": 12, "EC": 6, "HC": 12, "WallJump": 13,
             "ChargeFlame": 13, "DoubleJump": 13, "Bash": 31, "Stomp": 13,
-            "Glide": 13, "Climb": 13, "ChargeJump": 13, "Dash": 13,
+            "Glide": 13, "Climb": 13, "ChargeJump": 23, "Dash": 13,
             "Grenade": 13, "GinsoKey": 12, "ForlornKey": 12, "HoruKey": 12,
             "Water": 31, "Wind": 31, "WaterVeinShard": 5, "GumonSealShard": 5,
             "SunstoneShard": 5, "TPForlorn": 67, "TPGrotto": 41,
@@ -524,10 +524,7 @@ class SeedGenerator:
         else:
             if not preplaced:
                 self.itemPool[item] = max(self.itemPool[item] - 1, 0) if item in self.itemPool else 0
-            if item == "KS":
-                if self.costs[item] > 0:
-                    self.costs[item] -= 2
-            elif item in ["EC", "HC", "AC", "WaterVeinShard", "GumonSealShard", "SunstoneShard"]:
+            if item in ["KS", "EC", "HC", "AC", "WaterVeinShard", "GumonSealShard", "SunstoneShard"]:
                 if self.costs[item] > 0:
                     self.costs[item] -= 1
             elif item == "RB28":
@@ -1058,7 +1055,7 @@ class SeedGenerator:
 
         while self.locations() > 0:
             if self.locations() != self.items() - 1:
-                log.warning("Item (%) /Location (%) desync!", self.items(), self.locations())
+                log.warning("Item (%s) /Location (%s) desync!", self.items(), self.locations())
             self.balanceLevel += 1
             # open all paths that we can already access
             opening = True
