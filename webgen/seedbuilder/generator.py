@@ -481,7 +481,7 @@ class SeedGenerator:
         return location[1]
 
     def cloned_item(self, item, player):
-        name = item  # TODO: get upgrade names lol
+        name = self.codeToName.get(item, item)  # TODO: get upgrade names lol
         if item in self.skillsOutput:
             item = self.skillsOutput[item]
         if item in self.eventsOutput:
@@ -508,7 +508,7 @@ class SeedGenerator:
         position = 0.0
         denom = float(sum(self.itemPool.values()))
         if denom == 0.0:
-            log.warning("%s: itemPool was empty! itemPool: %s itemCount %s", self.params.flag_line(), {k: v for k, v in self.itemPool.iteritems() if v > 0}, self.locations())
+            log.warning("%s: itemPool was empty! locations: %s", self.params.flag_line(), self.locations())
             return self.assign("EX*")
         for key in self.itemPool.keys():
             position += self.itemPool[key] / denom
@@ -994,6 +994,7 @@ class SeedGenerator:
                 (775, -180),   # below swamp swim
                 (590, -400),   # grotto miniboss
                 (585, -60),    # outer swamp health cell
+                (516, 924),    # top of ginso escape
                 (500, -500),   # lost grove laser lever
                 (480, -256),   # moon grotto, just below the bridge
                 (417, -422),   # lower blackroot right lasers
@@ -1001,7 +1002,7 @@ class SeedGenerator:
                 (120, 35),     # Horu Fields Plant
                 (-12, -92),    # Above cflame tree exp
                 (-220, -70),   # Valley entry (upper)
-                (-365, 73),    # Stompless AC
+                (-358, 73),    # Stompless AC
                 (-500, 600),   # Top of sorrow
                 (-570, 162),   # Wilhelm exp
                 (-595, -210),  # Forlorn enterance
@@ -1197,6 +1198,9 @@ class SeedGenerator:
             if self.itemPool[item] > 0:
                 self.assign_to_location(item, Location(-240, 512, 'FinalEscape', 'EVWarmth', 0, 'Horu'))
                 break
+        else:
+            log.warning("%s: No item found for warmth returned! Placing EXP", self.params.flag_line())
+            self.assign_to_location("EX*", Location(-240, 512, 'FinalEscape', 'EVWarmth', 0, 'Horu'))
         self.params.balanced = balanced
 
         if self.params.do_loc_analysis:

@@ -92,6 +92,7 @@ def ori_load_url(url, verbose=False):
     return ori_load(lines, verbose)
 
 def ori_load(lines, verbose=False):
+    global _VERBOSE
     _VERBOSE = verbose
 
     contents = OrderedDict([
@@ -207,44 +208,48 @@ def ori_load(lines, verbose=False):
                 context_conn = name
         else:
             # If there's no type marker, it's a logic path
+            valid = True
+
             if tokens[0] not in _PATHSETS:
                 _parseerror(i, "ignoring logic path with unknown pathset %s" % tokens[0])
-                continue
+                valid = False
 
-            if not context_home:
+            if valid and not context_home:
                 _parseerror(i, "ignoring logic path with no active home")
-                continue
+                valid = False
 
-            if not context_conn:
+            if valid and not context_conn:
                 _parseerror(i, "ignoring logic path with no active connection")
-                continue
+                valid = False
 
-            valid = True
             has_health = False
             has_ability = False
             has_mapstone = False
-            for j in range(1, len(tokens)):
-                req = tokens[j]
-                if "=" in req:
-                    (req, count) = req.split("=")
 
-                    if int(count) == 0:
-                        _parseerror(i, "ignoring logic path with invalid count requirement %s" % tokens[j])
+            if valid:
+                for j in range(1, len(tokens)):
+                    req = tokens[j]
+                    if "=" in req:
+                        (req, count) = req.split("=")
+
+                        if int(count) == 0:
+                            _parseerror(i, "ignoring logic path with invalid count requirement %s" % tokens[j])
+                            valid = False
+                            break
+                    if req not in _REQS:
+                        _parseerror(i, "ignoring logic path with unknown requirement %s" % tokens[j])
                         valid = False
                         break
-                if req not in _REQS:
-                    _parseerror(i, "ignoring logic path with unknown requirement %s" % tokens[j])
-                    valid = False
-                    break
 
-                if req == "Health":
-                    has_health = True
-                if req == "Ability":
-                    has_ability = True
-                if req == "Mapstone":
-                    has_mapstone = True
+                    if req == "Health":
+                        has_health = True
+                    if req == "Ability":
+                        has_ability = True
+                    if req == "Mapstone":
+                        has_mapstone = True
 
             if not valid:
+                contents["homes"][context_home]["conns"][name]["paths"].append(tuple(["invalid"] + tokens))
                 continue
 
             if tokens[0] != "casual-dboost" and "dboost" in tokens[0] and not has_health:
