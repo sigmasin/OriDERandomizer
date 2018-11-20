@@ -55,9 +55,47 @@ public static class RandomizerStatsManager {
 		SceneToZone.Add("sunkenGladesOriRoom", "sunkenGlades");
 		SceneToZone.Add("sunkenGladesSpiritCavernsPushBlockIntroduction", "sunkenGlades");
 		SceneToZone.Add("sunkenGladesSpiritCavernWalljumpB", "sunkenGlades");
+		SceneToZone.Add("sunkenGladesSpiritCavernSaveRoomB", "sunkenGlades");
+		SceneToZone.Add("sunkenGladesWaterhole", "sunkenGlades");
+		SceneToZone.Add("sunkenGladesRunning", "sunkenGlades");
+		SceneToZone.Add("sunkenGladesIntroSplitB", "sunkenGlades");
+		SceneToZone.Add("sunkenGladesSpiritCavernLaser", "sunkenGlades");
+		SceneToZone.Add("sunkenGladesSpiritB", "sunkenGlades");
+		SceneToZone.Add("sunkenGladesObstaclesIntroductionStreamlined", "sunkenGlades");
+
 		SceneToZone.Add("horuFieldsB", "hollowGrove");
 		SceneToZone.Add("moonGrottoShortcutA", "hollowGrove");
 		SceneToZone.Add("spiritTreeRefined", "hollowGrove");
+		SceneToZone.Add("worldMapSpiritTree", "hollowGrove");
+		SceneToZone.Add("upperGladesSwarmIntroduction", "hollowGrove");
+		SceneToZone.Add("upperGladesSpiderCavernPuzzle", "hollowGrove");
+		SceneToZone.Add("upperGladesHollowTreeSplitC", "hollowGrove");
+		SceneToZone.Add("horuFieldsSlopeTransition", "hollowGrove");
+		SceneToZone.Add("upperGladesSpiderIntroduction", "hollowGrove");
+		SceneToZone.Add("sunkenGladesLaserStomp", "hollowGrove");
+
+		SceneToZone.Add("moonGrottoLaserIntroduction", "moonGrotto");
+		SceneToZone.Add("moonGrottoGumosHideoutB", "moonGrotto");
+		SceneToZone.Add("moonGrottoBasin", "moonGrotto");
+		SceneToZone.Add("moonGrottoLaserPuzzleB", "moonGrotto");
+
+		SceneToZone.Add("ginsoTreeSprings", "ginsoTree");
+		SceneToZone.Add("ginsoTreeSaveRoom", "ginsoTree");
+		SceneToZone.Add("ginsoTreePuzzles", "ginsoTree");
+		SceneToZone.Add("ginsoTreeBashRedirectArt", "ginsoTree");
+		SceneToZone.Add("ginsoTreeWaterRisingBtm", "ginsoTree");
+		SceneToZone.Add("ginsoTreeWaterRisingMid", "ginsoTree");
+		SceneToZone.Add("ginsoTreeWaterRisingEnd", "ginsoTree");
+		SceneToZone.Add("kuroMomentTreeDuplicate", "ginsoTree");
+
+		SceneToZone.Add("upperGladesSwampCliffs", "thornfeltSwamp");
+		SceneToZone.Add("thornfeltSwampA", "thornfeltSwamp");
+		SceneToZone.Add("thornfeltSwampB", "thornfeltSwamp");
+		SceneToZone.Add("thornfeltSwampE", "thornfeltSwamp");
+		SceneToZone.Add("thornfeltSwampStompAbility", "thornfeltSwamp");
+		SceneToZone.Add("thornfeltSwampActTwoStart", "thornfeltSwamp");
+		SceneToZone.Add("thornfeltSwampMoonGrottoTransition", "thornfeltSwamp");
+
 		SceneToZone.Add("sorrowPassForestB", "mistyWoods");
 		SceneToZone.Add("mistyWoodsIntro", "mistyWoods");
 		SceneToZone.Add("mistyWoodsGlideMazeA", "mistyWoods");
@@ -67,20 +105,45 @@ public static class RandomizerStatsManager {
 		SceneToZone.Add("mistyWoodsMortarBashBlockerA", "mistyWoods");
 		SceneToZone.Add("mistyWoodsMortarBash", "mistyWoods");
 		SceneToZone.Add("mistyWoodsProjectileBashing", "mistyWoods");
+		SceneToZone.Add("mistyWoodsBashUp", "mistyWoods");
+		SceneToZone.Add("mistyWoodsConnector", "mistyWoods");
+		SceneToZone.Add("mistyWoodsLaserFlipPlatforms", "mistyWoods");
+		SceneToZone.Add("mistyWoodsCrissCross", "mistyWoods");
+		SceneToZone.Add("mistyWoodsTIntersection", "mistyWoods");
+		SceneToZone.Add("mistyWoodsDocks", "mistyWoods");
+		SceneToZone.Add("mistyWoodsDocksB", "mistyWoods");
+		SceneToZone.Add("mistyWoodsRopeBridge", "mistyWoods");
+		SceneToZone.Add("mistyWoodsJumpProjectile", "mistyWoods");
+
+		SceneToZone.Add("sorrowPassEntranceA", "valleyOfTheWind");
+		SceneToZone.Add("sorrowPassEntranceB", "valleyOfTheWind");
+		SceneToZone.Add("westGladesShaftToBridgeB", "valleyOfTheWind");
+		SceneToZone.Add("westGladesMistyWoodsCaveTransition", "valleyOfTheWind");
+		SceneToZone.Add("westGladesRollingSootIntroduction", "valleyOfTheWind");
+		SceneToZone.Add("forlornRuinsKuroHideStreamlined", "valleyOfTheWind");
+
 		SceneToZone.Add("sorrowPassValleyD", "sorrowPass");
 		SceneToZone.Add("valleyOfTheWindGetChargeJump", "sorrowPass");
 		SceneToZone.Add("valleyOfTheWindIcePuzzle", "sorrowPass");
+		SceneToZone.Add("valleyOfTheWindHubL", "sorrowPass");
+		SceneToZone.Add("valleyOfTheWindWideLeft", "sorrowPass");
+		SceneToZone.Add("valleyOfTheWindGauntlet", "sorrowPass");
 		SceneToZone.Add("valleyOfTheWindLaserShaft", "sorrowPass");
-		SceneToZone.Add("sorrowPassEntranceA", "valleyOfTheWind");
+
 		SceneToZone.Add("forlornRuinsGravityRoomA", "forlornRuins");
 		SceneToZone.Add("forlornRuinsGetIceB", "forlornRuins");
 		SceneToZone.Add("forlornRuinsNestC", "forlornRuins");
+		SceneToZone.Add("forlornRuinsWindShaftMockupB", "forlornRuins");
+		SceneToZone.Add("forlornRuinsWindShaftMockupC", "forlornRuins");
+		SceneToZone.Add("forlornRuinsGravityFreeFall", "forlornRuins");
+		SceneToZone.Add("forlornRuinsGetNightberry", "forlornRuins");
+		SceneToZone.Add("forlornRuinsResurrectionAfter", "forlornRuins");
+		SceneToZone.Add("forlornRuinsC", "forlornRuins");
+
 		SceneToZone.Add("mangroveFallsDashEscalation", "mangrove");
-		SceneToZone.Add("southMangroveFallsGrenadeEscalationBR", "mangrove");
-		SceneToZone.Add("ginsoTreeSprings", "ginsoTree");
-		SceneToZone.Add("ginsoTreeWaterRisingMid", "ginsoTree");
-		SceneToZone.Add("ginsoTreeWaterRisingEnd", "ginsoTree");
-		SceneToZone.Add("kuroMovementTreeDuplicate", "ginsoTree");
+		SceneToZone.Add("northMangroveFallsIntro", "mangrove");
+		SceneToZone.Add("southMangroveFallsGrenadeEscalationB", "mangrove");
+
 		SceneToZone.Add("mountHoruMovingPlatform", "mountHoru");
 		SceneToZone.Add("mountHoruStomperSystemsL", "mountHoru");
 		SceneToZone.Add("mountHoruStomperSystemsR", "mountHoru");
@@ -89,7 +152,6 @@ public static class RandomizerStatsManager {
 		SceneToZone.Add("catAndMouseLeft", "mountHoru");
 		SceneToZone.Add("catAndMouseResurrectionRoom", "mountHoru");
 		SceneToZone.Add("mountHoruHubBottom", "mountHoru");
-
 	}
 
 	public static string CurrentZone() {
@@ -152,13 +214,18 @@ public static class RandomizerStatsManager {
 	}
 
 	public static void OnSave() {
+		OnSave(true);
+	}
+
+	public static void OnSave(bool userInitiated) {
 		if(!Active)
 			return;
 		set(TSLDOS, 0);
 
 		set(PSLDOS, 0);
 		UpdateAndReset(DSLS, DSLS_max);
-		inc(Saves, 1);
+		if(userInitiated)
+			inc(Saves, 1);
 	}
 
 	public static void IncTime() {
@@ -227,7 +294,11 @@ public static class RandomizerStatsManager {
 				{
 					int offset = Offsets[zone];
 					string line = ZonePrettyNames[zone];
-					line += "\t\t" + get(Deaths+offset).ToString();
+					if(zone == "unknown") {
+						line += "\t\tN/A";
+					} else {
+						line += "\t\t" + get(Deaths+offset).ToString();
+					}
 					int time = get(Time+offset);
 					string timestr = FormatTime(time);
 					line += "\t\t" + timestr;
@@ -241,7 +312,7 @@ public static class RandomizerStatsManager {
 						if(pickupstr.Length < 5)
 							line += "\t";
 						float ppm = (float)count / ((float)time / 60f);
-						if(time == 0 || ppm > 256){
+						if(time == 0 || ppm > 256 || zone == "unknown"){
 							line += "\t\tN/A";
 						} else {
 							line += "\t\t"+ Math.Round(ppm,2).ToString();
@@ -287,14 +358,70 @@ public static class RandomizerStatsManager {
 
 	public static void Finish() {
 		Active = false;
-		string statsFile = File.ReadAllLines("randomizer.txt")[0] + "\n";
-		statsFile += GetStatsPage(0).Substring(33);
-		// clever readers might notice the lack of newline above. However,
-		// GetStatsPage(1) starts with a newline for shitty padding reasons.
-		statsFile += GetStatsPage(1).Substring(49);
-		File.WriteAllText("stats.txt", statsFile);
+		WriteStatsFile();
 	}
-	
+
+
+	public static void WriteStatsFile() {
+		try {
+			string flagLine = File.ReadAllLines("randomizer.dat")[0];
+			string zonePart = GetStatsPage(0).Substring(33);
+			// formatting is garbage
+			zonePart = zonePart.Replace("   ", "");
+			zonePart = zonePart.Replace("				", "	");
+			zonePart = zonePart.Replace("			", "	");
+			zonePart = zonePart.Replace("		", "	");
+			zonePart = zonePart.Replace("	", " ");
+			List<string> zoneLines = new List<string>(zonePart.Split('\n'));
+			List<int> zoneLineSpacing = new List<int> {0, 0, 0, 0, 0};
+			foreach(string line in zoneLines) {
+				int col = 0;
+				int lastStart = 0;
+				for(int i = 0; i < line.Length; i++) {
+					if(line[i] == ' '){
+						int spacing = i-lastStart + 2;
+						if(zoneLineSpacing[col] < spacing)
+							zoneLineSpacing[col] = spacing;
+						col++;
+						lastStart = i;
+					}
+				}
+			}
+			zonePart = "";
+			foreach(string line in zoneLines) {
+				int col = 0;
+				string paddedLine = "";
+				foreach(string linePart in line.Split(' ')) {
+					string lpc = linePart;
+					while(lpc.Length < zoneLineSpacing[col]) 
+						lpc += " ";
+					paddedLine += lpc;
+					col++;
+				}
+				zonePart += paddedLine + "\n";
+			}
+
+			string miscPart = GetStatsPage(1).Substring(49);
+			miscPart = miscPart.Replace("Saves:", "Saves:  ");
+			miscPart = miscPart.Replace("Minute:	", "Minute:");
+			miscPart = miscPart.Replace("(time lost):	", "(time lost):");
+			miscPart = miscPart.Replace("(pickups lost):	", "(pickups lost): ");
+			miscPart = miscPart.Replace("save:	", "save:");
+			miscPart = miscPart.Replace("deaths:		", "deaths:  ");
+			miscPart = miscPart.Replace("dying:	", "dying: ");
+			miscPart = miscPart.Replace("tion at:		", "tion at:  ");
+			miscPart = miscPart.Replace("ash at:	","ash at:  ");
+			miscPart = miscPart.Replace("Teleporters Used:	","Teleporters Used:   ");
+			miscPart = miscPart.Replace("	","    ");
+			string statsFile = flagLine+"\n\n"+ zonePart + miscPart;
+			statsFile = statsFile.Replace("\n", "\r\n");
+			File.WriteAllText("stats.txt", statsFile);
+		} catch(Exception e)
+		{
+			Randomizer.LogError("WriteStatsFile: " + e.Message);
+		}
+
+	}	
 	public static string FormatTime(int seconds, bool padding)
 	{
 		if(padding)
@@ -314,11 +441,11 @@ public static class RandomizerStatsManager {
 		int minutes = seconds / 60;
 		string minutesPart = (minutes % 60).ToString();
 		if(minutesPart.Length < 2)
-		if(minutes > 60)
+		if(minutes >= 60)
 			minutesPart = "0"+minutesPart;
 		else
 			minutesPart = "   "+minutesPart;
-		if(minutes > 60)
+		if(minutes >= 60)
 		{
 			int hours = minutes / 60;
 			return hours.ToString()+":"+minutesPart+":"+secondsPart;

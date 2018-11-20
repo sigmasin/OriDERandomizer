@@ -47,6 +47,8 @@ public static class Randomizer
 		Randomizer.TeleportTable["Valley"] = "sorrowPass";
 		Randomizer.TeleportTable["Ginso"] = "ginsoTree";
 		Randomizer.TeleportTable["Horu"] = "mountHoru";
+		Randomizer.TeleportTable["Glades"] = "sunkenGlades";
+		Randomizer.TeleportTable["Blackroot"] = "mangroveFalls";
 		Randomizer.Entrance = false;
 		Randomizer.DoorTable = new Hashtable();
 		Randomizer.ColorShift = false;
@@ -555,7 +557,7 @@ public static class Randomizer
 			Randomizer.playLastMessage();
 			return;
 		}
-		if (RandomizerRebinding.ReturnToStart.IsPressed() && Characters.Sein)
+		if (RandomizerRebinding.ReturnToStart.IsPressed() && Characters.Sein && Randomizer.Warping <= 0)
 		{
 			if(Randomizer.AltRDisabled || RandomizerBonus.AltRDisabled())
 			{
