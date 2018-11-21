@@ -70,6 +70,8 @@ public static class RandomizerTrackedDataManager
 		Teleporters.Add("Sorrow", 5);
 		Teleporters.Add("Ginso", 6);
 		Teleporters.Add("Horu", 7);
+		Teleporters.Add("Blackroot", 8);
+		Teleporters.Add("Glades", 9);
 
 		Skills = new Dictionary<int, AbilityType>();
 
@@ -92,7 +94,7 @@ public static class RandomizerTrackedDataManager
 			TreeBitfield = Characters.Sein.Inventory.GetRandomizerItem(1001) + GetSkillBitfield();
 			RelicBitfield = Characters.Sein.Inventory.GetRandomizerItem(1002) + GetRelicExistsBitfield();
 			MapstoneBitfield = Characters.Sein.Inventory.GetRandomizerItem(1003) + (RandomizerBonus.WarmthFrags() << 9);
-			TeleporterBitfield = GetTeleporters() + (Randomizer.fragKeyFinish << 8);
+			TeleporterBitfield = GetTeleporters() + (Randomizer.fragKeyFinish << 10);
 			KeyEventBitfield = GetKeyEvents();
 		}
 	}
