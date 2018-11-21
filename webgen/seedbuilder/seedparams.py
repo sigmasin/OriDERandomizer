@@ -226,7 +226,7 @@ class SeedGenParams(ndb.Model):
         if self.balanced:
             flags.append("balanced")
         if self.sense:
-            flags.append("sense=%s" % self.sense).replace(" ", "+")
+            flags.append("sense=%s" % self.sense.replace(" ", "+"))
         return "%s|%s" % (",".join(flags), self.seed)
 
     @staticmethod
