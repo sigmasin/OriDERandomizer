@@ -13,6 +13,7 @@ public class NewGameAction : ActionMethod
 	public override void Perform(IContext context)
 	{
 		Game.Checkpoint.SaveGameData = new SaveGameData();
+		Randomizer.JustSpawned = true;
 		RandomizerStatsManager.Activate();
 		if (Randomizer.OpenMode)
 		{

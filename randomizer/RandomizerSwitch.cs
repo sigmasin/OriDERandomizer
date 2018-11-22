@@ -256,7 +256,6 @@ public static class RandomizerSwitch
                 Randomizer.Warping = 120;
                 break;
             case "NO":
-                Randomizer.showHint("Nothing");
                 break;
         }
         RandomizerTrackedDataManager.UpdateBitfields();

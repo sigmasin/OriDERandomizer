@@ -219,6 +219,10 @@ public static class Randomizer
 					string[] lineParts = allLines[i].Split(new char[] { '|' });
 					int coords;
 					int.TryParse(lineParts[0], out coords);
+					if (coords == 2) {
+						SpawnWith = lineParts[1] + lineParts[2];
+						continue;
+					}
 					int index = Array.BinarySearch<string>(Randomizer.HotColdTypes, lineParts[1]);
 					if (index < 0)
 					{
@@ -995,44 +999,52 @@ public static class Randomizer
 			if(CreditsActive && !RandomizerCreditsManager.CreditsDone)
 					RandomizerCreditsManager.Tick();
 
-			if(Characters.Sein && !Characters.Sein.IsSuspended && Scenes.Manager.CurrentScene != null)
+			if(Characters.Sein)
 			{
-				ResetTrackerCount = 0;
-				RandomizerTrackedDataManager.UpdateBitfields();
-				RandomizerColorManager.UpdateHotColdTarget();
-				if (Characters.Sein.Position.y > 937f && Sein.World.Events.WarmthReturned && Scenes.Manager.CurrentScene.Scene == "ginsoTreeWaterRisingEnd")
-				{
-					if (Characters.Sein.Abilities.Bash.IsBashing)
-					{
-						Characters.Sein.Abilities.Bash.BashGameComplete(0f);
-					}
-					Characters.Sein.Position = new Vector3(750f, -120f);
-					return;
+				if(JustSpawned && SpawnWith != "") {
+					JustSpawned = false;
+					RandomizerSwitch.GivePickup(new RandomizerAction(SpawnWith.Substring(0, 2), SpawnWith.Substring(2)), 2, true);
 				}
-				if (Scenes.Manager.CurrentScene.Scene == "catAndMouseResurrectionRoom" && !Randomizer.canFinalEscape())
+				if(!Characters.Sein.IsSuspended && Scenes.Manager.CurrentScene != null)
 				{
-					if (Randomizer.Entrance)
+					ResetTrackerCount = 0;
+					RandomizerTrackedDataManager.UpdateBitfields();
+					RandomizerColorManager.UpdateHotColdTarget();
+					if (Characters.Sein.Position.y > 937f && Sein.World.Events.WarmthReturned && Scenes.Manager.CurrentScene.Scene == "ginsoTreeWaterRisingEnd")
 					{
-						Randomizer.EnterDoor(new Vector3(-242f, 489f));
+						if (Characters.Sein.Abilities.Bash.IsBashing)
+						{
+							Characters.Sein.Abilities.Bash.BashGameComplete(0f);
+						}
+						Characters.Sein.Position = new Vector3(750f, -120f);
 						return;
 					}
-					Characters.Sein.Position = new Vector3(20f, 105f);
-					return;
-				}
-				else if (!Characters.Sein.Controller.CanMove && Scenes.Manager.CurrentScene.Scene == "moonGrottoGumosHideoutB")
-				{
-					Randomizer.LockedCount++;
-					if (Randomizer.LockedCount >= 4)
+					if (Scenes.Manager.CurrentScene.Scene == "catAndMouseResurrectionRoom" && !Randomizer.canFinalEscape())
 					{
-						GameController.Instance.ResetInputLocks();
+						if (Randomizer.Entrance)
+						{
+							Randomizer.EnterDoor(new Vector3(-242f, 489f));
+							return;
+						}
+						Characters.Sein.Position = new Vector3(20f, 105f);
 						return;
 					}
-				}
-				else
-				{
-					Randomizer.LockedCount = 0;
+					else if (!Characters.Sein.Controller.CanMove && Scenes.Manager.CurrentScene.Scene == "moonGrottoGumosHideoutB")
+					{
+						Randomizer.LockedCount++;
+						if (Randomizer.LockedCount >= 4)
+						{
+							GameController.Instance.ResetInputLocks();
+							return;
+						}
+					}
+					else
+					{
+						Randomizer.LockedCount = 0;
+					}
 				}
 			}
+
 		}
 	}
 
@@ -1265,4 +1277,8 @@ public static class Randomizer
 	public static bool OpenWorld;
 
 	public static bool StompTriggers;
+
+	public static string SpawnWith;
+
+	public static bool JustSpawned;
 }
