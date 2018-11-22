@@ -953,7 +953,8 @@ public static class Randomizer
 
 			if(RepeatableCooldown > 0)
 				RepeatableCooldown--;
-
+			if(RandomizerStatsManager.StatsTimer > 0)
+				RandomizerStatsManager.StatsTimer--;
 			RandomizerStatsManager.IncTime();
 			if(Scenes.Manager.CurrentScene != null)
 			{

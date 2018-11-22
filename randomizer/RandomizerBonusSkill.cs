@@ -227,8 +227,11 @@ public static class RandomizerBonusSkill
     // Token: 0x06003801 RID: 14337
     public static void FoundBonusSkill(int ID)
     {
+        if(Characters.Sein.Inventory.GetRandomizerItem(ID) > 0) {
+            return;
+        }
         Randomizer.showHint("Unlocked Bonus Skill: " + RandomizerBonusSkill.BonusSkillNames[ID]);
-        Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
+        Characters.Sein.Inventory.SetRandomizerItem(ID, 1);
         if (!RandomizerBonusSkill.UnlockedBonusSkills.Contains(ID))
         {
             RandomizerBonusSkill.UnlockedBonusSkills.Add(ID);

@@ -280,9 +280,19 @@ public static class RandomizerStatsManager {
 	}
 
 	public static void ShowStats(int duration) {
-		string stats = GetStatsPage(CurrentPage);
-		Randomizer.PrintImmediately(stats, duration, false, false, false);
-		CurrentPage = (CurrentPage + 1) % PageCount;
+		if(CurrentPage < PageCount)
+		{
+			string stats = GetStatsPage(CurrentPage);
+			Randomizer.PrintImmediately(stats, duration, false, false, false);
+			CurrentPage++;
+			StatsTimer = duration;
+		} else {
+			CurrentPage = 0;
+			if(StatsTimer > 0) 
+				Randomizer.PrintImmediately("", 1, false, false, false);
+			 else 
+				ShowStats(duration);
+		}
 	}
 
 	public static string GetStatsPage(int page) {
@@ -513,4 +523,5 @@ public static class RandomizerStatsManager {
 	public static Dictionary<string, string> ZonePrettyNames;
 	public static Dictionary<string, string> SceneToZone;
 	public static Dictionary<int, int> MenuCache;
+	public static int StatsTimer = 0;
 }
