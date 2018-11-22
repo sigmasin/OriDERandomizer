@@ -14,6 +14,7 @@ coord_correction_map = {
 non_area_lines = {
     "EC": """\t{"loc": -280256, "name": "EC", "zone": "Glades", "area": "SunkenGladesRunaway", "x": -28, "y": -256},\n""",
     "EX": """\t{"loc": -1680104, "name": "EX100", "zone": "Grove", "area": "SpritTreeRefined", "x": -168, "y": -104},\n""",
+    "EV": """\t{"loc": -2399488, "name": "EVWarmth", "zone": "Horu", "area": "FinalEscape", "x": -240, "y": 512},\n""",
     "Pl": """\t{"loc": -12320248, "name": "Plant", "zone": "Forlorn", "area": "RightForlornPlant", "x": -1232, "y": -248},\n""",
 }
 

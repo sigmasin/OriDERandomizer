@@ -983,7 +983,7 @@ class SeedGenerator:
             relicSpoiler = self.spoilerGroup["Relic"]
 
         if self.var(Variation.EXTRA_BONUS_PICKUPS):
-            warps = 4
+            warps = self.random.randint(4,8)
             warp_locs = []
             for area in self.areas.values():
                 for loc in area.locations:
