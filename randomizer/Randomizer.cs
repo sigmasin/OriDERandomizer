@@ -88,7 +88,6 @@ public static class Randomizer
 		RandomizerPlantManager.Initialize();
 		RandomizerRebinding.ParseRebinding();
 		RandomizerSettings.ParseSettings();
-		Randomizer.Warping = 0;
 		Randomizer.RelicZoneLookup = new Dictionary<string, string>();
 		RandomizerTrackedDataManager.Initialize();
 		RandomizerStatsManager.Initialize();
@@ -97,6 +96,7 @@ public static class Randomizer
 		Randomizer.StompZone = "MIA";
 		Randomizer.RepeatablePickups = new HashSet<int>();
 		Randomizer.StompTriggers = false;
+		Randomizer.SpawnWith = "";
 		bool relicCountOverride = false;
 		try {
 			if(File.Exists("randomizer.dat")) {
@@ -304,12 +304,25 @@ public static class Randomizer
 		Randomizer.getPickup(Characters.Sein.Position);
 	}
 
+	public static void WarpTo(Vector3 position, int warpDelay) {
+		if (Characters.Sein.Abilities.Carry.IsCarrying || !Characters.Sein.Controller.CanMove || !Characters.Sein.Active || Randomizer.Warping > 0 || Randomizer.Returning)
+			return;
+		if(Characters.Sein.Abilities.Dash && Characters.Sein.Abilities.Dash.IsDashingOrChangeDashing)
+			Characters.Sein.Abilities.Dash.StopDashing();
+		Characters.Sein.Position = position;
+		Characters.Sein.Speed = new Vector3(0f, 0f);
+		Characters.Ori.Position = new Vector3(position.x, position.y+5);
+		Scenes.Manager.SetTargetPositions(Characters.Sein.Position);
+		UI.Cameras.Current.CameraTarget.SetTargetPosition(Characters.Sein.Position);
+		UI.Cameras.Current.MoveCameraToTargetInstantly(true);
+		Randomizer.WarpTarget = position;
+		Randomizer.Warping = warpDelay;
+	}
+
 	public static void returnToStart()
 	{
 		if (Characters.Sein.Abilities.Carry.IsCarrying || !Characters.Sein.Controller.CanMove || !Characters.Sein.Active)
-		{
 			return;
-		}
 		if (Items.NightBerry != null)
 		{
 			Items.NightBerry.transform.position = new Vector3(-755f, -400f);
@@ -492,10 +505,20 @@ public static class Randomizer
 			}
 			if (Randomizer.Warping > 0) {
 				Characters.Sein.Position = Randomizer.WarpTarget;
-				Characters.Ori.Position = Randomizer.WarpTarget;
-				Randomizer.Warping -= 1;
-			}
-			else if (Randomizer.Returning)
+				Characters.Sein.Speed = new Vector3(0f, 0f);
+				Characters.Ori.Position = new Vector3(Randomizer.WarpTarget.x, Randomizer.WarpTarget.y-5);
+				bool loading = false;
+				foreach (SceneManagerScene sms in Scenes.Manager.ActiveScenes)
+				{
+					if (sms.CurrentState == SceneManagerScene.State.Loading)
+					{
+						loading = true;
+						break;
+					}
+				}
+				if(!loading)
+				Randomizer.Warping--;
+			} else if (Randomizer.Returning)
 			{
 				Characters.Sein.Position = new Vector3(189f, -215f);
 				if (Scenes.Manager.CurrentScene.Scene == "sunkenGladesRunaway")
