@@ -1026,7 +1026,12 @@ public static class Randomizer
 			{
 				if(JustSpawned && SpawnWith != "") {
 					JustSpawned = false;
-					RandomizerSwitch.GivePickup(new RandomizerAction(SpawnWith.Substring(0, 2), SpawnWith.Substring(2)), 2, true);
+					RandomizerAction spawnItem;
+					if(Randomizer.StringKeyPickupTypes.Contains(SpawnWith.Substring(0, 2)))
+						spawnItem = new RandomizerAction(SpawnWith.Substring(0, 2), SpawnWith.Substring(2));
+					else
+						spawnItem = new RandomizerAction(SpawnWith.Substring(0, 2), int.Parse(SpawnWith.Substring(2)));
+					RandomizerSwitch.GivePickup(spawnItem, 2, true);
 				}
 				if(!Characters.Sein.IsSuspended && Scenes.Manager.CurrentScene != null)
 				{
