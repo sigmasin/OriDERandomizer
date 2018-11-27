@@ -93,11 +93,7 @@ public static class RandomizerBonusSkill
             if (Characters.Sein.Energy.Current >= 0.5f)
             {
                 Characters.Sein.Energy.SetCurrent(Characters.Sein.Energy.Current - 0.5f);
-                Randomizer.Warping = 5;
-                Randomizer.WarpTarget = Randomizer.LastReturnPoint;
-                Characters.Sein.Position = Randomizer.LastReturnPoint;
-                Characters.Sein.Speed = new Vector3(0f, 0f);
-                Characters.Ori.Position = Randomizer.LastReturnPoint;
+                Randomizer.WarpTo(Randomizer.LastReturnPoint, 0);
                 return;
             }
             UI.SeinUI.ShakeEnergyOrbBar();
@@ -111,11 +107,7 @@ public static class RandomizerBonusSkill
             if (Characters.Sein.Energy.Current >= 0.5f)
             {
                 Characters.Sein.Energy.SetCurrent(Characters.Sein.Energy.Current - 0.5f);
-                Randomizer.Warping = 5;
-                Randomizer.WarpTarget = Randomizer.LastSoulLink;
-                Characters.Sein.Position = Randomizer.LastSoulLink;
-                Characters.Sein.Speed = new Vector3(0f, 0f);
-                Characters.Ori.Position = Randomizer.LastSoulLink;
+                Randomizer.WarpTo(Randomizer.LastSoulLink, 0);
                 return;
             }
             UI.SeinUI.ShakeEnergyOrbBar();
@@ -227,8 +219,11 @@ public static class RandomizerBonusSkill
     // Token: 0x06003801 RID: 14337
     public static void FoundBonusSkill(int ID)
     {
+        if(Characters.Sein.Inventory.GetRandomizerItem(ID) > 0) {
+            return;
+        }
         Randomizer.showHint("Unlocked Bonus Skill: " + RandomizerBonusSkill.BonusSkillNames[ID]);
-        Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
+        Characters.Sein.Inventory.SetRandomizerItem(ID, 1);
         if (!RandomizerBonusSkill.UnlockedBonusSkills.Contains(ID))
         {
             RandomizerBonusSkill.UnlockedBonusSkills.Add(ID);
@@ -271,29 +266,11 @@ public static class RandomizerBonusSkill
     // Token: 0x040032CD RID: 13005
     public static Dictionary<int, string> BonusSkillNames = new Dictionary<int, string>
     {
-        {
-            101,
-            "Polarity Shift"
-        },
-        {
-            102,
-            "Gravity Swap"
-        },
-        {
-            103,
-            "ExtremeSpeed"
-        },
-        {
-            104,
-            "Roose's Wind"
-        },
-        {
-            105,
-            "Respawn Without Dying"
-        },
-        {
-            106,
-            "Respec"
-        }
+        { 101, "Polarity Shift" },
+        { 102, "Gravity Swap" },
+        { 103, "ExtremeSpeed" },
+        { 104, "Roose's Wind" },
+        { 105, "Respawn Without Dying" },
+        { 106, "Respec" }
     };
 }

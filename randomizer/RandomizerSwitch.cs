@@ -252,11 +252,9 @@ public static class RandomizerSwitch
             case "WP":
                 string rawTarget = (string)Action.Value;
                 string[] xy = rawTarget.Split(',');
-                Randomizer.WarpTarget = new UnityEngine.Vector3(float.Parse(xy[0]), float.Parse(xy[1]));
-                Randomizer.Warping = 120;
+                Randomizer.WarpTo(new UnityEngine.Vector3(float.Parse(xy[0]), float.Parse(xy[1])), 15);
                 break;
             case "NO":
-                Randomizer.showHint("Nothing");
                 break;
         }
         RandomizerTrackedDataManager.UpdateBitfields();
