@@ -430,7 +430,7 @@ class SeedGenerator:
                             if self.itemPool[req] == 0:
                                 requirements = []
                                 break
-                            if req in ["HC", "EC", "WaterVeinShard", "GumonSealShard", "SunstoneShard", "RB28"]:
+                            if req in ["HC", "EC", "WaterVeinShard", "GumonSealShard", "SunstoneShard"]:
                                 cnts[req] += 1
                                 if cnts[req] > self.inventory[req]:
                                     requirements.append(req)
@@ -510,7 +510,7 @@ class SeedGenerator:
         position = 0.0
         denom = float(sum(self.itemPool.values()))
         if denom == 0.0:
-            log.warning("%s: itemPool was empty! locations: %s", self.params.flag_line(), self.locations())
+            log.warning("%s: itemPool was empty! locations: %s, balanced items: %s", self.params.flag_line(), self.locations(), self.items() - self.items(False))
             return self.assign("EX*")
         for key in self.itemPool.keys():
             position += self.itemPool[key] / denom
@@ -1139,9 +1139,9 @@ class SeedGenerator:
                     itemsToAssign.append(self.assign("HC"))
                 elif self.inventory["EC"] * self.params.cell_freq < (252 - locationCount) and self.itemPool["EC"] > 0:
                     itemsToAssign.append(self.assign("EC"))
-                elif self.itemPool.get("RB28", -99) > locationCount + 1:
+                elif self.itemPool.get("RB28", 0) > 0 and self.itemPool["RB28"] >= locationCount:
                     itemsToAssign.append(self.assign("RB28"))
-                elif self.balanceListLeftovers and self.items(include_balanced=False) == 1:
+                elif self.balanceListLeftovers and self.items(include_balanced=False) < 2:
                     itemsToAssign.append(self.balanceListLeftovers.pop(0))
                 else:
                     itemsToAssign.append(self.assign_random())
@@ -1210,15 +1210,23 @@ class SeedGenerator:
         balanced = self.params.balanced
         self.params.balanced = False
         wr = False
+        kuro_gift = Location(-240, 512, 'FinalEscape', 'EVWarmth', 0, 'Horu')
         for item in self.itemPool:
             if self.itemPool[item] > 0:
-                self.assign_to_location(item, Location(-240, 512, 'FinalEscape', 'EVWarmth', 0, 'Horu'))
+                self.assign_to_location(item, kuro_gift)
                 wr = True
                 break
         if not wr:
-            log.warning("%s: No item found for warmth returned! Placing EXP", self.params.flag_line())
-            self.assign_to_location("EX*", Location(-240, 512, 'FinalEscape', 'EVWarmth', 0, 'Horu'))
+            if self.balanceListLeftovers:
+                log.debug("Empty item pool: placing item from balanceListLeftovers onto warmth returned.")
+                self.assign_to_location(self.balanceListLeftovers.pop(0), kuro_gift)
+            else:
+                log.warning("%s: No item found for warmth returned! Placing EXP", self.params.flag_line())
+                self.assign_to_location("EX*", kuro_gift)
         self.params.balanced = balanced
+
+        if self.balanceListLeftovers:
+            log.warning("%s: Balance list was not empty! %s", self.params.flag_line(), self.balanceListLeftovers)
 
         if self.params.do_loc_analysis:
             self.params.locationAnalysis = self.params.locationAnalysisCopy
