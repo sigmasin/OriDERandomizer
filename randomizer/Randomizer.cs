@@ -22,7 +22,7 @@ public static class Randomizer
 		Randomizer.Sync = false;
 		Randomizer.ForceMaps = false;
 		Randomizer.SyncMode = 4;
-		Randomizer.StringKeyPickupTypes = new List<string> {"TP", "SH", "NO", "WT", "MU", "HN", "WP", "RP"};
+		Randomizer.StringKeyPickupTypes = new List<string> {"TP", "SH", "NO", "WT", "MU", "HN", "WP", "RP", "WS"};
 		Randomizer.ShareParams = "";
 		RandomizerChaosManager.initialize();
 		Randomizer.DamageModifier = 1f;
@@ -58,7 +58,6 @@ public static class Randomizer
 		Randomizer.BashWasQueued = false;
 		Randomizer.BashTap = false;
 		Randomizer.fragsEnabled = false;
-		Randomizer.MoveNightBerry = false;
 		Randomizer.TickCounter = 60;
 		Randomizer.LockedCount = 0;
 		Randomizer.ResetTrackerCount = 0;
@@ -305,8 +304,13 @@ public static class Randomizer
 	}
 
 	public static void WarpTo(Vector3 position, int warpDelay) {
-		if (Characters.Sein.Abilities.Carry.IsCarrying || !Characters.Sein.Controller.CanMove || !Characters.Sein.Active || Randomizer.Warping > 0 || Randomizer.Returning)
+		Randomizer.Warping = warpDelay;
+		Randomizer.WarpTarget = position;
+		if (!Characters.Sein.Controller.CanMove || !Characters.Sein.Active || Characters.Sein.IsSuspended)
+		{
+			DelayedWarp = true;
 			return;
+		}
 		if(Characters.Sein.Abilities.Dash && Characters.Sein.Abilities.Dash.IsDashingOrChangeDashing)
 			Characters.Sein.Abilities.Dash.StopDashing();
 		Characters.Sein.Position = position;
@@ -315,8 +319,6 @@ public static class Randomizer
 		Scenes.Manager.SetTargetPositions(Characters.Sein.Position);
 		UI.Cameras.Current.CameraTarget.SetTargetPosition(Characters.Sein.Position);
 		UI.Cameras.Current.MoveCameraToTargetInstantly(true);
-		Randomizer.WarpTarget = position;
-		Randomizer.Warping = warpDelay;
 	}
 
 	public static void returnToStart()
@@ -460,7 +462,7 @@ public static class Randomizer
 					RandomizerColorManager.UpdateHotColdTarget();
 				}
 				return;
-			}			
+			}
 		}
 		catch(Exception e) {
 			Randomizer.LogError("GetPickup: " + e.Message);
@@ -490,10 +492,10 @@ public static class Randomizer
 				RandomizerColorManager.UpdateColors();
 			}
 			Randomizer.UpdateHoruCutsceneStatus();
-			if (Randomizer.MoveNightBerry && Items.NightBerry != null)
+			if (Characters.Sein.Inventory.GetRandomizerItem(82) > 0 && Items.NightBerry != null)
 			{
 				Items.NightBerry.transform.position = new Vector3(-910f, -300f);
-				Randomizer.MoveNightBerry = false;
+				Characters.Sein.Inventory.SetRandomizerItem(82, 0);
 			}
 			if (Randomizer.Chaos)
 			{
@@ -504,20 +506,32 @@ public static class Randomizer
 				RandomizerSyncManager.Update();
 			}
 			if (Randomizer.Warping > 0) {
-				Characters.Sein.Position = Randomizer.WarpTarget;
-				Characters.Sein.Speed = new Vector3(0f, 0f);
-				Characters.Ori.Position = new Vector3(Randomizer.WarpTarget.x, Randomizer.WarpTarget.y-5);
-				bool loading = false;
-				foreach (SceneManagerScene sms in Scenes.Manager.ActiveScenes)
+				if (Randomizer.DelayedWarp)
 				{
-					if (sms.CurrentState == SceneManagerScene.State.Loading)
+					Randomizer.DelayedWarp = false;
+					Randomizer.WarpTo(Randomizer.WarpTarget, Randomizer.Warping);
+				} else {
+					Characters.Sein.Position = Randomizer.WarpTarget;
+					Characters.Sein.Speed = new Vector3(0f, 0f);
+					Characters.Ori.Position = new Vector3(Randomizer.WarpTarget.x, Randomizer.WarpTarget.y-5);
+					bool loading = false;
+					foreach (SceneManagerScene sms in Scenes.Manager.ActiveScenes)
 					{
-						loading = true;
-						break;
+						if (sms.CurrentState == SceneManagerScene.State.Loading)
+						{
+							loading = true;
+							break;
+						}
 					}
-				}
-				if(!loading)
-				Randomizer.Warping--;
+					if(!loading)
+					Randomizer.Warping--;
+					if(Randomizer.Warping == 0 && Randomizer.SaveAfterWarp)
+					{
+						GameController.Instance.CreateCheckpoint();
+						GameController.Instance.SaveGameController.PerformSave();
+						Randomizer.SaveAfterWarp = false;
+					}
+				}				
 			} else if (Randomizer.Returning)
 			{
 				Characters.Sein.Position = new Vector3(189f, -215f);
@@ -1024,7 +1038,7 @@ public static class Randomizer
 
 			if(Characters.Sein)
 			{
-				if(JustSpawned && SpawnWith != "") {
+				if(JustSpawned && SpawnWith != "" && Characters.Sein.Inventory) {
 					JustSpawned = false;
 					RandomizerAction spawnItem;
 					if(Randomizer.StringKeyPickupTypes.Contains(SpawnWith.Substring(0, 2)))
@@ -1245,9 +1259,6 @@ public static class Randomizer
 	// Token: 0x04003332 RID: 13106
 	public static int TickCounter;
 
-	// Token: 0x04003459 RID: 13401
-	public static bool MoveNightBerry;
-
 	// Token: 0x040032F7 RID: 13047
 	public static ArrayList GladesData;
 
@@ -1309,4 +1320,8 @@ public static class Randomizer
 	public static string SpawnWith;
 
 	public static bool JustSpawned;
+
+	public static bool DelayedWarp;
+
+	public static bool SaveAfterWarp;
 }

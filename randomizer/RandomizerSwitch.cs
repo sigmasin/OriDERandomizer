@@ -231,7 +231,7 @@ public static class RandomizerSwitch
                 EventPickup((int)Action.Value);
                 break;
             case "RB":
-                RandomizerBonus.UpgradeID((int)Action.Value);                    
+                RandomizerBonus.UpgradeID((int)Action.Value);
                 break;
             case "TP":
                 TeleportPickup((string)Action.Value);
@@ -249,9 +249,10 @@ public static class RandomizerSwitch
                 }
                 Randomizer.showHint((string)Action.Value + relicStr, 480);
                 break;
+            case "WS":
             case "WP":
-                string rawTarget = (string)Action.Value;
-                string[] xy = rawTarget.Split(',');
+                Randomizer.SaveAfterWarp = Action.Action == "WS";
+                string[] xy = ((string)Action.Value).Split(',');
                 Randomizer.WarpTo(new UnityEngine.Vector3(float.Parse(xy[0]), float.Parse(xy[1])), 15);
                 break;
             case "NO":
@@ -263,4 +264,4 @@ public static class RandomizerSwitch
             Randomizer.LogError("Give Pickup: " + e.Message);
         }
     }
-}   
+}

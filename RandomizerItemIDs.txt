@@ -34,9 +34,10 @@
 47 - Lose Charge Jump
 48 - Lose Dash
 49 - Lose Grenade
-q
+
 80 - Spent AP Counter
 81 - Stomp/Grenade Hint
+82 - Move Nightberry
 
 101 - Polarity Shift
 102 - Gravity Swap
