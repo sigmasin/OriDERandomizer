@@ -264,12 +264,14 @@ class SeedGenerator:
             self.itemPool["RB106"] = 1
 
         if self.params.key_mode == KeyMode.SHARDS:
-            self.itemPool["WaterVeinShard"] = 5
-            self.itemPool["GumonSealShard"] = 5
-            self.itemPool["SunstoneShard"] = 5
-            self.itemPool["GinsoKey"] = 0
-            self.itemPool["ForlornKey"] = 0
-            self.itemPool["HoruKey"] = 0
+            shard_count = 5
+            if self.params.sync.mode == MultiplayerGameType.SPLITSHARDS:
+                shard_count = 2 + 3*(self.params.players)
+            for shard in ["WaterVeinShard", "GumonSealShard", "SunstoneShard"]:
+                self.itemPool[shard] = shard_count
+                self.costs[shard] = shard_count
+            for key in ["GinsoKey", "HoruKey", "ForlornKey"]:
+                self.itemPool[key] = 0
 
         if self.var(Variation.DOUBLE_SKILL):
             self.itemPool["DoubleJump"] += 1
@@ -428,7 +430,7 @@ class SeedGenerator:
                             if self.itemPool[req] == 0:
                                 requirements = []
                                 break
-                            if req in ["HC", "EC", "WaterVeinShard", "GumonSealShard", "SunstoneShard", "RB28"]:
+                            if req in ["HC", "EC", "WaterVeinShard", "GumonSealShard", "SunstoneShard"]:
                                 cnts[req] += 1
                                 if cnts[req] > self.inventory[req]:
                                     requirements.append(req)
@@ -508,7 +510,7 @@ class SeedGenerator:
         position = 0.0
         denom = float(sum(self.itemPool.values()))
         if denom == 0.0:
-            log.warning("%s: itemPool was empty! locations: %s", self.params.flag_line(), self.locations())
+            log.warning("%s: itemPool was empty! locations: %s, balanced items: %s", self.params.flag_line(), self.locations(), self.items() - self.items(False))
             return self.assign("EX*")
         for key in self.itemPool.keys():
             position += self.itemPool[key] / denom
@@ -990,22 +992,22 @@ class SeedGenerator:
                     if loc.repeatable:
                         warp_locs.append(loc.get_key())
             warp_targets = [
-                (920, -80),    # stomp miniboss
-                (775, -180),   # below swamp swim
-                (590, -400),   # grotto miniboss
-                (585, -60),    # outer swamp health cell
-                (516, 924),    # top of ginso escape
-                (500, -500),   # lost grove laser lever
-                (480, -256),   # moon grotto, just below the bridge
-                (417, -422),   # lower blackroot right lasers
-                (330, -45),    # Hollow Grove main AC
-                (120, 35),     # Horu Fields Plant
-                (-12, -92),    # Above cflame tree exp
-                (-220, -70),   # Valley entry (upper)
-                (-358, 73),    # Stompless AC
-                (-500, 600),   # Top of sorrow
-                (-570, 162),   # Wilhelm exp
-                (-595, -210),  # Forlorn enterance
+                (915, -115),    # stomp miniboss
+                (790, -195),   # below swamp swim
+                (561, -410),   # grotto miniboss
+                (585, -68),    # outer swamp health cell
+                (510, 910),    # top of ginso escape
+                (499, -505),   # lost grove laser lever
+                (480, -252),   # moon grotto, just below the bridge
+                (417, -435),   # lower blackroot right lasers
+                (330, -63),    # Hollow Grove main AC
+                (127, 20),     # Horu Fields Plant
+                (-13, -96),    # Above cflame tree exp
+                (-224, -85),   # Valley entry (upper)
+                (-358, 65),    # Stompless AC
+                (-500, 587),   # Top of sorrow
+                (-570, 156),   # Wilhelm exp
+                (-605, -255),  # Forlorn enterance
             ]
             for loc, target in zip(self.random.sample(warp_locs, warps), self.random.sample(warp_targets, warps)):
                 self.forcedAssignments[loc] = "RPSH/Warp/WP/%s,%s" % target
@@ -1018,12 +1020,25 @@ class SeedGenerator:
             if item not in ["EX100", "EC1", "RB81"] and item not in self.itemPool:
                 log.warning("Preplaced item %s was not in pool. Translation may be necessary." % item)
             ass = self.get_assignment(loc, self.adjust_item(item, zone), zone)
-            if loc == -280256 and self.params.key_mode == KeyMode.FREE:
+            self.outputStr += ass
+
+        if 2 in self.forcedAssignments:
+            item = self.forcedAssignments[2]
+            self.assign(item)
+            del self.forcedAssignments[2]
+            ass = self.get_assignment(2, self.adjust_item(item, "Glades"), "Glades")
+            if self.params.key_mode == KeyMode.FREE:
                 splitAss = ass.split("|")
-                splitAss[2] = "EV/0/EV/2/EV/4/%s/%s" % (splitAss[1], splitAss[2])
+                if splitAss[1] in ["MU", "RP"]:
+                    splitAss[2] = "EV/0/EV/2/EV/4/%s" % splitAss[2]
+                else:
+                    splitAss[2] = "EV/0/EV/2/EV/4/%s/%s" % (splitAss[1], splitAss[2])
                 splitAss[1] = "MU"
                 ass = "|".join(splitAss)
             self.outputStr += ass
+        elif self.params.key_mode == KeyMode.FREE:
+            self.outputStr += "2|MU|EV/0/EV/2/EV/4|Glades\n"
+            
 
         for v in self.forcedAssignments.values():
             if v[0:2] in ["MU", "RP"]:
@@ -1124,9 +1139,9 @@ class SeedGenerator:
                     itemsToAssign.append(self.assign("HC"))
                 elif self.inventory["EC"] * self.params.cell_freq < (252 - locationCount) and self.itemPool["EC"] > 0:
                     itemsToAssign.append(self.assign("EC"))
-                elif self.itemPool.get("RB28", -99) > locationCount + 1:
+                elif self.itemPool.get("RB28", 0) > 0 and self.itemPool["RB28"] >= locationCount:
                     itemsToAssign.append(self.assign("RB28"))
-                elif self.balanceListLeftovers and self.items(include_balanced=False) == 1:
+                elif self.balanceListLeftovers and self.items(include_balanced=False) < 2:
                     itemsToAssign.append(self.balanceListLeftovers.pop(0))
                 else:
                     itemsToAssign.append(self.assign_random())
@@ -1194,14 +1209,24 @@ class SeedGenerator:
         # place the last item on the final escape
         balanced = self.params.balanced
         self.params.balanced = False
+        wr = False
+        kuro_gift = Location(-240, 512, 'FinalEscape', 'EVWarmth', 0, 'Horu')
         for item in self.itemPool:
             if self.itemPool[item] > 0:
-                self.assign_to_location(item, Location(-240, 512, 'FinalEscape', 'EVWarmth', 0, 'Horu'))
+                self.assign_to_location(item, kuro_gift)
+                wr = True
                 break
-        else:
-            log.warning("%s: No item found for warmth returned! Placing EXP", self.params.flag_line())
-            self.assign_to_location("EX*", Location(-240, 512, 'FinalEscape', 'EVWarmth', 0, 'Horu'))
+        if not wr:
+            if self.balanceListLeftovers:
+                log.debug("Empty item pool: placing item from balanceListLeftovers onto warmth returned.")
+                self.assign_to_location(self.balanceListLeftovers.pop(0), kuro_gift)
+            else:
+                log.warning("%s: No item found for warmth returned! Placing EXP", self.params.flag_line())
+                self.assign_to_location("EX*", kuro_gift)
         self.params.balanced = balanced
+
+        if self.balanceListLeftovers:
+            log.warning("%s: Balance list was not empty! %s", self.params.flag_line(), self.balanceListLeftovers)
 
         if self.params.do_loc_analysis:
             self.params.locationAnalysis = self.params.locationAnalysisCopy

@@ -158,9 +158,9 @@ class SeedGenParams(ndb.Model):
                     placemap[loc] = Placement(location=loc, zone=zone, stuff=[stuff])
                 else:
                     placemap[loc].stuff.append(stuff)
-        if self.sync.mode == MultiplayerGameType.SIMUSOLO:
+        if self.sync.mode in [MultiplayerGameType.SIMUSOLO, MultiplayerGameType.SPLITSHARDS]:
             if player != 1:
-                log.error("seed count mismatch! Should only be 1 simusolo seed and instead found  %s", player)
+                log.error("seed count mismatch! Should only be 1 seed for this mode and instead found  %s", player)
                 return False
         elif player != self.players and player != len(self.sync.teams):
             log.error("seed count mismatch!, %s != %s or %s", player, self.players, len(self.sync.teams))
@@ -180,7 +180,7 @@ class SeedGenParams(ndb.Model):
         flags = self.flag_line(verbose_paths)
         if self.tracking:
             flags = "Sync%s.%s," % (game_id, player) + flags
-        if self.sync.mode == MultiplayerGameType.SIMUSOLO:
+        if self.sync.mode in [MultiplayerGameType.SIMUSOLO, MultiplayerGameType.SPLITSHARDS]:
             player = 1  # look, it's probably fine
         outlines = [flags]
         outlines += ["|".join(line) for line in self.get_seed_data(player)]
@@ -189,12 +189,12 @@ class SeedGenParams(ndb.Model):
 
     def get_seed_data(self, player=1):
         player = int(player)
-        if self.sync.mode == MultiplayerGameType.SIMUSOLO:
+        if self.sync.mode in [MultiplayerGameType.SIMUSOLO, MultiplayerGameType.SPLITSHARDS]:
             player = 1
         return [(str(p.location), s.code, s.id, p.zone) for p in self.placements for s in p.stuff if int(s.player) == self.team_pid(player)]
 
     def get_spoiler(self, player=1):
-        if self.sync.mode == MultiplayerGameType.SIMUSOLO:
+        if self.sync.mode in [MultiplayerGameType.SIMUSOLO, MultiplayerGameType.SPLITSHARDS]:
             player = 1
         return self.spoilers[self.team_pid(player) - 1]
 
