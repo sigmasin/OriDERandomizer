@@ -257,11 +257,12 @@ class SeedGenerator:
             self.itemPool["RB31"] = 1
             self.itemPool["RB32"] = 1
             self.itemPool["RB33"] = 3
+            self.itemPool["RB36"] = 1
             self.itemPool["RB12"] += 5
-            self.itemPool["RB101"] = 1
-            self.itemPool["RB102"] = 1
-            self.itemPool["RB103"] = 1
-            self.itemPool["RB106"] = 1
+            for bonus_skill in self.random.sample(["RB101", "RB102", "RB103", "WarpSkill", "RB106", "RB107"], 4):
+                if bonus_skill == "WarpSkill":
+                    bonus_skill = self.random.choice(["RB104", "RB105"])
+                self.itemPool[bonus_skill] = 1
 
         if self.params.key_mode == KeyMode.SHARDS:
             shard_count = 5
@@ -1210,22 +1211,22 @@ class SeedGenerator:
         balanced = self.params.balanced
         self.params.balanced = False
         wr = False
-        kuro_gift = Location(-240, 512, 'FinalEscape', 'EVWarmth', 0, 'Horu')
         for item in self.itemPool:
             if self.itemPool[item] > 0:
-                self.assign_to_location(item, kuro_gift)
+                self.assign_to_location(item, Location(-240, 512, 'FinalEscape', 'EVWarmth', 0, 'Horu'))
                 wr = True
                 break
         if not wr:
-            if self.balanceListLeftovers:
-                log.debug("Empty item pool: placing item from balanceListLeftovers onto warmth returned.")
-                self.assign_to_location(self.balanceListLeftovers.pop(0), kuro_gift)
+            if len(self.balanceListLeftovers) > 0:
+                item = self.balanceListLeftovers.pop(0)
+                log.warning("Empty item pool: placing %s from balanceListLeftovers onto warmth returned.", item)
+                self.assign_to_location(item, Location(-240, 512, 'FinalEscape', 'EVWarmth', 0, 'Horu'))
             else:
                 log.warning("%s: No item found for warmth returned! Placing EXP", self.params.flag_line())
-                self.assign_to_location("EX*", kuro_gift)
+                self.assign_to_location("EX*", Location(-240, 512, 'FinalEscape', 'EVWarmth', 0, 'Horu'))
         self.params.balanced = balanced
 
-        if self.balanceListLeftovers:
+        if len(self.balanceListLeftovers) > 0:
             log.warning("%s: Balance list was not empty! %s", self.params.flag_line(), self.balanceListLeftovers)
 
         if self.params.do_loc_analysis:
