@@ -324,7 +324,10 @@ public static class RandomizerBonus
             Characters.Sein.Inventory.SetRandomizerItem(34, 0);
             Randomizer.showHint("Return to start enabled!");
         break;
-
+        case 36:
+            Randomizer.showHint("Gravity Suit");
+            Characters.Sein.Inventory.SetRandomizerItem(36, 1);
+            break;
         case 40:
             if (!Characters.Sein || flag)
                 return;
@@ -566,6 +569,16 @@ public static class RandomizerBonus
     public static int Velocity()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(33);
+    }
+
+    public static bool GravitySuit()
+    {
+        return Characters.Sein.Inventory.GetRandomizerItem(36) > 0;
+    }
+
+    public static bool Swimming()
+    {
+        return Characters.Sein.Controller.IsSwimming && !GravitySuit();
     }
 
     public static void SpentAP(int numSpent)

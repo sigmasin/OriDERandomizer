@@ -2,10 +2,10 @@ using System;
 using System.IO;
 using UnityEngine;
 
-// Token: 0x02000A12 RID: 2578
+// Token: 0x02000A15 RID: 2581
 public static class RandomizerSettings
 {
-	// Token: 0x06003807 RID: 14343
+	// Token: 0x0600381B RID: 14363 RVA: 0x000E7DB8 File Offset: 0x000E5FB8
 	public static void WriteDefaultFile()
 	{
 		StreamWriter streamWriter = new StreamWriter("RandomizerSettings.txt");
@@ -15,12 +15,13 @@ public static class RandomizerSettings
 		streamWriter.WriteLine("Grenade Aim Speed: 1.0");
 		streamWriter.WriteLine("Cold Color: 0, 255, 255, 255");
 		streamWriter.WriteLine("Hot Color: 255, 85, 0, 255");
+		streamWriter.WriteLine("Invert Swim: False");
 		streamWriter.WriteLine("Dev: False");
 		streamWriter.Flush();
 		streamWriter.Close();
 	}
 
-	// Token: 0x06003808 RID: 14344
+	// Token: 0x0600381C RID: 14364 RVA: 0x000E7E28 File Offset: 0x000E6028
 	public static void ParseSettings()
 	{
 		if (!File.Exists("RandomizerSettings.txt"))
@@ -54,13 +55,21 @@ public static class RandomizerSettings
 			{
 				':'
 			})[1]);
-			try {
-				RandomizerSettings.Dev = (array[6].Split(new char[]
+			try
+			{
+				RandomizerSettings.InvertSwim = (array[6].Split(new char[]
+				{
+					':'
+				})[1].Trim().ToLower() == "true");
+
+				RandomizerSettings.Dev = (array[7].Split(new char[]
 				{
 					':'
 				})[1].Trim().ToLower() == "true");
 			}
-			catch(Exception) {
+			catch (Exception)
+			{
+				RandomizerSettings.InvertSwim = false;
 				RandomizerSettings.Dev = false;
 			}
 			RandomizerSettings.BashDeadzone = Math.Max(0f, Math.Min(1f, RandomizerSettings.BashDeadzone));
@@ -72,7 +81,15 @@ public static class RandomizerSettings
 		}
 	}
 
-	// Token: 0x06003809 RID: 14345
+	public static bool IsSwimBoosting()
+	{
+		if(RandomizerSettings.InvertSwim)
+			return !Core.Input.Jump.IsPressed;
+		else
+			return Core.Input.Jump.IsPressed;
+	}
+
+	// Token: 0x0600381D RID: 14365 RVA: 0x000E7FCC File Offset: 0x000E61CC
 	public static void LoadDefaultSettings()
 	{
 		RandomizerSettings.BashDeadzone = 0.5f;
@@ -83,33 +100,36 @@ public static class RandomizerSettings
 		RandomizerSettings.HotColor = new Color(0.5f, 0.1666f, 0f, 0.5f);
 	}
 
-	// Token: 0x06003887 RID: 14471
+	// Token: 0x0600381E RID: 14366 RVA: 0x000E803C File Offset: 0x000E623C
 	private static Color ParseColor(string input)
 	{
-		string[] components = input.Split(new char[]
+		string[] array = input.Split(new char[]
 		{
 			','
 		});
-		return new Color(float.Parse(components[0]) / 511f, float.Parse(components[1]) / 511f, float.Parse(components[2]) / 511f, float.Parse(components[3]) / 511f);
+		return new Color(float.Parse(array[0]) / 511f, float.Parse(array[1]) / 511f, float.Parse(array[2]) / 511f, float.Parse(array[3]) / 511f);
 	}
 
-	// Token: 0x040032D0 RID: 13008
+	// Token: 0x040032EB RID: 13035
 	public static float BashDeadzone;
 
-	// Token: 0x040032D1 RID: 13009
+	// Token: 0x040032EC RID: 13036
 	public static float AbilityMenuOpacity;
 
-	// Token: 0x040032D2 RID: 13010
+	// Token: 0x040032ED RID: 13037
 	public static bool FastGrenadeAim;
 
-	// Token: 0x040032D3 RID: 13011
+	// Token: 0x040032EE RID: 13038
 	public static float GrenadeAimSpeed;
 
-	// Token: 0x040033A6 RID: 13222
+	// Token: 0x040032EF RID: 13039
 	public static Color ColdColor;
 
-	// Token: 0x040033A7 RID: 13223
+	// Token: 0x040032F0 RID: 13040
 	public static Color HotColor;
 
+	public static bool InvertSwim;
+
+	// Token: 0x040032F1 RID: 13041
 	public static bool Dev;
 }

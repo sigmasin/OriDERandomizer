@@ -23,6 +23,9 @@
 31 - Lifesteal
 32 - Manavamp
 33 - Skill Velocity Upgrade
+34 - Disable Alt+R
+35 - Enable Alt+R
+36 - Gravity Suit
 
 40 - Lose Wall Jump
 41 - Lose Charge Flame

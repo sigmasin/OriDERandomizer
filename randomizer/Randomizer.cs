@@ -497,6 +497,14 @@ public static class Randomizer
 				Items.NightBerry.transform.position = new Vector3(-910f, -300f);
 				Characters.Sein.Inventory.SetRandomizerItem(82, 0);
 			}
+			if(RandomizerBonusSkill.LevelExplosionCooldown > 0)
+			{
+				RandomizerBonusSkill.LevelExplosionCooldown--;
+				if(RandomizerBonusSkill.LevelExplosionCooldown > 10) {
+					Characters.Sein.Energy.SetCurrent(RandomizerBonusSkill.OldEnergy);
+					Characters.Sein.Mortality.Health.SetAmount(RandomizerBonusSkill.OldHealth);
+				}
+			}
 			if (Randomizer.Chaos)
 			{
 				RandomizerChaosManager.Update();

@@ -92,7 +92,7 @@ public static class RandomizerBonusSkill
             }
             if (Characters.Sein.Energy.Current >= 0.5f)
             {
-                Characters.Sein.Energy.SetCurrent(Characters.Sein.Energy.Current - 0.5f);
+               Characters.Sein.Energy.Spend(0.5f);
                 Randomizer.WarpTo(Randomizer.LastReturnPoint, 0);
                 return;
             }
@@ -106,7 +106,7 @@ public static class RandomizerBonusSkill
             }
             if (Characters.Sein.Energy.Current >= 0.5f)
             {
-                Characters.Sein.Energy.SetCurrent(Characters.Sein.Energy.Current - 0.5f);
+                Characters.Sein.Energy.Spend(0.5f);
                 Randomizer.WarpTo(Randomizer.LastSoulLink, 0);
                 return;
             }
@@ -145,6 +145,23 @@ public static class RandomizerBonusSkill
                 Characters.Sein.Level.SkillPoints += apToGain;
             }
             return;
+        case 107:
+        if(LevelExplosionCooldown > 0)
+        {
+            return;
+        }
+        if (Characters.Sein.Energy.Current >= 1f)
+            {
+                Characters.Sein.Energy.Spend(1f);
+                OldHealth = Characters.Sein.Mortality.Health.Amount;
+                OldEnergy = Characters.Sein.Energy.Current;
+                Characters.Sein.Level.AttemptInstantiateLevelUp();
+                LevelExplosionCooldown = 15;
+                return;
+            }
+            UI.SeinUI.ShakeEnergyOrbBar();
+            Characters.Sein.Energy.NotifyOutOfEnergy();
+            return;
         default:
             return;
         }
@@ -169,7 +186,7 @@ public static class RandomizerBonusSkill
                 RandomizerBonusSkill.DisableAllPersistant();
                 return;
             }
-            Characters.Sein.Energy.SetCurrent(Characters.Sein.Energy.Current - RandomizerBonusSkill.EnergyDrainRate);
+            Characters.Sein.Energy.Spend(RandomizerBonusSkill.EnergyDrainRate);
         }
     }
 
@@ -251,6 +268,10 @@ public static class RandomizerBonusSkill
     // Token: 0x040032C8 RID: 13000
     public static int ActiveBonus = 0;
 
+    public static int LevelExplosionCooldown = 0;
+    public static float OldHealth;
+    public static float OldEnergy;
+
     // Token: 0x040032C9 RID: 13001
     public static List<int> UnlockedBonusSkills;
 
@@ -271,6 +292,7 @@ public static class RandomizerBonusSkill
         { 103, "ExtremeSpeed" },
         { 104, "Roose's Wind" },
         { 105, "Respawn Without Dying" },
-        { 106, "Respec" }
+        { 106, "Respec" },
+        { 107, "Level Explosion" }
     };
 }
