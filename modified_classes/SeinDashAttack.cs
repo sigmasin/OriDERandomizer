@@ -377,7 +377,7 @@ public class SeinDashAttack : CharacterState, ISeinReceiver
 		bool result;
 		try
 		{
-			result = ((this.HasAirDashSkill() || this.m_sein.IsOnGround || this.m_sein.Controller.IsSwimming) && !this.AgainstWall() && this.DashHasCooledDown && !this.m_hasDashed);
+			result = ((this.HasAirDashSkill() || this.m_sein.IsOnGround || (RandomizerBonus.GravitySuit() && Characters.Sein.Abilities.Swimming.IsSwimming)) && !this.AgainstWall() && this.DashHasCooledDown && !this.m_hasDashed);
 		}
 		catch (Exception ex)
 		{
@@ -414,7 +414,7 @@ public class SeinDashAttack : CharacterState, ISeinReceiver
 	public void UpdateNormal()
 	{
 		float num = Time.time - this.m_lastPressTime;
-		if (this.m_sein.IsOnGround || this.m_sein.Controller.IsSwimming)
+		if (this.m_sein.IsOnGround || (RandomizerBonus.GravitySuit() && Characters.Sein.Abilities.Swimming.IsSwimming))
 		{
 			this.m_hasDashed = false;
 			RandomizerBonus.DoubleAirDashUsed = false;
@@ -488,7 +488,7 @@ public class SeinDashAttack : CharacterState, ISeinReceiver
 	{
 		PlatformMovement platformMovement = this.m_sein.PlatformBehaviour.PlatformMovement;
 		UI.Cameras.Current.ChaseTarget.CameraSpeedMultiplier.x = Mathf.Clamp01(this.m_stateCurrentTime / this.DashTime);
-		if (this.m_sein.Controller.IsSwimming)
+		if ((RandomizerBonus.GravitySuit() && Characters.Sein.Abilities.Swimming.IsSwimming))
 		{
 			float velocity = this.DashSpeedOverTime.Evaluate(this.m_stateCurrentTime);
 			Vector2 newSpeed = new Vector2(velocity, 0f);
