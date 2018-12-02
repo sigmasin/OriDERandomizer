@@ -289,7 +289,10 @@ public static class RandomizerStatsManager {
 		} else {
 			CurrentPage = 0;
 			if(StatsTimer > 0) 
+			{
 				Randomizer.PrintImmediately("", 1, false, false, false);
+				WriteStatsFile();
+			}
 			 else 
 				ShowStats(duration);
 		}
@@ -346,6 +349,7 @@ public static class RandomizerStatsManager {
 					statsPage += "\nTotal time lost to deaths:		" + FormatTime(get(shoof_sum), false);
 					statsPage += "\nLongest time without dying:	" + FormatTime(Math.Max(get(TSLD_max), get(TSLD)), false);
 					statsPage += "\nFound Wall Interaction at:		" + FormatTime(get(FoundWITime), false);
+					statsPage += "\nFound Cflame/Grenade at:		" + FormatTime(get(FoundBlueBreakTime), false);
 					statsPage += "\nFound Bash at:				" + FormatTime(get(FoundBashTime), false);
 					statsPage += "\nFound Dash at:				" + FormatTime(get(FoundDashTime), false);
 				break;
@@ -417,6 +421,7 @@ public static class RandomizerStatsManager {
 			miscPart = miscPart.Replace("(time lost):	", "(time lost):");
 			miscPart = miscPart.Replace("(pickups lost):	", "(pickups lost): ");
 			miscPart = miscPart.Replace("save:	", "save:");
+			miscPart = miscPart.Replace("Grenade at:	", "Grenade at:");
 			miscPart = miscPart.Replace("deaths:		", "deaths:  ");
 			miscPart = miscPart.Replace("dying:	", "dying: ");
 			miscPart = miscPart.Replace("tion at:		", "tion at:  ");
@@ -467,6 +472,11 @@ public static class RandomizerStatsManager {
 	public static void FoundMapstone() { inc(Pickups, 1); inc(Pickups + 12, 1); }
 	public static void FoundSkill(int skillID) {
 		switch(skillID) {
+			case 51:
+			case 2:
+				if(get(FoundBlueBreakTime) == 0)
+					set(FoundBlueBreakTime, get(Time));
+				break;
 			case 12:
 			case 3:
 				if(get(FoundWITime) == 0)
@@ -512,6 +522,7 @@ public static class RandomizerStatsManager {
 	public static int FoundWITime = 1581;
 	public static int FoundBashTime = 1582;
 	public static int FoundDashTime = 1583;
+	public static int FoundBlueBreakTime = 1584;
 
 	public static int CurrentPage;
 	public static int PageCount = 2;

@@ -374,17 +374,7 @@ public class SeinDashAttack : CharacterState, ISeinReceiver
 	// Token: 0x06001077 RID: 4215
 	public bool CanPerformNormalDash()
 	{
-		bool result;
-		try
-		{
-			result = ((this.HasAirDashSkill() || this.m_sein.IsOnGround || (RandomizerBonus.GravitySuit() && Characters.Sein.Abilities.Swimming.IsSwimming)) && !this.AgainstWall() && this.DashHasCooledDown && !this.m_hasDashed);
-		}
-		catch (Exception ex)
-		{
-			Randomizer.LogError(ex.Message);
-			result = false;
-		}
-		return result;
+		return	((this.HasAirDashSkill() || this.m_sein.IsOnGround || (RandomizerBonus.GravitySuit() && Characters.Sein.Abilities.Swimming.IsSwimming)) && !this.AgainstWall() && this.DashHasCooledDown && !this.m_hasDashed);
 	}
 
 	// Token: 0x170002AC RID: 684

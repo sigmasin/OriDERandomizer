@@ -111,6 +111,7 @@
 1581 - Found WI Time
 1582 - Found Bash Time
 1583 - Found Dash Time
+1584 - Found Grenade / Cflame Time
 
 ==== End Persists Through Death Zone ===
 
