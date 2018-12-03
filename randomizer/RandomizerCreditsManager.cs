@@ -46,13 +46,14 @@ Doubles:	That Is Still Faster (Sigmasin and IMRaziel)
 
 
 		// Credits.Add(new KeyValuePair<string, int>("In memory of Grandma", 5));
-		Credits.Add(new KeyValuePair<string, int>(RandomizerStatsManager.GetStatsPage(0), 60));
-		Credits.Add(new KeyValuePair<string, int>(RandomizerStatsManager.GetStatsPage(1), 60));
+		Credits.Add(new KeyValuePair<string, int>(RandomizerStatsManager.GetStatsPage(0), 50));
+		Credits.Add(new KeyValuePair<string, int>(RandomizerStatsManager.GetStatsPage(1), 50));
+		Credits.Add(new KeyValuePair<string, int>(RandomizerStatsManager.GetStatsPage(2), 50));
 
 		Credits.Add(new KeyValuePair<string, int>(
 @"ANCHORTOPPARAMS_20_12_2_Thanks for playing!
 Website: orirando.com
-Join the Ori community: orirando.com/discord", 60));
+Join the Ori community: orirando.com/discord", 30));
 
 		NextCreditCountdown = 0;
 	}

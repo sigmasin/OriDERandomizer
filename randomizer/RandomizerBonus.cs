@@ -73,12 +73,18 @@ public static class RandomizerBonus
             }
             break;
         case 9:
-            Randomizer.showHint("Spirit Light Efficiency");
-            if (!RandomizerBonus.ExpEfficiency())
+            if (!flag)
             {
-                Characters.Sein.Inventory.SetRandomizerItem(ID, 1);
-                return;
+                Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
             }
+            else if (Characters.Sein.Inventory.GetRandomizerItem(ID) > 0)
+            {
+                Characters.Sein.Inventory.IncRandomizerItem(ID, -1);
+            }
+            if (Characters.Sein.Inventory.GetRandomizerItem(ID) == 1)
+                Randomizer.showHint("Spirit Light Efficiency");
+            else
+                Randomizer.showHint("Spirit Light Efficiency (" + Characters.Sein.Inventory.GetRandomizerItem(ID).ToString() + ")");
             break;
         case 10:
             Randomizer.showHint("Extra Air Dash");
@@ -154,7 +160,6 @@ public static class RandomizerBonus
                 if (RandomizerBonus.WaterVeinShards() > 0)
                 {
                     Characters.Sein.Inventory.IncRandomizerItem(ID, -1);
-                    Characters.Sein.Inventory.SkillPointsCollected -= 1 << ID;
                     Randomizer.showHint("*Water Vein Shard (" + RandomizerBonus.WaterVeinShards().ToString() + "/3)*");
                 }
             }
@@ -165,7 +170,6 @@ public static class RandomizerBonus
             else
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
-                Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
                 Randomizer.showHint("*Water Vein Shard (" + RandomizerBonus.WaterVeinShards().ToString() + "/3)*", 300);
                 if (Characters.Sein.Inventory.GetRandomizerItem(1024) == 1 && RandomizerBonus.WaterVeinShards() == 2)
                 {
@@ -174,6 +178,8 @@ public static class RandomizerBonus
                 }
             }
             Keys.GinsoTree = (RandomizerBonus.WaterVeinShards() >= 3);
+            if(Keys.GinsoTree) 
+                RandomizerStatsManager.FoundEvent(0);
             return;
         case 19:
             if (flag)
@@ -181,7 +187,6 @@ public static class RandomizerBonus
                 if (RandomizerBonus.GumonSealShards() > 0)
                 {
                     Characters.Sein.Inventory.IncRandomizerItem(ID, -1);
-                    Characters.Sein.Inventory.SkillPointsCollected -= 1 << ID;
                     Randomizer.showHint("#Gumon Seal Shard (" + RandomizerBonus.GumonSealShards().ToString() + "/3)#");
                 }
             }
@@ -192,7 +197,6 @@ public static class RandomizerBonus
             else
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
-                Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
                 Randomizer.showHint("#Gumon Seal Shard (" + RandomizerBonus.GumonSealShards().ToString() + "/3)#", 300);
                 if (Characters.Sein.Inventory.GetRandomizerItem(1025) == 1 && RandomizerBonus.GumonSealShards() == 2)
                 {
@@ -201,6 +205,8 @@ public static class RandomizerBonus
                 }
             }
             Keys.ForlornRuins = (RandomizerBonus.GumonSealShards() >= 3);
+            if(Keys.ForlornRuins) 
+                RandomizerStatsManager.FoundEvent(2);
             return;
         case 21:
             if (flag)
@@ -208,7 +214,6 @@ public static class RandomizerBonus
                 if (RandomizerBonus.SunstoneShards() > 0)
                 {
                     Characters.Sein.Inventory.IncRandomizerItem(ID, -1);
-                    Characters.Sein.Inventory.SkillPointsCollected -= 1 << ID;
                     Randomizer.showHint("@Sunstone Shard (" + RandomizerBonus.SunstoneShards().ToString() + "/3)@");
                 }
             }
@@ -219,7 +224,6 @@ public static class RandomizerBonus
             else
             {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
-                Characters.Sein.Inventory.SkillPointsCollected += 1 << ID;
                 Randomizer.showHint("@Sunstone Shard (" + RandomizerBonus.SunstoneShards().ToString() + "/3)@", 300);
                 if (Characters.Sein.Inventory.GetRandomizerItem(1026) == 1 && RandomizerBonus.SunstoneShards() == 2)
                 {
@@ -228,6 +232,8 @@ public static class RandomizerBonus
                 }
             }
             Keys.MountHoru = (RandomizerBonus.SunstoneShards() >= 3);
+            if(Keys.MountHoru) 
+                RandomizerStatsManager.FoundEvent(4);
             return;
         case 22:
         case 23:
@@ -248,15 +254,7 @@ public static class RandomizerBonus
                 Randomizer.showHint("@Warmth Fragment (extra)@", 300);
                 return;
             }
-            Randomizer.showHint(string.Concat(new object[]
-            {
-                "@Warmth Fragment (",
-                RandomizerBonus.WarmthFrags().ToString(),
-                "/",
-                Randomizer.fragKeyFinish,
-                ")@"
-            }), 300);
-            return;
+            Randomizer.showHint(string.Concat(new object[] { "@Warmth Fragment (", RandomizerBonus.WarmthFrags().ToString(), "/", Randomizer.fragKeyFinish, ")@" }), 300);
             break;
         case 29:
             return;
@@ -481,9 +479,17 @@ public static class RandomizerBonus
     }
 
     // Token: 0x0600377B RID: 14203 RVA: 0x0002BADF File Offset: 0x00029CDF
-    public static bool ExpEfficiency()
+
+    public static int ExpWithBonuses(int baseExp)
     {
-        return Characters.Sein.Inventory.GetRandomizerItem(9) > 0;
+        float mult = 1.0f + Characters.Sein.Inventory.GetRandomizerItem(9);
+        if(Characters.Sein.PlayerAbilities.AbilityMarkers.HasAbility) 
+            mult += .5f;
+        if(Characters.Sein.PlayerAbilities.SoulEfficiency.HasAbility)
+            mult += .5f;
+        int total = (int)(baseExp*mult);
+        RandomizerStatsManager.OnExp(baseExp, total-baseExp);
+        return total;
     }
 
     // Token: 0x0600377C RID: 14204 RVA: 0x0002BAF5 File Offset: 0x00029CF5
@@ -551,6 +557,11 @@ public static class RandomizerBonus
     public static int Bleeding()
     {
         return Characters.Sein.Inventory.GetRandomizerItem(30);
+    }
+
+    public static bool ExpEfficiency()
+    {
+        return false;
     }
 
     // Token: 0x06003786 RID: 14214 RVA: 0x0002BBA4 File Offset: 0x00029DA4

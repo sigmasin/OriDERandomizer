@@ -76,6 +76,12 @@ public class EntityDamageReciever : DamageReciever, IDynamicGraphicHierarchy, IP
 			damage.DealToComponents(this.Entity.gameObject);
 		}
 		base.OnRecieveDamage(damage);
+		bool terrain = (damage.Type == DamageType.Crush || damage.Type == DamageType.Spikes || damage.Type == DamageType.Lava || damage.Type == DamageType.Laser);
+		if (this.Entity is Enemy && !(terrain || damage.Type == DamageType.Projectile || damage.Type == DamageType.Enemy))
+		{
+			RandomizerBonus.DamageDealt(damage.Amount);
+		}
+
 		if (base.NoHealthLeft)
 		{
 			EntityDamageReciever.OnEntityDeathEvent(this.Entity);
@@ -91,7 +97,7 @@ public class EntityDamageReciever : DamageReciever, IDynamicGraphicHierarchy, IP
 					AchievementsLogic.Instance.OnEnemyKilledAnotherEnemy();
 				}
 			}
-			if (damage.Type == DamageType.Crush || damage.Type == DamageType.Spikes || damage.Type == DamageType.Lava || damage.Type == DamageType.Laser)
+			if (terrain)
 			{
 				Type type = this.Entity.GetType();
 				if (type != typeof(DropSlugEnemy) && type != typeof(KamikazeSootEnemy) && !base.gameObject.name.ToLower().Contains("wall"))
@@ -101,7 +107,7 @@ public class EntityDamageReciever : DamageReciever, IDynamicGraphicHierarchy, IP
 			}
 			if (this.Entity is Enemy)
 			{
-				RandomizerBonus.DamageDealt(damage.Amount);
+				RandomizerStatsManager.OnKill();
 				if (damage.Type == DamageType.ChargeFlame)
 				{
 					if (Characters.Sein && Characters.Sein.Abilities.Dash)

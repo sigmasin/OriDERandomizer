@@ -1,8 +1,11 @@
 using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using System.Linq;
 using Game;
 using Core;
+
 public static class RandomizerStatsManager {
 
 	public static void Initialize() {
@@ -50,6 +53,45 @@ public static class RandomizerStatsManager {
 		PickupCounts.Add("mountHoru", 22);
 		PickupCounts.Add("unknown", 9);
 		PickupCounts.Add("total", 256);
+
+		KeyItemOffsets = new Dictionary<string, int>();
+		KeyItemOffsets.Add("Wall Jump", 0);
+		KeyItemOffsets.Add("Charge Flame", 1);
+		KeyItemOffsets.Add("Double Jump", 2);
+		KeyItemOffsets.Add("Bash", 3);
+		KeyItemOffsets.Add("Stomp", 4);
+		KeyItemOffsets.Add("Glide", 5);
+		KeyItemOffsets.Add("Climb", 6);
+		KeyItemOffsets.Add("Charge Jump", 7);
+		KeyItemOffsets.Add("Dash", 8);
+		KeyItemOffsets.Add("Grenade", 9);
+		KeyItemOffsets.Add("Water Vein", 10);
+		KeyItemOffsets.Add("Clean Water", 11);
+		KeyItemOffsets.Add("Gumon Seal", 12);
+		KeyItemOffsets.Add("Wind Restored", 13);
+		KeyItemOffsets.Add("Sunstone", 14);
+		KeyItemOffsets.Add("Warmth Returned", 15);
+
+		SkillsById = new Dictionary<int, string>() {
+	        {0, "Bash"}, 
+	        {2, "Charge Flame"}, 
+	        {3, "Wall Jump"}, 
+	        {4, "Stomp"}, 
+	        {5, "Double Jump"}, 
+	        {8, "Charge Jump"}, 
+	        {12, "Climb"}, 
+	        {14, "Glide"}, 
+	        {50, "Dash"}, 
+	        {51, "Grenade"}
+		};
+		EventsById = new Dictionary<int, string>() {
+	        {0, "Water Vein"}, 
+	        {1, "Clean Water"}, 
+	        {2, "Gumon Seal"}, 
+	        {3, "Wind Restored"}, 
+	        {4, "Sunstone"}, 
+	        {5, "Warmth Returned"}
+		};
 
 		SceneToZone = new Dictionary<string, string>();
 		SceneToZone.Add("sunkenGladesOriRoom", "sunkenGlades");
@@ -170,12 +212,14 @@ public static class RandomizerStatsManager {
 		return "unknown";
 	}
 
-	public static void UpdateAndReset(int counter, int max) {
+	public static bool UpdateAndReset(int counter, int max) {
 		int _counter = get(counter);
 		int _max = get(max);
-		if(_counter > _max)
+		bool update = _counter > _max;
+		if(update)
 			set(max, _counter);
 		set(counter, 0);
+		return update;
 	}
 
 	public static void OnDeath() {
@@ -208,8 +252,8 @@ public static class RandomizerStatsManager {
 					MenuCache[group + offset] = get(group + offset);
 			WriteFromCache = true;			
 		}
-		catch(Exception e) {
-//			Randomizer.LogError("OnReturnToMenu:" e.Message);
+		catch(Exception) {
+			//pass
 		}
 	}
 
@@ -240,6 +284,7 @@ public static class RandomizerStatsManager {
 					foreach(int key in MenuCache.Keys)
 						set(key, MenuCache[key]);
 				}
+				inc(Drought, CachedTime);
 				inc(TSLDOS, CachedTime);
 				inc(TSLD, CachedTime);
 				inc(Time, CachedTime);
@@ -259,8 +304,9 @@ public static class RandomizerStatsManager {
 		try {
 			inc(PSLDOS, 1);
 			int count = inc(Pickups, 1);
-
 			int time  = get(Time);
+			if(UpdateAndReset(Drought, Drought_max))
+				set(Drought_max_end, time);
 			if(count >= 10) {			
 				int ppm = (int)(Math.Round((float)count / ((float)time / 60f), 2) * 100);
 				if(ppm > get(PPM_max))
@@ -335,26 +381,81 @@ public static class RandomizerStatsManager {
 					}
 					statsPage += "\n" + line;
 				}
-			break;
-				case 1:
-					float ppm_max = (float)get(PPM_max) / 100f;
-					statsPage = "ALIGNLEFTANCHORTOPPADDING_0_2_0_0_PARAMS_16_12_1_\nSaves:					" + get(Saves).ToString();
-					statsPage += "\nReloads:					" + (get(Reloads)).ToString();
-					statsPage += "\nAlt+Rs Used:				" + get(AltRCount).ToString();
-					statsPage += "\nTeleporters Used:			" + get(TeleporterCount).ToString();
-					statsPage += "\nPeak Pickups Per Minute:		" + ppm_max.ToString() + " ("+get(PPM_max_count).ToString() +" / " + FormatTime(get(PPM_max_time), false)+")";
-					statsPage += "\nWorst death (time lost):		" + FormatTime(get(TSLDOS_max), false);
-					statsPage += "\nWorst death (pickups lost):	" + get(PSLDOS_max).ToString();
-					statsPage += "\nMost deaths at one save:		" + Math.Max(get(DSLS_max), get(DSLS)).ToString();
-					statsPage += "\nTotal time lost to deaths:		" + FormatTime(get(shoof_sum), false);
-					statsPage += "\nLongest time without dying:	" + FormatTime(Math.Max(get(TSLD_max), get(TSLD)), false);
-					statsPage += "\nFound Wall Interaction at:		" + FormatTime(get(FoundWITime), false);
-					statsPage += "\nFound Cflame/Grenade at:		" + FormatTime(get(FoundBlueBreakTime), false);
-					statsPage += "\nFound Bash at:				" + FormatTime(get(FoundBashTime), false);
-					statsPage += "\nFound Dash at:				" + FormatTime(get(FoundDashTime), false);
+				break;
+			case 1:
+				float ppm_max = (float)get(PPM_max) / 100f;
+				statsPage = "ALIGNLEFTANCHORTOPPADDING_0_2_0_0_PARAMS_16_12_1_\nSaves:					" + get(Saves).ToString();
+				statsPage += "\nReloads:					" + get(Reloads).ToString();
+				statsPage += "\nAlt+Rs Used:				" + get(AltRCount).ToString();
+				statsPage += "\nTeleporters Used:			" + get(TeleporterCount).ToString();
+				statsPage += "\nEnemies Killed:				" + get(EnemiesKilled).ToString();
+				statsPage += "\nExp collected:				" + get(ExpGained).ToString();
+				if(get(ExpBonus) > 0) {
+					statsPage += " + " + get(ExpBonus).ToString() + " bonus";
+				}
+				statsPage += "\nPeak Pickups Per Minute:		" + ppm_max.ToString();
+				if(ppm_max > 0)
+					statsPage += " ("+get(PPM_max_count).ToString() +" / " + FormatTime(get(PPM_max_time), false)+")";
+				statsPage += "\nLongest Drought:			" + FormatTime(get(Drought_max), false);
+				if(get(Drought_max) > 0)
+				{
+					string startTime = "0:00";
+					int droughtStart = get(Drought_max_end) - get(Drought_max);
+					if(droughtStart > 0) 
+						startTime = FormatTime(droughtStart, false);
+					statsPage += " (" + startTime + "-" + FormatTime(get(Drought_max_end), false) + ")";
+				}
+				statsPage += "\nWorst death (time lost):		" + FormatTime(get(TSLDOS_max), false);
+				statsPage += "\nWorst death (pickups lost):	" + get(PSLDOS_max).ToString();
+				statsPage += "\nMost deaths at one save:		" + Math.Max(get(DSLS_max), get(DSLS)).ToString();
+				statsPage += "\nTotal time lost to deaths:		" + FormatTime(get(shoof_sum), false);
+				statsPage += "\nLongest time without dying:	" + FormatTime(Math.Max(get(TSLD_max), get(TSLD)), false);
+				break;
+			case 2:
+				statsPage += "ALIGNLEFTANCHORTOPPADDING_0_2_0_0_PARAMS_16_12_1_Item				Found At		Zone";
+				SortedDictionary<int, List<string>> linesByTime = new SortedDictionary<int, List<string>>();
+				foreach(string item in KeyItemOffsets.Keys)
+				{
+					string line = item + ":";
+					if(line.Length < 10)
+						line += "\t\t";
+					else if(line.Length < 16)
+						line += "\t";
+					line += "\t";
+					int offset = KeyItemTime + KeyItemOffsets[item];
+					int raw = get(offset);
+					int time = -1;
+					if(raw > 0) {
+						time = raw % (1 << 18);
+						int zoneOffset = raw >> 18;
+						string zoneName = ZonePrettyNames[Offsets.First(x => x.Value == zoneOffset).Key].Trim();
+						line += FormatTime(time);
+						if(FormatTime(time).Length < 4)
+							line += "\t";
+						line += "\t\t" + zoneName;
+					} else {
+						line += "   N/A\t\tUnknown";
+					}
+					if(!linesByTime.ContainsKey(time))
+						linesByTime[time] = new List<string>();
+					linesByTime[time].Add(line);
+				}
+				List<string> last;
+				if(linesByTime.ContainsKey(-1)) {
+					last = linesByTime[-1];
+					linesByTime.Remove(-1); 
+				} else {
+					last = new List<string>();
+				}
+				foreach(List<string> lines in linesByTime.Values) {
+					foreach(string line in lines)
+						statsPage += "\n"+line;
+				}
+				foreach(string line in last)
+					statsPage += "\n"+line;
 				break;
 			default:
-			break;
+				break;
 		}
 		return statsPage;
 	}
@@ -382,10 +483,7 @@ public static class RandomizerStatsManager {
 			string zonePart = GetStatsPage(0).Substring(33);
 			// formatting is garbage
 			zonePart = zonePart.Replace("   ", "");
-			zonePart = zonePart.Replace("				", "	");
-			zonePart = zonePart.Replace("			", "	");
-			zonePart = zonePart.Replace("		", "	");
-			zonePart = zonePart.Replace("	", " ");
+			zonePart = Regex.Replace(zonePart, "\t+", " ");
 			List<string> zoneLines = new List<string>(zonePart.Split('\n'));
 			List<int> zoneLineSpacing = new List<int> {0, 0, 0, 0, 0};
 			foreach(string line in zoneLines) {
@@ -416,19 +514,49 @@ public static class RandomizerStatsManager {
 			}
 
 			string miscPart = GetStatsPage(1).Substring(49);
-			miscPart = miscPart.Replace("Saves:", "Saves:  ");
-			miscPart = miscPart.Replace("Minute:	", "Minute:");
-			miscPart = miscPart.Replace("(time lost):	", "(time lost):");
-			miscPart = miscPart.Replace("(pickups lost):	", "(pickups lost): ");
-			miscPart = miscPart.Replace("save:	", "save:");
-			miscPart = miscPart.Replace("Grenade at:	", "Grenade at:");
-			miscPart = miscPart.Replace("deaths:		", "deaths:  ");
-			miscPart = miscPart.Replace("dying:	", "dying: ");
-			miscPart = miscPart.Replace("tion at:		", "tion at:  ");
-			miscPart = miscPart.Replace("ash at:	","ash at:  ");
-			miscPart = miscPart.Replace("Teleporters Used:	","Teleporters Used:   ");
-			miscPart = miscPart.Replace("	","    ");
-			string statsFile = flagLine+"\n\n"+ zonePart + miscPart;
+			List<string> miscLines = new List<string>(miscPart.Split('\n'));
+			miscPart = "";
+			foreach(string line in miscLines) {
+				int i = line.IndexOf(":");
+				string paddedLine = line.Substring(0, i+1);
+				while(paddedLine.Length < 32)
+					paddedLine += " ";
+				paddedLine += line.Substring(i+1).Trim();
+				miscPart += paddedLine + "\n";
+			}
+			string keyItemPart = GetStatsPage(2).Substring(49);
+			keyItemPart = keyItemPart.Replace("   ", "");
+			keyItemPart = Regex.Replace(keyItemPart, "\t+", "\t");
+			List<string> keyItemLines = new List<string>(keyItemPart.Split('\n'));
+			List<int> keyItemSpacing = new List<int> {0, 0, 0, 0};
+			foreach(string line in keyItemLines) {
+				int col = 0;
+				int lastStart = 0;
+				for(int i = 0; i < line.Length; i++) {
+					if(line[i] == '\t'){
+						int spacing = i-lastStart + 2;
+						if(keyItemSpacing[col] < spacing)
+							keyItemSpacing[col] = spacing;
+						col++;
+						lastStart = i;
+					}
+				}
+			}
+			keyItemPart = "";
+			foreach(string line in keyItemLines) {
+				int col = 0;
+				string paddedLine = "";
+				foreach(string linePart in line.Split('\t')) {
+					string lpc = linePart;
+					while(lpc.Length < keyItemSpacing[col]) 
+						lpc += " ";
+					paddedLine += lpc;
+					col++;
+				}
+				keyItemPart += paddedLine + "\n";
+			}
+
+			string statsFile = flagLine+"\n\n"+ zonePart + miscPart + "\n" + keyItemPart;
 			statsFile = statsFile.Replace("\n", "\r\n");
 			File.WriteAllText("stats.txt", statsFile);
 		} catch(Exception e)
@@ -469,29 +597,27 @@ public static class RandomizerStatsManager {
 	}
 	public static void WarpedToStart() { inc(AltRCount, 1); }
 	public static void UsedTeleporter() { inc(TeleporterCount, 1); }
+	public static void OnKill() { inc(EnemiesKilled, 1); }
 	public static void FoundMapstone() { inc(Pickups, 1); inc(Pickups + 12, 1); }
+	public static void OnExp(int expGained, int expBonus) { 
+		inc(ExpGained, expGained);
+		inc(ExpBonus, expBonus);
+	}
+
 	public static void FoundSkill(int skillID) {
-		switch(skillID) {
-			case 51:
-			case 2:
-				if(get(FoundBlueBreakTime) == 0)
-					set(FoundBlueBreakTime, get(Time));
-				break;
-			case 12:
-			case 3:
-				if(get(FoundWITime) == 0)
-					set(FoundWITime, get(Time));
-				break;
-			case 0:
-				if(get(FoundBashTime) == 0)
-					set(FoundBashTime, get(Time));
-				break;
-			case 50:
-				if(get(FoundDashTime) == 0)
-					set(FoundDashTime, get(Time));
-				break;
-			default:
-				break;
+		if(SkillsById.ContainsKey(skillID))
+			FoundKeyItem(SkillsById[skillID]);
+	}
+	public static void FoundEvent(int eventID) {
+		FoundKeyItem(EventsById[eventID]);
+	}
+	public static void FoundKeyItem(string itemName) {
+		int offset = KeyItemTime + KeyItemOffsets[itemName];
+		if(get(offset) == 0)
+		{
+			int time = get(Time);
+			int zone = Offsets[CurrentZone()];
+			set(offset, time + (zone << 18));
 		}
 	}
 
@@ -508,27 +634,33 @@ public static class RandomizerStatsManager {
 	public static int TSLD_max = 1536;
 	public static int TSLDOS_max = 1537;
 	public static int PSLDOS_max = 1538;
+	public static int KeyItemTime = 1540;
 
 	public static int Pickups = 1600;
 
 	public static int Saves = 1570;
 	public static int shoof_sum = 1571;
+	public static int EnemiesKilled = 1572;
+	public static int ExpGained = 1573;
+	public static int ExpBonus = 1574;
 	public static int PPM_max = 1575;
 	public static int PPM_max_time = 1576;
 	public static int PPM_max_count = 1577;
 	public static int Reloads = 1578;
 	public static int AltRCount = 1579;
 	public static int TeleporterCount = 1580;
-	public static int FoundWITime = 1581;
-	public static int FoundBashTime = 1582;
-	public static int FoundDashTime = 1583;
-	public static int FoundBlueBreakTime = 1584;
+	public static int Drought = 1581;
+	public static int Drought_max = 1582;
+	public static int Drought_max_end = 1583;
 
 	public static int CurrentPage;
-	public static int PageCount = 2;
+	public static int PageCount = 3;
 	public static int CachedTime;
 	public static bool Active;
 	public static bool WriteFromCache;
+	public static Dictionary<string, int> KeyItemOffsets;
+	public static Dictionary<int, string> SkillsById;
+	public static Dictionary<int, string> EventsById;
 	public static Dictionary<string, int> Offsets;
 	public static Dictionary<string, int> PickupCounts;
 	public static Dictionary<string, string> ZonePrettyNames;

@@ -37,12 +37,7 @@ public static class RandomizerSwitch
         {
             return;
         }
-        int num = (int)((float)Value * ((!Characters.Sein.PlayerAbilities.SoulEfficiency.HasAbility) ? ((!Characters.Sein.PlayerAbilities.AbilityMarkers.HasAbility) ? 1f : 1.5f) : 2f));
-        if (RandomizerBonus.ExpEfficiency())
-        {
-            num *= 2;
-        }
-        Characters.Sein.Level.GainExperience(num);
+        Characters.Sein.Level.GainExperience(RandomizerBonus.ExpWithBonuses(Value));
     }
     
     public static void KeystonePickup() {
@@ -98,6 +93,10 @@ public static class RandomizerSwitch
             Randomizer.showHint("$Glide$", 300);
             Characters.Sein.PlayerAbilities.SetAbility(AbilityType.Glide, true);
             break;
+        case 15:
+            Randomizer.showHint("$Spirit Flame$", 300);
+            Characters.Sein.PlayerAbilities.SetAbility(AbilityType.SpiritFlame, true);
+            break;
         case 50:
             Randomizer.showHint("$Dash$", 300);
             Characters.Sein.PlayerAbilities.SetAbility(AbilityType.Dash, true);
@@ -138,6 +137,7 @@ public static class RandomizerSwitch
                 Randomizer.showHint("@Warmth Returned@", 300);
                 break;
         }
+        RandomizerStatsManager.FoundEvent(Value);
     }
     
     public static void TeleportPickup(string Value)

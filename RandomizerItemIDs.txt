@@ -100,18 +100,37 @@
 1537 - Most time lost to death
 1538 - Most pickups lost to death
 
+1540 - Wall Jump Time+Zone
+1541 - Charge Flame Time+Zone
+1542 - Double Jump Time+Zone
+1543 - Bash Time+Zone
+1544 - Stomp Time+Zone
+1545 - Glide Time+Zone
+1546 - Climb Time+Zone
+1547 - Charge Jump Time+Zone
+1548 - Dash Time+Zone
+1549 - Grenade Time+Zone
+1550 - Water Vein Time+Zone
+1551 - Clean Water Time+Zone
+1552 - Gumon Seal Time+Zone
+1553 - Wind Restored Time+Zone
+1554 - Sunstone Time+Zone
+1555 - Warmth Returned Time+Zone
+
 1570 - Saves
 1571 - sum(shoof)
+1572 - Enemies killed
+1573 - Exp Gained
+1573 - Bonus Exp Gained
 1575 - Max PPM
 1576 - Time of Max PPM
 1577 - Count at Max PPM
 1578 - Reloads
 1579 - Alt+R Count
 1580 - Teleporter Count
-1581 - Found WI Time
-1582 - Found Bash Time
-1583 - Found Dash Time
-1584 - Found Grenade / Cflame Time
+1581 - Time since last pickup
+1582 - Longest drought
+1583 - Longest drought end time
 
 ==== End Persists Through Death Zone ===
 

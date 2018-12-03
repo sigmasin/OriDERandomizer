@@ -62,11 +62,7 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 	// Token: 0x06003325 RID: 13093
 	public void OnCollectExpOrbPickup(ExpOrbPickup expOrbPickup)
 	{
-		int num = (int)((float)expOrbPickup.Amount * ((!this.Sein.PlayerAbilities.SoulEfficiency.HasAbility) ? ((!this.Sein.PlayerAbilities.AbilityMarkers.HasAbility) ? 1f : 1.5f) : 2f));
-		if (RandomizerBonus.ExpEfficiency())
-		{
-			num *= 2;
-		}
+		int num = RandomizerBonus.ExpWithBonuses(expOrbPickup.Amount);
 		if (expOrbPickup.MessageType != ExpOrbPickup.ExpOrbMessageType.None)
 		{
 			int repeatable = Randomizer.RepeatableCheck(expOrbPickup.Bounds.center);

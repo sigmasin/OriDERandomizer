@@ -522,7 +522,7 @@ public class SeinSwimming : CharacterState, ISeinReceiver
 					this.m_isBoosting = true;
 					this.m_boostTime = Mathf.Min(this.m_boostTime, this.BoostPeakTime);
 				}
-				if (this.m_sein.Controller.CanMove && RandomizerSettings.IsSwimBoosting() && this.m_boostAnimationRemainingTime <= 0f && this.BoostSwimsoundProvider)
+				if (this.m_sein.Controller.CanMove && RandomizerSettings.SwimBoostPressed() && this.m_boostAnimationRemainingTime <= 0f && this.BoostSwimsoundProvider)
 				{
 					Sound.Play(this.BoostSwimsoundProvider.GetSound(null), base.transform.position, null);
 					this.m_boostAnimationRemainingTime = 0.6666667f;
