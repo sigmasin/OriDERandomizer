@@ -41,13 +41,6 @@ public static class RandomizerBonus
             Randomizer.returnToStart();
             Randomizer.showHint("Go Home!");
             return;
-        case 3:
-        case 4:
-        case 5:
-        case 7:
-        case 14:
-        case 16:
-        case 18:
         case 20:
             break;
         case 6:
@@ -235,12 +228,6 @@ public static class RandomizerBonus
             if(Keys.MountHoru) 
                 RandomizerStatsManager.FoundEvent(4);
             return;
-        case 22:
-        case 23:
-        case 24:
-        case 25:
-        case 26:
-        case 27:
         case 28:
             if (!flag)
             {
@@ -274,31 +261,24 @@ public static class RandomizerBonus
             break;
         case 31:
             if (!flag)
-            {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
-                Randomizer.showHint("Lifesteal x" + RandomizerBonus.Lifesteal().ToString());
-                return;
-            }
-            if (RandomizerBonus.Lifesteal() > 0)
-            {
+            else if (RandomizerBonus.Lifesteal() > 0)
                 Characters.Sein.Inventory.IncRandomizerItem(ID, -1);
-                Randomizer.showHint("Lifesteal x" + RandomizerBonus.Lifesteal().ToString());
-                return;
-            }
+            if(Lifesteal() == 1)
+                Randomizer.showHint("Health Drain");
+            else
+                Randomizer.showHint("Health Drain x" + RandomizerBonus.Lifesteal().ToString());
             break;
         case 32:
             if (!flag)
-            {
                 Characters.Sein.Inventory.IncRandomizerItem(ID, 1);
-                Randomizer.showHint("Manavamp x" + RandomizerBonus.Manavamp().ToString());
-                return;
-            }
-            if (RandomizerBonus.Manavamp() > 0)
-            {
+            else if (RandomizerBonus.Manavamp() > 0)
                 Characters.Sein.Inventory.IncRandomizerItem(ID, -1);
-                Randomizer.showHint("Manavamp x" + RandomizerBonus.Manavamp().ToString());
-                return;
-            }
+            if(Manavamp() == 1)
+                Randomizer.showHint("Energy Drain");
+            else
+                Randomizer.showHint("Health Drain x" + RandomizerBonus.Manavamp().ToString());
+            break;
             break;
         case 33:
             if (!flag)
@@ -323,7 +303,7 @@ public static class RandomizerBonus
             Randomizer.showHint("Return to start enabled!");
         break;
         case 36:
-            Randomizer.showHint("Gravity Suit");
+            Randomizer.showHint("Underwater Skill Usage");
             Characters.Sein.Inventory.SetRandomizerItem(36, 1);
             break;
         case 40:

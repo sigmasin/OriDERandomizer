@@ -330,7 +330,7 @@ public static class Randomizer
 			Items.NightBerry.transform.position = new Vector3(-755f, -400f);
 		}
 		RandomizerStatsManager.WarpedToStart();
-		Randomizer.LastReturnPoint = Characters.Sein.Position;
+		RandomizerBonusSkill.LastAltR = Characters.Sein.Position;
 		Randomizer.Returning = true;
 		Characters.Sein.Position = new Vector3(189f, -215f);
 		Characters.Sein.Speed = new Vector3(0f, 0f);
@@ -971,7 +971,7 @@ public static class Randomizer
 		if(setMessage)
 		{
 			Message = creditText;
-			LastMessageCredits = true;			
+			LastMessageCredits = true;
 		}
 	}
 
@@ -1274,10 +1274,6 @@ public static class Randomizer
 	public static int LockedCount;
 
 	public static int ResetTrackerCount;
-
-	public static Vector3 LastReturnPoint;
-
-	public static Vector3 LastSoulLink;
 
 	public static Vector3 WarpTarget;
 

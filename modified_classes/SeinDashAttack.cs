@@ -479,7 +479,7 @@ public class SeinDashAttack : CharacterState, ISeinReceiver
 		PlatformMovement platformMovement = this.m_sein.PlatformBehaviour.PlatformMovement;
 		UI.Cameras.Current.ChaseTarget.CameraSpeedMultiplier.x = Mathf.Clamp01(this.m_stateCurrentTime / this.DashTime);
 		float velocity = this.DashSpeedOverTime.Evaluate(this.m_stateCurrentTime);
-		velocity *= 1.0f + .1f*RandomizerBonus.Velocity();
+		velocity *= 1.0f + .2f*RandomizerBonus.Velocity();
 		if ((RandomizerBonus.GravitySuit() && Characters.Sein.Abilities.Swimming.IsSwimming))
 		{
 			Vector2 newSpeed = new Vector2(velocity, 0f);
@@ -554,7 +554,7 @@ public class SeinDashAttack : CharacterState, ISeinReceiver
 		this.AttackNearbyEnemies();
 		this.m_sein.Mortality.DamageReciever.MakeInvincibleToEnemies(1f);
 		float velocity = this.ChargeDashSpeedOverTime.Evaluate(this.m_stateCurrentTime);
-		velocity *= 1.0f + .1f*RandomizerBonus.Velocity();
+		velocity *= 1.0f + .2f*RandomizerBonus.Velocity();
 		if (this.m_chargeDashAtTarget)
 		{
 			platformMovement.LocalSpeed = this.m_chargeDashDirection * velocity;
