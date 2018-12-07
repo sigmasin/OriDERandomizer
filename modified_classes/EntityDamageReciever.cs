@@ -58,6 +58,11 @@ public class EntityDamageReciever : DamageReciever, IDynamicGraphicHierarchy, IP
 	// Token: 0x060017AC RID: 6060 RVA: 0x0007AAFC File Offset: 0x00078CFC
 	public override void OnRecieveDamage(Damage damage)
 	{
+		bool terrain = (damage.Type == DamageType.Crush || damage.Type == DamageType.Spikes || damage.Type == DamageType.Lava || damage.Type == DamageType.Laser);
+		if (this.Entity is Enemy && !(terrain || damage.Type == DamageType.Projectile || damage.Type == DamageType.Enemy))
+		{
+			RandomizerBonus.DamageDealt(Math.Max(Math.Min(this.Health, damage.Amount), 0));
+		}
 		this.OnModifyDamage(damage);
 		if (damage.Type == DamageType.Enemy)
 		{
@@ -76,12 +81,6 @@ public class EntityDamageReciever : DamageReciever, IDynamicGraphicHierarchy, IP
 			damage.DealToComponents(this.Entity.gameObject);
 		}
 		base.OnRecieveDamage(damage);
-		bool terrain = (damage.Type == DamageType.Crush || damage.Type == DamageType.Spikes || damage.Type == DamageType.Lava || damage.Type == DamageType.Laser);
-		if (this.Entity is Enemy && !(terrain || damage.Type == DamageType.Projectile || damage.Type == DamageType.Enemy))
-		{
-			RandomizerBonus.DamageDealt(Math.Min(this.Health, damage.Amount));
-		}
-
 		if (base.NoHealthLeft)
 		{
 			EntityDamageReciever.OnEntityDeathEvent(this.Entity);
