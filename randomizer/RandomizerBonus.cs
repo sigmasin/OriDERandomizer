@@ -528,7 +528,7 @@ public static class RandomizerBonus
             {
                 damage = 20f;
             }
-            Characters.Sein.Mortality.Health.GainHealth((float)RandomizerBonus.Lifesteal() * 0.2f * damage);
+            Characters.Sein.Mortality.Health.GainHealth((float)RandomizerBonus.Lifesteal() * 0.8f * damage);
             Characters.Sein.Energy.Gain((float)RandomizerBonus.Manavamp() * 0.2f * damage);
         }
     }
