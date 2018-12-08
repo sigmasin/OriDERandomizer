@@ -258,7 +258,7 @@ class SeedGenerator:
             self.itemPool["RB32"] = 1
             self.itemPool["RB33"] = 3
             self.itemPool["RB36"] = 1
-            self.itemPool["RB12"] += 5
+            self.itemPool["RB12"] += 4
             for bonus_skill in self.random.sample(["RB101", "RB102", "RB103", "WarpSkill", "RB106", "RB107"], 4):
                 if bonus_skill == "WarpSkill":
                     bonus_skill = self.random.choice(["RB104", "RB105"])
@@ -1203,20 +1203,15 @@ class SeedGenerator:
                 self.outputStr += item[2]
 
         spoilerStr = self.params.flag_line(self.verbose_paths) + "\n" + "Difficulty Rating: " + str(self.seedDifficulty) + "\n" + spoilerStr
-        self.random.shuffle(self.eventList)
-        for event in self.eventList:
-            self.outputStr += event
 
         # place the last item on the final escape
         balanced = self.params.balanced
         self.params.balanced = False
-        wr = False
         for item in self.itemPool:
             if self.itemPool[item] > 0:
                 self.assign_to_location(item, Location(-240, 512, 'FinalEscape', 'EVWarmth', 0, 'Horu'))
-                wr = True
                 break
-        if not wr:
+        else:  # In python, the else clause of a for loop triggers if the loop completed without breaking, e.g. we found nothing in the item pool
             if len(self.balanceListLeftovers) > 0:
                 item = self.balanceListLeftovers.pop(0)
                 log.warning("Empty item pool: placing %s from balanceListLeftovers onto warmth returned.", item)
@@ -1225,6 +1220,10 @@ class SeedGenerator:
                 log.warning("%s: No item found for warmth returned! Placing EXP", self.params.flag_line())
                 self.assign_to_location("EX*", Location(-240, 512, 'FinalEscape', 'EVWarmth', 0, 'Horu'))
         self.params.balanced = balanced
+
+        self.random.shuffle(self.eventList)
+        for event in self.eventList:
+            self.outputStr += event
 
         if len(self.balanceListLeftovers) > 0:
             log.warning("%s: Balance list was not empty! %s", self.params.flag_line(), self.balanceListLeftovers)
