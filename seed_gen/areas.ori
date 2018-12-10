@@ -1718,6 +1718,7 @@ home: UpperGrotto
 		standard-core Bash Grenade
 		standard-dboost WallJump ChargeJump Health=4
 		standard-dboost Climb ChargeJump Health=4
+		standard-abilities Climb Dash Ability=3
 		master-core ChargeJump DoubleJump
 		master-core Bash
 		gjump Climb ChargeJump Grenade
@@ -3564,7 +3565,7 @@ home: ForlornGravityRoom
 	pickup: ForlornHiddenSpiderExp
 		casual-core ForlornKey Bash
 		casual-core ForlornKey ChargeJump
-		standard-core ForlornKey WallJump DoubleJump
+		expert-core ForlornKey WallJump DoubleJump
 		expert-abilities ForlornKey Dash Ability=6
 		master-abilities ForlornKey DoubleJump Ability=12
 	pickup: ForlornKeystone1
