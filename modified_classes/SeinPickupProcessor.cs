@@ -78,9 +78,9 @@ public class SeinPickupProcessor : SaveSerialize, ISeinReceiver, IPickupCollecto
 			return;
 		}
 		expOrbPickup.Collected();
-		if (Randomizer.ZeroXP)
+		if (Randomizer.IgnoreEnemyExp)
 		{
-			this.Sein.Mortality.DamageReciever.OnRecieveDamage(new Damage(9999f, default(Vector2), default(Vector3), DamageType.Water, null));
+			return;
 		}
 		this.Sein.Level.GainExperience(num);
 		if (this.m_expText && this.m_expText.gameObject.activeInHierarchy)

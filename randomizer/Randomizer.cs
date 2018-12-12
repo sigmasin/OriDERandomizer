@@ -96,6 +96,7 @@ public static class Randomizer
 		Randomizer.RepeatablePickups = new HashSet<int>();
 		Randomizer.StompTriggers = false;
 		Randomizer.SpawnWith = "";
+		Randomizer.IgnoreEnemyExp = false;
 		bool relicCountOverride = false;
 		try {
 			if(File.Exists("randomizer.dat")) {
@@ -104,13 +105,14 @@ public static class Randomizer
 				string s = flagLine[1];
 				string[] flags = flagLine[0].Split(new char[] { ',' });
 				Randomizer.SeedMeta = allLines[0];
-				foreach (string flag in flags)
+				foreach (string rawFlag in flags)
 				{
-					if (flag.ToLower() == "ohko")
+					string flag = rawFlag.ToLower();
+					if (flag == "ohko")
 					{
 						Randomizer.OHKO = true;
 					}
-					if (flag.ToLower().StartsWith("worldtour"))
+					if (flag.StartsWith("worldtour"))
 					{
 						Randomizer.WorldTour = true;
 						if(flag.Contains("=")) {
@@ -118,13 +120,13 @@ public static class Randomizer
 							Randomizer.RelicCount = int.Parse(flag.Substring(10));
 						}
 					}
-					if (flag.ToLower().StartsWith("sync"))
+					if (flag.StartsWith("sync"))
 					{
 						Randomizer.Sync = true;
 						Randomizer.SyncId = flag.Substring(4);
 						RandomizerSyncManager.Initialize();
 					}
-					if (flag.ToLower().StartsWith("frags/"))
+					if (flag.StartsWith("frags/"))
 					{
 						Randomizer.fragsEnabled = true;
 						string[] fragParams = flag.Split(new char[]
@@ -134,7 +136,7 @@ public static class Randomizer
 						Randomizer.maxFrags =  int.Parse(fragParams[2]);
 						Randomizer.fragKeyFinish = int.Parse(fragParams[1]);
 					}
-					if (flag.ToLower().StartsWith("mode="))
+					if (flag.StartsWith("mode="))
 					{
 						string modeStr = flag.Substring(5).ToLower();
 						int syncMode;
@@ -148,67 +150,72 @@ public static class Randomizer
 						}
 						Randomizer.SyncMode = syncMode;
 					}
-					if (flag.ToLower().StartsWith("shared="))
+					if (flag.StartsWith("shared="))
 					{
 						Randomizer.ShareParams = flag.Substring(7);
 					}
-					if (flag.ToLower() == "0xp")
+					if (flag == "noextraexp")
 					{
+						Randomizer.IgnoreEnemyExp = true;
+					}
+					if (flag == "0xp")
+					{
+						Randomizer.IgnoreEnemyExp = true;
 						Randomizer.ZeroXP = true;
 					}
-					if (flag.ToLower() == "nobonus")
+					if (flag == "nobonus")
 					{
 						Randomizer.BonusActive = false;
 					}
-					if (flag.ToLower() == "nonprogressivemapstones")
+					if (flag == "nonprogressivemapstones")
 					{
 						Randomizer.ProgressiveMapStones = false;
 					}
-					if (flag.ToLower() == "forcetrees")
+					if (flag == "forcetrees")
 					{
 						Randomizer.ForceTrees = true;
 					}
-					if (flag.ToLower() == "forcemaps")
+					if (flag == "forcemaps")
 					{
 						Randomizer.ForceMaps = true;
 					}
-					if (flag.ToLower() == "clues")
+					if (flag == "clues")
 					{
 						Randomizer.CluesMode = true;
 						RandomizerClues.initialize();
 					}
-					if (flag.ToLower() == "shards")
+					if (flag == "shards")
 					{
 						Randomizer.Shards = true;
 					}
-					if (flag.ToLower() == "entrance")
+					if (flag == "entrance")
 					{
 						Randomizer.Entrance = true;
 					}
-					if (flag.ToLower() == "closeddungeons")
+					if (flag == "closeddungeons")
 					{
 						Randomizer.OpenMode = false;
 					}
-					if (flag.ToLower() == "openworld")
+					if (flag == "openworld")
 					{
 						Randomizer.OpenWorld = true;
 					}
-					if (flag.ToLower().StartsWith("hotcold="))
+					if (flag.StartsWith("hotcold="))
 					{
 						Randomizer.HotCold = true;
 						Randomizer.HotColdTypes = flag.Substring(8).Split(new char[]{ '+' });
 						Array.Sort(Randomizer.HotColdTypes);
 					}
-					if (flag.ToLower().StartsWith("sense="))
+					if (flag.StartsWith("sense="))
 					{
 						Randomizer.HotColdTypes = flag.Substring(6).Split(new char[] { '+' });
 						Array.Sort(Randomizer.HotColdTypes);
 					}
-					if (flag.ToLower() == "noaltr")
+					if (flag == "noaltr")
 					{
 						Randomizer.AltRDisabled = true;
 					}
-					if (flag.ToLower() == "stomptriggers")
+					if (flag == "stomptriggers")
 					{
 						Randomizer.StompTriggers = true;
 					}
@@ -1328,4 +1335,6 @@ public static class Randomizer
 	public static bool DelayedWarp;
 
 	public static bool SaveAfterWarp;
+
+	public static bool IgnoreEnemyExp;
 }
