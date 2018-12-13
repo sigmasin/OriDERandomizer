@@ -389,6 +389,7 @@ public static class RandomizerStatsManager {
 				statsPage += "\nAlt+Rs Used:				" + get(AltRCount).ToString();
 				statsPage += "\nTeleporters Used:			" + get(TeleporterCount).ToString();
 				statsPage += "\nEnemies Killed:				" + get(EnemiesKilled).ToString();
+				statsPage += "\nBy Leveling up:				" + get(LevelUpKills).ToString();
 				statsPage += "\nExp collected:				" + get(ExpGained).ToString();
 				if(get(ExpBonus) > 0) {
 					statsPage += " + " + get(ExpBonus).ToString() + " bonus";
@@ -595,9 +596,21 @@ public static class RandomizerStatsManager {
 		}
 		return minutesPart+":"+secondsPart;
 	}
+	public static void OnKill(DamageType source) {
+		inc(EnemiesKilled, 1);
+		switch(source) {
+			case DamageType.LevelUp:
+				inc(LevelUpKills, 1);
+				break;
+			default:
+				break;
+		}
+
+	}
+
+
 	public static void WarpedToStart() { inc(AltRCount, 1); }
 	public static void UsedTeleporter() { inc(TeleporterCount, 1); }
-	public static void OnKill() { inc(EnemiesKilled, 1); }
 	public static void FoundMapstone() { inc(Pickups, 1); inc(Pickups + 12, 1); }
 	public static void OnExp(int expGained, int expBonus) { 
 		inc(ExpGained, expGained);
@@ -636,7 +649,6 @@ public static class RandomizerStatsManager {
 	public static int PSLDOS_max = 1538;
 	public static int KeyItemTime = 1540;
 
-	public static int Pickups = 1600;
 
 	public static int Saves = 1570;
 	public static int shoof_sum = 1571;
@@ -652,6 +664,9 @@ public static class RandomizerStatsManager {
 	public static int Drought = 1581;
 	public static int Drought_max = 1582;
 	public static int Drought_max_end = 1583;
+
+	public static int Pickups = 1600;
+	public static int LevelUpKills = 1650;
 
 	public static int CurrentPage;
 	public static int PageCount = 3;
