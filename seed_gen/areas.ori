@@ -914,9 +914,9 @@ home: SpiderWaterArea
 		expert-dboost WallJump Stomp Health=5
 		expert-dboost Climb Stomp Health=5
 		expert-dboost DoubleJump Stomp Health=5
-		master-core WallJump Stomp Ability=12
-		master-core Climb Stomp Ability=12
-		master-core DoubleJump Stomp Ability=12
+		master-dboost WallJump Stomp Ability=12
+		master-dboost Climb Stomp Ability=12
+		master-dboost DoubleJump Stomp Ability=12
 home: BlackrootDarknessRoom
 	-- anchor: just after watching/skipping the BRB entrance cutscene
 	pickup: DashAreaOrbRoomExp
@@ -994,10 +994,10 @@ home: DashArea
 		casual-core Dash ChargeJump
 		casual-core Dash Bash Grenade
 		casual-core Dash Climb DoubleJump
-		standard-core WallJump
-		standard-core ChargeJump
 		standard-core Bash Grenade
-		standard-core Climb DoubleJump
+		standard-abilities WallJump
+		standard-abilities ChargeJump
+		standard-abilities Climb DoubleJump
 		standard-abilities Climb Dash Ability=3
 		expert-core Climb
 		master-core DoubleJump
@@ -1120,7 +1120,7 @@ home: LowerBlackroot
 		expert-dboost DoubleJump Health=4
 		expert-dboost ChargeJump Health=4
 		expert-abilities Dash Ability=3
-		master-core Stomp Health=4
+		master-dboost Stomp Health=4
 	pickup: LowerBlackrootLaserExp
 		casual-core Dash WallJump
 		casual-core Dash Climb DoubleJump
@@ -1149,7 +1149,7 @@ home: LostGrove
 	-- anchor: on the ground just right of the lake, door is closed
 	pickup: LostGroveLongSwim
 		casual-core Water
-		master-core Health=6 Ability=12
+		master-dboost Health=6 Ability=12
 		master-dboost Health=12
 	conn: LostGroveExit
 		casual-core Grenade Bash DoubleJump WallJump
@@ -1164,8 +1164,8 @@ home: LostGrove
 		expert-dboost Grenade Dash ChargeJump WallJump
 		expert-dboost Grenade Glide ChargeJump WallJump
 		expert-abilities Grenade Dash ChargeJump Climb Ability=3
-		master-core Grenade DoubleJump WallJump Ability=12
-		master-core Grenade DoubleJump Climb Ability=12
+		master-abilities Grenade DoubleJump WallJump Ability=12
+		master-abilities Grenade DoubleJump Climb Ability=12
 		gjump Grenade ChargeJump Climb
 home: LostGroveExit
 	-- anchor: on the lever to open the door to the teleporter
@@ -1543,13 +1543,13 @@ home: UpperGinsoTree
 		standard-dboost GinsoKey ChargeJump Health=3
 		standard-abilities GinsoKey ChargeJump Dash Ability=3
 		expert-dboost GinsoKey WallJump DoubleJump Health=5
-		master-abilities GinsoKey DoubleJump Ability=12 Health=3
+		master-dboost GinsoKey DoubleJump Ability=12 Health=3
 	pickup: UpperGinsoUpperRightKeystone
 		casual-core GinsoKey Bash DoubleJump
 		standard-core GinsoKey Bash
 		standard-core GinsoKey ChargeJump DoubleJump
 		standard-dboost GinsoKey ChargeJump Health=3
-		master-abilities GinsoKey DoubleJump Ability=12 Health=5
+		master-dboost GinsoKey DoubleJump Ability=12 Health=5
 	pickup: UpperGinsoUpperLeftKeystone
 		casual-core GinsoKey Bash DoubleJump
 		standard-core GinsoKey Bash
@@ -1557,7 +1557,7 @@ home: UpperGinsoTree
 		standard-core GinsoKey ChargeJump Glide
 		standard-dboost GinsoKey ChargeJump Health=3
 		standard-abilities GinsoKey ChargeJump Dash Ability=3
-		master-abilities GinsoKey DoubleJump Ability=12 Health=5
+		master-dboost GinsoKey DoubleJump Ability=12 Health=5
 	pickup: UpperGinsoEnergyCell
 		--with the exception of bash and cjump, all of these routes involve getting stuck in the energy cell area
 		casual-core GinsoKey Stomp
@@ -1586,7 +1586,7 @@ home: UpperGinsoDoorOpened
 		standard-core Bash
 		expert-dboost ChargeJump DoubleJump Health=3
 		expert-dboost ChargeJump Health=5
-		master-abilities WallJump DoubleJump Health=5 Ability=12
+		master-dboost WallJump DoubleJump Health=5 Ability=12
 	conn: UpperGinsoTree
 		casual-core Open Bash
 		casual-core Open DoubleJump
@@ -1675,11 +1675,11 @@ home: GinsoEscape
 		expert-core ChargeJump Climb DoubleJump
 		expert-dboost ChargeJump WallJump Health=9
 		expert-dboost ChargeJump Climb Health=3
-		expert-abilities ChargeJump DoubleJump Dash Ability=6 Health=3
+		expert-dboost ChargeJump DoubleJump Dash Ability=6 Health=3
 		dbash Bash
 		master-dboost ChargeJump DoubleJump Health=7
-		master-abilities WallJump DoubleJump Ability=12 Health=6
-		master-abilities Climb DoubleJump Ability=12 Health=10
+		master-dboost WallJump DoubleJump Ability=12 Health=6
+		master-dboost Climb DoubleJump Ability=12 Health=10
 		insane DoubleJump Ability=12 Health=12
 home: GinsoEscapeComplete
 -- this is a meta area to factor the ginso escape pickups which have identical requirements
@@ -1897,6 +1897,8 @@ home: GumoHideout
 	-- anchor: directly in front of the map monument
 	pickup: GumoHideoutMap
 		casual-core Mapstone
+	pickup: GumoHideoutRightHangingExp
+		casual-core ChargeJump
 	pickup: GumoHideoutMapstone
 		casual-core WallJump
 		casual-core DoubleJump
@@ -3189,7 +3191,7 @@ home: ValleyTeleporter
 		expert-dboost Climb Glide Health=4
 		gjump Climb ChargeJump Grenade
 		expert-abilities Dash Ability=6
-		master-core DoubleJump Ability=12
+		master-abilities DoubleJump Ability=12
 	-- no killplane paths
 	conn: MistyEntrance
 		casual-core Glide OpenWorld
@@ -3219,8 +3221,8 @@ home: ValleyRight
 	-- just catching a path that didn't make sense from ValleyTeleporter
 	conn: ValleyPostStompDoor
 		expert-dboost DoubleJump Health=4
-		master-core Health=7
-		master-core Health=5 Ability=12
+		master-dboost Health=7
+		master-dboost Health=5 Ability=12
 	conn: ValleyStomplessApproach
 		casual-core WallJump DoubleJump
 		casual-core WallJump Bash
@@ -3243,20 +3245,20 @@ home: ValleyStomplessApproach
 		expert-dboost Climb ChargeJump Health=4
 		expert-dboost WallJump ChargeJump Health=4
 		expert-dboost DoubleJump ChargeJump Health=4
-		master-core WallJump DoubleJump Health=5 Ability=12
-		master-core Climb DoubleJump Health=7 Ability=12
+		master-dboost WallJump DoubleJump Health=5 Ability=12
+		master-dboost Climb DoubleJump Health=7 Ability=12
 	pickup: ValleyRightExp
 		casual-core Bash
 		expert-dboost ChargeJump WallJump DoubleJump Health=4
 		expert-dboost ChargeJump Climb DoubleJump Health=4
-		master-core WallJump DoubleJump Ability=12
+		master-dboost WallJump DoubleJump Ability=12
 	conn: ValleyStompless
 		casual-core Bash
 		expert-dboost ChargeJump WallJump DoubleJump Health=4
 		expert-dboost ChargeJump Climb DoubleJump Health=4
 		expert-abilities Dash WallJump DoubleJump Energy=2
 		expert-abilities Dash Climb DoubleJump Energy=2
-		master-core WallJump DoubleJump Ability=12
+		master-dboost WallJump DoubleJump Ability=12
 	conn: ValleyRight
 home: ValleyStompless
 -- anchored at the fast stompless aim position, rocks intact
@@ -4054,7 +4056,7 @@ home: UpperSorrow
 -- dbash paths for the tumbleweed not included since you can lose it
 	pickup: UpperSorrowRightKeystone
 		casual-core Glide
-		expert-abilities ChargeJump Dash Health=5 Ability=6
+		expert-dboost ChargeJump Dash Health=5 Ability=6
 		master-dboost ChargeJump Health=10 Ability=12
 		master-dboost ChargeJump DoubleJump Health=7 Ability=12
 		master-dboost ChargeJump Dash Health=4 Ability=12
@@ -4076,9 +4078,9 @@ home: UpperSorrow
 	pickup: UpperSorrowSpikeExp
 		casual-core Glide
 		expert-dboost Bash Grenade DoubleJump Health=5
-		expert-abilities Bash Grenade Dash Health=5 Ability=6
-		expert-abilities ChargeJump Dash Health=5 Ability=6
-		expert-abilities Dash Health=5 Energy=2 Ability=6
+		expert-dboost Bash Grenade Dash Health=5 Ability=6
+		expert-dboost ChargeJump Dash Health=5 Ability=6
+		expert-dboost Dash Health=5 Energy=2 Ability=6
 		master-dboost ChargeJump Dash Health=4 Ability=12
 		master-dboost Dash Health=4 Energy=2 Ability=12
 		master-dboost Bash Grenade Dash Health=4 Ability=12
@@ -4281,7 +4283,7 @@ home: MistyPostFeatherTutorial
         casual-core DoubleJump Bash Grenade
         standard-core Bash
         standard-core Climb ChargeJump
-        standard-core WallJump DoubleJump Dash Ability=3
+        standard-abilities WallJump DoubleJump Dash Ability=3
 		expert-dboost WallJump Dash Ability=3
         expert-dboost WallJump Dash Health=7
         expert-abilities Dash Ability=6
@@ -4301,7 +4303,7 @@ home: MistyPostKeystone1
 		master-core Bash
 		master-abilities DoubleJump Dash Ability=6
         master-abilities DoubleJump Ability=12
-        master-abilities Ability=12 Health=4
+        master-dboost Ability=12 Health=4
         master-dboost Health=6
 		-- 2hp from bird, 3hp from spikes, you can get around the last bend without damage
 home: MistyPreMortarCorridor
@@ -4318,12 +4320,12 @@ home: MistyPreMortarCorridor
     pickup: MistyMortarCorridorHiddenExp
         casual-core Glide
 		expert-core DoubleJump Bash
-        expert-core DoubleJump Dash Ability=6
+        expert-abilities DoubleJump Dash Ability=6
         expert-dboost DoubleJump ChargeJump Health=4
         expert-dboost Bash Health=7
         expert-dboost Dash Ability=3 Health=4
         expert-dboost Bash Grenade Health=4
-        master-core Dash Ability=6
+        master-abilities Dash Ability=6
 		master-core Bash
         master-abilities DoubleJump Ability=12
         master-dboost DoubleJump Health=4
@@ -4334,8 +4336,8 @@ home: MistyPreMortarCorridor
 		expert-dboost DoubleJump Dash Ability=3 Health=4
 		expert-dboost DoubleJump ChargeJump Health=4
 		master-core DoubleJump Bash Grenade
-		master-core Dash Ability=6
-		master-abilities Health=9 Ability=12
+		master-abilities Dash Ability=6
+		master-dboost Health=9 Ability=12
 		master-dboost Health=10
 	conn: RightForlorn
 		glitched Free
@@ -4439,7 +4441,7 @@ home: MistyPostLasers
 		standard-core Bash Glide
 		standard-abilities Bash Glide Dash Ability=3
 		expert-dboost Glide Health=4
-		master-core Bash Health=4
+		master-dboost Bash Health=4
 		master-dboost DoubleJump Health=11
 	conn: MistyMortarSpikeCave
 		casual-core Bash Glide DoubleJump
@@ -4460,7 +4462,7 @@ home: MistyMortarSpikeCave
 		expert-core Bash Glide
 		expert-abilities Bash Dash Ability=6
 		master-core Bash
-		master-core ChargeJump DoubleJump Ability=12
+		master-abilities ChargeJump DoubleJump Ability=12
 		master-abilities Dash Ability=6
 home: MistyKeystone4Ledge
 	--anchor point: on the ledge with the 4th keystone

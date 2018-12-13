@@ -55,6 +55,7 @@ class Variation(StrEnum):
     DOUBLE_SKILL = "DoubleSkills"
     STRICT_MAPSTONES = "StrictMapstones"
     STOMP_TRIGGERS = "StompTriggers"
+    NO_EXTRA_EXP = "NoExtraExp"
 
 class LogicPath(StrEnum):
     CASUAL_CORE = 'casual-core'
