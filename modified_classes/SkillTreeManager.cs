@@ -117,7 +117,7 @@ public class SkillTreeManager : MenuScreen
 			SeinLevel.HasSpentSkillPoint = true;
 			AchievementsController.AwardAchievement(this.SpentFirstSkillPointAchievement);
 			GameController.Instance.CreateCheckpoint();
-			RandomizerStatsManager.OnSave();
+			RandomizerStatsManager.OnSave(false);
 			GameController.Instance.SaveGameController.PerformSave();
 			this.UpdateRequirementsText();
 			return;

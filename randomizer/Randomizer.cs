@@ -97,7 +97,7 @@ public static class Randomizer
 		Randomizer.StompTriggers = false;
 		Randomizer.SpawnWith = "";
 		Randomizer.IgnoreEnemyExp = false;
-		bool relicCountOverride = false;
+		Randomizer.RelicCountOverride = false;
 		try {
 			if(File.Exists("randomizer.dat")) {
 				string[] allLines = File.ReadAllLines("randomizer.dat");
@@ -105,121 +105,7 @@ public static class Randomizer
 				string s = flagLine[1];
 				string[] flags = flagLine[0].Split(new char[] { ',' });
 				Randomizer.SeedMeta = allLines[0];
-				foreach (string rawFlag in flags)
-				{
-					string flag = rawFlag.ToLower();
-					if (flag == "ohko")
-					{
-						Randomizer.OHKO = true;
-					}
-					if (flag.StartsWith("worldtour"))
-					{
-						Randomizer.WorldTour = true;
-						if(flag.Contains("=")) {
-							relicCountOverride = true;
-							Randomizer.RelicCount = int.Parse(flag.Substring(10));
-						}
-					}
-					if (flag.StartsWith("sync"))
-					{
-						Randomizer.Sync = true;
-						Randomizer.SyncId = flag.Substring(4);
-						RandomizerSyncManager.Initialize();
-					}
-					if (flag.StartsWith("frags/"))
-					{
-						Randomizer.fragsEnabled = true;
-						string[] fragParams = flag.Split(new char[]
-						{
-							'/'
-						});
-						Randomizer.maxFrags =  int.Parse(fragParams[2]);
-						Randomizer.fragKeyFinish = int.Parse(fragParams[1]);
-					}
-					if (flag.StartsWith("mode="))
-					{
-						string modeStr = flag.Substring(5).ToLower();
-						int syncMode;
-						if (modeStr == "shared")
-						{
-							syncMode = 1;
-						} else if (modeStr == "none") {
-							syncMode = 4;
-						} else {
-							syncMode = int.Parse(modeStr);
-						}
-						Randomizer.SyncMode = syncMode;
-					}
-					if (flag.StartsWith("shared="))
-					{
-						Randomizer.ShareParams = flag.Substring(7);
-					}
-					if (flag == "noextraexp")
-					{
-						Randomizer.IgnoreEnemyExp = true;
-					}
-					if (flag == "0xp")
-					{
-						Randomizer.IgnoreEnemyExp = true;
-						Randomizer.ZeroXP = true;
-					}
-					if (flag == "nobonus")
-					{
-						Randomizer.BonusActive = false;
-					}
-					if (flag == "nonprogressivemapstones")
-					{
-						Randomizer.ProgressiveMapStones = false;
-					}
-					if (flag == "forcetrees")
-					{
-						Randomizer.ForceTrees = true;
-					}
-					if (flag == "forcemaps")
-					{
-						Randomizer.ForceMaps = true;
-					}
-					if (flag == "clues")
-					{
-						Randomizer.CluesMode = true;
-						RandomizerClues.initialize();
-					}
-					if (flag == "shards")
-					{
-						Randomizer.Shards = true;
-					}
-					if (flag == "entrance")
-					{
-						Randomizer.Entrance = true;
-					}
-					if (flag == "closeddungeons")
-					{
-						Randomizer.OpenMode = false;
-					}
-					if (flag == "openworld")
-					{
-						Randomizer.OpenWorld = true;
-					}
-					if (flag.StartsWith("hotcold="))
-					{
-						Randomizer.HotCold = true;
-						Randomizer.HotColdTypes = flag.Substring(8).Split(new char[]{ '+' });
-						Array.Sort(Randomizer.HotColdTypes);
-					}
-					if (flag.StartsWith("sense="))
-					{
-						Randomizer.HotColdTypes = flag.Substring(6).Split(new char[] { '+' });
-						Array.Sort(Randomizer.HotColdTypes);
-					}
-					if (flag == "noaltr")
-					{
-						Randomizer.AltRDisabled = true;
-					}
-					if (flag == "stomptriggers")
-					{
-						Randomizer.StompTriggers = true;
-					}
-				}
+				Randomizer.ParseFlags(flags);
 				for (int i = 1; i < allLines.Length; i++)
 				{
 					string[] lineParts = allLines[i].Split(new char[] { '|' });
@@ -255,7 +141,7 @@ public static class Randomizer
 						Randomizer.Table[coords] = new RandomizerAction(lineParts[1], lineParts[2]);
 						if(lineParts[1] == "WT") {
 							Randomizer.RelicZoneLookup[lineParts[2]] = lineParts[3];
-							if(!relicCountOverride) {
+							if(!Randomizer.RelicCountOverride) {
 								Randomizer.RelicCount++;
 							}
 						}
@@ -1015,6 +901,21 @@ public static class Randomizer
 			if(Scenes.Manager.CurrentScene != null)
 			{
 				string scene = Scenes.Manager.CurrentScene.Scene;
+				if(scene == "thornfeltSwampActTwoStart" && NeedGinsoEscapeCleanup) {
+					try
+					{
+						Randomizer.ParseFlags(Randomizer.SeedMeta.Split(new char[] {'|'})[0].Split(new char[] {','}));
+						GameController.Instance.CreateCheckpoint();
+						RandomizerStatsManager.OnSave(false);
+						GameController.Instance.SaveGameController.PerformSave();
+						GameController.Instance.SaveGameController.PerformLoad();
+					}
+					catch (Exception e)
+					{
+						Randomizer.LogError("GinsoEscapeCleanup: " + e.Message);
+					}
+					NeedGinsoEscapeCleanup = false;
+				}
 				if(scene == "titleScreenSwallowsNest")
 				{
 					ResetTrackerCount++;
@@ -1143,6 +1044,124 @@ public static class Randomizer
 			Randomizer.LogError("RepeatableCheck: " + e.Message);
 		}
 		return 0;
+	}
+
+	public static void ParseFlags(string[] rawFlags) {
+		foreach (string rawFlag in rawFlags)
+		{
+			string flag = rawFlag.ToLower();
+			if (flag == "ohko")
+			{
+				Randomizer.OHKO = true;
+			}
+			if (flag.StartsWith("worldtour"))
+			{
+				Randomizer.WorldTour = true;
+				if(flag.Contains("=")) {
+					Randomizer.RelicCountOverride = true;
+					Randomizer.RelicCount = int.Parse(flag.Substring(10));
+				}
+			}
+			if (flag.StartsWith("sync"))
+			{
+				Randomizer.Sync = true;
+				Randomizer.SyncId = flag.Substring(4);
+				RandomizerSyncManager.Initialize();
+			}
+			if (flag.StartsWith("frags/"))
+			{
+				Randomizer.fragsEnabled = true;
+				string[] fragParams = flag.Split(new char[]
+				{
+					'/'
+				});
+				Randomizer.maxFrags =  int.Parse(fragParams[2]);
+				Randomizer.fragKeyFinish = int.Parse(fragParams[1]);
+			}
+			if (flag.StartsWith("mode="))
+			{
+				string modeStr = flag.Substring(5).ToLower();
+				int syncMode;
+				if (modeStr == "shared")
+				{
+					syncMode = 1;
+				} else if (modeStr == "none") {
+					syncMode = 4;
+				} else {
+					syncMode = int.Parse(modeStr);
+				}
+				Randomizer.SyncMode = syncMode;
+			}
+			if (flag.StartsWith("shared="))
+			{
+				Randomizer.ShareParams = flag.Substring(7);
+			}
+			if (flag == "noextraexp")
+			{
+				Randomizer.IgnoreEnemyExp = true;
+			}
+			if (flag == "0xp")
+			{
+				Randomizer.IgnoreEnemyExp = true;
+				Randomizer.ZeroXP = true;
+			}
+			if (flag == "nobonus")
+			{
+				Randomizer.BonusActive = false;
+			}
+			if (flag == "nonprogressivemapstones")
+			{
+				Randomizer.ProgressiveMapStones = false;
+			}
+			if (flag == "forcetrees")
+			{
+				Randomizer.ForceTrees = true;
+			}
+			if (flag == "forcemaps")
+			{
+				Randomizer.ForceMaps = true;
+			}
+			if (flag == "clues")
+			{
+				Randomizer.CluesMode = true;
+				RandomizerClues.initialize();
+			}
+			if (flag == "shards")
+			{
+				Randomizer.Shards = true;
+			}
+			if (flag == "entrance")
+			{
+				Randomizer.Entrance = true;
+			}
+			if (flag == "closeddungeons")
+			{
+				Randomizer.OpenMode = false;
+			}
+			if (flag == "openworld")
+			{
+				Randomizer.OpenWorld = true;
+			}
+			if (flag.StartsWith("hotcold="))
+			{
+				Randomizer.HotCold = true;
+				Randomizer.HotColdTypes = flag.Substring(8).Split(new char[]{ '+' });
+				Array.Sort(Randomizer.HotColdTypes);
+			}
+			if (flag.StartsWith("sense="))
+			{
+				Randomizer.HotColdTypes = flag.Substring(6).Split(new char[] { '+' });
+				Array.Sort(Randomizer.HotColdTypes);
+			}
+			if (flag == "noaltr")
+			{
+				Randomizer.AltRDisabled = true;
+			}
+			if (flag == "stomptriggers")
+			{
+				Randomizer.StompTriggers = true;
+			}
+		}
 	}
 
 	// Token: 0x0400322E RID: 12846
@@ -1337,4 +1356,8 @@ public static class Randomizer
 	public static bool SaveAfterWarp;
 
 	public static bool IgnoreEnemyExp;
+
+	public static bool NeedGinsoEscapeCleanup;
+
+	public static bool RelicCountOverride;
 }
