@@ -722,10 +722,12 @@ home: SpiritTreeRefined
 		casual-core ChargeJump DoubleJump
 		casual-core ChargeJump Glide
 		casual-core Bash Grenade
-		standard-core Dash WallJump
-		standard-core Dash Climb
 		standard-core Bash Glide WallJump
 		standard-core Bash Glide Climb
+		standard-abilities Dash WallJump Ability=3
+		standard-abilities Dash Climb Ability=3
+		expert-core Dash WallJump
+		expert-core Dash Climb
 		master-core Bash Glide DoubleJump
 	conn: ChargeFlameSkillTreeChamber
 	conn: ChargeFlameAreaStump
