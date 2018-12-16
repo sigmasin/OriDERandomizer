@@ -22,7 +22,7 @@ public static class Randomizer
 		Randomizer.Sync = false;
 		Randomizer.ForceMaps = false;
 		Randomizer.SyncMode = 4;
-		Randomizer.StringKeyPickupTypes = new List<string> {"TP", "SH", "NO", "WT", "MU", "HN", "WP", "RP"};
+		Randomizer.StringKeyPickupTypes = new List<string> {"TP", "SH", "NO", "WT", "MU", "HN", "WP", "RP", "WS"};
 		Randomizer.ShareParams = "";
 		RandomizerChaosManager.initialize();
 		Randomizer.DamageModifier = 1f;
@@ -47,6 +47,8 @@ public static class Randomizer
 		Randomizer.TeleportTable["Valley"] = "sorrowPass";
 		Randomizer.TeleportTable["Ginso"] = "ginsoTree";
 		Randomizer.TeleportTable["Horu"] = "mountHoru";
+		Randomizer.TeleportTable["Glades"] = "sunkenGlades";
+		Randomizer.TeleportTable["Blackroot"] = "mangroveFalls";
 		Randomizer.Entrance = false;
 		Randomizer.DoorTable = new Hashtable();
 		Randomizer.ColorShift = false;
@@ -56,7 +58,6 @@ public static class Randomizer
 		Randomizer.BashWasQueued = false;
 		Randomizer.BashTap = false;
 		Randomizer.fragsEnabled = false;
-		Randomizer.MoveNightBerry = false;
 		Randomizer.TickCounter = 60;
 		Randomizer.LockedCount = 0;
 		Randomizer.ResetTrackerCount = 0;
@@ -86,7 +87,6 @@ public static class Randomizer
 		RandomizerPlantManager.Initialize();
 		RandomizerRebinding.ParseRebinding();
 		RandomizerSettings.ParseSettings();
-		Randomizer.Warping = 0;
 		Randomizer.RelicZoneLookup = new Dictionary<string, string>();
 		RandomizerTrackedDataManager.Initialize();
 		RandomizerStatsManager.Initialize();
@@ -95,6 +95,8 @@ public static class Randomizer
 		Randomizer.StompZone = "MIA";
 		Randomizer.RepeatablePickups = new HashSet<int>();
 		Randomizer.StompTriggers = false;
+		Randomizer.SpawnWith = "";
+		Randomizer.IgnoreEnemyExp = false;
 		bool relicCountOverride = false;
 		try {
 			if(File.Exists("randomizer.dat")) {
@@ -103,13 +105,14 @@ public static class Randomizer
 				string s = flagLine[1];
 				string[] flags = flagLine[0].Split(new char[] { ',' });
 				Randomizer.SeedMeta = allLines[0];
-				foreach (string flag in flags)
+				foreach (string rawFlag in flags)
 				{
-					if (flag.ToLower() == "ohko")
+					string flag = rawFlag.ToLower();
+					if (flag == "ohko")
 					{
 						Randomizer.OHKO = true;
 					}
-					if (flag.ToLower().StartsWith("worldtour"))
+					if (flag.StartsWith("worldtour"))
 					{
 						Randomizer.WorldTour = true;
 						if(flag.Contains("=")) {
@@ -117,13 +120,13 @@ public static class Randomizer
 							Randomizer.RelicCount = int.Parse(flag.Substring(10));
 						}
 					}
-					if (flag.ToLower().StartsWith("sync"))
+					if (flag.StartsWith("sync"))
 					{
 						Randomizer.Sync = true;
 						Randomizer.SyncId = flag.Substring(4);
 						RandomizerSyncManager.Initialize();
 					}
-					if (flag.ToLower().StartsWith("frags/"))
+					if (flag.StartsWith("frags/"))
 					{
 						Randomizer.fragsEnabled = true;
 						string[] fragParams = flag.Split(new char[]
@@ -133,7 +136,7 @@ public static class Randomizer
 						Randomizer.maxFrags =  int.Parse(fragParams[2]);
 						Randomizer.fragKeyFinish = int.Parse(fragParams[1]);
 					}
-					if (flag.ToLower().StartsWith("mode="))
+					if (flag.StartsWith("mode="))
 					{
 						string modeStr = flag.Substring(5).ToLower();
 						int syncMode;
@@ -147,67 +150,72 @@ public static class Randomizer
 						}
 						Randomizer.SyncMode = syncMode;
 					}
-					if (flag.ToLower().StartsWith("shared="))
+					if (flag.StartsWith("shared="))
 					{
 						Randomizer.ShareParams = flag.Substring(7);
 					}
-					if (flag.ToLower() == "0xp")
+					if (flag == "noextraexp")
 					{
+						Randomizer.IgnoreEnemyExp = true;
+					}
+					if (flag == "0xp")
+					{
+						Randomizer.IgnoreEnemyExp = true;
 						Randomizer.ZeroXP = true;
 					}
-					if (flag.ToLower() == "nobonus")
+					if (flag == "nobonus")
 					{
 						Randomizer.BonusActive = false;
 					}
-					if (flag.ToLower() == "nonprogressivemapstones")
+					if (flag == "nonprogressivemapstones")
 					{
 						Randomizer.ProgressiveMapStones = false;
 					}
-					if (flag.ToLower() == "forcetrees")
+					if (flag == "forcetrees")
 					{
 						Randomizer.ForceTrees = true;
 					}
-					if (flag.ToLower() == "forcemaps")
+					if (flag == "forcemaps")
 					{
 						Randomizer.ForceMaps = true;
 					}
-					if (flag.ToLower() == "clues")
+					if (flag == "clues")
 					{
 						Randomizer.CluesMode = true;
 						RandomizerClues.initialize();
 					}
-					if (flag.ToLower() == "shards")
+					if (flag == "shards")
 					{
 						Randomizer.Shards = true;
 					}
-					if (flag.ToLower() == "entrance")
+					if (flag == "entrance")
 					{
 						Randomizer.Entrance = true;
 					}
-					if (flag.ToLower() == "closeddungeons")
+					if (flag == "closeddungeons")
 					{
 						Randomizer.OpenMode = false;
 					}
-					if (flag.ToLower() == "openworld")
+					if (flag == "openworld")
 					{
 						Randomizer.OpenWorld = true;
 					}
-					if (flag.ToLower().StartsWith("hotcold="))
+					if (flag.StartsWith("hotcold="))
 					{
 						Randomizer.HotCold = true;
 						Randomizer.HotColdTypes = flag.Substring(8).Split(new char[]{ '+' });
 						Array.Sort(Randomizer.HotColdTypes);
 					}
-					if (flag.ToLower().StartsWith("sense="))
+					if (flag.StartsWith("sense="))
 					{
 						Randomizer.HotColdTypes = flag.Substring(6).Split(new char[] { '+' });
 						Array.Sort(Randomizer.HotColdTypes);
 					}
-					if (flag.ToLower() == "noaltr")
+					if (flag == "noaltr")
 					{
 						Randomizer.AltRDisabled = true;
 					}
-					if (flag.ToLower() == "stomptriggers")
+					if (flag == "stomptriggers")
 					{
 						Randomizer.StompTriggers = true;
 					}
@@ -217,6 +225,10 @@ public static class Randomizer
 					string[] lineParts = allLines[i].Split(new char[] { '|' });
 					int coords;
 					int.TryParse(lineParts[0], out coords);
+					if (coords == 2) {
+						SpawnWith = lineParts[1] + lineParts[2];
+						continue;
+					}
 					int index = Array.BinarySearch<string>(Randomizer.HotColdTypes, lineParts[1]);
 					if (index < 0)
 					{
@@ -298,18 +310,34 @@ public static class Randomizer
 		Randomizer.getPickup(Characters.Sein.Position);
 	}
 
+	public static void WarpTo(Vector3 position, int warpDelay) {
+		Randomizer.Warping = warpDelay;
+		Randomizer.WarpTarget = position;
+		if (!Characters.Sein.Controller.CanMove || !Characters.Sein.Active || Characters.Sein.IsSuspended)
+		{
+			DelayedWarp = true;
+			return;
+		}
+		if(Characters.Sein.Abilities.Dash && Characters.Sein.Abilities.Dash.IsDashingOrChangeDashing)
+			Characters.Sein.Abilities.Dash.StopDashing();
+		Characters.Sein.Position = position;
+		Characters.Sein.Speed = new Vector3(0f, 0f);
+		Characters.Ori.Position = new Vector3(position.x, position.y+5);
+		Scenes.Manager.SetTargetPositions(Characters.Sein.Position);
+		UI.Cameras.Current.CameraTarget.SetTargetPosition(Characters.Sein.Position);
+		UI.Cameras.Current.MoveCameraToTargetInstantly(true);
+	}
+
 	public static void returnToStart()
 	{
 		if (Characters.Sein.Abilities.Carry.IsCarrying || !Characters.Sein.Controller.CanMove || !Characters.Sein.Active)
-		{
 			return;
-		}
 		if (Items.NightBerry != null)
 		{
 			Items.NightBerry.transform.position = new Vector3(-755f, -400f);
 		}
 		RandomizerStatsManager.WarpedToStart();
-		Randomizer.LastReturnPoint = Characters.Sein.Position;
+		RandomizerBonusSkill.LastAltR = Characters.Sein.Position;
 		Randomizer.Returning = true;
 		Characters.Sein.Position = new Vector3(189f, -215f);
 		Characters.Sein.Speed = new Vector3(0f, 0f);
@@ -441,7 +469,7 @@ public static class Randomizer
 					RandomizerColorManager.UpdateHotColdTarget();
 				}
 				return;
-			}			
+			}
 		}
 		catch(Exception e) {
 			Randomizer.LogError("GetPickup: " + e.Message);
@@ -471,10 +499,18 @@ public static class Randomizer
 				RandomizerColorManager.UpdateColors();
 			}
 			Randomizer.UpdateHoruCutsceneStatus();
-			if (Randomizer.MoveNightBerry && Items.NightBerry != null)
+			if (Characters.Sein.Inventory.GetRandomizerItem(82) > 0 && Items.NightBerry != null)
 			{
 				Items.NightBerry.transform.position = new Vector3(-910f, -300f);
-				Randomizer.MoveNightBerry = false;
+				Characters.Sein.Inventory.SetRandomizerItem(82, 0);
+			}
+			if(RandomizerBonusSkill.LevelExplosionCooldown > 0)
+			{
+				RandomizerBonusSkill.LevelExplosionCooldown--;
+				if(RandomizerBonusSkill.LevelExplosionCooldown > 10) {
+					Characters.Sein.Energy.SetCurrent(RandomizerBonusSkill.OldEnergy);
+					Characters.Sein.Mortality.Health.SetAmount(RandomizerBonusSkill.OldHealth);
+				}
 			}
 			if (Randomizer.Chaos)
 			{
@@ -485,11 +521,33 @@ public static class Randomizer
 				RandomizerSyncManager.Update();
 			}
 			if (Randomizer.Warping > 0) {
-				Characters.Sein.Position = Randomizer.WarpTarget;
-				Characters.Ori.Position = Randomizer.WarpTarget;
-				Randomizer.Warping -= 1;
-			}
-			else if (Randomizer.Returning)
+				if (Randomizer.DelayedWarp)
+				{
+					Randomizer.DelayedWarp = false;
+					Randomizer.WarpTo(Randomizer.WarpTarget, Randomizer.Warping);
+				} else {
+					Characters.Sein.Position = Randomizer.WarpTarget;
+					Characters.Sein.Speed = new Vector3(0f, 0f);
+					Characters.Ori.Position = new Vector3(Randomizer.WarpTarget.x, Randomizer.WarpTarget.y-5);
+					bool loading = false;
+					foreach (SceneManagerScene sms in Scenes.Manager.ActiveScenes)
+					{
+						if (sms.CurrentState == SceneManagerScene.State.Loading)
+						{
+							loading = true;
+							break;
+						}
+					}
+					if(!loading)
+					Randomizer.Warping--;
+					if(Randomizer.Warping == 0 && Randomizer.SaveAfterWarp)
+					{
+						GameController.Instance.CreateCheckpoint();
+						GameController.Instance.SaveGameController.PerformSave();
+						Randomizer.SaveAfterWarp = false;
+					}
+				}				
+			} else if (Randomizer.Returning)
 			{
 				Characters.Sein.Position = new Vector3(189f, -215f);
 				if (Scenes.Manager.CurrentScene.Scene == "sunkenGladesRunaway")
@@ -555,7 +613,7 @@ public static class Randomizer
 			Randomizer.playLastMessage();
 			return;
 		}
-		if (RandomizerRebinding.ReturnToStart.IsPressed() && Characters.Sein)
+		if (RandomizerRebinding.ReturnToStart.IsPressed() && Characters.Sein && Randomizer.Warping <= 0)
 		{
 			if(Randomizer.AltRDisabled || RandomizerBonus.AltRDisabled())
 			{
@@ -920,7 +978,7 @@ public static class Randomizer
 		if(setMessage)
 		{
 			Message = creditText;
-			LastMessageCredits = true;			
+			LastMessageCredits = true;
 		}
 	}
 
@@ -951,7 +1009,8 @@ public static class Randomizer
 
 			if(RepeatableCooldown > 0)
 				RepeatableCooldown--;
-
+			if(RandomizerStatsManager.StatsTimer > 0)
+				RandomizerStatsManager.StatsTimer--;
 			RandomizerStatsManager.IncTime();
 			if(Scenes.Manager.CurrentScene != null)
 			{
@@ -992,44 +1051,57 @@ public static class Randomizer
 			if(CreditsActive && !RandomizerCreditsManager.CreditsDone)
 					RandomizerCreditsManager.Tick();
 
-			if(Characters.Sein && !Characters.Sein.IsSuspended && Scenes.Manager.CurrentScene != null)
+			if(Characters.Sein)
 			{
-				ResetTrackerCount = 0;
-				RandomizerTrackedDataManager.UpdateBitfields();
-				RandomizerColorManager.UpdateHotColdTarget();
-				if (Characters.Sein.Position.y > 937f && Sein.World.Events.WarmthReturned && Scenes.Manager.CurrentScene.Scene == "ginsoTreeWaterRisingEnd")
-				{
-					if (Characters.Sein.Abilities.Bash.IsBashing)
-					{
-						Characters.Sein.Abilities.Bash.BashGameComplete(0f);
-					}
-					Characters.Sein.Position = new Vector3(750f, -120f);
-					return;
+				if(JustSpawned && SpawnWith != "" && Characters.Sein.Inventory) {
+					JustSpawned = false;
+					RandomizerAction spawnItem;
+					if(Randomizer.StringKeyPickupTypes.Contains(SpawnWith.Substring(0, 2)))
+						spawnItem = new RandomizerAction(SpawnWith.Substring(0, 2), SpawnWith.Substring(2));
+					else
+						spawnItem = new RandomizerAction(SpawnWith.Substring(0, 2), int.Parse(SpawnWith.Substring(2)));
+					RandomizerSwitch.GivePickup(spawnItem, 2, true);
 				}
-				if (Scenes.Manager.CurrentScene.Scene == "catAndMouseResurrectionRoom" && !Randomizer.canFinalEscape())
+				if(!Characters.Sein.IsSuspended && Scenes.Manager.CurrentScene != null)
 				{
-					if (Randomizer.Entrance)
+					ResetTrackerCount = 0;
+					RandomizerTrackedDataManager.UpdateBitfields();
+					RandomizerColorManager.UpdateHotColdTarget();
+					if (Characters.Sein.Position.y > 937f && Sein.World.Events.WarmthReturned && Scenes.Manager.CurrentScene.Scene == "ginsoTreeWaterRisingEnd")
 					{
-						Randomizer.EnterDoor(new Vector3(-242f, 489f));
+						if (Characters.Sein.Abilities.Bash.IsBashing)
+						{
+							Characters.Sein.Abilities.Bash.BashGameComplete(0f);
+						}
+						Characters.Sein.Position = new Vector3(750f, -120f);
 						return;
 					}
-					Characters.Sein.Position = new Vector3(20f, 105f);
-					return;
-				}
-				else if (!Characters.Sein.Controller.CanMove && Scenes.Manager.CurrentScene.Scene == "moonGrottoGumosHideoutB")
-				{
-					Randomizer.LockedCount++;
-					if (Randomizer.LockedCount >= 4)
+					if (Scenes.Manager.CurrentScene.Scene == "catAndMouseResurrectionRoom" && !Randomizer.canFinalEscape())
 					{
-						GameController.Instance.ResetInputLocks();
+						if (Randomizer.Entrance)
+						{
+							Randomizer.EnterDoor(new Vector3(-242f, 489f));
+							return;
+						}
+						Characters.Sein.Position = new Vector3(20f, 105f);
 						return;
 					}
-				}
-				else
-				{
-					Randomizer.LockedCount = 0;
+					else if (!Characters.Sein.Controller.CanMove && Scenes.Manager.CurrentScene.Scene == "moonGrottoGumosHideoutB")
+					{
+						Randomizer.LockedCount++;
+						if (Randomizer.LockedCount >= 4)
+						{
+							GameController.Instance.ResetInputLocks();
+							return;
+						}
+					}
+					else
+					{
+						Randomizer.LockedCount = 0;
+					}
 				}
 			}
+
 		}
 	}
 
@@ -1202,9 +1274,6 @@ public static class Randomizer
 	// Token: 0x04003332 RID: 13106
 	public static int TickCounter;
 
-	// Token: 0x04003459 RID: 13401
-	public static bool MoveNightBerry;
-
 	// Token: 0x040032F7 RID: 13047
 	public static ArrayList GladesData;
 
@@ -1212,10 +1281,6 @@ public static class Randomizer
 	public static int LockedCount;
 
 	public static int ResetTrackerCount;
-
-	public static Vector3 LastReturnPoint;
-
-	public static Vector3 LastSoulLink;
 
 	public static Vector3 WarpTarget;
 
@@ -1262,4 +1327,14 @@ public static class Randomizer
 	public static bool OpenWorld;
 
 	public static bool StompTriggers;
+
+	public static string SpawnWith;
+
+	public static bool JustSpawned;
+
+	public static bool DelayedWarp;
+
+	public static bool SaveAfterWarp;
+
+	public static bool IgnoreEnemyExp;
 }

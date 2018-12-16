@@ -13,7 +13,14 @@ public class NewGameAction : ActionMethod
 	public override void Perform(IContext context)
 	{
 		Game.Checkpoint.SaveGameData = new SaveGameData();
-		RandomizerStatsManager.Activate();
+		try {
+			Randomizer.initialize();
+			Randomizer.showSeedInfo();
+			Randomizer.JustSpawned = true;
+			RandomizerStatsManager.Activate();
+		} catch(Exception e) {
+			Randomizer.LogError("New Game Action: " + e.Message);
+		}
 		if (Randomizer.OpenMode)
 		{
 			Game.Checkpoint.SaveGameData.LoadCustomData(Randomizer.GinsoData);

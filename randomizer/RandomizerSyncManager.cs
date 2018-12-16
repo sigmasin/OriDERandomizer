@@ -32,7 +32,6 @@ public static class RandomizerSyncManager
 		RandomizerSyncManager.LoseOnDeath = new HashSet<string>();
 		RandomizerSyncManager.SkillInfos = new List<RandomizerSyncManager.SkillInfoLine>();
 		RandomizerSyncManager.EventInfos = new List<RandomizerSyncManager.EventInfoLine>();
-		RandomizerSyncManager.UpgradeInfos = new List<RandomizerSyncManager.UpgradeInfoLine>();
 		RandomizerSyncManager.TeleportInfos = new List<RandomizerSyncManager.TeleportInfoLine>();
 		RandomizerSyncManager.TeleportInfos.Add(new RandomizerSyncManager.TeleportInfoLine("Grove", 0));
 		RandomizerSyncManager.TeleportInfos.Add(new RandomizerSyncManager.TeleportInfoLine("Swamp", 1));
@@ -57,52 +56,6 @@ public static class RandomizerSyncManager
 		RandomizerSyncManager.EventInfos.Add(new RandomizerSyncManager.EventInfoLine(2, 2, () => Keys.ForlornRuins));
 		RandomizerSyncManager.EventInfos.Add(new RandomizerSyncManager.EventInfoLine(3, 3, () => Sein.World.Events.WindRestored));
 		RandomizerSyncManager.EventInfos.Add(new RandomizerSyncManager.EventInfoLine(4, 4, () => Keys.MountHoru));
-		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(17, 0, true, () => RandomizerBonus.WaterVeinShards()));
-		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(19, 1, true, () => RandomizerBonus.GumonSealShards()));
-		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(21, 2, true, () => RandomizerBonus.SunstoneShards()));
-		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(6, 3, true, () => RandomizerBonus.SpiritFlameLevel()));
-		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(13, 4, true, () => RandomizerBonus.HealthRegeneration()));
-		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(15, 5, true, () => RandomizerBonus.EnergyRegeneration()));
-		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(8, 12, false, delegate()
-		{
-			if (!RandomizerBonus.ExplosionPower())
-			{
-				return 0;
-			}
-			return 1;
-		}));
-		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(9, 13, false, delegate()
-		{
-			if (!RandomizerBonus.ExpEfficiency())
-			{
-				return 0;
-			}
-			return 1;
-		}));
-		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(10, 14, false, delegate()
-		{
-			if (!RandomizerBonus.DoubleAirDash())
-			{
-				return 0;
-			}
-			return 1;
-		}));
-		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(11, 15, false, delegate()
-		{
-			if (!RandomizerBonus.ChargeDashEfficiency())
-			{
-				return 0;
-			}
-			return 1;
-		}));
-		RandomizerSyncManager.UpgradeInfos.Add(new RandomizerSyncManager.UpgradeInfoLine(12, 16, false, delegate()
-		{
-			if (!RandomizerBonus.DoubleJumpUpgrade())
-			{
-				return 0;
-			}
-			return 1;
-		}));
 		if(Randomizer.SyncId != "") {
 			string[] parts = Randomizer.SyncId.Split('.');
 			RandomizerSyncManager.RootUrl = "http://orirandov3.appspot.com/netcode/game/" + parts[0] + "/player/" + parts[1]; 
@@ -401,9 +354,6 @@ public static class RandomizerSyncManager
 
 	// Token: 0x04003273 RID: 12915
 	public static List<RandomizerSyncManager.EventInfoLine> EventInfos;
-
-	// Token: 0x04003274 RID: 12916
-	public static List<RandomizerSyncManager.UpgradeInfoLine> UpgradeInfos;
 
 	// Token: 0x04003275 RID: 12917
 	public static HashSet<string> LoseOnDeath;

@@ -97,7 +97,7 @@ public static class RandomizerRebinding {
 			}
 		}
 		catch(Exception e) {
-			Randomizer.printInfo("Error parsing bindings: " + e.Message, 180);
+			Randomizer.LogError("Error parsing bindings: " + e.Message);
 		}
 	}
 	public static void AssignBind(string key, string bind, List<string> writeList) {
@@ -149,7 +149,7 @@ public static class RandomizerRebinding {
 		}
 		catch (Exception)
 		{
-			Randomizer.printInfo("@"+key+ ": failed to parse '" + bind + "'. Using default value: '"+defaultBind+"'@", 180);
+			Randomizer.printInfo("@"+key+ ": failed to parse '" + bind + "'. Using default value: '"+defaultBind+"'@", 240);
 			bind = defaultBind;
 		}
 		return ParseBinds(bind);

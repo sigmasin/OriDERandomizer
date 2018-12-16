@@ -1,78 +1,130 @@
 using System;
 using System.IO;
 using UnityEngine;
+using System.Collections.Generic;
 
-// Token: 0x02000A12 RID: 2578
+// Token: 0x02000A15 RID: 2581
 public static class RandomizerSettings
 {
-	// Token: 0x06003807 RID: 14343
+	// Token: 0x0600381B RID: 14363 RVA: 0x000E7DB8 File Offset: 0x000E5FB8
 	public static void WriteDefaultFile()
 	{
 		StreamWriter streamWriter = new StreamWriter("RandomizerSettings.txt");
-		streamWriter.WriteLine("Controller Bash Deadzone: 0.5");
-		streamWriter.WriteLine("Ability Menu Opacity: 0.5");
-		streamWriter.WriteLine("Instant Grenade Aim: False");
-		streamWriter.WriteLine("Grenade Aim Speed: 1.0");
-		streamWriter.WriteLine("Cold Color: 0, 255, 255, 255");
-		streamWriter.WriteLine("Hot Color: 255, 85, 0, 255");
-		streamWriter.WriteLine("Dev: False");
+		foreach(KeyValuePair<string, string> lineparts in DefaultSettings) {
+			if(lineparts.Key == "Dev")
+				continue;
+			streamWriter.WriteLine(lineparts.Key + ": " + lineparts.Value);
+		}
 		streamWriter.Flush();
 		streamWriter.Close();
 	}
-
-	// Token: 0x06003808 RID: 14344
+ 
+	// Token: 0x0600381C RID: 14364 RVA: 0x000E7E28 File Offset: 0x000E6028
 	public static void ParseSettings()
 	{
+		DefaultSettings = new Dictionary<string, string>(){
+			{"Controller Bash Deadzone", "0.5"},
+			{"Ability Menu Opacity", "0.5"},
+			{"Instant Grenade Aim", "False"},
+			{"Grenade Aim Speed", "1.0"},
+			{"Cold Color", "0, 255, 255, 255"},
+			{"Hot Color", "255, 85, 0, 255"},
+			{"Invert Swim", "False"},
+			{"Dev", "False"}
+		};
 		if (!File.Exists("RandomizerSettings.txt"))
 		{
 			RandomizerSettings.WriteDefaultFile();
 		}
 		try
 		{
-			string[] array = File.ReadAllLines("RandomizerSettings.txt");
-			RandomizerSettings.BashDeadzone = float.Parse(array[0].Split(new char[]
-			{
-				':'
-			})[1]);
-			RandomizerSettings.AbilityMenuOpacity = float.Parse(array[1].Split(new char[]
-			{
-				':'
-			})[1]);
-			RandomizerSettings.FastGrenadeAim = (array[2].Split(new char[]
-			{
-				':'
-			})[1].Trim() == "True");
-			RandomizerSettings.GrenadeAimSpeed = float.Parse(array[3].Split(new char[]
-			{
-				':'
-			})[1]);
-			RandomizerSettings.ColdColor = RandomizerSettings.ParseColor(array[4].Split(new char[]
-			{
-				':'
-			})[1]);
-			RandomizerSettings.HotColor = RandomizerSettings.ParseColor(array[5].Split(new char[]
-			{
-				':'
-			})[1]);
-			try {
-				RandomizerSettings.Dev = (array[6].Split(new char[]
-				{
-					':'
-				})[1].Trim().ToLower() == "true");
+			List<string> unseenSettings  = new List<string>(DefaultSettings.Keys);
+			unseenSettings.Remove("Dev");
+			List<string> writeList = new List<string>();
+			string[] lines = File.ReadAllLines("RandomizerSettings.txt");
+			// parse step 1: read settings from file
+			foreach(string line in lines) {
+				if(!line.Contains(":")) {
+					continue;
+				}
+				string[] parts = line.Split(':');
+				string setting = parts[0].Trim();
+				if(!DefaultSettings.ContainsKey(setting)) {
+					continue;
+				}
+				string value = parts[1].Trim();
+				ParseSettingLine(setting, value);
+				unseenSettings.Remove(setting);
 			}
-			catch(Exception) {
-				RandomizerSettings.Dev = false;
+			foreach(string missing in unseenSettings) {
+				ParseSettingLine(missing, DefaultSettings[missing]);
+				writeList.Add(missing);
 			}
-			RandomizerSettings.BashDeadzone = Math.Max(0f, Math.Min(1f, RandomizerSettings.BashDeadzone));
-			RandomizerSettings.AbilityMenuOpacity = Math.Max(0f, Math.Min(1f, RandomizerSettings.AbilityMenuOpacity));
+			if(writeList.Count > 0) {
+				Randomizer.printInfo("Default Settings written for these missing settings: " + String.Join(", ", writeList.ToArray()), 480);
+				string writeText = "";
+				foreach(string writeKey in writeList) {
+					writeText += Environment.NewLine + writeKey+ ": " + DefaultSettings[writeKey];
+				}
+				File.AppendAllText("RandomizerSettings.txt", writeText);
+			}
 		}
-		catch (Exception)
-		{
-			RandomizerSettings.LoadDefaultSettings();
+		catch(Exception e) {
+			Randomizer.LogError("Error parsing settings: " + e.Message);
 		}
 	}
 
-	// Token: 0x06003809 RID: 14345
+	public static void ParseSettingLine(string setting, string value) {
+		try {
+			switch(setting) {
+				case "Controller Bash Deadzone":
+					RandomizerSettings.BashDeadzone = float.Parse(value);
+					break;
+				case "Ability Menu Opacity":
+					RandomizerSettings.AbilityMenuOpacity = float.Parse(value);
+					break;
+				case "Instant Grenade Aim":
+					RandomizerSettings.FastGrenadeAim = (value.Trim().ToLower() == "true");
+					break;
+				case "Grenade Aim Speed":
+					RandomizerSettings.GrenadeAimSpeed = float.Parse(value);
+					break;
+				case "Cold Color":
+				RandomizerSettings.ColdColor = RandomizerSettings.ParseColor(value);
+					break;
+				case "Hot Color":
+				RandomizerSettings.HotColor = RandomizerSettings.ParseColor(value);
+					break;
+				case "Invert Swim":
+					RandomizerSettings.InvertSwim = (value.Trim().ToLower() == "true");
+					break;
+				case "Dev":
+					RandomizerSettings.Dev = (value.Trim().ToLower() == "true");
+					break;
+			}
+		} catch(Exception) {
+			ParseSettingLine(setting, DefaultSettings[setting]);
+			Randomizer.printInfo("@"+setting+ ": failed to parse value '" + value + "'. Using default value: '"+DefaultSettings[setting]+"'@", 240);
+		}
+	}
+
+	public static bool IsSwimBoosting()
+	{
+		if(RandomizerSettings.InvertSwim)
+			return !Core.Input.Jump.IsPressed;
+		else
+			return Core.Input.Jump.IsPressed;
+	}
+
+	public static bool SwimBoostPressed()
+	{
+		if(RandomizerSettings.InvertSwim)
+			return Core.Input.Jump.OnReleased;
+		else
+			return Core.Input.Jump.OnPressed;
+	}
+
+	// Token: 0x0600381D RID: 14365 RVA: 0x000E7FCC File Offset: 0x000E61CC
 	public static void LoadDefaultSettings()
 	{
 		RandomizerSettings.BashDeadzone = 0.5f;
@@ -83,33 +135,33 @@ public static class RandomizerSettings
 		RandomizerSettings.HotColor = new Color(0.5f, 0.1666f, 0f, 0.5f);
 	}
 
-	// Token: 0x06003887 RID: 14471
+	// Token: 0x0600381E RID: 14366 RVA: 0x000E803C File Offset: 0x000E623C
 	private static Color ParseColor(string input)
 	{
-		string[] components = input.Split(new char[]
+		string[] array = input.Split(new char[]
 		{
 			','
 		});
-		return new Color(float.Parse(components[0]) / 511f, float.Parse(components[1]) / 511f, float.Parse(components[2]) / 511f, float.Parse(components[3]) / 511f);
+		return new Color(float.Parse(array[0]) / 511f, float.Parse(array[1]) / 511f, float.Parse(array[2]) / 511f, float.Parse(array[3]) / 511f);
 	}
 
-	// Token: 0x040032D0 RID: 13008
+	// Token: 0x040032EB RID: 13035
 	public static float BashDeadzone;
 
-	// Token: 0x040032D1 RID: 13009
+	// Token: 0x040032EC RID: 13036
 	public static float AbilityMenuOpacity;
 
-	// Token: 0x040032D2 RID: 13010
+	// Token: 0x040032ED RID: 13037
 	public static bool FastGrenadeAim;
 
-	// Token: 0x040032D3 RID: 13011
+	// Token: 0x040032EE RID: 13038
 	public static float GrenadeAimSpeed;
 
-	// Token: 0x040033A6 RID: 13222
+	// Token: 0x040032EF RID: 13039
 	public static Color ColdColor;
-
-	// Token: 0x040033A7 RID: 13223
 	public static Color HotColor;
-
+	public static bool InvertSwim;
 	public static bool Dev;
+
+	public static Dictionary<string, string> DefaultSettings;
 }

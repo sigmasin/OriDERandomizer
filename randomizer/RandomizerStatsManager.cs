@@ -1,8 +1,11 @@
 using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using System.Linq;
 using Game;
 using Core;
+
 public static class RandomizerStatsManager {
 
 	public static void Initialize() {
@@ -51,13 +54,90 @@ public static class RandomizerStatsManager {
 		PickupCounts.Add("unknown", 9);
 		PickupCounts.Add("total", 256);
 
+		KeyItemOffsets = new Dictionary<string, int>();
+		KeyItemOffsets.Add("Wall Jump", 0);
+		KeyItemOffsets.Add("Charge Flame", 1);
+		KeyItemOffsets.Add("Double Jump", 2);
+		KeyItemOffsets.Add("Bash", 3);
+		KeyItemOffsets.Add("Stomp", 4);
+		KeyItemOffsets.Add("Glide", 5);
+		KeyItemOffsets.Add("Climb", 6);
+		KeyItemOffsets.Add("Charge Jump", 7);
+		KeyItemOffsets.Add("Dash", 8);
+		KeyItemOffsets.Add("Grenade", 9);
+		KeyItemOffsets.Add("Water Vein", 10);
+		KeyItemOffsets.Add("Clean Water", 11);
+		KeyItemOffsets.Add("Gumon Seal", 12);
+		KeyItemOffsets.Add("Wind Restored", 13);
+		KeyItemOffsets.Add("Sunstone", 14);
+		KeyItemOffsets.Add("Warmth Returned", 15);
+
+		SkillsById = new Dictionary<int, string>() {
+	        {0, "Bash"}, 
+	        {2, "Charge Flame"}, 
+	        {3, "Wall Jump"}, 
+	        {4, "Stomp"}, 
+	        {5, "Double Jump"}, 
+	        {8, "Charge Jump"}, 
+	        {12, "Climb"}, 
+	        {14, "Glide"}, 
+	        {50, "Dash"}, 
+	        {51, "Grenade"}
+		};
+		EventsById = new Dictionary<int, string>() {
+	        {0, "Water Vein"}, 
+	        {1, "Clean Water"}, 
+	        {2, "Gumon Seal"}, 
+	        {3, "Wind Restored"}, 
+	        {4, "Sunstone"}, 
+	        {5, "Warmth Returned"}
+		};
+
 		SceneToZone = new Dictionary<string, string>();
 		SceneToZone.Add("sunkenGladesOriRoom", "sunkenGlades");
 		SceneToZone.Add("sunkenGladesSpiritCavernsPushBlockIntroduction", "sunkenGlades");
 		SceneToZone.Add("sunkenGladesSpiritCavernWalljumpB", "sunkenGlades");
+		SceneToZone.Add("sunkenGladesSpiritCavernSaveRoomB", "sunkenGlades");
+		SceneToZone.Add("sunkenGladesWaterhole", "sunkenGlades");
+		SceneToZone.Add("sunkenGladesRunning", "sunkenGlades");
+		SceneToZone.Add("sunkenGladesIntroSplitB", "sunkenGlades");
+		SceneToZone.Add("sunkenGladesSpiritCavernLaser", "sunkenGlades");
+		SceneToZone.Add("sunkenGladesSpiritB", "sunkenGlades");
+		SceneToZone.Add("sunkenGladesObstaclesIntroductionStreamlined", "sunkenGlades");
+
 		SceneToZone.Add("horuFieldsB", "hollowGrove");
 		SceneToZone.Add("moonGrottoShortcutA", "hollowGrove");
 		SceneToZone.Add("spiritTreeRefined", "hollowGrove");
+		SceneToZone.Add("worldMapSpiritTree", "hollowGrove");
+		SceneToZone.Add("upperGladesSwarmIntroduction", "hollowGrove");
+		SceneToZone.Add("upperGladesSpiderCavernPuzzle", "hollowGrove");
+		SceneToZone.Add("upperGladesHollowTreeSplitC", "hollowGrove");
+		SceneToZone.Add("horuFieldsSlopeTransition", "hollowGrove");
+		SceneToZone.Add("upperGladesSpiderIntroduction", "hollowGrove");
+		SceneToZone.Add("sunkenGladesLaserStomp", "hollowGrove");
+
+		SceneToZone.Add("moonGrottoLaserIntroduction", "moonGrotto");
+		SceneToZone.Add("moonGrottoGumosHideoutB", "moonGrotto");
+		SceneToZone.Add("moonGrottoBasin", "moonGrotto");
+		SceneToZone.Add("moonGrottoLaserPuzzleB", "moonGrotto");
+
+		SceneToZone.Add("ginsoTreeSprings", "ginsoTree");
+		SceneToZone.Add("ginsoTreeSaveRoom", "ginsoTree");
+		SceneToZone.Add("ginsoTreePuzzles", "ginsoTree");
+		SceneToZone.Add("ginsoTreeBashRedirectArt", "ginsoTree");
+		SceneToZone.Add("ginsoTreeWaterRisingBtm", "ginsoTree");
+		SceneToZone.Add("ginsoTreeWaterRisingMid", "ginsoTree");
+		SceneToZone.Add("ginsoTreeWaterRisingEnd", "ginsoTree");
+		SceneToZone.Add("kuroMomentTreeDuplicate", "ginsoTree");
+
+		SceneToZone.Add("upperGladesSwampCliffs", "thornfeltSwamp");
+		SceneToZone.Add("thornfeltSwampA", "thornfeltSwamp");
+		SceneToZone.Add("thornfeltSwampB", "thornfeltSwamp");
+		SceneToZone.Add("thornfeltSwampE", "thornfeltSwamp");
+		SceneToZone.Add("thornfeltSwampStompAbility", "thornfeltSwamp");
+		SceneToZone.Add("thornfeltSwampActTwoStart", "thornfeltSwamp");
+		SceneToZone.Add("thornfeltSwampMoonGrottoTransition", "thornfeltSwamp");
+
 		SceneToZone.Add("sorrowPassForestB", "mistyWoods");
 		SceneToZone.Add("mistyWoodsIntro", "mistyWoods");
 		SceneToZone.Add("mistyWoodsGlideMazeA", "mistyWoods");
@@ -67,20 +147,45 @@ public static class RandomizerStatsManager {
 		SceneToZone.Add("mistyWoodsMortarBashBlockerA", "mistyWoods");
 		SceneToZone.Add("mistyWoodsMortarBash", "mistyWoods");
 		SceneToZone.Add("mistyWoodsProjectileBashing", "mistyWoods");
+		SceneToZone.Add("mistyWoodsBashUp", "mistyWoods");
+		SceneToZone.Add("mistyWoodsConnector", "mistyWoods");
+		SceneToZone.Add("mistyWoodsLaserFlipPlatforms", "mistyWoods");
+		SceneToZone.Add("mistyWoodsCrissCross", "mistyWoods");
+		SceneToZone.Add("mistyWoodsTIntersection", "mistyWoods");
+		SceneToZone.Add("mistyWoodsDocks", "mistyWoods");
+		SceneToZone.Add("mistyWoodsDocksB", "mistyWoods");
+		SceneToZone.Add("mistyWoodsRopeBridge", "mistyWoods");
+		SceneToZone.Add("mistyWoodsJumpProjectile", "mistyWoods");
+
+		SceneToZone.Add("sorrowPassEntranceA", "valleyOfTheWind");
+		SceneToZone.Add("sorrowPassEntranceB", "valleyOfTheWind");
+		SceneToZone.Add("westGladesShaftToBridgeB", "valleyOfTheWind");
+		SceneToZone.Add("westGladesMistyWoodsCaveTransition", "valleyOfTheWind");
+		SceneToZone.Add("westGladesRollingSootIntroduction", "valleyOfTheWind");
+		SceneToZone.Add("forlornRuinsKuroHideStreamlined", "valleyOfTheWind");
+
 		SceneToZone.Add("sorrowPassValleyD", "sorrowPass");
 		SceneToZone.Add("valleyOfTheWindGetChargeJump", "sorrowPass");
 		SceneToZone.Add("valleyOfTheWindIcePuzzle", "sorrowPass");
+		SceneToZone.Add("valleyOfTheWindHubL", "sorrowPass");
+		SceneToZone.Add("valleyOfTheWindWideLeft", "sorrowPass");
+		SceneToZone.Add("valleyOfTheWindGauntlet", "sorrowPass");
 		SceneToZone.Add("valleyOfTheWindLaserShaft", "sorrowPass");
-		SceneToZone.Add("sorrowPassEntranceA", "valleyOfTheWind");
+
 		SceneToZone.Add("forlornRuinsGravityRoomA", "forlornRuins");
 		SceneToZone.Add("forlornRuinsGetIceB", "forlornRuins");
 		SceneToZone.Add("forlornRuinsNestC", "forlornRuins");
+		SceneToZone.Add("forlornRuinsWindShaftMockupB", "forlornRuins");
+		SceneToZone.Add("forlornRuinsWindShaftMockupC", "forlornRuins");
+		SceneToZone.Add("forlornRuinsGravityFreeFall", "forlornRuins");
+		SceneToZone.Add("forlornRuinsGetNightberry", "forlornRuins");
+		SceneToZone.Add("forlornRuinsResurrectionAfter", "forlornRuins");
+		SceneToZone.Add("forlornRuinsC", "forlornRuins");
+
 		SceneToZone.Add("mangroveFallsDashEscalation", "mangrove");
+		SceneToZone.Add("northMangroveFallsIntro", "mangrove");
 		SceneToZone.Add("southMangroveFallsGrenadeEscalationBR", "mangrove");
-		SceneToZone.Add("ginsoTreeSprings", "ginsoTree");
-		SceneToZone.Add("ginsoTreeWaterRisingMid", "ginsoTree");
-		SceneToZone.Add("ginsoTreeWaterRisingEnd", "ginsoTree");
-		SceneToZone.Add("kuroMovementTreeDuplicate", "ginsoTree");
+
 		SceneToZone.Add("mountHoruMovingPlatform", "mountHoru");
 		SceneToZone.Add("mountHoruStomperSystemsL", "mountHoru");
 		SceneToZone.Add("mountHoruStomperSystemsR", "mountHoru");
@@ -89,7 +194,6 @@ public static class RandomizerStatsManager {
 		SceneToZone.Add("catAndMouseLeft", "mountHoru");
 		SceneToZone.Add("catAndMouseResurrectionRoom", "mountHoru");
 		SceneToZone.Add("mountHoruHubBottom", "mountHoru");
-
 	}
 
 	public static string CurrentZone() {
@@ -108,12 +212,14 @@ public static class RandomizerStatsManager {
 		return "unknown";
 	}
 
-	public static void UpdateAndReset(int counter, int max) {
+	public static bool UpdateAndReset(int counter, int max) {
 		int _counter = get(counter);
 		int _max = get(max);
-		if(_counter > _max)
+		bool update = _counter > _max;
+		if(update)
 			set(max, _counter);
 		set(counter, 0);
+		return update;
 	}
 
 	public static void OnDeath() {
@@ -146,19 +252,24 @@ public static class RandomizerStatsManager {
 					MenuCache[group + offset] = get(group + offset);
 			WriteFromCache = true;			
 		}
-		catch(Exception e) {
-//			Randomizer.LogError("OnReturnToMenu:" e.Message);
+		catch(Exception) {
+			//pass
 		}
 	}
 
 	public static void OnSave() {
+		OnSave(true);
+	}
+
+	public static void OnSave(bool userInitiated) {
 		if(!Active)
 			return;
 		set(TSLDOS, 0);
 
 		set(PSLDOS, 0);
 		UpdateAndReset(DSLS, DSLS_max);
-		inc(Saves, 1);
+		if(userInitiated)
+			inc(Saves, 1);
 	}
 
 	public static void IncTime() {
@@ -173,6 +284,7 @@ public static class RandomizerStatsManager {
 					foreach(int key in MenuCache.Keys)
 						set(key, MenuCache[key]);
 				}
+				inc(Drought, CachedTime);
 				inc(TSLDOS, CachedTime);
 				inc(TSLD, CachedTime);
 				inc(Time, CachedTime);
@@ -192,8 +304,9 @@ public static class RandomizerStatsManager {
 		try {
 			inc(PSLDOS, 1);
 			int count = inc(Pickups, 1);
-
 			int time  = get(Time);
+			if(UpdateAndReset(Drought, Drought_max))
+				set(Drought_max_end, time);
 			if(count >= 10) {			
 				int ppm = (int)(Math.Round((float)count / ((float)time / 60f), 2) * 100);
 				if(ppm > get(PPM_max))
@@ -213,9 +326,22 @@ public static class RandomizerStatsManager {
 	}
 
 	public static void ShowStats(int duration) {
-		string stats = GetStatsPage(CurrentPage);
-		Randomizer.PrintImmediately(stats, duration, false, false, false);
-		CurrentPage = (CurrentPage + 1) % PageCount;
+		if(CurrentPage < PageCount)
+		{
+			string stats = GetStatsPage(CurrentPage);
+			Randomizer.PrintImmediately(stats, duration, false, false, false);
+			CurrentPage++;
+			StatsTimer = duration;
+		} else {
+			CurrentPage = 0;
+			if(StatsTimer > 0) 
+			{
+				Randomizer.PrintImmediately("", 1, false, false, false);
+				WriteStatsFile();
+			}
+			 else 
+				ShowStats(duration);
+		}
 	}
 
 	public static string GetStatsPage(int page) {
@@ -227,7 +353,11 @@ public static class RandomizerStatsManager {
 				{
 					int offset = Offsets[zone];
 					string line = ZonePrettyNames[zone];
-					line += "\t\t" + get(Deaths+offset).ToString();
+					if(zone == "unknown") {
+						line += "\t\tN/A";
+					} else {
+						line += "\t\t" + get(Deaths+offset).ToString();
+					}
 					int time = get(Time+offset);
 					string timestr = FormatTime(time);
 					line += "\t\t" + timestr;
@@ -241,7 +371,7 @@ public static class RandomizerStatsManager {
 						if(pickupstr.Length < 5)
 							line += "\t";
 						float ppm = (float)count / ((float)time / 60f);
-						if(time == 0 || ppm > 256){
+						if(time == 0 || ppm > 256 || zone == "unknown"){
 							line += "\t\tN/A";
 						} else {
 							line += "\t\t"+ Math.Round(ppm,2).ToString();
@@ -251,25 +381,82 @@ public static class RandomizerStatsManager {
 					}
 					statsPage += "\n" + line;
 				}
-			break;
-				case 1:
-					float ppm_max = (float)get(PPM_max) / 100f;
-					statsPage = "ALIGNLEFTANCHORTOPPADDING_0_2_0_0_PARAMS_16_12_1_\nSaves:					" + get(Saves).ToString();
-					statsPage += "\nReloads:					" + (get(Reloads)).ToString();
-					statsPage += "\nAlt+Rs Used:				" + get(AltRCount).ToString();
-					statsPage += "\nTeleporters Used:			" + get(TeleporterCount).ToString();
-					statsPage += "\nPeak Pickups Per Minute:		" + ppm_max.ToString() + " ("+get(PPM_max_count).ToString() +" / " + FormatTime(get(PPM_max_time), false)+")";
-					statsPage += "\nWorst death (time lost):		" + FormatTime(get(TSLDOS_max), false);
-					statsPage += "\nWorst death (pickups lost):	" + get(PSLDOS_max).ToString();
-					statsPage += "\nMost deaths at one save:		" + Math.Max(get(DSLS_max), get(DSLS)).ToString();
-					statsPage += "\nTotal time lost to deaths:		" + FormatTime(get(shoof_sum), false);
-					statsPage += "\nLongest time without dying:	" + FormatTime(Math.Max(get(TSLD_max), get(TSLD)), false);
-					statsPage += "\nFound Wall Interaction at:		" + FormatTime(get(FoundWITime), false);
-					statsPage += "\nFound Bash at:				" + FormatTime(get(FoundBashTime), false);
-					statsPage += "\nFound Dash at:				" + FormatTime(get(FoundDashTime), false);
+				break;
+			case 1:
+				float ppm_max = (float)get(PPM_max) / 100f;
+				statsPage = "ALIGNLEFTANCHORTOPPADDING_0_2_0_0_PARAMS_16_12_1_\nSaves:					" + get(Saves).ToString();
+				statsPage += "\nReloads:					" + get(Reloads).ToString();
+				statsPage += "\nAlt+Rs Used:				" + get(AltRCount).ToString();
+				statsPage += "\nTeleporters Used:			" + get(TeleporterCount).ToString();
+				statsPage += "\nEnemies Killed:				" + get(EnemiesKilled).ToString();
+				statsPage += "\nBy Leveling up:				" + get(LevelUpKills).ToString();
+				statsPage += "\nExp collected:				" + get(ExpGained).ToString();
+				if(get(ExpBonus) > 0) {
+					statsPage += " + " + get(ExpBonus).ToString() + " bonus";
+				}
+				statsPage += "\nPeak Pickups Per Minute:		" + ppm_max.ToString();
+				if(ppm_max > 0)
+					statsPage += " ("+get(PPM_max_count).ToString() +" / " + FormatTime(get(PPM_max_time), false)+")";
+				statsPage += "\nLongest Drought:			" + FormatTime(get(Drought_max), false);
+				if(get(Drought_max) > 0)
+				{
+					string startTime = "0:00";
+					int droughtStart = get(Drought_max_end) - get(Drought_max);
+					if(droughtStart > 0) 
+						startTime = FormatTime(droughtStart, false);
+					statsPage += " (" + startTime + "-" + FormatTime(get(Drought_max_end), false) + ")";
+				}
+				statsPage += "\nWorst death (time lost):		" + FormatTime(get(TSLDOS_max), false);
+				statsPage += "\nWorst death (pickups lost):	" + get(PSLDOS_max).ToString();
+				statsPage += "\nMost deaths at one save:		" + Math.Max(get(DSLS_max), get(DSLS)).ToString();
+				statsPage += "\nTotal time lost to deaths:		" + FormatTime(get(shoof_sum), false);
+				statsPage += "\nLongest time without dying:	" + FormatTime(Math.Max(get(TSLD_max), get(TSLD)), false);
+				break;
+			case 2:
+				statsPage += "ALIGNLEFTANCHORTOPPADDING_0_2_0_0_PARAMS_16_12_1_Item				Found At		Zone";
+				SortedDictionary<int, List<string>> linesByTime = new SortedDictionary<int, List<string>>();
+				foreach(string item in KeyItemOffsets.Keys)
+				{
+					string line = item + ":";
+					if(line.Length < 10)
+						line += "\t\t";
+					else if(line.Length < 16)
+						line += "\t";
+					line += "\t";
+					int offset = KeyItemTime + KeyItemOffsets[item];
+					int raw = get(offset);
+					int time = -1;
+					if(raw > 0) {
+						time = raw % (1 << 18);
+						int zoneOffset = raw >> 18;
+						string zoneName = ZonePrettyNames[Offsets.First(x => x.Value == zoneOffset).Key].Trim();
+						line += FormatTime(time);
+						if(FormatTime(time).Length < 4)
+							line += "\t";
+						line += "\t\t" + zoneName;
+					} else {
+						line += "   N/A\t\tUnknown";
+					}
+					if(!linesByTime.ContainsKey(time))
+						linesByTime[time] = new List<string>();
+					linesByTime[time].Add(line);
+				}
+				List<string> last;
+				if(linesByTime.ContainsKey(-1)) {
+					last = linesByTime[-1];
+					linesByTime.Remove(-1); 
+				} else {
+					last = new List<string>();
+				}
+				foreach(List<string> lines in linesByTime.Values) {
+					foreach(string line in lines)
+						statsPage += "\n"+line;
+				}
+				foreach(string line in last)
+					statsPage += "\n"+line;
 				break;
 			default:
-			break;
+				break;
 		}
 		return statsPage;
 	}
@@ -287,14 +474,98 @@ public static class RandomizerStatsManager {
 
 	public static void Finish() {
 		Active = false;
-		string statsFile = File.ReadAllLines("randomizer.txt")[0] + "\n";
-		statsFile += GetStatsPage(0).Substring(33);
-		// clever readers might notice the lack of newline above. However,
-		// GetStatsPage(1) starts with a newline for shitty padding reasons.
-		statsFile += GetStatsPage(1).Substring(49);
-		File.WriteAllText("stats.txt", statsFile);
+		WriteStatsFile();
 	}
-	
+
+
+	public static void WriteStatsFile() {
+		try {
+			string flagLine = File.ReadAllLines("randomizer.dat")[0];
+			string zonePart = GetStatsPage(0).Substring(33);
+			// formatting is garbage
+			zonePart = zonePart.Replace("   ", "");
+			zonePart = Regex.Replace(zonePart, "\t+", " ");
+			List<string> zoneLines = new List<string>(zonePart.Split('\n'));
+			List<int> zoneLineSpacing = new List<int> {0, 0, 0, 0, 0};
+			foreach(string line in zoneLines) {
+				int col = 0;
+				int lastStart = 0;
+				for(int i = 0; i < line.Length; i++) {
+					if(line[i] == ' '){
+						int spacing = i-lastStart + 2;
+						if(zoneLineSpacing[col] < spacing)
+							zoneLineSpacing[col] = spacing;
+						col++;
+						lastStart = i;
+					}
+				}
+			}
+			zonePart = "";
+			foreach(string line in zoneLines) {
+				int col = 0;
+				string paddedLine = "";
+				foreach(string linePart in line.Split(' ')) {
+					string lpc = linePart;
+					while(lpc.Length < zoneLineSpacing[col]) 
+						lpc += " ";
+					paddedLine += lpc;
+					col++;
+				}
+				zonePart += paddedLine + "\n";
+			}
+
+			string miscPart = GetStatsPage(1).Substring(49);
+			List<string> miscLines = new List<string>(miscPart.Split('\n'));
+			miscPart = "";
+			foreach(string line in miscLines) {
+				int i = line.IndexOf(":");
+				string paddedLine = line.Substring(0, i+1);
+				while(paddedLine.Length < 32)
+					paddedLine += " ";
+				paddedLine += line.Substring(i+1).Trim();
+				miscPart += paddedLine + "\n";
+			}
+			string keyItemPart = GetStatsPage(2).Substring(49);
+			keyItemPart = keyItemPart.Replace("   ", "");
+			keyItemPart = Regex.Replace(keyItemPart, "\t+", "\t");
+			List<string> keyItemLines = new List<string>(keyItemPart.Split('\n'));
+			List<int> keyItemSpacing = new List<int> {0, 0, 0, 0};
+			foreach(string line in keyItemLines) {
+				int col = 0;
+				int lastStart = 0;
+				for(int i = 0; i < line.Length; i++) {
+					if(line[i] == '\t'){
+						int spacing = i-lastStart + 2;
+						if(keyItemSpacing[col] < spacing)
+							keyItemSpacing[col] = spacing;
+						col++;
+						lastStart = i;
+					}
+				}
+			}
+			keyItemPart = "";
+			foreach(string line in keyItemLines) {
+				int col = 0;
+				string paddedLine = "";
+				foreach(string linePart in line.Split('\t')) {
+					string lpc = linePart;
+					while(lpc.Length < keyItemSpacing[col]) 
+						lpc += " ";
+					paddedLine += lpc;
+					col++;
+				}
+				keyItemPart += paddedLine + "\n";
+			}
+
+			string statsFile = flagLine+"\n\n"+ zonePart + miscPart + "\n" + keyItemPart;
+			statsFile = statsFile.Replace("\n", "\r\n");
+			File.WriteAllText("stats.txt", statsFile);
+		} catch(Exception e)
+		{
+			Randomizer.LogError("WriteStatsFile: " + e.Message);
+		}
+
+	}	
 	public static string FormatTime(int seconds, bool padding)
 	{
 		if(padding)
@@ -314,37 +585,52 @@ public static class RandomizerStatsManager {
 		int minutes = seconds / 60;
 		string minutesPart = (minutes % 60).ToString();
 		if(minutesPart.Length < 2)
-		if(minutes > 60)
+		if(minutes >= 60)
 			minutesPart = "0"+minutesPart;
 		else
 			minutesPart = "   "+minutesPart;
-		if(minutes > 60)
+		if(minutes >= 60)
 		{
 			int hours = minutes / 60;
 			return hours.ToString()+":"+minutesPart+":"+secondsPart;
 		}
 		return minutesPart+":"+secondsPart;
 	}
-	public static void WarpedToStart() { inc(AltRCount, 1); }
-	public static void UsedTeleporter() { inc(TeleporterCount, 1); }
-	public static void FoundMapstone() { inc(Pickups, 1); inc(Pickups + 12, 1); }
-	public static void FoundSkill(int skillID) {
-		switch(skillID) {
-			case 12:
-			case 3:
-				if(get(FoundWITime) == 0)
-					set(FoundWITime, get(Time));
-				break;
-			case 0:
-				if(get(FoundBashTime) == 0)
-					set(FoundBashTime, get(Time));
-				break;
-			case 50:
-				if(get(FoundDashTime) == 0)
-					set(FoundDashTime, get(Time));
+	public static void OnKill(DamageType source) {
+		inc(EnemiesKilled, 1);
+		switch(source) {
+			case DamageType.LevelUp:
+				inc(LevelUpKills, 1);
 				break;
 			default:
 				break;
+		}
+
+	}
+
+
+	public static void WarpedToStart() { inc(AltRCount, 1); }
+	public static void UsedTeleporter() { inc(TeleporterCount, 1); }
+	public static void FoundMapstone() { inc(Pickups, 1); inc(Pickups + 12, 1); }
+	public static void OnExp(int expGained, int expBonus) { 
+		inc(ExpGained, expGained);
+		inc(ExpBonus, expBonus);
+	}
+
+	public static void FoundSkill(int skillID) {
+		if(SkillsById.ContainsKey(skillID))
+			FoundKeyItem(SkillsById[skillID]);
+	}
+	public static void FoundEvent(int eventID) {
+		FoundKeyItem(EventsById[eventID]);
+	}
+	public static void FoundKeyItem(string itemName) {
+		int offset = KeyItemTime + KeyItemOffsets[itemName];
+		if(get(offset) == 0)
+		{
+			int time = get(Time);
+			int zone = Offsets[CurrentZone()];
+			set(offset, time + (zone << 18));
 		}
 	}
 
@@ -361,29 +647,39 @@ public static class RandomizerStatsManager {
 	public static int TSLD_max = 1536;
 	public static int TSLDOS_max = 1537;
 	public static int PSLDOS_max = 1538;
+	public static int KeyItemTime = 1540;
 
-	public static int Pickups = 1600;
 
 	public static int Saves = 1570;
 	public static int shoof_sum = 1571;
+	public static int EnemiesKilled = 1572;
+	public static int ExpGained = 1573;
+	public static int ExpBonus = 1574;
 	public static int PPM_max = 1575;
 	public static int PPM_max_time = 1576;
 	public static int PPM_max_count = 1577;
 	public static int Reloads = 1578;
 	public static int AltRCount = 1579;
 	public static int TeleporterCount = 1580;
-	public static int FoundWITime = 1581;
-	public static int FoundBashTime = 1582;
-	public static int FoundDashTime = 1583;
+	public static int Drought = 1581;
+	public static int Drought_max = 1582;
+	public static int Drought_max_end = 1583;
+
+	public static int Pickups = 1600;
+	public static int LevelUpKills = 1650;
 
 	public static int CurrentPage;
-	public static int PageCount = 2;
+	public static int PageCount = 3;
 	public static int CachedTime;
 	public static bool Active;
 	public static bool WriteFromCache;
+	public static Dictionary<string, int> KeyItemOffsets;
+	public static Dictionary<int, string> SkillsById;
+	public static Dictionary<int, string> EventsById;
 	public static Dictionary<string, int> Offsets;
 	public static Dictionary<string, int> PickupCounts;
 	public static Dictionary<string, string> ZonePrettyNames;
 	public static Dictionary<string, string> SceneToZone;
 	public static Dictionary<int, int> MenuCache;
+	public static int StatsTimer = 0;
 }

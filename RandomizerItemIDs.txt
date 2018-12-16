@@ -23,6 +23,9 @@
 31 - Lifesteal
 32 - Manavamp
 33 - Skill Velocity Upgrade
+34 - Disable Alt+R
+35 - Enable Alt+R
+36 - Gravity Suit
 
 40 - Lose Wall Jump
 41 - Lose Charge Flame
@@ -34,9 +37,15 @@
 47 - Lose Charge Jump
 48 - Lose Dash
 49 - Lose Grenade
-q
+
 80 - Spent AP Counter
 81 - Stomp/Grenade Hint
+82 - Move Nightberry
+83 - Active Bonus Skill
+84 - Last AltR x position
+85 - Last AltR y position
+86 - Last Soul Link x position
+86 - Last Soul Link y position
 
 101 - Polarity Shift
 102 - Gravity Swap
@@ -44,6 +53,7 @@ q
 104 - Roose's Wind
 105 - Respawn Without Dying
 106 - Respec
+107 - Level Explosion
 
 
 1000 - plant tracking for map markers
@@ -96,6 +106,23 @@ q
 1537 - Most time lost to death
 1538 - Most pickups lost to death
 
+1540 - Wall Jump Time+Zone
+1541 - Charge Flame Time+Zone
+1542 - Double Jump Time+Zone
+1543 - Bash Time+Zone
+1544 - Stomp Time+Zone
+1545 - Glide Time+Zone
+1546 - Climb Time+Zone
+1547 - Charge Jump Time+Zone
+1548 - Dash Time+Zone
+1549 - Grenade Time+Zone
+1550 - Water Vein Time+Zone
+1551 - Clean Water Time+Zone
+1552 - Gumon Seal Time+Zone
+1553 - Wind Restored Time+Zone
+1554 - Sunstone Time+Zone
+1555 - Warmth Returned Time+Zone
+
 1570 - Saves
 1571 - sum(shoof)
 1575 - Max PPM
@@ -104,9 +131,9 @@ q
 1578 - Reloads
 1579 - Alt+R Count
 1580 - Teleporter Count
-1581 - Found WI Time
-1582 - Found Bash Time
-1583 - Found Dash Time
+1581 - Time since last pickup
+1582 - Longest drought
+1583 - Longest drought end time
 
 ==== End Persists Through Death Zone ===
 
@@ -124,7 +151,10 @@ q
 1611 - Pickups found in Horu
 1612 - Mapstones
 
-
+1650 - LevelUpKills
+1651 - EnemiesKilled
+1652 - ExpGained
+1653 - ExpBonus
 
 
 2000-2256 - reserved IDs for Sense pickups

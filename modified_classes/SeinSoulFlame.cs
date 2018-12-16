@@ -406,7 +406,7 @@ public class SeinSoulFlame : CharacterState, ISeinReceiver
 			this.m_checkpointMarkerGameObject.GetComponent<SoulFlame>().Disappear();
 		}
 		this.SpawnSoulFlame(Characters.Sein.Position);
-		Randomizer.LastSoulLink = Characters.Sein.Position;
+		RandomizerBonusSkill.LastSoulLink = Characters.Sein.Position;
 		RandomizerStatsManager.OnSave();
 		SeinSoulFlame.OnSoulFlameCast();
 		SaveSlotBackupsManager.CreateCurrentBackup();

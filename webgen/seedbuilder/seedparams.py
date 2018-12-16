@@ -27,7 +27,7 @@ class MultiplayerOptions(ndb.Model):
 
     def set_mode(self, mode):         self.str_mode = mode.value
 
-    def get_shared(self): return [ShareType.mk(st) for st in self.str_shared if ShareType.mk(st)]
+    def get_shared(self): return enums_from_strlist(ShareType, self.str_shared)
 
     def set_shared(self, shared):    self.str_shared = [s.value for s in shared]
 
@@ -68,11 +68,11 @@ class SeedGenParams(ndb.Model):
 
     def set_pathdiff(self, pathdiff): self.str_pathdiff = pathdiff.value
 
-    def get_vars(self): return [Variation(var) for var in self.str_vars]
+    def get_vars(self): return enums_from_strlist(Variation, self.str_vars)
 
     def set_vars(self, vars): self.str_vars = [v.value for v in vars]
 
-    def get_paths(self): return [LogicPath(path) for path in self.str_paths]
+    def get_paths(self): return enums_from_strlist(LogicPath, self.str_paths)
 
     def set_paths(self, paths): self.str_paths = [p.value for p in paths]
 
@@ -158,9 +158,9 @@ class SeedGenParams(ndb.Model):
                     placemap[loc] = Placement(location=loc, zone=zone, stuff=[stuff])
                 else:
                     placemap[loc].stuff.append(stuff)
-        if self.sync.mode == MultiplayerGameType.SIMUSOLO:
+        if self.sync.mode in [MultiplayerGameType.SIMUSOLO, MultiplayerGameType.SPLITSHARDS]:
             if player != 1:
-                log.error("seed count mismatch! Should only be 1 simusolo seed and instead found  %s", player)
+                log.error("seed count mismatch! Should only be 1 seed for this mode and instead found  %s", player)
                 return False
         elif player != self.players and player != len(self.sync.teams):
             log.error("seed count mismatch!, %s != %s or %s", player, self.players, len(self.sync.teams))
@@ -180,7 +180,7 @@ class SeedGenParams(ndb.Model):
         flags = self.flag_line(verbose_paths)
         if self.tracking:
             flags = "Sync%s.%s," % (game_id, player) + flags
-        if self.sync.mode == MultiplayerGameType.SIMUSOLO:
+        if self.sync.mode in [MultiplayerGameType.SIMUSOLO, MultiplayerGameType.SPLITSHARDS]:
             player = 1  # look, it's probably fine
         outlines = [flags]
         outlines += ["|".join(line) for line in self.get_seed_data(player)]
@@ -189,12 +189,12 @@ class SeedGenParams(ndb.Model):
 
     def get_seed_data(self, player=1):
         player = int(player)
-        if self.sync.mode == MultiplayerGameType.SIMUSOLO:
+        if self.sync.mode in [MultiplayerGameType.SIMUSOLO, MultiplayerGameType.SPLITSHARDS]:
             player = 1
         return [(str(p.location), s.code, s.id, p.zone) for p in self.placements for s in p.stuff if int(s.player) == self.team_pid(player)]
 
     def get_spoiler(self, player=1):
-        if self.sync.mode == MultiplayerGameType.SIMUSOLO:
+        if self.sync.mode in [MultiplayerGameType.SIMUSOLO, MultiplayerGameType.SPLITSHARDS]:
             player = 1
         return self.spoilers[self.team_pid(player) - 1]
 
@@ -226,7 +226,7 @@ class SeedGenParams(ndb.Model):
         if self.balanced:
             flags.append("balanced")
         if self.sense:
-            flags.append("sense=%s" % self.sense).replace(" ", "+")
+            flags.append("sense=%s" % self.sense.replace(" ", "+"))
         return "%s|%s" % (",".join(flags), self.seed)
 
     @staticmethod

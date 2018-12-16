@@ -133,7 +133,7 @@ public class TeleporterController : SaveSerialize, ISuspendable
 		}
 		if (selectedTeleporter.Identifier == "forlorn")
 		{
-			Randomizer.MoveNightBerry = true;
+			Characters.Sein.Inventory.SetRandomizerItem(82, 1);
 		}
 		if (!TeleporterController.Instance.DontTeleportForAnimationTesting)
 		{

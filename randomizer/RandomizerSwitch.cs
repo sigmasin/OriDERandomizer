@@ -37,12 +37,7 @@ public static class RandomizerSwitch
         {
             return;
         }
-        int num = (int)((float)Value * ((!Characters.Sein.PlayerAbilities.SoulEfficiency.HasAbility) ? ((!Characters.Sein.PlayerAbilities.AbilityMarkers.HasAbility) ? 1f : 1.5f) : 2f));
-        if (RandomizerBonus.ExpEfficiency())
-        {
-            num *= 2;
-        }
-        Characters.Sein.Level.GainExperience(num);
+        Characters.Sein.Level.GainExperience(RandomizerBonus.ExpWithBonuses(Value));
     }
     
     public static void KeystonePickup() {
@@ -98,6 +93,10 @@ public static class RandomizerSwitch
             Randomizer.showHint("$Glide$", 300);
             Characters.Sein.PlayerAbilities.SetAbility(AbilityType.Glide, true);
             break;
+        case 15:
+            Randomizer.showHint("$Spirit Flame$", 300);
+            Characters.Sein.PlayerAbilities.SetAbility(AbilityType.SpiritFlame, true);
+            break;
         case 50:
             Randomizer.showHint("$Dash$", 300);
             Characters.Sein.PlayerAbilities.SetAbility(AbilityType.Dash, true);
@@ -138,6 +137,7 @@ public static class RandomizerSwitch
                 Randomizer.showHint("@Warmth Returned@", 300);
                 break;
         }
+        RandomizerStatsManager.FoundEvent(Value);
     }
     
     public static void TeleportPickup(string Value)
@@ -175,7 +175,7 @@ public static class RandomizerSwitch
             else{
                 shardPart = "2 " + shardPart + " shards to activate";  
             }
-            Randomizer.showHint(colorChar + "Broken " + Value + " teleporter"+colorChar+"\nCollect " + shardPart, 240);
+            Randomizer.showHint(colorChar + "Broken " + Value + " teleporter\nCollect " + shardPart + colorChar, 300);
             return;
         }
         TeleporterController.Activate(Randomizer.TeleportTable[Value].ToString());
@@ -231,7 +231,7 @@ public static class RandomizerSwitch
                 EventPickup((int)Action.Value);
                 break;
             case "RB":
-                RandomizerBonus.UpgradeID((int)Action.Value);                    
+                RandomizerBonus.UpgradeID((int)Action.Value);
                 break;
             case "TP":
                 TeleportPickup((string)Action.Value);
@@ -249,14 +249,13 @@ public static class RandomizerSwitch
                 }
                 Randomizer.showHint((string)Action.Value + relicStr, 480);
                 break;
+            case "WS":
             case "WP":
-                string rawTarget = (string)Action.Value;
-                string[] xy = rawTarget.Split(',');
-                Randomizer.WarpTarget = new UnityEngine.Vector3(float.Parse(xy[0]), float.Parse(xy[1]));
-                Randomizer.Warping = 120;
+                Randomizer.SaveAfterWarp = Action.Action == "WS";
+                string[] xy = ((string)Action.Value).Split(',');
+                Randomizer.WarpTo(new UnityEngine.Vector3(float.Parse(xy[0]), float.Parse(xy[1])), 15);
                 break;
             case "NO":
-                Randomizer.showHint("Nothing");
                 break;
         }
         RandomizerTrackedDataManager.UpdateBitfields();
@@ -265,4 +264,4 @@ public static class RandomizerSwitch
             Randomizer.LogError("Give Pickup: " + e.Message);
         }
     }
-}   
+}

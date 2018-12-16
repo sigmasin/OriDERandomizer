@@ -10,12 +10,6 @@ coord_correction_map = {
     8599908: 8599904,
     2959744: 2919744,
 }
-# for picks_by_loc_gen
-non_area_lines = {
-    "EC": """\t{"loc": -280256, "name": "EC", "zone": "Glades", "area": "SunkenGladesRunaway", "x": -28, "y": -256},\n""",
-    "EX": """\t{"loc": -1680104, "name": "EX100", "zone": "Grove", "area": "SpritTreeRefined", "x": -168, "y": -104},\n""",
-    "Pl": """\t{"loc": -12320248, "name": "Plant", "zone": "Forlorn", "area": "RightForlornPlant", "x": -1232, "y": -248},\n""",
-}
 
 PickLoc = namedtuple("PickLoc", ["coords", "name", "zone", "area", "x", "y"])
 
@@ -28,7 +22,12 @@ extra_PBT = [
     PickLoc(44, 'Mapstone 6', 'Mapstone', 'MS6', 0, 44),
     PickLoc(48, 'Mapstone 7', 'Mapstone', 'MS7', 0, 48),
     PickLoc(52, 'Mapstone 8', 'Mapstone', 'MS8', 0, 52),
-    PickLoc(56, 'Mapstone 9', 'Mapstone', 'MS9', 0, 56)
+    PickLoc(56, 'Mapstone 9', 'Mapstone', 'MS9', 0, 56),
+    PickLoc(-280256, "EC", "Glades", "SunkenGladesFirstEC", -28, -256),
+    PickLoc(-1680104, "EX100", "Grove", "UnsafeSpiritTree100Ex", -168, -104),
+    PickLoc(-2399488, "EVWarmth", "Horu", "FinalEscape", -240, 512),
+    PickLoc(-12320248, "Plant", "Forlorn", "ForlornEscapePlant", -1232, -248),
+    PickLoc(2, "SPAWN", "Glades", "FirstPickup", 189, -210),
 ]
 
 def enums_from_strlist(enum, strlist):
@@ -55,7 +54,7 @@ def rm_none(itr):
 
 log_2 = {1: 0, 2: 1, 4: 2, 8: 3, 16: 4, 32: 5, 64: 6, 128: 7, 256: 8, 512: 9, 1024: 10, 2048: 11, 4096: 12, 8192: 13, 16384: 14, 32768: 15, 65536: 16}
 
-all_locs = set([2999808, 5280264, -4159572, 4479832, 4559492, 919772, -3360288, 24, -8400124, 28, 32, 1599920, -6479528, 36, 40, 3359580, 2759624, 44, 4959628, 4919600, 3279920, -12320248, 1479880,
+all_locs = set([2, 2999808, 5280264, -4159572, 4479832, 4559492, 919772, -3360288, 24, -8400124, 28, 32, 1599920, -6479528, 36, 40, 3359580, 2759624, 44, 4959628, 4919600, 3279920, -12320248, 1479880,
                 52, 56, 3160244, 960128, 799804, -6159632, -800192, 5119584, 5719620, -6279608, -3160308, 5320824, 4479568, 9119928, -319852, 1719892, -480168, 919908, 1519708, -6079672, 2999904,
                 -6799732, -11040068, 5360732, 559720, 4039612, 4439632, 1480360, -2919980, -120208, -2480280, 4319860, -7040392, -1800088, -4680068, 4599508, 2919744, 3319936, 1720000, 120164,
                 -4600188, 5320328, 6999916, 3399820, 1920384, -400240, -6959592, 4319892, 2239640, 2719900, -160096, 3559792, 1759964, -5160280, 6359836, 5080496, 5359824, 1959768, 5039560, 4560564,
@@ -127,7 +126,7 @@ def is_int(s):
         return False
 
 
-def picks_by_type():
+def picks_by_type(extras=False):
     locs = ori_load_url('http://raw.githubusercontent.com/sigmasin/OriDERandomizer/3.0/seed_gen/areas.ori')["locs"]
 
     picks_by_type = defaultdict(lambda: [])
@@ -146,10 +145,17 @@ def picks_by_type():
                 print "No secondary match found here!", crd, item, zone, area, x, y
         line = PickLoc(crd, item, zone, area, x, y)
         picks_by_type[item[0:2]].append(line)
+    if extras:
+        for extra in extra_PBT:
+            p_type = extra.name[0:2]
+            if p_type == "Ma":
+                picks_by_type["MP"].append(extra)
+            elif p_type in picks_by_type.keys():
+                picks_by_type[p_type].append(extra)
     return picks_by_type
 
-def picks_by_coord():
-    pbt = picks_by_type()
+def picks_by_coord(extras=False):
+    pbt = picks_by_type(extras)
     pbc = {}
     for pickgroup in pbt.values():
         for pick in pickgroup:
@@ -158,12 +164,9 @@ def picks_by_coord():
 
 def picks_by_type_generator():
     lines = "{\n"
-    pbt = picks_by_type()
-    pbt["MP"] = extra_PBT
+    pbt = picks_by_type(extras=True)
     for key in sorted(pbt.keys()):
         lines += '"%s": [\n' % key
-        if key in non_area_lines:
-            lines += non_area_lines[key]
         for item in sorted(pbt[key], key=lambda x: str(x.coords)):
             lines += """\t{"loc": %s, "name": "%s", "zone": "%s", "area": "%s", "x": %s, "y": %s}, \n""" % item
         lines = lines[:-3] + '\n], '
