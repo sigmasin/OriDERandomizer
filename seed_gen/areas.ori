@@ -3394,8 +3394,11 @@ home: ValleyThreeBirdLever
 		casual-core Bash
 		casual-core Climb ChargeJump
 		standard-abilities Dash Ability=3
-		standard-dboost Health=4
-		expert-dboost ChargeJump Health=3
+		--increased health value: need to take 3 damage to get here
+		standard-dboost Health=7
+		expert-dboost ChargeJump Health=2
+		expert-dboost WallJump Health=2
+		expert-dboost Climb Health=2
 	conn: LowerValley
 		casual-core Glide Wind
 		casual-core Glide DoubleJump
@@ -3668,25 +3671,30 @@ home: ForlornKeyDoor
 	conn: ForlornLaserRoom
 		casual-core ForlornKey Keystone=4
 home: ForlornLaserRoom
--- anchored in the bottom left of the crossed lasers room
+-- anchored past the Forlorn key door
+	-- this path assumes the bridge exists
 	pickup: ForlornEscape
 		casual-core WallJump
 		casual-core Climb ChargeJump
 		casual-core Climb DoubleJump
 		casual-core Bash Grenade
 		master-lure Bash
+	-- this path assumes the bridge does not exist
 	conn: ForlornStompDoor
-		casual-core Stomp ChargeJump
 		casual-core Stomp Bash Grenade
-		casual-core Stomp WallJump DoubleJump
-		casual-core Stomp Climb DoubleJump
-		casual-core Stomp WallJump Glide
-		casual-core Stomp Climb Glide
-		casual-core Stomp WallJump Dash
-		casual-core Stomp Climb Dash
-		expert-core Stomp WallJump
-		expert-core Stomp Climb
+		casual-core Stomp ChargeJump Glide
+		standard-abilities Stomp ChargeJump Dash DoubleJump Ability=3
+		standard-abilities Stomp ChargeJump Dash Health=4 Ability=3
+		standard-abilities Stomp Glide Dash DoubleJump Health=4 Ability=3
+		standard-dboost Stomp ChargeJump DoubleJump Health=4
+		expert-abilities Stomp Dash WallJump Ability=6
+		expert-abilities Stomp Dash Climb Ability=6
+		expert-abilities Stomp Dash DoubleJump Ability=6
+		expert-abilities Stomp Dash ChargeJump Ability=6
+		master-abilities Stomp ChargeJump DoubleJump Ability=12
+		master-abilities Stomp Glide DoubleJump Ability=12
 		master-lure Stomp Bash
+		gjump Stomp ChargeJump Climb Grenade
 home: ForlornStompDoor
 -- anchored just past the (opened) stomp door in Forlorn
 	conn: RightForlorn
