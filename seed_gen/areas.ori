@@ -984,8 +984,8 @@ home: DashArea
 		casual-core Stomp ChargeJump
 		casual-core Stomp Grenade Bash
 		casual-core Stomp Dash
+		standard-core ChargeJump Climb
 		expert-core Stomp
-		expert-core ChargeJump Climb
 		master-core Bash
 		glitched Free
 		insane Free
@@ -3448,10 +3448,13 @@ home: OutsideForlornCliff
 		casual-core ChargeJump
 		casual-core Bash
 	conn: ValleyForlornApproach
-		casual-core Stomp WallJump
-		casual-core Stomp Climb DoubleJump
-		casual-core Stomp ChargeJump
+		casual-core Stomp Bash WallJump
+		casual-core Stomp Bash Climb DoubleJump
+		casual-core Stomp Bash ChargeJump
 		casual-core Stomp Bash Grenade
+		expert-core Stomp ChargeFlame WallJump
+		expert-core Stomp ChargeFlame Climb DoubleJump
+		expert-core Stomp ChargeFlame ChargeJump
 		master-core Bash
 	conn: OutsideForlorn
 home: OutsideForlorn
