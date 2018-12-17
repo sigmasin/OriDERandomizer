@@ -560,6 +560,7 @@ home: SpiritCavernsDoorOpened
 		casual-core ChargeJump
 		casual-core Bash Grenade
 		standard-lure Bash
+		expert-abilities Dash Ability=6
 		master-core DoubleJump
 	conn: GladesMain
 home: LowerSpiritCaverns
@@ -578,6 +579,7 @@ home: LowerSpiritCaverns
 		casual-core Bash
 		standard-core WallJump DoubleJump
 		expert-core Climb DoubleJump
+		expert-abilities Dash Ability=6
 		master-abilities DoubleJump Ability=12
 	conn: MidSpiritCaverns
 		casual-core WallJump
@@ -836,6 +838,9 @@ home: SpiderSacArea
 		casual-core Stomp WallJump
 		casual-core Stomp Climb
 		casual-core Stomp ChargeJump
+		master-core ChargeFlame DoubleJump
+		master-core Grenade DoubleJump
+		master-core Stomp DoubleJump
 home: SpiderSacEnergyNook
 	-- anchor: in the nook where the energy cell is
 	pickup: SpiderSacEnergyCell
@@ -938,6 +943,7 @@ home: BlackrootDarknessRoom
 		casual-core Climb
 		casual-core Bash Grenade
 		casual-core ChargeJump
+		master-core DoubleJump
 		master-core Bash
 	conn: DashArea
 		casual-core WallJump
@@ -1114,14 +1120,14 @@ home: LowerBlackroot
 	pickup: LowerBlackrootLaserAbilityCell
 		casual-core Dash Bash Grenade
 		standard-core Dash DoubleJump
+		standard-dboost Dash ChargeJump Health=4
 		expert-core DoubleJump Glide
 		expert-core Bash Grenade
-		expert-dboost Dash ChargeJump Health=4
 		expert-dboost WallJump Glide Health=4
 		expert-dboost Stomp Glide Health=4
 		expert-dboost DoubleJump Health=4
 		expert-dboost ChargeJump Health=4
-		expert-abilities Dash Ability=3
+		expert-dboost Dash Ability=3 Health=4
 		master-dboost Stomp Health=4
 	pickup: LowerBlackrootLaserExp
 		casual-core Dash WallJump
@@ -1132,6 +1138,7 @@ home: LowerBlackroot
 		expert-core DoubleJump
 		expert-core Bash Grenade
 		expert-core ChargeJump
+		expert-abilities Dash Ability=6
 	pickup: LowerBlackrootGrenadeThrow
 		casual-core WallJump Grenade
 		casual-core Climb Grenade
@@ -1208,8 +1215,11 @@ home: HollowGrove
 		casual-core Bash Grenade
 		standard-lure Bash WallJump
 		standard-lure Bash Climb
+		standard-abilities Stomp Glide WallJump Dash Ability=3
+		standard-abilities Stomp Glide Climb Dash Ability=3
 		expert-abilities Dash Ability=6
 		dbash Bash
+		master-core Stomp DoubleJump
 	pickup: HollowGroveMap
 		casual-core Mapstone
 	pickup: HollowGroveMapPlant
@@ -1353,15 +1363,14 @@ home: OuterSwampLowerArea
 		casual-core Bash
 		casual-core ChargeJump
 		casual-core Glide Wind
+		casual-core DoubleJump
 	conn: UpperGrotto
 		casual-core WallJump
 		casual-core Climb
 		casual-core Bash
 		casual-core ChargeJump
 		casual-core Glide Wind
-		-- expert because if you get stuck on swamp side, you need to djump up
-		-- the wall to continue left (type A djump wall climb)
-		expert-core DoubleJump
+		casual-core DoubleJump
 home: OuterSwampMortarAbilityCellLedge
 	-- anchor: on the ability cell ledge
 	pickup: OuterSwampMortarAbilityCell
