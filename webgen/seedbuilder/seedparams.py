@@ -179,12 +179,11 @@ class SeedGenParams(ndb.Model):
     def get_seed(self, player=1, game_id=None, verbose_paths=False):
         flags = self.flag_line(verbose_paths)
         if self.tracking:
+            if not game_id:
+                log.warning("Trying to get a tracked seed with no gameId! paramId %s", self.key.id())
             flags = "Sync%s.%s," % (game_id, player) + flags
-        if self.sync.mode in [MultiplayerGameType.SIMUSOLO, MultiplayerGameType.SPLITSHARDS]:
-            player = 1  # look, it's probably fine
         outlines = [flags]
         outlines += ["|".join(line) for line in self.get_seed_data(player)]
-        assert len(outlines) > 1
         return "\n".join(outlines) + "\n"
 
     def get_seed_data(self, player=1):
