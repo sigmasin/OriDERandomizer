@@ -3332,6 +3332,13 @@ home: ValleyMain
 home: LowerValley
 -- anchored on top of the stump in the middle of valley
 	pickup: LowerValleyMapstone
+		casual-core WallJump
+		casual-core Climb
+		casual-core DoubleJump
+		casual-core Bash
+		casual-core ChargeJump
+		expert-abilities Dash Ability=6
+		master-core Free
 	pickup: LowerValleyExp
 	pickup: KuroPerchExp
 		casual-core Glide Wind
