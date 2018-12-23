@@ -27,6 +27,7 @@ class MultiplayerGameType(StrEnum):
     SHARED = "Shared"
     SPLITSHARDS = "SplitShards"
     SIMUSOLO = "None"
+    BINGO="Bingo"
 
     def is_dedup(self): return self in [MultiplayerGameType.SHARED]
 
@@ -42,7 +43,7 @@ class Variation(StrEnum):
     ZERO_EXP = "0XP"
     DISCRETE_MAPSTONES = "NonProgressMapStones"
     ENTRANCE_SHUFFLE = "Entrance"
-    FORCE_MAPSTONES = "ForceMapStones"
+    FORCE_MAPSTONES = "ForceMaps"
     FORCE_TREES = "ForceTrees"
     HARDMODE = "Hard"
     ONE_HIT_KO = "OHKO"
