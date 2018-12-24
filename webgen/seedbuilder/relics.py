@@ -2,79 +2,65 @@ from collections import OrderedDict
 
 _glades = [
 	("Unusually Sharp Spike", "Twice as deadly as the other spikes."),
-	("Discarded Leaf", "Seems to have three puncture holes in it."),
-	("Glades Relic 3", "Description of the relic."),
-	("Glades Relic 4", "Description of the relic."),
+	("Hardy Tuber", "Seems to thrive in the moisture of the Glades."),
+	("Withered Fruit", "Gazing at it evokes memories of happier times."),
+	("Fil's Bracelet", "A simple band made of tightly-woven plant fibers."),
+	("Redcap Mushroom", "Eating these is said to help you grow taller."),
 ]
 
 _grove = [
-	("Grove Relic 1", "Description of the relic."),
-	("Grove Relic 2", "Description of the relic."),
-	("Grove Relic 3", "Description of the relic."),
-	("Grove Relic 4", "Description of the relic."),
+	("Unhatched Spider Egg", "Hopefully it stays unhatched."),
+	("Fallen Branch", "A small, faintly glowing branch of the Spirit Tree."),
+	("Reem's Lucky Coin", "Said to help you escape the notice of predators."),
+	("Seed Stash", "An innocent squirrel was saving these. What kind of devil are you?"),
 ]
 
 _grotto = [
-	("Grotto Relic 1", "Description of the relic."),
-	("Grotto Relic 2", "Description of the relic."),
-	("Grotto Relic 3", "Description of the relic."),
-	("Grotto Relic 4", "Description of the relic."),
+	("Slick Stone", "So smooth and slippery, you can barely hang on to it."),
 ]
 
 _blackroot = [
 	("Sol's Defused Grenade", "Safe enough to use as a ball! ...right?"),
 	("Torn Friendship Bracelet", "A bond that was made would soon be dissolved."),
-	("Eki's Boots of Fleetness", "He moved swifter than the wind."),
-	("Blackroot Relic 4", "Description of the relic."),
+	("Ike's Boots of Fleetness", "He moved swifter than the wind."),
+	("Naru's Chisel", "A skilled artisan could sculpt great works with this tool."),
+	("Glowing Mushroom", "Doubles as a light source and a tasty snack."),
 ]
 
 _swamp = [
-	("Swamp Relic 1", "Description of the relic."),
-	("Swamp Relic 2", "Description of the relic."),
-	("Swamp Relic 3", "Description of the relic."),
-	("Swamp Relic 4", "Description of the relic."),
+	("Polluted Water Canteen", "Who would want to drink this?"),
+	("Gold-eyed Frog", "Insects stand no chance against its deft tongue."),
+	("Ilo's Training Weights", "Solid rock, nearly too heavy to carry."),
 ]
 
 _ginso = [
-	("Ginso Relic 1", "Description of the relic."),
-	("Ginso Relic 2", "Description of the relic."),
-	("Ginso Relic 3", "Description of the relic."),
-	("Ginso Relic 4", "Description of the relic."),
+	("Lightning-Scarred Branch", "As a mother to her child, the Ginso Tree protects the rest of the forest."),
 ]
 
 _valley = [
-	("Valley Relic 1", "Description of the relic."),
-	("Valley Relic 2", "Description of the relic."),
-	("Valley Relic 3", "Description of the relic."),
-	("Valley Relic 4", "Description of the relic."),
+	("Treasure Map", "A map depicting a treasure found after a long swim."),
+	("White Raven Feather", "A bit too small to be used as a parachute."),
 ]
 
 _misty = [
-	("Misty Relic 1", "Description of the relic."),
-	("Misty Relic 2", "Description of the relic."),
-	("Misty Relic 3", "Description of the relic."),
-	("Misty Relic 4", "Description of the relic."),
+	("Atsu's Candle", "Does little good in these heavy mists."),
+	("Map of Misty Woods", "A crudely-drawn jumble of crooked lines."),
 ]
 
 _forlorn = [
 	("Furtive Fritter", "A favorite snack of the Gumon."),
-	("Forlorn Relic 2", "Description of the relic."),
-	("Forlorn Relic 3", "Description of the relic."),
-	("Forlorn Relic 4", "Description of the relic."),
+	("Mathematical Reference", "Only used by the most cerebral forest denizens."),
 ]
 
 _sorrow = [
-	("Sorrow Relic 1", "Description of the relic."),
-	("Sorrow Relic 2", "Description of the relic."),
-	("Sorrow Relic 3", "Description of the relic."),
-	("Sorrow Relic 4", "Description of the relic."),
+	("Drained Light Vessel", "The light of the Spirit Tree once filled this orb."),
+	("Tattered Leaf", "Riddled with puncture marks."),
 ]
 
 _horu = [
-	("Horu Relic 1", "Description of the relic."),
-	("Horu Relic 2", "Description of the relic."),
-	("Horu Relic 3", "Description of the relic."),
-	("Horu Relic 4", "Description of the relic."),
+	("Obsidian Fragment", "Chipped off of an ancient lava flow."),
+	("Ancient Sketch", "A drawing of what appears to be the Water Vein."),
+	("\"The Fish Stratagem\"", "A record of many tasty recipes involving fish."),
 ]
 
 relics = OrderedDict([
