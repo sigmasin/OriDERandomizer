@@ -791,7 +791,7 @@ public static class Randomizer
 
 	public static void showSeedInfo()
 	{
-		string obj = "v3.0b - seed loaded: " + Randomizer.SeedMeta;
+		string obj = "v3.0 - seed loaded: " + Randomizer.SeedMeta;
 		Randomizer.printInfo(obj);
 	}
 

@@ -187,7 +187,7 @@ public static class RandomizerSyncManager
 					}
 					else if (text.StartsWith("pickup:"))
 					{
-						string[] parts = RandomizerSyncManager.SendingUri.ToString().Split(new char[] { ':' });
+						string[] parts = text.Substring(7).Split(new char[] { '|' });
 						RandomizerAction action;
 						if(Randomizer.StringKeyPickupTypes.Contains(parts[0])) {
 							 action = new RandomizerAction(parts[0], parts[1]);
@@ -197,7 +197,6 @@ public static class RandomizerSyncManager
 							action = new RandomizerAction(parts[0], pickup_id);
 						}
 						RandomizerSwitch.GivePickup(action, 0, false);
-
 					}
 					else if (text == "spawnChaos")
 					{
@@ -415,16 +414,10 @@ public static class RandomizerSyncManager
 			string cleaned_id = this.id.Replace("#","");
 			if(cleaned_id.Contains("\\"))
 				cleaned_id = cleaned_id.Split('\\')[0];
-			return new Uri(string.Concat(new object[]
-			{
-				RandomizerSyncManager.RootUrl,
-				"/found/",
-				this.coords,
-				"/",
-				this.type,
-				"/",
-				cleaned_id
-			}));
+			string url = RandomizerSyncManager.RootUrl + "/found/" + this.coords + "/" + this.type + "/" + cleaned_id;
+			url += "?zone=" + RandomizerStatsManager.CurrentZone();
+
+			return new Uri(url);
 		}
 
 		// Token: 0x0400327B RID: 12923
