@@ -98,7 +98,29 @@ class SeedGenParams(ndb.Model):
     placements = ndb.LocalStructuredProperty(Placement, repeated=True, compressed=True)
     spoilers = ndb.TextProperty(repeated=True, compressed=True)
     sense = ndb.StringProperty()
+    is_plando = ndb.BooleanProperty(default=False)
+    plando_flags = ndb.StringProperty(repeated=True)
     do_loc_analysis = False
+
+    @staticmethod
+    def from_plando(plando, tracking=True):
+        params = SeedGenParams(
+            seed = plando.name,
+            players = plando.players,
+            tracking = tracking,
+            is_plando=True, 
+            plando_flags = plando.flags,
+            placements = plando.placements,
+            spoilers = [plando.description]
+            )
+        params.sync = MultiplayerOptions()
+        if plando.mode():
+            params.sync.mode = plando.mode()
+        params.sync.shared = plando.shared()
+
+        
+        params.put()
+        return params
 
     @staticmethod
     def from_url(qparams):
@@ -195,6 +217,8 @@ class SeedGenParams(ndb.Model):
     def get_spoiler(self, player=1):
         if self.sync.mode in [MultiplayerGameType.SIMUSOLO, MultiplayerGameType.SPLITSHARDS]:
             player = 1
+        if self.is_plando:
+            return self.spoilers[0]
         return self.spoilers[self.team_pid(player) - 1]
 
     def get_preset(self):
@@ -206,26 +230,29 @@ class SeedGenParams(ndb.Model):
 
     def flag_line(self, verbose_paths=False):
         flags = []
-        if verbose_paths:
-            flags.append("lps=%s" % "+".join([lp.capitalize() for lp in self.logic_paths]))
+        if self.is_plando:
+            flags = self.plando_flags
         else:
-            flags.append(self.get_preset())
-        flags.append(self.key_mode)
-        if Variation.WARMTH_FRAGMENTS in self.variations:
-            flags.append("Frags/%s/%s" % (self.frag_req, self.frag_count))
-        if Variation.WORLD_TOUR in self.variations:
-            flags.append("WorldTour=%s" % self.relic_count)
-        flags += [v.value for v in self.variations if v not in FLAGLESS_VARS]
-        if self.path_diff != PathDifficulty.NORMAL:
-            flags.append("prefer_path_difficulty=%s" % self.path_diff.value)
-        if self.sync.enabled:
-            flags.append("mode=%s" % self.sync.mode.value)
-            if self.sync.shared:
-                flags.append("shared=%s" % "+".join(self.sync.shared))
-        if self.balanced:
-            flags.append("balanced")
-        if self.sense:
-            flags.append("sense=%s" % self.sense.replace(" ", "+"))
+            if verbose_paths:
+                flags.append("lps=%s" % "+".join([lp.capitalize() for lp in self.logic_paths]))
+            else:
+                flags.append(self.get_preset())
+            flags.append(self.key_mode)
+            if Variation.WARMTH_FRAGMENTS in self.variations:
+                flags.append("Frags/%s/%s" % (self.frag_req, self.frag_count))
+            if Variation.WORLD_TOUR in self.variations:
+                flags.append("WorldTour=%s" % self.relic_count)
+            flags += [v.value for v in self.variations if v not in FLAGLESS_VARS]
+            if self.path_diff != PathDifficulty.NORMAL:
+                flags.append("prefer_path_difficulty=%s" % self.path_diff.value)
+            if self.sync.enabled:
+                flags.append("mode=%s" % self.sync.mode.value)
+                if self.sync.shared:
+                    flags.append("shared=%s" % "+".join(self.sync.shared))
+            if self.balanced:
+                flags.append("balanced")
+            if self.sense:
+                flags.append("sense=%s" % self.sense.replace(" ", "+"))
         return "%s|%s" % (",".join(flags), self.seed)
 
     @staticmethod
