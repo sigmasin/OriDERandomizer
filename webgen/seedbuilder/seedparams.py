@@ -117,8 +117,10 @@ class SeedGenParams(ndb.Model):
         if plando.mode():
             params.sync.mode = plando.mode()
         params.sync.shared = plando.shared()
-
-        
+        for flag in plando.flags:
+            if flag.capitalize() in presets:
+                params.logic_paths = presets[flag.capitalize()]
+                break
         params.put()
         return params
 
