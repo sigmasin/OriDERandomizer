@@ -993,25 +993,25 @@ class SeedGenerator:
                     if loc.repeatable:
                         warp_locs.append(loc.get_key())
             warp_targets = [
-                (915, -115),    # stomp miniboss
-                (790, -195),   # below swamp swim
-                (561, -410),   # grotto miniboss
-                (585, -68),    # outer swamp health cell
-                (510, 910),    # top of ginso escape
-                (499, -505),   # lost grove laser lever
-                (480, -252),   # moon grotto, just below the bridge
-                (417, -435),   # lower blackroot right lasers
-                (330, -63),    # Hollow Grove main AC
-                (127, 20),     # Horu Fields Plant
-                (-13, -96),    # Above cflame tree exp
-                (-224, -85),   # Valley entry (upper)
-                (-358, 65),    # Stompless AC
-                (-500, 587),   # Top of sorrow
-                (-570, 156),   # Wilhelm exp
-                (-605, -255),  # Forlorn enterance
+                ("Stomp Miniboss", 915, -115,),
+                ("Swamp Swim", 790, -195),
+                ("Grotto Miniboss", 561, -410),
+                ("Outer Swamp HC", 585, -68),
+                ("Ginso Escape", 510, 910),
+                ("Lost Grove Laser Lever", 499, -505),
+                ("Gumo's Bridge", 480, -252),
+                ("Lower Blackroot Laser AC", 417, -435),
+                ("Hollow Grove Main AC", 330, -63),
+                ("Horu Fields Plant", 127, 20),
+                ( "Above Cflame Tree EX", -13, -96),
+                ( "Valley entry (upper)", -224, -85),
+                ( "Stompless AC", -358, 65),
+                ( "Sunstone Plant", -500, 587),
+                ( "Wilhelm EX", -570, 156),
+                ( "Forlorn Enterance", -605, -255),
             ]
             for loc, target in zip(self.random.sample(warp_locs, warps), self.random.sample(warp_targets, warps)):
-                self.forcedAssignments[loc] = "RPSH/Warp/WP/%s,%s" % target
+                self.forcedAssignments[loc] = "RPSH/Press AltR to Warp to %s/WP/%s,%s" % target
 
         # handle the fixed pickups: first energy cell, the glitchy 100 orb at spirit tree, and the forlorn escape plant
         for loc, item, zone in [(-280256, "EC1", "Glades"), (-1680104, "EX100", "Grove"), (-12320248, "RB81", "Forlorn")]:
