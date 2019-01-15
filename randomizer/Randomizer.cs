@@ -58,7 +58,7 @@ public static class Randomizer
 		Randomizer.BashWasQueued = false;
 		Randomizer.BashTap = false;
 		Randomizer.fragsEnabled = false;
-		Randomizer.TickCounter = 60;
+		Randomizer.LastTick = 10000000L;
 		Randomizer.LockedCount = 0;
 		Randomizer.ResetTrackerCount = 0;
 		Randomizer.HotCold = false;
@@ -995,10 +995,9 @@ public static class Randomizer
 	// Token: 0x06003848 RID: 14408
 	public static void Tick()
 	{
-		Randomizer.TickCounter--;
-		if (Randomizer.TickCounter <= 0)
+		long tick = DateTime.Now.Ticks % 10000000L;
+		if (tick < Randomizer.LastTick)
 		{
-			Randomizer.TickCounter = 60;
 			if(ResetVolume == 1)
 			{
 				ResetVolume = 0;
@@ -1103,6 +1102,7 @@ public static class Randomizer
 			}
 
 		}
+		Randomizer.LastTick = tick;
 	}
 
 	public static Vector3 HashKeyToVector(int key)
@@ -1272,7 +1272,7 @@ public static class Randomizer
 	public static Hashtable HoruMap;
 
 	// Token: 0x04003332 RID: 13106
-	public static int TickCounter;
+	public static long LastTick;
 
 	// Token: 0x040032F7 RID: 13047
 	public static ArrayList GladesData;
