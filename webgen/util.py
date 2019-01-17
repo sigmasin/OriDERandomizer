@@ -31,6 +31,10 @@ extra_PBT = [
     PickLoc(2, "SPAWN", "Glades", "FirstPickup", 189, -210),
 ]
 
+def ord_suffix(n):
+    return str(n)+("th" if 4<=n%100<=20 else {1:"st",2:"nd",3:"rd"}.get(n%10, "th"))
+
+
 def enums_from_strlist(enum, strlist):
     enums = []
     for elem in strlist:

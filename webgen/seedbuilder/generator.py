@@ -108,6 +108,8 @@ class Connection:
         return (minReqScore, minReq, minDiff)
 
 
+all_locations = {}
+
 class Location:
     factor = 4.0
 
@@ -119,6 +121,9 @@ class Location:
         self.difficulty = difficulty
         self.zone = zone
         self.repeatable = orig[0:2] in ["EX", "EC", "HC", "AC", "MS"] or (orig.startswith("KS") and zone != "Misty")
+        key = self.get_key()
+        if key not in all_locations:
+            all_locations[key] = self
 
     def get_key(self):
         return self.x * 10000 + self.y
@@ -1026,6 +1031,7 @@ class SeedGenerator:
         if 2 in self.forcedAssignments:
             item = self.forcedAssignments[2]
             self.assign(item)
+            self.spoilerGroup[item].append(item + " preplaced at Spawn\n")
             del self.forcedAssignments[2]
             ass = self.get_assignment(2, self.adjust_item(item, "Glades"), "Glades")
             if self.params.key_mode == KeyMode.FREE:
@@ -1036,19 +1042,29 @@ class SeedGenerator:
                     splitAss[2] = "EV/0/EV/2/EV/4/%s/%s" % (splitAss[1], splitAss[2])
                 splitAss[1] = "MU"
                 ass = "|".join(splitAss)
+                for item in ["GinsoKey", "ForlornKey", "HoruKey"]:
+                    self.spoilerGroup[item].append(item + " from Spawn\n")
+
             self.outputStr += ass
+            
         elif self.params.key_mode == KeyMode.FREE:
             self.outputStr += "2|MU|EV/0/EV/2/EV/4|Glades\n"
-            
+            for item in ["GinsoKey", "ForlornKey", "HoruKey"]:
+                self.spoilerGroup[item].append(item + " from Spawn\n")
 
-        for v in self.forcedAssignments.values():
+        if len(self.spoilerGroup):
+            self.spoiler.append((["Spawn"], [], self.spoilerGroup))
+            self.spoilerGroup = defaultdict(list)
+
+        for loc, v in self.forcedAssignments.items():
             if v[0:2] in ["MU", "RP"]:
                 for item in self.get_multi_items(v):
                     if item in self.itemPool:
                         self.itemPool[item] -= 1
+                    self.spoilerGroup[item].append(item + " preplaced at %s \n" % all_locations[loc].to_string() if loc in all_locations else loc)
             if v in self.itemPool:
                 self.itemPool[v] -= 1
-
+        
         locationsToAssign = []
         self.connectionQueue = []
         self.reservedLocations = []
@@ -1245,11 +1261,10 @@ class SeedGenerator:
 
     def form_spoiler(self):
         i = 0
-        groupDepth = 0
+        groupDepth = -1 if 2 in self.preplaced else 0
         spoilerStr = ""
 
         while i < len(self.spoiler):
-
             sets_forced = 1 if self.spoiler[i][1] else 0
             groupDepth += 1
             self.currentAreas = self.spoiler[i][0]
