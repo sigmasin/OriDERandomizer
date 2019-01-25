@@ -27,7 +27,7 @@ class MultiplayerGameType(StrEnum):
     SHARED = "Shared"
     SPLITSHARDS = "SplitShards"
     SIMUSOLO = "None"
-    BINGO="Bingo"
+    BINGO = "Bingo"
 
     def is_dedup(self): return self in [MultiplayerGameType.SHARED]
 
@@ -57,6 +57,7 @@ class Variation(StrEnum):
     STRICT_MAPSTONES = "StrictMapstones"
     STOMP_TRIGGERS = "StompTriggers"
     NO_EXTRA_EXP = "NoExtraExp"
+    BINGO = "Bingo"
 
 class LogicPath(StrEnum):
     CASUAL_CORE = 'casual-core'

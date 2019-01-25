@@ -200,12 +200,15 @@ class SeedGenParams(ndb.Model):
     def team_pid(self, pid):  # given pid, get team or return pid if no teams exist
         return int(self.teams_inv()[pid]) if self.sync.teams else pid
 
-    def get_seed(self, player=1, game_id=None, verbose_paths=False):
+    def get_seed(self, player=1, game_id=None, verbose_paths=False, include_sync = True):
         flags = self.flag_line(verbose_paths)
-        if self.tracking:
+        if self.players > 1 and self.sync.mode == MultiplayerGameType.SHARED:
+            flags += "/%s" % player
+        if self.tracking and include_sync:
             if not game_id:
                 log.warning("Trying to get a tracked seed with no gameId! paramId %s", self.key.id())
-            flags = "Sync%s.%s," % (game_id, player) + flags
+            else:
+                flags = "Sync%s.%s," % (game_id, player) + flags
         outlines = [flags]
         outlines += ["|".join(line) for line in self.get_seed_data(player)]
         return "\n".join(outlines) + "\n"

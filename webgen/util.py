@@ -182,7 +182,6 @@ def picks_by_type_generator():
 debug = os.environ.get('SERVER_SOFTWARE', '').startswith('Dev')
 path = os.path.join(os.path.dirname(__file__), 'map/build/index.html')
 
-
 def param_val(s, f):
     return s.request.get(f, None)
 
@@ -193,7 +192,5 @@ def resp_error(handler, code=400, response=None, altRespType=None):
     handler.response.status = code
     if altRespType:
         handler.response.headers['Content-Type'] = altRespType
-    if response and handler.response.headers['Content-Type'] == 'application/json':
-        response = json.dumps(response)
     handler.response.write(response)
 

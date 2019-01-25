@@ -859,7 +859,7 @@ class SeedGenerator:
             if ShareType.UPGRADE in self.params.sync.shared:
                 self.sharedList += ["RB6", "RB8", "RB9", "RB10", "RB11", "RB12", "RB13", "RB15"]
                 if self.var(Variation.EXTRA_BONUS_PICKUPS):
-                    self.sharedList += ["RB31", "RB32", "RB33", "RB101", "RB102", "RB103"]
+                    self.sharedList += ["RB31", "RB32", "RB33", "RB101", "RB102", "RB103", "RB104", "RB105", "RB106", "RB107", "RB36"]
             if ShareType.MISC in shared:
                 if self.var(Variation.WARMTH_FRAGMENTS):
                     self.sharedList.append("RB28")
@@ -998,25 +998,67 @@ class SeedGenerator:
                     if loc.repeatable:
                         warp_locs.append(loc.get_key())
             warp_targets = [
-                ("Stomp Miniboss", 915, -115,),
-                ("Swamp Swim", 790, -195),
-                ("Grotto Miniboss", 561, -410),
-                ("Outer Swamp HC", 585, -68),
-                ("Ginso Escape", 510, 910),
-                ("Lost Grove Laser Lever", 499, -505),
-                ("Gumo's Bridge", 480, -252),
-                ("Lower Blackroot Laser AC", 417, -435),
-                ("Hollow Grove Main AC", 330, -63),
-                ("Horu Fields Plant", 127, 20),
-                ( "Above Cflame Tree EX", -13, -96),
-                ( "Valley entry (upper)", -224, -85),
-                ( "Stompless AC", -358, 65),
-                ( "Sunstone Plant", -500, 587),
-                ( "Wilhelm EX", -570, 156),
-                ( "Forlorn Enterance", -605, -255),
+                [
+                    # inner swamp
+                    ("Stomp Miniboss", 915, -115),
+                    ("Swamp Swim", 790, -195),
+                    ("Inner Swamp EC", 720, -100),
+                ],
+                [
+                    # gumo's hideout
+                    ("Above Grotto Crushers", 580, -345),
+                    ("Grotto Energy Vault", 328, -176),
+                    ("Gumo's Bridge", 480, -244),
+                ],
+                [
+                    # lower blackroot
+                    ("Lower Blackroot Laser AC", 417, -435),
+                    ("Grenade Tree", 76, -370),
+                ],
+                [
+                    #lost grove
+                    ("Lost Grove Laser Lever", 499, -505),
+                    ("Grandpa's House", 302, -524),
+                ],
+                [
+                    # hollow grove
+                    ("Kuro CS AC", 330, -63),
+                    ("Horu Fields Plant", 127, 20),
+                    ("Above Cflame Tree EX", -13, -96),
+                    ("Death Gauntlet Roof", 328, -176),
+                    ("Spider Lake Roof", 196, -105)
+                ],
+                [
+                    # outer swamp
+                    ("Outer Swamp HC", 585, -68),
+                    ("Outer Swamp AC", 505, -108),
+                    ("Spike Loop HC", 546, -190),
+                ],
+                [
+                    # lower valley
+                    ("Valley entry (upper)", -224, -85),
+                    ("Forlorn Enterance", -605, -255),
+                ],
+                [
+                    #upper valley
+                    ("Wilhelm EX", -570, 156),
+                    ("Stompless AC", -358, 65),
+                ],
+                [
+                    # sorrow
+                    ("Sunstone Plant", -500, 587),
+                    ("Sorrow Mapstone", -432, 322),
+                    ("Tumbleweed Keystone Door", -595, 385),
+                ],
+                [
+                    # dungeon memes
+                    ("Ginso Escape", 510, 910),
+                    ("Horu Escape Access", 69, 96),
+                    ("Forlorn HC", -610, -312),
+                ]
             ]
             for loc, target in zip(self.random.sample(warp_locs, warps), self.random.sample(warp_targets, warps)):
-                self.forcedAssignments[loc] = "RPSH/Press AltR to Warp to %s/WP/%s,%s" % target
+                self.forcedAssignments[loc] = "RPSH/Press AltR to Warp to %s/WP/%s,%s" % self.random.choice(target)
 
         # handle the fixed pickups: first energy cell, the glitchy 100 orb at spirit tree, and the forlorn escape plant
         for loc, item, zone in [(-280256, "EC1", "Glades"), (-1680104, "EX100", "Grove"), (-12320248, "RB81", "Forlorn")]:
