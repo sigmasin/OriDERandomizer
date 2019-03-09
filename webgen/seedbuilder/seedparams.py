@@ -7,8 +7,9 @@ from enums import (MultiplayerGameType, ShareType, Variation, LogicPath, KeyMode
 from collections import OrderedDict
 from seedbuilder.generator import SeedGenerator
 
+JSON_SHARE = lambda x: x.value if x != ShareType.EVENT else "World Events"
 FLAGLESS_VARS = [Variation.WARMTH_FRAGMENTS, Variation.WORLD_TOUR]
-
+JSON_GAME_MODE = {MultiplayerGameType.SHARED: "Co-op", MultiplayerGameType.SIMUSOLO: "Race", MultiplayerGameType.SPLITSHARDS: "SplitShards"}
 class Stuff(ndb.Model):
     code = ndb.StringProperty()
     id = ndb.StringProperty()
@@ -56,6 +57,10 @@ class MultiplayerOptions(ndb.Model):
                     cnt += 1
                 opts.teams = teams
         return opts
+
+    def get_team_str(self):
+        return "|".join([",".join(team) for team in self.teams])
+
 
 
 class SeedGenParams(ndb.Model):
@@ -156,6 +161,31 @@ class SeedGenParams(ndb.Model):
                 stuff = [Stuff(code=item[:2], id=item[2:], player="")]
                 params.placements.append(Placement(location=loc, zone="", stuff=stuff))
         return params.put()
+    def to_json(self):
+        return {
+            "players": self.players, 
+            "flagLine": self.flag_line(), 
+            "variations": [v.value for v in self.variations],
+            "fillAlg": "Balanced" if self.balanced else "Classic",
+            "expPool": self.exp_pool,
+            "keyMode": self.key_mode.value,
+            "pathMode": self.get_preset(),
+            "pathDiff": self.path_diff.value,
+            "cellFreq": self.cell_freq,
+            "fragCount": self.frag_count,
+            "fragReq": self.frag_req,
+            "relicCount": self.relic_count,
+            "hints": self.sync.hints,
+            "coopGameMode": JSON_GAME_MODE.get(self.sync.mode, "Co-op"),
+            "coopGenMode": "Cloned Seeds" if self.sync.cloned else "Seperate Seeds",
+            "paths": [p.value for p in self.logic_paths],
+            "shared": [JSON_SHARE(s) for s in self.sync.shared],
+            "teamStr": self.sync.get_team_str(),
+            "dedupShared": len(self.sync.teams) != 1,
+            "spoilers": len(self.spoilers[0]) > 100,
+            "senseData": self.sense
+        }
+
 
     def generate(self, preplaced={}):
         if self.placements:

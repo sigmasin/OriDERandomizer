@@ -109,7 +109,8 @@ class Connection:
 
 
 all_locations = {}
-
+warp_locs = set()
+forbidden_warp_locs = set([-7680144, -9120036, -10440008, -10759968, -1560272])
 class Location:
     factor = 4.0
 
@@ -120,10 +121,12 @@ class Location:
         self.area = area
         self.difficulty = difficulty
         self.zone = zone
-        self.repeatable = orig[0:2] in ["EX", "EC", "HC", "AC", "MS"] or (orig.startswith("KS") and zone != "Misty")
         key = self.get_key()
         if key not in all_locations:
             all_locations[key] = self
+            if orig[0:2] in ["EX", "EC", "HC", "AC", "MS", "KS"]:
+                if key not in forbidden_warp_locs:
+                    warp_locs.add(key)
 
     def get_key(self):
         return self.x * 10000 + self.y
@@ -264,7 +267,11 @@ class SeedGenerator:
             self.itemPool["RB33"] = 3
             self.itemPool["RB36"] = 1
             self.itemPool["RB12"] += 4
-            for bonus_skill in self.random.sample(["RB101", "RB102", "RB103", "WarpSkill", "RB106", "RB107"], 4):
+            drain_skills = ["RB102", "RB103", "RB109", "RB110"]
+            for bonus_skill in self.random.sample(["RB101", "DrainSkill", "DrainSkill", "WarpSkill", "RB106", "RB107"], 4):
+                if bonus_skill == "DrainSkill":
+                    bonus_skill = self.random.choice(drain_skills)
+                    drain_skills.remove(bonus_skill)
                 if bonus_skill == "WarpSkill":
                     bonus_skill = self.random.choice(["RB104", "RB105"])
                 self.itemPool[bonus_skill] = 1
@@ -992,22 +999,17 @@ class SeedGenerator:
 
         if self.var(Variation.EXTRA_BONUS_PICKUPS):
             warps = self.random.randint(4,8)
-            warp_locs = []
-            for area in self.areas.values():
-                for loc in area.locations:
-                    if loc.repeatable:
-                        warp_locs.append(loc.get_key())
             warp_targets = [
                 [
                     # inner swamp
                     ("Stomp Miniboss", 915, -115),
                     ("Swamp Swim", 790, -195),
-                    ("Inner Swamp EC", 720, -100),
+                    ("Inner Swamp EC", 720, -95),
                 ],
                 [
                     # gumo's hideout
                     ("Above Grotto Crushers", 580, -345),
-                    ("Grotto Energy Vault", 328, -176),
+                    ("Grotto Energy Vault", 513, -440),
                     ("Gumo's Bridge", 480, -244),
                 ],
                 [
@@ -1026,7 +1028,7 @@ class SeedGenerator:
                     ("Horu Fields Plant", 127, 20),
                     ("Above Cflame Tree EX", -13, -96),
                     ("Death Gauntlet Roof", 328, -176),
-                    ("Spider Lake Roof", 196, -105)
+                    ("Spider Lake Roof", 194, -100)
                 ],
                 [
                     # outer swamp
