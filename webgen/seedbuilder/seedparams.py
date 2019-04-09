@@ -102,6 +102,7 @@ class SeedGenParams(ndb.Model):
     cell_freq = ndb.IntegerProperty(default=256)
     placements = ndb.LocalStructuredProperty(Placement, repeated=True, compressed=True)
     spoilers = ndb.TextProperty(repeated=True, compressed=True)
+    warp_credits = ndb.BooleanProperty(default=False)
     sense = ndb.StringProperty()
     is_plando = ndb.BooleanProperty(default=False)
     plando_flags = ndb.StringProperty(repeated=True)
@@ -153,6 +154,7 @@ class SeedGenParams(ndb.Model):
         params.cell_freq = int(qparams.get("cell_freq", 256))
         params.sync = MultiplayerOptions.from_url(qparams)
         params.sense = qparams.get("sense")
+        params.warp_credits = qparams.get("warp_credits") is not None
         raw_fass = qparams.get("fass")
         if raw_fass:
             params.placements = []
@@ -163,8 +165,9 @@ class SeedGenParams(ndb.Model):
         return params.put()
     def to_json(self):
         return {
-            "players": self.players, 
-            "flagLine": self.flag_line(), 
+            "players": self.players,
+            "flagLine": self.flag_line(),
+            "seed": self.seed,
             "variations": [v.value for v in self.variations],
             "fillAlg": "Balanced" if self.balanced else "Classic",
             "expPool": self.exp_pool,
@@ -183,7 +186,8 @@ class SeedGenParams(ndb.Model):
             "teamStr": self.sync.get_team_str(),
             "dedupShared": len(self.sync.teams) != 1,
             "spoilers": len(self.spoilers[0]) > 100,
-            "senseData": self.sense
+            "senseData": self.sense,
+            "warpCredits": self.warp_credits
         }
 
 

@@ -1034,12 +1034,12 @@ class SeedGenerator:
                     # outer swamp
                     ("Outer Swamp HC", 585, -68),
                     ("Outer Swamp AC", 505, -108),
-                    ("Spike Loop HC", 546, -190),
+                    ("Spike loop HC", 546, -190),
                 ],
                 [
                     # lower valley
                     ("Valley entry (upper)", -224, -85),
-                    ("Forlorn Enterance", -605, -255),
+                    ("Forlorn entrance", -605, -255),
                 ],
                 [
                     #upper valley
