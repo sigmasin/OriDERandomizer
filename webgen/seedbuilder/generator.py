@@ -10,6 +10,82 @@ from seedbuilder.relics import relics
 
 longform_to_code = {"Health": ["HC"], "Energy": ["EC"], "Ability": ["AC"], "Keystone": ["KS"], "Mapstone": ["MS"], "Free": []}
 key_to_shards = {"GinsoKey": ["WaterVeinShard"] * 5, "ForlornKey": ["GumonSealShard"] * 5, "HoruKey": ["SunstoneShard"] * 5}
+warp_targets = [
+    [
+        # inner swamp
+        ("Stomp Miniboss", 915, -115),
+        ("Swamp Swim", 790, -195),
+        ("Inner Swamp EC", 720, -95),
+    ],
+    [
+        # gumo's hideout
+        ("Above Grotto Crushers", 580, -345),
+        ("Grotto Energy Vault", 513, -440),
+        ("Gumo's Bridge", 480, -244),
+    ],
+    [
+        # lower blackroot
+        ("Lower Blackroot Laser AC", 417, -435),
+        ("Grenade Tree", 76, -370),
+    ],
+    [
+        #lost grove
+        ("Lost Grove Laser Lever", 499, -505),
+        ("Grandpa's House", 302, -524),
+    ],
+    [
+        # hollow grove
+        ("Above Cflame Tree EX", -13, -96),
+        ("Spidersack Energy Door", 70, -110),
+        ("Death Gauntlet Roof", 328, -176),
+        ("Spider Lake Roof Spikes", 194, -100),
+    ],
+    [
+        # hollow grover
+        ("Horu Fields Plant", 127, 20),
+        ("Horu Fields AC", 170, -35),
+        ("Kuro CS AC", 330, -63),
+    ],
+    [
+        # outer swamp
+        ("Outer Swamp HC", 585, -68),
+        ("Outer Swamp AC", 505, -108),
+        ("Spike loop HC", 546, -190),
+    ],
+    [
+        # lower valley
+        ("Valley entry (upper)", -224, -85),
+        ("Forlorn entrance", -605, -255),
+    ],
+    [
+        # upper valley
+        ("Wilhelm EX", -570, 156),
+        ("Stompless AC", -358, 65),
+    ],
+    [
+        # misty ?
+        ("Misty First Keystone", -1050, 32),
+    ],
+    [
+        # sorrow
+        ("Sunstone Plant", -500, 587),
+        ("Sorrow Mapstone", -432, 322),
+        ("Tumbleweed Keystone Door", -595, 385),
+    ],
+    [
+        # ginso
+        ("Ginso Escape", 510, 910),
+    ],
+    [
+        # horu
+        ("Horu Escape Access", 69, 96),
+    ],
+    [
+        # forlorn
+        ("Forlorn HC", -610, -312),
+    ]
+]
+
 
 def ordhash(s):
     return reduce(mul, [ord(c) for c in s])
@@ -109,8 +185,9 @@ class Connection:
 
 
 all_locations = {}
-warp_locs = set()
-forbidden_warp_locs = set([-7680144, -9120036, -10440008, -10759968, -1560272])
+repeatable_locs = set()
+forbidden_repeatable_locs = set([-7680144, -9120036, -10440008, -10759968, -1560272])
+
 class Location:
     factor = 4.0
 
@@ -125,8 +202,8 @@ class Location:
         if key not in all_locations:
             all_locations[key] = self
             if orig[0:2] in ["EX", "EC", "HC", "AC", "MS", "KS"]:
-                if key not in forbidden_warp_locs:
-                    warp_locs.add(key)
+                if key not in forbidden_repeatable_locs:
+                    repeatable_locs.add(key)
 
     def get_key(self):
         return self.x * 10000 + self.y
@@ -186,7 +263,7 @@ class SeedGenerator:
             "Water": 31, "Wind": 31, "WaterVeinShard": 5, "GumonSealShard": 5,
             "SunstoneShard": 5, "TPForlorn": 67, "TPGrotto": 41,
             "TPSorrow": 59, "TPGrove": 41, "TPSwamp": 41, "TPValley": 53,
-            "TPGinso": 61, "TPHoru": 71, "Open": 1, "OpenWorld": 1, "Relic": 1
+            "TPGinso": 61, "TPHoru": 71, "Open": 0, "OpenWorld": 1, "Relic": 1
         })
         self.inventory = OrderedDict([
             ("EX1", 0), ("EX*", 0), ("KS", 0), ("MS", 0), ("AC", 0), ("EC", 1),
@@ -227,64 +304,29 @@ class SeedGenerator:
         self.forcedAssignments = self.preplaced.copy()
         self.forceAssignedLocs = set()
         self.itemPool = OrderedDict([
-            ("EX1", 1), ("KS", 40), ("MS", 11), ("AC", 33),
-            ("EC", 14), ("HC", 12), ("WallJump", 1), ("ChargeFlame", 1),
+            ("EX1", 1), ("KS", 40), ("MS", 11), ("WallJump", 1), ("ChargeFlame", 1),
             ("Dash", 1), ("Stomp", 1), ("DoubleJump", 1), ("Glide", 1),
             ("Bash", 1), ("Climb", 1), ("Grenade", 1), ("ChargeJump", 1),
             ("GinsoKey", 1), ("ForlornKey", 1), ("HoruKey", 1), ("Water", 1),
-            ("Wind", 1), ("Warmth", 1), ("RB0", 3), ("RB1", 3), ("RB6", 3),
-            ("RB8", 0), ("RB9", 1), ("RB10", 1), ("RB11", 1), ("RB12", 1),
-            ("RB13", 3), ("RB15", 3), ("WaterVeinShard", 0),
-            ("GumonSealShard", 0), ("SunstoneShard", 0), ("TPForlorn", 1),
-            ("TPGrotto", 1), ("TPSorrow", 1), ("TPGrove", 1), ("TPSwamp", 1),
-            ("TPValley", 1), ("TPGinso", 0), ("TPHoru", 0), ("Open", 0), ("OpenWorld", 0), ("Relic", 0)
+            ("Wind", 1), ("Warmth", 1), ("WaterVeinShard", 0), ("EC", 0), ("HC", 0), ("AC", 0),
+            ("GumonSealShard", 0), ("SunstoneShard", 0), ("Open", 0), ("OpenWorld", 0), ("Relic", 0)
         ])
-        if not self.var(Variation.CLOSED_DUNGEONS):
-            self.inventory["Open"] = 1
-            self.costs["Open"] = 0
-            self.itemPool["TPGinso"] = 1
-            self.itemPool["TPHoru"] = 1
 
-        if self.var(Variation.OPEN_WORLD):
-            self.inventory["OpenWorld"] = 1
-            self.costs["OpenWorld"] = 0
-            self.itemPool["KS"] -= 2
-
-        if not self.var(Variation.STRICT_MAPSTONES):
-            self.costs["MS"] = 11
-
-        if self.var(Variation.HARDMODE):
-            self.itemPool["AC"] = 0
-            self.itemPool["HC"] = 0
-            self.itemPool["EC"] = 3
-            for bonus in [k for k in self.itemPool.keys() if k[:2] == "RB"]:
-                del self.itemPool[bonus]
-
-        if self.var(Variation.EXTRA_BONUS_PICKUPS):
-            self.itemPool["RB6"] += 2
-            self.itemPool["RB31"] = 1
-            self.itemPool["RB32"] = 1
-            self.itemPool["RB33"] = 3
-            self.itemPool["RB36"] = 1
-            self.itemPool["RB12"] += 4
-            drain_skills = ["RB102", "RB103", "RB109", "RB110"]
-            for bonus_skill in self.random.sample(["RB101", "DrainSkill", "DrainSkill", "WarpSkill", "RB106", "RB107"], 4):
-                if bonus_skill == "DrainSkill":
-                    bonus_skill = self.random.choice(drain_skills)
-                    drain_skills.remove(bonus_skill)
-                if bonus_skill == "WarpSkill":
-                    bonus_skill = self.random.choice(["RB104", "RB105"])
-                self.itemPool[bonus_skill] = 1
-
-        if self.params.key_mode == KeyMode.SHARDS:
-            shard_count = 5
-            if self.params.sync.mode == MultiplayerGameType.SPLITSHARDS:
-                shard_count = 2 + 3*(self.params.players)
-            for shard in ["WaterVeinShard", "GumonSealShard", "SunstoneShard"]:
-                self.itemPool[shard] = shard_count
-                self.costs[shard] = shard_count
-            for key in ["GinsoKey", "HoruKey", "ForlornKey"]:
-                self.itemPool[key] = 0
+        if not self.params.item_pool:
+            self.itemPool.update(OrderedDict([
+                ("RB0", 3), ("RB1", 3), ("RB6", 3), ("RB8", 0), ("RB9", 1), ("RB10", 1),
+                ("RB11", 1), ("RB12", 1), ("RB13", 3), ("RB15", 3), ("TPForlorn", 1),
+                ("TPGrotto", 1), ("TPSorrow", 1), ("TPGrove", 1), ("TPSwamp", 1),
+                ("TPValley", 1), ("TPGinso", 1), ("TPHoru", 1),
+            ]))
+        else:
+            for item, counts in sorted(self.params.item_pool.items(), key=lambda x: x[0]):
+                item = item.replace("|", "")
+                if item in ["HC1", "AC1", "EC1", "KS1", "MS1"]:
+                    item = item[0:2]
+                fixed_item = self.codeToName.get(item, item)
+                count = self.random.randint(*counts) if len(counts) == 2 else counts[0]
+                self.itemPool[fixed_item] = self.itemPool.get(fixed_item, 0) + count
 
         if self.var(Variation.DOUBLE_SKILL):
             self.itemPool["DoubleJump"] += 1
@@ -296,6 +338,45 @@ class SeedGenerator:
             self.itemPool["Grenade"] += 1
             self.itemPool["Water"] += 1
             self.itemPool["Wind"] += 1
+        if "BS*" in self.itemPool:
+            drain_skills = ["RB102", "RB103", "RB109", "RB110"]
+            for bonus_skill in self.random.sample(["RB101", "DrainSkill", "DrainSkill", "DrainSkill", "WarpSkill", "RB106", "RB107"], min(self.itemPool["BS*"], 7)):
+                if bonus_skill == "DrainSkill":
+                    if len(drain_skills) == 2 and self.random.random() < .5:  # third drain skill, if chosen, has a 50/50 chance to be wither or bash/stomp damage
+                        bonus_skill = self.random.choice(["RB111", "RB113"])
+                    else:
+                        bonus_skill = self.random.choice(drain_skills)
+                        if bonus_skill in ["RB110", "RB109"] and self.random.random() < .25:  # reroll timewarp and invincibility once 1/4 times
+                            bonus_skill = self.random.choice(drain_skills)
+                        drain_skills.remove(bonus_skill)
+                if bonus_skill == "WarpSkill":
+                    bonus_skill = self.random.choice(["RB104", "RB105"])
+                self.itemPool[bonus_skill] = 1
+            del self.itemPool["BS*"]
+
+        if not self.var(Variation.STRICT_MAPSTONES):
+            self.costs["MS"] = 11
+
+        if self.var(Variation.OPEN_WORLD):
+            self.inventory["OpenWorld"] = 1
+            self.costs["OpenWorld"] = 0
+            self.itemPool["KS"] -= 2
+
+        if self.var(Variation.CLOSED_DUNGEONS):
+            self.inventory["Open"] = 0
+            self.costs["Open"] = 1
+            self.itemPool["TPGinso"] = 0
+            self.itemPool["TPHoru"] = 0
+
+        if self.params.key_mode == KeyMode.SHARDS:
+            shard_count = 5
+            if self.params.sync.mode == MultiplayerGameType.SPLITSHARDS:
+                shard_count = 2 + 3 * self.params.players
+            for shard in ["WaterVeinShard", "GumonSealShard", "SunstoneShard"]:
+                self.itemPool[shard] = shard_count
+                self.costs[shard] = shard_count
+            for key in ["GinsoKey", "HoruKey", "ForlornKey"]:
+                self.itemPool[key] = 0
 
         if self.var(Variation.WARMTH_FRAGMENTS):
             self.costs["RB28"] = 3 * self.params.frag_count
@@ -330,7 +411,7 @@ class SeedGenerator:
 
     def __init__(self):
         self.init_fields()
-        self.codeToName = OrderedDict([(v, k) for k, v in self.skillsOutput.items() + self.eventsOutput.items()])
+        self.codeToName = OrderedDict([(v, k) for k, v in self.skillsOutput.items() + self.eventsOutput.items() + [("RB17", "WaterVeinShard"), ("RB19", "GumonSealShard"), ("RB21", "SunstoneShard")]])
 
     def reach_area(self, target):
         if self.playerID > 1 and target in self.sharedMap:
@@ -440,9 +521,9 @@ class SeedGenerator:
                             continue
                         if self.costs[req] > 0:
                             # if the item isn't in your itemPool (due to co-op or an unprocessed forced assignment), skip it
-                            if self.itemPool[req] == 0:
+                            if self.itemPool.get(req, 0) == 0:
                                 requirements = []
-                                break
+                                continue
                             if req in ["HC", "EC", "WaterVeinShard", "GumonSealShard", "SunstoneShard"]:
                                 cnts[req] += 1
                                 if cnts[req] > self.inventory[req]:
@@ -451,8 +532,8 @@ class SeedGenerator:
                             else:
                                 requirements.append(req)
                                 cost += self.costs[req]
-                    # decrease the rate of multi-ability paths
-                    cost *= max(1, len(requirements) - 1)
+                    # don't decrease the rate of multi-ability paths, bc we're already pruning them
+                    # cost *= max(1, len(requirements) - 1)
                     if len(requirements) <= free_space:
                         for req in requirements:
                             if req not in abilities_to_open:
@@ -484,7 +565,7 @@ class SeedGenerator:
                     path_selected = abilities_to_open[path]
         if path_selected:
             for req in path_selected[1]:
-                if self.itemPool[req] > 0:
+                if self.itemPool.get(req, 0) > 0:
                     self.assignQueue.append(req)
             return path_selected[1]
         return None
@@ -518,7 +599,7 @@ class SeedGenerator:
         msg = "HN%s-%s-%s" % (name, hint_text, owner)
         return msg
 
-    def assign_random(self, recurseCount=0):
+    def assign_random(self, locs, recurseCount=0):
         value = self.random.random()
         position = 0.0
         denom = float(sum(self.itemPool.values()))
@@ -528,24 +609,28 @@ class SeedGenerator:
         for key in self.itemPool.keys():
             position += self.itemPool[key] / denom
             if value <= position:
-                if self.var(Variation.STARVED) and key in self.skillsOutput and recurseCount < 3:
-                    return self.assign_random(recurseCount=recurseCount + 1)
+                if self.var(Variation.STARVED):
+                    if key in self.skillsOutput and recurseCount < 3:
+                        return self.assign_random(locs, recurseCount=recurseCount + 1)
+                if self.var(Variation.TPSTARVED):
+                    if key.startswith("TP") and recurseCount < 3 and 252 - locs < self.costs.get(key, 0):
+                        return self.assign_random(locs, recurseCount=recurseCount + 1)
                 return self.assign(key)
 
     def assign(self, item, preplaced=False):
-        if item[0:2]  in ["MU", "RP"]:
+        if item[0:2] in ["MU", "RP"] and item not in self.itemPool:
             for multi_item in self.get_multi_items(item):
                 self.assign(multi_item, preplaced)
         else:
             if not preplaced:
-                self.itemPool[item] = max(self.itemPool[item] - 1, 0) if item in self.itemPool else 0
+                self.itemPool[item] = max(self.itemPool.get(item, 0) - 1, 0)
             if item in ["KS", "EC", "HC", "AC", "WaterVeinShard", "GumonSealShard", "SunstoneShard"]:
                 if self.costs[item] > 0:
                     self.costs[item] -= 1
             elif item == "RB28":
                 if self.costs[item] > 0:
                     self.costs[item] -= min(3, self.costs[item])
-            elif item in self.costs and self.itemPool[item] == 0:
+            elif item in self.costs and self.itemPool.get(item, 0) == 0:
                 self.costs[item] = 0
             self.inventory[item] = 1 + self.inventory.get(item, 0)
         return item
@@ -846,12 +931,10 @@ class SeedGenerator:
 
         self.playerCount = 1
         if self.do_multi:
-            if self.params.sync.teams:
+            if self.params.sync.cloned and self.params.sync.teams:
                 self.playerCount = len(self.params.sync.teams)
             else:
                 self.playerCount = self.params.players
-
-        if self.do_multi:
             shared = self.params.sync.shared
             if ShareType.SKILL in shared:
                 self.sharedList += ["WallJump", "ChargeFlame", "Dash", "Stomp", "DoubleJump", "Glide", "Bash", "Climb", "Grenade", "ChargeJump"]
@@ -949,6 +1032,21 @@ class SeedGenerator:
         balanced = len(self.balanceListLeftovers) if include_balanced else 0
         return sum([v for v in self.itemPool.values()]) + balanced + self.unplaced_shared
 
+    def place_repeatables(self):
+        repeatables = []
+        for item, count in self.itemPool.items():
+            if item.startswith("RP"):
+                repeatables += count * [item]
+                del self.itemPool[item]
+        if self.itemPool.get("WP*", 0) > 0:
+            warps = min(self.itemPool["WP*"], 14)
+            del self.itemPool["WP*"]
+            for warp_target in self.random.sample(warp_targets, warps):
+                repeatables.append("RPSH/Press AltR to Warp to %s/WP/%s,%s" % self.random.choice(target))
+        if repeatables:
+            for loc, pickup in zip(self.random.sample(repeatable_locs, len(repeatables)), repeatables):
+                self.forcedAssignments[loc] = pickup
+
     def placeItems(self, depth=0):
         self.reset()
         keystoneCount = 0
@@ -997,71 +1095,7 @@ class SeedGenerator:
             # Capture relic spoilers before the spoiler group is overwritten
             relicSpoiler = self.spoilerGroup["Relic"]
 
-        if self.var(Variation.EXTRA_BONUS_PICKUPS):
-            warps = self.random.randint(4,8)
-            warp_targets = [
-                [
-                    # inner swamp
-                    ("Stomp Miniboss", 915, -115),
-                    ("Swamp Swim", 790, -195),
-                    ("Inner Swamp EC", 720, -95),
-                ],
-                [
-                    # gumo's hideout
-                    ("Above Grotto Crushers", 580, -345),
-                    ("Grotto Energy Vault", 513, -440),
-                    ("Gumo's Bridge", 480, -244),
-                ],
-                [
-                    # lower blackroot
-                    ("Lower Blackroot Laser AC", 417, -435),
-                    ("Grenade Tree", 76, -370),
-                ],
-                [
-                    #lost grove
-                    ("Lost Grove Laser Lever", 499, -505),
-                    ("Grandpa's House", 302, -524),
-                ],
-                [
-                    # hollow grove
-                    ("Kuro CS AC", 330, -63),
-                    ("Horu Fields Plant", 127, 20),
-                    ("Above Cflame Tree EX", -13, -96),
-                    ("Death Gauntlet Roof", 328, -176),
-                    ("Spider Lake Roof", 194, -100)
-                ],
-                [
-                    # outer swamp
-                    ("Outer Swamp HC", 585, -68),
-                    ("Outer Swamp AC", 505, -108),
-                    ("Spike loop HC", 546, -190),
-                ],
-                [
-                    # lower valley
-                    ("Valley entry (upper)", -224, -85),
-                    ("Forlorn entrance", -605, -255),
-                ],
-                [
-                    #upper valley
-                    ("Wilhelm EX", -570, 156),
-                    ("Stompless AC", -358, 65),
-                ],
-                [
-                    # sorrow
-                    ("Sunstone Plant", -500, 587),
-                    ("Sorrow Mapstone", -432, 322),
-                    ("Tumbleweed Keystone Door", -595, 385),
-                ],
-                [
-                    # dungeon memes
-                    ("Ginso Escape", 510, 910),
-                    ("Horu Escape Access", 69, 96),
-                    ("Forlorn HC", -610, -312),
-                ]
-            ]
-            for loc, target in zip(self.random.sample(warp_locs, warps), self.random.sample(warp_targets, warps)):
-                self.forcedAssignments[loc] = "RPSH/Press AltR to Warp to %s/WP/%s,%s" % self.random.choice(target)
-
+        self.place_repeatables()
         # handle the fixed pickups: first energy cell, the glitchy 100 orb at spirit tree, and the forlorn escape plant
         for loc, item, zone in [(-280256, "EC1", "Glades"), (-1680104, "EX100", "Grove"), (-12320248, "RB81", "Forlorn")]:
             if loc in self.forcedAssignments:
@@ -1129,9 +1163,9 @@ class SeedGenerator:
 
         self.itemPool["EX*"] = self.locations() - sum([v for v in self.itemPool.values()]) - self.unplaced_shared + 1  # add 1 for warmth returned (:
         self.expSlots = self.itemPool["EX*"]
-
-        while self.locations() > 0:
-            if self.locations() != self.items() - 1:
+        locs = self.locations()
+        while locs > 0:
+            if locs != self.items() - 1:
                 log.warning("Item (%s) /Location (%s) desync!", self.items(), self.locations())
             self.balanceLevel += 1
             # open all paths that we can already access
@@ -1189,23 +1223,23 @@ class SeedGenerator:
                 locationsToAssign.append(self.reservedLocations.pop(0))
                 locationsToAssign.append(self.reservedLocations.pop(0))
             for i in range(0, len(locationsToAssign)):
-                locationCount = self.locations()
+                locs = self.locations()
                 if self.assignQueue:
                     itemsToAssign.append(self.assign(self.assignQueue.pop(0)))
                 elif self.inventory["KS"] < keystoneCount:
                     itemsToAssign.append(self.assign("KS"))
                 elif self.inventory["MS"] < mapstoneCount:
                     itemsToAssign.append(self.assign("MS"))
-                elif self.inventory["HC"] * self.params.cell_freq < (252 - locationCount) and self.itemPool["HC"] > 0:
+                elif self.inventory["HC"] * self.params.cell_freq < (252 - locs) and self.itemPool["HC"] > 0:
                     itemsToAssign.append(self.assign("HC"))
-                elif self.inventory["EC"] * self.params.cell_freq < (252 - locationCount) and self.itemPool["EC"] > 0:
+                elif self.inventory["EC"] * self.params.cell_freq < (252 - locs) and self.itemPool["EC"] > 0:
                     itemsToAssign.append(self.assign("EC"))
-                elif self.itemPool.get("RB28", 0) > 0 and self.itemPool["RB28"] >= locationCount:
+                elif self.itemPool.get("RB28", 0) > 0 and self.itemPool["RB28"] >= locs:
                     itemsToAssign.append(self.assign("RB28"))
                 elif self.balanceListLeftovers and self.items(include_balanced=False) < 2:
                     itemsToAssign.append(self.balanceListLeftovers.pop(0))
                 else:
-                    itemsToAssign.append(self.assign_random())
+                    itemsToAssign.append(self.assign_random(locs))
 
             # force assign things if using --prefer-path-difficulty
             if self.params.path_diff != PathDifficulty.NORMAL:
@@ -1250,19 +1284,9 @@ class SeedGenerator:
             self.mapQueue = OrderedDict()
             spoilerPath = []
 
-        spoilerStr = self.form_spoiler()
-
-        if self.var(Variation.WORLD_TOUR):
-            spoilerStr += "Relics: {\n"
-            for instance in relicSpoiler:
-                spoilerStr += "    " + instance
-            spoilerStr += "}\n"
-
         if self.params.balanced:
             for item in self.balanceList:
                 self.outputStr += item[2]
-
-        spoilerStr = self.params.flag_line(self.verbose_paths) + "\n" + "Difficulty Rating: " + str(self.seedDifficulty) + "\n" + spoilerStr
 
         # place the last item on the final escape
         balanced = self.params.balanced
@@ -1274,7 +1298,7 @@ class SeedGenerator:
         else:  # In python, the else clause of a for loop triggers if the loop completed without breaking, e.g. we found nothing in the item pool
             if len(self.balanceListLeftovers) > 0:
                 item = self.balanceListLeftovers.pop(0)
-                log.warning("Empty item pool: placing %s from balanceListLeftovers onto warmth returned.", item)
+                log.info("Empty item pool: placing %s from balanceListLeftovers onto warmth returned.", item)
                 self.assign_to_location(item, Location(-240, 512, 'FinalEscape', 'EVWarmth', 0, 'Horu'))
             else:
                 log.warning("%s: No item found for warmth returned! Placing EXP", self.params.flag_line())
@@ -1287,6 +1311,18 @@ class SeedGenerator:
 
         if len(self.balanceListLeftovers) > 0:
             log.warning("%s: Balance list was not empty! %s", self.params.flag_line(), self.balanceListLeftovers)
+
+        if len(self.spoilerGroup):
+            self.spoiler.append((self.currentAreas, spoilerPath, self.spoilerGroup))
+
+        spoilerStr = self.form_spoiler()
+        spoilerStr = self.params.flag_line(self.verbose_paths) + "\n" + "Difficulty Rating: " + str(self.seedDifficulty) + "\n" + spoilerStr
+
+        if self.var(Variation.WORLD_TOUR):
+            spoilerStr += "Relics: {\n"
+            for instance in relicSpoiler:
+                spoilerStr += "    " + instance
+            spoilerStr += "}\n"
 
         if self.params.do_loc_analysis:
             self.params.locationAnalysis = self.params.locationAnalysisCopy

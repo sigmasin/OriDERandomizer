@@ -1,12 +1,18 @@
+#!/usr/bin/env python
 import argparse, time
 import logging as log
-from collections import OrderedDict
+import re
+import pickle
+from collections import OrderedDict, defaultdict, Counter
 
 from util import enums_from_strlist
-from enums import (MultiplayerGameType, ShareType, Variation, LogicPath, KeyMode, PathDifficulty, presets)
+from enums import MultiplayerGameType, ShareType, Variation, LogicPath, KeyMode, PathDifficulty, presets
 from seedbuilder.generator import SeedGenerator
 
 FLAGLESS_VARS = [Variation.WARMTH_FRAGMENTS, Variation.WORLD_TOUR]
+first_line_pattern = re.compile("(\d+): (\[[^]]+\])")
+forced_pickup_pattern = re.compile(".*forced pickup.*\[([^]]+)\]")
+normal_line_pattern = re.compile(" *(\w+) from (\w+)")
 
 def vals(enumType):
     return [v.value for v in enumType.__members__.values()]
@@ -99,8 +105,8 @@ class CLISeedParams(object):
         self.key_mode = KeyMode.mk(args.keymode) or KeyMode.NONE
         # variations (help)
         varMap = {
-            "zeroxp": "0XP", "hard": "Hard", "non_progressive_mapstones": "NonProgressMapStones", "ohko": "OHKO", "force_trees": "ForceTrees", "starved": "Starved",
-            "force_mapstones": "ForceMapStones", "entrance": "Entrance", "open_world": "OpenWorld", "easy": "DoubleSkills", "free_mapstones": "FreeMapstones", 
+            "zeroxp": "0XP", "non_progressive_mapstones": "NonProgressMapStones", "ohko": "OHKO", "force_trees": "ForceTrees", "starved": "Starved",
+            "force_mapstones": "ForceMapStones", "entrance": "Entrance", "open_world": "OpenWorld", "easy": "DoubleSkills", "free_mapstones": "FreeMapstones",
             "warmth_frags": "WarmthFrags", "world_tour": "WorldTour", "closed_dungeons": "ClosedDungeons"
         }
         self.variations = []
@@ -130,6 +136,60 @@ class CLISeedParams(object):
         self.players = args.players
         self.tracking = args.tracking or False
         self.sync = CLIMultiOptions()
+        if Variation.EXTRA_BONUS_PICKUPS in self.variations:
+            self.pool_preset = "Extra Bonus"
+            self.item_pool = {
+                "TP|Grove": [1],
+                "TP|Swamp": [1],
+                "TP|Grotto": [1],
+                "TP|Valley": [1],
+                "TP|Sorrow": [1],
+                "TP|Ginso": [1],
+                "TP|Horu": [1],
+                "TP|Forlorn": [1],
+                "HC|1": [12],
+                "EC|1": [14],
+                "AC|1": [33],
+                "RB|0": [3],
+                "RB|1": [3],
+                "RB|6": [5],
+                "RB|9": [1],
+                "RB|10": [1],
+                "RB|11": [1],
+                "RB|12": [5],
+                "RB|13": [3],
+                "RB|15": [3],
+                "RB|31": [1],
+                "RB|32": [1],
+                "RB|33": [3],
+                "BS|*": [4],
+                "WP|*": [4, 8],
+            }
+        else:
+            self.pool_preset = "Standard"
+            self.item_pool = {
+                "TP|Grove": [1],
+                "TP|Swamp": [1],
+                "TP|Grotto": [1],
+                "TP|Valley": [1],
+                "TP|Sorrow": [1],
+                "TP|Ginso": [1],
+                "TP|Horu": [1],
+                "TP|Forlorn": [1],
+                "HC|1": [12],
+                "EC|1": [14],
+                "AC|1": [33],
+                "RB|0": [3],
+                "RB|1": [3],
+                "RB|6": [3],
+                "RB|9": [1],
+                "RB|10": [1],
+                "RB|11": [1],
+                "RB|12": [1],
+                "RB|13": [3],
+                "RB|15": [3],
+            }
+
         if self.players > 1 or self.tracking:
             self.sync_id = args.sync_id or int(time.time() * 1000 % 1073741824)
         if self.players > 1:
@@ -151,9 +211,10 @@ class CLISeedParams(object):
         self.do_loc_analysis = args.loc_analysis
         self.repeat_count = args.count
 
-        base_seed = 0
-        if self.repeat_count > 1:
-            base_seed = hash(self.seed)
+        base_seed = hash(self.seed)
+        if self.do_analysis:
+            key_items = ["WallJump", "ChargeFlame", "DoubleJump", "Bash", "Stomp", "Glide", "Climb", "ChargeJump", "Dash", "Grenade", "GinsoKey", "ForlornKey", "HoruKey", "Water", "Wind", "TPForlorn", "TPGrotto", "TPSorrow", "TPGrove", "TPSwamp", "TPValley", "TPGinso", "TPHoru"]
+            info_by_group = defaultdict(lambda: {"items": Counter(), "forced": Counter(), "locs": 0, "seeds": 0, "force": 0})
 
         if self.do_loc_analysis:
             self.locationAnalysis = {}
@@ -186,11 +247,11 @@ class CLISeedParams(object):
                 "TPHoru": 0,
                 "Relic": 0
             }
-            for i in range(1,10):
+            for i in range(1, 10):
                 self.locationAnalysis["MapStone " + str(i)] = self.itemsToAnalyze.copy()
                 self.locationAnalysis["MapStone " + str(i)]["Zone"] = "MapStone"
 
-        for count in range(0, args.count):
+        for count in range(0, self.repeat_count):
 
             if self.repeat_count > 1:
                 self.seed = base_seed + count
@@ -229,6 +290,44 @@ class CLISeedParams(object):
                         f.write(seed)
                     with open(args.output_dir+"/"+spoilerfile, 'w') as f:
                         f.write(spoiler)
+                if self.do_analysis:
+                    i = 0
+                    for spoiler_line in spoiler.split("\n"):
+                        fl = first_line_pattern.match(spoiler_line)
+                        if fl:
+                            raw_group, raw_locs = fl.group(1,2)
+                            i = int(raw_group)
+                            info_by_group[i]["seeds"] += 1
+                            info_by_group[i]["locs"] += raw_locs.count(",") + 1
+                            continue
+                        fp = forced_pickup_pattern.match(spoiler_line)
+                        if fp:
+                            info_by_group[i]["force"] += 1
+                            for raw in fp.group(1).split(","):
+                                info_by_group[i]["forced"][raw.strip(" '")] += 1
+                            continue
+                        nl = normal_line_pattern.match(spoiler_line)
+                        if nl:
+                            item = nl.group(1)
+                            if item in key_items:
+                                info_by_group[i]["items"][item] += 1
+
+        if self.do_analysis:
+#            output = open("analysis.csv", 'w')
+#            output.write("Location,Zone,WallJump,ChargeFlame,DoubleJump,Bash,Stomp,Glide,Climb,ChargeJump,Dash,Grenade,GinsoKey,ForlornKey,HoruKey,Water,Wind,WaterVeinShard,GumonSealShard,SunstoneShard,TPGrove,TPGrotto,TPSwamp,TPValley,TPSorrow,TPGinso,TPForlorn,TPHoru,Relic\n")
+            for i, group in info_by_group.items():
+                seeds = float(group["seeds"])
+                print "%d (%d): " % (i, int(seeds))
+                print "\tkey items: [", 
+                for item, count in group["items"].items():
+                    print '%s: %02.2f%%,' % (item, 100*float(count)/seeds),
+                print "]\n\tforced: [", 
+                for item, count in group["forced"].items():
+                    print '%s: %02.2f%%,' % (item, 100*float(count)/float(group["force"])),
+                print "]\n\taverage locs", float(group['locs'])/seeds
+            with open("anal.pickle", 'w') as out_file:
+                pickle.dump(info_by_group, out_file)
+
 
         if self.do_loc_analysis:
             output = open("analysis.csv", 'w')

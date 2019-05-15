@@ -1,6 +1,7 @@
 from google.appengine.ext import ndb
 
 import logging as log
+import random
 
 from util import enums_from_strlist
 from enums import (MultiplayerGameType, ShareType, Variation, LogicPath, KeyMode, PathDifficulty, presets)
@@ -37,7 +38,7 @@ class MultiplayerOptions(ndb.Model):
     enabled = ndb.BooleanProperty(default=False)
     cloned = ndb.BooleanProperty(default=True)
     hints = ndb.BooleanProperty(default=True)
-    teams = ndb.JsonProperty(default={})
+    teams = ndb.JsonProperty()
 
     @staticmethod
     def from_url(qparams):
@@ -57,11 +58,22 @@ class MultiplayerOptions(ndb.Model):
                     cnt += 1
                 opts.teams = teams
         return opts
+    @staticmethod
+    def from_json(json):
+        opts = MultiplayerOptions()
+        opts.enabled = json.get("players", 1) > 1
+        opts.teams = json.get("teams", {})
+        if opts.enabled:
+            opts.mode = MultiplayerGameType(json.get("sync_mode", "None"))
+            opts.cloned = json.get("sync_gen") != "disjoint"
+            opts.hints = bool(opts.cloned and json.get("sync_hints"))
+            opts.shared = enums_from_strlist(ShareType, json.get("sync_shared", []))
+        return opts
 
     def get_team_str(self):
-        return "|".join([",".join(team) for team in self.teams])
-
-
+        if self.teams:
+            return "|".join([",".join(team) for team in self.teams])
+        return ""
 
 class SeedGenParams(ndb.Model):
     str_vars = ndb.StringProperty(repeated=True)
@@ -102,10 +114,11 @@ class SeedGenParams(ndb.Model):
     cell_freq = ndb.IntegerProperty(default=256)
     placements = ndb.LocalStructuredProperty(Placement, repeated=True, compressed=True)
     spoilers = ndb.TextProperty(repeated=True, compressed=True)
-    warp_credits = ndb.BooleanProperty(default=False)
     sense = ndb.StringProperty()
     is_plando = ndb.BooleanProperty(default=False)
     plando_flags = ndb.StringProperty(repeated=True)
+    item_pool = ndb.JsonProperty()
+    pool_preset = ndb.StringProperty()
     do_loc_analysis = False
 
     @staticmethod
@@ -131,6 +144,36 @@ class SeedGenParams(ndb.Model):
         return params
 
     @staticmethod
+    def from_json(json):
+        params = SeedGenParams()
+        params.seed = str(json.get("seed"))
+        if not params.seed:
+            log.error("No seed in %r! returning None" % json)
+            return None
+        params.variations = enums_from_strlist(Variation, json.get("variations", []))
+        params.logic_paths = enums_from_strlist(LogicPath, json.get("logic_paths", []))
+        if not params.logic_paths:
+            log.error("No logic paths in %r! returning None" % json)
+            return None
+        params.key_mode = KeyMode(json.get("key_mode", "Clues"))
+        params.path_diff = PathDifficulty(json.get("path_diff", "Normal"))
+        params.exp_pool = json.get("exp_pool", 10000)
+        params.balanced = json.get("gen_mode") != "Classic"
+        params.players = json.get("players", 1)
+        params.tracking = json.get("tracking")
+        params.frag_count = json.get("frags", 30)
+        params.frag_req = json.get("frags_req", 20)
+        params.relic_count = json.get("relics", 8)
+        params.cell_freq = json.get("cell_freq", 256)
+        params.sync = MultiplayerOptions.from_json(json)
+        params.sense = json.get("sense")
+        params.item_pool = json.get("item_pool", {})
+
+        params.pool_preset = json.get("pool_preset", "Standard")
+        params.placements = [Placement(location=fass["loc"], zone="", stuff=[Stuff(code=fass["code"], id=fass["id"], player="")]) for fass in json.get("fass", [])]
+        return params.put()
+
+    @staticmethod
     def from_url(qparams):
         params = SeedGenParams()
         params.seed = qparams.get("seed")
@@ -154,7 +197,66 @@ class SeedGenParams(ndb.Model):
         params.cell_freq = int(qparams.get("cell_freq", 256))
         params.sync = MultiplayerOptions.from_url(qparams)
         params.sense = qparams.get("sense")
-        params.warp_credits = qparams.get("warp_credits") is not None
+        params.item_pool = {}
+        raw_pool = qparams.get("item_pool")
+        if raw_pool:
+            for itemcnt in raw_pool.split("|"):
+                item, _, count = itemcnt.partition(":")
+                params.item_pool[item] = int(count)
+        else:
+            if Variation.EXTRA_BONUS_PICKUPS in params.variations:
+                params.pool_preset = "Extra Bonus"
+                params.item_pool = {
+                    "TP|Grove": [1],
+                    "TP|Swamp": [1],
+                    "TP|Grotto": [1],
+                    "TP|Valley": [1],
+                    "TP|Sorrow": [1],
+                    "TP|Ginso": [1],
+                    "TP|Horu": [1],
+                    "TP|Forlorn": [1],
+                    "HC|1": [12],
+                    "EC|1": [14],
+                    "AC|1": [33],
+                    "RB|0": [3],
+                    "RB|1": [3],
+                    "RB|6": [5],
+                    "RB|9": [1],
+                    "RB|10": [1],
+                    "RB|11": [1],
+                    "RB|12": [5],
+                    "RB|13": [3],
+                    "RB|15": [3],
+                    "RB|31": [1],
+                    "RB|32": [1],
+                    "RB|33": [3],
+                    "BS|*": [4],
+                    "WP|*": [4, 8],
+                }
+            else:
+                params.pool_preset = "Standard"
+                params.item_pool = {
+                    "TP|Grove": [1],
+                    "TP|Swamp": [1],
+                    "TP|Grotto": [1],
+                    "TP|Valley": [1],
+                    "TP|Sorrow": [1],
+                    "TP|Ginso": [1],
+                    "TP|Horu": [1],
+                    "TP|Forlorn": [1],
+                    "HC|1": [12],
+                    "EC|1": [14],
+                    "AC|1": [33],
+                    "RB|0": [3],
+                    "RB|1": [3],
+                    "RB|6": [3],
+                    "RB|9": [1],
+                    "RB|10": [1],
+                    "RB|11": [1],
+                    "RB|12": [1],
+                    "RB|13": [3],
+                    "RB|15": [3],
+                }
         raw_fass = qparams.get("fass")
         if raw_fass:
             params.placements = []
@@ -184,10 +286,11 @@ class SeedGenParams(ndb.Model):
             "paths": [p.value for p in self.logic_paths],
             "shared": [JSON_SHARE(s) for s in self.sync.shared],
             "teamStr": self.sync.get_team_str(),
-            "dedupShared": len(self.sync.teams) != 1,
+            "dedupShared": self.sync.teams and len(self.sync.teams) != 1,
             "spoilers": len(self.spoilers[0]) > 100,
             "senseData": self.sense,
-            "warpCredits": self.warp_credits
+            "itemPool": self.item_pool,
+            "selectedPool": self.pool_preset
         }
 
 
@@ -203,7 +306,7 @@ class SeedGenParams(ndb.Model):
         placemap = OrderedDict()
         spoilers = []
         if not raw:
-                return False
+            return False
         player = 0
         for player_raw in raw:
             player += 1
@@ -231,8 +334,8 @@ class SeedGenParams(ndb.Model):
     def teams_inv(self):  # generates {pid: tid}
         return {pid: tid for tid, pids in self.sync.teams.iteritems() for pid in pids}
 
-    def team_pid(self, pid):  # given pid, get team or return pid if no teams exist
-        return int(self.teams_inv()[pid]) if self.sync.teams else pid
+    def team_pid(self, pid):  # given pid, get team or return pid if no teams exist (REMINDER: TEAMS ARE CLONED ONLY)
+        return int(self.teams_inv()[pid]) if (self.sync.teams and self.sync.cloned) else pid
 
     def get_seed(self, player=1, game_id=None, verbose_paths=False, include_sync = True):
         flags = self.flag_line(verbose_paths)
@@ -284,7 +387,7 @@ class SeedGenParams(ndb.Model):
             flags += [v.value for v in self.variations if v not in FLAGLESS_VARS]
             if self.path_diff != PathDifficulty.NORMAL:
                 flags.append("prefer_path_difficulty=%s" % self.path_diff.value)
-            if self.sync.enabled:
+            if self.sync.enabled and self.sync.mode is not MultiplayerGameType.SIMUSOLO:
                 flags.append("mode=%s" % self.sync.mode.value)
                 if self.sync.shared:
                     flags.append("shared=%s" % "+".join(self.sync.shared))

@@ -58,6 +58,8 @@ class Variation(StrEnum):
     STOMP_TRIGGERS = "StompTriggers"
     NO_EXTRA_EXP = "NoExtraExp"
     BINGO = "Bingo"
+    TPSTARVED = "TPStarved"
+    NO_ESCAPE = "GoalModeFinish"
 
 class LogicPath(StrEnum):
     CASUAL_CORE = 'casual-core'
